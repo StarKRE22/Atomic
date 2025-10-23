@@ -115,13 +115,15 @@ namespace Atomic.Entities
             if (_instance == this)
                 _instance = null;
         }
-
+        
+#if UNITY_EDITOR
         private protected override void Reset()
         {
             base.Reset();
             _isGlobal = true;
             _dontDestroyOnLoad = false;
         }
+#endif
 
         #endregion
         

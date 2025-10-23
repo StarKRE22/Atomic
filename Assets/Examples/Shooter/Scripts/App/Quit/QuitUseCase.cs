@@ -1,4 +1,9 @@
+#if UNITY_EDITOR
 using UnityEditor;
+
+#else
+using UnityEngine;
+#endif
 
 namespace ShooterGame.App
 {

@@ -51,7 +51,7 @@ namespace RTSGame
 
         private void Awake()
         {
-            GameContext.DisposeInstance();
+            GameContext.DropInstance();
             GameContext.SetFactory(_gameContextFactory);
             _gameContext = GameContext.Instance;
         }
@@ -90,7 +90,7 @@ namespace RTSGame
             if (_showEntityViews)
                 _entityWorldView.Hide();
             
-            GameContext.DisposeInstance();
+            GameContext.DropInstance();
         }
     }
 }

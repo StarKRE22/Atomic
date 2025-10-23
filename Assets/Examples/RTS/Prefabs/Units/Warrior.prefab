@@ -320,9 +320,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoCompile: 1
-  initialTagCapacity: 0
-  initialValueCapacity: 0
-  initialBehaviourCapacity: 0
+  initialTagCapacity: 3
+  initialValueCapacity: 16
+  initialBehaviourCapacity: 4
   onlySelectedGizmos: 0
   onlyEditModeGizmos: 0
   _factory: {fileID: 11400000, guid: bff4f710d3b704ac7a6438e12d0bcf57, type: 2}

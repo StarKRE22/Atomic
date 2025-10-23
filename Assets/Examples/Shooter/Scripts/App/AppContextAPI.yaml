@@ -4,7 +4,7 @@ aggressiveInlining: true
 
 namespace: ShooterGame.App
 className: AppContextAPI
-directory: Assets/Examples/Shooter/Scripts/App/Core/
+directory: Assets/Examples/Shooter/Scripts/App/
  
 imports:
 - UnityEngine

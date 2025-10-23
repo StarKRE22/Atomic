@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using Atomic.Entities;
 using UnityEditor;
 using UnityEngine;
@@ -14,3 +15,4 @@ namespace RTSGame
         }
     }
 }
+#endif

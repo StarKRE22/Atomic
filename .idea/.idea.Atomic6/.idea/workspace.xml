@@ -5,7 +5,286 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/IGameContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/IGameContext.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/GameContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/GameContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/GameContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/GameContextInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterMoveBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterMoveBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterNameBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterNameBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterPickUpBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterPickUpBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterViewInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterViewInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Coin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Coin/CoinInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Coin/CoinInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Movement.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Movement/MovementBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Movement/MovementBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Movement/MovementUseCase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Movement/MovementUseCase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Rotation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Rotation/RotationBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Rotation/RotationBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Rotation/RotationUseCase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Rotation/RotationUseCase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/GameEntity.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/GameEntity.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/GameEntityAPI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/GameEntityAPI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/GameEntityAPI.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/GameEntityAPI.yaml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Billboard.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Billboard/CameraBillboardBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Billboard/CameraBillboardBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Money.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Money/MoneyPresenter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Money/MoneyPresenter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Money/MoneyView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Money/MoneyView.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Team.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Team/TeamColorBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Team/TeamColorBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/Countdown.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/Countdown/CountdownPresenter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/Countdown/CountdownPresenter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/Countdown/CountdownView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/Countdown/CountdownView.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverObserver.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverObserver.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverPresenter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverPresenter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverUseCase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverUseCase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverView.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/UIContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/UIContext.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/UIContext.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/UIContext.yaml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/UIContextAPI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/UIContextAPI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/UIContextInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/UIContextInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Warrior.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Warrior.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Headquarters.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Headquarters.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Tank.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Tank.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Warrior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/EntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/EntryPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformEntityInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformGizmos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformGizmos.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/AppContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/AppContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/AppContext.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/AppContext.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/AppContextAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/AppContextAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/AppContextAPI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/AppContextAPI.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/AppContextAPI.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/AppContextAPI.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/AppContextAPI.yaml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/AppContextAPI.yaml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/AppContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/AppContextInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/AppContextInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/AppContextInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/GameOver.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/GameOver.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/GameOver/GameOverObserver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/GameOver/GameOverObserver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/GameOver/GameOverObserver.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/GameOver/GameOverObserver.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/IAppContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/IAppContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/IAppContext.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/IAppContext.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Levels.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelPersistentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Levels/LevelPersistentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelPersistentController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Levels/LevelPersistentController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Levels/LevelsInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Levels/LevelsInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Levels/LevelsUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Levels/LevelsUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsUseCase_SaveLoad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Levels/LevelsUseCase_SaveLoad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsUseCase_SaveLoad.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Levels/LevelsUseCase_SaveLoad.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameBundle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/LoadGameBundle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameBundle.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/LoadGameBundle.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/LoadGameInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/LoadGameInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/LoadGameUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/LoadGameUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/Tasks.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/ILoadingTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/Tasks/ILoadingTask.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/ILoadingTask.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/Tasks/ILoadingTask.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadGameContextTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/Tasks/LoadGameContextTask.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadGameContextTask.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/Tasks/LoadGameContextTask.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadGameUIContextTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/Tasks/LoadGameUIContextTask.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadGameUIContextTask.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/Tasks/LoadGameUIContextTask.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadLevelSceneTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/Tasks/LoadLevelSceneTask.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadLevelSceneTask.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/Tasks/LoadLevelSceneTask.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadingTaskSequence.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/Tasks/LoadingTaskSequence.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadingTaskSequence.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadGame/Tasks/LoadingTaskSequence.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadMenu.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadMenu.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadMenu/MenuLoadController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadMenu/MenuLoadController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadMenu/MenuLoadController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadMenu/MenuLoadController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadMenu/MenuLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadMenu/MenuLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadMenu/MenuLoader.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadMenu/MenuLoader.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadMenu/MenuUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadMenu/MenuUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadMenu/MenuUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/LoadMenu/MenuUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Quit.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Quit/QuitController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Quit/QuitController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Quit/QuitInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Quit/QuitInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Quit/QuitUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Quit/QuitUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/IMenuUIContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/IMenuUIContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/IMenuUIContext.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/IMenuUIContext.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/MenuUIContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/MenuUIContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/MenuUIContext.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/MenuUIContext.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/MenuUIContextAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/MenuUIContextAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/MenuUIContextAPI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/MenuUIContextAPI.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/MenuUIContextAPI.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/MenuUIContextAPI.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/MenuUIContextAPI.yaml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/MenuUIContextAPI.yaml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Level.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Level.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Level/LevelItemPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Level/LevelItemPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Level/LevelItemPresenter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Level/LevelItemPresenter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Level/LevelItemView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Level/LevelItemView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Level/LevelItemView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Level/LevelItemView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Level/LevelScreenPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Level/LevelScreenPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Level/LevelScreenPresenter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Level/LevelScreenPresenter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Level/LevelScreenView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Level/LevelScreenView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Level/LevelScreenView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Level/LevelScreenView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/ScreenUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/ScreenUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/ScreenUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/ScreenUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/ScreenView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/ScreenView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/ScreenView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/ScreenView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/ScreensInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/ScreensInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/ScreensInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/ScreensInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Start.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Start.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Start/StartScreenPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Start/StartScreenPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Start/StartScreenPresenter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Start/StartScreenPresenter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Start/StartScreenView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Start/StartScreenView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Start/StartScreenView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Menu/Screens/Start/StartScreenView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Bullet.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletCollisionBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Bullet/BulletCollisionBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletCollisionBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Bullet/BulletCollisionBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Bullet/BulletInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Bullet/BulletInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletMoveBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Bullet/BulletMoveBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletMoveBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Bullet/BulletMoveBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Bullet/BulletViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletViewInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Bullet/BulletViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Character.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterFireAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Character/CharacterFireAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterFireAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Character/CharacterFireAction.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Character/CharacterInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Character/CharacterInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterMoveBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Character/CharacterMoveBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterMoveBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Character/CharacterMoveBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterNameBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Character/CharacterNameBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterNameBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Character/CharacterNameBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Character/CharacterViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterViewInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Content/Character/CharacterViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Lifetime.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Lifetime.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Lifetime/LifetimeBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Lifetime/LifetimeBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Lifetime/LifetimeBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Lifetime/LifetimeBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Movement.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Movement.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Movement/KinematicMovementBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Movement/KinematicMovementBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Movement/KinematicMovementBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Movement/KinematicMovementBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Rotation.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Rotation.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Rotation/RotationBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Rotation/RotationBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Rotation/RotationBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Rotation/RotationBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Rotation/RotationUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Rotation/RotationUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Rotation/RotationUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Rotation/RotationUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/TakeDamage.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/TakeDamage.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/TakeDamage/TakeDamageUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/TakeDamage/TakeDamageUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/TakeDamage/TakeDamageUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/TakeDamage/TakeDamageUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Team.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Team.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Team/TeamPhysicsLayerBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Team/TeamPhysicsLayerBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Team/TeamPhysicsLayerBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Team/TeamPhysicsLayerBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Vector.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Vector.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Vector/VectorUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Vector/VectorUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Vector/VectorUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/Core/Vector/VectorUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/GameEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntity.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/GameEntity.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/GameEntityAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityAPI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/GameEntityAPI.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityAPI.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/GameEntityAPI.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityAPI.yml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/GameEntityAPI.yml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/GameEntityProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityProxy.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/GameEntityProxy.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/IGameEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/IGameEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/IGameEntity.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/IGameEntity.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/CameraBillboardBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/CameraBillboardBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/CameraBillboardBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/CameraBillboardBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/DeathAnimBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/DeathAnimBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/DeathAnimBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/DeathAnimBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/FireAnimBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/FireAnimBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/FireAnimBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/FireAnimBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPoints.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/HitPoints.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPoints/HitPointsPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/HitPoints/HitPointsPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPoints/HitPointsPresenter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/HitPoints/HitPointsPresenter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPoints/HitPointsView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/HitPoints/HitPointsView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPoints/HitPointsView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/HitPoints/HitPointsView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/MoveAnimBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/MoveAnimBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/MoveAnimBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/MoveAnimBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/TakeDamage.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/TakeDamage.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/TakeDamage/TakeDamageAnimBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/TakeDamage/TakeDamageAnimBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/TakeDamage/TakeDamageAnimBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/TakeDamage/TakeDamageAnimBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/TakeDamage/TakeDamageBloodBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/TakeDamage/TakeDamageBloodBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/TakeDamage/TakeDamageBloodBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/TakeDamage/TakeDamageBloodBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/TeamColorBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/TeamColorBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/TeamColorBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Entities/View/TeamColorBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/Countdown.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/Countdown.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/Countdown/CountdownPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/Countdown/CountdownPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/Countdown/CountdownPresenter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/Countdown/CountdownPresenter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/GameUIContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/GameUIContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/GameUIContext.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/GameUIContext.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/GameUIContextAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/GameUIContextAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/GameUIContextAPI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/GameUIContextAPI.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/GameUIContextAPI.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/GameUIContextAPI.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/GameUIContextAPI.yml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/GameUIContextAPI.yml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/GameUIContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/GameUIContextInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/GameUIContextInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/GameUIContextInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/IGameUIContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/IGameUIContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/IGameUIContext.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/IGameUIContext.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/Kills.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/Kills.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/Kills/KillsPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/Kills/KillsPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/UI/Kills/KillsPresenter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/UI/Game/Kills/KillsPresenter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/Content.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/Content.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/Content/ProjectileWeaponInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/Content/ProjectileWeaponInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/Content/ProjectileWeaponInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/Content/ProjectileWeaponInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/Content/WeaponViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/Content/WeaponViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/Content/WeaponViewInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/Content/WeaponViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/IWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/IWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/IWeapon.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/IWeapon.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/Weapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/Weapon.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/Weapon.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/WeaponEntityAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/WeaponEntityAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/WeaponEntityAPI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/WeaponEntityAPI.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/WeaponEntityAPI.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/WeaponEntityAPI.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/WeaponEntityAPI.yml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapons/WeaponEntityAPI.yml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Gizmos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Gizmos.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/EntitySingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/EntitySingleton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntitySingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntitySingleton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/EntitySingleton.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntitySingleton.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,47 +555,7 @@
       <workItem from="1761081982604" duration="314000" />
       <workItem from="1761120599533" duration="21262000" />
       <workItem from="1761201425513" duration="8409000" />
-      <workItem from="1761217932574" duration="10154000" />
-    </task>
-    <task id="LOCAL-01775" summary="ExtensionsValues.md">
-      <option name="closed" value="true" />
-      <created>1761055494793</created>
-      <option name="number" value="01775" />
-      <option name="presentableId" value="LOCAL-01775" />
-      <option name="project" value="LOCAL" />
-      <updated>1761055494793</updated>
-    </task>
-    <task id="LOCAL-01776" summary="ExtensionsBehaviours.md">
-      <option name="closed" value="true" />
-      <created>1761055598444</created>
-      <option name="number" value="01776" />
-      <option name="presentableId" value="LOCAL-01776" />
-      <option name="project" value="LOCAL" />
-      <updated>1761055598444</updated>
-    </task>
-    <task id="LOCAL-01777" summary="ExtensionsInstalling.md">
-      <option name="closed" value="true" />
-      <created>1761055716899</created>
-      <option name="number" value="01777" />
-      <option name="presentableId" value="LOCAL-01777" />
-      <option name="project" value="LOCAL" />
-      <updated>1761055716899</updated>
-    </task>
-    <task id="LOCAL-01778" summary="ExtensionsInstalling.md">
-      <option name="closed" value="true" />
-      <created>1761055754399</created>
-      <option name="number" value="01778" />
-      <option name="presentableId" value="LOCAL-01778" />
-      <option name="project" value="LOCAL" />
-      <updated>1761055754399</updated>
-    </task>
-    <task id="LOCAL-01779" summary="ExtensionsRetrieval.mds">
-      <option name="closed" value="true" />
-      <created>1761055859297</created>
-      <option name="number" value="01779" />
-      <option name="presentableId" value="LOCAL-01779" />
-      <option name="project" value="LOCAL" />
-      <updated>1761055859297</updated>
+      <workItem from="1761217932574" duration="13435000" />
     </task>
     <task id="LOCAL-01780" summary="Done!">
       <option name="closed" value="true" />
@@ -670,7 +909,47 @@
       <option name="project" value="LOCAL" />
       <updated>1761229890869</updated>
     </task>
-    <option name="localTasksCounter" value="1824" />
+    <task id="LOCAL-01824" summary="Документалка готова!">
+      <option name="closed" value="true" />
+      <created>1761230630293</created>
+      <option name="number" value="01824" />
+      <option name="presentableId" value="LOCAL-01824" />
+      <option name="project" value="LOCAL" />
+      <updated>1761230630293</updated>
+    </task>
+    <task id="LOCAL-01825" summary="Документалка готова!">
+      <option name="closed" value="true" />
+      <created>1761230702744</created>
+      <option name="number" value="01825" />
+      <option name="presentableId" value="LOCAL-01825" />
+      <option name="project" value="LOCAL" />
+      <updated>1761230702745</updated>
+    </task>
+    <task id="LOCAL-01826" summary="Документалка готова!">
+      <option name="closed" value="true" />
+      <created>1761230717911</created>
+      <option name="number" value="01826" />
+      <option name="presentableId" value="LOCAL-01826" />
+      <option name="project" value="LOCAL" />
+      <updated>1761230717911</updated>
+    </task>
+    <task id="LOCAL-01827" summary="Документалка готова!">
+      <option name="closed" value="true" />
+      <created>1761230736992</created>
+      <option name="number" value="01827" />
+      <option name="presentableId" value="LOCAL-01827" />
+      <option name="project" value="LOCAL" />
+      <updated>1761230736993</updated>
+    </task>
+    <task id="LOCAL-01828" summary="Документалка готова!">
+      <option name="closed" value="true" />
+      <created>1761230886703</created>
+      <option name="number" value="01828" />
+      <option name="presentableId" value="LOCAL-01828" />
+      <option name="project" value="LOCAL" />
+      <updated>1761230886703</updated>
+    </task>
+    <option name="localTasksCounter" value="1829" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -697,7 +976,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IteratingOverEntity.md" />
     <MESSAGE value="IteratingReactiveCollections.md" />
     <MESSAGE value="ModularEntityInstallers.md" />
     <MESSAGE value="Пилим OverrideEntityFactoriesWithBakers.md" />
@@ -722,7 +1000,8 @@
     <MESSAGE value="EntitySystem.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Раскидал Best Practices" />
-    <option name="LAST_COMMIT_MESSAGE" value="Раскидал Best Practices" />
+    <MESSAGE value="Документалка готова!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Документалка готова!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

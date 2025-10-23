@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c370904b88384aa8bb214bdec12a3a99, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
-  InitialTagCount: 3
-  InitialValueCount: 16
-  InitialBehaviourCount: 4
+  autoCompile: 1
+  initialTagCapacity: 3
+  initialValueCapacity: 16
+  initialBehaviourCapacity: 4
   _transformInstaller:
     _scale:
       value: 0.5
@@ -34,4 +35,3 @@ MonoBehaviour:
   _aiInstaller:
     _minDetectDuration: 0.3
     _maxDetectDuration: 0.5
-    _maxVision: 50

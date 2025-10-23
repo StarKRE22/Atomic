@@ -35,7 +35,7 @@ namespace BeginnerGame
             //Game countdown
             context.AddGameCountdown(_gameCountdown);
             context.AddBehaviour<GameCountdownController>();
-            
+
             //Game Over
             context.AddGameOverEvent(new BaseEvent());
             context.AddWinnerTeam(new ReactiveVariable<TeamType>());
@@ -44,7 +44,10 @@ namespace BeginnerGame
             context.AddCoinPool(_coinPool);
             context.AddCoinSpawnArea(_coinSpawnArea);
             context.AddBehaviour(new CoinSpawnController(_coinSpawnPeriod));
+
+#if UNITY_EDITOR
             context.AddBehaviour<CoinSpawnAreaGizmos>();
+#endif
         }
     }
 }

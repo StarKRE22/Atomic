@@ -23,6 +23,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Examples/Shooter/Scenes/ShooterGame (Menu).unity
     guid: 2a971fcbfef4b451f82c4da85c65aee1
+  - enabled: 1
+    path: "Assets/Examples/RTS/Scenes/RTSGame (5000+ Units \u2014 Visualization).unity"
+    guid: 0b8c4fd57324d4705a8b948461299d8e
+  - enabled: 1
+    path: "Assets/Examples/RTS/Scenes/RTSGame (10000+ Units \u2014 No Visualization).unity"
+    guid: f54e7ab2f0de84530ac9e758fa364d0b
+  - enabled: 1
+    path: Assets/Examples/RTS/Scenes/RTSGame (Entity Baking).unity
+    guid: 14d86bd5910f84ad3860bf24a08f6dbd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

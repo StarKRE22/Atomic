@@ -21,67 +21,7 @@ namespace Atomic.Entities
     {
         private static E _instance;
         private static IEntityFactory<E> _factory;
-
-        /// <summary>
-        /// Gets the global singleton instance of type <typeparamref name="E"/>.
-        /// <para>
-        /// If a factory is registered via <see cref="SetFactory"/>, the instance is created using that factory.
-        /// Otherwise, the instance is created using the parameterless constructor (<c>new()</c>).
-        /// </para>
-        /// <para>
-        /// The same instance is returned on every access until disposed via <see cref="DisposeInstance"/>.
-        /// </para>
-        /// </summary>
-        public static E Instance => _instance ??= _factory != null ? _factory.Create() : new E();
-
-        /// <summary>
-        /// Registers a custom factory method for creating the singleton instance.
-        /// <para>
-        /// This method must be called before the first access to <see cref="Instance"/>.
-        /// </para>
-        /// </summary>
-        /// <param name="factory">
-        /// The factory that will be used to create new instances of <typeparamref name="E"/>.
-        /// </param>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> is <c>null</c>.</exception>
-        public static void SetFactory(IEntityFactory<E> factory) =>
-            _factory = factory ?? throw new ArgumentNullException(nameof(factory));
-
-        /// <summary>
-        /// Disposes the current singleton instance, if it exists, 
-        /// and resets the internal reference to <c>null</c>.
-        /// <para>
-        /// After calling this method, the next access to <see cref="Instance"/> will create a new instance
-        /// (using either the registered factory or the default constructor).
-        /// </para>
-        /// </summary>
-#if UNITY_EDITOR
-        [InitializeOnEnterPlayMode]
-#endif
-        public static void DisposeInstance()
-        {
-            if (_instance != null)
-            {
-                _instance.Dispose();
-                _instance = null;
-            }
-        }
-
-        /// <summary>
-        /// Disposes the current singleton instance (if any) and immediately creates a new one.
-        /// <para>
-        /// This is equivalent to calling <see cref="DisposeInstance"/> followed by accessing <see cref="Instance"/>.
-        /// </para>
-        /// </summary>
-        /// <returns>
-        /// A newly created singleton instance of type <typeparamref name="E"/>.
-        /// </returns>
-        public static E ResetInstance()
-        {
-            DisposeInstance();
-            return Instance;
-        }
-
+        
         /// <summary>
         /// Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
         /// </summary>
@@ -135,7 +75,7 @@ namespace Atomic.Entities
         /// <param name="behaviourCapacity">Initial capacity for behaviour storage to minimize memory allocations.</param>
         /// <param name="settings">Optional entity settings. If <c>null</c>, <see cref="Settings.disposeValues"/> defaults to <c>true</c>.</param>
         /// <remarks>
-        /// Preallocates internal structures for efficient usage and registers the entity in <see cref="EntityRegistry"/>.
+        /// Pre-allocates internal structures for efficient usage and registers the entity in <see cref="EntityRegistry"/>.
         /// </remarks>
         protected EntitySingleton(
             string name = null,
@@ -145,6 +85,68 @@ namespace Atomic.Entities
             Settings? settings = null
         ) : base(name, tagCapacity, valueCapacity, behaviourCapacity, settings)
         {
+        }
+        
+        /// <summary>
+        /// Gets the global singleton instance of type <typeparamref name="E"/>.
+        /// <para>
+        /// If a factory is registered via <see cref="SetFactory"/>, the instance is created using that factory.
+        /// Otherwise, the instance is created using the parameterless constructor (<c>new()</c>).
+        /// </para>
+        /// <para>
+        /// The same instance is returned on every access until disposed via <see cref="DropInstance"/>.
+        /// </para>
+        /// </summary>
+        public static E Instance
+        {
+            get { return _instance ??= _factory != null ? _factory.Create() : new E(); }
+        }
+
+        /// <summary>
+        /// Registers a custom factory method for creating the singleton instance.
+        /// <para>
+        /// This method must be called before the first access to <see cref="Instance"/>.
+        /// </para>
+        /// </summary>
+        /// <param name="factory">
+        /// The factory that will be used to create new instances of <typeparamref name="E"/>.
+        /// </param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> is <c>null</c>.</exception>
+        public static void SetFactory(IEntityFactory<E> factory)
+        {
+            _factory = factory ?? throw new ArgumentNullException(nameof(factory));
+        }
+
+        /// <summary>
+        /// Drops the current singleton instance, if it exists, 
+        /// and resets the internal reference to <c>null</c>.
+        /// <para>
+        /// After calling this method, the next access to <see cref="Instance"/> will create a new instance
+        /// (using either the registered factory or the default constructor).
+        /// </para>
+        /// </summary>
+        public static void DropInstance()
+        {
+            if (_instance != null)
+            {
+                _instance.Dispose();
+                _instance = null;
+            }
+        }
+
+        /// <summary>
+        /// Drops the current singleton instance (if any) and immediately creates a new one.
+        /// <para>
+        /// This is equivalent to calling <see cref="DropInstance"/> followed by accessing <see cref="Instance"/>.
+        /// </para>
+        /// </summary>
+        /// <returns>
+        /// A newly created singleton instance of type <typeparamref name="E"/>.
+        /// </returns>
+        public static E ResetInstance()
+        {
+            DropInstance();
+            return Instance;
         }
     }
 }

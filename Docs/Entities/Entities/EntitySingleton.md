@@ -285,10 +285,10 @@ public static void SetFactory(IEntityFactory<E> factory)
 - **Throws** `ArgumentNullException` if `factory` is `null`.
 - **Note**: **Must be called **before** the first access to `Instance`.
 
-#### `DisposeInstance()`
+#### `DropInstance()`
 
 ```csharp
-public static void DisposeInstance()
+public static void DropInstance()
 ```
 
 - **Description:** Disposes the current singleton instance (if any) and clears it. After disposal, the
