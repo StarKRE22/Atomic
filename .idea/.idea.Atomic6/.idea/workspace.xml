@@ -6,7 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/Docs/BestPractices/EntitySystem.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/EntitySystem.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViews.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/ObsoleteEntityViews.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/OverrideEntityFactoriesWithBakers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/OverrideEntityFactoriesWithBakers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UpgradingEntityFactoryToBuilder.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UpgradingEntityFactoryToBuilder.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingExpressions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingInlineActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingInlineActions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingOptionalWithInstallers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingOptionalWithInstallers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Baking/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,23 +293,7 @@
       <workItem from="1761081982604" duration="314000" />
       <workItem from="1761120599533" duration="21262000" />
       <workItem from="1761201425513" duration="8409000" />
-      <workItem from="1761217932574" duration="6359000" />
-    </task>
-    <task id="LOCAL-01771" summary="SceneEntitySingleton.md">
-      <option name="closed" value="true" />
-      <created>1761055035770</created>
-      <option name="number" value="01771" />
-      <option name="presentableId" value="LOCAL-01771" />
-      <option name="project" value="LOCAL" />
-      <updated>1761055035770</updated>
-    </task>
-    <task id="LOCAL-01772" summary="SceneEntitySingleton.md">
-      <option name="closed" value="true" />
-      <created>1761055110905</created>
-      <option name="number" value="01772" />
-      <option name="presentableId" value="LOCAL-01772" />
-      <option name="project" value="LOCAL" />
-      <updated>1761055110905</updated>
+      <workItem from="1761217932574" duration="9440000" />
     </task>
     <task id="LOCAL-01773" summary="ExtensionsCore.md">
       <option name="closed" value="true" />
@@ -671,7 +671,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761219169700</updated>
     </task>
-    <option name="localTasksCounter" value="1820" />
+    <task id="LOCAL-01820" summary="EntitySystem.md">
+      <option name="closed" value="true" />
+      <created>1761226762757</created>
+      <option name="number" value="01820" />
+      <option name="presentableId" value="LOCAL-01820" />
+      <option name="project" value="LOCAL" />
+      <updated>1761226762757</updated>
+    </task>
+    <task id="LOCAL-01821" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1761226816605</created>
+      <option name="number" value="01821" />
+      <option name="presentableId" value="LOCAL-01821" />
+      <option name="project" value="LOCAL" />
+      <updated>1761226816605</updated>
+    </task>
+    <option name="localTasksCounter" value="1822" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -698,8 +714,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал AtomicAPI" />
-    <MESSAGE value="ChoosingBetweenTimerAndCooldown.md" />
     <MESSAGE value="IteratingOverEntityCollections.md" />
     <MESSAGE value="IteratingOverEntity.md" />
     <MESSAGE value="IteratingReactiveCollections.md" />
@@ -723,7 +737,9 @@
     <MESSAGE value="Пилим статью для EntitySystem.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Сделал EntitySystem.md на русском!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал EntitySystem.md на русском!" />
+    <MESSAGE value="EntitySystem.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
