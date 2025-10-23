@@ -48,7 +48,7 @@ patterns, composable structures, and modular design**.
 - [Time](Time/Manual.md) <!-- + -->
 - [Collections](Collections/Manual.md) <!-- + -->
 - [Expressions](Expressions/Manual.md) <!-- + -->
-- [Utilities](Utils/Manual.md)
+- [Utilities](Utils/Manual.md) <!-- + -->
 
 ---
 
