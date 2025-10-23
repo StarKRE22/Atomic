@@ -10,6 +10,8 @@
 Atomic is an architectural framework for game development in `Unity` and `C#`, built around the `Entity–State–Behaviour`
 pattern and using `Atomic` elements for data organization.
 
+---
+
 # 📑 Table of Contents
 
 - [Requirements](#-requirements)
@@ -30,6 +32,8 @@ pattern and using `Atomic` elements for data organization.
 - [Best Practices](#-best-practices)
 - [License](#-license)
 - [Contacts](#-contacts)
+
+---
 
 ## 📝 Requirements
 
