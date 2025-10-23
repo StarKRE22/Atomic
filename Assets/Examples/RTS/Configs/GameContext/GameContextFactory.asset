@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c7397b416b40d09b3c99c36221edd7, type: 3}
   m_Name: GameContextFactory
   m_EditorClassIdentifier: 
-  autoCompile: 1
   initialTagCapacity: 0
   initialValueCapacity: 4
   initialBehaviourCapacity: 0
+  autoCompile: 1
   _gameEntityInstaller:
     factoryCatalog: {fileID: 11400000, guid: 87c990609c5ea4403b71dea5013d73e7, type: 2}
   _playerSystemInstaller:

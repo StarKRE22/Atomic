@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f393a8f6d894373a744b11bfd789b27, type: 3}
   m_Name: Headquarters
   m_EditorClassIdentifier: 
-  InitialTagCount: 2
-  InitialValueCount: 6
-  InitialBehaviourCount: 2
+  initialTagCapacity: 2
+  initialValueCapacity: 6
+  initialBehaviourCapacity: 2
+  autoCompile: 1
   _transformInstaller:
     _scale:
       value: 1

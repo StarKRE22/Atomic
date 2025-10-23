@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31906a31d5fa4ecfabc75980127d42ab, type: 3}
   m_Name: Projectile
   m_EditorClassIdentifier: 
-  InitialTagCount: 1
-  InitialValueCount: 8
-  InitialBehaviourCount: 3
+  initialTagCapacity: 1
+  initialValueCapacity: 8
+  initialBehaviourCapacity: 3
+  autoCompile: 1
   _moveSpeed:
     value: 50
   _damage:
