@@ -15,4 +15,4 @@ MonoBehaviour:
   initialTagCapacity: 0
   initialValueCapacity: 2
   initialBehaviourCapacity: 0
-  autoCompile: 1
+  autoCompile: 0

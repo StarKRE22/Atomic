@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
+    [RequireComponent(typeof(UnitView))]
     public abstract class UnitBaker : SceneEntityBaker<IUnitEntity>
     {
         [SerializeField]

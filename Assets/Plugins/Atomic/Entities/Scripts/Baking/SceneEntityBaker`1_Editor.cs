@@ -1,7 +1,10 @@
 using System;
-using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 
 namespace Atomic.Entities
 {
