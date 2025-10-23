@@ -452,6 +452,9 @@ with minimal overhead.
 - **Infantry:** Possesses health, performs melee attacks, and seeks the nearest enemy.
 - **Tanks:** Fire projectiles and detect enemies within range.
 - **Projectiles:** Travel toward targets with limited lifetime and cause impact damage.
+- **CameraControls:** 
+  - Movement: WASD
+  - Zoom: Mouse Scroll
 
 #### 🧩 Scenes
 
