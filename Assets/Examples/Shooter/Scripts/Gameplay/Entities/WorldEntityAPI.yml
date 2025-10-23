@@ -3,7 +3,7 @@ entityType: IWorldEntity
 aggressiveInlining: true
 namespace: ShooterGame.Gameplay
 className: WorldEntityAPI
-directory: Assets/Examples/Shooter/Scripts/Gameplay/WorldEntities/  
+directory: Assets/Examples/Shooter/Scripts/Gameplay/Entities/  
 
 imports:
 - UnityEngine
@@ -45,7 +45,7 @@ values:
 - TeamType: IReactiveVariable<TeamType>
 
 #Combat
-- Weapon: IWeaponEntity
+- Weapon: IWeapon
 - Damage: IValue<int>
 - Target: IReactiveVariable<IEntity>  
 - FireCondition: IExpression<bool>

@@ -1,10 +1,10 @@
 header: EntityAPI
-entityType: IWeaponEntity
+entityType: IWeapon
 aggressiveInlining: true
 
 namespace: ShooterGame.Gameplay
-className: WeaponEntityAPI
-directory: Assets/Examples/Shooter/Scripts/Gameplay/WeaponEntities/  
+className: WeaponAPI
+directory: Assets/Examples/Shooter/Scripts/Gameplay/Weapons/  
 
 imports:
 - UnityEngine

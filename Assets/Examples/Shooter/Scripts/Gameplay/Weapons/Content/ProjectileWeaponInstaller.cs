@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class ProjectileWeaponInstaller : SceneEntityInstaller<IWeaponEntity>
+    public sealed class ProjectileWeaponInstaller : SceneEntityInstaller<IWeapon>
     {
         [SerializeField]
         private WorldEntity _owner;
@@ -18,7 +18,7 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private Cooldown _cooldown = 0.5f;
 
-        public override void Install(IWeaponEntity weapon)
+        public override void Install(IWeapon weapon)
         {
             weapon.AddFireEvent(new BaseEvent());
             weapon.AddFireAction(new InlineAction(() =>

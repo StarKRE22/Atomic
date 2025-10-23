@@ -28,7 +28,7 @@ namespace ShooterGame.Gameplay
         private Health _health = new(3);
 
         [SerializeField]
-        private WeaponEntity _initialWeapon;
+        private Weapon _initialWeapon;
 
         [SerializeField]
         private ReactiveVariable<TeamType> _teamType;

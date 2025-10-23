@@ -2,7 +2,7 @@ using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public interface IWeaponEntity : IEntity
+    public interface IWeapon : IEntity
     {
     }
 }

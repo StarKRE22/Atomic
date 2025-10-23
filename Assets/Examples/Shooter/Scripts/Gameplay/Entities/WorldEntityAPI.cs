@@ -43,7 +43,7 @@ namespace ShooterGame.Gameplay
 		public static readonly int DestroyAction; // IAction
 		public static readonly int RespawnEvent; // IEvent
 		public static readonly int TeamType; // IReactiveVariable<TeamType>
-		public static readonly int Weapon; // IWeaponEntity
+		public static readonly int Weapon; // IWeapon
 		public static readonly int Damage; // IValue<int>
 		public static readonly int Target; // IReactiveVariable<IEntity>
 		public static readonly int FireCondition; // IExpression<bool>
@@ -516,13 +516,13 @@ namespace ShooterGame.Gameplay
 		#region Weapon
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IWeaponEntity GetWeapon(this IWorldEntity entity) => entity.GetValue<IWeaponEntity>(Weapon);
+		public static IWeapon GetWeapon(this IWorldEntity entity) => entity.GetValue<IWeapon>(Weapon);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetWeapon(this IWorldEntity entity, out IWeaponEntity value) => entity.TryGetValue(Weapon, out value);
+		public static bool TryGetWeapon(this IWorldEntity entity, out IWeapon value) => entity.TryGetValue(Weapon, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddWeapon(this IWorldEntity entity, IWeaponEntity value) => entity.AddValue(Weapon, value);
+		public static void AddWeapon(this IWorldEntity entity, IWeapon value) => entity.AddValue(Weapon, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasWeapon(this IWorldEntity entity) => entity.HasValue(Weapon);
@@ -531,7 +531,7 @@ namespace ShooterGame.Gameplay
 		public static bool DelWeapon(this IWorldEntity entity) => entity.DelValue(Weapon);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetWeapon(this IWorldEntity entity, IWeaponEntity value) => entity.SetValue(Weapon, value);
+		public static void SetWeapon(this IWorldEntity entity, IWeapon value) => entity.SetValue(Weapon, value);
 
 		#endregion
 
