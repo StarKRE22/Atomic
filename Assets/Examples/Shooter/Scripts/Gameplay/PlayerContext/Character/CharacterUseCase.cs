@@ -9,15 +9,15 @@ namespace ShooterGame.Gameplay
 {
     public static class CharacterUseCase
     {
-        public static GameEntity Spawn(
+        public static WorldEntity Spawn(
             IPlayerContext context,
             IGameContext gameContext,
-            GameEntity prefab
+            WorldEntity prefab
         )
         {
             Transform worldTransform = gameContext.GetWorldTransform();
             Transform spawnPoint = SpawnPointsUseCase.NextPoint(gameContext);
-            GameEntity entity = SceneEntity.Create(prefab, spawnPoint, worldTransform);
+            WorldEntity entity = SceneEntity.Create(prefab, spawnPoint, worldTransform);
             entity.GetTeamType().Value = context.GetTeamType().Value;
             return entity;
         }
@@ -32,7 +32,7 @@ namespace ShooterGame.Gameplay
 
         public static void Respawn(IPlayerContext playerContext, IGameContext gameContext)
         {
-            IGameEntity character = playerContext.GetCharacter();
+            IWorldEntity character = playerContext.GetCharacter();
             character.GetHealth().AssignMax();
 
             Transform nextPoint = SpawnPointsUseCase.NextPoint(gameContext);
@@ -43,7 +43,7 @@ namespace ShooterGame.Gameplay
             DebugRespawn(character);
         }
 
-        private static void DebugRespawn(IGameEntity character)
+        private static void DebugRespawn(IWorldEntity character)
         {
             TeamType teamType = character.GetTeamType().Value;
             Debug.Log($"<color={teamType.ToString().ToLower()}>Player {teamType} has respawned!</color>");

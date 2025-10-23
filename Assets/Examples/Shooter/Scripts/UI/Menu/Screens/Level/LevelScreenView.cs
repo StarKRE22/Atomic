@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace ShooterGame.App
+namespace ShooterGame.UI
 {
     public sealed class LevelScreenView : ScreenView
     {

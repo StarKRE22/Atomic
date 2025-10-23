@@ -1,0 +1,9 @@
+header: EntityAPI
+entityType: IGameUI
+aggressiveInlining: true
+
+namespace: ShooterGame.UI
+className: GameUIContextAPI
+directory: Assets/Examples/Shooter/Scripts/UI/Game
+
+imports:

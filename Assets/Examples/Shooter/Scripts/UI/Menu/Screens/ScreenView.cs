@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ShooterGame.App
+namespace ShooterGame.UI
 {
     public class ScreenView : MonoBehaviour
     {

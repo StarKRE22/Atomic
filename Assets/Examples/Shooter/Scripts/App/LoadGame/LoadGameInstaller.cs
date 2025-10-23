@@ -16,7 +16,7 @@ namespace ShooterGame.App
         private GameContext _gameContextPrefab;
 
         [SerializeField]
-        private GameUIContext _gameUIContextPrefab;
+        private GameUI _gameUIContextPrefab;
 
        public void Install(IAppContext context)
         {

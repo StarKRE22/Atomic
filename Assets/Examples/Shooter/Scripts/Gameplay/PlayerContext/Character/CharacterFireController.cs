@@ -5,7 +5,7 @@ namespace ShooterGame.Gameplay
     public sealed class CharacterFireController : IEntityInit<IPlayerContext>, IEntityTick
     {
         private IGameContext _gameContext;
-        private IGameEntity _character;
+        private IWorldEntity _character;
         private IPlayerContext _playerContext;
 
         public void Init(IPlayerContext context)

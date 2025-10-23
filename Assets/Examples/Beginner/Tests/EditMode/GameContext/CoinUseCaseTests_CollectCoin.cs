@@ -12,11 +12,11 @@ namespace BeginnerGame
         public void CollectCoin_Successful()
         {
             //Arrange:
-            var coin = new TestGameEntity();
+            var coin = new TestWorldEntity();
             coin.AddCoinTag();
             coin.AddMoney(new Const<int>(10));
 
-            var character = new TestGameEntity();
+            var character = new TestWorldEntity();
             character.AddCharacterTag();
             character.AddTeamType(new ReactiveVariable<TeamType>(TeamType.BLUE));
 
@@ -48,10 +48,10 @@ namespace BeginnerGame
         public void CollectCoin_EntityNotCoin_ReturnsFalse()
         {
             //Arrange:
-            var coin = new TestGameEntity();
+            var coin = new TestWorldEntity();
             coin.AddMoney(new Const<int>(10));
 
-            var character = new TestGameEntity();
+            var character = new TestWorldEntity();
             character.AddCharacterTag();
             character.AddTeamType(new ReactiveVariable<TeamType>(TeamType.BLUE));
 

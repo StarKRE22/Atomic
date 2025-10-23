@@ -6,9 +6,9 @@ namespace ShooterGame.App
 {
     public sealed class LoadGameUIContextTask : ILoadingTask
     {
-        private readonly GameUIContext _prefab;
+        private readonly GameUI _prefab;
         
-        public LoadGameUIContextTask(GameUIContext prefab)
+        public LoadGameUIContextTask(GameUI prefab)
         {
             _prefab = prefab;
         }

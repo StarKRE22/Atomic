@@ -4,7 +4,7 @@ namespace ShooterGame.Gameplay
 {
     public struct KillArgs
     {
-        public IGameEntity instigator;
-        public IGameEntity victim;
+        public IWorldEntity instigator;
+        public IWorldEntity victim;
     }
 }

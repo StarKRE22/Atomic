@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Entities;
 
-namespace ShooterGame.App
+namespace ShooterGame.UI
 {
     //Instead of Screen Manager
     public static class ScreenUseCase
     {
-        public static void ShowScreen<T>(IMenuUIContext context) where T : ScreenView =>
+        public static void ShowScreen<T>(IMenuUI context) where T : ScreenView =>
             ShowScreen(context, typeof(T));
 
-        public static void ShowScreen(IMenuUIContext context, Type screenType)
+        public static void ShowScreen(IMenuUI context, Type screenType)
         {
             IDictionary<Type, (ScreenView, IEntityBehaviour)> screens = context.GetScreens();
             IReactiveVariable<ScreenView> currentScreenPtr = context.GetCurrentScreen();

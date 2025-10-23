@@ -3,7 +3,7 @@ using ShooterGame;
 
 namespace _DEV
 {
-    public class GameEntityWorld : SceneEntityWorld<GameEntity>
+    public class GameEntityWorld : SceneEntityWorld<WorldEntity>
     {
     }
 }

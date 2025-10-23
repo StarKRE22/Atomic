@@ -8,7 +8,7 @@ namespace RTSGame
     public sealed class CameraFollowController : IEntityInit<IPlayerContext>, IEntityLateTick
     {
         private readonly Vector3 _offset;
-        private IGameEntity _character;
+        private IWorldEntity _character;
         private Transform _camera;
         
         public CameraFollowController(Vector3 offset)

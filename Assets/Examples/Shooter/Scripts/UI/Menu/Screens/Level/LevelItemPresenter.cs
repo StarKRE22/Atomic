@@ -1,8 +1,9 @@
 using Atomic.Entities;
+using ShooterGame.App;
 
-namespace ShooterGame.App
+namespace ShooterGame.UI
 {
-    public sealed class LevelItemPresenter : IEntityInit<IMenuUIContext>, IEntityDispose
+    public sealed class LevelItemPresenter : IEntityInit<IMenuUI>, IEntityDispose
     {
         private readonly IAppContext _context;
         private readonly int _level;
@@ -15,7 +16,7 @@ namespace ShooterGame.App
             _view = view;
         }
 
-        public void Init(IMenuUIContext context)
+        public void Init(IMenuUI context)
         {
             int currentLevel = _context.GetCurrentLevel().Value;
             if (currentLevel == _level)

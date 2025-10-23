@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using ShooterGame.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,7 @@ namespace ShooterGame.App
         public static async UniTaskVoid LoadMenu()
         {
             await SceneManager.LoadSceneAsync(MENU_NAME);
-            ScreenUseCase.ShowScreen<StartScreenView>(MenuUIContext.Instance);
+            ScreenUseCase.ShowScreen<StartScreenView>(MenuUI.Instance);
         }
 
         public static bool InMenu() => 

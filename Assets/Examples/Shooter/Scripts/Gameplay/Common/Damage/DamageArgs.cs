@@ -4,7 +4,7 @@ namespace ShooterGame.Gameplay
 {
     public struct DamageArgs
     {
-        public IGameEntity source;
+        public IWorldEntity source;
         public int damage;
     }
 }

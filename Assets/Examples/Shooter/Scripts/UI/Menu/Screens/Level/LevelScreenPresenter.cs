@@ -1,15 +1,16 @@
 using Atomic.Entities;
+using ShooterGame.App;
 
-namespace ShooterGame.App
+namespace ShooterGame.UI
 {
     public sealed class LevelScreenPresenter : 
-        IEntityInit<IMenuUIContext>, 
+        IEntityInit<IMenuUI>, 
         IEntityDispose,
         IEntityEnable,
         IEntityDisable
     {
         private readonly LevelScreenView _screenView;
-        private IMenuUIContext _uiContext;
+        private IMenuUI _uiContext;
         private IAppContext _appContext;
 
         public LevelScreenPresenter(LevelScreenView screenView)
@@ -17,7 +18,7 @@ namespace ShooterGame.App
             _screenView = screenView;
         }
 
-        public void Init(IMenuUIContext context)
+        public void Init(IMenuUI context)
         {
             _appContext = AppContext.Instance;
             _uiContext = context;

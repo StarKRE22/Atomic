@@ -24,7 +24,7 @@ namespace ShooterGame.Gameplay
 		public static readonly int Players; // IDictionary<TeamType, IPlayerContext>
 		public static readonly int GameTime; // IReactiveVariable<float>
 		public static readonly int TeamCatalog; // TeamCatalog
-		public static readonly int BulletPool; // IEntityPool<IGameEntity>
+		public static readonly int BulletPool; // IEntityPool<IWorldEntity>
 		public static readonly int WorldTransform; // Transform
 		public static readonly int Leaderboard; // IReactiveDictionary<TeamType, int>
 		public static readonly int KillEvent; // IEvent<KillArgs>
@@ -121,13 +121,13 @@ namespace ShooterGame.Gameplay
 		#region BulletPool
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IEntityPool<IGameEntity> GetBulletPool(this IGameContext entity) => entity.GetValue<IEntityPool<IGameEntity>>(BulletPool);
+		public static IEntityPool<IWorldEntity> GetBulletPool(this IGameContext entity) => entity.GetValue<IEntityPool<IWorldEntity>>(BulletPool);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetBulletPool(this IGameContext entity, out IEntityPool<IGameEntity> value) => entity.TryGetValue(BulletPool, out value);
+		public static bool TryGetBulletPool(this IGameContext entity, out IEntityPool<IWorldEntity> value) => entity.TryGetValue(BulletPool, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddBulletPool(this IGameContext entity, IEntityPool<IGameEntity> value) => entity.AddValue(BulletPool, value);
+		public static void AddBulletPool(this IGameContext entity, IEntityPool<IWorldEntity> value) => entity.AddValue(BulletPool, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasBulletPool(this IGameContext entity) => entity.HasValue(BulletPool);
@@ -136,7 +136,7 @@ namespace ShooterGame.Gameplay
 		public static bool DelBulletPool(this IGameContext entity) => entity.DelValue(BulletPool);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetBulletPool(this IGameContext entity, IEntityPool<IGameEntity> value) => entity.SetValue(BulletPool, value);
+		public static void SetBulletPool(this IGameContext entity, IEntityPool<IWorldEntity> value) => entity.SetValue(BulletPool, value);
 
 		#endregion
 

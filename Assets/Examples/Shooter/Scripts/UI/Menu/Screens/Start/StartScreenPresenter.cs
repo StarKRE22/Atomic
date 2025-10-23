@@ -1,23 +1,24 @@
 using Atomic.Entities;
+using ShooterGame.App;
 
-namespace ShooterGame.App
+namespace ShooterGame.UI
 {
     public sealed class StartScreenPresenter :
-        IEntityInit<IMenuUIContext>,
+        IEntityInit<IMenuUI>,
         IEntityEnable,
         IEntityDisable
     {
         private readonly StartScreenView _screenView;
         
         private IAppContext _appContext;
-        private IMenuUIContext _uIContext;
+        private IMenuUI _uIContext;
 
         public StartScreenPresenter(StartScreenView screenView)
         {
             _screenView = screenView;
         }
 
-        public void Init(IMenuUIContext context)
+        public void Init(IMenuUI context)
         {
             _uIContext = context;
             _appContext = AppContext.Instance;

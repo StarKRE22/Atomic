@@ -5,10 +5,10 @@ using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
-namespace ShooterGame.App
+namespace ShooterGame.UI
 {
     [Serializable]
-    public sealed class ScreensInstaller : SceneEntityInstaller<IMenuUIContext>
+    public sealed class ScreensInstaller : SceneEntityInstaller<IMenuUI>
     {
         [SerializeField]
         private StartScreenView _startScreen;
@@ -16,14 +16,14 @@ namespace ShooterGame.App
         [SerializeField]
         private LevelScreenView _levelScreen;
 
-        public override void Install(IMenuUIContext entity)
+        public override void Install(IMenuUI ui)
         {
             Dictionary<Type, (ScreenView, IEntityBehaviour)> screens = this
                 .ProvideScreens()
                 .ToDictionary(it => it.Item1.GetType());
 
-            entity.AddScreens(screens);
-            entity.AddCurrentScreen(new ReactiveVariable<ScreenView>());
+            ui.AddScreens(screens);
+            ui.AddCurrentScreen(new ReactiveVariable<ScreenView>());
         }
 
         private (ScreenView, IEntityBehaviour)[] ProvideScreens() => new (ScreenView, IEntityBehaviour)[]

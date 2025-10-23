@@ -2,10 +2,10 @@ using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class GameEntityPool : SceneEntityPool<GameEntity>, IEntityPool<IGameEntity>
+    public sealed class GameEntityPool : SceneEntityPool<WorldEntity>, IEntityPool<IWorldEntity>
     {
-        IGameEntity IEntityPool<IGameEntity>.Rent() => this.Rent();
+        IWorldEntity IEntityPool<IWorldEntity>.Rent() => this.Rent();
 
-        void IEntityPool<IGameEntity>.Return(IGameEntity entity) => this.Return((GameEntity) entity);
+        void IEntityPool<IWorldEntity>.Return(IWorldEntity entity) => this.Return((WorldEntity) entity);
     }
 }
