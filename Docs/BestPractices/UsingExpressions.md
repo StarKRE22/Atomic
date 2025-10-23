@@ -1,4 +1,4 @@
-# 📌 Using Expressions
+# 📌 Using Expressions with Entities
 
 This section demonstrates how to use logical expressions such
 as [OrExpression](../Elements/Expressions/OrExpressions.md) and [

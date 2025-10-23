@@ -1,13 +1,26 @@
-
 # 📌 Using Optional with Entity Installers
 
-`Optional<T>` can be used to define optional settings in Unity components or installers, allowing for flexible
-configuration. Below is an example of configuring optional parameters for an entity in `Atomic.Entities` using the `Optional<T>`
+[Optional\<T>](../Elements/Utils/Optional.md) can be used to define **optional settings** in Unity components or installers, allowing for **flexible entity configuration**. 
+This approach makes it easy to **enable or disable features dynamically** without changing the core logic of your entities.
 
-### Example #1: Optional State
+---
 
-If your weapon has optional components, you can connect them using the `Optional<T>` field. This allows you to **enable
-or disable features dynamically** without changing the core logic of the weapon.
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [Optional State](#1-optional-state)
+    - [Optional Visualization](#2-optional-visualization)
+    - [Override Entity Installing](#3-override-entity-installing)
+- [Conclusion](#-conclusion)
+- [Benefits](#-benefits)
+
+---
+
+## 🗂 Examples of Usage
+
+### 1. Optional State
+
+For weapons with optional components, you can connect them using [Optional\<T>](../Elements/Utils/Optional.md) fields:
 
 ```csharp
 public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
@@ -32,10 +45,14 @@ public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
 }
 ```
 
-### Example #2: Optional Visualization
+> [!TIP]
+> Using `Optional<T>` allows you to **enable or disable features dynamically** without modifying core entity logic.
 
-Also, if your weapon has optional visualization, you can connect them using the `Optional<T>` field. This allows you to
-**enable or disable features in Inspector** without changing the core logic of the weapon.
+---
+
+### 2. Optional Visualization
+
+Optional fields can also be used for **visual and audio components**:
 
 ```csharp
 public sealed class WeaponViewInstaller : SceneEntityInstaller
@@ -63,12 +80,17 @@ public sealed class WeaponViewInstaller : SceneEntityInstaller
 }
 ```
 
-### Example #3: Override entity installing
+> [!TIP] 
+> Optional fields let you **configure features in Inspector** without touching entity logic.
 
-If you have an installer that configures enemies and is used as a **Shared Entity Installer**, it might look like this:
+---
+
+### 3. Override Entity Installing
+
+For shared installers, you can override default configurations using `Optional<T>`:
 
 ```csharp
-//Scriptable Object Installer for many enemies
+// Scriptable Object Installer for many enemies
 public sealed class EnemyInstaller : ScriptableEntityInstaller<IEnemyEntity>
 {
     [SerializeField] private ReactiveInt _health;
@@ -84,10 +106,8 @@ public sealed class EnemyInstaller : ScriptableEntityInstaller<IEnemyEntity>
 }
 ```
 
-Later, in the scene, if you need to **override the default enemy configuration**, you can use `Optional<T>` fields:
-
 ```csharp
-//MonoBehaviour Installer for a specific enemy
+// MonoBehaviour Installer for a specific enemy
 public sealed class OverrideEnemyInstaller : SceneEntityInstaller<IEnemyEntity>
 {
     [SerializeField] private Optional<ReactiveInt> _health;
@@ -96,17 +116,37 @@ public sealed class OverrideEnemyInstaller : SceneEntityInstaller<IEnemyEntity>
 
     public void Install(IWeaponEntity entity)
     {
-        //Override health if active
+        // Override health if active
         if (_health)
             entity.SetHealth(_health);
         
-        //Override damage if active
+        // Override damage if active
         if (_damage)
             entity.SetDamage(_damage);
         
-        //Override speed if active
+        // Override speed if active
         if (_speed)
             entity.SetSpeed(_speed);
     }
 }
 ```
+
+---
+
+## 🏁 Conclusion
+
+- [Optional\<T>](../Elements/Utils/Optional.md) enables **flexible, conditional configuration** of entities in Unity installers.
+- Optional fields allow you to **enable or disable features dynamically** without modifying the core logic.
+- Supports both **scriptable and scene-based installers**, making it ideal for shared and specific entity setups.
+- Helps maintain **clean, modular, and maintainable entity configurations**.
+- Integrates seamlessly with [Atomic.Entities](../Entities/Manual.md), supporting dynamic gameplay behaviors.
+
+---
+
+## ✅ Benefits
+
+- Provides **dynamic configuration** without changing core logic.
+- Allows **enabling/disabling features in Inspector** easily.
+- Supports **shared and override installers** for flexible scene setup.
+- Improves **maintainability** and reduces boilerplate code.
+- Encourages **modular design**, keeping optional components isolated and reusable.  

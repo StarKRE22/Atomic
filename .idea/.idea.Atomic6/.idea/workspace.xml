@@ -6,6 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingExpressions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingInlineActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingInlineActions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingInlineFunctions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingInlineFunctions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingObserveWithReactiveValues.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingObserveWithReactiveValues.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingOptionalWithInstallers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingOptionalWithInstallers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingRequests.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingRequests.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingSceneEntityProxy.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingSerializeReferenceForCompositeActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingSerializeReferenceForCompositeActions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingSerializeReferenceForPrintActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingSerializeReferenceForPrintActions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingSetters.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingSetters.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingSubscriptionsWithDisposeComposite.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingSubscriptionsWithDisposeComposite.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,15 +286,7 @@
       <workItem from="1761080165376" duration="1800000" />
       <workItem from="1761081982604" duration="314000" />
       <workItem from="1761120599533" duration="21262000" />
-      <workItem from="1761201425513" duration="3619000" />
-    </task>
-    <task id="LOCAL-01766" summary="Entities Manual.md">
-      <option name="closed" value="true" />
-      <created>1761052929020</created>
-      <option name="number" value="01766" />
-      <option name="presentableId" value="LOCAL-01766" />
-      <option name="project" value="LOCAL" />
-      <updated>1761052929020</updated>
+      <workItem from="1761201425513" duration="5428000" />
     </task>
     <task id="LOCAL-01767" summary="Entities Manual.md">
       <option name="closed" value="true" />
@@ -669,7 +672,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761206242165</updated>
     </task>
-    <option name="localTasksCounter" value="1815" />
+    <task id="LOCAL-01815" summary="UsingExpressions.md">
+      <option name="closed" value="true" />
+      <created>1761212051681</created>
+      <option name="number" value="01815" />
+      <option name="presentableId" value="LOCAL-01815" />
+      <option name="project" value="LOCAL" />
+      <updated>1761212051681</updated>
+    </task>
+    <option name="localTasksCounter" value="1816" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -696,7 +707,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExtensionsRetrieval.mds" />
     <MESSAGE value="Done!" />
     <MESSAGE value="EntityAPI" />
     <MESSAGE value="API Generation!" />
@@ -721,7 +731,8 @@
     <MESSAGE value="UsingEntityPoolWithFactories.md" />
     <MESSAGE value="Завтра допишем!" />
     <MESSAGE value="UsingEvents.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="UsingEvents.md" />
+    <MESSAGE value="UsingExpressions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="UsingExpressions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
