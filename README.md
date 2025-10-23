@@ -63,7 +63,7 @@ using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odi
 
 ---
 
-## 🔌 Using Plugin for Rider [(Read More)](Docs/Entities/EntityAPI#generating-api-via-rider-plugin)
+## 🔌 Using Plugin for Rider [(Read More)](Docs/Entities/EntityAPI/Manual.md#generating-api-via-rider-plugin)
 
 For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
 the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
