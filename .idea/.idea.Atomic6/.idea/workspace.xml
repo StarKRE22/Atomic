@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingEntityWorldWithEntityPool.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingEvents.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingEvents.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,15 +275,7 @@
       <workItem from="1761080165376" duration="1800000" />
       <workItem from="1761081982604" duration="314000" />
       <workItem from="1761120599533" duration="21262000" />
-      <workItem from="1761201425513" duration="1359000" />
-    </task>
-    <task id="LOCAL-01765" summary="SceneEntityProxies.md">
-      <option name="closed" value="true" />
-      <created>1761052446180</created>
-      <option name="number" value="01765" />
-      <option name="presentableId" value="LOCAL-01765" />
-      <option name="project" value="LOCAL" />
-      <updated>1761052446180</updated>
+      <workItem from="1761201425513" duration="3619000" />
     </task>
     <task id="LOCAL-01766" summary="Entities Manual.md">
       <option name="closed" value="true" />
@@ -671,7 +661,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761166039222</updated>
     </task>
-    <option name="localTasksCounter" value="1814" />
+    <task id="LOCAL-01814" summary="UsingEvents.md">
+      <option name="closed" value="true" />
+      <created>1761206242165</created>
+      <option name="number" value="01814" />
+      <option name="presentableId" value="LOCAL-01814" />
+      <option name="project" value="LOCAL" />
+      <updated>1761206242165</updated>
+    </task>
+    <option name="localTasksCounter" value="1815" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -698,7 +696,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExtensionsInstalling.md" />
     <MESSAGE value="ExtensionsRetrieval.mds" />
     <MESSAGE value="Done!" />
     <MESSAGE value="EntityAPI" />
@@ -723,7 +720,8 @@
     <MESSAGE value="UsingCooldownInGameMechanics.md" />
     <MESSAGE value="UsingEntityPoolWithFactories.md" />
     <MESSAGE value="Завтра допишем!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Завтра допишем!" />
+    <MESSAGE value="UsingEvents.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="UsingEvents.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
