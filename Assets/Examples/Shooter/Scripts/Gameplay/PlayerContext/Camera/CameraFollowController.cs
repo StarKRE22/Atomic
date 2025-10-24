@@ -1,9 +1,7 @@
 using Atomic.Entities;
-using ShooterGame;
-using ShooterGame.Gameplay;
 using UnityEngine;
 
-namespace RTSGame
+namespace ShooterGame.Gameplay
 {
     public sealed class CameraFollowController : IEntityInit<IPlayerContext>, IEntityLateTick
     {

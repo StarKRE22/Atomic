@@ -23,7 +23,6 @@ namespace ShooterGame.Gameplay
 
             context.AddBehaviour<CharacterMoveController>();
             context.AddBehaviour<CharacterFireController>();
-            context.AddBehaviour<CharacterMoveController>();
             context.AddBehaviour<CharacterRespawnController>();
         }
     }
