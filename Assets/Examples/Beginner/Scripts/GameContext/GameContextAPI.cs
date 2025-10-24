@@ -10,7 +10,6 @@ using UnityEditor;
 #endif
 using UnityEngine;
 using System.Collections.Generic;
-using Atomic.Entities;
 using BeginnerGame;
 using Atomic.Elements;
 

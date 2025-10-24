@@ -51,7 +51,7 @@ namespace Atomic.Entities
                     this.EnableInEditMode();
                 }
 
-                Debug.Log($"<color=#00D4FF>{this.name} Compilation completed successfully!</color>", this);
+                // Debug.Log($"<color=#00D4FF>{this.name} Compilation completed successfully!</color>", this);
             }
             catch (Exception e)
             {
@@ -224,7 +224,7 @@ namespace Atomic.Entities
             this.initialBehaviourCapacity = 0;
             this.Construct();
 
-            Debug.Log($"<color=#FFEB04>{this.name} Reset completed successfully!</color>", this);
+            // Debug.Log($"<color=#FFEB04>{this.name} Reset completed successfully!</color>", this);
         }
     }
 }

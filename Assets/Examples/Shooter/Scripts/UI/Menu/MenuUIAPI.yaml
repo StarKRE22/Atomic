@@ -8,7 +8,6 @@ directory: Assets/Examples/Shooter/Scripts/UI/Menu
  
 imports:
 - UnityEngine
-- Atomic.Entities
 - Atomic.Elements
 - System.Collections.Generic
 - System

@@ -9,7 +9,6 @@ entityType: IGameContext
 imports:
 - UnityEngine
 - System.Collections.Generic
-- Atomic.Entities
 - BeginnerGame
 - Atomic.Elements
 

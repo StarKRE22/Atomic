@@ -9,9 +9,8 @@ directory: Assets/Examples/RTS/Scripts/UnitEntities/
  
 imports:
 - UnityEngine
-- Atomic.Entities
-- System
 - Atomic.Elements
+- System
 
 tags:
 - Damageable

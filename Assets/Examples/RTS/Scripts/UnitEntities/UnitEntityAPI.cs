@@ -9,9 +9,8 @@ using System.Runtime.CompilerServices;
 using UnityEditor;
 #endif
 using UnityEngine;
-using Atomic.Entities;
-using System;
 using Atomic.Elements;
+using System;
 
 namespace RTSGame
 {

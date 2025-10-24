@@ -8,10 +8,10 @@ className: PlayerContextAPI
 directory: Assets/Examples/RTS/Scripts/PlayerContext/
  
 imports:
+
 - UnityEngine
-- Atomic.Entities
-- System
 - Atomic.Elements
+- System
 
 tags:
 

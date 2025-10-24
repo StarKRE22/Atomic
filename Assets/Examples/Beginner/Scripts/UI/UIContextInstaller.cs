@@ -9,9 +9,6 @@ namespace BeginnerGame
         private CountdownView _countdownView;
 
         [SerializeField]
-        private TeamType _teamType = TeamType.BLUE;
-
-        [SerializeField]
         private Transform _popupTransform;
 
         [SerializeField]

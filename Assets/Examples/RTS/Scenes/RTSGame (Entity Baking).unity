@@ -364,6 +364,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: autoCompile
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: _lifeBaker._current
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
       objectReference: {fileID: 0}
@@ -2004,6 +2012,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: autoCompile
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
@@ -4746,7 +4758,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f32c633583d834115a0486a669cab6b4, type: 2}
     - target: {fileID: 3141069101459334024, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.53
+      value: 15.25
       objectReference: {fileID: 0}
     - target: {fileID: 3141069101459334024, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4754,7 +4766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3141069101459334024, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.37
+      value: 20.22
       objectReference: {fileID: 0}
     - target: {fileID: 3141069101459334024, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4788,6 +4800,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f32c633583d834115a0486a669cab6b4, type: 2}
+    - target: {fileID: 6638467102114009318, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
+      propertyPath: autoCompile
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6638467102114009318, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
       propertyPath: _lifeBaker._active
       value: 0

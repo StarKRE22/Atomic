@@ -8,7 +8,6 @@ directory: Assets/Examples/Shooter/Scripts/App/
  
 imports:
 - UnityEngine
-- Atomic.Entities
 - Atomic.Elements
 - Cysharp.Threading.Tasks
 

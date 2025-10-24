@@ -7,7 +7,6 @@ directory:  Assets/Examples/Shooter/Scripts/Gameplay/GameContext/
 
 imports:
   - UnityEngine
-  - Atomic.Entities
   - Atomic.Elements
   - System.Collections.Generic
 

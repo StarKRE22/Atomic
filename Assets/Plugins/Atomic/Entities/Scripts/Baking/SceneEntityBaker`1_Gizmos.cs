@@ -7,6 +7,7 @@ namespace Atomic.Entities
 {
     public partial class SceneEntityBaker<E>
     {
+        [Header("Gizmos")]
         [SerializeField]
         private bool onlySelectedGizmos;
 

@@ -7,7 +7,6 @@ directory: Assets/Examples/Shooter/Scripts/Gameplay/Entities/
 
 imports:
 - UnityEngine
-- Atomic.Entities
 - System
 - Atomic.Elements
 

@@ -849,6 +849,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 700195352}
     m_Modifications:
     - target: {fileID: 325131033648698089, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
+      propertyPath: autoCompile
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 325131033648698089, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
       propertyPath: installOnAwake
       value: 1
       objectReference: {fileID: 0}

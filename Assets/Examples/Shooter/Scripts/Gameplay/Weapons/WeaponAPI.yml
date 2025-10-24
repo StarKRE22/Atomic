@@ -8,9 +8,8 @@ directory: Assets/Examples/Shooter/Scripts/Gameplay/Weapons/
 
 imports:
 - UnityEngine
-- Atomic.Entities
-- System
 - Atomic.Elements
+- System
 
 tags:
 

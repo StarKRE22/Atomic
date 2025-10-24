@@ -9,8 +9,6 @@ directory: Assets/Examples/RTS/Scripts/GameContext/
 
 imports:
   - UnityEngine
-  - Atomic.Entities
-  - Atomic.Elements
   - System.Collections.Generic
 
 #Core

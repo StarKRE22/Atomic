@@ -59,7 +59,9 @@ namespace Atomic.Entities
         /// Returns <see cref="customName"/> if <see cref="overrideName"/> is true; 
         /// otherwise, returns the <see cref="GameObject.name"/>.
         /// </summary>
-        public virtual string Name => this.overrideName ? this.customName : this.name;
+        public virtual string Name => this.overrideName 
+            ? this.customName 
+            : this != null ? this.name : "#Unknown";
 
         /// <summary>
         /// Gets the entity currently associated with this view.
@@ -86,7 +88,7 @@ namespace Atomic.Entities
         {
             _entity = entity ?? throw new ArgumentNullException(nameof(entity));
 
-            if (this.controlGameObject)
+            if (this.controlGameObject && this != null)
                 this.gameObject.SetActive(true);
 
             this.OnShow(entity);
@@ -99,7 +101,7 @@ namespace Atomic.Entities
                     if (installer)
                         installer.Install(entity);
                     else
-                        Debug.LogWarning($"EntityView {this.name}: Oops! Detected null installer!", this);
+                        Debug.LogWarning($"EntityView {this.Name}: Oops! Detected null installer!", this);
                 }
             }
         }
@@ -130,13 +132,13 @@ namespace Atomic.Entities
                     if (installer)
                         installer.Uninstall(_entity);
                     else
-                        Debug.LogWarning($"EntityView {this.name}: Oops! Detected null installer!", this);
+                        Debug.LogWarning($"EntityView {this.Name}: Oops! Detected null installer!", this);
                 }
             }
 
             this.OnHide(_entity);
 
-            if (this.controlGameObject)
+            if (this.controlGameObject && this != null)
                 this.gameObject.SetActive(false);
 
             _entity = null;

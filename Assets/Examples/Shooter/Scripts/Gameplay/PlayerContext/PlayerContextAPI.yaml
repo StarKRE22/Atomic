@@ -8,7 +8,6 @@ directory: Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/
 
 imports:
 - UnityEngine
-- Atomic.Entities
 - Atomic.Elements
 
 values:
