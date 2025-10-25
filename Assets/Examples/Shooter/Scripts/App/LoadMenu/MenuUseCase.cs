@@ -15,7 +15,17 @@ namespace ShooterGame.App
             ScreenUseCase.ShowScreen<StartScreenView>(MenuUI.Instance);
         }
 
-        public static bool InMenu() => 
-            SceneManager.GetActiveScene().name == MENU_NAME;
+        public static bool InMenu()
+        {
+            return SceneManager.GetActiveScene().name == MENU_NAME;
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void Initialize()
+        {
+            Scene activeScene = SceneManager.GetActiveScene();
+            if (activeScene.name == MENU_NAME) 
+                ScreenUseCase.ShowScreen<StartScreenView>(MenuUI.Instance);
+        }
     }
 }
