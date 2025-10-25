@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// #if ODIN_INSPECTOR
-// using Sirenix.OdinInspector;
-// #endif
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 namespace Atomic.Entities
 {
@@ -32,17 +32,17 @@ namespace Atomic.Entities
             /// <summary>
             /// Spawn entities before the scene is fully loaded.
             /// </summary>
-            BeforeSceneLoaded = 0,
+            BeforeSceneLoad = 0,
 
             /// <summary>
             /// Spawn entities after the scene has finished loading.
             /// </summary>
-            AfterSceneLoaded = 1
+            AfterSceneLoad = 1
         }
 
-// #if ODIN_INSPECTOR
-//         [GUIColor(1f, 0.92f, 0.02f)]
-// #endif
+#if ODIN_INSPECTOR
+        // [GUIColor(0f, 0.83f, 1f)]
+#endif
         [Tooltip(
             "Regular expression used to determine whether the current scene should trigger this bootstrap. " +
             "If empty, the bootstrap applies to all scenes."
@@ -50,9 +50,12 @@ namespace Atomic.Entities
         [SerializeField]
         private string _sceneRegex;
 
+#if ODIN_INSPECTOR
+        // [GUIColor(1f, 0.92f, 0.02f)]
+#endif
         [Tooltip("Defines when the bootstrap should perform entity spawning: before or after the scene load.")]
         [SerializeField]
-        private Mode _mode = Mode.BeforeSceneLoaded;
+        private Mode _mode = Mode.BeforeSceneLoad;
 
         [Space]
         [Tooltip("List of SceneEntity prefabs to spawn in the scene.")]
@@ -79,7 +82,7 @@ namespace Atomic.Entities
         /// <param name="scene">The scene in which to spawn entities.</param>
         protected virtual async void SpawnEntities(Scene scene)
         {
-            if (_mode == Mode.AfterSceneLoaded)
+            if (_mode == Mode.AfterSceneLoad)
                 while (!scene.isLoaded)
                     await Task.Yield();
 
