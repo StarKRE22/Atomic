@@ -22,7 +22,7 @@ namespace BeginnerGame
             {
                 RentMethod = () =>
                 {
-                    IGameEntity coin = new TestWorldEntity();
+                    IGameEntity coin = new TestActor();
                     coin.AddCoinTag();
                     coin.AddPosition(new ReactiveVariable<Vector3>());
                     return coin;

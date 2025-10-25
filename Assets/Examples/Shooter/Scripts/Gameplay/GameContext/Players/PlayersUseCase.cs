@@ -4,7 +4,7 @@ namespace ShooterGame.Gameplay
 {
     public static class PlayersUseCase
     {
-        public static IPlayerContext GetPlayerFor(IGameContext context, IWorldEntity character)
+        public static IPlayerContext GetPlayerFor(IGameContext context, IActor character)
         {
             TeamType teamType = character.GetTeamType().Value;
             return GetPlayerFor(context, teamType);

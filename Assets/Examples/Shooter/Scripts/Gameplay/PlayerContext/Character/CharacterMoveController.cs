@@ -6,7 +6,7 @@ namespace ShooterGame.Gameplay
     public sealed class CharacterMoveController : IEntityInit<IPlayerContext>, IEntityTick
     {
         private IGameContext _gameContext;
-        private IWorldEntity _character;
+        private IActor _character;
         private IPlayerContext _playerContext;
         
         public void Init(IPlayerContext context)

@@ -6,7 +6,7 @@ namespace ShooterGame.Gameplay
     public sealed class CameraFollowController : IEntityInit<IPlayerContext>, IEntityLateTick
     {
         private readonly Vector3 _offset;
-        private IWorldEntity _character;
+        private IActor _character;
         private Transform _camera;
         
         public CameraFollowController(Vector3 offset)
