@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: m_BlockingMask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 3265617094449485963, guid: 60dfb446adbd8491a9d553fb02950bce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4104232774504360194, guid: 60dfb446adbd8491a9d553fb02950bce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
