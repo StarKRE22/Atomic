@@ -98,7 +98,7 @@ while(isGameRunning)
 }
 
 // Disable entity for updates -> Calls IEntityDisable
-character.Disable();
+entity.Disable();
 
 // Dispose entity resources -> Calls IEntityDispose
 entity.Dispose();
