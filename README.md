@@ -360,7 +360,7 @@ All examples are available inside **[Assets/Examples](Assets/Examples)**.
 
 ### 1️⃣ Beginner Sample
 
-A **simple 2-player mini-game** designed to introduce the fundamental ideas behind the Atomic framework. [Link](Assets/Examples/Beginner) to the sample.
+A **simple 2-player mini-game** designed to introduce the fundamental ideas behind the Atomic framework. [Link to the sample](Assets/Examples/Beginner).
 
 <img width="400" height="" alt="Beginner sample preview" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
 
@@ -391,7 +391,7 @@ A **simple 2-player mini-game** designed to introduce the fundamental ideas behi
 ### 2️⃣ Top-Down Shooter Sample
 
 The **Top-Down Shooter** demonstrates a more sophisticated and scalable game architecture, suitable for **mid-size
-projects**. [Link](Assets/Examples/Shooter) to the sample.
+projects**. [Link to the sample](Assets/Examples/Shooter).
 
 <img width="400" height="" alt="Shooter sample preview" src="https://github.com/user-attachments/assets/30ce41ab-2958-4979-b7cb-7d124cb1b791" />
 
@@ -441,7 +441,7 @@ projects**. [Link](Assets/Examples/Shooter) to the sample.
 <img width="400" height="" alt="RTS sample preview" src="https://github.com/user-attachments/assets/92d471ac-374a-4fc2-9bb6-86603107f16e" />
 
 The **RTS Sample** showcases **high-performance entity management** — running thousands of active units in real time
-with minimal overhead. [Link](Assets/Examples/RTS) to the sample.
+with minimal overhead. [Link to the sample](Assets/Examples/RTS).
 
 #### 🕹 Gameplay Overview
 
