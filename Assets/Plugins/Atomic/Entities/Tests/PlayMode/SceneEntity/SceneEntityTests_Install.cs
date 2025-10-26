@@ -77,7 +77,7 @@ namespace Atomic.Entities
             var childEntity = childGO.AddComponent<SceneEntity>();
             childEntity.Uninstall();
 
-            _entity.children = new List<SceneEntity> {childEntity};
+            _entity.childInstallers = new List<SceneEntity> {childEntity};
 
             _entity.Install();
 
@@ -105,7 +105,7 @@ namespace Atomic.Entities
         {
             yield return null;
 
-            _entity.children = new List<SceneEntity> {null};
+            _entity.childInstallers = new List<SceneEntity> {null};
 
             // LogAssert.Expect(LogType.Warning, "SceneEntity TestEntity: Ops! Detected null child entity!");
 

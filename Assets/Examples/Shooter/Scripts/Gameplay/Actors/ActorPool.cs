@@ -2,7 +2,7 @@ using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class GameEntityPool : SceneEntityPool<Actor>, IEntityPool<IActor>
+    public sealed class ActorPool : SceneEntityPool<Actor>, IEntityPool<IActor>
     {
         IActor IEntityPool<IActor>.Rent() => this.Rent();
 

@@ -25,7 +25,7 @@ namespace ShooterGame.Gameplay
         private Const<float> _respawnTime = 3.0f;
 
         [SerializeField]
-        private GameEntityPool _bulletPool;
+        private ActorPool _bulletPool;
 
         public override void Install(IGameContext context)
         {

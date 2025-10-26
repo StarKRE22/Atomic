@@ -52,11 +52,11 @@ namespace Atomic.Entities
             
             this.OnInstall();
 
-            if (this.children != null)
+            if (this.childInstallers != null)
             {
-                for (int i = 0, count = this.children.Count; i < count; i++)
+                for (int i = 0, count = this.childInstallers.Count; i < count; i++)
                 {
-                    SceneEntity child = this.children[i];
+                    SceneEntity child = this.childInstallers[i];
                     if (child != null)
                         child.Install();
                     else
@@ -83,11 +83,11 @@ namespace Atomic.Entities
             if (!_installed)
                 return;
             
-            if (this.children != null)
+            if (this.childInstallers != null)
             {
-                for (int i = 0, count = this.children.Count; i < count; i++)
+                for (int i = 0, count = this.childInstallers.Count; i < count; i++)
                 {
-                    SceneEntity child = this.children[i];
+                    SceneEntity child = this.childInstallers[i];
                     if (child != null)
                         child.Uninstall();
                     else
