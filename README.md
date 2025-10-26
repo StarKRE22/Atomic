@@ -470,12 +470,6 @@ with minimal overhead. [Link to the sample](Assets/Examples/RTS).
 
 ---
 
-> 💡 These samples progressively guide you from basic gameplay architecture to advanced large-scale simulations — 
-> helping you master **Atomic.Entities** from small prototypes to high-performance real-world projects.
-
-
----
-
 ## 📌 Best Practices
 
 This section outlines **recommended approaches and patterns** when working with the library. Following these
