@@ -56,7 +56,7 @@ namespace Atomic.Elements
             var set = new ReactiveHashSet<object>(_source);
             Measure.Method(() =>
                 {
-                    for (var i = 0; i < N; i++) 
+                    for (var i = 0; i < N; i++)
                         set.Remove(_source[i]);
                 })
                 .SetUp(() => set.UnionWith(_source))
@@ -96,5 +96,5 @@ namespace Atomic.Elements
                 .Run();
         }
     }
-#endif
 }
+#endif
