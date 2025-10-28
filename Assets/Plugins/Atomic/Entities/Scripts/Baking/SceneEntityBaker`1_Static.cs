@@ -25,7 +25,7 @@ namespace Atomic.Entities
 
             SceneEntityBaker<E>[] bakers = FindObjectsByType<SceneEntityBaker<E>>(include, FindObjectsSortMode.None);
 #else
-            SceneEntityBaker<E>[] bakers = Object.FindObjectsOfType<SceneEntityBaker<E>>(includeInactive);
+            SceneEntityBaker<E>[] bakers = FindObjectsOfType<SceneEntityBaker<E>>(includeInactive);
 #endif
             int count = bakers.Length;
             E[] entities = new E[count];
@@ -77,7 +77,7 @@ namespace Atomic.Entities
 
             SceneEntityBaker<E>[] bakers = FindObjectsByType<SceneEntityBaker<E>>(include, FindObjectsSortMode.None);
 #else
-            SceneEntityBaker<E>[] bakers = Object.FindObjectsOfType<SceneEntityBaker<E>>(includeInactive);
+            SceneEntityBaker<E>[] bakers = FindObjectsOfType<SceneEntityBaker<E>>(includeInactive);
 #endif
 
             int count = bakers.Length;
