@@ -208,8 +208,8 @@ namespace Atomic.Entities
             this.uninstallOnDestroy = true;
             this.sceneInstallers = new List<SceneEntityInstaller>(this.GetComponentsInChildren<SceneEntityInstaller>());
             this.scriptableInstallers = new List<ScriptableEntityInstaller>();
-            this.children = new List<SceneEntity>(this.GetComponentsInChildren<SceneEntity>());
-            this.children.Remove(this);
+            this.childInstallers = new List<SceneEntity>(this.GetComponentsInChildren<SceneEntity>());
+            this.childInstallers.Remove(this);
 
             //Reset gizmos:
             this.onlySelectedGizmos = false;

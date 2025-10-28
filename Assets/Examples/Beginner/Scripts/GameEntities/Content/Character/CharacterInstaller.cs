@@ -39,5 +39,10 @@ namespace BeginnerGame
             entity.AddRotationDirection(new BaseVariable<Vector3>());
             entity.AddBehaviour<RotationBehaviour>();
         }
+
+        public override void Uninstall(IGameEntity entity)
+        {
+            
+        }
     }
 }

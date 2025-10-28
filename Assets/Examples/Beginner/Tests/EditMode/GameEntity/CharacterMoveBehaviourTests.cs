@@ -16,7 +16,7 @@ namespace BeginnerGame
         [Test]
         public void OnFixedUpdate_SetsRotation_WhenMoveIsNonZero()
         {
-            var entity = new TestWorldEntity();
+            var entity = new TestActor();
             entity.AddMoveDirection(new ReactiveVariable<Vector3>(new Vector3(1, 0, 0)));
             entity.AddRotationDirection(new ReactiveVariable<Vector3>(new Vector3(0, 0, 1)));
             entity.AddBehaviour(new CharacterMoveBehaviour());
@@ -30,7 +30,7 @@ namespace BeginnerGame
         [Test]
         public void OnFixedUpdate_DoesNotChangeRotation_WhenMoveIsZero()
         {
-            var entity = new TestWorldEntity();
+            var entity = new TestActor();
             entity.AddMoveDirection(new ReactiveVariable<Vector3>(Vector3.zero));
             entity.AddRotationDirection(new ReactiveVariable<Vector3>(new Vector3(0, 1, 0)));
             entity.AddBehaviour(new CharacterMoveBehaviour());
@@ -44,7 +44,7 @@ namespace BeginnerGame
         [Test]
         public void OnFixedUpdate_UsesLatestMoveValue_AfterSpawn()
         {
-            var entity = new TestWorldEntity();
+            var entity = new TestActor();
             var moveVar = new ReactiveVariable<Vector3>(new Vector3(0, 0, 1));
             entity.AddMoveDirection(moveVar);
             entity.AddRotationDirection(new ReactiveVariable<Vector3>(Vector3.zero));
@@ -67,7 +67,7 @@ namespace BeginnerGame
         public void OnFixedUpdate_TinyNonZeroVector_IsConsideredNonZero_ByDesign()
         {
             var tiny = new Vector3(1e-8f, 0, 0);
-            var entity = new TestWorldEntity();
+            var entity = new TestActor();
             entity.AddMoveDirection(new ReactiveVariable<Vector3>(tiny));
             entity.AddRotationDirection(new ReactiveVariable<Vector3>(Vector3.zero));
             entity.AddBehaviour(new CharacterMoveBehaviour());
@@ -82,7 +82,7 @@ namespace BeginnerGame
         public void OnFixedUpdate_Idempotent_WhenMoveStaysSameNonZero()
         {
             var moveDir = new Vector3(0, 0, 1);
-            var entity = new TestWorldEntity();
+            var entity = new TestActor();
             entity.AddMoveDirection(new ReactiveVariable<Vector3>(moveDir));
             entity.AddRotationDirection(new ReactiveVariable<Vector3>(Vector3.left));
             entity.AddBehaviour(new CharacterMoveBehaviour());

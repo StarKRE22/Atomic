@@ -48,8 +48,8 @@ requirements before using the framework.
 
 - _Option #1. Download source code with game examples_
 - _Option #2.
-  Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/Atomic.unitypackage)
-  or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/AtomicNonUnity.zip)
+  Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/Atomic.v.2.0.1.unitypackage)
+  or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/AtomicNonUnity.v.2.0.1.zip)
   from [release notes](https://github.com/StarKRE22/Atomic/releases)_
 - _Option #3: Install via Unity Package Manager using the Git
   URL: `https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic`_

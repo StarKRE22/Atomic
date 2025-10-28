@@ -55,7 +55,7 @@ MonoBehaviour:
   scriptableInstallers: []
   sceneInstallers:
   - {fileID: 5218802606639279471}
-  children:
+  childInstallers:
   - {fileID: 6133313424419818546}
   - {fileID: 1338024790304836}
   onlySelectedGizmos: 0
@@ -149,6 +149,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3060064001895777312, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
+      propertyPath: uninstallOnDestroy
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060064001895777312, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
       propertyPath: initialValueCapacity
       value: 3
       objectReference: {fileID: 0}
@@ -239,6 +243,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3060064001895777312, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
       propertyPath: initialTagCapacity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060064001895777312, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
+      propertyPath: uninstallOnDestroy
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3060064001895777312, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}

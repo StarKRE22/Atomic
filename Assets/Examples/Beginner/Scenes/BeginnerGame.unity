@@ -678,10 +678,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 325131033648698089, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
       propertyPath: installOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 325131033648698089, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
       propertyPath: initialTagCapacity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 325131033648698089, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
+      propertyPath: uninstallOnDestroy
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 325131033648698089, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
@@ -854,10 +858,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 325131033648698089, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
       propertyPath: installOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 325131033648698089, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
       propertyPath: initialTagCapacity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 325131033648698089, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
+      propertyPath: uninstallOnDestroy
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 325131033648698089, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
@@ -1095,6 +1103,14 @@ PrefabInstance:
       propertyPath: initialBehaviourCapacity
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5524392739060135003, guid: 03e32f163c91d44f8a2863ceebd87758, type: 3}
+      propertyPath: 'childInstallers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2068115947761630309}
+    - target: {fileID: 5524392739060135003, guid: 03e32f163c91d44f8a2863ceebd87758, type: 3}
+      propertyPath: 'childInstallers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1313525601}
     - target: {fileID: 6922072772241536143, guid: 03e32f163c91d44f8a2863ceebd87758, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

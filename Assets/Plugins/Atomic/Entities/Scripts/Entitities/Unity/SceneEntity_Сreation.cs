@@ -52,7 +52,7 @@ namespace Atomic.Entities
 
             entity.sceneInstallers = args.sceneInstallers;
             entity.scriptableInstallers = args.scriptableInstallers;
-            entity.children = args.children;
+            entity.childInstallers = args.children;
 
             entity.installOnAwake = args.installOnAwake;
             entity.uninstallOnDestroy = args.uninstallOnDestroy;

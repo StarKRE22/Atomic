@@ -59,9 +59,10 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [DisableInPlayMode]
 #endif
-        [Tooltip("Specify child entities that will installed with this entity")]
+        [FormerlySerializedAs("children")]
+        [Tooltip("Specify child entities that will installed and uninstalled with this entity")]
         [Space(8), SerializeField]
-        internal List<SceneEntity> children;
+        internal List<SceneEntity> childInstallers;
 
         [Header("Gizmos")]
         [Tooltip("Should draw gizmos only when this GameObject is selected?")]

@@ -47,7 +47,7 @@ namespace Atomic.Entities
 
         /// <inheritdoc />
 #if ODIN_INSPECTOR
-        [Header("Debug")]
+        [Title("Debug")]
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
         public bool Enabled => _world.Enabled;
