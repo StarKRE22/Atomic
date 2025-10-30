@@ -7,7 +7,7 @@ namespace RTSGame
         fileName = "UnitCatalog",
         menuName = "RTSGame/Units/New UnitCatalog"
     )]
-    public sealed class UnitMultiFactory : ScriptableMultiEntityFactory<string, IUnitEntity, UnitFactory>
+    public sealed class UnitCatalog : ScriptableMultiEntityFactory<string, IUnitEntity, UnitFactory>
     {
         protected override string GetKey(UnitFactory factory) => factory.Name;
     }
