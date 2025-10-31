@@ -59,7 +59,8 @@ requirements before using the framework.
 ## 🎛 Using Odin Inspector
 
 For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
-using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
+using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The
+framework **works without Odin**, but Odin makes inspection and tweaking much easier.
 
 ---
 
@@ -362,28 +363,30 @@ All examples are available inside **[Assets/Examples](Assets/Examples)**.
 
 A **simple 2-player mini-game** designed to introduce the fundamental ideas behind the **Atomic** framework.
 
-<p align="center">
-  <img width="400" alt="Beginner sample preview" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
-</p>
+<img width="400" alt="Beginner sample preview" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
 
 #### 🧩 Description
 
-This sample represents the **most basic foundation** of the Atomic framework with Unity. It demonstrates how to build gameplay using a **universal `SceneEntity`**, showing three minimal entities:
+This sample represents the **most basic foundation** of the Atomic framework with Unity. It demonstrates how to build
+gameplay using a **universal `SceneEntity`**, showing three minimal entities:
+
 - `GameContext`
 - `Character`
 - `Coin`
 
-Everything here is intentionally kept **as simple and transparent as possible**, focusing on the **core idea of the atomic approach** — how logic can emerge from the composition of small, modular elements.
+Everything here is intentionally kept **as simple and transparent as possible**, focusing on the **core idea of the
+atomic approach** — how logic can emerge from the composition of small, modular elements.
 
-The project uses **code generation in Unity** and serves as a minimal example for **rapid prototyping** within the Atomic ecosystem.
+The project uses **code generation in Unity** and serves as a minimal example for **rapid prototyping** within the
+Atomic ecosystem.
 
 #### 🕹 Gameplay Overview
 
 - **Players:** Two players share a single arena.
 - **Goal:** Collect more coins than your opponent within a **limited time**.
 - **Controls:**
-  - Player (Blue): Arrow keys
-  - Player (Red): `W`, `A`, `S`, `D`
+    - Player (Blue): Arrow keys
+    - Player (Red): `W`, `A`, `S`, `D`
 
 #### 💡 This Sample Demonstrates
 
@@ -458,9 +461,9 @@ with minimal overhead.
 - **Infantry:** Possesses health, performs melee attacks, and seeks the nearest enemy.
 - **Tanks:** Fire projectiles and detect enemies within range.
 - **Projectiles:** Travel toward targets with limited lifetime and cause impact damage.
-- **CameraControls:** 
-  - Movement: WASD
-  - Zoom: Mouse Scroll
+- **CameraControls:**
+    - Movement: WASD
+    - Zoom: Mouse Scroll
 
 #### 🧩 Scenes
 
@@ -478,7 +481,7 @@ with minimal overhead.
 
 ---
 
-> 💡 These samples progressively guide you from basic gameplay architecture to advanced large-scale simulations — 
+> 💡 These samples progressively guide you from basic gameplay architecture to advanced large-scale simulations —
 > helping you master **Atomic.Entities** from small prototypes to high-performance real-world projects.
 
 
