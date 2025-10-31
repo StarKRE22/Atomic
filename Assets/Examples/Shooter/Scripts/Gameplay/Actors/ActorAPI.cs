@@ -17,7 +17,7 @@ namespace ShooterGame.Gameplay
 #if UNITY_EDITOR
 	[InitializeOnLoad]
 #endif
-	public static class WorldEntityAPI
+	public static class ActorAPI
 	{
 
 		///Tags
@@ -44,7 +44,7 @@ namespace ShooterGame.Gameplay
 		public static readonly int TeamType; // IReactiveVariable<TeamType>
 		public static readonly int Weapon; // IWeapon
 		public static readonly int Damage; // IValue<int>
-		public static readonly int Target; // IReactiveVariable<IEntity>
+		public static readonly int Target; // IReactiveVariable<IActor>
 		public static readonly int FireCondition; // IExpression<bool>
 		public static readonly int FireCooldown; // Cooldown
 		public static readonly int FirePoint; // Transform
@@ -57,7 +57,7 @@ namespace ShooterGame.Gameplay
 		public static readonly int Animator; // Animator
 		public static readonly int HitPointsView; // HitPointsView
 
-		static WorldEntityAPI()
+		static ActorAPI()
 		{
 			//Tags
 			Damageable = NameToId(nameof(Damageable));
@@ -559,13 +559,13 @@ namespace ShooterGame.Gameplay
 		#region Target
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IReactiveVariable<IEntity> GetTarget(this IActor entity) => entity.GetValue<IReactiveVariable<IEntity>>(Target);
+		public static IReactiveVariable<IActor> GetTarget(this IActor entity) => entity.GetValue<IReactiveVariable<IActor>>(Target);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetTarget(this IActor entity, out IReactiveVariable<IEntity> value) => entity.TryGetValue(Target, out value);
+		public static bool TryGetTarget(this IActor entity, out IReactiveVariable<IActor> value) => entity.TryGetValue(Target, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddTarget(this IActor entity, IReactiveVariable<IEntity> value) => entity.AddValue(Target, value);
+		public static void AddTarget(this IActor entity, IReactiveVariable<IActor> value) => entity.AddValue(Target, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasTarget(this IActor entity) => entity.HasValue(Target);
@@ -574,7 +574,7 @@ namespace ShooterGame.Gameplay
 		public static bool DelTarget(this IActor entity) => entity.DelValue(Target);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetTarget(this IActor entity, IReactiveVariable<IEntity> value) => entity.SetValue(Target, value);
+		public static void SetTarget(this IActor entity, IReactiveVariable<IActor> value) => entity.SetValue(Target, value);
 
 		#endregion
 

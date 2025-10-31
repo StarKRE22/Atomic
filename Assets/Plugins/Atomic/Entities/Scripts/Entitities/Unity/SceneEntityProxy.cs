@@ -72,6 +72,8 @@ namespace Atomic.Entities
             get => _source.Name;
             set => _source.Name = value;
         }
+        
+        public bool IsValid => _source.IsValid;
 
         [Tooltip("Reference to the actual scene entity object that this proxy wraps")]
         [SerializeField]

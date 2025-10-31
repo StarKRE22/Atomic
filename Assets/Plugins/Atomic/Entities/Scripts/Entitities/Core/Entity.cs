@@ -40,7 +40,8 @@ namespace Atomic.Entities
                 }
             }
         }
-
+        public bool IsValid => _instanceId > 0;
+        
         private string _name;
 
         /// <summary>
