@@ -9,36 +9,19 @@ entityType: IEntity
 imports:
   - UnityEngine
   - Atomic.Elements
-  - BeginnerGame
-  - UnityEngine
   - System.Collections.Generic
-  - BeginnerGame
-  - Atomic.Elements
-  - BeginnerGame
-  - Atomic.Elements
-  - UnityEngine
 tags:
   - Character
   - Coin
   - GameContext
 
 values:
-  
-  #Transform
   - Transform: Transform
-  
-  #Movement
   - MovementDirection: IVariable<Vector3>
   - MovementSpeed: IValue<float>
-  
-  #Money  
   - Money: IReactiveVariable<int>
-    
-  #Spawn
   - CoinSpawnInfo: SpawnInfo
   - InputMap: InputMap
   - TriggerEvents: TriggerEvents
-  - Renderer: Renderer
   - Players: IDictionary<TeamType, IEntity>
   - GameCountdown: ICooldown
-  - GameOverEvent: IEvent

@@ -41,7 +41,6 @@ namespace BeginnerGame
             context.AddBehaviour<CoinSpawnBehaviour>();
 
             //Game Over
-            context.AddGameOverEvent(new BaseEvent());
             context.AddBehaviour<GameOverBehaviour>();
         }
     }

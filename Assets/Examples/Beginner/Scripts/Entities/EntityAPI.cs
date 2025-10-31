@@ -10,7 +10,6 @@ using UnityEditor;
 #endif
 using UnityEngine;
 using Atomic.Elements;
-using BeginnerGame;
 using System.Collections.Generic;
 
 namespace BeginnerGame
@@ -34,10 +33,8 @@ namespace BeginnerGame
 		public static readonly int CoinSpawnInfo; // SpawnInfo
 		public static readonly int InputMap; // InputMap
 		public static readonly int TriggerEvents; // TriggerEvents
-		public static readonly int Renderer; // Renderer
 		public static readonly int Players; // IDictionary<TeamType, IEntity>
 		public static readonly int GameCountdown; // ICooldown
-		public static readonly int GameOverEvent; // IEvent
 
 		static EntityAPI()
 		{
@@ -54,10 +51,8 @@ namespace BeginnerGame
 			CoinSpawnInfo = NameToId(nameof(CoinSpawnInfo));
 			InputMap = NameToId(nameof(InputMap));
 			TriggerEvents = NameToId(nameof(TriggerEvents));
-			Renderer = NameToId(nameof(Renderer));
 			Players = NameToId(nameof(Players));
 			GameCountdown = NameToId(nameof(GameCountdown));
-			GameOverEvent = NameToId(nameof(GameOverEvent));
 		}
 
 
@@ -259,28 +254,6 @@ namespace BeginnerGame
 
 		#endregion
 
-		#region Renderer
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Renderer GetRenderer(this IEntity entity) => entity.GetValue<Renderer>(Renderer);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetRenderer(this IEntity entity, out Renderer value) => entity.TryGetValue(Renderer, out value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddRenderer(this IEntity entity, Renderer value) => entity.AddValue(Renderer, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasRenderer(this IEntity entity) => entity.HasValue(Renderer);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelRenderer(this IEntity entity) => entity.DelValue(Renderer);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetRenderer(this IEntity entity, Renderer value) => entity.SetValue(Renderer, value);
-
-		#endregion
-
 		#region Players
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -322,28 +295,6 @@ namespace BeginnerGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetGameCountdown(this IEntity entity, ICooldown value) => entity.SetValue(GameCountdown, value);
-
-		#endregion
-
-		#region GameOverEvent
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IEvent GetGameOverEvent(this IEntity entity) => entity.GetValue<IEvent>(GameOverEvent);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetGameOverEvent(this IEntity entity, out IEvent value) => entity.TryGetValue(GameOverEvent, out value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddGameOverEvent(this IEntity entity, IEvent value) => entity.AddValue(GameOverEvent, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasGameOverEvent(this IEntity entity) => entity.HasValue(GameOverEvent);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelGameOverEvent(this IEntity entity) => entity.DelValue(GameOverEvent);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetGameOverEvent(this IEntity entity, IEvent value) => entity.SetValue(GameOverEvent, value);
 
 		#endregion
     }
