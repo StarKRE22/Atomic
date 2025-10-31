@@ -2,7 +2,7 @@ header: EntityAPI
 entityType: IActor
 aggressiveInlining: true
 namespace: ShooterGame.Gameplay
-className: WorldEntityAPI
+className: ActorEntityAPI
 directory: Assets/Examples/Shooter/Scripts/Gameplay/Actors/  
 
 imports:

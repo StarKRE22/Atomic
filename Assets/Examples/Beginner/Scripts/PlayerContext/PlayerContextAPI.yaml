@@ -4,7 +4,7 @@ className: PlayerContextAPI
 directory: Assets/Examples/Beginner/Scripts/PlayerContext/
 aggressiveInlining: true
 unsafe: false
-entityType: IPlayerContext
+entityType: PlayerContext
 
 imports:
 - BeginnerGame
@@ -13,7 +13,7 @@ imports:
 
 values:
 - InputMap: InputMap
-- Character: IGameEntity
+- Character: IEntity
 - Money: IReactiveVariable<int>
 - TeamType: IValue<TeamType>
 - Camera: Camera

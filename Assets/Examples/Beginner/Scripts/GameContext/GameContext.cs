@@ -2,7 +2,7 @@ using Atomic.Entities;
 
 namespace BeginnerGame
 {
-    public sealed class GameContext : SceneEntitySingleton<GameContext>, IGameContext
+    public class GameContext : SceneEntitySingleton<GameContext>
     {
     }
 }

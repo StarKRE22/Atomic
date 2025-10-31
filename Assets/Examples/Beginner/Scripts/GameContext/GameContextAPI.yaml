@@ -4,7 +4,7 @@ className: GameContextAPI
 directory: Assets/Examples/Beginner/Scripts/GameContext/
 aggressiveInlining: true
 unsafe: false
-entityType: IGameContext
+entityType: GameContext
 
 imports:
 - UnityEngine
@@ -13,13 +13,8 @@ imports:
 - Atomic.Elements
 
 values:
-- WorldTransform: Transform
-- Players: IDictionary<TeamType, IPlayerContext>
+- Players: IDictionary<TeamType, PlayerContext>
 - GameCountdown: ICooldown
 - GameOverEvent: IEvent
 - WinnerTeam: IReactiveVariable<TeamType>
 - TeamCatalog: TeamCatalog
-
-#Coins
-- CoinPool: IEntityPool<IGameEntity>
-- CoinSpawnArea: Bounds

@@ -21,7 +21,7 @@ namespace BeginnerGame
 	{
 		///Values
 		public static readonly int InputMap; // InputMap
-		public static readonly int Character; // IGameEntity
+		public static readonly int Character; // IEntity
 		public static readonly int Money; // IReactiveVariable<int>
 		public static readonly int TeamType; // IValue<TeamType>
 		public static readonly int Camera; // Camera
@@ -42,110 +42,110 @@ namespace BeginnerGame
 		#region InputMap
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static InputMap GetInputMap(this IPlayerContext entity) => entity.GetValue<InputMap>(InputMap);
+		public static InputMap GetInputMap(this PlayerContext entity) => entity.GetValue<InputMap>(InputMap);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetInputMap(this IPlayerContext entity, out InputMap value) => entity.TryGetValue(InputMap, out value);
+		public static bool TryGetInputMap(this PlayerContext entity, out InputMap value) => entity.TryGetValue(InputMap, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddInputMap(this IPlayerContext entity, InputMap value) => entity.AddValue(InputMap, value);
+		public static void AddInputMap(this PlayerContext entity, InputMap value) => entity.AddValue(InputMap, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasInputMap(this IPlayerContext entity) => entity.HasValue(InputMap);
+		public static bool HasInputMap(this PlayerContext entity) => entity.HasValue(InputMap);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelInputMap(this IPlayerContext entity) => entity.DelValue(InputMap);
+		public static bool DelInputMap(this PlayerContext entity) => entity.DelValue(InputMap);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetInputMap(this IPlayerContext entity, InputMap value) => entity.SetValue(InputMap, value);
+		public static void SetInputMap(this PlayerContext entity, InputMap value) => entity.SetValue(InputMap, value);
 
 		#endregion
 
 		#region Character
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IGameEntity GetCharacter(this IPlayerContext entity) => entity.GetValue<IGameEntity>(Character);
+		public static IEntity GetCharacter(this PlayerContext entity) => entity.GetValue<IEntity>(Character);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetCharacter(this IPlayerContext entity, out IGameEntity value) => entity.TryGetValue(Character, out value);
+		public static bool TryGetCharacter(this PlayerContext entity, out IEntity value) => entity.TryGetValue(Character, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddCharacter(this IPlayerContext entity, IGameEntity value) => entity.AddValue(Character, value);
+		public static void AddCharacter(this PlayerContext entity, IEntity value) => entity.AddValue(Character, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasCharacter(this IPlayerContext entity) => entity.HasValue(Character);
+		public static bool HasCharacter(this PlayerContext entity) => entity.HasValue(Character);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelCharacter(this IPlayerContext entity) => entity.DelValue(Character);
+		public static bool DelCharacter(this PlayerContext entity) => entity.DelValue(Character);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetCharacter(this IPlayerContext entity, IGameEntity value) => entity.SetValue(Character, value);
+		public static void SetCharacter(this PlayerContext entity, IEntity value) => entity.SetValue(Character, value);
 
 		#endregion
 
 		#region Money
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IReactiveVariable<int> GetMoney(this IPlayerContext entity) => entity.GetValue<IReactiveVariable<int>>(Money);
+		public static IReactiveVariable<int> GetMoney(this PlayerContext entity) => entity.GetValue<IReactiveVariable<int>>(Money);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMoney(this IPlayerContext entity, out IReactiveVariable<int> value) => entity.TryGetValue(Money, out value);
+		public static bool TryGetMoney(this PlayerContext entity, out IReactiveVariable<int> value) => entity.TryGetValue(Money, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddMoney(this IPlayerContext entity, IReactiveVariable<int> value) => entity.AddValue(Money, value);
+		public static void AddMoney(this PlayerContext entity, IReactiveVariable<int> value) => entity.AddValue(Money, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasMoney(this IPlayerContext entity) => entity.HasValue(Money);
+		public static bool HasMoney(this PlayerContext entity) => entity.HasValue(Money);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelMoney(this IPlayerContext entity) => entity.DelValue(Money);
+		public static bool DelMoney(this PlayerContext entity) => entity.DelValue(Money);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMoney(this IPlayerContext entity, IReactiveVariable<int> value) => entity.SetValue(Money, value);
+		public static void SetMoney(this PlayerContext entity, IReactiveVariable<int> value) => entity.SetValue(Money, value);
 
 		#endregion
 
 		#region TeamType
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<TeamType> GetTeamType(this IPlayerContext entity) => entity.GetValue<IValue<TeamType>>(TeamType);
+		public static IValue<TeamType> GetTeamType(this PlayerContext entity) => entity.GetValue<IValue<TeamType>>(TeamType);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetTeamType(this IPlayerContext entity, out IValue<TeamType> value) => entity.TryGetValue(TeamType, out value);
+		public static bool TryGetTeamType(this PlayerContext entity, out IValue<TeamType> value) => entity.TryGetValue(TeamType, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddTeamType(this IPlayerContext entity, IValue<TeamType> value) => entity.AddValue(TeamType, value);
+		public static void AddTeamType(this PlayerContext entity, IValue<TeamType> value) => entity.AddValue(TeamType, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasTeamType(this IPlayerContext entity) => entity.HasValue(TeamType);
+		public static bool HasTeamType(this PlayerContext entity) => entity.HasValue(TeamType);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelTeamType(this IPlayerContext entity) => entity.DelValue(TeamType);
+		public static bool DelTeamType(this PlayerContext entity) => entity.DelValue(TeamType);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetTeamType(this IPlayerContext entity, IValue<TeamType> value) => entity.SetValue(TeamType, value);
+		public static void SetTeamType(this PlayerContext entity, IValue<TeamType> value) => entity.SetValue(TeamType, value);
 
 		#endregion
 
 		#region Camera
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Camera GetCamera(this IPlayerContext entity) => entity.GetValue<Camera>(Camera);
+		public static Camera GetCamera(this PlayerContext entity) => entity.GetValue<Camera>(Camera);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetCamera(this IPlayerContext entity, out Camera value) => entity.TryGetValue(Camera, out value);
+		public static bool TryGetCamera(this PlayerContext entity, out Camera value) => entity.TryGetValue(Camera, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddCamera(this IPlayerContext entity, Camera value) => entity.AddValue(Camera, value);
+		public static void AddCamera(this PlayerContext entity, Camera value) => entity.AddValue(Camera, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasCamera(this IPlayerContext entity) => entity.HasValue(Camera);
+		public static bool HasCamera(this PlayerContext entity) => entity.HasValue(Camera);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelCamera(this IPlayerContext entity) => entity.DelValue(Camera);
+		public static bool DelCamera(this PlayerContext entity) => entity.DelValue(Camera);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetCamera(this IPlayerContext entity, Camera value) => entity.SetValue(Camera, value);
+		public static void SetCamera(this PlayerContext entity, Camera value) => entity.SetValue(Camera, value);
 
 		#endregion
     }

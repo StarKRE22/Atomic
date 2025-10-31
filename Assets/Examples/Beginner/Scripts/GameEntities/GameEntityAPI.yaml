@@ -1,10 +1,10 @@
 header: EntityAPI
 className: GameEntityAPI
-directory: Assets/Examples/Beginner/Scripts/GameEntities/
+directory: Assets/Examples/Beginner/Scripts/GameObjects/
 aggressiveInlining: true
 unsafe: false
 namespace: BeginnerGame
-entityType: IGameEntity
+entityType: GameEntity
 
 imports:
   - UnityEngine

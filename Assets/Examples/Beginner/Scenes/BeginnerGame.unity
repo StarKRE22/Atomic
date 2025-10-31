@@ -1071,6 +1071,10 @@ PrefabInstance:
       propertyPath: _worldTransform
       value: 
       objectReference: {fileID: 1238958044}
+    - target: {fileID: 1765928185858468627, guid: 03e32f163c91d44f8a2863ceebd87758, type: 3}
+      propertyPath: _gameCountdown._duration
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2415917276825906686, guid: 03e32f163c91d44f8a2863ceebd87758, type: 3}
       propertyPath: m_Name
       value: GameContext

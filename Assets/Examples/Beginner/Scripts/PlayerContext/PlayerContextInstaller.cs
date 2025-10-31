@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
 namespace BeginnerGame
 {
-    public sealed class PlayerContextInstaller : SceneEntityInstaller<IPlayerContext>
+    public sealed class PlayerContextInstaller : SceneEntityInstaller<PlayerContext>
     {
         [SerializeField]
         private Const<TeamType> _teamType;
@@ -18,7 +17,7 @@ namespace BeginnerGame
 
         [Header("Character")]
         [SerializeField]
-        private GameEntity _characterPrefab;
+        private SceneEntity _character;
 
         [SerializeField]
         private Transform _spawnPoint;
@@ -30,35 +29,33 @@ namespace BeginnerGame
         [SerializeField]
         private Vector3 _cameraOffset;
 
-        public override void Install(IPlayerContext context)
+        public override void Install(PlayerContext playerContext)
         {
-            GameContext gameContext = GameContext.Instance;
-            if (AtomicUtils.IsPlayMode())
-                gameContext.GetPlayers().Add(_teamType, context);
-
             //Base:
-            context.AddTeamType(_teamType);
-            context.AddInputMap(_inputMap);
-            context.AddMoney(_money);
-            context.AddCamera(_camera);
+            playerContext.AddTeamType(_teamType);
+            playerContext.AddInputMap(_inputMap);
+            playerContext.AddMoney(_money);
 
-            if (AtomicUtils.IsPlayMode())
-            {
-                //Character:
-                GameEntity character = CharactersUseCase.Spawn(gameContext, _characterPrefab, _spawnPoint, _teamType);
-                context.AddCharacter(character);
-                context.AddBehaviour<CharacterMoveController>();
-            }
+            //Character
+            playerContext.AddCharacter(_character);
+            playerContext.AddBehaviour<CharacterMoveController>();
+            playerContext.WhenDisable(_character.Disable);
 
             //Camera:
-            context.AddBehaviour(new CameraFollowController(_cameraOffset));
+            playerContext.AddCamera(_camera);
+            playerContext.AddBehaviour(new CameraFollowController(_cameraOffset));
 
-            //Inactivate
-            if (AtomicUtils.IsPlayMode())
-            {
-                gameContext.WhenDisable(context.Disable);
-                gameContext.WhenDisable(context.GetCharacter().Disable);
-            }
+            this.InstallGameContext(playerContext);
+        }
+        
+        private void InstallGameContext(PlayerContext playerContext)
+        {
+            if (!AtomicUtils.IsPlayMode())
+                return;
+
+            GameContext gameContext = GameContext.Instance;
+            gameContext.GetPlayers().Add(_teamType, playerContext);
+            gameContext.WhenDisable(playerContext.Disable);
         }
     }
 }

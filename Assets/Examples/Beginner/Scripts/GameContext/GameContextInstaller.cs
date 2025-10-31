@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
+    public sealed class GameContextInstaller : SceneEntityInstaller<GameContext>
     {
         [SerializeField]
         private Transform _worldTransform;
@@ -18,7 +18,7 @@ namespace BeginnerGame
 
         [Header("Coin System")]
         [SerializeField]
-        private CoinPool _coinPool;
+        private GameEntity _coinPrefab;
 
         [SerializeField]
         private Cooldown _coinSpawnPeriod = new(2);
@@ -26,28 +26,28 @@ namespace BeginnerGame
         [SerializeField]
         private Bounds _coinSpawnArea = new(Vector3.zero, new Vector3(5, 0, 5));
 
-        public override void Install(IGameContext context)
+        public override void Install(GameContext context)
         {
-            context.AddWorldTransform(_worldTransform);
-            context.AddPlayers(new Dictionary<TeamType, IPlayerContext>());
+            context.AddPlayers(new Dictionary<TeamType, PlayerContext>());
             context.AddTeamCatalog(_teamCatalog);
 
             //Game countdown
             context.AddGameCountdown(_gameCountdown);
-            context.AddBehaviour<GameCountdownController>();
+            context.WhenTick(_gameCountdown.Tick);
+            
+            context.AddBehaviour<GameOverController>();
 
             //Game Over
             context.AddGameOverEvent(new BaseEvent());
             context.AddWinnerTeam(new ReactiveVariable<TeamType>());
 
             //Coin system:
-            context.AddCoinPool(_coinPool);
-            context.AddCoinSpawnArea(_coinSpawnArea);
-            context.AddBehaviour(new CoinSpawnController(_coinSpawnPeriod));
-
-#if UNITY_EDITOR
-            context.AddBehaviour<CoinSpawnAreaGizmos>();
-#endif
+            context.AddBehaviour(new CoinSpawnController(
+                _coinPrefab,
+                _worldTransform,
+                _coinSpawnArea,
+                _coinSpawnPeriod
+            ));
         }
     }
 }

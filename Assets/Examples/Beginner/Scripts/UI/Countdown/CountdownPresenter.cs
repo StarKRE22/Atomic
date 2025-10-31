@@ -1,24 +1,25 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace BeginnerGame
 {
-    public class CountdownPresenter : IEntityInit<IUIContext>, IEntityDispose
+    public sealed class CountdownPresenter : MonoBehaviour
     {
-        private ICooldown _countdown;
+        [SerializeField]
         private CountdownView _view;
+
+        private ICooldown _countdown;
         
-        public void Init(IUIContext context)
+        private void Start()
         {
             _countdown = GameContext.Instance.GetGameCountdown();
             _countdown.OnTimeChanged += this.OnTimeChanged;
-            _view = context.GetGameCountdownView();
         }
 
-        public void Dispose(IEntity entity)
+        private void OnDestroy()
         {
-            _countdown.OnTimeChanged -= this.OnTimeChanged;
+            if (_countdown != null)
+                _countdown.OnTimeChanged -= this.OnTimeChanged;
         }
 
         private void OnTimeChanged(float time)
