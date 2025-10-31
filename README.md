@@ -360,29 +360,37 @@ All examples are available inside **[Assets/Examples](Assets/Examples)**.
 
 ### 1️⃣ Beginner Sample
 
-A **simple 2-player mini-game** designed to introduce the fundamental ideas behind the Atomic framework.
+A **simple 2-player mini-game** designed to introduce the fundamental ideas behind the **Atomic** framework.
 
-<img width="400" height="" alt="Beginner sample preview" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
+<p align="center">
+  <img width="400" alt="Beginner sample preview" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
+</p>
+
+#### 🧩 Description
+
+This sample represents the **most basic foundation** of the Atomic framework with Unity. It demonstrates how to build gameplay using a **universal `SceneEntity`**, showing three minimal entities:
+- `GameContext`
+- `Character`
+- `Coin`
+
+Everything here is intentionally kept **as simple and transparent as possible**, focusing on the **core idea of the atomic approach** — how logic can emerge from the composition of small, modular elements.
+
+The project uses **code generation in Unity** and serves as a minimal example for **rapid prototyping** within the Atomic ecosystem.
 
 #### 🕹 Gameplay Overview
 
 - **Players:** Two players share a single arena.
 - **Goal:** Collect more coins than your opponent within a **limited time**.
 - **Controls:**
-    - Player (Blue): Arrow keys
-    - Player (Red): `W`, `A`, `S`, `D`
-- **UI Feedback:** A victory screen displays the winning player.
-- **Restart:** Players can restart and compete again instantly.
+  - Player (Blue): Arrow keys
+  - Player (Red): `W`, `A`, `S`, `D`
 
 #### 💡 This Sample Demonstrates
 
-1. Creating and configuring **SceneEntity** objects in Unity.
+1. Creating and configuring **Entity** objects in Unity.
 2. Structuring a project using the **Entity–State–Behaviour** pattern.
-3. Using **atomic values** and **reactive events**.
-4. Implementing **entity pooling** for coins.
-5. Writing **procedural gameplay logic** via static use-case methods.
-6. Building an **Atomic UI** using the **MVP (Passive View)** pattern.
-7. Creating **unit tests** to verify entity logic and behavior consistency.
+3. Using **atomic elements** to drive logic and interaction.
+4. Applying **code generation** for fast and clean iteration.
 
 ---
 
