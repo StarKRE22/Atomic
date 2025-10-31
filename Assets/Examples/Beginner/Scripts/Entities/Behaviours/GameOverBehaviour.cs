@@ -27,6 +27,10 @@ namespace BeginnerGame
         private void OnGameTimeFinished()
         {
             Debug.Log($"{this.GetWinnerTeam()} is win!");
+
+            foreach (IEntity player in _players.Values) 
+                player.Disable();
+            
             _gameContext.Disable();
         }
 

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6174124955232904474}
-  - component: {fileID: 381086113069860620}
+  - component: {fileID: 1037729924953608016}
   - component: {fileID: 9001512976166052882}
   - component: {fileID: 6859601950241976863}
   m_Layer: 0
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 7569509764362642215}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &381086113069860620
+--- !u!114 &1037729924953608016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,22 +44,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2745253680504197628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c7c47f4594c495e9802700cb0c448d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3142498ee69840069f3a93c11b1e1f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useUnityLifecycle: 0
+  useUnityLifecycle: 1
   disposeValues: 1
   installOnAwake: 1
   uninstallOnDestroy: 1
   scriptableInstallers: []
   sceneInstallers:
   - {fileID: 9001512976166052882}
-  children: []
+  childInstallers: []
   onlySelectedGizmos: 0
   onlyEditModeGizmos: 0
   autoCompile: 0
   initialTagCapacity: 1
-  initialValueCapacity: 3
+  initialValueCapacity: 1
   initialBehaviourCapacity: 0
 --- !u!114 &9001512976166052882
 MonoBehaviour:

@@ -28,7 +28,6 @@ namespace BeginnerGame
                 TeamType team = playerInfo.team;
                 SceneEntity character = playerInfo.character;
                 players.Add(team, character);
-                context.WhenDisable(character.Disable);
             }
 
             context.AddPlayers(players);
@@ -38,6 +37,7 @@ namespace BeginnerGame
             context.WhenTick(_gameCountdown.Tick);
 
             // Coin system
+            context.AddCoinSpawnInfo(_coinSpawnInfo);
             context.AddBehaviour<CoinSpawnBehaviour>();
 
             //Game Over

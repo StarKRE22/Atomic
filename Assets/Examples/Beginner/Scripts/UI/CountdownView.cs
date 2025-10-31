@@ -9,9 +9,6 @@ namespace BeginnerGame
     {
         [SerializeField]
         private SceneEntity _gameContext;
-
-        [SerializeField]
-        private CountdownView _view;
         
         [SerializeField]
         private TMP_Text _timeText;

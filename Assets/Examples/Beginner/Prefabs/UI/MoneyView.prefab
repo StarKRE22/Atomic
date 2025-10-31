@@ -146,7 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3881971517631554696}
   - component: {fileID: 7339682642252674538}
-  - component: {fileID: 266988223943959058}
+  - component: {fileID: 1864361126585617791}
   m_Layer: 0
   m_Name: MoneyView
   m_TagString: Untagged
@@ -182,7 +182,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4317916709405472691}
   m_CullTransparentMesh: 1
---- !u!114 &266988223943959058
+--- !u!114 &1864361126585617791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,8 +191,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4317916709405472691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d435547059a849c09a196656dd2a0e53, type: 3}
+  m_Script: {fileID: 11500000, guid: 199349e106e647608b38c02725304067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _valueText: {fileID: 10697915862386739}
-  _animationDuration: 0.5
+  _player: {fileID: 0}
+  _moneyText: {fileID: 10697915862386739}
