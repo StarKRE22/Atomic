@@ -86,7 +86,7 @@ namespace Atomic.Entities
             where E : SceneEntity
         {
             if (it.Remove(entity))
-                GameObject.Destroy(entity, delay);
+                SceneEntity.Destroy(entity, delay);
         }
 #endif
 

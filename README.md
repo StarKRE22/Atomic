@@ -59,7 +59,8 @@ requirements before using the framework.
 ## 🎛 Using Odin Inspector
 
 For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
-using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
+using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The
+framework **works without Odin**, but Odin makes inspection and tweaking much easier.
 
 ---
 
@@ -362,7 +363,22 @@ All examples are available inside **[Assets/Examples](Assets/Examples)**.
 
 A **simple 2-player mini-game** designed to introduce the fundamental ideas behind the Atomic framework. [Link to the sample](Assets/Examples/Beginner).
 
-<img width="400" height="" alt="Beginner sample preview" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
+<img width="400" alt="Beginner sample preview" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
+
+#### 🧩 Description
+
+This sample represents the **most basic foundation** of the Atomic framework with Unity. It demonstrates how to build
+gameplay using a **universal `SceneEntity`**, showing three minimal entities:
+
+- `GameContext`
+- `Character`
+- `Coin`
+
+Everything here is intentionally kept **as simple and transparent as possible**, focusing on the **core idea of the
+atomic approach** — how logic can emerge from the composition of small, modular elements.
+
+The project uses **code generation in Unity** and serves as a minimal example for **rapid prototyping** within the
+Atomic ecosystem.
 
 #### 🕹 Gameplay Overview
 
@@ -371,18 +387,13 @@ A **simple 2-player mini-game** designed to introduce the fundamental ideas behi
 - **Controls:**
     - Player (Blue): Arrow keys
     - Player (Red): `W`, `A`, `S`, `D`
-- **UI Feedback:** A victory screen displays the winning player.
-- **Restart:** Players can restart and compete again instantly.
 
 #### 💡 This Sample Demonstrates
 
-1. Creating and configuring **SceneEntity** objects in Unity.
+1. Creating and configuring **Entity** objects in Unity.
 2. Structuring a project using the **Entity–State–Behaviour** pattern.
-3. Using **atomic values** and **reactive events**.
-4. Implementing **entity pooling** for coins.
-5. Writing **procedural gameplay logic** via static use-case methods.
-6. Building an **Atomic UI** using the **MVP (Passive View)** pattern.
-7. Creating **unit tests** to verify entity logic and behavior consistency.
+3. Using **atomic elements** to drive logic and interaction.
+4. Applying **code generation** for fast and clean iteration.
 
 ---
 
@@ -450,9 +461,9 @@ with minimal overhead. [Link to the sample](Assets/Examples/RTS).
 - **Infantry:** Possesses health, performs melee attacks, and seeks the nearest enemy.
 - **Tanks:** Fire projectiles and detect enemies within range.
 - **Projectiles:** Travel toward targets with limited lifetime and cause impact damage.
-- **CameraControls:** 
-  - Movement: WASD
-  - Zoom: Mouse Scroll
+- **CameraControls:**
+    - Movement: WASD
+    - Zoom: Mouse Scroll
 
 #### 🧩 Scenes
 

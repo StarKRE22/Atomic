@@ -183,6 +183,7 @@ namespace Atomic.Entities
             throw new NotImplementedException();
         }
 
+        public bool IsValid { get; }
         public event Action<IEntity, int> OnValueAdded;
         public event Action<IEntity, int> OnValueDeleted;
         public event Action<IEntity, int> OnValueChanged;

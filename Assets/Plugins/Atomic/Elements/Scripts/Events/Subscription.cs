@@ -28,7 +28,11 @@ namespace Atomic.Elements
         /// Unsubscribes the associated action from the signal source.
         /// Safe to call multiple times.
         /// </summary>
-        public void Dispose() => this.signal.OnEvent -= this.action;
+        public void Dispose()
+        {
+            if (this.signal != null)
+                this.signal.OnEvent -= this.action;
+        }
     }
 
     /// <summary>
@@ -57,7 +61,11 @@ namespace Atomic.Elements
         /// Unsubscribes the associated action from the signal source.
         /// Safe to call multiple times.
         /// </summary>
-        public void Dispose() => this.signal.OnEvent -= this.action;
+        public void Dispose()
+        {
+            if (this.signal != null)
+                this.signal.OnEvent -= this.action;
+        }
     }
 
     /// <summary>
@@ -87,7 +95,11 @@ namespace Atomic.Elements
         /// Unsubscribes the associated action from the signal source.
         /// Safe to call multiple times.
         /// </summary>
-        public void Dispose() => this.signal.OnEvent -= this.action;
+        public void Dispose()
+        {
+            if (this.signal != null)
+                this.signal.OnEvent -= this.action;
+        }
     }
 
     /// <summary>
@@ -118,7 +130,11 @@ namespace Atomic.Elements
         /// Unsubscribes the associated action from the signal source.
         /// Safe to call multiple times.
         /// </summary>
-        public void Dispose() => this.signal.OnEvent -= this.action;
+        public void Dispose()
+        {
+            if (this.signal != null)
+                this.signal.OnEvent -= this.action;
+        }
     }
 
     /// <summary>
@@ -150,6 +166,10 @@ namespace Atomic.Elements
         /// Unsubscribes the associated action from the signal source.
         /// Safe to call multiple times.
         /// </summary>
-        public void Dispose() => this.signal.OnEvent -= this.action;
+        public void Dispose()
+        {
+            if (this.signal != null)
+                this.signal.OnEvent -= this.action;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace RTSGame
     public sealed class UnitsSystemInstaller : IEntityInstaller<IGameContext>
     {
         [SerializeField]
-        private UnitMultiFactory factoryCatalog;
+        private UnitCatalog factoryCatalog;
 
         public void Install(IGameContext context)
         {

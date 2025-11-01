@@ -46,6 +46,7 @@ namespace Atomic.Entities
                 }
             }
         }
+        public bool IsValid => this != null && _instanceId > 0;
 
         internal int _instanceId;
         

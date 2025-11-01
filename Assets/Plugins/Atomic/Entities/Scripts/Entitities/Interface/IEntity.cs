@@ -37,5 +37,7 @@ namespace Atomic.Entities
         /// Typically used for editor tooling, debugging, or runtime labeling.
         /// </summary>
         string Name { get; set; }
+        
+        bool IsValid { get; }
     }
 }

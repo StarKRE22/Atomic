@@ -9,11 +9,6 @@ namespace ShooterGame.Gameplay
         private ISignal<KillArgs> _killEvent;
         private IGameContext _gameContext;
 
-        private void OnKill(KillArgs args)
-        {
-            LeaderboardUseCase.AddScore(_gameContext, args);
-        }
-
         public void Init(IGameContext context)
         {
             _gameContext = context;
@@ -24,6 +19,11 @@ namespace ShooterGame.Gameplay
         public void Dispose(IEntity entity)
         {
             _killEvent.Unsubscribe(this.OnKill);
+        }
+
+        private void OnKill(KillArgs args)
+        {
+            LeaderboardUseCase.AddScore(_gameContext, args);
         }
     }
 }
