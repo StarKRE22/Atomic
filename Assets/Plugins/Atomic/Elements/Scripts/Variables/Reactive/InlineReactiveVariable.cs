@@ -11,7 +11,7 @@ namespace Atomic.Elements
     /// to external functions. Useful for binding external data sources or event systems.
     /// </summary>
     /// <typeparam name="T">The type of the value.</typeparam>
-    public class ReactiveProxyVariable<T> : IReactiveVariable<T>
+    public class InlineReactiveVariable<T> : IReactiveVariable<T>
     {
         /// <summary>
         /// Subscribes or unsubscribes to value change notifications using delegated handlers.
@@ -41,13 +41,13 @@ namespace Atomic.Elements
         private readonly Action<Action<T>> unsubscribe;
 
         /// <summary>
-        /// Initializes a new instance of <see cref="ReactiveProxyVariable{T}"/> with delegates.
+        /// Initializes a new instance of <see cref="InlineReactiveVariable{T}"/> with delegates.
         /// </summary>
         /// <param name="getter">Function to retrieve the current value.</param>
         /// <param name="setter">Action to assign a new value.</param>
         /// <param name="subscribe">Action to handle subscription.</param>
         /// <param name="unsubscribe">Action to handle unsubscription.</param>
-        public ReactiveProxyVariable(
+        public InlineReactiveVariable(
             Func<T> getter,
             Action<T> setter,
             Action<Action<T>> subscribe,
@@ -66,12 +66,12 @@ namespace Atomic.Elements
         public override string ToString() => this.Value?.ToString();
 
         /// <summary>
-        /// Begins a fluent builder for constructing a <see cref="ReactiveProxyVariable{T}"/>.
+        /// Begins a fluent builder for constructing a <see cref="InlineReactiveVariable{T}"/>.
         /// </summary>
         public static Builder StartBuild() => new();
 
         /// <summary>
-        /// Fluent builder for creating <see cref="ReactiveProxyVariable{T}"/> instances.
+        /// Fluent builder for creating <see cref="InlineReactiveVariable{T}"/> instances.
         /// </summary>
         public struct Builder
         {
@@ -117,16 +117,16 @@ namespace Atomic.Elements
             }
 
             /// <summary>
-            /// Builds and returns the configured <see cref="ReactiveProxyVariable{T}"/>.
+            /// Builds and returns the configured <see cref="InlineReactiveVariable{T}"/>.
             /// </summary>
-            public ReactiveProxyVariable<T> Build()
+            public InlineReactiveVariable<T> Build()
             {
                 if (_getter == null) throw new InvalidOperationException("Getter must be provided.");
                 if (_setter == null) throw new InvalidOperationException("Setter must be provided.");
                 if (_subscribe == null) throw new InvalidOperationException("Subscribe must be provided.");
                 if (_unsubscribe == null) throw new InvalidOperationException("Unsubscribe must be provided.");
 
-                return new ReactiveProxyVariable<T>(_getter, _setter, _subscribe, _unsubscribe);
+                return new InlineReactiveVariable<T>(_getter, _setter, _subscribe, _unsubscribe);
             }
         }
     }

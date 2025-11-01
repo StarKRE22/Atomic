@@ -25,7 +25,7 @@ namespace RTSGame
             var gameContext = GameContext.Instance;
             
             entity.AddFireCooldown(new Cooldown(_fireCooldown));
-            entity.AddFirePoint(new InlineFunction<Vector3>(() => CombatUseCase.GetFirePoint(entity, _fireOffset.Value)));
+            entity.AddFirePoint(new InlineValue<Vector3>(() => CombatUseCase.GetFirePoint(entity, _fireOffset.Value)));
             entity.AddFireRequest(new BaseRequest<IUnitEntity>());
             entity.WhenFixedTick(_ =>
             {

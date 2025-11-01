@@ -14,7 +14,7 @@ namespace Atomic.Elements
     [InlineProperty]
 #endif
     [Serializable]
-    public class InlineFunction<R> : IValue<R>
+    public class InlineFunction<R> : IFunction<R>
     {
         private readonly Func<R> func;
 

@@ -12,7 +12,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The type of the variable.</typeparam>
     [Serializable]
-    public class ProxyVariable<T> : IVariable<T>
+    public class InlineVariable<T> : IVariable<T>
     {
         /// <summary>
         /// Gets or sets the value via the delegated getter and setter.
@@ -31,11 +31,11 @@ namespace Atomic.Elements
         private readonly Action<T> setter;
 
         /// <summary>
-        /// Creates a <see cref="ProxyVariable{T}"/> with the specified getter and setter.
+        /// Creates a <see cref="InlineVariable{T}"/> with the specified getter and setter.
         /// </summary>
         /// <param name="getter">Function to retrieve the value.</param>
         /// <param name="setter">Action to update the value.</param>
-        public ProxyVariable(Func<T> getter, Action<T> setter)
+        public InlineVariable(Func<T> getter, Action<T> setter)
         {
             this.getter = getter ?? throw new ArgumentNullException(nameof(getter));
             this.setter = setter ?? throw new ArgumentNullException(nameof(setter));
@@ -47,12 +47,12 @@ namespace Atomic.Elements
         public override string ToString() => this.Value?.ToString();
 
         /// <summary>
-        /// Begins building a <see cref="ProxyVariable{T}"/> using a fluent builder pattern.
+        /// Begins building a <see cref="InlineVariable{T}"/> using a fluent builder pattern.
         /// </summary>
         public static Builder StartBuild() => new();
 
         /// <summary>
-        /// Fluent builder for constructing <see cref="ProxyVariable{T}"/> instances.
+        /// Fluent builder for constructing <see cref="InlineVariable{T}"/> instances.
         /// </summary>
         public struct Builder
         {
@@ -80,14 +80,14 @@ namespace Atomic.Elements
             }
 
             /// <summary>
-            /// Builds and returns the configured <see cref="ProxyVariable{T}"/>.
+            /// Builds and returns the configured <see cref="InlineVariable{T}"/>.
             /// </summary>
             /// <exception cref="InvalidOperationException">Thrown if getter or setter is not provided.</exception>
-            public ProxyVariable<T> Build()
+            public InlineVariable<T> Build()
             {
                 if (_getter == null) throw new InvalidOperationException("Getter must be provided.");
                 if (_setter == null) throw new InvalidOperationException("Setter must be provided.");
-                return new ProxyVariable<T>(_getter, _setter);
+                return new InlineVariable<T>(_getter, _setter);
             }
         }
     }

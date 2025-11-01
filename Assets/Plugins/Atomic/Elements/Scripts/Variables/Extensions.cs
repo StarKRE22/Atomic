@@ -27,7 +27,7 @@ namespace Atomic.Elements
         public static ReactiveVariable<T> AsReactiveVariable<T>(this T it) => new(it);
 
         /// <summary>
-        /// Creates a <see cref="ProxyVariable{R}"/> that wraps access to a field or property of an object.
+        /// Creates a <see cref="InlineVariable{T}"/> that wraps access to a field or property of an object.
         /// </summary>
         /// <typeparam name="T">The type of the object that contains the value.</typeparam>
         /// <typeparam name="R">The type of the value being proxied.</typeparam>
@@ -36,7 +36,7 @@ namespace Atomic.Elements
         /// <param name="setter">An action to set the value on the object.</param>
         /// <returns>A proxy variable that reflects the value through the provided accessors.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ProxyVariable<R> AsProxyVariable<T, R>(this T it, Func<T, R> getter, Action<T, R> setter) =>
+        public static InlineVariable<R> AsInlineVariable<T, R>(this T it, Func<T, R> getter, Action<T, R> setter) =>
             new(() => getter.Invoke(it), value => setter.Invoke(it, value));
     }
 }

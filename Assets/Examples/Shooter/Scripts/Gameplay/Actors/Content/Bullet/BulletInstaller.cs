@@ -46,7 +46,7 @@ namespace ShooterGame.Gameplay
 
             //Physics
             entity.AddTrigger(_trigger);
-            entity.AddPhysicsLayer(new ProxyVariable<int>(
+            entity.AddPhysicsLayer(new InlineVariable<int>(
                 getter: () => _gameObject.layer,
                 setter: value => _gameObject.layer = value
             ));
