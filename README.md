@@ -309,7 +309,7 @@ while(isGameRunning)
 }
 
 // Disable entity for updates -> Calls IEntityDisable
-character.Disable();
+entity.Disable();
 
 // Dispose entity resources -> Calls IEntityDispose
 entity.Dispose();
@@ -361,7 +361,7 @@ All examples are available inside **[Assets/Examples](Assets/Examples)**.
 
 ### 1️⃣ Beginner Sample
 
-A **simple 2-player mini-game** designed to introduce the fundamental ideas behind the **Atomic** framework.
+A **simple 2-player mini-game** designed to introduce the fundamental ideas behind the Atomic framework. [Link to the sample](Assets/Examples/Beginner).
 
 <img width="400" alt="Beginner sample preview" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
 
@@ -402,7 +402,7 @@ Atomic ecosystem.
 ### 2️⃣ Top-Down Shooter Sample
 
 The **Top-Down Shooter** demonstrates a more sophisticated and scalable game architecture, suitable for **mid-size
-projects**.
+projects**. [Link to the sample](Assets/Examples/Shooter).
 
 <img width="400" height="" alt="Shooter sample preview" src="https://github.com/user-attachments/assets/30ce41ab-2958-4979-b7cb-7d124cb1b791" />
 
@@ -452,7 +452,7 @@ projects**.
 <img width="400" height="" alt="RTS sample preview" src="https://github.com/user-attachments/assets/92d471ac-374a-4fc2-9bb6-86603107f16e" />
 
 The **RTS Sample** showcases **high-performance entity management** — running thousands of active units in real time
-with minimal overhead.
+with minimal overhead. [Link to the sample](Assets/Examples/RTS).
 
 #### 🕹 Gameplay Overview
 
@@ -478,12 +478,6 @@ with minimal overhead.
 3. Using `EntityView`, `EntityViewPool`, and `EntityCollectionView` for rendering and synchronization.
 4. Managing **5,000–10,000 active objects** efficiently on a single thread.
 5. Baking Unity objects into a **pure data-driven simulation** architecture.
-
----
-
-> 💡 These samples progressively guide you from basic gameplay architecture to advanced large-scale simulations —
-> helping you master **Atomic.Entities** from small prototypes to high-performance real-world projects.
-
 
 ---
 
