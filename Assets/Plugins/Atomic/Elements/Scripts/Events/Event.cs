@@ -13,7 +13,7 @@ namespace Atomic.Elements
     [InlineProperty]
 #endif
     [Serializable]
-    public class BaseEvent : IEvent, IDisposable
+    public class Event : IEvent, IDisposable
     {
         public event Action OnEvent;
         
@@ -38,7 +38,7 @@ namespace Atomic.Elements
     [InlineProperty]
 #endif
     [Serializable]
-    public class BaseEvent<T> : IEvent<T>, IDisposable
+    public class Event<T> : IEvent<T>, IDisposable
     {
         public event Action<T> OnEvent;
         
@@ -63,7 +63,7 @@ namespace Atomic.Elements
     [InlineProperty]
 #endif
     [Serializable]
-    public class BaseEvent<T1, T2> : IEvent<T1, T2>, IDisposable
+    public class Event<T1, T2> : IEvent<T1, T2>, IDisposable
     {
         public event Action<T1, T2> OnEvent;
         
@@ -88,7 +88,7 @@ namespace Atomic.Elements
     [InlineProperty]
 #endif
     [Serializable]
-    public class BaseEvent<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
+    public class Event<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
     {
         public event Action<T1, T2, T3> OnEvent;
         
@@ -113,7 +113,7 @@ namespace Atomic.Elements
     [InlineProperty]
 #endif
     [Serializable]
-    public class BaseEvent<T1, T2, T3, T4> : IEvent<T1, T2, T3, T4>, IDisposable
+    public class Event<T1, T2, T3, T4> : IEvent<T1, T2, T3, T4>, IDisposable
     {
         public event Action<T1, T2, T3, T4> OnEvent;
         

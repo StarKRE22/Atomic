@@ -19,8 +19,8 @@ namespace RTSGame
             entity.AddMoveableTag();
             entity.AddMoveSpeed(_moveSpeed);
             entity.AddRotationSpeed(_rotationSpeed);
-            entity.AddMoveRequest(new BaseRequest<Vector3>());
-            entity.AddMoveEvent(new BaseEvent<Vector3>());
+            entity.AddMoveRequest(new Request<Vector3>());
+            entity.AddMoveEvent(new Event<Vector3>());
             entity.WhenFixedTick(deltaTime =>
             {
                 if (LifeUseCase.IsAlive(entity) &&

@@ -1,6 +1,7 @@
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
+using Event = Atomic.Elements.Event;
 
 namespace ShooterGame.Gameplay
 {
@@ -20,7 +21,7 @@ namespace ShooterGame.Gameplay
 
         public override void Install(IWeapon weapon)
         {
-            weapon.AddFireEvent(new BaseEvent());
+            weapon.AddFireEvent(new Event());
             weapon.AddFireAction(new InlineAction(() =>
             {
                 if (_ammo.Value <= 0 || !_cooldown.IsCompleted())

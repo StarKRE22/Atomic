@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
+using Event = Atomic.Elements.Event;
 
 namespace ShooterGame.Gameplay
 {
@@ -32,10 +33,10 @@ namespace ShooterGame.Gameplay
             context.AddPlayers(new Dictionary<TeamType, IPlayerContext>());
             context.AddWorldTransform(GameObject.Find(WORLD_TRANSFORM_NAME).transform);
             context.AddTeamCatalog(_teamCatalog);
-            context.AddKillEvent(new BaseEvent<KillArgs>());
+            context.AddKillEvent(new Event<KillArgs>());
             context.AddRespawnDelay(_respawnTime);
             context.AddBulletPool(_bulletPool);
-            context.AddGameOverEvent(new BaseEvent());
+            context.AddGameOverEvent(new Event());
 
             context.Install(_spawnPointsInstaller);
             context.Install(_gameCycleInstaller);

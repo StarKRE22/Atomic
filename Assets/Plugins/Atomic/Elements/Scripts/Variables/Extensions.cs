@@ -9,13 +9,13 @@ namespace Atomic.Elements
     public static partial class Extensions
     {
         /// <summary>
-        /// Wraps a value in a <see cref="BaseVariable{T}"/>.
+        /// Wraps a value in a <see cref="Variable{T}"/>.
         /// </summary>
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <param name="it">The value to wrap.</param>
-        /// <returns>A <see cref="BaseVariable{T}"/> containing the given value.</returns>
+        /// <returns>A <see cref="Variable{T}"/> containing the given value.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static BaseVariable<T> AsVariable<T>(this T it) => new(it);
+        public static Variable<T> AsVariable<T>(this T it) => new(it);
 
         /// <summary>
         /// Wraps a value in a <see cref="ReactiveVariable{T}"/> for reactive subscriptions.

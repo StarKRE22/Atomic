@@ -31,7 +31,10 @@ namespace Atomic.Elements
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="transform"/> is null.</exception>
         public TransformParentVariable(Transform transform)
         {
-            _transform = transform ?? throw new ArgumentNullException(nameof(transform));
+            if (transform == null)
+                throw new ArgumentNullException(nameof(transform));
+
+            _transform = transform;
         }
     }
 }

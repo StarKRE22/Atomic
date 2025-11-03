@@ -17,6 +17,7 @@ namespace BeginnerGame
         {
             Cooldown period = _spawnInfo.period;
             period.Tick(deltaTime);
+           
             if (period.IsCompleted())
             {
                 this.SpawnCoin();

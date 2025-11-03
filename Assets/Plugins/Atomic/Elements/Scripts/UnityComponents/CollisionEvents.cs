@@ -32,21 +32,21 @@ namespace Atomic.Elements
         /// Triggers the <see cref="OnEntered"/> event.
         /// </summary>
         /// <param name="collision">Information about the collision.</param>
-        public void OnCollisionEnter(Collision collision) => this.OnEntered?.Invoke(collision);
+        private void OnCollisionEnter(Collision collision) => this.OnEntered?.Invoke(collision);
 
         /// <summary>
         /// Unity callback for when this collider/rigidbody stops colliding with another collider.
         /// Triggers the <see cref="OnExited"/> event.
         /// </summary>
         /// <param name="collision">Information about the collision.</param>
-        public void OnCollisionExit(Collision collision) => this.OnExited?.Invoke(collision);
+        private void OnCollisionExit(Collision collision) => this.OnExited?.Invoke(collision);
 
         /// <summary>
         /// Unity callback for each frame this collider/rigidbody continues colliding with another collider.
         /// Triggers the <see cref="OnStay"/> event.
         /// </summary>
         /// <param name="collision">Information about the collision.</param>
-        public void OnCollisionStay(Collision collision) => this.OnStay?.Invoke(collision);
+        private void OnCollisionStay(Collision collision) => this.OnStay?.Invoke(collision);
     }
 }
 #endif
