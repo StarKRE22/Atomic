@@ -1,6 +1,7 @@
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
+using Event = Atomic.Elements.Event;
 
 namespace ShooterGame.Gameplay
 {
@@ -46,28 +47,28 @@ namespace ShooterGame.Gameplay
             //Life:
             entity.AddDamageableTag();
             entity.AddHealth(_health);
-            entity.AddTakeDamageEvent(new BaseEvent<DamageArgs>());
-            entity.AddTakeDeathEvent(new BaseEvent<DamageArgs>());
-            entity.AddRespawnEvent(new BaseEvent());
+            entity.AddTakeDamageEvent(new Event<DamageArgs>());
+            entity.AddTakeDeathEvent(new Event<DamageArgs>());
+            entity.AddRespawnEvent(new Event());
             
             //Combat:
             entity.AddFireCondition(new AndExpression(_health.Exists));
             entity.AddFireAction(new CharacterFireAction(entity));
-            entity.AddFireEvent(new BaseEvent());
+            entity.AddFireEvent(new Event());
             entity.AddWeapon(_initialWeapon);
 
             //Movement:
             entity.AddMovementSpeed(_moveSpeed);
             entity.AddMovementDirection(new ReactiveVector3());
             entity.AddMovementCondition(new AndExpression(_health.Exists));
-            entity.AddMovementEvent(new BaseEvent<Vector3>());
+            entity.AddMovementEvent(new Event<Vector3>());
             entity.AddBehaviour<KinematicMovementBehaviour>();
 
             //Rotation:
             entity.AddRotationSpeed(_rotationSpeed);
             entity.AddRotationDirection(new ReactiveVariable<Vector3>());
             entity.AddRotationCondition(new AndExpression(_health.Exists));
-            entity.AddRotationEvent(new BaseEvent<Vector3>());
+            entity.AddRotationEvent(new Event<Vector3>());
             entity.AddBehaviour<RotationBehaviour>();
 
             //Physics:

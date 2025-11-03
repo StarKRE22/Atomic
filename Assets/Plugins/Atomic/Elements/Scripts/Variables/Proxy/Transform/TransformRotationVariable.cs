@@ -16,15 +16,18 @@ namespace Atomic.Elements
     [Serializable]
     public sealed class TransformRotationVariable : IVariable<Quaternion>
     {
-        private readonly Transform target;
+        private readonly Transform _transform;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransformRotationVariable"/> class.
         /// </summary>
         /// <param name="target">The transform whose rotation is exposed.</param>
-        public TransformRotationVariable(Transform target)
+        public TransformRotationVariable(Transform transform)
         {
-            this.target = target ?? throw new ArgumentNullException(nameof(target));
+            if (transform == null)
+                throw new ArgumentNullException(nameof(transform));
+
+            _transform = transform;
         }
 
         /// <summary>
@@ -35,14 +38,14 @@ namespace Atomic.Elements
 #endif
         public Quaternion Value
         {
-            get => this.target.rotation;
-            set => this.target.rotation = value;
+            get => _transform.rotation;
+            set => _transform.rotation = value;
         }
 
         /// <summary>
         /// Returns the current rotation of the transform.
         /// </summary>
-        public Quaternion Invoke() => this.target.rotation;
+        public Quaternion Invoke() => _transform.rotation;
     }
 }
 #endif

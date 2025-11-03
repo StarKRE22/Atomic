@@ -16,15 +16,18 @@ namespace Atomic.Elements
     [Serializable]
     public sealed class TransformPositionVariable : IVariable<Vector3>
     {
-        private readonly Transform target;
+        private readonly Transform _transform;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransformPositionVariable"/> class.
         /// </summary>
-        /// <param name="target">The transform whose position is exposed.</param>
-        public TransformPositionVariable(Transform target)
+        /// <param name="transform">The transform whose position is exposed.</param>
+        public TransformPositionVariable(Transform transform)
         {
-            this.target = target ?? throw new ArgumentNullException(nameof(target));
+            if (transform == null)
+                throw new ArgumentNullException(nameof(transform));
+
+            _transform = transform;
         }
 
         /// <summary>
@@ -35,14 +38,14 @@ namespace Atomic.Elements
 #endif
         public Vector3 Value
         {
-            get => this.target.position;
-            set => this.target.position = value;
+            get => _transform.position;
+            set => _transform.position = value;
         }
 
         /// <summary>
         /// Returns the current position of the transform.
         /// </summary>
-        public Vector3 Invoke() => this.target.position;
+        public Vector3 Invoke() => _transform.position;
     }
 }
 #endif

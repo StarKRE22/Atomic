@@ -16,7 +16,7 @@ namespace RTSGame
             IGameContext gameContext = GameContext.Instance;
             entity.AddDamageableTag();
             entity.AddHealth(new Health(_health));
-            entity.AddTakeDamageEvent(new BaseEvent<int>());
+            entity.AddTakeDamageEvent(new Event<int>());
             entity.AddBehaviour(new LifeBehaviour(gameContext));
         }
     }

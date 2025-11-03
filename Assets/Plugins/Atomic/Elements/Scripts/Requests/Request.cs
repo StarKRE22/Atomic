@@ -16,7 +16,7 @@ namespace Atomic.Elements
     [InlineProperty]
 #endif
     [Serializable]
-    public class BaseRequest : IRequest
+    public class Request : IRequest
     {
         /// <inheritdoc />
         public bool Required => _required;
@@ -47,7 +47,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The type of the argument.</typeparam>
     [Serializable]
-    public class BaseRequest<T> : IRequest<T>
+    public class Request<T> : IRequest<T>
     {
         /// <inheritdoc />
         public bool Required => _required;
@@ -101,7 +101,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The type of the first argument.</typeparam>
     /// <typeparam name="T2">The type of the second argument.</typeparam>
     [Serializable]
-    public class BaseRequest<T1, T2> : IRequest<T1, T2>
+    public class Request<T1, T2> : IRequest<T1, T2>
     {
         /// <inheritdoc />
         public bool Required => _required;
@@ -168,7 +168,7 @@ namespace Atomic.Elements
     /// <typeparam name="T2">The type of the second argument.</typeparam>
     /// <typeparam name="T3">The type of the third argument.</typeparam>
     [Serializable]
-    public class BaseRequest<T1, T2, T3> : IRequest<T1, T2, T3>
+    public class Request<T1, T2, T3> : IRequest<T1, T2, T3>
     {
         /// <inheritdoc />
         public bool Required => _required;
@@ -248,7 +248,7 @@ namespace Atomic.Elements
     /// <typeparam name="T3">The type of the third argument.</typeparam>
     /// <typeparam name="T4">The type of the fourth argument.</typeparam>
     [Serializable]
-    public class BaseRequest<T1, T2, T3, T4> : IRequest<T1, T2, T3, T4>
+    public class Request<T1, T2, T3, T4> : IRequest<T1, T2, T3, T4>
     {
         /// <inheritdoc />
         public bool Required => _required;

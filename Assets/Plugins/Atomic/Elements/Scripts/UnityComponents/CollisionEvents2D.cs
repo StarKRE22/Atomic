@@ -33,21 +33,21 @@ namespace Atomic.Elements
         /// Triggers the <see cref="OnEntered"/> event.
         /// </summary>
         /// <param name="collision">Information about the 2D collision.</param>
-        public void OnCollisionEnter2D(Collision2D collision) => this.OnEntered?.Invoke(collision);
+        private void OnCollisionEnter2D(Collision2D collision) => this.OnEntered?.Invoke(collision);
 
         /// <summary>
         /// Unity callback for when this 2D collider/rigidbody stops colliding with another 2D collider.
         /// Triggers the <see cref="OnExited"/> event.
         /// </summary>
         /// <param name="collision">Information about the 2D collision.</param>
-        public void OnCollisionExit2D(Collision2D collision) => this.OnExited?.Invoke(collision);
+        private void OnCollisionExit2D(Collision2D collision) => this.OnExited?.Invoke(collision);
 
         /// <summary>
         /// Unity callback for each frame this 2D collider/rigidbody continues colliding with another 2D collider.
         /// Triggers the <see cref="OnStay"/> event.
         /// </summary>
         /// <param name="collision">Information about the 2D collision.</param>
-        public void OnCollisionStay2D(Collision2D collision) => this.OnStay?.Invoke(collision);
+        private void OnCollisionStay2D(Collision2D collision) => this.OnStay?.Invoke(collision);
     }
 }
 #endif

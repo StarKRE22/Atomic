@@ -31,7 +31,7 @@ namespace BeginnerGame
 
             // Movement
             entity.AddMovementSpeed(_moveSpeed);
-            entity.AddMovementDirection(new BaseVariable<Vector3>());
+            entity.AddMovementDirection(new Variable<Vector3>());
             entity.AddBehaviour<MovementBehaviour>();
 
             // Input

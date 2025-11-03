@@ -16,15 +16,18 @@ namespace Atomic.Elements
     [Serializable]
     public sealed class TransformScaleVariable : IVariable<Vector3>
     {
-        private readonly Transform target;
+        private readonly Transform _transform;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransformScaleVariable"/> class.
         /// </summary>
         /// <param name="target">The transform whose scale is exposed.</param>
-        public TransformScaleVariable(Transform target)
+        public TransformScaleVariable(Transform transform)
         {
-            this.target = target ?? throw new ArgumentNullException(nameof(target));
+            if (transform == null)
+                throw new ArgumentNullException(nameof(transform));
+
+            _transform = transform;
         }
 
         /// <summary>
@@ -35,14 +38,14 @@ namespace Atomic.Elements
 #endif
         public Vector3 Value
         {
-            get => this.target.localScale;
-            set => this.target.localScale = value;
+            get => _transform.localScale;
+            set => _transform.localScale = value;
         }
 
         /// <summary>
         /// Returns the current local scale of the transform.
         /// </summary>
-        public Vector3 Invoke() => this.target.localScale;
+        public Vector3 Invoke() => _transform.localScale;
     }
 }
 #endif

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Entities;
@@ -26,7 +27,9 @@ namespace BeginnerGame
 
         private void OnGameTimeFinished()
         {
-            Debug.Log($"{this.GetWinnerTeam()} is win!");
+            TeamType teamType = this.GetWinner();
+            this.LogWinner(teamType);
+            
 
             foreach (IEntity player in _players.Values) 
                 player.Disable();
@@ -34,7 +37,21 @@ namespace BeginnerGame
             _gameContext.Disable();
         }
 
-        public TeamType GetWinnerTeam()
+        private void LogWinner(TeamType teamType)
+        {
+            Color color = teamType switch
+            {
+                TeamType.BLUE => Color.blue,
+                TeamType.RED => Color.red,
+                TeamType.NONE => Color.gray,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+
+            string hex = $"#{ColorUtility.ToHtmlStringRGB(color)}";
+            Debug.Log($"<color={hex}>{teamType}</color> is win!");
+        }
+
+        private TeamType GetWinner()
         {
             int redMoney = this.GetMoney(TeamType.RED);
             int blueMoney = this.GetMoney(TeamType.BLUE);
