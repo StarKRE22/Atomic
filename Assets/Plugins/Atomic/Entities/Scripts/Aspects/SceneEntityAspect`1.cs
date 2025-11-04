@@ -12,6 +12,7 @@ namespace Atomic.Entities
     /// logic to apply and discard behaviors or properties on entities during runtime.
     /// Attach this component to a GameObject in your scene to use it.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Aspects/SceneEntityAspect%601.md")]
     public abstract class SceneEntityAspect<E> : MonoBehaviour, IEntityAspect<E> where E : IEntity
     {
         /// <summary>

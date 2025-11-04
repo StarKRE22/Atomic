@@ -11,6 +11,7 @@ namespace Atomic.Elements
     /// </summary>
     [AddComponentMenu("Atomic/Elements/Collision Events 2D")]
     [DisallowMultipleComponent]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Utils/CollisionEvents2D.md")]
     public sealed class CollisionEvents2D : MonoBehaviour
     {
         /// <summary>

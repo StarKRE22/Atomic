@@ -38,6 +38,13 @@ namespace Atomic.Entities
         /// </summary>
         string Name { get; set; }
         
+        /// <summary>
+        /// Gets a value indicating whether the entity is valid and active within
+        /// the runtime context.
+        /// </summary>
+        /// <value>
+        /// <see langword="true"/> if the entity is valid; otherwise, <see langword="false"/>.
+        /// </value>
         bool IsValid { get; }
     }
 }

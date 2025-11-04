@@ -23,6 +23,7 @@ namespace Atomic.Entities
     /// 
     /// Derived classes must implement <see cref="Create"/> to construct new entity instances.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Factories/SceneEntityFactory%601.md")]
     public abstract partial class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
     {
 #if ODIN_INSPECTOR

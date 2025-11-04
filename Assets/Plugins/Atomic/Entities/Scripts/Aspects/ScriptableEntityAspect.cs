@@ -1,4 +1,5 @@
 #if UNITY_5_3_OR_NEWER
+using UnityEngine;
 
 namespace Atomic.Entities
 {
@@ -10,6 +11,7 @@ namespace Atomic.Entities
     /// with <typeparamref name="E"/> fixed to <see cref="IEntity"/>. 
     /// It implements <see cref="IEntityAspect"/> and can be used as a ScriptableObject asset.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Aspects/ScriptableEntityAspect.md")]
     public abstract class ScriptableEntityAspect : ScriptableEntityAspect<IEntity>, IEntityAspect
     {
     }

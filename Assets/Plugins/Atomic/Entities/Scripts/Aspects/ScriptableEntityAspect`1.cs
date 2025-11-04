@@ -11,6 +11,7 @@ namespace Atomic.Entities
     /// Inherit from this class to create reusable ScriptableObject assets that encapsulate
     /// logic to apply and discard behaviors or properties on entities.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Aspects/ScriptableEntityAspect%601.md")]
     public abstract class ScriptableEntityAspect<E> : ScriptableObject, IEntityAspect<E> where E : IEntity
     {
         /// <summary>

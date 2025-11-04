@@ -40,6 +40,11 @@ namespace Atomic.Entities
                 }
             }
         }
+        
+        /// <inheritdoc/>
+        /// <value>
+        /// Returns <see langword="true"/> if the entity has a valid assigned <see cref="InstanceID"/>; otherwise, <see langword="false"/>.
+        /// </value>
         public bool IsValid => _instanceId > 0;
         
         private string _name;

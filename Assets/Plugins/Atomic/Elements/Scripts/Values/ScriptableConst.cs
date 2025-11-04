@@ -16,6 +16,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
     [InlineProperty]
 #endif
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Values/ScriptableConst.md")]
     public abstract class ScriptableConst<T> : ScriptableObject, IValue<T>
     {
         /// <summary>

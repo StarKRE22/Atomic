@@ -8,6 +8,26 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// Represents a dynamic, type-safe view (filter) over an existing entity collection,
+    /// selecting entities of type <typeparamref name="E"/> from a source of type <typeparamref name="B"/>.
+    /// </summary>
+    /// <typeparam name="E">The derived entity type to include in the filter.</typeparam>
+    /// <typeparam name="B">The base entity type that the source collection exposes.</typeparam>
+    /// <remarks>
+    /// <para>
+    /// The <see cref="TypedEntityFilter{E, B}"/> observes a source collection of entities
+    /// and maintains a live subset of entities that match the given <paramref name="predicate"/>.
+    /// </para>
+    /// <para>
+    /// The filter automatically synchronizes its internal state whenever entities are
+    /// added to or removed from the source, or when tracked entities trigger state changes
+    /// via <see cref="IEntityTrigger{TEntity}"/>.
+    /// </para>
+    /// </remarks>
+    /// <seealso cref="IReadOnlyEntityCollection{TEntity}"/>
+    /// <seealso cref="IEntityTrigger{TEntity}"/>
+    /// <seealso cref="EntityCollection{TEntity}"/>
     public class TypedEntityFilter<E, B> : IReadOnlyEntityCollection<E>, IDisposable
         where B : IEntity
         where E : B
@@ -28,7 +48,6 @@ namespace Atomic.Entities
         [ShowInInspector]
 #endif
         private readonly EntityCollection<E> state;
-
         private readonly IReadOnlyEntityCollection<B> source;
         private readonly Predicate<E> predicate;
         private readonly IEntityTrigger<E>[] triggers;

@@ -10,6 +10,7 @@ namespace Atomic.Elements
     /// </summary>
     [AddComponentMenu("Atomic/Elements/Trigger Events 2D")]
     [DisallowMultipleComponent]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Utils/TriggerEvents2D.md")]
     public sealed class TriggerEvents2D : MonoBehaviour
     {
         /// <summary>

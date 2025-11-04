@@ -12,6 +12,7 @@ namespace Atomic.Entities
     /// When <see cref="Bake"/> is called, it creates a new entity and destroys the GameObject.
     /// Derived classes must implement <see cref="Create"/> to construct the entity.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Baking/SceneEntityBaker%601.md")]
     public abstract partial class SceneEntityBaker<E> : MonoBehaviour where E : IEntity
     {
         /// <summary>

@@ -11,6 +11,7 @@ namespace Atomic.Entities
     /// such as setting default values, tags, or attaching behaviors.
     /// Supports both runtime and edit-time contexts via utility methods.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Installers/ScriptableEntityInstaller.md")]
     public abstract class ScriptableEntityInstaller : ScriptableObject, IEntityInstaller
     {
         /// <summary>

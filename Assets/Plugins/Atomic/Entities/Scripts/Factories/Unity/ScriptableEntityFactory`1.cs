@@ -21,6 +21,7 @@ namespace Atomic.Entities
     /// This factory can be extended to define custom entity creation logic. The <see cref="Compile"/> method
     /// extracts entity metadata (like name, tag count, etc.) and stores it for optimization or display purposes.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Factories/ScriptableEntityFactory%601.md")]
     public abstract class ScriptableEntityFactory<E> : ScriptableObject, IEntityFactory<E> where E : IEntity
     {
 #if ODIN_INSPECTOR

@@ -31,7 +31,6 @@ namespace Atomic.Entities
         [ShowInInspector]
 #endif
         private readonly EntityCollection<E> state;
-
         private readonly IReadOnlyEntityCollection<E> source;
         private readonly Predicate<E> predicate;
         private readonly IEntityTrigger<E>[] triggers;

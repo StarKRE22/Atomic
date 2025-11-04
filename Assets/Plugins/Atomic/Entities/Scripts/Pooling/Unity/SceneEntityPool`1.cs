@@ -18,6 +18,7 @@ namespace Atomic.Entities
     /// This pool uses a prefab to instantiate entities and manages their reuse via a stack.
     /// Entities are activated/deactivated on rent/return, and can be preloaded using <see cref="Init(int)"/>.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Pooling/SceneEntityPool%601.md")]
     public abstract class SceneEntityPool<E> : MonoBehaviour, IEntityPool<E> where E : SceneEntity
     {
 #if ODIN_INSPECTOR
@@ -168,7 +169,7 @@ namespace Atomic.Entities
             entity.gameObject.SetActive(false);
             entity.transform.SetParent(_container);
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private E CreateEntity()
         {
@@ -190,13 +191,14 @@ namespace Atomic.Entities
 
             [Tooltip("The prefab used to instantiate pooled entities")]
             public E prefab;
-            
-            [Tooltip("Optional transform under which pooled entities will be parented. Defaults to the pool's GameObject if null")]
+
+            [Tooltip(
+                "Optional transform under which pooled entities will be parented. Defaults to the pool's GameObject if null")]
             public Transform container;
-           
+
             [Tooltip("Whether the pool should automatically initialize in Awake()")]
             public bool initOnAwake;
-            
+
             [Tooltip("Number of entities to pre-instantiate in the pool")]
             public int initialCount;
         }

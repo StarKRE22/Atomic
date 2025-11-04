@@ -13,6 +13,7 @@ namespace Atomic.Entities
     /// </remarks>
     [AddComponentMenu("Atomic/Entities/Entity Collection View")]
     [DisallowMultipleComponent]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityCollectionView.md")]
     public class EntityCollectionView : EntityCollectionView<IEntity, EntityView>
     {
     }

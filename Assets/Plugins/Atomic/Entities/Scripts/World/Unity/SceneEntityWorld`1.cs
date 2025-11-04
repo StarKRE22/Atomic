@@ -15,6 +15,7 @@ namespace Atomic.Entities
     /// <example>
     /// Attach this component to a GameObject in the scene to automatically scan and manage entities of type <typeparamref name="E"/>.
     /// </example>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Worlds/SceneEntityWorld%601.md")]
     public abstract partial class SceneEntityWorld<E> : MonoBehaviour, IEntityWorld<E> where E : SceneEntity
     {
         private readonly EntityWorld<E> _world = new();

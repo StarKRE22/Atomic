@@ -15,6 +15,7 @@ namespace Atomic.Elements
     /// while internally invoking all contained scene actions in order.
     /// </summary>
     [AddComponentMenu("Atomic/Elements/Action Composite")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionComposite.md")]
     public class SceneActionComposite : SceneActionAbstract
     {
 #if ODIN_INSPECTOR
@@ -48,6 +49,7 @@ namespace Atomic.Elements
     /// Composite scene action with one generic parameter.
     /// </summary>
     /// <typeparam name="T">The type of the argument.</typeparam>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionComposite%601.md")]
     public class SceneActionComposite<T> : SceneActionAbstract<T>
     {
 #if ODIN_INSPECTOR
@@ -80,6 +82,7 @@ namespace Atomic.Elements
     /// <summary>
     /// Composite scene action with two generic parameters.
     /// </summary>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionComposite%602.md")]
     public class SceneActionComposite<T1, T2> : SceneActionAbstract<T1, T2>
     {
 #if ODIN_INSPECTOR
@@ -87,7 +90,7 @@ namespace Atomic.Elements
 #endif
         [Space, SerializeField]
         public SceneActionAbstract<T1, T2>[] actions;
-        
+
         /// <summary>
         /// Invokes all contained scene actions sequentially.
         /// </summary>
@@ -112,7 +115,7 @@ namespace Atomic.Elements
     /// <summary>
     /// Composite scene action with three generic parameters.
     /// </summary>
-    [Serializable]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionComposite%603.md")]
     public class SceneActionComposite<T1, T2, T3> : SceneActionAbstract<T1, T2, T3>
     {
 #if ODIN_INSPECTOR
@@ -145,6 +148,7 @@ namespace Atomic.Elements
     /// <summary>
     /// Composite scene action with four generic parameters.
     /// </summary>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionComposite%604.md")]
     public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, T3, T4>
     {
 #if ODIN_INSPECTOR

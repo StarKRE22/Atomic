@@ -12,6 +12,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Entities/SceneEntity.md")]
     public partial class SceneEntity : MonoBehaviour, IEntity
     {
         private const int UNDEFINED_INDEX = -1;
@@ -46,6 +47,18 @@ namespace Atomic.Entities
                 }
             }
         }
+        
+        /// <inheritdoc/>
+        /// <summary>
+        /// Gets a value indicating whether this entity is valid within the Unity scene context.
+        /// </summary>
+        /// <remarks>
+        /// Returns <see langword="true"/> if the underlying <see cref="GameObject"/> is not destroyed 
+        /// and the entity has a valid assigned <see cref="InstanceID"/>.
+        /// </remarks>
+        /// <value>
+        /// <see langword="true"/> if the entity is valid; otherwise, <see langword="false"/>.
+        /// </value>
         public bool IsValid => this != null && _instanceId > 0;
 
         internal int _instanceId;
