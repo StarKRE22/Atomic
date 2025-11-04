@@ -1,4 +1,4 @@
-# 🧩 BaseRequest
+# 🧩 Request
 
 Represents a <b>parameterless</b> request action.
 
@@ -20,7 +20,7 @@ Represents a <b>parameterless</b> request action.
 ## 🗂 Example of Usage
 
 ```csharp
-var damageRequest = new BaseRequest<Character>();
+var damageRequest = new Request<Character>();
 
 // Trigger the request from gameplay logic
 damageRequest.Invoke(targetCharacter);
@@ -45,7 +45,7 @@ if (damageRequest.Consume(out target))
 
 ```csharp
 [Serializable]
-public class BaseRequest : IRequest
+public class Request : IRequest
 ```
 
 - **Description:** Represents a <b>parameterless</b> request action.

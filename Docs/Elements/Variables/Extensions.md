@@ -11,13 +11,13 @@ access.
 - [Examples of Usage](#-examples-of-usage)
     - [AsVariable()](#ex1)
     - [AsReactiveVariable()](#ex2)
-    - [AsProxyVariable()](#ex3)
+    - [AsInlineVariable()](#ex3)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
         - [AsVariable<T>()](#asvariablet)
         - [AsReactiveVariable<T>()](#asreactivevariablet)
-        - [AsProxyVariable<T, R>()](#asproxyvariablet-r)
+        - [AsInlineVariable<T, R>()](#asproxyvariablet-r)
 
 ---
 
@@ -28,7 +28,7 @@ access.
 ### 1️⃣ Using AsVariable()
 
 ```csharp
-BaseVariable<int> variable = 42.AsVariable();
+Variable<int> variable = 42.AsVariable();
 Console.WriteLine(variable.Value); // Output: 42
 ```
 
@@ -47,10 +47,10 @@ reactiveVariable.Value = 20;
 
 <div id="ex3"></div>
 
-### 3️⃣ Using  AsProxyVariable()
+### 3️⃣ Using  AsInlineVariable()
 
 ```csharp
-ProxyVariable<Vector3> positionProxy = transform.AsProxyVariable(
+InlineVariable<Vector3> positionProxy = transform.AsInlineVariable(
     getter: t => t.position, 
     setter: (t, value) => t.position = value
 );
@@ -75,13 +75,13 @@ public static class Extensions
 #### `AsVariable<T>()`
 
 ```csharp
-public static BaseVariable<T> AsVariable<T>(this T it)
+public static Variable<T> AsVariable<T>(this T it)
 ```
 
-- **Description:** Wraps a value in a `BaseVariable<T>`.
+- **Description:** Wraps a value in a `Variable<T>`.
 - **Type Parameter**: `T` – The type of the value to wrap
 - **Parameter:** `it` – The value to wrap.
-- **Returns:** A `BaseVariable<T>` containing the given value.
+- **Returns:** A `Variable<T>` containing the given value.
 
 #### `AsReactiveVariable<T>()`
 
@@ -94,17 +94,17 @@ public static ReactiveVariable<T> AsReactiveVariable<T>(this T it)
 - **Parameter:** `it` – The value to wrap.
 - **Returns:** A `ReactiveVariable<T>` containing the given value.
 
-#### `AsProxyVariable<T, R>()`
+#### `AsInlineVariable<T, R>()`
 
 ```csharp
-public static ProxyVariable<R> AsProxyVariable<T, R>(
+public static InlineVariable<R> AsInlineVariable<T, R>(
     this T it,
     Func<T, R> getter,
     Action<T, R> setter
 )
 ```
 
-- **Description:** Creates a `ProxyVariable<R>` that wraps access to a field or property of an object.
+- **Description:** Creates a `InlineVariable<R>` that wraps access to a field or property of an object.
 - **Type Parameters**:
     - **T** – The type of the source object.
     - **R** – The type of the value being proxied.
@@ -112,4 +112,4 @@ public static ProxyVariable<R> AsProxyVariable<T, R>(
     - **it** – The source object.
     - **getter** – A function to retrieve the value from the object.
     - **setter** – An action to set the value on the object.
-- **Returns:** A `ProxyVariable<R>` that reflects the value through the provided getter and setter.
+- **Returns:** A `InlineVariable<R>` that reflects the value through the provided getter and setter.

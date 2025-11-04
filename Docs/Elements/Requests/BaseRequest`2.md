@@ -1,4 +1,4 @@
-# 🧩 BaseRequest&lt;T1, T2&gt;
+# 🧩 Request&lt;T1, T2&gt;
 
 Represents a request action with <b>two input arguments</b>.
 
@@ -25,7 +25,7 @@ Represents a request action with <b>two input arguments</b>.
 
 ```csharp
 [Serializable]
-public class BaseRequest<T1, T2> : IRequest<T1, T2>
+public class Request<T1, T2> : IRequest<T1, T2>
 ```
 
 - **Description:** Represents a request action with <b>two input arguments</b>.

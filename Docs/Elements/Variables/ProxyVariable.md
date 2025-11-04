@@ -1,4 +1,4 @@
-# 🧩 ProxyVariable&lt;T&gt;
+# 🧩 InlineVariable&lt;T&gt;
 
 Provides a **read-write variable** that delegates its value to **external getter and setter
 functions**. This is useful when you want to integrate third-party or existing fields /
@@ -14,7 +14,7 @@ properties into systems expecting [IVariable\<T>](IVariable.md) without duplicat
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
-      - [ProxyVariable(Func\<T>, Action\<T>)](#proxyvariablefunct-actiont)
+      - [InlineVariable(Func\<T>, Action\<T>)](#inlinevariablefunct-actiont)
     - [Properties](#-properties)
         - [Value](#value)
     - [Methods](#-methods)
@@ -35,7 +35,7 @@ properties into systems expecting [IVariable\<T>](IVariable.md) without duplicat
 
 ```csharp
 //Create a new proxy of Transform.position
-IVariable<Vector3> position = new ProxyVariable<Vector3>(
+IVariable<Vector3> position = new InlineVariable<Vector3>(
     getter: () => transform.position,
     setter: value => transform.position = value
 );
@@ -44,7 +44,7 @@ IVariable<Vector3> position = new ProxyVariable<Vector3>(
 position.Value += Vector3.forward; 
 ```
 
-Also, you can use the [fluent builder](ProxyVariableBuilder.md) for proxy creation:
+Also, you can use the [fluent builder](InlineVariableBuilder.md) for proxy creation:
 
 <div id="ex2"></div>
 
@@ -52,7 +52,7 @@ Also, you can use the [fluent builder](ProxyVariableBuilder.md) for proxy creati
 
 ```csharp
 //Create a new proxy of Transform.position
-IVariable<Vector3> position = ProxyVariable<Vector3>
+IVariable<Vector3> position = InlineVariable<Vector3>
     .StartBuild()
     .WithGetter(() => transform.position)
     .WithSetter(value => transform.position = value)
@@ -69,7 +69,7 @@ position.Value += Vector3.forward;
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public class ProxyVariable<T> : IVariable<T>
+public class InlineVariable<T> : IVariable<T>
 ```
 
 - **Description:** Provides a **read-write variable** that delegates its value to **external getter and setter
@@ -84,13 +84,13 @@ public class ProxyVariable<T> : IVariable<T>
 
 ### 🏗️ Constructors
 
-#### `ProxyVariable(Func<T>, Action<T>)`
+#### `InlineVariable(Func<T>, Action<T>)`
 
 ```csharp
-public ProxyVariable(Func<T> getter, Action<T> setter)
+public InlineVariable(Func<T> getter, Action<T> setter)
 ```
 
-- **Description:** Initializes a new instance of `ProxyVariable<T>` using the provided getter and setter functions.
+- **Description:** Initializes a new instance of `InlineVariable<T>` using the provided getter and setter functions.
 - **Parameters:**
     - `getter` – A function to retrieve the value.
     - `setter` – An action to update the value.
@@ -138,7 +138,7 @@ public void Invoke(T arg)
 public static Builder StartBuild()
 ```
 - **Description:** Begins building a proxy variable using a fluent builder pattern.
-- **Returns** A new struct instance of the [Builder](ProxyVariableBuilder.md)
+- **Returns** A new struct instance of the [Builder](InlineVariableBuilder.md)
 
 ---
 
@@ -150,7 +150,7 @@ public static Builder StartBuild()
 public struct Builder
 ```
 
-- **Description:** Fluent builder for constructing `ProxyVariable<T>` instances.
+- **Description:** Fluent builder for constructing `InlineVariable<T>` instances.
 - **See also:** [Builder Documentation](ProxyVariableBuilder.md)
 
 ---

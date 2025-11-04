@@ -9,14 +9,14 @@ intermediaries or proxies, which can observe, modify, or synchronize underlying 
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
-    - [BaseVariable\<T>](#ex1)
+    - [Variable\<T>](#ex1)
     - [ReactiveVariable\<T>](#ex2)
-    - [ProxyVariable\<T>](#ex3)
+    - [InlineVariable\<T>](#ex3)
 - [API Reference](#-api-reference)
 - [Specialized Types](#-specialized-types)
-    - [BaseVariables](#-basevariables)
-    - [ReactiveVariables](#-reactive-variables)
-    - [ProxyVariables](#-proxy-variables)
+    - [Base Variables](#-base-variables)
+    - [Reactive Variables](#-reactive-variables)
+    - [Proxy Variables](#-proxy-variables)
 
 ---
 
@@ -24,11 +24,11 @@ intermediaries or proxies, which can observe, modify, or synchronize underlying 
 
 <div id="ex1"></div>
 
-### 1️⃣ BaseVariable\<T>
+### 1️⃣ Variable\<T>
 
 ```csharp
  // Create a new variable
-IVariable<int> score = new BaseVariable<int>(10);
+IVariable<int> score = new Variable<int>(10);
 
 // Read value
 Console.WriteLine(score.Value);  // Output: 10
@@ -58,11 +58,11 @@ score.Dispose();
 
 <div id="ex3"></div>
 
-### 3️⃣ ProxyVariable\<T>
+### 3️⃣ InlineVariable\<T>
 
 ```csharp
 //Create a new proxy of Transform.position
-IVariable<Vector3> position = new ProxyVariable<Vector3>(
+IVariable<Vector3> position = new InlineVariable<Vector3>(
     getter: () => transform.position,
     setter: value => transform.position = value
 );
@@ -75,16 +75,16 @@ position.Value += Vector3.forward;
 
 ## 🔍 API Reference
 
-- **BaseVariables**
+- **Variables**
     - [IVariable&lt;T&gt;](IVariable.md) <!-- + -->
-    - [BaseVariable&lt;T&gt;](BaseVariable.md) <!-- + -->
+    - [Variable&lt;T&gt;](BaseVariable.md) <!-- + -->
 - **ReactiveVariables**
     - [IReactiveVariable&lt;T&gt;](IReactiveVariable.md) <!-- + -->
     - [ReactiveVariable&lt;T&gt;](ReactiveVariable.md) <!-- + -->
-- **ProxyVariables**
-    - [ProxyVariable&lt;T&gt;](ProxyVariable.md) <!-- + -->
+- **InlineVariables**
+    - [InlineVariable&lt;T&gt;](ProxyVariable.md) <!-- + -->
       - [Builder](ProxyVariableBuilder.md)
-    - [ReactiveProxyVariable&lt;T&gt;](ReactiveProxyVariable.md)  <!-- + -->
+    - [InlineReactiveVariable&lt;T&gt;](ReactiveProxyVariable.md)  <!-- + -->
       - [Builder](ReactiveProxyVariableBuilder.md)
 - [Extensions](Extensions.md)
 
@@ -94,11 +94,11 @@ position.Value += Vector3.forward;
 
 ## 🏛️ Specialized Types
 
-### 🧩 BaseVariables
+### 🧩 Base Variables
 
 For convenience, several specialized implementations of base variables are provided. It is recommended to use them, as
 they compare values without relying on `EqualityComparer`, which makes them slightly faster than the generic
-[BaseVariable&lt;T&gt;](BaseVariable.md) version.
+[Variable&lt;T&gt;](BaseVariable.md) version.
 
 - **Common**
     - `BoolVariable` — Boolean variable

@@ -1,6 +1,6 @@
-# 🧩 ReactiveProxyVariable<T>.Builder
+# 🧩 ReactiveInlineVariable<T>.Builder
 
-Fluent builder for creating **ReactiveProxyVariable<T>** instances. Allows constructing
+Fluent builder for creating **ReactiveInlineVariable<T>** instances. Allows constructing
 reactive proxy variables by specifying getter, setter, subscribe, and unsubscribe handlers
 in a chainable and readable way.
 
@@ -24,8 +24,8 @@ in a chainable and readable way.
 ## 🗂 Example of Usage
 
 ```csharp
-// Using the builder to create a ReactiveProxyVariable
-var reactiveProxy = ReactiveProxyVariable<int>
+// Using the builder to create a ReactiveInlineVariable
+var reactiveProxy = ReactiveInlineVariable<int>
     .StartBuild()
     .WithGetter(() => someValue)
     .WithSetter(value => someValue = value)
@@ -44,8 +44,8 @@ var reactiveProxy = ReactiveProxyVariable<int>
 public struct Builder
 ````
 
-- **Description:** Fluent builder for constructing `ReactiveProxyVariable<T>` instances.
-- **See also:** [ReactiveProxyVariable<T>](ReactiveProxyVariable.md)
+- **Description:** Fluent builder for constructing `ReactiveInlineVariable<T>` instances.
+- **See also:** [ReactiveInlineVariable<T>](ReactiveInlineVariable.md)
 
 ---
 
@@ -98,12 +98,12 @@ public Builder WithUnsubscribe(Action<Action<T>> unsubscribe)
 #### `Build()` <div id="build"></div>
 
 ```csharp
-public ReactiveProxyVariable<T> Build()
+public ReactiveInlineVariable<T> Build()
 ````
 
-- **Description:** Constructs and returns a new `ReactiveProxyVariable<T>` instance with the
+- **Description:** Constructs and returns a new `ReactiveInlineVariable<T>` instance with the
   provided getter, setter, subscribe, and unsubscribe handlers.
-- **Returns:** A new `ReactiveProxyVariable<T>` instance.
+- **Returns:** A new `ReactiveInlineVariable<T>` instance.
 - **Throws:** `InvalidOperationException` if any of the required handlers (getter, setter,
   subscribe, unsubscribe) were not provided.
 

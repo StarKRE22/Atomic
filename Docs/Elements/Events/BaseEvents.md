@@ -1,4 +1,4 @@
-# 🧩 BaseEvents
+# 🧩 Events
 
 Provide **parameterless and generic reactive events** that can be **subscribed to, invoked,
 and disposed**. They implement the corresponding [IEvent](IEvents.md) interfaces and allow both reactive tracking and
@@ -22,7 +22,7 @@ action-based invocation.
 ### 1️⃣ Non-generic Event <div id="ex-1"></div>
 
 ```csharp
-var playerDiedEvent = new BaseEvent();
+var playerDiedEvent = new Event();
 
 // Subscribe to the event
 playerDiedEvent.OnEvent += () => Console.WriteLine("Player died event triggered.");
@@ -37,7 +37,7 @@ playerDiedEvent.Dispose();
 ### 2️⃣ Event with single argument <div id="ex-2"></div>
 
 ```csharp
-var healthChangedEvent = new BaseEvent<int>();
+var healthChangedEvent = new Event<int>();
 
 // Subscribe to the event
 healthChangedEvent.OnEvent += health => Console.WriteLine($"Health changed to: {health}");
@@ -55,7 +55,7 @@ healthChangedEvent.Dispose();
 ### 3️⃣ Event with two arguments <div id="ex-3"></div>
 
 ```csharp
-var attackEvent = new BaseEvent<string, int>();
+var attackEvent = new Event<string, int>();
 
 // Subscribe to the event
 attackEvent.OnEvent += (attacker, damage) =>
@@ -76,11 +76,11 @@ attackEvent.Dispose();
 
 There are several implementations of events, depending on the number of arguments they take:
 
-- [BaseEvent](BaseEvent.md) — Event without parameters.
-- [BaseEvent&lt;T&gt;](BaseEvent%601.md) — Event that takes one argument.
-- [BaseEvent&lt;T1, T2&gt;](BaseEvent%602.md) — Event that takes two arguments.
-- [BaseEvent&lt;T1, T2, T3&gt;](BaseEvent%603.md) — Event that takes three arguments.
-- [BaseEvent&lt;T1, T2, T3, T4&gt;](BaseEvent%604.md) — Event that takes four arguments.
+- [Event](BaseEvent.md) — Event without parameters.
+- [Event&lt;T&gt;](BaseEvent%601.md) — Event that takes one argument.
+- [Event&lt;T1, T2&gt;](BaseEvent%602.md) — Event that takes two arguments.
+- [Event&lt;T1, T2, T3&gt;](BaseEvent%603.md) — Event that takes three arguments.
+- [Event&lt;T1, T2, T3, T4&gt;](BaseEvent%604.md) — Event that takes four arguments.
 
 ---
 

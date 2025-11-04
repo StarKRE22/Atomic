@@ -1,4 +1,4 @@
-# 🧩 ReactiveProxyVariable&lt;T&gt;
+# 🧩 InlineReactiveVariable&lt;T&gt;
 
 Represents a **reactive proxy variable** that delegates reading, writing, and subscription operations
 to external handlers. This is useful when you need to **wrap an existing data source or event system** and expose it
@@ -11,7 +11,7 @@ through the unified [IReactiveVariable\<T>](IReactiveVariable.md) interface.
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
-        - [ReactiveProxyVariable(Func<T>, Action<T>)](#reactiveproxyvariablefunct-actiont)
+        - [InlineReactiveVariable(Func<T>, Action<T>)](#inlinereactivevariablefunct-actiont)
     - [Events](#-events)
         - [OnEvent](#onevent)
     - [Properties](#-properties)
@@ -29,7 +29,7 @@ through the unified [IReactiveVariable\<T>](IReactiveVariable.md) interface.
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public class ReactiveProxyVariable<T> : IReactiveVariable<T>
+public class InlineReactiveVariable<T> : IReactiveVariable<T>
 ```
 
 - **Description:** Represents a **reactive proxy variable** that delegates reading, writing, and subscription operations
@@ -44,10 +44,10 @@ public class ReactiveProxyVariable<T> : IReactiveVariable<T>
 
 ### 🏗️ Constructors
 
-#### `ReactiveProxyVariable(Func<T>, Action<T>)`
+#### `InlineReactiveVariable(Func<T>, Action<T>)`
 
 ```csharp
-public ReactiveProxyVariable(Func<T> getter, Action<T> setter)
+public InlineReactiveVariable(Func<T> getter, Action<T> setter)
 ```
 
 - **Description:** Initializes a new instance of `ProxyVariable<T>` using the provided getter and setter functions.

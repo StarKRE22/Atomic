@@ -1,4 +1,4 @@
-# 🧩 BaseEvent&lt;T&gt;
+# 🧩 Event&lt;T&gt;
 
 Represents an event that emits <b>one parameter</b>.
 
@@ -20,7 +20,7 @@ Represents an event that emits <b>one parameter</b>.
 ## 🗂 Example of Usage
 
 ```csharp
-var healthChangedEvent = new BaseEvent<int>();
+var healthChangedEvent = new Event<int>();
 
 // Subscribe to the event
 healthChangedEvent.OnEvent += health => Console.WriteLine($"Health changed to: {health}");
@@ -41,7 +41,7 @@ healthChangedEvent.Dispose();
 
 ```csharp
 [Serializable]
-public class BaseEvent<T> : IEvent<T>, IDisposable
+public class Event<T> : IEvent<T>, IDisposable
 ```
 
 - **Description:** Represents an event that emits <b>one parameter</b>.
