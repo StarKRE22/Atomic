@@ -1,4 +1,4 @@
-# 🧩 BaseEvent
+# 🧩 Event
 
 Represents a <b>parameterless event</b> that can be subscribed and invoked.
 
@@ -19,7 +19,7 @@ Represents a <b>parameterless event</b> that can be subscribed and invoked.
 ## 🗂 Examples of Usage
 
 ```csharp
-var playerDiedEvent = new BaseEvent();
+var playerDiedEvent = new Event();
 
 // Subscribe to the event
 playerDiedEvent.OnEvent += () => Console.WriteLine("Player died event triggered.");
@@ -39,7 +39,7 @@ playerDiedEvent.Dispose();
 
 ```csharp
 [Serializable]
-public class BaseEvent : IEvent, IDisposable
+public class Event : IEvent, IDisposable
 ```
 
 - **Description:** Represents a <b>parameterless event</b> that can be subscribed to and invoked.

@@ -1,6 +1,6 @@
-# 🧩 ProxyVariable\<T>.Builder
+# 🧩 InlineVariable\<T>.Builder
 
-Fluent builder for constructing [ProxyVariable\<T>](ProxyVariable.md) instances. This allows creating
+Fluent builder for constructing [InlineVariable\<T>](InlineVariable.md) instances. This allows creating
 proxy variables by specifying getter and setter delegates in a clean, chainable way.
 
 ---
@@ -21,8 +21,8 @@ proxy variables by specifying getter and setter delegates in a clean, chainable 
 ## 🗂 Example of Usage
 
 ```csharp
-// Using the builder to create a ProxyVariable
-var proxy = ProxyVariable<int>
+// Using the builder to create a InlineVariable
+var proxy = InlineVariable<int>
     .StartBuild()
     .WithGetter(() => someValue)
     .WithSetter(value => someValue = value)
@@ -39,8 +39,8 @@ var proxy = ProxyVariable<int>
 public struct Builder
 ````
 
-- **Description:** Fluent builder for constructing `ProxyVariable<T>` instances.
-- **See also:** [ProxyVariable<T>](ProxyVariable.md)
+- **Description:** Fluent builder for constructing `InlineVariable<T>` instances.
+- **See also:** [InlineVariable<T>](InlineVariable.md)
 
 ---
 
@@ -71,12 +71,12 @@ public Builder WithSetter(Action<T> setter)
 #### `Build()` <div id="build"></div>
 
 ```csharp
-public ProxyVariable<T> Build()
+public InlineVariable<T> Build()
 ````
 
-- **Description:** Constructs and returns a new `ProxyVariable<T>` configured with the
+- **Description:** Constructs and returns a new `InlineVariable<T>` configured with the
   provided getter and setter.
-- **Returns:** A new `ProxyVariable<T>` instance.
+- **Returns:** A new `InlineVariable<T>` instance.
 - **Throws:** `InvalidOperationException` if either getter or setter was not provided.
 
 ---

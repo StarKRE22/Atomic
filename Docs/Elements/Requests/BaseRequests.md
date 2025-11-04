@@ -1,6 +1,6 @@
-# 🧩 BaseRequests
+# 🧩 Requests
 
-The **BaseRequest** classes provide **concrete implementations** of the [IRequest](IRequests.md) interfaces. They are
+The **Request** classes provide **concrete implementations** of the [IRequest](IRequests.md) interfaces. They are
 designed to store request state and optionally one to four arguments. These classes **track whether a request is
 required** and allow **deferred consumption**.
 
@@ -26,7 +26,7 @@ required** and allow **deferred consumption**.
 ### 1️⃣ Parameterless Request
 
 ```csharp
-var shootRequest = new BaseRequest();
+var shootRequest = new Request();
 
 // Somewhere in the UI system we mark it as required
 shootRequest.Invoke();
@@ -50,7 +50,7 @@ if (shoot.Required)
 ### 2️⃣ Single-Argument Request
 
 ```csharp
-var damageRequest = new BaseRequest<Character>();
+var damageRequest = new Request<Character>();
 
 // Trigger the request from gameplay logic
 damageRequest.Invoke(targetCharacter);
@@ -73,8 +73,8 @@ if (damageRequest.TryGet(out Character target))
 
 There are several implementations of requests, depending on the number of arguments they take:
 
-- [BaseRequest](BaseRequest.md) — Non-generic version; works without parameters.
-- [BaseRequest&lt;T&gt;](BaseRequest%601.md) — Request that takes one argument.
-- [BaseRequest&lt;T1, T2&gt;](BaseRequest%602.md) — Request that takes two arguments.
-- [BaseRequest&lt;T1, T2, T3&gt;](BaseRequest%603.md) — Request that takes three arguments.
-- [BaseRequest&lt;T1, T2, T3, T4&gt;](BaseRequest%604.md) — Request that takes four arguments.
+- [Request](BaseRequest.md) — Non-generic version; works without parameters.
+- [Request&lt;T&gt;](BaseRequest%601.md) — Request that takes one argument.
+- [Request&lt;T1, T2&gt;](BaseRequest%602.md) — Request that takes two arguments.
+- [Request&lt;T1, T2, T3&gt;](BaseRequest%603.md) — Request that takes three arguments.
+- [Request&lt;T1, T2, T3, T4&gt;](BaseRequest%604.md) — Request that takes four arguments.

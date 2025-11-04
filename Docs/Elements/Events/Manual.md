@@ -23,7 +23,7 @@ systems.
 ### 1️⃣ Non-generic Event <div id="ex-1"></div>
 
 ```csharp
-IEvent playerDiedEvent = new BaseEvent();
+IEvent playerDiedEvent = new Event();
 
 // Subscribe to the event
 playerDiedEvent.OnEvent += () => Console.WriteLine("Player died event triggered.");
@@ -35,7 +35,7 @@ playerDiedEvent.Invoke(); // Output: Player died event triggered.
 ### 2️⃣ Event with single argument <div id="ex-2"></div>
 
 ```csharp
-IEvent<int> healthChangedEvent = new BaseEvent<int>();
+IEvent<int> healthChangedEvent = new Event<int>();
 
 // Subscribe to the event
 healthChangedEvent.OnEvent += health => Console.WriteLine($"Health changed to: {health}");
@@ -115,13 +115,13 @@ Below are interfaces and implementations corresponding with events and depending
   </details>
 
   <details>
-    <summary><a href="BaseEvents.md">BaseEvents</a></summary>
+    <summary><a href="BaseEvents.md">Events</a></summary>
     <ul>
-      <li><a href="BaseEvent.md">BaseEvent</a></li>
-      <li><a href="BaseEvent%601.md">BaseEvent&lt;T&gt;</a></li>
-      <li><a href="BaseEvent%602.md">BaseEvent&lt;T1, T2&gt;</a></li>
-      <li><a href="BaseEvent%603.md">BaseEvent&lt;T1, T2, T3&gt;</a></li>
-      <li><a href="BaseEvent%604.md">BaseEvent&lt;T1, T2, T3, T4&gt;</a></li>
+      <li><a href="BaseEvent.md">Event</a></li>
+      <li><a href="BaseEvent%601.md">Event&lt;T&gt;</a></li>
+      <li><a href="BaseEvent%602.md">Event&lt;T1, T2&gt;</a></li>
+      <li><a href="BaseEvent%603.md">Event&lt;T1, T2, T3&gt;</a></li>
+      <li><a href="BaseEvent%604.md">Event&lt;T1, T2, T3, T4&gt;</a></li>
     </ul>
   </details>
 

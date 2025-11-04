@@ -1,4 +1,4 @@
-# 🧩 BaseEvent&lt;T1, T2, T3&gt;
+# 🧩 Event&lt;T1, T2, T3&gt;
 
 Represents an event that emits <b>three parameters</b>.
 
@@ -22,7 +22,7 @@ Represents an event that emits <b>three parameters</b>.
 
 ```csharp
 [Serializable]
-public class BaseEvent<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
+public class Event<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
 ```
 
 - **Description:**  Represents an event that emits <b>three parameters</b>.

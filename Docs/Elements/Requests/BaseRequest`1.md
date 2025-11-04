@@ -1,4 +1,4 @@
-# 🧩 BaseRequest&lt;T&gt;
+# 🧩 Request&lt;T&gt;
 
 Represents a request action with <b>one input argument</b>.
 
@@ -22,7 +22,7 @@ Represents a request action with <b>one input argument</b>.
 ## 🗂 Example of Usage
 
 ```csharp
-var damageRequest = new BaseRequest<Character>();
+var damageRequest = new Request<Character>();
 
 // Trigger the request from gameplay logic
 damageRequest.Invoke(targetCharacter);
@@ -47,7 +47,7 @@ if (damageRequest.Consume(out target))
 
 ```csharp
 [Serializable]
-public class BaseRequest<T> : IRequest<T>
+public class Request<T> : IRequest<T>
 ```
 
 - **Description:** Represents a request action with <b>one input argument</b>.

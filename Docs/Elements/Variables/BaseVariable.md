@@ -1,4 +1,4 @@
-# 🧩 BaseVariable&lt;T&gt;
+# 🧩 Variable&lt;T&gt;
 
 Represents a **simple serialized container** for a value of type `T`.
 
@@ -11,8 +11,8 @@ Represents a **simple serialized container** for a value of type `T`.
 - [API Reference](#-api-reference)
   - [Type](#-type)
   - [Constructors](#-constructors)
-    - [BaseVariable()](#basevariable)
-    - [BaseVariable(T)](#basevariablet)
+    - [Variable()](#variable)
+    - [Variable(T)](#variablet)
   - [Properties](#-properties)
     - [Value](#value)
   - [Methods](#-methods)
@@ -20,7 +20,7 @@ Represents a **simple serialized container** for a value of type `T`.
     - [Invoke(T)](#invoket)
     - [ToString()](#tostring)
   - [Operators](#-operators)
-    - [BaseVariable<T>(T)](#operator-basevariablett)
+    - [Variable<T>(T)](#operator-basevariablett)
 
 ---
 
@@ -28,7 +28,7 @@ Represents a **simple serialized container** for a value of type `T`.
 
 ```csharp
  // Create a new variable
-IVariable<int> score = new BaseVariable<int>(10);
+IVariable<int> score = new Variable<int>(10);
 
 // Read value
 Console.WriteLine(score.Value);  // Output: 10
@@ -54,14 +54,14 @@ Console.WriteLine(score.Value);  // Output: 20
 
 ```csharp
 [Serializable]
-public class BaseVariable<T> : IVariable<T>
+public class Variable<T> : IVariable<T>
 ```
 
 - **Description:** Represents a **simple serialized container** for a value of type `T`.
 - **Inheritance** [IVariable&lt;T&gt;](IVariable.md)
 - **Type Parameter:** `T` – The type of the value to store.
 - **Notes:** Support Unity serialization and Odin Inspector
-- **See also:** [Base Variables](BaseVariables.md), [ProxyVariable&lt;T&gt;](ProxyVariable.md)
+- **See also:** [Base Variables](Variables.md), [ProxyVariable&lt;T&gt;](ProxyVariable.md)
 
 ---
 
@@ -69,18 +69,18 @@ public class BaseVariable<T> : IVariable<T>
 
 ### 🏗️ Constructors
 
-#### `BaseVariable()`
+#### `Variable()`
 
 ```csharp
-public BaseVariable()
+public Variable()
 ```
 
 - **Description:** Initializes a new instance with the default value of `T`.
 
-#### `BaseVariable(T)`
+#### `Variable(T)`
 
 ```csharp
-public BaseVariable(T value)
+public Variable(T value)
 ```
 
 - **Description:** Initializes a new instance with a specified constant value `value`.
@@ -138,12 +138,12 @@ public override string ToString();
 
 ### 🪄 Operators
 
-#### `operator BaseVariable<T>(T)`
+#### `operator Variable<T>(T)`
 
 ```csharp
-public static implicit operator BaseVariable<T>(T value);
+public static implicit operator Variable<T>(T value);
 ```
 
-- **Description:** Implicitly converts a value of type `T` to a `BaseVariable<T>`.
-- **Parameter:** `value` – The value to wrap in a `BaseVariable<T>`.
-- **Returns:** A new `BaseVariable<T>` containing the specified value.
+- **Description:** Implicitly converts a value of type `T` to a `Variable<T>`.
+- **Parameter:** `value` – The value to wrap in a `Variable<T>`.
+- **Returns:** A new `Variable<T>` containing the specified value.
