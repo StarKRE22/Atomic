@@ -3,8 +3,10 @@
 [![📦 GitHub release (latest by date)](https://img.shields.io/github/v/release/starkre22/Atomic?color=red)](https://github.com/starkre22/Atomic/releases)
 [![📄 GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/StarKRE22/Atomic/blob/main/LICENSE.md)
 
+<img width="500" height="2250" alt="изображение" src="https://github.com/user-attachments/assets/0f6d1c99-f3ed-479c-8139-cd5676e5bf9c" />
+
 <!-- <img width="4096" height="" alt="Banner" src="https://github.com/user-attachments/assets/bd596a97-4215-4fa6-8e5c-48da598b1e79" /> -->
-<img width="500" height="" alt="Banner" src="https://github.com/user-attachments/assets/74ec9316-bccb-4458-8b82-73d3d57c8ac8" />
+<!-- <img width="500" height="" alt="Banner" src="https://github.com/user-attachments/assets/74ec9316-bccb-4458-8b82-73d3d57c8ac8" />  -->
 
 # ⚛️ What is Atomic?
 
