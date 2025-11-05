@@ -378,7 +378,7 @@ concept — from the fundamental Atomic approach to advanced topics such as enti
 interaction and simulation without Unity.
 
 1. [What is Atomic Approach](Docs/Tutorials/WhatIsAtomicApproach.md)
-2. [Code Generation Setup](Docs/Tutorials/Codegeneration.md)
+2. [Entity API Generation](Docs/Tutorials/Codegeneration.md)
 2. [Working with Unity](Docs/Tutorials/WorkingWithUnity.md)
 3. [Minimizing Unity](Docs/Tutorials/MinimizingUnity.md)
 4. [Benefits & Limitations](Docs/Tutorials/BenefitsLimitations.md)
