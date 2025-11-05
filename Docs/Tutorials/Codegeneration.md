@@ -448,3 +448,11 @@ Access plugin settings via: `File → Settings → Tools → Atomic Plugin`
 - **Auto-generate:** Enable/disable automatic regeneration
 - **Debounce delay:** Set delay before auto-generation (ms)
 - **Show notifications:** Toggle generation notifications
+
+---
+
+<p align="center">
+<a href="EntityCreation.md">Move Next</a> •
+<a href="https://github.com/StarKRE22/Atomic/issues">Report Issue</a> •
+<a href="https://github.com/StarKRE22/Atomic/discussions">Join Discussion</a>
+</p>

@@ -379,11 +379,13 @@ interaction and simulation without Unity.
 
 1. [What is Atomic Approach](Docs/Tutorials/WhatIsAtomicApproach.md)
 2. [Entity API Generation](Docs/Tutorials/Codegeneration.md)
-2. [Working with Unity](Docs/Tutorials/WorkingWithUnity.md)
-3. [Minimizing Unity](Docs/Tutorials/MinimizingUnity.md)
-4. [Benefits & Limitations](Docs/Tutorials/BenefitsLimitations.md)
-5. [Comparison with OOP & ECS](Docs/Tutorials/ComparisonOOPandECS.md)
-6. [Conclusion](Docs/Tutorials/Conclusion.md)
+3. [Creating the Entity in Unity](Docs/Tutorials/EntityCreation.md)
+4. [Architectural Consistency](Docs/Tutorials/ArchitectualConsistency.md)
+5. [Interaction Between Entities](Docs/Tutorials/InteractionsBetweenEntities.md)
+4. [Minimizing Unity](Docs/Tutorials/MinimizingUnity.md)
+5. [Benefits & Limitations](Docs/Tutorials/BenefitsLimitations.md)
+6. [Comparison with OOP & ECS](Docs/Tutorials/ComparisonOOPandECS.md)
+7. [Conclusion](Docs/Tutorials/Conclusion.md)
 
 <!-- 
 
