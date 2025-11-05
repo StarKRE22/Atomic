@@ -3,8 +3,10 @@
 [![📦 GitHub release (latest by date)](https://img.shields.io/github/v/release/starkre22/Atomic?color=red)](https://github.com/starkre22/Atomic/releases)
 [![📄 GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/StarKRE22/Atomic/blob/main/LICENSE.md)
 
-<!-- <img width="4096" alt="Banner" src="https://github.com/user-attachments/assets/bd596a97-4215-4fa6-8e5c-48da598b1e79" /> -->
-<img width="500" height="" alt="изображение" src="https://github.com/user-attachments/assets/0f6d1c99-f3ed-479c-8139-cd5676e5bf9c" />
+<img width="500" height="2250" alt="изображение" src="https://github.com/user-attachments/assets/0f6d1c99-f3ed-479c-8139-cd5676e5bf9c" />
+
+<!-- <img width="4096" height="" alt="Banner" src="https://github.com/user-attachments/assets/bd596a97-4215-4fa6-8e5c-48da598b1e79" /> -->
+<!-- <img width="500" height="" alt="Banner" src="https://github.com/user-attachments/assets/74ec9316-bccb-4458-8b82-73d3d57c8ac8" />  -->
 
 # ⚛️ What is Atomic?
 
@@ -72,13 +74,13 @@ the [documentation](https://github.com/StarKRE22/Atomic/blob/experimental/Docs/E
 
 ## 📦 Installation
 
-- **Option #1:** Download source code with game examples.
-- **Option #2:**
+- _Option #1. Download source code with game examples_
+- _Option #2.
   Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/Atomic.v.2.0.unitypackage)
-  or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/AtomicNonUnity.v.2.0.zip) from
-  the Releases page.
-- **Option #3:** Install via Unity Package Manager using the Git
-  URL: https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic
+  or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/AtomicNonUnity.v.2.0.zip)
+  from [release notes](https://github.com/StarKRE22/Atomic/releases)_
+- _Option #3: Install via Unity Package Manager using the Git
+  URL: `https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic`_
 
 ---
 
