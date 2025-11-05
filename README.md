@@ -18,29 +18,43 @@ maintaining complex object-oriented structures.
 
 # 📑 Table of Contents
 
-- [Requirements](#-requirements)
-- [Installation](#-installation)
-- [Using Odin Inspector](#-using-odin-inspector)
-- [Unity Quick Start](#-unity-quick-start)
-- [Game Examples](#-game-examples)
-    - [Beginner Sample](#ex1)
-    - [Top-Down Shooter Sample](#ex2)
-    - [RTS Sample](#ex3)
-- [API Reference](#-api-reference)
-- [Tutorial Guides](#-tutorials)
-- [Best Practices](#-best-practices)
-- [Performance](#-performance)
-- [License](#-license)
-- [Contacts](#-contacts)
-
-<!-- - [Tutorials](#-tutorials) -->
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Unity Quick Start](#unity-quick-start)
+- [Tutorials](#tutorials)
+- [Game Examples](#game-examples)
+    - [Beginner Sample](#beginner-sample)
+    - [Top-Down Shooter Sample](#top-down-shooter-sample)
+    - [RTS Sample](#rts-sample)
+- [API Reference](#api-reference)
+- [Best Practices](#best-practices)
+- [Performance](#performance)
+- [Using Odin Inspector](#using-odin-inspector)
+- [License](#license)
+- [Contact](#contact)
 
 ---
 
 ## 📝 Requirements
 
-The Atomic Framework requires **Unity 6** or **.NET 7+**. Make sure your development environment meets these
-requirements before using the framework.
+The Atomic Framework requires **Unity 6+** or **.NET 7+**.
+Make sure your development environment meets these requirements before using the framework.
+
+### Recommended Tools
+
+Although not required, the following tools significantly improve development experience with Atomic:
+
+#### • [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041)
+
+For better **debugging**, **configuration**, and **visualization** of your game state in the Unity Editor.
+Atomic works perfectly **without Odin**, but using it makes data inspection and live tweaking much easier.
+
+#### • [Atomic Rider Plugin](https://plugins.jetbrains.com/plugin/28321-atomic)
+
+For enhanced **code generation** and **workflow integration** with **Rider IDE**. While Unity itself provides basic
+support, the Atomic Rider Plugin makes development smoother and more powerful. Available
+on [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
+or [GitHub](https://github.com/Prylor/atomic-rider-plugin).
 
 ---
 
@@ -56,16 +70,8 @@ requirements before using the framework.
 
 ---
 
-## 🎛 Using Odin Inspector
-
-For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
-using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The
-framework **works without Odin**, but Odin makes inspection and tweaking much easier.
-
----
 
 ## 📚 Theory
-
 
 ## 🔌 Using Plugin for Rider [(Read More)](Docs/Entities/EntityAPI/Manual.md#generating-api-via-rider-plugin)
 
