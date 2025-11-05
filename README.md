@@ -382,10 +382,8 @@ interaction and simulation without Unity.
 3. [Creating the Entity in Unity](Docs/Tutorials/EntityCreation.md)
 4. [Architectural Consistency](Docs/Tutorials/ArchitectualConsistency.md)
 5. [Interaction Between Entities](Docs/Tutorials/InteractionsBetweenEntities.md)
-4. [Minimizing Unity](Docs/Tutorials/MinimizingUnity.md)
-5. [Benefits & Limitations](Docs/Tutorials/BenefitsLimitations.md)
-6. [Comparison with OOP & ECS](Docs/Tutorials/ComparisonOOPandECS.md)
-7. [Conclusion](Docs/Tutorials/Conclusion.md)
+6. [Minimizing Unity](Docs/Tutorials/MinimizingUnity.md)
+7. [Summary](Docs/Tutorials/Summary.md)
 
 <!-- 
 
@@ -707,5 +705,3 @@ SOFTWARE.
 <a href="https://github.com/StarKRE22/Atomic/issues">Report Issue</a> •
 <a href="https://github.com/StarKRE22/Atomic/discussions">Join Discussion</a>
 </p>
-
-

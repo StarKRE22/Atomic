@@ -115,3 +115,11 @@ follows the single-responsibility principle, and keeps the code clean and unders
 > [!TIP]
 > To minimize code duplication, each behaviour should delegate all business logic to static methods placed inside
 > static classes.
+
+---
+
+<p align="center">
+<a href="MinimizingUnity.md">Move Next</a> •
+<a href="https://github.com/StarKRE22/Atomic/issues">Report Issue</a> •
+<a href="https://github.com/StarKRE22/Atomic/discussions">Join Discussion</a>
+</p>

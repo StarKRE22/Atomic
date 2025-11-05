@@ -103,7 +103,7 @@ This approach allows you to describe all layers of the project using a unified a
 ---
 
 <p align="center">
-<a href="ArchitectualConsistency.md">Move Next</a> •
+<a href="InteractionsBetweenEntities.md">Move Next</a> •
 <a href="https://github.com/StarKRE22/Atomic/issues">Report Issue</a> •
 <a href="https://github.com/StarKRE22/Atomic/discussions">Join Discussion</a>
 </p>
