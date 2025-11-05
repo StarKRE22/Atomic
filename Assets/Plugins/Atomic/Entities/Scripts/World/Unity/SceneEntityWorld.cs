@@ -14,16 +14,14 @@ namespace Atomic.Entities
     [AddComponentMenu("Atomic/Entities/Entity World")]
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-1000)]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Worlds/SceneEntityWorld.md")]
     public class SceneEntityWorld : SceneEntityWorld<SceneEntity>
     {
         public static SceneEntityWorld Create(
             string name = null,
             bool scanEntities = true,
             bool useUnityLifecycle = true
-        )
-        {
-            return Create<SceneEntityWorld>(name, scanEntities, useUnityLifecycle);
-        }
+        ) => Create<SceneEntityWorld>(name, scanEntities, useUnityLifecycle);
     }
 }
 #endif

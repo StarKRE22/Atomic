@@ -9,6 +9,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity View Pool")]
     [DisallowMultipleComponent]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityViewPool.md")]
     public class EntityViewPool : EntityViewPool<IEntity, EntityView>
     {
     }

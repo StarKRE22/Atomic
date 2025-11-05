@@ -12,6 +12,7 @@ namespace Atomic.Entities
     /// <typeparamref name="V"/> fixed to <see cref="EntityView"/>.
     /// It is useful when you do not need strong typing for a specific entity type.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityViewCatalog.md")]
     [CreateAssetMenu(
         fileName = "EntityViewCatalog",
         menuName = "Atomic/Entities/EntityViewCatalog"

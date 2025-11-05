@@ -15,6 +15,7 @@ namespace Atomic.Entities
     /// Provides core functionality for showing, hiding, and naming views bound to <see cref="IEntity"/>.
     /// </summary>
     /// <typeparam name="E">The type of <see cref="IEntity"/> associated with this view.</typeparam>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityView%601.md")]
     public abstract partial class EntityView<E> : MonoBehaviour where E : class, IEntity
     {
 #if ODIN_INSPECTOR
@@ -59,9 +60,11 @@ namespace Atomic.Entities
         /// Returns <see cref="customName"/> if <see cref="overrideName"/> is true; 
         /// otherwise, returns the <see cref="GameObject.name"/>.
         /// </summary>
-        public virtual string Name => this.overrideName 
-            ? this.customName 
-            : this != null ? this.name : "#Unknown";
+        public virtual string Name => this.overrideName
+            ? this.customName
+            : this != null
+                ? this.name
+                : "#Unknown";
 
         /// <summary>
         /// Gets the entity currently associated with this view.
@@ -153,7 +156,7 @@ namespace Atomic.Entities
         protected virtual void OnHide(E entity)
         {
         }
-        
+
         /// <summary>
         /// Assigns the GameObject's name to the custom name field.
         /// </summary>

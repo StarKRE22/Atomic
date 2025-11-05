@@ -17,6 +17,7 @@ namespace Atomic.Entities
     /// per scene or globally, depending on the <see cref="_dontDestroyOnLoad"/> flag.
     /// </summary>
     /// <typeparam name="E">The concrete type of the singleton scene entity.</typeparam>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Entities/SceneEntitySingleton.md")]
     public abstract class SceneEntitySingleton<E> : SceneEntity where E : SceneEntitySingleton<E>
     {
 #if ODIN_INSPECTOR
@@ -63,7 +64,7 @@ namespace Atomic.Entities
         }
 
         private static E _instance;
-        
+
         /// <summary>
         /// Tries to get the singleton instance of type <typeparamref name="E"/> in the current scene or globally.
         /// </summary>
@@ -86,11 +87,11 @@ namespace Atomic.Entities
             instance = _instance;
             return instance;
         }
-        
+
         #endregion
 
         #region UnityLifecycle
-        
+
         /// <summary>
         /// Assigns the singleton instance and optionally makes it persistent across scenes.
         /// </summary>
@@ -115,7 +116,7 @@ namespace Atomic.Entities
             if (_instance == this)
                 _instance = null;
         }
-        
+
 #if UNITY_EDITOR
         private protected override void Reset()
         {
@@ -126,7 +127,7 @@ namespace Atomic.Entities
 #endif
 
         #endregion
-        
+
         #region Resolve
 
         private static readonly Dictionary<Scene, E> _singletons = new();

@@ -20,6 +20,7 @@ namespace Atomic.Elements
     /// You can configure the action list in the Inspector or via <see cref="Construct"/>.
     /// </remarks>
     [AddComponentMenu("Atomic/Elements/Action")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionDefault.md")]
     public class SceneActionDefault : SceneActionAbstract
     {
         /// <summary>
@@ -50,6 +51,7 @@ namespace Atomic.Elements
     /// Executes a sequence of <see cref="IAction{T1}"/> instances.
     /// </summary>
     /// <typeparam name="T">Type of the input parameter.</typeparam>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionDefault%601.md")]
     public abstract class SceneActionDefault<T> : SceneActionAbstract<T>
     {
         /// <summary>
@@ -82,6 +84,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T1">Type of the first argument.</typeparam>
     /// <typeparam name="T2">Type of the second argument.</typeparam>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionDefault%602.md")]
     public abstract class SceneActionDefault<T1, T2> : SceneActionAbstract<T1, T2>
     {
         [SerializeReference]
@@ -113,6 +116,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">Type of the first argument.</typeparam>
     /// <typeparam name="T2">Type of the second argument.</typeparam>
     /// <typeparam name="T3">Type of the third argument.</typeparam>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionDefault%603.md")]
     public abstract class SceneActionDefault<T1, T2, T3> : SceneActionAbstract<T1, T2, T3>
     {
         [SerializeReference]
@@ -146,6 +150,7 @@ namespace Atomic.Elements
     /// <typeparam name="T2">Type of the second argument.</typeparam>
     /// <typeparam name="T3">Type of the third argument.</typeparam>
     /// <typeparam name="T4">Type of the fourth argument.</typeparam>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionDefault%604.md")]
     public abstract class SceneActionDefault<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, T3, T4>
     {
         [SerializeReference]

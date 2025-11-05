@@ -18,6 +18,7 @@ namespace Atomic.Entities
     /// This pool allows renting and returning multiple different entity prefabs, each tracked by its own internal pool.
     /// Pools are created lazily and managed by prefab name. Supports pre-warming via <see cref="Init"/>.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Pooling/PrefabEntityPool%601.md")]
     public abstract class PrefabEntityPool<E> : MonoBehaviour, IPrefabEntityPool<E> where E : SceneEntity
     {
         private const string NUMBER_PATTERN = @"\s*\(\d+\)$";

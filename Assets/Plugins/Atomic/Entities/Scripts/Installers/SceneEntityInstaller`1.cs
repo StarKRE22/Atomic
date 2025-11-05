@@ -1,4 +1,7 @@
 #if UNITY_5_3_OR_NEWER
+using System;
+using UnityEngine;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -8,13 +11,36 @@ namespace Atomic.Entities
     /// <remarks>
     /// This variant enforces type safety and eliminates the need for manual casting in derived classes.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Installers/SceneEntityInstaller%601.md")]
     public abstract class SceneEntityInstaller<E> : SceneEntityInstaller, IEntityInstaller<E> where E : class, IEntity
     {
         /// <inheritdoc cref="SceneEntityInstaller.Install" />
-        public sealed override void Install(IEntity entity) => this.Install((E) entity);
+        public sealed override void Install(IEntity entity)
+        {
+            if (entity is not E tEntity)
+                throw new InvalidCastException(
+                    $"[SceneEntityInstaller<{typeof(E).Name}>] Invalid entity type.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    $"Please make sure the correct installer is attached for this entity type."
+                );
+
+            this.Install(tEntity);
+        }
 
         /// <inheritdoc cref="SceneEntityInstaller.Uninstall" />
-        public sealed override void Uninstall(IEntity entity) => this.Uninstall((E) entity);
+        public sealed override void Uninstall(IEntity entity)
+        {
+            if (entity is not E tEntity)
+                throw new InvalidCastException(
+                    $"[SceneEntityInstaller<{typeof(E).Name}>] Invalid entity type.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    "Please connect the correct SceneEntityInstaller for this entity type."
+                );
+
+            this.Uninstall(tEntity);
+        }
 
         /// <summary>
         /// Installs data or behavior into a strongly-typed entity.

@@ -13,6 +13,7 @@ namespace Atomic.Entities
     /// </remarks>
     [AddComponentMenu("Atomic/Entities/Entity View")]
     [DisallowMultipleComponent]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityView.md")]
     public class EntityView : EntityView<IEntity>
     {
         /// <summary>

@@ -19,6 +19,7 @@ namespace Atomic.Entities
     /// </example>
     [AddComponentMenu("Atomic/Entities/Entity Pool")]
     [DisallowMultipleComponent]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Pooling/SceneEntityPool.md")]
     public class SceneEntityPool : SceneEntityPool<SceneEntity>, IEntityPool
     {
         /// <inheritdoc />

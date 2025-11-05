@@ -12,6 +12,7 @@ namespace Atomic.Entities
     /// </remarks>
     [AddComponentMenu("Atomic/Entities/Prefab Entity Pool")]
     [DisallowMultipleComponent]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Pooling/PrefabEntityPool.md")]
     public class PrefabEntityPool : PrefabEntityPool<SceneEntity>, IPrefabEntityPool
     {
     }

@@ -8,7 +8,13 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    public abstract class EntityViewPool<E, V> : MonoBehaviour 
+    /// <summary>
+    /// A pool system for managing reusable EntityView<E> instances.
+    /// Supports preloading from catalogs, runtime instantiation, renting, and returning views to minimize runtime allocations.
+    /// Use for efficient management of frequently spawned or displayed entity views.
+    /// </summary>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityViewPool%601.md")]
+    public abstract class EntityViewPool<E, V> : MonoBehaviour
         where E : class, IEntity
         where V : EntityView<E>
     {
@@ -78,7 +84,7 @@ namespace Atomic.Entities
             if (view)
                 view.transform.parent = this.container;
         }
-        
+
         /// <summary>
         /// Clears all pooled instances and destroys their GameObjects.
         /// </summary>

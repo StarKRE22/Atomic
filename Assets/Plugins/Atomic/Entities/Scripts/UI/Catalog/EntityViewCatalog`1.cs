@@ -11,6 +11,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="E">The type of entity (<see cref="IEntity"/>) associated with the views in this catalog.</typeparam>
     /// <typeparam name="V">The type of entity view (<see cref="EntityView{E}"/>) stored in this catalog.</typeparam>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityViewCatalog%601.md")]
     public abstract class EntityViewCatalog<E, V> : ScriptableObject
         where E : class, IEntity
         where V : EntityView<E>

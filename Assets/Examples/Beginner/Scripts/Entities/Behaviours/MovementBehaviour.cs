@@ -4,6 +4,14 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
+    /// <summary>
+    /// Moves the entity's transform each physics frame according to its movement direction and speed.
+    /// </summary>
+    /// <remarks>
+    /// This behaviour applies a simple kinematic movement without physics forces.
+    /// It updates the entity's <see cref="Transform"/> position in every <c>FixedUpdate</c> step,
+    /// multiplying the normalized direction by the movement speed and delta time.
+    /// </remarks>
     public sealed class MovementBehaviour : IEntityInit, IEntityFixedTick
     {
         private Transform _transform;

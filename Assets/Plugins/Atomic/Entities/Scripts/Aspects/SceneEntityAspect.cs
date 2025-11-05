@@ -1,4 +1,6 @@
 #if UNITY_5_3_OR_NEWER
+using UnityEngine;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -9,6 +11,7 @@ namespace Atomic.Entities
     /// with <typeparamref name="E"/> fixed to <see cref="IEntity"/>. 
     /// It implements <see cref="IEntityAspect"/> and can be added to GameObjects in a Unity scene.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Aspects/SceneEntityAspect.md")]
     public abstract class SceneEntityAspect : SceneEntityAspect<IEntity>, IEntityAspect
     {
     }

@@ -1,4 +1,6 @@
 #if UNITY_5_3_OR_NEWER
+using UnityEngine;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -8,6 +10,7 @@ namespace Atomic.Entities
     /// In addition to creating the entity with predefined values, this class defines an <see cref="Install"/> method
     /// that allows injecting additional behaviors, components, or configuration into the newly created entity.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Factories/ScriptableEntityFactory.md")]
     public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
     {
         /// <summary>

@@ -5,19 +5,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// Non-generic proxy component for exposing and interacting with a <see cref="SceneEntity"/> in the Unity scene.
-    /// </summary>
-    /// <remarks>
-    /// This component serves as a non-generic version of <see cref="SceneEntityProxy{E}"/> and is intended
-    /// for convenience when working with base <see cref="SceneEntity"/> types.
-    /// </remarks>
-    [AddComponentMenu("Atomic/Entities/Entity Proxy")]
-    [DisallowMultipleComponent]
-    public class SceneEntityProxy : SceneEntityProxy<SceneEntity>
-    {
-    }
-
+  
     /// <summary>
     /// A Unity MonoBehaviour proxy that forwards all <see cref="IEntity"/> calls to an underlying <typeparamref name="E"/> source entity.
     /// </summary>
@@ -47,6 +35,7 @@ namespace Atomic.Entities
     /// </code>
     /// </example>
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Entities/SceneEntityProxy%601.md")]
     public abstract class SceneEntityProxy<E> : MonoBehaviour, IEntity where E : SceneEntity
     {
         public event Action<IEntity> OnStateChanged

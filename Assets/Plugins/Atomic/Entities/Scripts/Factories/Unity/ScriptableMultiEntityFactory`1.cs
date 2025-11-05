@@ -16,6 +16,7 @@ namespace Atomic.Entities
     /// <typeparam name="K">The type of key used to identify factories.</typeparam>
     /// <typeparam name="E">The type of entity to be created, which must implement <see cref="IEntity"/>.</typeparam>
     /// <typeparam name="F">The type of scriptable entity factory, which must inherit from <see cref="ScriptableEntityFactory{E}"/>.</typeparam>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Factories/ScriptableMultiEntityFactory%601.md")]
     public abstract class ScriptableMultiEntityFactory<K, E, F> : ScriptableObject, IMultiEntityFactory<K, E>
         where E : IEntity
         where F : ScriptableEntityFactory<E>

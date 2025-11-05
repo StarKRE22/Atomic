@@ -1,3 +1,5 @@
+using UnityEngine;
+
 #if UNITY_5_3_OR_NEWER
 namespace Atomic.Entities
 {
@@ -8,6 +10,7 @@ namespace Atomic.Entities
     /// <remarks>
     /// This class enforces type safety and avoids manual casting in derived implementations.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Installers/ScriptableEntityInstaller%601.md")]
     public abstract class ScriptableEntityInstaller<E> : ScriptableEntityInstaller, IEntityInstaller<E>
         where E : class, IEntity
     {

@@ -15,6 +15,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="E">The type of entity (<see cref="IEntity"/>) managed by this collection.</typeparam>
     /// <typeparam name="V">The type of entity view (<see cref="EntityView{E}"/>) associated with entities.</typeparam>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityCollectionView%601.md")]
     public abstract class EntityCollectionView<E, V> : MonoBehaviour, IEnumerable<KeyValuePair<E, V>>
         where E : class, IEntity
         where V : EntityView<E>

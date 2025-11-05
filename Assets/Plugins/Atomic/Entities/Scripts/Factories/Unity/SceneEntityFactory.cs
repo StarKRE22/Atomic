@@ -1,4 +1,5 @@
 #if UNITY_5_3_OR_NEWER
+using UnityEngine;
 
 namespace Atomic.Entities
 {
@@ -11,6 +12,7 @@ namespace Atomic.Entities
     /// It also defines an <see cref="Install"/> method that allows injecting custom configuration logic,
     /// such as adding tags, values, or behaviors after the entity has been created.
     /// </remarks>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Factories/SceneEntityFactory.md")]
     public abstract class SceneEntityFactory : SceneEntityFactory<IEntity>, IEntityFactory
     {
         /// <summary>

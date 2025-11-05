@@ -22,6 +22,7 @@ namespace Atomic.Elements
     /// </remarks>
     [AddComponentMenu("Atomic/Elements/Animation Events")]
     [DisallowMultipleComponent]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Utils/AnimationEvents.md")]
     public sealed class AnimationEvents : MonoBehaviour
     {
         /// <summary>
