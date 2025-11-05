@@ -5,6 +5,14 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
+    /// <summary>
+    /// Displays the player's current money amount on the UI.
+    /// </summary>
+    /// <remarks>
+    /// This component observes changes in the player's <see cref="IValue{T}"/> representing money
+    /// and updates a <see cref="TMP_Text"/> element in real time.  
+    /// It uses the Atomic reactive subscription system to automatically react to value updates.
+    /// </remarks>
     public sealed class MoneyView : MonoBehaviour
     {
         [SerializeField]

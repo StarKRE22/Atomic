@@ -4,6 +4,15 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
+    /// <summary>
+    /// Handles player input and updates the movement direction of an entity based on keyboard keys.
+    /// </summary>
+    /// <remarks>
+    /// This behaviour continuously reads the keyboard input defined in the <see cref="InputMap"/> asset
+    /// and writes the resulting direction vector into the entity's movement variable.
+    /// </remarks>
+    /// <seealso cref="InputMap"/>
+    /// <seealso cref="IVariable{T}"/>
     public sealed class InputBehaviour : IEntityInit, IEntityTick
     {
         private InputMap _inputMap;

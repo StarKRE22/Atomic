@@ -6,6 +6,16 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
+    /// <summary>
+    /// Handles game-over logic when the match timer (countdown) expires.
+    /// </summary>
+    /// <remarks>
+    /// This behaviour monitors the game countdown timer and determines which team has won once the time is up.
+    /// It compares each team's total money value and disables all players and the main game context after announcing the winner.
+    /// </remarks>
+    /// <seealso cref="ICooldown"/>
+    /// <seealso cref="TeamType"/>
+    /// <seealso cref="IEntity.Disable()"/>
     public sealed class GameOverBehaviour : IEntityInit, IEntityDispose
     {
         private ICooldown _countdown;

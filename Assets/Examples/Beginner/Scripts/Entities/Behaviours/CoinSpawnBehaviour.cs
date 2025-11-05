@@ -4,6 +4,17 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
+    /// <summary>
+    /// Handles automatic spawning of coin entities within a defined area at fixed time intervals.
+    /// </summary>
+    /// <remarks>
+    /// This behaviour retrieves spawn configuration data from the <see cref="SpawnInfo"/> value
+    /// and periodically spawns new coin entities using <see cref="SceneEntity.Create"/>.  
+    /// The spawn area and interval are fully configurable through the <see cref="SpawnInfo"/> asset.
+    /// </remarks>
+    /// <seealso cref="SpawnInfo"/>
+    /// <seealso cref="SceneEntity.Create(SceneEntity, Vector3, Quaternion, Transform)"/>
+
     public sealed class CoinSpawnBehaviour : IEntityInit, IEntityFixedTick, IEntityGizmos
     {
         private SpawnInfo _spawnInfo;

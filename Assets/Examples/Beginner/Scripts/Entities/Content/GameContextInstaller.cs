@@ -5,6 +5,26 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
+    /// <summary>
+    /// Installs the main <b>game context entity</b>, initializing core systems such as
+    /// player management, coin spawning, countdown timers, and game-over logic.
+    /// </summary>
+    /// <remarks>
+    /// This installer acts as the central hub for initializing all global game systems.
+    /// It binds together gameplay entities (players, spawners, timers) and behaviors
+    /// that define the overall game loop.
+    ///
+    /// <para>
+    /// The <see cref="GameContextInstaller"/> typically exists as a root scene object that 
+    /// manages all runtime logic shared between player entities.
+    /// </para>
+    /// </remarks>
+   
+    /// <seealso cref="SceneEntityInstaller"/>
+    /// <seealso cref="CoinSpawnBehaviour"/>
+    /// <seealso cref="GameOverBehaviour"/>
+    /// <seealso cref="PlayerInfo"/>
+    /// <seealso cref="TeamType"/>
     public sealed class GameContextInstaller : SceneEntityInstaller
     {
         [SerializeField]
