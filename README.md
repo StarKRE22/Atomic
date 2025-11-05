@@ -52,7 +52,7 @@ Atomic works perfectly **without Odin**, but using it makes data inspection and 
 
 #### • [Atomic Plugin](https://plugins.jetbrains.com/plugin/28321-atomic)
 
-For enhanced **code generation** and **workflow integration** with **Rider IDE**.  
+For enhanced **code generation** and **workflow integration** with **Rider IDE**.
 While Unity itself provides basic support, the Atomic Rider Plugin makes development smoother and more powerful.
 Available on [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
 or [GitHub](https://github.com/Prylor/atomic-rider-plugin).
@@ -146,26 +146,25 @@ values:
 
 #### Step 4. Generate extension methods
 
-> [!IMPORTANT]
-> To generate the file, you need to add at least one property in the `values` section or a tag in the `tags` section. *
-*Without
-> adding a property, the code generator will not produce any output!**
+Press `Ctrl + Shift + G` while in the `.atomic` file
 
-- Press `Ctrl + Shift + G` while in the `.atomic` file
-    - Required for **first-time generation**
-    - Can be used anytime to **force regeneration**
+- Required for **first-time generation**
+- Can be used anytime to **force regeneration**
 
 The plugin automatically updates existing C# files when saving `.atomic` changes
 
 - Only works for **existing files**
 - Can be enabled / disabled in plugin settings
 
+> [!IMPORTANT]
+> To generate the file, you need to add at least one property in the `values` section or a tag in the `tags` section.
+> **Without adding a property, the code generator will not produce any output!**
+
 ### Creating an Entity
 
 In this section, we’ll walk through the complete process of creating a character entity in Unity using Rider IDE and the
-Atomic plugin.
-Step by step, we’ll set up an entity, generate its data through the Atomic configuration file, and implement a simple
-movement mechanic.
+Atomic plugin. Step by step, we’ll set up an entity, generate its data through the Atomic configuration file, and
+implement a simple movement mechanic.
 
 By the end of this section, you’ll have a working character that moves in the specified direction —
 demonstrating how Atomic’s code generation and entity-based architecture streamline gameplay logic creation.
