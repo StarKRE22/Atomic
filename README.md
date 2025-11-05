@@ -700,7 +700,7 @@ SOFTWARE.
 ---
 
 <p align="center">
-<a href="#-table-of-contents">↑ Back to top</a> •
+<a href="#-table-of-contents">Back to top</a> •
 <a href="https://github.com/StarKRE22/Atomic/issues">Report Issue</a> •
 <a href="https://github.com/StarKRE22/Atomic/discussions">Join Discussion</a>
 </p>
