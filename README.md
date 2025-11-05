@@ -80,8 +80,8 @@ the [documentation](https://github.com/StarKRE22/Atomic/blob/experimental/Docs/E
 
 ## 🚀 Unity Quick Start
 
-Below is the process for quickly creating a character entity in Unity using Rider IDE and the Atomic code generation
-plugin.
+In this section, we’ll build a simple game object with a movement mechanic to demonstrate how to implement object
+movement from scratch. Step by step, we’ll create an entity in Unity using Rider IDE and the Atomic plugin.
 
 ### Code Generation Setup
 
