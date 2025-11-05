@@ -55,7 +55,7 @@ Atomic works perfectly **without Odin**, but using it makes data inspection and 
 
 For enhanced **code generation** and **workflow integration** with **Rider IDE**.
 While Unity itself provides basic support, the Atomic Rider Plugin makes development smoother and more powerful.
-Available on [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
+Available on [JetBrains](https://plugins.jetbrains.com/plugin/28321-atomic)
 or [GitHub](https://github.com/Prylor/atomic-rider-plugin).
 
 #### • [Rider IDE](https://www.jetbrains.com/ru-ru/rider/)
@@ -101,7 +101,11 @@ via [reference](https://plugins.jetbrains.com/plugin/28321-atomic)
 #### Step 2. Create a Configuration File
 
 1. Right-click on the desired scripts directory in Rider.
-2. Select New → Atomic File from the context menu.
+2. Select New → **Atomic File** from the context menu.
+
+<img width="150" alt="Manual Install Plugin" src="Docs/Images/NewAtomicFile.png" />
+
+Once clicked, a configuration window will open. Fill it out and click **Create**.
 
 <img width="400" alt="Manual Install Plugin" src="Docs/Images/CreateAtomicFile.png" />
 
@@ -577,6 +581,7 @@ implementation notes that highlight how different systems and data structures pe
 - [Стрим: Введение в фреймворк Atomic](https://www.youtube.com/live/AWNOzbGKg3Y?si=yF4Cipyrmx8L7bcm)
 - [Хабр: Atomic — свежий взгляд на разработку игр Unity и C#](https://habr.com/ru/articles/959834/)
 - [Medium: Atomic — a fresh architecture on game development with Unity and C#](https://medium.com/@gulkin.igor.developer/atomic-a-fresh-architecture-on-game-development-with-unity-and-c-c587fcf9e266)
+
 ---
 
 ## ⚖️ License
