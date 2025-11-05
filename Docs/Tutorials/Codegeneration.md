@@ -11,8 +11,8 @@ entity.
 
 - [The Problem](#the-problem)
 - [Entity API Generation](#entity-api-generation)
-- [Generation via Unity Editor](#generating-api-via-unity-editor)
-- [Generation via Rider Plugin](#generating-api-via-rider-plugin)
+- [Generation via Unity Editor](#generation-via-unity-editor)
+- [Generation via Rider Plugin](#generation-via-rider-plugin)
 
 ---
 
