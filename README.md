@@ -41,7 +41,7 @@ complex object-oriented structures.
 The Atomic Framework requires **Unity 6+** or **.NET 7+**.  
 Make sure your development environment meets these requirements before using the framework.
 
-### 🔧 Recommended Tools
+### Recommended Tools
 
 Although not required, the following tools significantly improve the development experience with Atomic:
 
