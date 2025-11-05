@@ -3,14 +3,12 @@
 [![📦 GitHub release (latest by date)](https://img.shields.io/github/v/release/starkre22/Atomic?color=red)](https://github.com/starkre22/Atomic/releases)
 [![📄 GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/StarKRE22/Atomic/blob/main/LICENSE.md)
 
-<br />
-
 <!-- <img width="4096" alt="Banner" src="https://github.com/user-attachments/assets/bd596a97-4215-4fa6-8e5c-48da598b1e79" /> -->
 <img width="500" height="" alt="изображение" src="https://github.com/user-attachments/assets/0f6d1c99-f3ed-479c-8139-cd5676e5bf9c" />
 
 # ⚛️ What is Atomic?
 
-**Atomic** is an architectural framework for game development in **Unity** and **C#**,  
+**Atomic** is an architectural framework for game development in **Unity** and **C#**,
 built around the idea of constructing game systems from **atomic elements** — modular units represented as constants,
 variables, events, actions, and functions.
 
@@ -82,7 +80,8 @@ the [documentation](https://github.com/StarKRE22/Atomic/blob/experimental/Docs/E
 
 ## 🚀 Unity Quick Start
 
-Below is the process for quickly creating a character entity in Unity
+Below is the process for quickly creating a character entity in Unity using Rider IDE and the Atomic code generation
+plugin.
 
 ### Code Generation Setup
 
@@ -147,7 +146,8 @@ values:
 #### Step 4. Generate extension methods
 
 > [!IMPORTANT]
-> To generate the file, you need to add at least one property in the `values` section or a tag in the `tags` section. **Without
+> To generate the file, you need to add at least one property in the `values` section or a tag in the `tags` section. *
+*Without
 > adding a property, the code generator will not produce any output!**
 
 - Press `Ctrl + Shift + G` while in the `.atomic` file
@@ -210,6 +210,7 @@ values:
 <img width="600" height="" alt="Entity component" src="Docs/Images/MovementMechanics.png"/>
 
 Now let’s create a behavior that will move our entity in its movement direction:
+
 ```csharp
 // Controller that moves entity by its direction
 public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
