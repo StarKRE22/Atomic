@@ -13,7 +13,7 @@ built around the idea of constructing game systems from **atomic elements** — 
 variables, events, actions, and functions.
 
 This approach eliminates the need for continuous architectural redesign and code refactoring during project iteration.
-Instead, it allows developers to focus entirely on creating gameplay mechanics, logic, and behavior — not on maintaining
+Instead, it allows developers to focus entirely on creating gameplay mechanics, logic and behaviour — not on maintaining
 complex object-oriented structures.
 
 ---
@@ -23,16 +23,17 @@ complex object-oriented structures.
 - [Requirements](#-requirements)
 - [Installation](#-installation)
 - [Unity Quick Start](#-unity-quick-start)
-- [Tutorials](#tutorials)
-- [Game Examples](#game-examples)
-    - [Beginner Sample](#beginner-sample)
-    - [Top-Down Shooter Sample](#top-down-shooter-sample)
-    - [RTS Sample](#rts-sample)
-- [API Reference](#api-reference)
-- [Best Practices](#best-practices)
-- [Performance](#performance)
-- [License](#license)
-- [Contact](#contact)
+- [Tutorials](#-tutorials)
+- [API Reference](#-api-reference)
+- [Sample Projects](#-sample-projects)
+    - [Beginner Sample](#ex1)
+    - [Top-Down Shooter Sample](#ex2)
+    - [RTS Sample](#ex3)
+- [Best Practices](#-best-practices)
+- [Performance](#-performance)
+- [Useful Links](#-useful-links)
+- [License](#-license)
+- [Contact](#-contact)
 
 ---
 
@@ -251,7 +252,7 @@ To add the data and movement logic to the entity, let’s create a script that w
 elements and behaviour into it.
 
  ```csharp
-//Populates entity with tags, values and behaviours
+// Populates entity with tags, values and behaviours
 public sealed class CharacterInstaller : SceneEntityInstaller
 {
     [SerializeField] private Transform _transform;
@@ -260,12 +261,12 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
     public override void Install(IEntity entity)
     {
-        //Add properties to a character
+        // Add properties to a character
         entity.AddTransform(_transform);
         entity.AddMoveSpeed(_moveSpeed);
         entity.AddMoveDirection(_moveDirection);
         
-        //Add behaviours to a character
+        // Add behaviours to a character
         entity.AddBehaviour<MoveBehaviour>();
     }
 }
@@ -287,50 +288,20 @@ To link the `CharacterInstaller` to the `Entity` component, drag and drop it int
 
 In the Unity Editor, press Play to verify that the character starts moving.
 
-## 📚 Theory
-
 ---
 
----
+## 📖 Tutorials
 
-## 🔍 API Reference
+Get hands-on with the Atomic Framework through practical guides and examples. Each tutorial introduces a specific
+concept — from the fundamental Atomic approach to advanced topics such as entity
+interaction and simulation without Unity.
 
-- [Atomic.Elements](Docs/Elements/Manual.md)
-    - [Values](Docs/Elements/Values/Manual.md)  <!-- + -->
-    - [Variables](Docs/Elements/Variables/Manual.md) <!-- + -->
-    - [Actions](Docs/Elements/Actions/Manual.md) <!-- + -->
-    - [Functions](Docs/Elements/Functions/Manual.md) <!-- + -->
-    - [Setters](Docs/Elements/Setters/Manual.md) <!-- + -->
-    - [Requests](Docs/Elements/Requests/Manual.md) <!-- + -->
-    - [Events](Docs/Elements/Events/Manual.md) <!-- + -->
-    - [Time](Docs/Elements/Time/Manual.md) <!-- + -->
-    - [Collections](Docs/Elements/Collections/Manual.md) <!-- + -->
-    - [Expressions](Docs/Elements/Expressions/Manual.md) <!-- + -->
-    - [Utilities](Docs/Elements/Utils/Manual.md) <!-- + -->
-
-
-- [Atomic.Entities](Docs/Entities/Manual.md)
-    - [Entities](Docs/Entities/Entities/Manual.md) <!-- + -->
-    - [Behaviours](Docs/Entities/Behaviours/Manual.md) <!-- + -->
-    - [Installers](Docs/Entities/Installers/Manual.md) <!-- + -->
-    - [Aspects](Docs/Entities/Aspects/Manual.md) <!-- + -->
-    - [Factories](Docs/Entities/Factories/Manual.md) <!-- + -->
-    - [Baking](Docs/Entities/Baking/Manual.md) <!-- + -->
-    - [Pooling](Docs/Entities/Pooling/Manual.md) <!-- + -->
-    - [Collections](Docs/Entities/Collections/Manual.md) <!-- + -->
-    - [Worlds](Docs/Entities/Worlds/Manual.md) <!-- + -->
-    - [Registry](Docs/Entities/Registry/EntityRegistry.md) <!-- + -->
-    - [Filters](Docs/Entities/Filters/Manual.md) <!-- + -->
-    - [Triggers](Docs/Entities/Filters/EntityTriggers.md) <!-- + -->
-    - [Lifecycle](Docs/Entities/Lifecycle/Manual.md) <!-- + -->
-    - [Views](Docs/Entities/UI/Manual.md) <!-- + -->
-    - [Names](Docs/Entities/Names/Manual.md) <!-- + -->
-    - [API Generation](Docs/Entities/EntityAPI/Manual.md) <!-- + -->
-
----
-
-
----
+1. [What is Atomic Approach](Docs/Tutorials/WhatIsAtomicApproach.md)
+2. [Working with Unity](Docs/Tutorials/WorkingWithUnity.md)
+3. [Minimizing Unity](Docs/Tutorials/MinimizingUnity.md)
+4. [Benefits & Limitations](Docs/Tutorials/BenefitsLimitations.md)
+5. [Comparison with OOP & ECS](Docs/Tutorials/ComparisonOOPandECS.md)
+6. [Conclusion](Docs/Tutorials/Conclusion.md)
 
 <!-- 
 
@@ -357,11 +328,58 @@ To be added...
 
 -->
 
+---
+
+## 🔍 API Reference
+
+Explore the full Atomic API documentation. The framework is divided into two main modules — Elements and Entities, each
+responsible for a different level of abstraction.
+
+### [⚛️ Atomic.Elements](Docs/Elements/Manual.md)
+
+Low-level, composable building blocks — the atomic “elements” that power everything in the framework.
+Use them to define data, state, logic, and interaction between systems.
+
+- [Values](Docs/Elements/Values/Manual.md)  — immutable constants and parameters
+- [Variables](Docs/Elements/Variables/Manual.md) — reactive mutable data containers
+- [Actions](Docs/Elements/Actions/Manual.md) — callable commands and procedures
+- [Functions](Docs/Elements/Functions/Manual.md) — encapsulated logic returning results
+- [Setters](Docs/Elements/Setters/Manual.md) — controlled state mutation interfaces
+- [Requests](Docs/Elements/Requests/Manual.md) — deferred actions that can be executed at a later time
+- [Events](Docs/Elements/Events/Manual.md) — reactive broadcast-based communication
+- [Time](Docs/Elements/Time/Manual.md) — frame-based and delta-time utilities
+- [Collections](Docs/Elements/Collections/Manual.md) — reactive collections such as arrays, lists, dictionaries, and
+  sets.
+- [Utilities](Docs/Elements/Utils/Manual.md) —utility classes and components
+
+### [🧬 Atomic.Entities](Docs/Entities/Manual.md)
+
+The high-level architecture layer that combines atomic elements into functional entities. All game objects,
+systems, UI elements, and application contexts can be represented as entities, each containing state and behaviour.
+
+- [Entities](Docs/Entities/Entities/Manual.md) — base unit of game logic
+- [Behaviours](Docs/Entities/Behaviours/Manual.md) — reusable logic modules
+- [Installers](Docs/Entities/Installers/Manual.md) — dependency injection and setup scripts
+- [Aspects](Docs/Entities/Aspects/Manual.md) — applies or discards tags, values, and behaviours on an entity
+- [Factories](Docs/Entities/Factories/Manual.md) — entity creation and configuration
+- [Baking](Docs/Entities/Baking/Manual.md) — converting Unity GameObjects into entity
+- [Pooling](Docs/Entities/Pooling/Manual.md) — entity reuse and performance optimization
+- [Collections](Docs/Entities/Collections/Manual.md) — high performance set for entities
+- [Worlds](Docs/Entities/Worlds/Manual.md) — high performance entity collection with automatic lifecycle
+- [Registry](Docs/Entities/Registry/EntityRegistry.md) — central access and lookup
+- [Filters](Docs/Entities/Filters/Manual.md) — runtime querying and filtering
+- [Triggers](Docs/Entities/Filters/EntityTriggers.md) — reactive filtering events
+- [Lifecycle](Docs/Entities/Lifecycle/Manual.md) — initialization and update stages
+- [Views](Docs/Entities/UI/Manual.md) — UI integration and visualization
+- [Names](Docs/Entities/Names/Manual.md) — converting string-based names into unique integer identifiers
+- [API Generation](Docs/Entities/EntityAPI/Manual.md) — automatic code generation via Atomic plugin and Unity Editor
+
+---
+
 ## 🗂 Sample Projects
 
 This section presents **three sample projects**, each demonstrating a different level of complexity and use case of the
-framework.  
-All examples are available inside **[Assets/Examples](Assets/Examples)**.
+framework. All examples are available inside **[Assets/Examples](Assets/Examples)**.
 
 - **[Beginner Sample](Assets/Examples/Beginner)** — a simple 2-player mini-game showcasing the core principles of the
   framework.
@@ -554,6 +572,13 @@ implementation notes that highlight how different systems and data structures pe
 
 ---
 
+## 🔗 Useful Links
+
+- [Стрим: Введение в фреймворк Atomic](https://www.youtube.com/live/AWNOzbGKg3Y?si=yF4Cipyrmx8L7bcm)
+- [Хабр: Atomic — свежий взгляд на разработку игр Unity и C#](https://habr.com/ru/articles/959834/)
+- [Medium: Atomic — a fresh architecture on game development with Unity and C#](https://medium.com/@gulkin.igor.developer/atomic-a-fresh-architecture-on-game-development-with-unity-and-c-c587fcf9e266)
+---
+
 ## ⚖️ License
 
 This project is licensed under the [MIT License](./LICENSE.md).
@@ -584,12 +609,11 @@ SOFTWARE.
 
 ---
 
-## 📧 Contacts
+## 📧 Contact
 
 **Author:** Igor Gulkin  
 **Telegram:** [t.me/starkre22](https://t.me/starkre22)  
 **Email:** [gulkin.igor.developer@gmail.com](mailto:gulkin.igor.developer@gmail.com)
-
 
 ---
 

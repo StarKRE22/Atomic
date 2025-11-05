@@ -1,6 +1,6 @@
 # 🧩️ Entity Collections
 
-**Entity Collections** provide structured ways to store, access, and manage instances
+**Entity Collections** provide a high performance and structured ways to store, access, and manage instances
 of [entity](../Entities/Manual.md) and its subclasses. They can be **read-only** or **mutable**, **generic** or
 **non-generic**, and are designed for **high performance** and **reactive notifications**. Collections may also include
 **utility extensions** for batch operations, initialization, disposal, and Unity-specific
