@@ -80,8 +80,9 @@ the [documentation](https://github.com/StarKRE22/Atomic/blob/experimental/Docs/E
 
 ## 🚀 Unity Quick Start
 
-In this section, we’ll build a simple game object with a movement mechanic to demonstrate how to implement
-movement from scratch. Step by step, we’ll create an entity in Unity using Rider IDE and the Atomic plugin.
+This section provides a hands-on introduction to using the Atomic Framework inside Unity.
+You’ll learn how to set up code generation, create your first entity, and implement a simple movement mechanic —
+all directly from Rider IDE using the Atomic plugin.
 
 ### Code Generation Setup
 
@@ -161,6 +162,14 @@ The plugin automatically updates existing C# files when saving `.atomic` changes
 
 ### Creating an Entity
 
+In this section, we’ll walk through the complete process of creating a character entity in Unity using Rider IDE and the
+Atomic plugin.
+Step by step, we’ll set up an entity, generate its data through the Atomic configuration file, and implement a simple
+movement mechanic.
+
+By the end of this section, you’ll have a working character that moves in the specified direction —
+demonstrating how Atomic’s code generation and entity-based architecture streamline gameplay logic creation.
+
 #### Step 1. Creating a game object
 
 In the Scene Hierarchy, right-click and choose `3D Object → Capsule` to create a new game object.
@@ -205,11 +214,11 @@ values:
   MoveDirection: IVariable<Vector3>
 ```
 
-#### Step 4. Create a movement mechanics for the entity
+#### Step 4. Creating the Movement MechanicS
 
-<img width="600" height="" alt="Entity component" src="Docs/Images/MovementMechanics.png"/>
+Let’s write a behaviour that will move our entity in the direction of its movement:
 
-Now let’s create a behavior that will move our entity in its movement direction:
+<!-- <img width="600" height="" alt="Entity component" src="Docs/Images/MovementMechanics.png"/> -->
 
 ```csharp
 // Controller that moves entity by its direction
@@ -237,7 +246,10 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 }
 ```
 
-#### Step 5. Create a script that populates the entity with tags, values and behaviours
+#### Step 5. Creating the Installer
+
+To add the data and movement logic to the entity, let’s create a script that will inject the corresponding atomic
+elements and behaviour into it.
 
  ```csharp
 //Populates entity with tags, values and behaviours
@@ -260,15 +272,21 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 }
 ```
 
-#### Step 6. Attach `CharacterInstaller` script to the GameObject
+#### Step 6. Configuring the Game Object
+
+Next, add the `CharacterInstaller` component to your entity through the Inspector and configure its settings.
 
 <img width="400" height="" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
-#### Step 7. Drag & drop `CharacterInstaller` into `installers` field of the entity
+#### Step 7. Connecting the Installer to the Entity
+
+To link the `CharacterInstaller` to the `Entity` component, drag and drop it into the `Scene Installers` field.
 
 <img width="400" height="" alt="изображение" src="Docs/Images/EntityInstalling.png" />
 
-#### Step 8. Enter `PlayMode` and check your character movement!
+#### Step 8. Running the Character
+
+In the Unity Editor, press Play to verify that the character starts moving.
 
 ## 📚 Theory
 
