@@ -85,7 +85,7 @@ This section provides a hands-on introduction to using the Atomic Framework insi
 You’ll learn how to set up code generation, create your first entity, and implement a simple movement mechanic —
 all directly from Rider IDE using the Atomic plugin.
 
-### Code Generation Setup
+### I. Code Generation Setup
 
 Before you start creating gameplay mechanics, you need to configure the data generation process.
 The Atomic Framework supports automatic generation of extension methods for entities, which helps eliminate hard-coded
@@ -165,13 +165,13 @@ The plugin automatically updates existing C# files when saving `.atomic` changes
 > To generate the file, you need to add at least one property in the `values` section or a tag in the `tags` section.
 > **Without adding a property, the code generator will not produce any output!**
 
-### Creating an Entity
+### II. Creating a Character
 
 In this section, we’ll walk through the complete process of creating a character entity in Unity using Rider IDE and the
 Atomic plugin. Step by step, we’ll set up an entity, generate its data through the Atomic configuration file, and
 implement a simple movement mechanic.
 
-By the end of this section, you’ll have a working character that moves in the specified direction —
+By the end of this section, you’ll have a working character that moves in the specified direction
 demonstrating how Atomic’s code generation and entity-based architecture streamline gameplay logic creation.
 
 #### Step 1. Creating a game object
@@ -193,11 +193,11 @@ Make sure the following checkboxes are enabled:
 
 #### Step 3. Generate Data
 
-Add the following properties to your configuration file `EntityAPI.atomic`:
+Add the following properties to the configuration file `EntityAPI.atomic`:
 
-- `Transform`
-- `MoveDirection`
-- `MoveSpeed`
+- `Transform` : Transform
+- `MoveDirection`: IVariable\<Vector3>
+- `MoveSpeed`: IValue<float>
 
 ```yaml
 namespace: SampleGame
@@ -208,6 +208,8 @@ unsafe: false
 entityType: IEntity
 
 imports:
+  - Atomic.Entities
+  - Atomic.Elements
 
 tags:
 
@@ -230,7 +232,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 {
     private Transform _transform;
     private IValue<float> _moveSpeed;
-    private IValue<Vector3> _moveDirection;
+    private IVariable<Vector3> _moveDirection;
 
     // Called when Start() is invoked
     public void Init(IEntity entity)
@@ -250,6 +252,16 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 }
 ```
 
+> [!IMPORTANT]
+> It’s important to note that in the Atomic approach, the developer **always works with data abstractions represented
+> as reference-type wrappers.**
+>
+> This design greatly simplifies project maintenance, testing, and multiplayer development, as it removes the tight
+> coupling to data storage methods that is typical for component-based ECS architectures.
+>
+> A simple example:
+> Under the `IValue<T>` interface, you can substitute either a `Variable<T>` or a `Const<T>` implementation.
+
 #### Step 5. Creating the Installer
 
 To add the data and movement logic to the entity, let’s create a script that will inject the corresponding atomic
@@ -260,8 +272,8 @@ elements and behaviour into it.
 public sealed class CharacterInstaller : SceneEntityInstaller
 {
     [SerializeField] private Transform _transform;
-    [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
-    [SerializeField] private ReactiveVariable<Vector3> _moveDirection; //Mutable variable with subscription
+    [SerializeField] private Const<float> _moveSpeed = 5.0f;
+    [SerializeField] private Variable<Vector3> _moveDirection = Vector3.forward;
 
     public override void Install(IEntity entity)
     {
@@ -290,7 +302,69 @@ To link the `CharacterInstaller` to the `Entity` component, drag and drop it int
 
 #### Step 8. Running the Character
 
-In the Unity Editor, press Play to verify that the character starts moving.
+In the Unity Editor, press Play to verify that the character starts moving forward.
+
+### III. Adding Keyboard Input
+
+Next, we’ll look at how to implement movement control using the WASD or arrow keys and show how to modify entity
+structure through code.
+
+#### Step 1. Create an Input Controller
+
+```csharp
+public class InputBehaviour : IEntityInit, IEntityTick
+{
+    private const string HORIZONTAL = "Horizontal";
+    private const string VERTICAL = "Vertical";
+    
+    private ISetter<Vector3> _moveDirection;
+    
+    public void Init(IEntity entity)
+    {
+        _moveDirection = entity.GetMoveDirection();
+    }
+
+    public void Tick(IEntity entity, float deltaTime)
+    {
+        float dx = Input.GetAxis(HORIZONTAL);
+        float dz = Input.GetAxis(VERTICAL);
+        _moveDirection.Value = new Vector3(dx, 0, dz);
+    }
+}
+```
+
+> [!IMPORTANT]
+> Here, it’s important to note that to change the entity’s data, we simply modify the value through its reference.
+> No `SetMoveDirection` to the `IEntity` is required.
+
+#### Step 2. Add the InputBehaviour
+
+Next, let’s register the `InputBehaviour` inside the `CharacterInstaller`:
+
+```csharp
+public sealed class CharacterInstaller : SceneEntityInstaller
+{
+    [SerializeField] private Transform _transform;
+    [SerializeField] private Const<float> _moveSpeed = 5.0f;
+    [SerializeField] private Variable<Vector3> _moveDirection = Vector3.zero;
+
+    public override void Install(IEntity entity)
+    {
+        // Add properties to a character
+        entity.AddTransform(_transform);
+        entity.AddMoveSpeed(_moveSpeed);
+        entity.AddMoveDirection(_moveDirection);
+        
+        // Add behaviours to a character
+        entity.AddBehaviour<MoveBehaviour>();
+        entity.AddBehaviour<InputBehaviour>(); // (+)
+    }
+}
+```
+
+#### Step 3. Running the Character
+
+In the Unity Editor, press Play to verify that the character moves when pressing the WASD or arrow keys.
 
 ---
 
