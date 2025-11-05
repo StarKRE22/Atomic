@@ -50,7 +50,7 @@ Although not required, the following tools significantly improve the development
 For better **debugging**, **configuration**, and **visualization** of your game state in the Unity Editor.  
 Atomic works perfectly **without Odin**, but using it makes data inspection and live tweaking much easier.
 
-#### • [Atomic Plugin](https://plugins.jetbrains.com/plugin/28321-atomic)
+#### • [Atomic Rider Plugin](https://plugins.jetbrains.com/plugin/28321-atomic)
 
 For enhanced **code generation** and **workflow integration** with **Rider IDE**.
 While Unity itself provides basic support, the Atomic Rider Plugin makes development smoother and more powerful.
@@ -60,7 +60,7 @@ or [GitHub](https://github.com/Prylor/atomic-rider-plugin).
 #### • [Rider IDE](https://www.jetbrains.com/ru-ru/rider/)
 
 It is strongly recommended to use **Rider 2025** instead of **Visual Studio**, since **Visual Studio does not support
-the Atomic Plugin**. For code generation directly through **Unity**, please refer to the separate article in
+the Atomic Plugin**. For code generation directly through **Unity**, refer to the separate article in
 the [documentation](https://github.com/StarKRE22/Atomic/blob/experimental/Docs/Entities/EntityAPI/Manual.md#generating-api-via-unity-editor).
 
 
