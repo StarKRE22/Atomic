@@ -340,252 +340,48 @@ This way, you have full control over how and when code generation occurs within 
 
 ---
 
-## Generating API via Rider Plugin
+## Generation via Rider Plugin
 
-This section explains how to generate **Entity extension methods** using the **Atomic Rider Plugin**.
-
-### 📦 Installation
-
-You can install the plugin either from **JetBrains Marketplace** or **GitHub**.
-
-#### 🛒 From JetBrains Marketplace
-
-- **Option 1:** In **Rider IDE**, go to `Preferences → Plugins → Marketplace` and search for **Atomic**
-- **Option 2:** Install directly
-  via [Rider Plugin on JetBrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
-
-<img width="600" alt="Marketplace Plugin" src="../../Images/MarketplacePlugin.png" />
-
-> 💡 **Tip:** Restart Rider after installation to activate the plugin.
-
-#### 💾 From GitHub Repository
-
-1. Visit the [official repository](https://github.com/Prylor/atomic-rider-plugin)
-2. Download the latest `.zip` version from the **Releases** page
-3. In **Rider**, open `Preferences → Plugins → Settings`
-4. Choose **Install Plugin from Disk**, then select the downloaded `.zip` archive
-
-<img width="200" alt="Manual Install Plugin" src="../../Images/Manually%20Install%20Plugin.png" />
-
----
-
-### 🧩 Plugin Usage
-
-1. Right-click on your **project folder** in Rider
-2. Select `New → Atomic File`
-
-<img width="400" alt="Manual Install Plugin" src="../../Images/CreateAtomicFile.png" />
-
-
-This creates an `.atomic` configuration file for **Entity API generation**:
-
-```yaml
-entityType: IEntity
-namespace: MyGame.Components
-className: EntityExtensions
-directory: Assets/Scripts
-aggressiveInlining: true
-unsafe: false
-
-imports:
-  System
-  UnityEngine
-  Atomic.Entities
-
-tags:
-  Player
-  Enemy
-  Projectile
-
-values:
-  Health: int
-  Position: Vector3
-  Damage: float
-```
-
-3. Configure your entity API by editing parameters as needed.
-
----
-
-<div id="-configuration-options-1"></div>
-
-### ⚙️ Configuration Options
-
-| Option                 | Description                                                                                 | Default   |
-|------------------------|---------------------------------------------------------------------------------------------|-----------|
-| **directory**          | Output path for the generated file                                                          | –         |
-| **className**          | Name of the generated class and file                                                        | –         |
-| **namespace**          | Namespace of the generated class                                                            | –         |
-| **entityType**         | Entity type (can be `IEntity` or a custom type inheriting from it)                          | `IEntity` |
-| **aggressiveInlining** | Adds `[MethodImpl(MethodImplOptions.AggressiveInlining)]` to extension methods (true/false) | `false`   |
-| **unsafe**             | Uses `GetValueUnsafe` instead of `GetValue` (faster but may be unsafe)                      | `false`   |
-| **imports**            | List of namespaces (`using`) required for code generation                                   | –         |
-| **tags**               | List of tags to generate                                                                    | –         |
-| **values**             | List of values to generate, in the format `Name: Type`                                      | –         |
-
----
-
-### 🧠 Generating Code
-
-- **Manual Generation:**  
-  Press `Ctrl + Shift + G` while in the `.atomic` file
-    - Required for **first-time generation**
-    - Can be used anytime to **force regeneration**
-
-- **Automatic Regeneration:**  
-  Automatically updates existing C# files when saving `.atomic` changes
-    - Only works for **existing files**
-    - Can be enabled/disabled in plugin settings
-
----
-
-<div id="-using-the-generated-extensions-1"></div>
-
-### 🧩 Using the Generated Extensions
-
-After generation, you can use your strongly typed extensions like this:
-
-```csharp
-// Assume we have an instance of IEntity
-IEntity entity = ...;
-
-// Tag Extensions
-entity.AddPlayerTag();
-if (entity.HasPlayerTag())
-entity.DelPlayerTag();
-
-// Value Extensions
-entity.AddHealth(55);
-int health = entity.GetHealth();
-
-if (entity.HasHealth())
-entity.DelHealth();
-
-if (entity.TryGetHealth(out int currentHealth))
-entity.SetHealth(30);
-```
-
----
-
-### ⚙️ Plugin Settings
-
-Access plugin settings via:  
-`File → Settings → Tools → Atomic Plugin`
-
-<img width="800" alt="Manual Install Plugin" src="../../Images/AtomicPluginSettings.png" />
-
-- **Auto-generate:** Enable/disable automatic regeneration
-- **Debounce delay:** Set delay before auto-generation (ms)
-- **Show notifications:** Toggle generation notifications
-
-<!--
-
-## Generating API via Rider Plugin
-
-The **Rider plugin** provides the same functionality directly inside JetBrains Rider.
+There’s another, more convenient and advanced way to generate the Entity API file by using a plugin specifically
+developed for Rider. This method is generally recommended, as it provides a smoother workflow and better integration
+directly within the IDE.
 
 ### Installation
 
-**Option 1 – JetBrains Marketplace**
+You can install the plugin either from **JetBrains Marketplace** or **GitHub**.
 
-1. Go to `Preferences → Plugins → Marketplace`
-2. Search for **Atomic**
-3. Click **Install**
-4. Restart Rider
+#### Method 1. JetBrains Marketplace
 
-**Option 2 – GitHub Release**
+- **Option 1:** In **Rider IDE**, go to `Preferences → Plugins → Marketplace` and search for **Atomic**
 
-1. Download the latest `.zip` from [GitHub](https://github.com/Prylor/atomic-rider-plugin)
-2. In Rider, go to `Preferences → Plugins → Settings`
-3. Choose **Install Plugin from Disk** and select the `.zip` file
-4. Restart Rider
+  <img width="600" alt="Marketplace Plugin" src="../Images/MarketplacePlugin.png" />
 
----
+- **Option 2:** Install the plugin directly using
+  a [link to the plugin’s page](https://plugins.jetbrains.com/plugin/28321-atomic) to market
 
-### Usage
+#### Method 2. GitHub Repository
 
-1. Right-click your project folder
-2. Select `New → Atomic File`
+1. Visit the [official repository](https://github.com/Prylor/atomic-rider-plugin) of the plugin
+2. Download the latest `ReSharperPlugin.AtomicPlugin.zip` version from the **Releases** page
+3. In **Rider**, open `Preferences → Plugins → Settings`
+4. Choose **Install Plugin from Disk**, then select the downloaded `.zip` archive
 
-This creates a new `.atomic` configuration file:
+   <img width="200" alt="Manual Install Plugin" src="../Images/Manually%20Install%20Plugin.png" />
 
-```yaml
-entityType: IEntity
-namespace: MyGame.Components
-className: EntityExtensions
-directory: Assets/Scripts
-aggressiveInlining: true
-unsafe: false
+After installation restart Rider IDE after installation to activate the plugin.
 
-imports:
-  - System
-  - UnityEngine
-  - Atomic.Entities
+### Plugin Usage
 
-tags:
-  - Player
-  - Enemy
-  - Projectile
-
-values:
-  - Health: int
-  - Position: Vector3
-  - Damage: float
-  ```
-
-### Configuration Options
-
-Same as in the Unity Editor section.
-
----
-
-### Code Generation
-
-- **Manual Generation:**  
-  Press `Ctrl+Shift+G` in an `.atomic` file to generate or refresh the API class.  
-  (Required for first-time generation.)
-
-- **Automatic Regeneration:**  
-  Changes in the `.atomic` file trigger regeneration automatically  
-  (if **Auto-generate** is enabled in settings).
-
----
-
-### Plugin Settings
-
-Access via  
-`File → Settings → Tools → Atomic Plugin`
-
-| Option                 | Description                             |
-|------------------------|-----------------------------------------|
-| **Auto-generate**      | Enables/disables automatic regeneration |
-| **Debounce delay**     | Delay before regeneration (in ms)       |
-| **Show notifications** | Toggles generation messages             |
-
----
-
-✅ The Entity API gives your game a **clean**, **type-safe**, and **automated** workflow for managing entity data —  
-no more magic constants, no more string-based errors, just clean generated code.
-
--->
-
-#### Step 1. Setup Atomic Plugin
-
-In **Rider IDE**, go to `Preferences → Plugins → Marketplace` and search for **Atomic** or install directly
-via [reference](https://plugins.jetbrains.com/plugin/28321-atomic)
-
-<img width="600" alt="Marketplace Plugin" src="Docs/Images/MarketplacePlugin.png" />
-
-#### Step 2. Create a Configuration File
+First, we need to create a special `.atomic` file where we will store all our keys for tags and values.
 
 1. Right-click on the desired scripts directory in Rider.
 2. Select New → **Atomic File** from the context menu.
 
-<img width="150" alt="Manual Install Plugin" src="Docs/Images/NewAtomicFile.png" />
+   <img width="150" alt="Manual Install Plugin" src="../Images/NewAtomicFile.png" />
 
 Once clicked, a configuration window will open. Fill it out and click **Create**.
 
-<img width="400" alt="Manual Install Plugin" src="Docs/Images/CreateAtomicFile.png" />
+<img width="400" alt="Manual Install Plugin" src="../Images/CreateAtomicFile.png" />
 
 This creates an `.atomic` configuration file for **Entity API generation**:
 
@@ -609,9 +405,6 @@ values:
 # - health: float
 # - position: Vector3
 ```
-
-> [!TIP]
-> You can create multiple .atomic files to make your project easier to maintain and extend.
 
 #### Step 3. Configure your entity API by editing parameters as needed.
 
@@ -642,3 +435,16 @@ The plugin automatically updates existing C# files when saving `.atomic` changes
 > [!IMPORTANT]
 > To generate the file, you need to add at least one property in the `values` section or a tag in the `tags` section.
 > **Without adding a property, the code generator will not produce any output!**
+
+> [!TIP]
+> You can create multiple .atomic files to make your project easier to maintain and extend.
+
+### Plugin Settings
+
+Access plugin settings via: `File → Settings → Tools → Atomic Plugin`
+
+<img width="800" alt="Manual Install Plugin" src="../Images/AtomicPluginSettings.png" />
+
+- **Auto-generate:** Enable/disable automatic regeneration
+- **Debounce delay:** Set delay before auto-generation (ms)
+- **Show notifications:** Toggle generation notifications

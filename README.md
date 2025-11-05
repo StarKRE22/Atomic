@@ -76,7 +76,7 @@ the [documentation](https://github.com/StarKRE22/Atomic/blob/experimental/Docs/E
 - **Option #2:**
   Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/Atomic.v.2.0.unitypackage)
   or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/AtomicNonUnity.v.2.0.zip) from
-  the [release notes](https://github.com/StarKRE22/Atomic/releases).
+  the Releases page.
 - **Option #3:** Install via Unity Package Manager using the Git
   URL: https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic
 
