@@ -213,7 +213,7 @@ values:
   MoveDirection: IVariable<Vector3>
 ```
 
-#### Step 4. Creating the Movement MechanicS
+#### Step 4. Creating the Movement Mechanic
 
 Let’s write a behaviour that will move our entity in the direction of its movement:
 
