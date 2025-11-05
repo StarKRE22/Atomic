@@ -80,7 +80,7 @@ the [documentation](https://github.com/StarKRE22/Atomic/blob/experimental/Docs/E
 
 ## 🚀 Unity Quick Start
 
-In this section, we’ll build a simple game object with a movement mechanic to demonstrate how to implement object
+In this section, we’ll build a simple game object with a movement mechanic to demonstrate how to implement
 movement from scratch. Step by step, we’ll create an entity in Unity using Rider IDE and the Atomic plugin.
 
 ### Code Generation Setup
