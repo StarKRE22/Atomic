@@ -22,9 +22,9 @@ complex object-oriented structures.
 
 # 📑 Table of Contents
 
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Unity Quick Start](#unity-quick-start)
+- [Requirements](#-requirements)
+- [Installation](#-installation)
+- [Unity Quick Start](#-unity-quick-start)
 - [Tutorials](#tutorials)
 - [Game Examples](#game-examples)
     - [Beginner Sample](#beginner-sample)
@@ -52,50 +52,164 @@ Although not required, the following tools significantly improve the development
 For better **debugging**, **configuration**, and **visualization** of your game state in the Unity Editor.  
 Atomic works perfectly **without Odin**, but using it makes data inspection and live tweaking much easier.
 
-#### • [Atomic Rider Plugin](https://plugins.jetbrains.com/plugin/28321-atomic)
+#### • [Atomic Plugin](https://plugins.jetbrains.com/plugin/28321-atomic)
 
 For enhanced **code generation** and **workflow integration** with **Rider IDE**.  
-While Unity itself provides basic support, the Atomic Rider Plugin makes development smoother and more powerful. Available on [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
+While Unity itself provides basic support, the Atomic Rider Plugin makes development smoother and more powerful.
+Available on [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
 or [GitHub](https://github.com/Prylor/atomic-rider-plugin).
+
+#### • [Rider IDE](https://www.jetbrains.com/ru-ru/rider/)
+
+It is strongly recommended to use **Rider 2025** instead of **Visual Studio**, since **Visual Studio does not support
+the Atomic Plugin**. For code generation directly through **Unity**, please refer to the separate article in
+the [documentation](https://github.com/StarKRE22/Atomic/blob/experimental/Docs/Entities/EntityAPI/Manual.md#generating-api-via-unity-editor).
+
 
 ---
 
 ## 📦 Installation
 
 - **Option #1:** Download source code with game examples.
-- **Option #2:** Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/Atomic.v.2.0.unitypackage) or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/AtomicNonUnity.v.2.0.zip) from the [release notes](https://github.com/StarKRE22/Atomic/releases).
-- **Option #3:** Install via Unity Package Manager using the Git URL: https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic
-
----
-
-
-
-## 📚 Theory
-
-## 🔌 Using Plugin for Rider [(Read More)](Docs/Entities/EntityAPI/Manual.md#generating-api-via-rider-plugin)
-
-For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
-the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
-or [GitHub Repository](https://github.com/Prylor/atomic-rider-plugin) . By default, the code generation works with
-Unity, but with the plugin, development experience in `Rider IDE` become
-smoother and more powerful than in Unity.
+- **Option #2:**
+  Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/Atomic.v.2.0.unitypackage)
+  or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/AtomicNonUnity.v.2.0.zip) from
+  the [release notes](https://github.com/StarKRE22/Atomic/releases).
+- **Option #3:** Install via Unity Package Manager using the Git
+  URL: https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic
 
 ---
 
 ## 🚀 Unity Quick Start
 
-**Below is the process for quickly creating a character entity in Unity**
+Below is the process for quickly creating a character entity in Unity
 
-#### 1. Create a new `GameObject` on a scene
+### Code Generation Setup
+
+Before you start creating gameplay mechanics, you need to configure the data generation process.
+The Atomic Framework supports automatic generation of extension methods for entities, which helps eliminate hard-coded
+values and “magic constants”, while ensuring type safety when working with data.
+
+#### Step 1. Setup Atomic Plugin
+
+In **Rider IDE**, go to `Preferences → Plugins → Marketplace` and search for **Atomic** or install directly
+via [reference](https://plugins.jetbrains.com/plugin/28321-atomic)
+
+<img width="600" alt="Marketplace Plugin" src="Docs/Images/MarketplacePlugin.png" />
+
+#### Step 2. Create a Configuration File
+
+1. Right-click on the desired scripts directory in Rider.
+2. Select New → Atomic File from the context menu.
+
+<img width="400" alt="Manual Install Plugin" src="Docs/Images/CreateAtomicFile.png" />
+
+This creates an `.atomic` configuration file for **Entity API generation**:
+
+```yaml
+namespace: SampleGame
+className: EntityAPI
+directory: Assets/Scripts/
+aggressiveInlining: true
+unsafe: false
+entityType: IEntity
+
+imports:
+
+tags:
+# Add your tags here
+# - Player
+# - Enemy
+
+values:
+# Add your values here
+# - health: float
+# - position: Vector3
+```
+
+> [!TIP]
+> You can create multiple .atomic files to make your project easier to maintain and extend.
+
+#### Step 3. Configure your entity API by editing parameters as needed.
+
+| Option                 | Description                                                                                 | Default   |
+|------------------------|---------------------------------------------------------------------------------------------|-----------|
+| **directory**          | Output path for the generated file                                                          | –         |
+| **className**          | Name of the generated class and file                                                        | –         |
+| **namespace**          | Namespace of the generated class                                                            | –         |
+| **entityType**         | Entity type (can be `IEntity` or a custom type inheriting from it)                          | `IEntity` |
+| **aggressiveInlining** | Adds `[MethodImpl(MethodImplOptions.AggressiveInlining)]` to extension methods (true/false) | `false`   |
+| **unsafe**             | Uses `GetValueUnsafe` instead of `GetValue` (faster but uses unsafe cast)                   | `false`   |
+| **imports**            | List of namespaces (`using`) required for code generation                                   | –         |
+| **tags**               | List of tags to generate                                                                    | –         |
+| **values**             | List of values to generate, in the format `Name: Type`                                      | –         |
+
+#### Step 4. Generate extension methods
+
+> [!IMPORTANT]
+> To generate the file, you need to add at least one property in the `values` section or a tag in the `tags` section. **Without
+> adding a property, the code generator will not produce any output!**
+
+- Press `Ctrl + Shift + G` while in the `.atomic` file
+    - Required for **first-time generation**
+    - Can be used anytime to **force regeneration**
+
+The plugin automatically updates existing C# files when saving `.atomic` changes
+
+- Only works for **existing files**
+- Can be enabled / disabled in plugin settings
+
+### Creating an Entity
+
+#### Step 1. Creating a game object
+
+In the Scene Hierarchy, right-click and choose `3D Object → Capsule` to create a new game object.
 
 <img width="400" height="" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
 
-#### 2. Add `Entity` Component to the GameObject
+#### Step 2. Adding the Entity Component
+
+In the Inspector window of the created object, go to `Atomic → Entities → Entity` to add the Entity component.
 
 <img width="400" height="" alt="Entity component" src="Docs/Images/EntityComponent.png" />
 
-#### 3. Create a movement mechanics for the entity
+Make sure the following checkboxes are enabled:
 
+- `useUnityLifecycle` — the entity updates along with the **MonoBehaviour** lifecycle.
+- `installOnAwake` — the entity is constructed during the **Awake** phase.
+
+#### Step 3. Generate Data
+
+Add the following properties to your configuration file `EntityAPI.atomic`:
+
+- `Transform`
+- `MoveDirection`
+- `MoveSpeed`
+
+```yaml
+namespace: SampleGame
+className: EntityAPI
+directory: Assets/Scripts/
+aggressiveInlining: true
+unsafe: false
+entityType: IEntity
+
+imports:
+
+tags:
+
+# Add properties
+values:
+  Transform: Transform
+  MoveSpeed: IValue<float>
+  MoveDirection: IVariable<Vector3>
+```
+
+#### Step 4. Create a movement mechanics for the entity
+
+<img width="600" height="" alt="Entity component" src="Docs/Images/MovementMechanics.png"/>
+
+Now let’s create a behavior that will move our entity in its movement direction:
 ```csharp
 // Controller that moves entity by its direction
 public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
@@ -104,15 +218,15 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
     private IValue<float> _moveSpeed;
     private IValue<Vector3> _moveDirection;
 
-    // Called when MonoBehaviour.Start() is invoked
+    // Called when Start() is invoked
     public void Init(IEntity entity)
     {
-        _transform = entity.GetValue<Transform>("Transform");
-        _moveSpeed = entity.GetValue<IValue<float>>("MoveSpeed");
-        _moveDirection = entity.GetValue<IValue<Vector3>>("MoveDirection");
+        _transform = entity.GetTransform();
+        _moveSpeed = entity.GetMoveSpeed();
+        _moveDirection = entity.GetMoveDirection();
     }
 
-    // Called when MonoBehaviour.FixedUpdate() is invoked
+    // Called when FixedUpdate() is invoked
     public void FixedTick(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
@@ -122,7 +236,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 }
 ```
 
-#### 4. Create a script that populates the entity with tags, values and behaviours
+#### Step 5. Create a script that populates the entity with tags, values and behaviours
 
  ```csharp
 //Populates entity with tags, values and behaviours
@@ -134,14 +248,10 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
     public override void Install(IEntity entity)
     {
-        //Add tags to a character
-        entity.AddTag("Character");
-        entity.AddTag("Moveable");
-
         //Add properties to a character
-        entity.AddValue("Transform", _transform);
-        entity.AddValue("MoveSpeed", _moveSpeed);
-        entity.AddValue("MoveDirection", _moveDirection);
+        entity.AddTransform(_transform);
+        entity.AddMoveSpeed(_moveSpeed);
+        entity.AddMoveDirection(_moveDirection);
         
         //Add behaviours to a character
         entity.AddBehaviour<MoveBehaviour>();
@@ -149,15 +259,19 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 }
 ```
 
-#### 5. Attach `CharacterInstaller` script to the GameObject
+#### Step 6. Attach `CharacterInstaller` script to the GameObject
 
 <img width="400" height="" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
-#### 6. Drag & drop `CharacterInstaller` into `installers` field of the entity
+#### Step 7. Drag & drop `CharacterInstaller` into `installers` field of the entity
 
 <img width="400" height="" alt="изображение" src="Docs/Images/EntityInstalling.png" />
 
-#### 7. Enter `PlayMode` and check your character movement!
+#### Step 8. Enter `PlayMode` and check your character movement!
+
+## 📚 Theory
+
+---
 
 ---
 
