@@ -8,12 +8,16 @@ using System.Collections.Generic;
 namespace SampleGame
 {
     /// <summary>
-    /// Represents the core implementation of an <see cref="IActor"/> in the framework.
-    /// This class follows the Entity–State–Behaviour pattern, providing a modular container
-    /// for dynamic state, tags, behaviours, and lifecycle management.
+    /// Abstract base class for singleton entities.
+    /// Ensures a single globally accessible instance of type <typeparamref name="E"/>.
+    /// Supports both default constructor and factory-based creation.
     /// </summary>
-    public sealed class Actor : Entity, IActor
+    public sealed class Actor : EntitySingleton<Actor>, IActor
     {
+        public Actor()
+        {
+        }
+
         /// <summary>
         /// Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
         /// </summary>
@@ -27,7 +31,9 @@ namespace SampleGame
         {
         }
 
+        /// <summary>
         /// Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
+        /// </summary>
         public Actor(
             string name,
             IEnumerable<int> tags,

@@ -186,8 +186,10 @@ namespace Atomic.Entities
                 sb.AppendLine($"{Indent}{Indent}}}");
                 sb.AppendLine();
 
+                sb.AppendLine($"{Indent}{Indent}/// <summary>");
                 sb.AppendLine(
                     $"{Indent}{Indent}/// Creates a new entity with the specified name, tags, values, behaviours, and optional settings.");
+                sb.AppendLine($"{Indent}{Indent}/// </summary>");
                 sb.AppendLine($"{Indent}{Indent}public {className}(");
                 sb.AppendLine($"{Indent}{Indent}    string name,");
                 sb.AppendLine($"{Indent}{Indent}    IEnumerable<int> tags,");
