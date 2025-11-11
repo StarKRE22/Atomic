@@ -6,10 +6,9 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    internal static class SceneEntityProxyGenerator
+    internal static class SceneEntityWorldGenerator
     {
-        public static void GenerateFile(string entityType, string interfaceType, string ns, string[] imports,
-            string directory)
+        public static void GenerateFile(string entityType, string ns, string[] imports, string directory)
         {
             if (string.IsNullOrWhiteSpace(entityType))
             {
@@ -20,13 +19,13 @@ namespace Atomic.Entities
             try
             {
                 Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}Proxy.cs");
-                string content = GenerateContent(entityType, interfaceType, ns, imports);
+                string filePath = Path.Combine(directory, $"{entityType}World.cs");
+                string content = GenerateContent(ns, entityType, imports);
 
                 File.WriteAllText(filePath, content, Encoding.UTF8);
                 AssetDatabase.Refresh();
 
-                EditorUtility.DisplayDialog("Success", $"Proxy generated successfully:\n{filePath}", "OK");
+                EditorUtility.DisplayDialog("Success", $"World generated successfully:\n{filePath}", "OK");
             }
             catch (Exception ex)
             {
@@ -34,13 +33,13 @@ namespace Atomic.Entities
             }
         }
 
-        private static string GenerateContent(string entityType, string interfaceType, string ns, string[] imports)
+        private static string GenerateContent(string ns, string entityType, string[] imports)
         {
             var sb = new StringBuilder();
 
             // --- Imports ---
             sb.AppendLine("using Atomic.Entities;");
-            if (imports is {Length: > 0})
+            if (imports is { Length: > 0 })
             {
                 foreach (string import in imports.Where(i => !string.IsNullOrWhiteSpace(i)))
                 {
@@ -51,10 +50,10 @@ namespace Atomic.Entities
 
             sb.AppendLine();
 
-            // --- Namespace + Proxy Class ---
+            // --- Namespace + World Class ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
-            sb.AppendLine($"    public sealed class {entityType}Proxy : SceneEntityProxy<{entityType}>, I{entityType}");
+            sb.AppendLine($"    public sealed class {entityType}World : SceneEntityWorld<{entityType}>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
             sb.AppendLine("}");

@@ -6,11 +6,11 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    public static class SceneEntityPoolGenerator
+    internal static class ScriptableEntityInstallerGenerator
     {
         public static void GenerateFile(
             string entityType,
-            string interfaceType,
+            string entityInterface,
             string ns,
             string directory,
             string[] imports
@@ -25,13 +25,13 @@ namespace Atomic.Entities
             try
             {
                 Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}Pool.cs");
-                string content = GenerateContent(entityType, interfaceType, ns, imports);
+                string filePath = Path.Combine(directory, $"{entityType}Installer.cs");
+                string content = GenerateContent(entityType, entityInterface, ns, imports);
 
                 File.WriteAllText(filePath, content, Encoding.UTF8);
                 AssetDatabase.Refresh();
 
-                EditorUtility.DisplayDialog("Success", $"Pool generated successfully:\n{filePath}", "OK");
+                EditorUtility.DisplayDialog("Success", $"Installer generated successfully:\n{filePath}", "OK");
             }
             catch (Exception ex)
             {
@@ -39,7 +39,7 @@ namespace Atomic.Entities
             }
         }
 
-        private static string GenerateContent(string entityType, string interfaceType, string ns, string[] imports)
+        private static string GenerateContent(string entityType, string entityInterface, string ns, string[] imports)
         {
             var sb = new StringBuilder();
 
@@ -56,16 +56,12 @@ namespace Atomic.Entities
 
             sb.AppendLine();
 
-            // --- Namespace + Pool Class ---
+            // --- Namespace + Installer Class ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
             sb.AppendLine(
-                $"    public sealed class {entityType}Pool : SceneEntityPool<{entityType}>, IEntityPool<{interfaceType}>");
+                $"   public abstract class {entityType}Installer : ScriptableEntityInstaller<{entityInterface}>");
             sb.AppendLine("    {");
-            sb.AppendLine($"        {interfaceType} IEntityPool<{interfaceType}>.Rent() => this.Rent();");
-            sb.AppendLine();
-            sb.AppendLine(
-                $"        void IEntityPool<{interfaceType}>.Return({interfaceType} entity) => this.Return(({entityType})entity);");
             sb.AppendLine("    }");
             sb.AppendLine("}");
 

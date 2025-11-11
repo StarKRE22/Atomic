@@ -2,7 +2,7 @@ using System;
 
 namespace Atomic.Entities
 {
-    public static class EntityDomainGenerator
+    internal static class EntityDomainGenerator
     {
         public struct GenerateArgs
         {
@@ -14,6 +14,8 @@ namespace Atomic.Entities
 
             public bool proxyRequired;
             public bool worldRequired;
+            public EntityInstallerType installerType;
+            public EntityAspectType aspectType;
             public EntityPoolType poolType;
             public EntityFactoryType factoryType;
         }
@@ -31,6 +33,34 @@ namespace Atomic.Entities
             EntityConcreteGenerator.GenerateFile(entityImpl, ns, imports, directory, baseType, entityInterface);
             EntityBehaviourGenerator.GenerateFile(entityInterface, ns, imports, directory);
 
+            switch (args.aspectType)
+            {
+                case EntityAspectType.None:
+                    break;
+                case EntityAspectType.ScriptableEntityAspect:
+                    ScriptableEntityAspectGenerator.GenerateFile(entityImpl, ns, directory, imports);
+                    break;
+                case EntityAspectType.SceneEntityAspect:
+                    SceneEntityAspectGenerator.GenerateFile(entityImpl, ns, directory, imports);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            switch (args.installerType)
+            {
+                case EntityInstallerType.None:
+                    break;
+                case EntityInstallerType.ScriptableEntityInstaller:
+                    ScriptableEntityInstallerGenerator.GenerateFile(entityImpl, entityInterface, ns, directory, imports);
+                    break;
+                case EntityInstallerType.SceneEntityInstaller:
+                    SceneEntityInstallerGenerator.GenerateFile(entityImpl, entityInterface, ns, directory, imports);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
             // Unity
             if (baseType is EntityBaseType.SceneEntity or EntityBaseType.SceneEntitySingleton)
             {
@@ -62,11 +92,11 @@ namespace Atomic.Entities
                 {
                     case EntityFactoryType.None:
                         break;
-                    case EntityFactoryType.ScriptableFactory:
+                    case EntityFactoryType.ScriptableEntityFactory:
                         ScriptableEntityFactoryGenerator.GenerateFile(entityImpl, entityInterface, ns, directory,
                             imports);
                         break;
-                    case EntityFactoryType.SceneFactory:
+                    case EntityFactoryType.SceneEntityFactory:
                         SceneEntityFactoryGenerator.GenerateFile(entityImpl, entityInterface, ns, directory, imports);
                         break;
                     default:

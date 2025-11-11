@@ -6,9 +6,9 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    public static class SceneEntityWorldGenerator
+    internal static class SceneEntityInstallerGenerator
     {
-        public static void GenerateFile(string entityType, string ns, string[] imports, string directory)
+        public static void GenerateFile(string entityType, string entityInterface, string ns, string directory, string[] imports)
         {
             if (string.IsNullOrWhiteSpace(entityType))
             {
@@ -19,13 +19,13 @@ namespace Atomic.Entities
             try
             {
                 Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}World.cs");
-                string content = GenerateContent(ns, entityType, imports);
+                string filePath = Path.Combine(directory, $"{entityType}Installer.cs");
+                string content = GenerateContent(entityType, entityInterface, ns, imports);
 
                 File.WriteAllText(filePath, content, Encoding.UTF8);
                 AssetDatabase.Refresh();
 
-                EditorUtility.DisplayDialog("Success", $"World generated successfully:\n{filePath}", "OK");
+                EditorUtility.DisplayDialog("Success", $"Installer generated successfully:\n{filePath}", "OK");
             }
             catch (Exception ex)
             {
@@ -33,7 +33,7 @@ namespace Atomic.Entities
             }
         }
 
-        private static string GenerateContent(string ns, string entityType, string[] imports)
+        private static string GenerateContent(string entityType, string entityInterface, string ns, string[] imports)
         {
             var sb = new StringBuilder();
 
@@ -50,10 +50,10 @@ namespace Atomic.Entities
 
             sb.AppendLine();
 
-            // --- Namespace + World Class ---
+            // --- Namespace + Installer Class ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
-            sb.AppendLine($"    public sealed class {entityType}World : SceneEntityWorld<{entityType}>");
+            sb.AppendLine($"   public abstract class {entityType}Installer : SceneEntityInstaller<{entityInterface}>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
             sb.AppendLine("}");

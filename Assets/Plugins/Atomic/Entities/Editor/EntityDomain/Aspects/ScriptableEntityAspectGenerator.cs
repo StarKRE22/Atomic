@@ -6,9 +6,9 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    public static class PrefabEntityPoolGenerator
+    public static class ScriptableEntityAspectGenerator
     {
-        public static void GenerateFile(string entityType, string ns, string[] imports, string directory)
+        public static void GenerateFile(string entityType, string ns, string directory, string[] imports)
         {
             if (string.IsNullOrWhiteSpace(entityType))
             {
@@ -19,13 +19,13 @@ namespace Atomic.Entities
             try
             {
                 Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}PrefabPool.cs");
+                string filePath = Path.Combine(directory, $"{entityType}Aspect.cs");
                 string content = GenerateContent(ns, entityType, imports);
 
                 File.WriteAllText(filePath, content, Encoding.UTF8);
                 AssetDatabase.Refresh();
 
-                EditorUtility.DisplayDialog("Success", $"Prefab Pool generated successfully:\n{filePath}", "OK");
+                EditorUtility.DisplayDialog("Success", $"Aspect generated successfully:\n{filePath}", "OK");
             }
             catch (Exception ex)
             {
@@ -39,7 +39,7 @@ namespace Atomic.Entities
 
             // --- Imports ---
             sb.AppendLine("using Atomic.Entities;");
-            if (imports is {Length: > 0})
+            if (imports is { Length: > 0 })
             {
                 foreach (string import in imports.Where(i => !string.IsNullOrWhiteSpace(i)))
                 {
@@ -50,10 +50,10 @@ namespace Atomic.Entities
 
             sb.AppendLine();
 
-            // --- Namespace + Prefab Pool Class ---
+            // --- Namespace + Aspect Class ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
-            sb.AppendLine($"    public class {entityType}Pool : PrefabEntityPool<{entityType}>");
+            sb.AppendLine($"    public abstract class {entityType}Aspect : ScriptableEntityAspect<{entityType}>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
             sb.AppendLine("}");

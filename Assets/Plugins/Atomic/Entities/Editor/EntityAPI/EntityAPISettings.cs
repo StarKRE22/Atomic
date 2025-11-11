@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    public sealed class EntityAPISettings : ScriptableObject
+    internal sealed class EntityAPISettings : ScriptableObject
     {
         private const string DEFAULT_PATH = "Assets/Plugins/Atomic/Entities/Editor/EntityAPISettings.asset";
 

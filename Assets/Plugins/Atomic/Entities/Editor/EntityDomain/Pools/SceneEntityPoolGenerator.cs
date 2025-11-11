@@ -6,10 +6,15 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    internal static class SceneEntityProxyGenerator
+    internal static class SceneEntityPoolGenerator
     {
-        public static void GenerateFile(string entityType, string interfaceType, string ns, string[] imports,
-            string directory)
+        public static void GenerateFile(
+            string entityType,
+            string interfaceType,
+            string ns,
+            string directory,
+            string[] imports
+        )
         {
             if (string.IsNullOrWhiteSpace(entityType))
             {
@@ -20,13 +25,13 @@ namespace Atomic.Entities
             try
             {
                 Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}Proxy.cs");
+                string filePath = Path.Combine(directory, $"{entityType}Pool.cs");
                 string content = GenerateContent(entityType, interfaceType, ns, imports);
 
                 File.WriteAllText(filePath, content, Encoding.UTF8);
                 AssetDatabase.Refresh();
 
-                EditorUtility.DisplayDialog("Success", $"Proxy generated successfully:\n{filePath}", "OK");
+                EditorUtility.DisplayDialog("Success", $"Pool generated successfully:\n{filePath}", "OK");
             }
             catch (Exception ex)
             {
@@ -51,11 +56,16 @@ namespace Atomic.Entities
 
             sb.AppendLine();
 
-            // --- Namespace + Proxy Class ---
+            // --- Namespace + Pool Class ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
-            sb.AppendLine($"    public sealed class {entityType}Proxy : SceneEntityProxy<{entityType}>, I{entityType}");
+            sb.AppendLine(
+                $"    public sealed class {entityType}Pool : SceneEntityPool<{entityType}>, IEntityPool<{interfaceType}>");
             sb.AppendLine("    {");
+            sb.AppendLine($"        {interfaceType} IEntityPool<{interfaceType}>.Rent() => this.Rent();");
+            sb.AppendLine();
+            sb.AppendLine(
+                $"        void IEntityPool<{interfaceType}>.Return({interfaceType} entity) => this.Return(({entityType})entity);");
             sb.AppendLine("    }");
             sb.AppendLine("}");
 

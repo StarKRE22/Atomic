@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public sealed class EntityDomainWindow : EditorWindow
+    internal sealed class EntityDomainWindow : EditorWindow
     {
         [SerializeField] 
         private string _entityType = "GameContext";

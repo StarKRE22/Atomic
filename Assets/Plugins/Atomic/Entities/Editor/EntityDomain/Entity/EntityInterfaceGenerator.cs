@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    public static class EntityInterfaceGenerator
+    internal static class EntityInterfaceGenerator
     {
         private const string Indent = "    ";
 

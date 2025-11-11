@@ -6,7 +6,7 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    public static class SceneEntityFactoryGenerator
+    internal static class ScriptableEntityFactoryGenerator
     {
         public static void GenerateFile(
             string entityType,
@@ -64,7 +64,7 @@ namespace Atomic.Entities
             // --- Namespace + Scriptable Factory ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
-            sb.AppendLine($"   public abstract class {entityType}Factory : SceneEntityFactory<{interfaceType}>");
+            sb.AppendLine($"   public abstract class {entityType}Factory : ScriptableEntityFactory<{interfaceType}>");
             sb.AppendLine("    {");
             sb.AppendLine("        public string Name => this.name;");
             sb.AppendLine();
