@@ -1,6 +1,9 @@
+using System;
+
 namespace Atomic.Entities
 {
-    internal enum FactoryType
+    [Flags]
+    internal enum FactoryMode
     {
         None = 0,
         ScriptableEntityFactory = 1,

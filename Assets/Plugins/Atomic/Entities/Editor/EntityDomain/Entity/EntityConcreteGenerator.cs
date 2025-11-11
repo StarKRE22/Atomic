@@ -14,7 +14,7 @@ namespace Atomic.Entities
             string ns,
             string[] imports,
             string directory,
-            BaseMode baseMode,
+            EntityMode entityMode,
             string interfaceName
         )
         {
@@ -34,7 +34,7 @@ namespace Atomic.Entities
             {
                 Directory.CreateDirectory(directory);
                 string filePath = Path.Combine(directory, $"{className}.cs");
-                string content = GenerateContent(ns, imports, className, baseMode, interfaceName);
+                string content = GenerateContent(ns, imports, className, entityMode, interfaceName);
                 File.WriteAllText(filePath, content, Encoding.UTF8);
 
                 AssetDatabase.Refresh();
@@ -50,7 +50,7 @@ namespace Atomic.Entities
             string ns,
             string[] imports,
             string className,
-            BaseMode baseMode,
+            EntityMode entityMode,
             string interfaceName
         )
         {
@@ -77,11 +77,11 @@ namespace Atomic.Entities
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
 
-            string baseClassDecl = GetBaseClassDeclaration(baseMode, className);
+            string baseClassDecl = GetBaseClassDeclaration(entityMode, className);
             sb.AppendLine($"{Indent}public sealed class {className} : {baseClassDecl}, {interfaceName}");
             sb.AppendLine($"{Indent}{{");
 
-            string constructorBlock = GetConstructorBlock(baseMode, className);
+            string constructorBlock = GetConstructorBlock(entityMode, className);
             if (!string.IsNullOrEmpty(constructorBlock))
                 sb.Append(constructorBlock);
 
@@ -91,26 +91,26 @@ namespace Atomic.Entities
             return sb.ToString();
         }
 
-        private static string GetBaseClassDeclaration(BaseMode baseMode, string className)
+        private static string GetBaseClassDeclaration(EntityMode entityMode, string className)
         {
-            return baseMode switch
+            return entityMode switch
             {
-                BaseMode.Entity => "Entity",
-                BaseMode.EntitySingleton => $"EntitySingleton<{className}>",
-                BaseMode.SceneEntity => "SceneEntity",
-                BaseMode.SceneEntitySingleton => $"SceneEntitySingleton<{className}>",
+                EntityMode.Entity => "Entity",
+                EntityMode.EntitySingleton => $"EntitySingleton<{className}>",
+                EntityMode.SceneEntity => "SceneEntity",
+                EntityMode.SceneEntitySingleton => $"SceneEntitySingleton<{className}>",
                 _ => "Entity"
             };
         }
 
-        private static string GetConstructorBlock(BaseMode baseMode, string className)
+        private static string GetConstructorBlock(EntityMode entityMode, string className)
         {
             var sb = new StringBuilder();
 
             // Только Entity и EntitySingleton имеют расширенные конструкторы
-            if (baseMode is BaseMode.Entity or BaseMode.EntitySingleton)
+            if (entityMode is EntityMode.Entity or EntityMode.EntitySingleton)
             {
-                bool includeEmptyCtor = baseMode == BaseMode.EntitySingleton;
+                bool includeEmptyCtor = entityMode == EntityMode.EntitySingleton;
 
                 if (includeEmptyCtor)
                 {

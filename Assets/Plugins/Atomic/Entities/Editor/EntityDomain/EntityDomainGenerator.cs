@@ -7,7 +7,7 @@ namespace Atomic.Entities
         public struct GenerateArgs
         {
             public string entityType;
-            public BaseMode BaseMode;
+            public EntityMode entityMode;
             public string ns;
             public string directory;
             public string[] imports;
@@ -17,22 +17,22 @@ namespace Atomic.Entities
             public bool viewRequired;
             public InstallerMode installerMode;
             public AspectMode aspectMode;
+            public FactoryMode factoryMode;
             public PoolMode poolMode;
-            public FactoryType factoryType;
-            public BakerType bakerType;
+            public BakerMode bakerMode;
         }
 
         public static void Generate(GenerateArgs args)
         {
             string entityImplementation = args.entityType;
             string entityInterface = $"I{entityImplementation}";
-            BaseMode baseMode = args.BaseMode;
+            EntityMode entityMode = args.entityMode;
             string ns = args.ns;
             string[] imports = args.imports;
             string directory = args.directory;
 
             EntityInterfaceGenerator.GenerateFile(entityInterface, ns, imports, directory);
-            EntityConcreteGenerator.GenerateFile(entityImplementation, ns, imports, directory, baseMode, entityInterface);
+            EntityConcreteGenerator.GenerateFile(entityImplementation, ns, imports, directory, entityMode, entityInterface);
             EntityBehaviourGenerator.GenerateFile(entityInterface, ns, imports, directory);
 
             switch (args.aspectMode)
@@ -64,7 +64,7 @@ namespace Atomic.Entities
             }
             
             // Unity
-            if (baseMode is BaseMode.SceneEntity or BaseMode.SceneEntitySingleton)
+            if (entityMode is EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)
             {
                 if (args.proxyRequired)
                     SceneEntityProxyGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
@@ -88,17 +88,17 @@ namespace Atomic.Entities
             }
             
             // CSharp mode
-            else if (baseMode is BaseMode.Entity or BaseMode.EntitySingleton)
+            else if (entityMode is EntityMode.Entity or EntityMode.EntitySingleton)
             {
-                switch (args.factoryType)
+                switch (args.factoryMode)
                 {
-                    case FactoryType.None:
+                    case FactoryMode.None:
                         break;
-                    case FactoryType.ScriptableEntityFactory:
+                    case FactoryMode.ScriptableEntityFactory:
                         ScriptableEntityFactoryGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory,
                             imports);
                         break;
-                    case FactoryType.SceneEntityFactory:
+                    case FactoryMode.SceneEntityFactory:
                         SceneEntityFactoryGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory, imports);
                         break;
                     default:
@@ -113,14 +113,14 @@ namespace Atomic.Entities
                     EntityViewPoolGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
                 }
 
-                switch (args.bakerType)
+                switch (args.bakerMode)
                 {
-                    case BakerType.None:
+                    case BakerMode.None:
                         break;
-                    case BakerType.SceneEntityBaker:
+                    case BakerMode.SceneEntityBaker:
                         SceneEntityBakerGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
                         break;
-                    case BakerType.SceneEntityBakerOptimized:
+                    case BakerMode.SceneEntityBakerOptimized:
                         SceneEntityBakerOptimizedGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
                         break;
                     default:

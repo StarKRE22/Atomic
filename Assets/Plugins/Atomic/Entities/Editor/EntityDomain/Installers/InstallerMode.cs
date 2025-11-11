@@ -1,5 +1,8 @@
+using System;
+
 namespace Atomic.Entities
 {
+    [Flags]
     internal enum InstallerMode
     {
         None = 0,

@@ -1,6 +1,9 @@
+using System;
+
 namespace Atomic.Entities
 {
-    internal enum BakerType
+    [Flags]
+    internal enum BakerMode
     {
         None = 0,
         SceneEntityBaker = 1,
