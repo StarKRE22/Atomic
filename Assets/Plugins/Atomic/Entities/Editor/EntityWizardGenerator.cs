@@ -5,7 +5,7 @@ namespace Atomic.Entities
         public struct GenerateArgs
         {
             public string entityType;
-            public EntityBaseType entityBaseType;
+            public EntityBaseType baseType;
             public string ns;
             public string directory;
             public string[] imports;
@@ -15,7 +15,7 @@ namespace Atomic.Entities
         {
             string entityImpl = args.entityType;
             string entityInterface = $"I{entityImpl}";
-            EntityBaseType baseType = args.entityBaseType;
+            EntityBaseType baseType = args.baseType;
             string ns = args.ns;
             string[] imports = args.imports;
             string directory = args.directory;
@@ -23,6 +23,9 @@ namespace Atomic.Entities
             EntityInterfaceGenerator.GenerateFile(entityInterface, ns, imports, directory);
             EntityClassGenerator.GenerateFile(entityImpl, ns, imports, directory, baseType, entityInterface);
             EntityBehavioursGenerator.GenerateFile(entityInterface, ns, imports, directory);
+
+            if (baseType is EntityBaseType.SceneEntity or EntityBaseType.SceneEntitySingleton) 
+                EntityProxyGenerator.GenerateFile(entityImpl, entityInterface, ns, imports, directory);
         }
     }
 }

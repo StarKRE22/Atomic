@@ -57,6 +57,8 @@ namespace Atomic.Entities
             var sb = new StringBuilder();
 
             // --- Imports ---
+            sb.AppendLine("using Atomic.Entities;");
+
             if (imports is { Length: > 0 })
             {
                 foreach (string import in imports)
@@ -106,7 +108,7 @@ namespace Atomic.Entities
             var sb = new StringBuilder();
 
             // Только Entity и EntitySingleton имеют расширенные конструкторы
-            if (baseType == EntityBaseType.Entity || baseType == EntityBaseType.EntitySingleton)
+            if (baseType is EntityBaseType.Entity or EntityBaseType.EntitySingleton)
             {
                 bool includeEmptyCtor = baseType == EntityBaseType.EntitySingleton;
 
