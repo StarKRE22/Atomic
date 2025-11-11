@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,32 +7,31 @@ namespace Atomic.Entities
 {
     internal static class SceneEntityAspectGenerator
     {
-        public static void GenerateFile(string entityType, string ns, string directory, string[] imports)
+        public static void GenerateFile(
+            string entityType,
+            string ns,
+            string directory,
+            string[] imports,
+            bool hasPrefix = false
+        )
         {
             if (string.IsNullOrWhiteSpace(entityType))
             {
                 EditorUtility.DisplayDialog("Error", "Entity Type cannot be empty.", "OK");
                 return;
             }
+            
+            string prefix = hasPrefix ? "Scene" : string.Empty;
+            
+            Directory.CreateDirectory(directory);
+            string filePath = Path.Combine(directory, $"{prefix}{entityType}Aspect.cs");
+            string content = GenerateContent(ns, entityType, imports, prefix);
 
-            try
-            {
-                Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}Aspect.cs");
-                string content = GenerateContent(ns, entityType, imports);
-
-                File.WriteAllText(filePath, content, Encoding.UTF8);
-                AssetDatabase.Refresh();
-
-                EditorUtility.DisplayDialog("Success", $"Aspect generated successfully:\n{filePath}", "OK");
-            }
-            catch (Exception ex)
-            {
-                EditorUtility.DisplayDialog("Error", $"Generation failed:\n{ex.Message}", "OK");
-            }
+            File.WriteAllText(filePath, content, Encoding.UTF8);
+            AssetDatabase.Refresh();
         }
 
-        private static string GenerateContent(string ns, string entityType, string[] imports)
+        private static string GenerateContent(string ns, string entityType, string[] imports, string prefix)
         {
             var sb = new StringBuilder();
 
@@ -50,10 +48,11 @@ namespace Atomic.Entities
 
             sb.AppendLine();
 
+
             // --- Namespace + Aspect Class ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
-            sb.AppendLine($"   public abstract class {entityType}Aspect : SceneEntityAspect<{entityType}>");
+            sb.AppendLine($"    public abstract class {prefix}{entityType}Aspect : SceneEntityAspect<{entityType}>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
             sb.AppendLine("}");

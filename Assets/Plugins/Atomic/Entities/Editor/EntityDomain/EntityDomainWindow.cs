@@ -35,10 +35,10 @@ namespace Atomic.Entities
         private readonly List<string> _imports = new();
         private Vector2 _scrollPos;
 
-        [MenuItem("Window/Atomic/Entities/Entity Wizard")]
+        [MenuItem("Window/Atomic/Entities/Entity Domain Generator")]
         public static void ShowWindow()
         {
-            EntityDomainWindow window = GetWindow<EntityDomainWindow>("Entity Wizard");
+            EntityDomainWindow window = GetWindow<EntityDomainWindow>("Entity Domain Generator");
             window.minSize = new Vector2(450, 580);
         }
 
@@ -46,6 +46,8 @@ namespace Atomic.Entities
         {
             GUILayout.Space(10);
             DrawHeader();
+            
+            GUILayout.Space(8);
             DrawEntityType();
             DrawEntityBaseType();
 

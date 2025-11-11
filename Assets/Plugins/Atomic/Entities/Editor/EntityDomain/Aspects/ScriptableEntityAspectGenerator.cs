@@ -8,7 +8,13 @@ namespace Atomic.Entities
 {
     internal static class ScriptableEntityAspectGenerator
     {
-        public static void GenerateFile(string entityType, string ns, string directory, string[] imports)
+        public static void GenerateFile(
+            string entityType,
+            string ns,
+            string directory,
+            string[] imports,
+            bool hasPrefix = false
+        )
         {
             if (string.IsNullOrWhiteSpace(entityType))
             {
@@ -16,30 +22,22 @@ namespace Atomic.Entities
                 return;
             }
 
-            try
-            {
-                Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}Aspect.cs");
-                string content = GenerateContent(ns, entityType, imports);
+            string prefix = hasPrefix ? "Scriptable" : string.Empty;
+            Directory.CreateDirectory(directory);
+            string filePath = Path.Combine(directory, $"{prefix}{entityType}Aspect.cs");
+            string content = GenerateContent(ns, entityType, imports, prefix);
 
-                File.WriteAllText(filePath, content, Encoding.UTF8);
-                AssetDatabase.Refresh();
-
-                EditorUtility.DisplayDialog("Success", $"Aspect generated successfully:\n{filePath}", "OK");
-            }
-            catch (Exception ex)
-            {
-                EditorUtility.DisplayDialog("Error", $"Generation failed:\n{ex.Message}", "OK");
-            }
+            File.WriteAllText(filePath, content, Encoding.UTF8);
+            AssetDatabase.Refresh();
         }
 
-        private static string GenerateContent(string ns, string entityType, string[] imports)
+        private static string GenerateContent(string ns, string entityType, string[] imports, string prefix)
         {
             var sb = new StringBuilder();
 
             // --- Imports ---
             sb.AppendLine("using Atomic.Entities;");
-            if (imports is { Length: > 0 })
+            if (imports is {Length: > 0})
             {
                 foreach (string import in imports.Where(i => !string.IsNullOrWhiteSpace(i)))
                 {
@@ -53,7 +51,7 @@ namespace Atomic.Entities
             // --- Namespace + Aspect Class ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
-            sb.AppendLine($"    public abstract class {entityType}Aspect : ScriptableEntityAspect<{entityType}>");
+            sb.AppendLine($"    public abstract class {prefix}{entityType}Aspect : ScriptableEntityAspect<{entityType}>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
             sb.AppendLine("}");

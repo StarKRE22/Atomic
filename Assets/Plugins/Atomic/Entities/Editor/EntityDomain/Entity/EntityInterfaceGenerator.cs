@@ -9,9 +9,9 @@ namespace Atomic.Entities
     {
         private const string Indent = "    ";
 
-        public static void GenerateFile(string interfaceName, string ns, string[] imports, string directory)
+        public static void GenerateFile(string interfaceType, string ns, string[] imports, string directory)
         {
-            if (string.IsNullOrWhiteSpace(interfaceName))
+            if (string.IsNullOrWhiteSpace(interfaceType))
             {
                 EditorUtility.DisplayDialog("Error", "Interface name cannot be empty.", "OK");
                 return;
@@ -20,8 +20,8 @@ namespace Atomic.Entities
             try
             {
                 Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{interfaceName}.cs");
-                string content = GenerateContent(ns, imports, interfaceName);
+                string filePath = Path.Combine(directory, $"{interfaceType}.cs");
+                string content = GenerateContent(ns, imports, interfaceType);
                 File.WriteAllText(filePath, content, Encoding.UTF8);
 
                 AssetDatabase.Refresh();

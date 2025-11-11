@@ -8,23 +8,23 @@ namespace Atomic.Entities
     internal static class EntityConcreteGenerator
     {
         private const string Indent = "    ";
-        
+
         public static void GenerateFile(
-            string className,
+            string concreteType,
+            string interfaceType,
+            EntityMode entityMode,
             string ns,
             string[] imports,
-            string directory,
-            EntityMode entityMode,
-            string interfaceName
+            string directory
         )
         {
-            if (string.IsNullOrWhiteSpace(className))
+            if (string.IsNullOrWhiteSpace(concreteType))
             {
                 EditorUtility.DisplayDialog("Error", "Class name cannot be empty.", "OK");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(interfaceName))
+            if (string.IsNullOrWhiteSpace(interfaceType))
             {
                 EditorUtility.DisplayDialog("Error", "Interface name cannot be empty.", "OK");
                 return;
@@ -33,8 +33,8 @@ namespace Atomic.Entities
             try
             {
                 Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{className}.cs");
-                string content = GenerateContent(ns, imports, className, entityMode, interfaceName);
+                string filePath = Path.Combine(directory, $"{concreteType}.cs");
+                string content = GenerateContent(ns, imports, concreteType, entityMode, interfaceType);
                 File.WriteAllText(filePath, content, Encoding.UTF8);
 
                 AssetDatabase.Refresh();
@@ -59,7 +59,7 @@ namespace Atomic.Entities
             // --- Imports ---
             sb.AppendLine("using Atomic.Entities;");
 
-            if (imports is { Length: > 0 })
+            if (imports is {Length: > 0})
             {
                 foreach (string import in imports)
                 {
@@ -122,15 +122,22 @@ namespace Atomic.Entities
 
                 // === Constructor #1: generic string/object collections ===
                 sb.AppendLine($"{Indent}{Indent}/// <summary>");
-                sb.AppendLine($"{Indent}{Indent}/// Creates a new entity with the specified name, tags, values, behaviours, and optional settings.");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// Creates a new entity with the specified name, tags, values, behaviours, and optional settings.");
                 sb.AppendLine($"{Indent}{Indent}/// </summary>");
-                sb.AppendLine($"{Indent}{Indent}/// <param name=\"name\">The name of the entity. If <c>null</c>, an empty string is used.</param>");
-                sb.AppendLine($"{Indent}{Indent}/// <param name=\"tags\">Optional collection of tag identifiers.</param>");
-                sb.AppendLine($"{Indent}{Indent}/// <param name=\"values\">Optional collection of key-value pairs.</param>");
-                sb.AppendLine($"{Indent}{Indent}/// <param name=\"behaviours\">Optional collection of behaviours to attach.</param>");
-                sb.AppendLine($"{Indent}{Indent}/// <param name=\"settings\">Optional entity settings. If <c>null</c>, <see cref=\"Settings.disposeValues\"/> defaults to <c>true</c>.</param>");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// <param name=\"name\">The name of the entity. If <c>null</c>, an empty string is used.</param>");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// <param name=\"tags\">Optional collection of tag identifiers.</param>");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// <param name=\"values\">Optional collection of key-value pairs.</param>");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// <param name=\"behaviours\">Optional collection of behaviours to attach.</param>");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// <param name=\"settings\">Optional entity settings. If <c>null</c>, <see cref=\"Settings.disposeValues\"/> defaults to <c>true</c>.</param>");
                 sb.AppendLine($"{Indent}{Indent}/// <remarks>");
-                sb.AppendLine($"{Indent}{Indent}/// The constructor initializes internal capacities based on the provided collections,");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// The constructor initializes internal capacities based on the provided collections,");
                 sb.AppendLine($"{Indent}{Indent}/// then adds all specified tags, values, and behaviours immediately.");
                 sb.AppendLine($"{Indent}{Indent}/// </remarks>");
                 sb.AppendLine($"{Indent}{Indent}public {className}(");
@@ -158,15 +165,22 @@ namespace Atomic.Entities
 
                 // === Constructor #3: capacity-based ===
                 sb.AppendLine($"{Indent}{Indent}/// <summary>");
-                sb.AppendLine($"{Indent}{Indent}/// Creates a new entity with the specified name and initial capacities for tags, values, and behaviours.");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// Creates a new entity with the specified name and initial capacities for tags, values, and behaviours.");
                 sb.AppendLine($"{Indent}{Indent}/// </summary>");
-                sb.AppendLine($"{Indent}{Indent}/// <param name=\"name\">The name of the entity. If <c>null</c>, an empty string is used.</param>");
-                sb.AppendLine($"{Indent}{Indent}/// <param name=\"tagCapacity\">Initial capacity for tag storage to minimize memory allocations.</param>");
-                sb.AppendLine($"{Indent}{Indent}/// <param name=\"valueCapacity\">Initial capacity for value storage to minimize memory allocations.</param>");
-                sb.AppendLine($"{Indent}{Indent}/// <param name=\"behaviourCapacity\">Initial capacity for behaviour storage to minimize memory allocations.</param>");
-                sb.AppendLine($"{Indent}{Indent}/// <param name=\"settings\">Optional entity settings. If <c>null</c>, <see cref=\"Settings.disposeValues\"/> defaults to <c>true</c>.</param>");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// <param name=\"name\">The name of the entity. If <c>null</c>, an empty string is used.</param>");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// <param name=\"tagCapacity\">Initial capacity for tag storage to minimize memory allocations.</param>");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// <param name=\"valueCapacity\">Initial capacity for value storage to minimize memory allocations.</param>");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// <param name=\"behaviourCapacity\">Initial capacity for behaviour storage to minimize memory allocations.</param>");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// <param name=\"settings\">Optional entity settings. If <c>null</c>, <see cref=\"Settings.disposeValues\"/> defaults to <c>true</c>.</param>");
                 sb.AppendLine($"{Indent}{Indent}/// <remarks>");
-                sb.AppendLine($"{Indent}{Indent}/// Pre-allocates internal structures for efficient usage and registers the entity in <see cref=\"EntityRegistry\"/>.");
+                sb.AppendLine(
+                    $"{Indent}{Indent}/// Pre-allocates internal structures for efficient usage and registers the entity in <see cref=\"EntityRegistry\"/>.");
                 sb.AppendLine($"{Indent}{Indent}/// </remarks>");
                 sb.AppendLine($"{Indent}{Indent}public {className}(");
                 sb.AppendLine($"{Indent}{Indent}    string name = null,");
@@ -174,7 +188,8 @@ namespace Atomic.Entities
                 sb.AppendLine($"{Indent}{Indent}    int valueCapacity = 0,");
                 sb.AppendLine($"{Indent}{Indent}    int behaviourCapacity = 0,");
                 sb.AppendLine($"{Indent}{Indent}    Settings? settings = null");
-                sb.AppendLine($"{Indent}{Indent}) : base(name, tagCapacity, valueCapacity, behaviourCapacity, settings)");
+                sb.AppendLine(
+                    $"{Indent}{Indent}) : base(name, tagCapacity, valueCapacity, behaviourCapacity, settings)");
                 sb.AppendLine($"{Indent}{Indent}{{");
                 sb.AppendLine($"{Indent}{Indent}}}");
                 sb.AppendLine();

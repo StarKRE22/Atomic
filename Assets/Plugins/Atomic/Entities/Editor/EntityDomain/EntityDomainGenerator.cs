@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Atomic.Entities
 {
@@ -24,69 +25,62 @@ namespace Atomic.Entities
 
         public static void Generate(GenerateArgs args)
         {
-            string entityImplementation = args.entityType;
-            string entityInterface = $"I{entityImplementation}";
-            EntityMode entityMode = args.entityMode;
+            string concreteType = args.entityType;
+            string interfaceType = $"I{concreteType}";
             string ns = args.ns;
             string[] imports = args.imports;
             string directory = args.directory;
 
-            EntityInterfaceGenerator.GenerateFile(entityInterface, ns, imports, directory);
-            EntityConcreteGenerator.GenerateFile(entityImplementation, ns, imports, directory, entityMode, entityInterface);
-            EntityBehaviourGenerator.GenerateFile(entityInterface, ns, imports, directory);
+            EntityMode entityMode = args.entityMode;
 
-            switch (args.aspectMode)
-            {
-                case AspectMode.None:
-                    break;
-                case AspectMode.ScriptableEntityAspect:
-                    ScriptableEntityAspectGenerator.GenerateFile(entityImplementation, ns, directory, imports);
-                    break;
-                case AspectMode.SceneEntityAspect:
-                    SceneEntityAspectGenerator.GenerateFile(entityImplementation, ns, directory, imports);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            
+            EntityInterfaceGenerator.GenerateFile(interfaceType, ns, imports, directory);
+            EntityConcreteGenerator.GenerateFile(concreteType, interfaceType, entityMode, ns, imports, directory);
+            EntityBehaviourGenerator.GenerateFile(interfaceType, ns, imports, directory);
+
+            GenerateAspects(args, concreteType, ns, directory, imports);
+
             switch (args.installerMode)
             {
                 case InstallerMode.None:
                     break;
                 case InstallerMode.ScriptableEntityInstaller:
-                    ScriptableEntityInstallerGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory, imports);
+                    ScriptableEntityInstallerGenerator.GenerateFile(concreteType, interfaceType, ns,
+                        directory, imports);
                     break;
                 case InstallerMode.SceneEntityInstaller:
-                    SceneEntityInstallerGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory, imports);
+                    SceneEntityInstallerGenerator.GenerateFile(concreteType, interfaceType, ns, directory,
+                        imports);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
+
             // Unity
             if (entityMode is EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)
             {
                 if (args.proxyRequired)
-                    SceneEntityProxyGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
+                    SceneEntityProxyGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
+                        directory);
 
-                if (args.worldRequired) 
-                    SceneEntityWorldGenerator.GenerateFile(entityImplementation, ns, imports, directory);
-                
+                if (args.worldRequired)
+                    SceneEntityWorldGenerator.GenerateFile(concreteType, ns, imports, directory);
+
                 switch (args.poolMode)
                 {
                     case PoolMode.None:
                         break;
                     case PoolMode.SceneEntityPool:
-                        SceneEntityPoolGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory, imports);
+                        SceneEntityPoolGenerator.GenerateFile(concreteType, interfaceType, ns, directory,
+                            imports);
                         break;
                     case PoolMode.PrefabEntityPool:
-                        PrefabEntityPoolGenerator.GenerateFile(entityImplementation, ns, imports, directory);
+                        PrefabEntityPoolGenerator.GenerateFile(concreteType, ns, imports, directory);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
-            
+
             // CSharp mode
             else if (entityMode is EntityMode.Entity or EntityMode.EntitySingleton)
             {
@@ -95,11 +89,13 @@ namespace Atomic.Entities
                     case FactoryMode.None:
                         break;
                     case FactoryMode.ScriptableEntityFactory:
-                        ScriptableEntityFactoryGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory,
+                        ScriptableEntityFactoryGenerator.GenerateFile(concreteType, interfaceType, ns,
+                            directory,
                             imports);
                         break;
                     case FactoryMode.SceneEntityFactory:
-                        SceneEntityFactoryGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory, imports);
+                        SceneEntityFactoryGenerator.GenerateFile(concreteType, interfaceType, ns, directory,
+                            imports);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -107,10 +103,12 @@ namespace Atomic.Entities
 
                 if (args.viewRequired)
                 {
-                    EntityViewGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
-                    EntityCollectionViewGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
-                    EntityViewCatalogGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
-                    EntityViewPoolGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
+                    EntityViewGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
+                    EntityCollectionViewGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
+                        directory);
+                    EntityViewCatalogGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
+                        directory);
+                    EntityViewPoolGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
                 }
 
                 switch (args.bakerMode)
@@ -118,15 +116,37 @@ namespace Atomic.Entities
                     case BakerMode.None:
                         break;
                     case BakerMode.SceneEntityBaker:
-                        SceneEntityBakerGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
+                        SceneEntityBakerGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
+                            directory);
                         break;
                     case BakerMode.SceneEntityBakerOptimized:
-                        SceneEntityBakerOptimizedGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
+                        SceneEntityBakerOptimizedGenerator.GenerateFile(concreteType, interfaceType, ns,
+                            imports, directory);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
+        }
+
+        private static void GenerateAspects(
+            GenerateArgs args,
+            string concreteType,
+            string ns,
+            string directory,
+            string[] imports
+        )
+        {
+            AspectMode mode = args.aspectMode;
+            bool scriptableAspectRequired = mode.HasFlag(AspectMode.ScriptableEntityAspect);
+            bool sceneAspectRequired = mode.HasFlag(AspectMode.SceneEntityAspect);
+            bool bothRequired = scriptableAspectRequired && sceneAspectRequired;
+
+            if (scriptableAspectRequired)
+                ScriptableEntityAspectGenerator.GenerateFile(concreteType, ns, directory, imports, bothRequired);
+
+            if (sceneAspectRequired)
+                SceneEntityAspectGenerator.GenerateFile(concreteType, ns, directory, imports, bothRequired);
         }
     }
 }
