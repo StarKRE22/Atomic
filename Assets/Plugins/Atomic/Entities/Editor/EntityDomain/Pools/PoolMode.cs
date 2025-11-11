@@ -1,6 +1,6 @@
 namespace Atomic.Entities
 {
-    internal enum EntityPoolType
+    internal enum PoolMode
     {
         None = 0,
         SceneEntityPool = 1,

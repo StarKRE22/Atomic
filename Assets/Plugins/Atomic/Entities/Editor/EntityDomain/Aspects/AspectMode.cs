@@ -1,6 +1,6 @@
 namespace Atomic.Entities
 {
-    internal enum EntityAspectType
+    internal enum AspectMode
     {
         None = 0,
         ScriptableEntityAspect = 1,

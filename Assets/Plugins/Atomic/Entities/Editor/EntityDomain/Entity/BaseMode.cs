@@ -1,6 +1,6 @@
 namespace Atomic.Entities
 {
-    internal enum EntityBaseType
+    internal enum BaseMode
     {
         Entity = 0,
         EntitySingleton = 1,

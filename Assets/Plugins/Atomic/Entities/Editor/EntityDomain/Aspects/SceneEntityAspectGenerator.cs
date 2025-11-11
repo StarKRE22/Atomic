@@ -6,7 +6,7 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    public static class SceneEntityAspectGenerator
+    internal static class SceneEntityAspectGenerator
     {
         public static void GenerateFile(string entityType, string ns, string directory, string[] imports)
         {

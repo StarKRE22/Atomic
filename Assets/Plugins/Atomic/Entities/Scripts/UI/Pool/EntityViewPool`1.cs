@@ -9,7 +9,7 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A pool system for managing reusable EntityView<E> instances.
+    /// A pool system for managing reusable EntityView instances.
     /// Supports preloading from catalogs, runtime instantiation, renting, and returning views to minimize runtime allocations.
     /// Use for efficient management of frequently spawned or displayed entity views.
     /// </summary>
@@ -119,15 +119,15 @@ namespace Atomic.Entities
         /// <summary>
         /// Registers a new view prefab to the pool by name.
         /// </summary>
-        /// <param name="entityName">The name identifier for the view prefab.</param>
+        /// <param name="name">The name identifier for the view prefab.</param>
         /// <param name="prefab">The prefab to register.</param>
-        public void RegisterPrefab(string entityName, V prefab) => _prefabs.Add(entityName, prefab);
+        public void RegisterPrefab(string name, V prefab) => _prefabs.Add(name, prefab);
 
         /// <summary>
         /// Removes a registered prefab from the pool.
         /// </summary>
-        /// <param name="entityName">The name of the prefab to remove.</param>
-        public void UnregisterPrefab(string entityName) => _prefabs.Remove(entityName);
+        /// <param name="name">The name of the prefab to remove.</param>
+        public void UnregisterPrefab(string name) => _prefabs.Remove(name);
 
         /// <summary>
         /// Adds all prefabs from a given catalog to the internal registry.

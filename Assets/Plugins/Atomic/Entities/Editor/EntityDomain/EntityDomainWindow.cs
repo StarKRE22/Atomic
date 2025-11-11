@@ -16,7 +16,7 @@ namespace Atomic.Entities
         private string _directory = "Assets/Scripts/";
 
         [SerializeField]
-        private EntityBaseType _entityBaseType = EntityBaseType.SceneEntity;
+        private BaseMode baseMode = BaseMode.SceneEntity;
 
         private readonly List<string> _imports = new();
         private Vector2 _scrollPos;
@@ -78,7 +78,7 @@ namespace Atomic.Entities
         // 🧩 Новый метод для выбора базового типа
         private void DrawEntityBaseType()
         {
-            _entityBaseType = (EntityBaseType)EditorGUILayout.EnumPopup("Base Type", _entityBaseType);
+            baseMode = (BaseMode)EditorGUILayout.EnumPopup("Base Type", baseMode);
         }
 
         private void DrawImports()
@@ -117,7 +117,7 @@ namespace Atomic.Entities
                     entityType = _entityType,
                     imports = _imports.ToArray(),
                     ns = _namespace,
-                    baseType = _entityBaseType // 🧩 передаем выбранный тип
+                    BaseMode = baseMode // 🧩 передаем выбранный тип
                 });
             }
         }

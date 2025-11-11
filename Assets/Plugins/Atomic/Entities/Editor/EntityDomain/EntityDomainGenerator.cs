@@ -7,78 +7,80 @@ namespace Atomic.Entities
         public struct GenerateArgs
         {
             public string entityType;
-            public EntityBaseType baseType;
+            public BaseMode BaseMode;
             public string ns;
             public string directory;
             public string[] imports;
 
             public bool proxyRequired;
             public bool worldRequired;
-            public EntityInstallerType installerType;
-            public EntityAspectType aspectType;
-            public EntityPoolType poolType;
-            public EntityFactoryType factoryType;
+            public bool viewRequired;
+            public InstallerMode installerMode;
+            public AspectMode aspectMode;
+            public PoolMode poolMode;
+            public FactoryType factoryType;
+            public BakerType bakerType;
         }
 
         public static void Generate(GenerateArgs args)
         {
-            string entityImpl = args.entityType;
-            string entityInterface = $"I{entityImpl}";
-            EntityBaseType baseType = args.baseType;
+            string entityImplementation = args.entityType;
+            string entityInterface = $"I{entityImplementation}";
+            BaseMode baseMode = args.BaseMode;
             string ns = args.ns;
             string[] imports = args.imports;
             string directory = args.directory;
 
             EntityInterfaceGenerator.GenerateFile(entityInterface, ns, imports, directory);
-            EntityConcreteGenerator.GenerateFile(entityImpl, ns, imports, directory, baseType, entityInterface);
+            EntityConcreteGenerator.GenerateFile(entityImplementation, ns, imports, directory, baseMode, entityInterface);
             EntityBehaviourGenerator.GenerateFile(entityInterface, ns, imports, directory);
 
-            switch (args.aspectType)
+            switch (args.aspectMode)
             {
-                case EntityAspectType.None:
+                case AspectMode.None:
                     break;
-                case EntityAspectType.ScriptableEntityAspect:
-                    ScriptableEntityAspectGenerator.GenerateFile(entityImpl, ns, directory, imports);
+                case AspectMode.ScriptableEntityAspect:
+                    ScriptableEntityAspectGenerator.GenerateFile(entityImplementation, ns, directory, imports);
                     break;
-                case EntityAspectType.SceneEntityAspect:
-                    SceneEntityAspectGenerator.GenerateFile(entityImpl, ns, directory, imports);
+                case AspectMode.SceneEntityAspect:
+                    SceneEntityAspectGenerator.GenerateFile(entityImplementation, ns, directory, imports);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
             
-            switch (args.installerType)
+            switch (args.installerMode)
             {
-                case EntityInstallerType.None:
+                case InstallerMode.None:
                     break;
-                case EntityInstallerType.ScriptableEntityInstaller:
-                    ScriptableEntityInstallerGenerator.GenerateFile(entityImpl, entityInterface, ns, directory, imports);
+                case InstallerMode.ScriptableEntityInstaller:
+                    ScriptableEntityInstallerGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory, imports);
                     break;
-                case EntityInstallerType.SceneEntityInstaller:
-                    SceneEntityInstallerGenerator.GenerateFile(entityImpl, entityInterface, ns, directory, imports);
+                case InstallerMode.SceneEntityInstaller:
+                    SceneEntityInstallerGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory, imports);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
             
             // Unity
-            if (baseType is EntityBaseType.SceneEntity or EntityBaseType.SceneEntitySingleton)
+            if (baseMode is BaseMode.SceneEntity or BaseMode.SceneEntitySingleton)
             {
                 if (args.proxyRequired)
-                    SceneEntityProxyGenerator.GenerateFile(entityImpl, entityInterface, ns, imports, directory);
+                    SceneEntityProxyGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
 
                 if (args.worldRequired) 
-                    SceneEntityWorldGenerator.GenerateFile(entityImpl, ns, imports, directory);
+                    SceneEntityWorldGenerator.GenerateFile(entityImplementation, ns, imports, directory);
                 
-                switch (args.poolType)
+                switch (args.poolMode)
                 {
-                    case EntityPoolType.None:
+                    case PoolMode.None:
                         break;
-                    case EntityPoolType.SceneEntityPool:
-                        SceneEntityPoolGenerator.GenerateFile(entityImpl, entityInterface, ns, directory, imports);
+                    case PoolMode.SceneEntityPool:
+                        SceneEntityPoolGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory, imports);
                         break;
-                    case EntityPoolType.PrefabEntityPool:
-                        PrefabEntityPoolGenerator.GenerateFile(entityImpl, ns, imports, directory);
+                    case PoolMode.PrefabEntityPool:
+                        PrefabEntityPoolGenerator.GenerateFile(entityImplementation, ns, imports, directory);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -86,18 +88,40 @@ namespace Atomic.Entities
             }
             
             // CSharp mode
-            else if (baseType is EntityBaseType.Entity or EntityBaseType.EntitySingleton)
+            else if (baseMode is BaseMode.Entity or BaseMode.EntitySingleton)
             {
                 switch (args.factoryType)
                 {
-                    case EntityFactoryType.None:
+                    case FactoryType.None:
                         break;
-                    case EntityFactoryType.ScriptableEntityFactory:
-                        ScriptableEntityFactoryGenerator.GenerateFile(entityImpl, entityInterface, ns, directory,
+                    case FactoryType.ScriptableEntityFactory:
+                        ScriptableEntityFactoryGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory,
                             imports);
                         break;
-                    case EntityFactoryType.SceneEntityFactory:
-                        SceneEntityFactoryGenerator.GenerateFile(entityImpl, entityInterface, ns, directory, imports);
+                    case FactoryType.SceneEntityFactory:
+                        SceneEntityFactoryGenerator.GenerateFile(entityImplementation, entityInterface, ns, directory, imports);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                if (args.viewRequired)
+                {
+                    EntityViewGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
+                    EntityCollectionViewGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
+                    EntityViewCatalogGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
+                    EntityViewPoolGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
+                }
+
+                switch (args.bakerType)
+                {
+                    case BakerType.None:
+                        break;
+                    case BakerType.SceneEntityBaker:
+                        SceneEntityBakerGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
+                        break;
+                    case BakerType.SceneEntityBakerOptimized:
+                        SceneEntityBakerOptimizedGenerator.GenerateFile(entityImplementation, entityInterface, ns, imports, directory);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

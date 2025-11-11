@@ -1,6 +1,6 @@
 namespace Atomic.Entities
 {
-    internal enum EntityFactoryType
+    internal enum FactoryType
     {
         None = 0,
         ScriptableEntityFactory = 1,

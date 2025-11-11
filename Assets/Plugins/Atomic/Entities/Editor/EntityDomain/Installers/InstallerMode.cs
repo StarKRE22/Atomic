@@ -1,6 +1,6 @@
 namespace Atomic.Entities
 {
-    internal enum EntityInstallerType
+    internal enum InstallerMode
     {
         None = 0,
         ScriptableEntityInstaller = 1,

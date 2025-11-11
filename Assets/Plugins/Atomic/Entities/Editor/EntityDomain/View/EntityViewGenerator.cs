@@ -6,9 +6,15 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    internal static class ScriptableEntityAspectGenerator
+    internal static class EntityViewGenerator
     {
-        public static void GenerateFile(string entityType, string ns, string directory, string[] imports)
+        public static void GenerateFile(
+            string entityType,
+            string entityInterface,
+            string ns,
+            string[] imports,
+            string directory
+        )
         {
             if (string.IsNullOrWhiteSpace(entityType))
             {
@@ -19,13 +25,13 @@ namespace Atomic.Entities
             try
             {
                 Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}Aspect.cs");
-                string content = GenerateContent(ns, entityType, imports);
+                string filePath = Path.Combine(directory, $"{entityType}View.cs");
+                string content = GenerateContent(entityType, entityInterface, ns, imports);
 
                 File.WriteAllText(filePath, content, Encoding.UTF8);
                 AssetDatabase.Refresh();
 
-                EditorUtility.DisplayDialog("Success", $"Aspect generated successfully:\n{filePath}", "OK");
+                EditorUtility.DisplayDialog("Success", $"View generated successfully:\n{filePath}", "OK");
             }
             catch (Exception ex)
             {
@@ -33,13 +39,13 @@ namespace Atomic.Entities
             }
         }
 
-        private static string GenerateContent(string ns, string entityType, string[] imports)
+        private static string GenerateContent(string entityType, string entityInterface, string ns, string[] imports)
         {
             var sb = new StringBuilder();
 
             // --- Imports ---
             sb.AppendLine("using Atomic.Entities;");
-            if (imports is { Length: > 0 })
+            if (imports is {Length: > 0})
             {
                 foreach (string import in imports.Where(i => !string.IsNullOrWhiteSpace(i)))
                 {
@@ -50,10 +56,10 @@ namespace Atomic.Entities
 
             sb.AppendLine();
 
-            // --- Namespace + Aspect Class ---
+            // --- Namespace + View Class ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
-            sb.AppendLine($"    public abstract class {entityType}Aspect : ScriptableEntityAspect<{entityType}>");
+            sb.AppendLine($"    public class {entityType}View : EntityView<{entityInterface}Entity>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
             sb.AppendLine("}");
