@@ -6,10 +6,9 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    public static class EntityProxyGenerator
+    public static class PrefabEntityPoolGenerator
     {
-        public static void GenerateFile(string entityType, string interfaceType, string ns, string[] imports,
-            string directory)
+        public static void GenerateFile(string entityType, string ns, string[] imports, string directory)
         {
             if (string.IsNullOrWhiteSpace(entityType))
             {
@@ -20,13 +19,13 @@ namespace Atomic.Entities
             try
             {
                 Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}Proxy.cs");
-                string content = GenerateContent(entityType, interfaceType, ns, imports);
+                string filePath = Path.Combine(directory, $"{entityType}PrefabPool.cs");
+                string content = GenerateContent(ns, entityType, imports);
 
                 File.WriteAllText(filePath, content, Encoding.UTF8);
                 AssetDatabase.Refresh();
 
-                EditorUtility.DisplayDialog("Success", $"Proxy generated successfully:\n{filePath}", "OK");
+                EditorUtility.DisplayDialog("Success", $"Prefab Pool generated successfully:\n{filePath}", "OK");
             }
             catch (Exception ex)
             {
@@ -34,7 +33,7 @@ namespace Atomic.Entities
             }
         }
 
-        private static string GenerateContent(string entityType, string interfaceType, string ns, string[] imports)
+        private static string GenerateContent(string ns, string entityType, string[] imports)
         {
             var sb = new StringBuilder();
 
@@ -51,10 +50,10 @@ namespace Atomic.Entities
 
             sb.AppendLine();
 
-            // --- Namespace + Proxy Class ---
+            // --- Namespace + Prefab Pool Class ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
-            sb.AppendLine($"    public sealed class {entityType}Proxy : SceneEntityProxy<{entityType}>, I{entityType}");
+            sb.AppendLine($"    public class {entityType}Pool : PrefabEntityPool<{entityType}>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
             sb.AppendLine("}");

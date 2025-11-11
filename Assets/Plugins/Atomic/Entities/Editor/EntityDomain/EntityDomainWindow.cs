@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public sealed class EntityWizardWindow : EditorWindow
+    public sealed class EntityDomainWindow : EditorWindow
     {
         [SerializeField] 
         private string _entityType = "GameContext";
@@ -24,7 +24,7 @@ namespace Atomic.Entities
         [MenuItem("Window/Atomic/Entities/Entity Wizard")]
         public static void ShowWindow()
         {
-            EntityWizardWindow window = GetWindow<EntityWizardWindow>("Entity Wizard");
+            EntityDomainWindow window = GetWindow<EntityDomainWindow>("Entity Wizard");
             window.minSize = new Vector2(400, 320);
         }
 
@@ -111,7 +111,7 @@ namespace Atomic.Entities
         {
             if (GUILayout.Button("Generate", GUILayout.Height(35)))
             {
-                EntityWizardGenerator.Generate(new EntityWizardGenerator.GenerateArgs
+                EntityDomainGenerator.Generate(new EntityDomainGenerator.GenerateArgs
                 {
                     directory = _directory,
                     entityType = _entityType,

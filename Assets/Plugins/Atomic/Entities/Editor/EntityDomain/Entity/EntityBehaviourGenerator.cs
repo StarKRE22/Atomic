@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Atomic.Entities
 {
-    public static class EntityBehavioursGenerator
+    public static class EntityBehaviourGenerator
     {
         private const string Indent = "    ";
 
