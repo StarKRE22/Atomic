@@ -11,22 +11,33 @@ namespace Atomic.Entities
         public static void GenerateAspects(
             AspectMode mode,
             string concreteType,
+            string interfaceType,
             string ns,
             string directory,
             string[] imports
         )
         {
+            if (string.IsNullOrWhiteSpace(concreteType))
+            {
+                EditorUtility.DisplayDialog("Error", "Concrete Entity Type cannot be empty.", "OK");
+                return;
+            }
+            
+            if (string.IsNullOrWhiteSpace(interfaceType))
+            {
+                EditorUtility.DisplayDialog("Error", "Interface Entity Type cannot be empty.", "OK");
+                return;
+            }
+            
             bool scriptableAspectRequired = mode.HasFlag(AspectMode.ScriptableEntityAspect);
             bool sceneAspectRequired = mode.HasFlag(AspectMode.SceneEntityAspect);
             bool bothRequired = scriptableAspectRequired && sceneAspectRequired;
-
-            // Если оба флага включены — используем префиксы ("Scene" / "Scriptable")
-            // Если только один — без префиксов
 
             if (scriptableAspectRequired)
             {
                 GenerateFile(
                     concreteType,
+                    interfaceType,
                     ns,
                     directory,
                     imports,
@@ -39,6 +50,7 @@ namespace Atomic.Entities
             {
                 GenerateFile(
                     concreteType,
+                    interfaceType,
                     ns,
                     directory,
                     imports,
@@ -49,7 +61,8 @@ namespace Atomic.Entities
         }
 
         private static void GenerateFile(
-            string entityType,
+            string concreteType,
+            string interfaceType,
             string ns,
             string directory,
             string[] imports,
@@ -57,18 +70,11 @@ namespace Atomic.Entities
             bool usePrefix
         )
         {
-            if (string.IsNullOrWhiteSpace(entityType))
-            {
-                EditorUtility.DisplayDialog("Error", "Entity Type cannot be empty.", "OK");
-                return;
-            }
-
             string prefix;
             string baseType;
             string summary;
             string remarks;
 
-            // Определяем, какой тип аспекта создаётся
             switch (mode)
             {
                 case AspectMode.SceneEntityAspect:
@@ -78,7 +84,7 @@ namespace Atomic.Entities
                         "Represents a scene-based entity aspect that can be applied or discarded on a specific entity type.";
                     remarks =
                         "Inherit from this class to create reusable <see cref=\"MonoBehaviour\"/> components that encapsulate " +
-                        "logic to apply and discard behaviors or properties on <see cref=\"" + entityType +
+                        "logic to apply and discard behaviors or properties on <see cref=\"" + concreteType +
                         "\"/> entities during runtime. " +
                         "Attach this component to a GameObject in your scene to use it.";
                     break;
@@ -90,7 +96,7 @@ namespace Atomic.Entities
                         "Represents a scriptable-based entity aspect that can be applied or discarded on a specific entity type.";
                     remarks =
                         "Inherit from this class to create reusable <see cref=\"ScriptableObject\"/> assets that encapsulate " +
-                        "logic to apply and discard behaviors or properties on <see cref=\"" + entityType +
+                        "logic to apply and discard behaviors or properties on <see cref=\"" + concreteType +
                         "\"/> entities during runtime. " +
                         "Create and configure instances via the Unity project assets.";
                     break;
@@ -100,17 +106,20 @@ namespace Atomic.Entities
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, "Unsupported aspect mode.");
             }
 
-            string fileName = $"{prefix}{entityType}Aspect.cs";
+            Directory.CreateDirectory(directory);
+            
+            string fileName = $"{prefix}{concreteType}Aspect.cs";
             string filePath = Path.Combine(directory, fileName);
-            string content = GenerateContent(ns, entityType, imports, prefix, baseType, summary, remarks);
+            string content = GenerateContent(concreteType, interfaceType, ns, imports, prefix, baseType, summary, remarks);
 
             File.WriteAllText(filePath, content, Encoding.UTF8);
             AssetDatabase.Refresh();
         }
 
         private static string GenerateContent(
+            string concreteType,
+            string interfaceType,
             string ns,
-            string entityType,
             string[] imports,
             string prefix,
             string baseType,
@@ -130,7 +139,11 @@ namespace Atomic.Entities
                     sb.AppendLine(clean.StartsWith("using") ? clean : $"using {clean};");
                 }
             }
-
+            
+            sb.AppendLine();
+            sb.AppendLine("/**");
+            sb.AppendLine(" * Created by Entity Domain Generator.");
+            sb.AppendLine(" */");
             sb.AppendLine();
 
             // --- Namespace ---
@@ -149,7 +162,7 @@ namespace Atomic.Entities
             sb.AppendLine("    /// </remarks>");
 
             // --- Class ---
-            sb.AppendLine($"    public abstract class {prefix}{entityType}Aspect : {baseType}<{entityType}>");
+            sb.AppendLine($"    public abstract class {prefix}{concreteType}Aspect : {baseType}<{interfaceType}>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
 

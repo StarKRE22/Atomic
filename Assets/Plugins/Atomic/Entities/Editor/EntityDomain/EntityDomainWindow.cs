@@ -6,15 +6,22 @@ namespace Atomic.Entities
 {
     internal sealed class EntityDomainWindow : EditorWindow
     {
-        [SerializeField] private string _entityType = "GameContext";
-        [SerializeField] private string _namespace = "SampleGame.Gameplay";
-        [SerializeField] private string _directory = "Assets/Scripts/";
+        [SerializeField]
+        private string _entityType = "GameContext";
+        [SerializeField]
+        private string _namespace = "SampleGame.Gameplay";
+        [SerializeField]
+        private string _directory = "Assets/Scripts/";
 
-        [SerializeField] private EntityMode _entityMode = EntityMode.SceneEntity;
+        [SerializeField]
+        private EntityMode _entityMode = EntityMode.SceneEntity;
 
-        [SerializeField] private bool _proxyRequired = true;
-        [SerializeField] private bool _worldRequired = true;
-        [SerializeField] private bool _viewRequired = true;
+        [SerializeField]
+        private bool _proxyRequired = true;
+        [SerializeField]
+        private bool _worldRequired = true;
+        [SerializeField]
+        private bool _viewRequired = true;
 
         [SerializeField]
         private InstallerMode _installerMode =
@@ -46,7 +53,7 @@ namespace Atomic.Entities
         {
             GUILayout.Space(10);
             DrawHeader();
-            
+
             GUILayout.Space(8);
             DrawEntityType();
             DrawEntityBaseType();
@@ -78,7 +85,7 @@ namespace Atomic.Entities
 
         private void DrawEntityBaseType()
         {
-            _entityMode = (EntityMode)EditorGUILayout.EnumPopup("Base Type", _entityMode);
+            _entityMode = (EntityMode) EditorGUILayout.EnumPopup("Base Type", _entityMode);
         }
 
         private void DrawNamespace()
@@ -121,24 +128,46 @@ namespace Atomic.Entities
 
             GUILayout.Space(6);
             GUILayout.Label("Installer Mode", EditorStyles.boldLabel);
-            _installerMode = (InstallerMode)EditorGUILayout.EnumFlagsField(_installerMode);
+            _installerMode = (InstallerMode) EditorGUILayout.EnumFlagsField(_installerMode);
 
             GUILayout.Space(4);
-            GUILayout.Label("Aspect Mode", EditorStyles.boldLabel);
-            _aspectMode = (AspectMode)EditorGUILayout.EnumFlagsField(_aspectMode);
+            DrawAspects();
 
             GUILayout.Space(4);
             GUILayout.Label("Pool Mode", EditorStyles.boldLabel);
-            _poolMode = (PoolMode)EditorGUILayout.EnumFlagsField(_poolMode);
+            _poolMode = (PoolMode) EditorGUILayout.EnumFlagsField(_poolMode);
 
             GUILayout.Space(4);
             GUILayout.Label("Factory Mode", EditorStyles.boldLabel);
-            _factoryMode = (FactoryMode)EditorGUILayout.EnumFlagsField(_factoryMode);
+            _factoryMode = (FactoryMode) EditorGUILayout.EnumFlagsField(_factoryMode);
 
             GUILayout.Space(4);
             GUILayout.Label("Baker Mode", EditorStyles.boldLabel);
-            _bakerMode = (BakerMode)EditorGUILayout.EnumFlagsField(_bakerMode);
+            _bakerMode = (BakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
         }
+
+        private void DrawAspects()
+        {
+            EditorGUILayout.BeginHorizontal();
+
+            GUILayout.Label("Aspects", EditorStyles.boldLabel, GUILayout.Width(70));
+            _aspectMode = (AspectMode) EditorGUILayout.EnumFlagsField(_aspectMode, GUILayout.ExpandWidth(true));
+
+            if (GUILayout.Button("Generate", GUILayout.Width(90)))
+            {
+                EntityAspectGenerator.GenerateAspects(
+                    _aspectMode,
+                    _entityType,
+                    $"I{_entityType}",
+                    _namespace,
+                    _directory,
+                    _imports.ToArray()
+                );
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+
 
         private void DrawImports()
         {
@@ -163,6 +192,7 @@ namespace Atomic.Entities
 
                 EditorGUILayout.EndHorizontal();
             }
+
             EditorGUILayout.EndScrollView();
         }
 

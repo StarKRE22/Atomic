@@ -34,9 +34,9 @@ namespace Atomic.Entities
             EntityMode entityMode = args.entityMode;
 
             EntityInterfaceGenerator.GenerateFile(interfaceType, ns, imports, directory);
-            EntityConcreteGenerator.GenerateFile(concreteType, interfaceType, entityMode, ns, imports, directory);
+            EntityConcreteGenerator.GenerateFile(entityMode, concreteType, interfaceType, ns, imports, directory);
             EntityBehaviourGenerator.GenerateFile(interfaceType, ns, imports, directory);
-            EntityAspectGenerator.GenerateAspects(args.aspectMode, concreteType, ns, directory, imports);
+            EntityAspectGenerator.GenerateAspects(args.aspectMode, concreteType, interfaceType, ns, directory, imports);
 
             switch (args.installerMode)
             {

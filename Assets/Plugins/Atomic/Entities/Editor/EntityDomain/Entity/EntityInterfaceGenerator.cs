@@ -1,5 +1,5 @@
-using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using UnityEditor;
 
@@ -17,20 +17,12 @@ namespace Atomic.Entities
                 return;
             }
 
-            try
-            {
-                Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{interfaceType}.cs");
-                string content = GenerateContent(ns, imports, interfaceType);
-                File.WriteAllText(filePath, content, Encoding.UTF8);
+            Directory.CreateDirectory(directory);
+            string filePath = Path.Combine(directory, $"{interfaceType}.cs");
+            string content = GenerateContent(ns, imports, interfaceType);
+            File.WriteAllText(filePath, content, Encoding.UTF8);
 
-                AssetDatabase.Refresh();
-                EditorUtility.DisplayDialog("Success", $"Interface generated successfully:\n{filePath}", "OK");
-            }
-            catch (Exception ex)
-            {
-                EditorUtility.DisplayDialog("Error", "Generation failed:\n" + ex.Message, "OK");
-            }
+            AssetDatabase.Refresh();
         }
 
         private static string GenerateContent(string ns, string[] imports, string interfaceName)
@@ -39,25 +31,34 @@ namespace Atomic.Entities
 
             // --- Imports ---
             sb.AppendLine("using Atomic.Entities;");
-            
             if (imports is { Length: > 0 })
             {
-                foreach (string import in imports)
+                foreach (string import in imports.Where(i => !string.IsNullOrWhiteSpace(i)))
                 {
-                    if (string.IsNullOrWhiteSpace(import))
-                        continue;
-
                     string clean = import.Trim();
-                    sb.AppendLine(!clean.StartsWith("using") ? $"using {clean};" : clean);
+                    sb.AppendLine(clean.StartsWith("using") ? clean : $"using {clean};");
                 }
             }
 
-            // Обязательно добавим пустую строку между using и namespace
+            sb.AppendLine();
+
+            // --- Generator comment ---
+            sb.AppendLine("/**");
+            sb.AppendLine(" * Created by Entity Domain Generator.");
+            sb.AppendLine(" */");
             sb.AppendLine();
 
             // --- Namespace + Interface ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
+            sb.AppendLine($"{Indent}/// <summary>");
+            sb.AppendLine($"{Indent}/// Represents a specialized entity interface that extends the core <see cref=\"IEntity\"/> contract.");
+            sb.AppendLine($"{Indent}/// It follows the Entity–State–Behaviour architectural pattern, providing structure for identity (tags),");
+            sb.AppendLine($"{Indent}/// data (values), and modular behaviours within the Atomic Entity framework.");
+            sb.AppendLine($"{Indent}/// </summary>");
+            sb.AppendLine($"{Indent}/// <remarks>");
+            sb.AppendLine($"{Indent}/// Created by <b>Entity Domain Generator</b>.");
+            sb.AppendLine($"{Indent}/// </remarks>");
             sb.AppendLine($"{Indent}public interface {interfaceName} : IEntity");
             sb.AppendLine($"{Indent}{{");
             sb.AppendLine($"{Indent}}}");
