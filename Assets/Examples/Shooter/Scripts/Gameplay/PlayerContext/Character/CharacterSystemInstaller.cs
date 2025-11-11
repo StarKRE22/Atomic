@@ -9,14 +9,14 @@ namespace ShooterGame.Gameplay
     public sealed class CharacterSystemInstaller : IEntityInstaller<IPlayerContext>
     {
         [SerializeField]
-        private Actor _characterPrefab;
+        private GameEntity _characterPrefab;
 
         public void Install(IPlayerContext context)
         {
             if (AtomicUtils.IsPlayMode())
             {
                 GameContext gameContext = GameContext.Instance;
-                Actor character = CharacterUseCase.Spawn(context, gameContext, _characterPrefab);
+                GameEntity character = CharacterUseCase.Spawn(context, gameContext, _characterPrefab);
                 context.AddCharacter(character);
                 gameContext.WhenDisable(character.Disable);
             }

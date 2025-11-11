@@ -12,7 +12,7 @@ namespace ShooterGame.Gameplay
             TeamType teamType
         )
         {
-            IActor bullet = context.GetBulletPool().Rent();
+            IGameEntity bullet = context.GetBulletPool().Rent();
             bullet.GetPosition().Value = position;
             bullet.GetRotation().Value = rotation;
             bullet.GetTeamType().Value = teamType;
@@ -20,7 +20,7 @@ namespace ShooterGame.Gameplay
             return bullet;
         }
 
-        public static void Despawn(IGameContext context, IActor bullet) => 
+        public static void Despawn(IGameContext context, IGameEntity bullet) => 
             context.GetBulletPool().Return(bullet);
     }
 }

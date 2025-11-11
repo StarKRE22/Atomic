@@ -7,8 +7,8 @@ namespace ShooterGame.Gameplay
     {
         public static bool AddScore(IGameContext gameContext, KillArgs args)
         {
-            IActor instigator = args.instigator;
-            IActor victim = args.victim;
+            IGameEntity instigator = args.instigator;
+            IGameEntity victim = args.victim;
 
             if (instigator == null || victim == null || instigator.Equals(victim))
                 return false;

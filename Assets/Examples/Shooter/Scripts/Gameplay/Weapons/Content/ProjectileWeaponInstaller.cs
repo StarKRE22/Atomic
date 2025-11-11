@@ -8,7 +8,7 @@ namespace ShooterGame.Gameplay
     public sealed class ProjectileWeaponInstaller : SceneEntityInstaller<IWeapon>
     {
         [SerializeField]
-        private Actor _owner;
+        private GameEntity _owner;
 
         [SerializeField]
         private Transform _firePoint;

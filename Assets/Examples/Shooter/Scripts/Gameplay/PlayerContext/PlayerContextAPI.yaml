@@ -11,7 +11,7 @@ imports:
 - Atomic.Elements
 
 values:
-- Character: IActor
+- Character: IGameEntity
 - TeamType: IValue<TeamType>
 - InputMap: InputMap
 - Camera: Camera

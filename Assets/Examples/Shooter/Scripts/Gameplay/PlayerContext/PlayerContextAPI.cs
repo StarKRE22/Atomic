@@ -19,7 +19,7 @@ namespace ShooterGame.Gameplay
 	public static class PlayerContextAPI
 	{
 		///Values
-		public static readonly int Character; // IActor
+		public static readonly int Character; // IGameEntity
 		public static readonly int TeamType; // IValue<TeamType>
 		public static readonly int InputMap; // InputMap
 		public static readonly int Camera; // Camera
@@ -39,13 +39,13 @@ namespace ShooterGame.Gameplay
 		#region Character
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IActor GetCharacter(this IPlayerContext entity) => entity.GetValue<IActor>(Character);
+		public static IGameEntity GetCharacter(this IPlayerContext entity) => entity.GetValue<IGameEntity>(Character);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetCharacter(this IPlayerContext entity, out IActor value) => entity.TryGetValue(Character, out value);
+		public static bool TryGetCharacter(this IPlayerContext entity, out IGameEntity value) => entity.TryGetValue(Character, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddCharacter(this IPlayerContext entity, IActor value) => entity.AddValue(Character, value);
+		public static void AddCharacter(this IPlayerContext entity, IGameEntity value) => entity.AddValue(Character, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasCharacter(this IPlayerContext entity) => entity.HasValue(Character);
@@ -54,7 +54,7 @@ namespace ShooterGame.Gameplay
 		public static bool DelCharacter(this IPlayerContext entity) => entity.DelValue(Character);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetCharacter(this IPlayerContext entity, IActor value) => entity.SetValue(Character, value);
+		public static void SetCharacter(this IPlayerContext entity, IGameEntity value) => entity.SetValue(Character, value);
 
 		#endregion
 
