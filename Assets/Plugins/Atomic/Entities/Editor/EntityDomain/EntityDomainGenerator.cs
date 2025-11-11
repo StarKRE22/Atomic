@@ -36,8 +36,7 @@ namespace Atomic.Entities
             EntityInterfaceGenerator.GenerateFile(interfaceType, ns, imports, directory);
             EntityConcreteGenerator.GenerateFile(concreteType, interfaceType, entityMode, ns, imports, directory);
             EntityBehaviourGenerator.GenerateFile(interfaceType, ns, imports, directory);
-
-            GenerateAspects(args, concreteType, ns, directory, imports);
+            EntityAspectGenerator.GenerateAspects(args.aspectMode, concreteType, ns, directory, imports);
 
             switch (args.installerMode)
             {
@@ -127,26 +126,6 @@ namespace Atomic.Entities
                         throw new ArgumentOutOfRangeException();
                 }
             }
-        }
-
-        private static void GenerateAspects(
-            GenerateArgs args,
-            string concreteType,
-            string ns,
-            string directory,
-            string[] imports
-        )
-        {
-            AspectMode mode = args.aspectMode;
-            bool scriptableAspectRequired = mode.HasFlag(AspectMode.ScriptableEntityAspect);
-            bool sceneAspectRequired = mode.HasFlag(AspectMode.SceneEntityAspect);
-            bool bothRequired = scriptableAspectRequired && sceneAspectRequired;
-
-            if (scriptableAspectRequired)
-                ScriptableEntityAspectGenerator.GenerateFile(concreteType, ns, directory, imports, bothRequired);
-
-            if (sceneAspectRequired)
-                SceneEntityAspectGenerator.GenerateFile(concreteType, ns, directory, imports, bothRequired);
         }
     }
 }
