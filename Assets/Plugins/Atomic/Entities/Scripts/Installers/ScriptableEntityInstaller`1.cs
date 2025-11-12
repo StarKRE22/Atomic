@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 #if UNITY_5_3_OR_NEWER
@@ -15,7 +16,18 @@ namespace Atomic.Entities
         where E : class, IEntity
     {
         /// <inheritdoc cref="ScriptableEntityInstaller.Install" />
-        public sealed override void Install(IEntity entity) => this.Install((E) entity);
+        public sealed override void Install(IEntity entity)
+        {
+            if (entity is not E e)
+                throw new InvalidCastException(
+                    $"[ScriptableEntityInstaller<{typeof(E).Name}>] Invalid entity type.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    "Please make sure the correct installer is attached for this entity type."
+                );
+
+            this.Install(e);
+        }
 
         /// <summary>
         /// Applies configuration to a strongly-typed entity instance.
@@ -24,7 +36,18 @@ namespace Atomic.Entities
         public abstract void Install(E entity);
 
         /// <inheritdoc cref="ScriptableEntityInstaller.Uninstall" />
-        public sealed override void Uninstall(IEntity entity) => this.Uninstall((E) entity);
+        public sealed override void Uninstall(IEntity entity)
+        {
+            if (entity is not E e)
+                throw new InvalidCastException(
+                    $"[ScriptableEntityInstaller<{typeof(E).Name}>] Invalid entity type.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    "Please connect the correct ScriptableEntityInstaller for this entity type."
+                );
+
+            this.Uninstall(e);
+        }
 
         /// <summary>
         /// Removes previously installed data or behavior from the specified entity.

@@ -17,21 +17,21 @@ namespace Atomic.Entities
         /// <inheritdoc cref="SceneEntityInstaller.Install" />
         public sealed override void Install(IEntity entity)
         {
-            if (entity is not E tEntity)
+            if (entity is not E e)
                 throw new InvalidCastException(
                     $"[SceneEntityInstaller<{typeof(E).Name}>] Invalid entity type.\n" +
                     $"Expected: {typeof(E).FullName}\n" +
                     $"Received: {entity?.GetType().FullName ?? "null"}\n" +
-                    $"Please make sure the correct installer is attached for this entity type."
+                    "Please make sure the correct installer is attached for this entity type."
                 );
 
-            this.Install(tEntity);
+            this.Install(e);
         }
 
         /// <inheritdoc cref="SceneEntityInstaller.Uninstall" />
         public sealed override void Uninstall(IEntity entity)
         {
-            if (entity is not E tEntity)
+            if (entity is not E e)
                 throw new InvalidCastException(
                     $"[SceneEntityInstaller<{typeof(E).Name}>] Invalid entity type.\n" +
                     $"Expected: {typeof(E).FullName}\n" +
@@ -39,7 +39,7 @@ namespace Atomic.Entities
                     "Please connect the correct SceneEntityInstaller for this entity type."
                 );
 
-            this.Uninstall(tEntity);
+            this.Uninstall(e);
         }
 
         /// <summary>

@@ -324,12 +324,12 @@ namespace Atomic.Entities
 
             GUI.backgroundColor = new Color(0f, 0.83f, 1f);
 
-            if (GUILayout.Button("GENERATE", boldButtonStyle, GUILayout.Height(45)))
+            if (GUILayout.Button("GENERATE DOMAIN", boldButtonStyle, GUILayout.Height(40)))
             {
                 GUI.backgroundColor = Color.white;
                 EntityDomainGenerator.Generate(new EntityDomainGenerator.GenerateArgs
                 {
-                    directory = _directory,
+                    directory = _directory, 
                     entityType = _entityType,
                     imports = _imports.ToArray(),
                     ns = _namespace,
