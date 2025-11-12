@@ -1,9 +1,8 @@
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class CameraFollowController : IEntityInit<IPlayerContext>, IEntityLateTick
+    public sealed class CameraFollowController : IPlayerContextInit, IPlayerContextLateTick
     {
         private readonly Vector3 _offset;
         private IGameEntity _character;
@@ -20,7 +19,7 @@ namespace ShooterGame.Gameplay
             _camera = context.GetCamera().transform;
         }
 
-        public void LateTick(IEntity entity, float deltaTime)
+        public void LateTick(IPlayerContext entity, float deltaTime)
         {
             _camera.position = _character.GetPosition().Value + _offset;
         }

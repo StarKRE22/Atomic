@@ -15,8 +15,10 @@ namespace ShooterGame.Gameplay
 
         public void Install(IPlayerContext context)
         {
+            GameContext.TryGetInstance(out GameContext gameContext);
+            
             context.AddCamera(_camera);
-            context.AddBehaviour<CameraDisplayController>();
+            context.AddBehaviour(new CameraDisplayController(gameContext));
             context.AddBehaviour(new CameraFollowController(_cameraOffset));
         }
     }

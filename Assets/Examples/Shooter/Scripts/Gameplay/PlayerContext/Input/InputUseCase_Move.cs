@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public static class MoveInputUseCase
+    public static partial class InputUseCase
     {
         public static Vector3 GetMoveDirection(IPlayerContext playerContext, IGameContext gameContext)
         {

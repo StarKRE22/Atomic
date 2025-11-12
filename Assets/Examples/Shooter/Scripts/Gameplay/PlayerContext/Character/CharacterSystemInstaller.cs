@@ -13,17 +13,18 @@ namespace ShooterGame.Gameplay
 
         public void Install(IPlayerContext context)
         {
+            GameContext.TryGetInstance(out GameContext gameContext);
+            
             if (AtomicUtils.IsPlayMode())
             {
-                GameContext gameContext = GameContext.Instance;
                 GameEntity character = CharacterUseCase.Spawn(context, gameContext, _characterPrefab);
                 context.AddCharacter(character);
                 gameContext.WhenDisable(character.Disable);
             }
 
-            context.AddBehaviour<CharacterMoveController>();
-            context.AddBehaviour<CharacterFireController>();
-            context.AddBehaviour<CharacterRespawnController>();
+            context.AddBehaviour(new CharacterMoveController(gameContext));
+            context.AddBehaviour(new CharacterFireController(gameContext));
+            context.AddBehaviour(new CharacterRespawnController(gameContext));
         }
     }
 }
