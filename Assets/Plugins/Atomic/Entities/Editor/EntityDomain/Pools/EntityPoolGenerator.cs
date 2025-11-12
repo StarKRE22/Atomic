@@ -25,12 +25,6 @@ namespace Atomic.Entities
             bool scenePoolRequired = mode.HasFlag(EntityPoolMode.SceneEntityPool);
             bool prefabPoolRequired = mode.HasFlag(EntityPoolMode.PrefabEntityPool);
 
-            if (!scenePoolRequired && !prefabPoolRequired)
-            {
-                EditorUtility.DisplayDialog("Error", "No pool mode selected.", "OK");
-                return;
-            }
-
             Directory.CreateDirectory(directory);
 
             if (scenePoolRequired)
