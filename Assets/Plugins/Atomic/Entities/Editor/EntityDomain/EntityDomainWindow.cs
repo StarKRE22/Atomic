@@ -59,7 +59,7 @@ namespace Atomic.Entities
         public static void ShowWindow()
         {
             var window = GetWindow<EntityDomainWindow>("Entity Domain Generator");
-            window.minSize = new Vector2(480, 620);
+            window.minSize = new Vector2(480, 480);
         }
 
         private void OnGUI()
