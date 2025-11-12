@@ -147,7 +147,7 @@ namespace Atomic.Entities
             GUILayout.Space(4);
 
             DrawProxy();
-            _worldRequired = EditorGUILayout.Toggle("SceneEntityWorld", _worldRequired);
+            DrawWorld();
 
             GUILayout.Space(6);
             this.DrawInstallers();
@@ -187,6 +187,22 @@ namespace Atomic.Entities
                         _directory
                     );
                 }
+
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+
+        private void DrawWorld()
+        {
+            using (new EditorGUI.DisabledScope(
+                       _entityMode is not (EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)))
+            {
+                EditorGUILayout.BeginHorizontal();
+
+                _worldRequired = EditorGUILayout.Toggle("SceneEntityWorld", _worldRequired);
+
+                if (GUILayout.Button("Generate", GUILayout.Width(90))) 
+                    SceneEntityWorldGenerator.Generate(_entityType, _namespace, _imports.ToArray(), _directory);
 
                 EditorGUILayout.EndHorizontal();
             }

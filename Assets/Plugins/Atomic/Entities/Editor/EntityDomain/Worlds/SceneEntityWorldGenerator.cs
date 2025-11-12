@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,21 +15,12 @@ namespace Atomic.Entities
                 return;
             }
 
-            try
-            {
-                Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}World.cs");
-                string content = GenerateContent(ns, entityType, imports);
+            Directory.CreateDirectory(directory);
+            string filePath = Path.Combine(directory, $"{entityType}World.cs");
+            string content = GenerateContent(ns, entityType, imports);
 
-                File.WriteAllText(filePath, content, Encoding.UTF8);
-                AssetDatabase.Refresh();
-
-                EditorUtility.DisplayDialog("Success", $"World generated successfully:\n{filePath}", "OK");
-            }
-            catch (Exception ex)
-            {
-                EditorUtility.DisplayDialog("Error", $"Generation failed:\n{ex.Message}", "OK");
-            }
+            File.WriteAllText(filePath, content, Encoding.UTF8);
+            AssetDatabase.Refresh();
         }
 
         private static string GenerateContent(string ns, string entityType, string[] imports)
@@ -49,10 +39,24 @@ namespace Atomic.Entities
             }
 
             sb.AppendLine();
+            sb.AppendLine("/**");
+            sb.AppendLine(" * Created by Entity Domain Generator.");
+            sb.AppendLine(" */");
+            sb.AppendLine();
 
             // --- Namespace + World Class ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
+            sb.AppendLine("    /// <summary>");
+            sb.AppendLine($"    /// A Unity-integrated world manager that handles all <see cref=\"{entityType}\"/> entities in the current scene.");
+            sb.AppendLine("    /// </summary>");
+            sb.AppendLine("    /// <remarks>");
+            sb.AppendLine($"    /// This component hooks into Unity’s lifecycle (Awake, OnEnable, Update, OnDisable, etc.) to automatically");
+            sb.AppendLine($"    /// manage creation, updates, and disposal of <see cref=\"{entityType}\"/> entities at runtime.");
+            sb.AppendLine("    /// </remarks>");
+            sb.AppendLine("    /// <example>");
+            sb.AppendLine($"    /// Attach this component to a GameObject in your scene to automatically discover and manage all <see cref=\"{entityType}\"/> entities.");
+            sb.AppendLine("    /// </example>");
             sb.AppendLine($"    public sealed class {entityType}World : SceneEntityWorld<{entityType}>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
