@@ -4,105 +4,122 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// Interactive Unity Editor window for generating entity domain boilerplate code:
+    /// interfaces, concrete entities, installers, factories, pools, bakers, and views.
+    /// </summary>
     internal sealed class EntityDomainWindow : EditorWindow
     {
+        [Header("Base Settings")]
         [SerializeField]
         private string _entityType = "CustomEntity";
-
         [SerializeField]
         private string _namespace = "SampleGame";
-
         [SerializeField]
         private string _directory = "Assets/Scripts/";
-
         [SerializeField]
         private EntityMode _entityMode = EntityMode.SceneEntity;
 
+        [Space(5)]
         [SerializeField]
         private bool _proxyRequired = true;
-
         [SerializeField]
         private bool _worldRequired = true;
 
+        [Header("Generation Modes")]
         [SerializeField]
         private EntityInstallerMode _installerMode =
-            EntityInstallerMode.ScriptableEntityInstaller |
-            EntityInstallerMode.SceneEntityInstaller;
+            EntityInstallerMode.ScriptableEntityInstaller | EntityInstallerMode.SceneEntityInstaller;
 
         [SerializeField]
         private EntityAspectMode _aspectMode =
-            EntityAspectMode.SceneEntityAspect |
-            EntityAspectMode.ScriptableEntityAspect;
+            EntityAspectMode.SceneEntityAspect | EntityAspectMode.ScriptableEntityAspect;
 
         [SerializeField]
         private EntityPoolMode _poolMode =
-            EntityPoolMode.SceneEntityPool |
-            EntityPoolMode.PrefabEntityPool;
+            EntityPoolMode.SceneEntityPool | EntityPoolMode.PrefabEntityPool;
 
         [SerializeField]
         private EntityFactoryMode _factoryMode =
-            EntityFactoryMode.ScriptableEntityFactory |
-            EntityFactoryMode.SceneEntityFactory;
+            EntityFactoryMode.ScriptableEntityFactory | EntityFactoryMode.SceneEntityFactory;
 
         [SerializeField]
         private EntityBakerMode _bakerMode =
-            EntityBakerMode.Standard |
-            EntityBakerMode.Optimized;
+            EntityBakerMode.Standard | EntityBakerMode.Optimized;
 
         [SerializeField]
         private EntityViewMode _viewMode =
-            EntityViewMode.EntityView |
-            EntityViewMode.EntityViewCatalog |
-            EntityViewMode.EntityViewPool |
-            EntityViewMode.EntityCollectionView;
+            EntityViewMode.EntityView | EntityViewMode.EntityViewCatalog |
+            EntityViewMode.EntityViewPool | EntityViewMode.EntityCollectionView;
 
         private readonly List<string> _imports = new();
-
         private Vector2 _scrollPos;
 
         [MenuItem("Window/Atomic/Entities/Entity Domain Generator")]
         public static void ShowWindow()
         {
-            EntityDomainWindow window = GetWindow<EntityDomainWindow>("Entity Domain Generator");
-            window.minSize = new Vector2(450, 580);
+            var window = GetWindow<EntityDomainWindow>("Entity Domain Generator");
+            window.minSize = new Vector2(480, 620);
         }
 
         private void OnGUI()
         {
-            GUILayout.Space(10);
+            EditorGUILayout.Space(10);
             DrawHeader();
 
-            GUILayout.Space(8);
-            DrawDirectory();
-            DrawNamespace();
-            DrawImports();
+            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+            {
+                DrawDirectory();
+                DrawNamespace();
+                DrawImports();
+            }
 
-            GUILayout.Space(8);
-            DrawEntityType();
+            EditorGUILayout.Space(6);
+            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+            {
+                DrawEntityType();
+            }
 
-            GUILayout.Space(8);
-            DrawOptions();
+            EditorGUILayout.Space(6);
+            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+            {
+                GUILayout.Label("Generation Options", EditorStyles.boldLabel);
+                EditorGUILayout.Space(3);
 
-            GUILayout.Space(10);
+                DrawProxy();
+                DrawWorld();
+
+                EditorGUILayout.Space(4);
+                DrawInstallers();
+                DrawAspects();
+                DrawPools();
+                DrawFactories();
+                DrawBakers();
+                DrawUI();
+            }
 
             GUILayout.FlexibleSpace();
+            EditorGUILayout.Space(6);
             DrawGenerateButton();
         }
 
         private void DrawHeader()
         {
-            GUILayout.Label("Entity Domain Generator", EditorStyles.boldLabel);
-            EditorGUILayout.HelpBox("Configure entity settings, modes, and generation options.", MessageType.Info);
+            GUILayout.Label("Entity Domain Generator", EditorStyles.largeLabel);
+            EditorGUILayout.HelpBox(
+                "Generate full entity domain structure: interfaces, entities, pools, factories, bakers, and views.\n" +
+                "Choose what to include and where to save.",
+                MessageType.Info
+            );
         }
 
         private void DrawEntityType()
         {
             EditorGUILayout.BeginHorizontal();
+            _entityType = EditorGUILayout.TextField(new GUIContent("Entity Type"), _entityType);
+            _entityMode = (EntityMode) EditorGUILayout.EnumPopup(_entityMode, GUILayout.Width(160));
 
-            _entityType = EditorGUILayout.TextField(new GUIContent("Entity"), _entityType);
-            _entityMode = (EntityMode) EditorGUILayout.EnumPopup(_entityMode, GUILayout.Width(200));
-
-            if (GUILayout.Button("Generate", GUILayout.Width(90)))
+            if (GUILayout.Button("Generate", GUILayout.Width(100)))
             {
                 EntityInterfaceGenerator.Generate($"I{_entityType}", _namespace, _imports.ToArray(), _directory);
                 EntityConcreteGenerator.Generate(_entityMode, _entityType, $"I{_entityType}", _namespace,
@@ -110,21 +127,19 @@ namespace Atomic.Entities
                 EntityBehaviourGenerator.Generate($"I{_entityType}", _namespace, _imports.ToArray(), _directory);
             }
 
-
             EditorGUILayout.EndHorizontal();
         }
 
         private void DrawNamespace()
         {
-            _namespace = EditorGUILayout.TextField("Namespace", _namespace);
+            _namespace = EditorGUILayout.TextField(new GUIContent("Namespace"), _namespace);
         }
 
         private void DrawDirectory()
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel("Directory");
-
-            if (GUILayout.Button("Select...", GUILayout.Width(80)))
+            if (GUILayout.Button("Select...", GUILayout.Width(90)))
             {
                 string selected = EditorUtility.OpenFolderPanel("Select Output Folder", "Assets", "");
                 if (!string.IsNullOrEmpty(selected))
@@ -132,8 +147,8 @@ namespace Atomic.Entities
                     if (selected.StartsWith(Application.dataPath))
                         _directory = $"Assets{selected[Application.dataPath.Length..]}";
                     else
-                        EditorUtility.DisplayDialog("Warning",
-                            "Folder must be inside the Unity project Assets folder.", "OK");
+                        EditorUtility.DisplayDialog("Warning", "Folder must be inside the Unity project Assets folder.",
+                            "OK");
                 }
             }
 
@@ -141,230 +156,20 @@ namespace Atomic.Entities
             EditorGUILayout.EndHorizontal();
         }
 
-        // --- Основные опции генерации ---
-        private void DrawOptions()
-        {
-            DrawProxy();
-            GUILayout.Space(4);
-            DrawWorld();
-
-            GUILayout.Space(6);
-            DrawInstallers();
-
-            GUILayout.Space(4);
-            DrawAspects();
-
-            GUILayout.Space(4);
-            DrawPools();
-
-            GUILayout.Space(4);
-            DrawFactories();
-
-            GUILayout.Space(4);
-            DrawUI();
-            
-            GUILayout.Space(4);
-            DrawBakers();
-        }
-
-
-        private void DrawPools()
-        {
-            using (new EditorGUI.DisabledScope(
-                       _entityMode is not (EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)))
-            {
-                EditorGUILayout.BeginHorizontal();
-
-                GUILayout.Label("Pools", GUILayout.Width(70));
-                _poolMode = (EntityPoolMode) EditorGUILayout.EnumFlagsField(_poolMode, GUILayout.ExpandWidth(true));
-
-                if (GUILayout.Button("Generate", GUILayout.Width(90)))
-                {
-                    EntityPoolGenerator.Generate(
-                        _poolMode,
-                        _entityType,
-                        $"I{_entityType}",
-                        _namespace,
-                        _directory,
-                        _imports.ToArray()
-                    );
-                }
-
-                EditorGUILayout.EndHorizontal();
-            }
-        }
-
-        private void DrawFactories()
-        {
-            using (new EditorGUI.DisabledScope(
-                       _entityMode is not (EntityMode.Entity or EntityMode.EntitySingleton)))
-            {
-                EditorGUILayout.BeginHorizontal();
-
-                GUILayout.Label("Factories", GUILayout.Width(70));
-                _factoryMode =
-                    (EntityFactoryMode) EditorGUILayout.EnumFlagsField(_factoryMode, GUILayout.ExpandWidth(true));
-
-                if (GUILayout.Button("Generate", GUILayout.Width(90)))
-                {
-                    EntityFactoryGenerator.Generate(
-                        _factoryMode,
-                        _entityType,
-                        $"I{_entityType}",
-                        _namespace,
-                        _directory,
-                        _imports.ToArray()
-                    );
-                }
-
-                EditorGUILayout.EndHorizontal();
-            }
-        }
-
-        private void DrawBakers()
-        {
-            using (new EditorGUI.DisabledScope(
-                       _entityMode is not (EntityMode.Entity or EntityMode.EntitySingleton)))
-            {
-                EditorGUILayout.BeginHorizontal();
-
-                GUILayout.Label("Bakers", GUILayout.Width(70));
-                _bakerMode = (EntityBakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
-
-                if (GUILayout.Button("Generate", GUILayout.Width(90)))
-                {
-                    EntityBakerGenerator.Generate(
-                        _bakerMode,
-                        _entityType,
-                        $"I{_entityType}",
-                        _namespace,
-                        _imports.ToArray(),
-                        _directory
-                    );
-                }
-
-                EditorGUILayout.EndHorizontal();
-            }
-        }
-
-        private void DrawProxy()
-        {
-            using (new EditorGUI.DisabledScope(
-                       _entityMode is not (EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)))
-            {
-                EditorGUILayout.BeginHorizontal();
-
-                _proxyRequired = EditorGUILayout.Toggle("SceneEntityProxy", _proxyRequired);
-
-                if (GUILayout.Button("Generate", GUILayout.Width(90)))
-                {
-                    SceneEntityProxyGenerator.Generate(
-                        _entityType,
-                        $"I{_entityType}",
-                        _namespace,
-                        _imports.ToArray(),
-                        _directory
-                    );
-                }
-
-                EditorGUILayout.EndHorizontal();
-            }
-        }
-
-        private void DrawWorld()
-        {
-            using (new EditorGUI.DisabledScope(
-                       _entityMode is not (EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)))
-            {
-                EditorGUILayout.BeginHorizontal();
-
-                _worldRequired = EditorGUILayout.Toggle("SceneEntityWorld", _worldRequired);
-
-                if (GUILayout.Button("Generate", GUILayout.Width(90)))
-                    SceneEntityWorldGenerator.Generate(_entityType, _namespace, _imports.ToArray(), _directory);
-
-                EditorGUILayout.EndHorizontal();
-            }
-        }
-
-        private void DrawInstallers()
-        {
-            EditorGUILayout.BeginHorizontal();
-
-            GUILayout.Label("Installers", GUILayout.Width(70));
-            _installerMode =
-                (EntityInstallerMode) EditorGUILayout.EnumFlagsField(_installerMode, GUILayout.ExpandWidth(true));
-
-            if (GUILayout.Button("Generate", GUILayout.Width(90)))
-            {
-                EntityInstallerGenerator.Generate(
-                    _installerMode,
-                    _entityType,
-                    $"I{_entityType}",
-                    _namespace,
-                    _directory,
-                    _imports.ToArray()
-                );
-            }
-
-            EditorGUILayout.EndHorizontal();
-        }
-
-        private void DrawAspects()
-        {
-            EditorGUILayout.BeginHorizontal();
-
-            GUILayout.Label("Aspects", GUILayout.Width(70));
-            _aspectMode = (EntityAspectMode) EditorGUILayout.EnumFlagsField(_aspectMode, GUILayout.ExpandWidth(true));
-
-            if (GUILayout.Button("Generate", GUILayout.Width(90)))
-            {
-                EntityAspectGenerator.Generate(
-                    _aspectMode,
-                    _entityType,
-                    $"I{_entityType}",
-                    _namespace,
-                    _directory,
-                    _imports.ToArray()
-                );
-            }
-
-            EditorGUILayout.EndHorizontal();
-        }
-
-        private void DrawUI()
-        {
-            using (new EditorGUI.DisabledScope(_entityMode is not (EntityMode.Entity or EntityMode.EntitySingleton)))
-            {
-                EditorGUILayout.BeginHorizontal();
-
-                GUILayout.Label("UI", GUILayout.Width(70));
-                _viewMode = (EntityViewMode) EditorGUILayout.EnumFlagsField(_viewMode, GUILayout.ExpandWidth(true));
-
-                if (GUILayout.Button("Generate", GUILayout.Width(90))) 
-                    EntityUIGenerator.Generate(_viewMode, _entityType, $"I{_entityType}", _namespace, _imports.ToArray(), _directory);
-
-                EditorGUILayout.EndHorizontal();
-            }
-        }
-
         private void DrawImports()
         {
-            // GUILayout.Space(10);
+            GUILayout.Space(4);
+
             EditorGUILayout.BeginHorizontal();
-
-            GUILayout.Label("Imports");
-            GUILayout.FlexibleSpace();
-            if (GUILayout.Button("+", GUILayout.Width(25)))
+            GUILayout.Label("Imports", GUILayout.Width(50));
+            if (GUILayout.Button("+", GUILayout.Width(25))) 
                 _imports.Add("SampleGame");
-
             EditorGUILayout.EndHorizontal();
 
             _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
             for (int i = 0; i < _imports.Count; i++)
             {
                 EditorGUILayout.BeginHorizontal();
-
                 _imports[i] = EditorGUILayout.TextField(_imports[i]);
                 if (GUILayout.Button("-", GUILayout.Width(25)))
                 {
@@ -378,11 +183,134 @@ namespace Atomic.Entities
             EditorGUILayout.EndScrollView();
         }
 
+        private void DrawProxy()
+        {
+            using (new EditorGUI.DisabledScope(
+                       _entityMode is not (EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)))
+            {
+                EditorGUILayout.BeginHorizontal();
+                _proxyRequired = EditorGUILayout.Toggle("SceneEntityProxy", _proxyRequired);
+                if (GUILayout.Button("Generate", GUILayout.Width(100)))
+                {
+                    SceneEntityProxyGenerator.Generate(_entityType, $"I{_entityType}", _namespace, _imports.ToArray(),
+                        _directory);
+                }
+
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+
+        private void DrawWorld()
+        {
+            using (new EditorGUI.DisabledScope(
+                       _entityMode is not (EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)))
+            {
+                EditorGUILayout.BeginHorizontal();
+                _worldRequired = EditorGUILayout.Toggle("SceneEntityWorld", _worldRequired);
+                if (GUILayout.Button("Generate", GUILayout.Width(100)))
+                    SceneEntityWorldGenerator.Generate(_entityType, _namespace, _imports.ToArray(), _directory);
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+
+        private void DrawInstallers()
+        {
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("Installers", GUILayout.Width(80));
+            _installerMode = (EntityInstallerMode) EditorGUILayout.EnumFlagsField(_installerMode);
+            if (GUILayout.Button("Generate", GUILayout.Width(100)))
+            {
+                EntityInstallerGenerator.Generate(_installerMode, _entityType, $"I{_entityType}", _namespace,
+                    _directory, _imports.ToArray());
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+
+        private void DrawAspects()
+        {
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("Aspects", GUILayout.Width(80));
+            _aspectMode = (EntityAspectMode) EditorGUILayout.EnumFlagsField(_aspectMode);
+            if (GUILayout.Button("Generate", GUILayout.Width(100)))
+            {
+                EntityAspectGenerator.Generate(_aspectMode, _entityType, $"I{_entityType}", _namespace, _directory,
+                    _imports.ToArray());
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+
+        private void DrawPools()
+        {
+            using (new EditorGUI.DisabledScope(
+                       _entityMode is not (EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)))
+            {
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Label("Pools", GUILayout.Width(80));
+                _poolMode = (EntityPoolMode) EditorGUILayout.EnumFlagsField(_poolMode);
+                if (GUILayout.Button("Generate", GUILayout.Width(100)))
+                {
+                    EntityPoolGenerator.Generate(_poolMode, _entityType, $"I{_entityType}", _namespace, _directory,
+                        _imports.ToArray());
+                }
+
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+
+        private void DrawFactories()
+        {
+            using (new EditorGUI.DisabledScope(_entityMode is not (EntityMode.Entity or EntityMode.EntitySingleton)))
+            {
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Label("Factories", GUILayout.Width(80));
+                _factoryMode = (EntityFactoryMode) EditorGUILayout.EnumFlagsField(_factoryMode);
+                if (GUILayout.Button("Generate", GUILayout.Width(100)))
+                {
+                    EntityFactoryGenerator.Generate(_factoryMode, _entityType, $"I{_entityType}", _namespace,
+                        _directory, _imports.ToArray());
+                }
+
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+
+        private void DrawBakers()
+        {
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("Bakers", GUILayout.Width(80));
+            _bakerMode = (EntityBakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
+            if (GUILayout.Button("Generate", GUILayout.Width(100)))
+            {
+                EntityBakerGenerator.Generate(_bakerMode, _entityType, $"I{_entityType}", _namespace,
+                    _imports.ToArray(), _directory);
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+
+        private void DrawUI()
+        {
+            using (new EditorGUI.DisabledScope(_entityMode is not (EntityMode.Entity or EntityMode.EntitySingleton)))
+            {
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Label("UI Views", GUILayout.Width(80));
+                _viewMode = (EntityViewMode) EditorGUILayout.EnumFlagsField(_viewMode);
+                if (GUILayout.Button("Generate", GUILayout.Width(100)))
+                    EntityUIGenerator.Generate(_viewMode, _entityType, $"I{_entityType}", _namespace,
+                        _imports.ToArray(), _directory);
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+
         private void DrawGenerateButton()
         {
-            GUILayout.Space(10);
-            if (GUILayout.Button("Generate All", GUILayout.Height(40)))
+            EditorGUILayout.Space(10);
+            GUI.backgroundColor = new Color(0f, 0.83f, 1f);
+            if (GUILayout.Button("GENERATE ALL", GUILayout.Height(45)))
             {
+                GUI.backgroundColor = Color.white;
                 EntityDomainGenerator.Generate(new EntityDomainGenerator.GenerateArgs
                 {
                     directory = _directory,
@@ -400,6 +328,8 @@ namespace Atomic.Entities
                     viewMode = _viewMode
                 });
             }
+
+            GUI.backgroundColor = Color.white;
         }
     }
 }
