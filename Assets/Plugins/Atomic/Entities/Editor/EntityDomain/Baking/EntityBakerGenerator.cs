@@ -34,12 +34,10 @@ namespace Atomic.Entities
             bool bothRequired = standardRequired && optimizedRequired;
 
             if (standardRequired)
-                GenerateFile(entityType, entityInterface, ns, imports, directory, EntityBakerMode.Standard,
-                    bothRequired);
+                GenerateFile(entityType, entityInterface, ns, imports, directory, EntityBakerMode.Standard, bothRequired);
 
             if (optimizedRequired)
-                GenerateFile(entityType, entityInterface, ns, imports, directory, EntityBakerMode.Optimized,
-                    bothRequired);
+                GenerateFile(entityType, entityInterface, ns, imports, directory, EntityBakerMode.Optimized, bothRequired);
         }
 
         private static void GenerateFile(
@@ -62,7 +60,6 @@ namespace Atomic.Entities
             string baseType;
             string summary;
             string remarks;
-            string example;
 
             switch (mode)
             {
@@ -72,16 +69,6 @@ namespace Atomic.Entities
                     remarks =
                         $"Derive from this class to define baking logic for <see cref=\"{entityType}\"/> entities in the scene.\n" +
                         $"This version provides standard conversion hooks without additional optimizations.";
-                    example =
-                        $"public sealed class {className} : SceneEntityBaker<{entityInterface}>\n" +
-                        "{\n" +
-                        $"    protected override {entityInterface} Create()\n" +
-                        "    {\n" +
-                        $"        var entity = new {entityType}();\n" +
-                        "        entity.Initialize();\n" +
-                        "        return entity;\n" +
-                        "    }\n" +
-                        "}";
                     break;
 
                 case EntityBakerMode.Optimized:
@@ -90,17 +77,8 @@ namespace Atomic.Entities
                         $"An optimized Unity baker for <see cref=\"{entityType}\"/> entities that requires a matching <see cref=\"{entityType}View\"/>.";
                     remarks =
                         $"Use this version when you need high-performance conversion of <see cref=\"{entityType}\"/> entities, " +
-                        "leveraging cached <see cref=\"EntityView{T}\"/> components. Automatically enforces " +
+                        $"leveraging cached <see cref=\"EntityView{{T}}\"/> components. Automatically enforces " +
                         $"<see cref=\"RequireComponent\"/> for <see cref=\"{entityType}View\"/>.";
-                    example =
-                        $"[RequireComponent(typeof({entityType}View))]\n" +
-                        $"public sealed class {className} : SceneEntityBakerOptimized<{entityInterface}, {entityType}View>\n" +
-                        "{\n" +
-                        $"    protected override void Install({entityInterface} entity)\n" +
-                        "    {\n" +
-                        "        entity.Position = transform.position;\n" +
-                        "    }\n" +
-                        "}";
                     break;
 
                 case EntityBakerMode.None:
@@ -110,8 +88,7 @@ namespace Atomic.Entities
 
             Directory.CreateDirectory(directory);
             string filePath = Path.Combine(directory, fileName);
-            string content = GenerateContent(entityType, className, ns, imports, mode, baseType, summary, remarks,
-                example);
+            string content = GenerateContent(entityType, className, ns, imports, mode, baseType, summary, remarks);
 
             File.WriteAllText(filePath, content, Encoding.UTF8);
             AssetDatabase.Refresh();
@@ -125,8 +102,7 @@ namespace Atomic.Entities
             EntityBakerMode mode,
             string baseType,
             string summary,
-            string remarks,
-            string example
+            string remarks
         )
         {
             var sb = new StringBuilder();
@@ -134,7 +110,7 @@ namespace Atomic.Entities
             // --- Imports ---
             sb.AppendLine("using Atomic.Entities;");
             sb.AppendLine("using UnityEngine;");
-            if (imports is {Length: > 0})
+            if (imports is { Length: > 0 })
             {
                 foreach (string import in imports.Where(i => !string.IsNullOrWhiteSpace(i)))
                 {
@@ -142,7 +118,7 @@ namespace Atomic.Entities
                     sb.AppendLine(clean.StartsWith("using") ? clean : $"using {clean};");
                 }
             }
-            
+
             sb.AppendLine();
             sb.AppendLine("/**");
             sb.AppendLine(" * Created by Entity Domain Generator.");
@@ -161,21 +137,15 @@ namespace Atomic.Entities
             foreach (string line in remarks.Split('\n'))
                 sb.AppendLine($"    /// {line.Trim()}");
             sb.AppendLine("    /// </remarks>");
-            sb.AppendLine("    /// <example>");
-            foreach (string line in example.Split('\n'))
-                sb.AppendLine($"    /// {line}");
-            sb.AppendLine("    /// </example>");
             sb.AppendLine("    /// <remarks>");
             sb.AppendLine("    /// Created automatically by <b>Entity Domain Generator</b>.");
             sb.AppendLine("    /// </remarks>");
 
-            // --- Attributes (for optimized mode) ---
+            // --- Attributes (для оптимизированного режима) ---
             if (mode == EntityBakerMode.Optimized)
-            {
                 sb.AppendLine($"    [RequireComponent(typeof({entityType}View))]");
-            }
 
-            // --- Class Declaration ---
+            // --- Класс ---
             sb.AppendLine($"    public abstract class {className} : {baseType}");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
