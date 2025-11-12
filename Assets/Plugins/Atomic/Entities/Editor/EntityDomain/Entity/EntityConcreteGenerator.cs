@@ -8,7 +8,7 @@ namespace Atomic.Entities
     {
         private const string Indent = "    ";
 
-        public static void GenerateFile(
+        public static void Generate(
             EntityMode entityMode,
             string concreteType,
             string interfaceType,

@@ -16,7 +16,6 @@ namespace SampleGame.Gameplay
     public interface IActorInit : IEntityInit<IActor>
     {
     }
-
     /// <summary>
     /// Handles enable-time logic for the strongly-typed <see cref="IActor"/> entity.
     /// </summary>
@@ -27,7 +26,6 @@ namespace SampleGame.Gameplay
     public interface IActorEnable : IEntityEnable<IActor>
     {
     }
-
     /// <summary>
     /// Handles disable-time logic for the strongly-typed <see cref="IActor"/> entity.
     /// </summary>
@@ -38,7 +36,6 @@ namespace SampleGame.Gameplay
     public interface IActorDisable : IEntityDisable<IActor>
     {
     }
-
     /// <summary>
     /// Provides cleanup logic for the strongly-typed <see cref="IActor"/> entity.
     /// </summary>
@@ -49,7 +46,6 @@ namespace SampleGame.Gameplay
     public interface IActorDispose : IEntityDispose<IActor>
     {
     }
-
     /// <summary>
     /// Handles per-frame update logic for the strongly-typed <see cref="IActor"/> entity.
     /// </summary>
@@ -60,7 +56,6 @@ namespace SampleGame.Gameplay
     public interface IActorTick : IEntityTick<IActor>
     {
     }
-
     /// <summary>
     /// Handles fixed update logic for the strongly-typed <see cref="IActor"/> entity.
     /// </summary>
@@ -71,7 +66,6 @@ namespace SampleGame.Gameplay
     public interface IActorFixedTick : IEntityFixedTick<IActor>
     {
     }
-
     /// <summary>
     /// Handles late update logic for the strongly-typed <see cref="IActor"/> entity.
     /// </summary>
@@ -82,7 +76,6 @@ namespace SampleGame.Gameplay
     public interface IActorLateTick : IEntityLateTick<IActor>
     {
     }
-
     /// <summary>
     /// Provides editor visualization logic for the strongly-typed <see cref="IActor"/> entity.
     /// </summary>
@@ -93,5 +86,4 @@ namespace SampleGame.Gameplay
     public interface IActorGizmos : IEntityGizmos<IActor>
     {
     }
-
 }

@@ -8,7 +8,7 @@ namespace Atomic.Entities
 {
     internal static class EntityAspectGenerator
     {
-        public static void GenerateAspects(
+        public static void Generate(
             AspectMode mode,
             string concreteType,
             string interfaceType,

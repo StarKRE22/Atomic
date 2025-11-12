@@ -82,8 +82,18 @@ namespace Atomic.Entities
             EditorGUILayout.BeginHorizontal();
 
             _entityType = EditorGUILayout.TextField(new GUIContent("Entity"), _entityType);
-            _entityMode = (EntityMode) EditorGUILayout.EnumPopup(_entityMode, GUILayout.Width(250));
+            _entityMode = (EntityMode) EditorGUILayout.EnumPopup(_entityMode, GUILayout.Width(200));
 
+            if (GUILayout.Button("Generate", GUILayout.Width(90)))
+            {
+                EntityInterfaceGenerator.Generate($"I{_entityType}", _namespace, _imports.ToArray(), _directory);
+                EntityConcreteGenerator.Generate(_entityMode, _entityType, $"I{_entityType}", _namespace, _imports.ToArray(), _directory);
+                EntityBehaviourGenerator.Generate($"I{_entityType}", _namespace, _imports.ToArray(), _directory);
+            }
+            
+          
+
+            
             EditorGUILayout.EndHorizontal();
         }
 
@@ -126,8 +136,7 @@ namespace Atomic.Entities
             _viewRequired = EditorGUILayout.ToggleLeft("Generate View", _viewRequired);
 
             GUILayout.Space(6);
-            GUILayout.Label("Installer Mode", EditorStyles.boldLabel);
-            _installerMode = (InstallerMode) EditorGUILayout.EnumFlagsField(_installerMode);
+            this.DrawInstallers();
 
             GUILayout.Space(4);
             DrawAspects();
@@ -145,25 +154,47 @@ namespace Atomic.Entities
             _bakerMode = (BakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
         }
 
+        private void DrawInstallers()
+        {
+            EditorGUILayout.BeginHorizontal();
+
+            GUILayout.Label("Installers", EditorStyles.boldLabel, GUILayout.Width(70));
+            _installerMode = (InstallerMode) EditorGUILayout.EnumFlagsField(_installerMode, GUILayout.ExpandWidth(true));
+            
+            if (GUILayout.Button("Generate", GUILayout.Width(90)))
+            {
+                EntityInstallerGenerator.Generate(
+                    _installerMode,
+                    _entityType,
+                    $"I{_entityType}",
+                    _namespace,
+                    _directory,
+                    _imports.ToArray()
+                );
+            }
+            
+            EditorGUILayout.EndHorizontal();
+        }
+
         private void DrawAspects()
         {
             EditorGUILayout.BeginHorizontal();
 
             GUILayout.Label("Aspects", EditorStyles.boldLabel, GUILayout.Width(70));
             _aspectMode = (AspectMode) EditorGUILayout.EnumFlagsField(_aspectMode, GUILayout.ExpandWidth(true));
-
-            // if (GUILayout.Button("Generate", GUILayout.Width(90)))
-            // {
-            //     EntityAspectGenerator.GenerateAspects(
-            //         _aspectMode,
-            //         _entityType,
-            //         $"I{_entityType}",
-            //         _namespace,
-            //         _directory,
-            //         _imports.ToArray()
-            //     );
-            // }
-
+            
+            if (GUILayout.Button("Generate", GUILayout.Width(90)))
+            {
+                EntityAspectGenerator.Generate(
+                    _aspectMode,
+                    _entityType,
+                    $"I{_entityType}",
+                    _namespace,
+                    _directory,
+                    _imports.ToArray()
+                );
+            }
+            
             EditorGUILayout.EndHorizontal();
         }
         

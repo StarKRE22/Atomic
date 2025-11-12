@@ -44,7 +44,7 @@ namespace Atomic.Entities
             "Automatically invoked when the entity is visible in the Unity Editor Scene view.\nCommonly used to draw debug information, wireframes, or gizmo markers."
         };
 
-        public static void GenerateFile(string entityType, string ns, string[] imports, string directory)
+        public static void Generate(string entityType, string ns, string[] imports, string directory)
         {
             if (string.IsNullOrWhiteSpace(entityType))
             {
@@ -58,7 +58,6 @@ namespace Atomic.Entities
             File.WriteAllText(filePath, content, Encoding.UTF8);
 
             AssetDatabase.Refresh();
-            EditorUtility.DisplayDialog("Success", $"File generated successfully:\n{filePath}", "OK");
         }
 
         private static string GenerateContent(string ns, string[] imports, string entityType)

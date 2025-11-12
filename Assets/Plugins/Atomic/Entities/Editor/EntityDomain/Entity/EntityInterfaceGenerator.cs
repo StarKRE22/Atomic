@@ -9,7 +9,7 @@ namespace Atomic.Entities
     {
         private const string Indent = "    ";
 
-        public static void GenerateFile(string interfaceType, string ns, string[] imports, string directory)
+        public static void Generate(string interfaceType, string ns, string[] imports, string directory)
         {
             if (string.IsNullOrWhiteSpace(interfaceType))
             {
