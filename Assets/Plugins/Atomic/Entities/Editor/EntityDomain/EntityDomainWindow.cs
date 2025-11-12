@@ -7,9 +7,9 @@ namespace Atomic.Entities
     internal sealed class EntityDomainWindow : EditorWindow
     {
         [SerializeField]
-        private string _entityType = "GameContext";
+        private string _entityType = "CustomEntity";
         [SerializeField]
-        private string _namespace = "SampleGame.Gameplay";
+        private string _namespace = "SampleGame";
         [SerializeField]
         private string _directory = "Assets/Scripts/";
 
@@ -24,8 +24,8 @@ namespace Atomic.Entities
         private bool _viewRequired = true;
 
         [SerializeField]
-        private InstallerMode _installerMode =
-            InstallerMode.ScriptableEntityInstaller | InstallerMode.SceneEntityInstaller;
+        private InstallerMode _installerMode = InstallerMode.ScriptableEntityInstaller |
+                                               InstallerMode.SceneEntityInstaller;
 
         [SerializeField]
         private AspectMode _aspectMode = AspectMode.SceneEntityAspect | AspectMode.ScriptableEntityAspect;
@@ -55,12 +55,11 @@ namespace Atomic.Entities
             DrawHeader();
 
             GUILayout.Space(8);
-            DrawEntityType();
-            DrawEntityBaseType();
-
-            GUILayout.Space(8);
             DrawNamespace();
             DrawDirectory();
+
+            GUILayout.Space(8);
+            DrawEntityType();
 
             GUILayout.Space(8);
             DrawOptions();
@@ -80,12 +79,12 @@ namespace Atomic.Entities
 
         private void DrawEntityType()
         {
-            _entityType = EditorGUILayout.TextField("Entity", _entityType);
-        }
+            EditorGUILayout.BeginHorizontal();
 
-        private void DrawEntityBaseType()
-        {
-            _entityMode = (EntityMode) EditorGUILayout.EnumPopup("Base Type", _entityMode);
+            _entityType = EditorGUILayout.TextField(new GUIContent("Entity"), _entityType);
+            _entityMode = (EntityMode) EditorGUILayout.EnumPopup(_entityMode, GUILayout.Width(250));
+
+            EditorGUILayout.EndHorizontal();
         }
 
         private void DrawNamespace()
@@ -153,22 +152,21 @@ namespace Atomic.Entities
             GUILayout.Label("Aspects", EditorStyles.boldLabel, GUILayout.Width(70));
             _aspectMode = (AspectMode) EditorGUILayout.EnumFlagsField(_aspectMode, GUILayout.ExpandWidth(true));
 
-            if (GUILayout.Button("Generate", GUILayout.Width(90)))
-            {
-                EntityAspectGenerator.GenerateAspects(
-                    _aspectMode,
-                    _entityType,
-                    $"I{_entityType}",
-                    _namespace,
-                    _directory,
-                    _imports.ToArray()
-                );
-            }
+            // if (GUILayout.Button("Generate", GUILayout.Width(90)))
+            // {
+            //     EntityAspectGenerator.GenerateAspects(
+            //         _aspectMode,
+            //         _entityType,
+            //         $"I{_entityType}",
+            //         _namespace,
+            //         _directory,
+            //         _imports.ToArray()
+            //     );
+            // }
 
             EditorGUILayout.EndHorizontal();
         }
-
-
+        
         private void DrawImports()
         {
             GUILayout.Space(10);

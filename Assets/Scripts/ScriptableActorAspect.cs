@@ -4,7 +4,7 @@
  * Created by Entity Domain Generator.
  */
 
-namespace SampleGame
+namespace SampleGame.Gameplay
 {
     /// <summary>
     /// Represents a scriptable-based entity aspect that can be applied or discarded on a specific entity type.

@@ -1,6 +1,10 @@
 ﻿using Atomic.Entities;
 
-namespace SampleGame
+/**
+ * Created by Entity Domain Generator.
+ */
+
+namespace SampleGame.Gameplay
 {
     /// <summary>
     /// Provides initialization logic for the strongly-typed <see cref="IActor"/> entity.
@@ -89,4 +93,5 @@ namespace SampleGame
     public interface IActorGizmos : IEntityGizmos<IActor>
     {
     }
+
 }

@@ -4,7 +4,7 @@
  * Created by Entity Domain Generator.
  */
 
-namespace SampleGame
+namespace SampleGame.Gameplay
 {
     /// <summary>
     /// Represents a specialized entity interface that extends the core <see cref="IEntity"/> contract.

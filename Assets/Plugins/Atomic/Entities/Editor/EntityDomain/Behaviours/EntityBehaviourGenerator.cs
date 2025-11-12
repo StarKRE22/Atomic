@@ -1,5 +1,4 @@
 using UnityEditor;
-using System;
 using System.IO;
 using System.Text;
 
@@ -21,6 +20,30 @@ namespace Atomic.Entities
             "IEntityTick", "IEntityFixedTick", "IEntityLateTick", "IEntityGizmos"
         };
 
+        private static readonly string[] Summaries =
+        {
+            "Provides initialization logic for the strongly-typed <see cref=\"{0}\"/> entity.",
+            "Handles enable-time logic for the strongly-typed <see cref=\"{0}\"/> entity.",
+            "Handles disable-time logic for the strongly-typed <see cref=\"{0}\"/> entity.",
+            "Provides cleanup logic for the strongly-typed <see cref=\"{0}\"/> entity.",
+            "Handles per-frame update logic for the strongly-typed <see cref=\"{0}\"/> entity.",
+            "Handles fixed update logic for the strongly-typed <see cref=\"{0}\"/> entity.",
+            "Handles late update logic for the strongly-typed <see cref=\"{0}\"/> entity.",
+            "Provides editor visualization logic for the strongly-typed <see cref=\"{0}\"/> entity."
+        };
+
+        private static readonly string[] Remarks =
+        {
+            "Automatically invoked when an <see cref=\"{0}\"/> instance is created and enters the initialization phase.\nTypically used to set up component references, register event listeners, or assign default values.",
+            "Automatically invoked when an <see cref=\"{0}\"/> instance becomes active or enabled.\nCommonly used to re-enable systems or resume behavior execution.",
+            "Automatically invoked when an <see cref=\"{0}\"/> instance becomes inactive or disabled.\nUseful for pausing updates or temporarily suspending logic without disposing the entity.",
+            "Automatically called when an <see cref=\"{0}\"/> instance is destroyed or disposed.\nUsed to release resources, unsubscribe from events, or reset state.",
+            "Automatically invoked during the main update loop.\nTypically used for time-dependent gameplay logic such as movement, state updates, or input processing.",
+            "Automatically invoked during Unity’s fixed update cycle, synchronized with the physics system.\nCommonly used for deterministic or physics-based updates.",
+            "Automatically invoked after all standard update calls within the frame.\nTypically used for camera adjustments, cleanup, or visual synchronization logic.",
+            "Automatically invoked when the entity is visible in the Unity Editor Scene view.\nCommonly used to draw debug information, wireframes, or gizmo markers."
+        };
+
         public static void GenerateFile(string entityType, string ns, string[] imports, string directory)
         {
             if (string.IsNullOrWhiteSpace(entityType))
@@ -29,33 +52,22 @@ namespace Atomic.Entities
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(entityType))
-                throw new ArgumentException("EntityType cannot be empty.", nameof(entityType));
+            Directory.CreateDirectory(directory);
+            string filePath = Path.Combine(directory, $"{entityType}Behaviours.cs");
+            string content = GenerateContent(ns, imports, entityType);
+            File.WriteAllText(filePath, content, Encoding.UTF8);
 
-            try
-            {
-                Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}Behaviours.cs");
-                string content = GenerateContent(ns, imports, entityType);
-                File.WriteAllText(filePath, content, Encoding.UTF8);
-
-                AssetDatabase.Refresh();
-                EditorUtility.DisplayDialog("Success", $"File generated successfully:\n{filePath}", "OK");
-            }
-            catch (Exception ex)
-            {
-                EditorUtility.DisplayDialog("Error", "Generation failed:\n" + ex.Message, "OK");
-            }
+            AssetDatabase.Refresh();
+            EditorUtility.DisplayDialog("Success", $"File generated successfully:\n{filePath}", "OK");
         }
 
         private static string GenerateContent(string ns, string[] imports, string entityType)
         {
             var sb = new StringBuilder();
 
-            // --- Imports ---
+            // --- Header ---
             sb.AppendLine("using Atomic.Entities;");
-
-            if (imports is {Length: > 0})
+            if (imports is { Length: > 0 })
             {
                 foreach (string import in imports)
                 {
@@ -68,6 +80,10 @@ namespace Atomic.Entities
             }
 
             sb.AppendLine();
+            sb.AppendLine("/**");
+            sb.AppendLine(" * Created by Entity Domain Generator.");
+            sb.AppendLine(" */");
+            sb.AppendLine();
 
             // --- Namespace + Body ---
             sb.AppendLine($"namespace {ns}");
@@ -75,10 +91,20 @@ namespace Atomic.Entities
 
             for (int i = 0; i < BaseInterfaces.Length; i++)
             {
+                string summary = string.Format(Summaries[i], entityType);
+                string remarks = string.Format(Remarks[i], entityType);
+
+                sb.AppendLine($"{Indent}/// <summary>");
+                sb.AppendLine($"{Indent}/// {summary}");
+                sb.AppendLine($"{Indent}/// </summary>");
+                sb.AppendLine($"{Indent}/// <remarks>");
+                foreach (var line in remarks.Split('\n'))
+                    sb.AppendLine($"{Indent}/// {line}");
+              
+                sb.AppendLine($"{Indent}/// </remarks>");
                 sb.AppendLine($"{Indent}public interface {entityType}{EventNames[i]} : {BaseInterfaces[i]}<{entityType}>");
                 sb.AppendLine($"{Indent}{{");
                 sb.AppendLine($"{Indent}}}");
-                sb.AppendLine();
             }
 
             sb.AppendLine("}");
