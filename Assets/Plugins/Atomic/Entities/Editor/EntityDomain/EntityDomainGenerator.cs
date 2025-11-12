@@ -1,5 +1,3 @@
-using System;
-
 namespace Atomic.Entities
 {
     internal static class EntityDomainGenerator
@@ -53,22 +51,7 @@ namespace Atomic.Entities
             // CSharp mode
             else if (entityMode is EntityMode.Entity or EntityMode.EntitySingleton)
             {
-                switch (args.factoryMode)
-                {
-                    case EntityFactoryMode.None:
-                        break;
-                    case EntityFactoryMode.ScriptableEntityFactory:
-                        ScriptableEntityFactoryGenerator.GenerateFile(concreteType, interfaceType, ns,
-                            directory,
-                            imports);
-                        break;
-                    case EntityFactoryMode.SceneEntityFactory:
-                        SceneEntityFactoryGenerator.GenerateFile(concreteType, interfaceType, ns, directory,
-                            imports);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                EntityFactoryGenerator.Generate(args.factoryMode, concreteType, interfaceType, ns, directory, imports);
 
                 // if (args.viewRequired)
                 // {
@@ -80,21 +63,21 @@ namespace Atomic.Entities
                 //     EntityViewPoolGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
                 // }
 
-                switch (args.bakerMode)
-                {
-                    case EntityBakerMode.None:
-                        break;
-                    case EntityBakerMode.SceneEntityBaker:
-                        SceneEntityBakerGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
-                            directory);
-                        break;
-                    case EntityBakerMode.SceneEntityBakerOptimized:
-                        SceneEntityBakerOptimizedGenerator.GenerateFile(concreteType, interfaceType, ns,
-                            imports, directory);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                // switch (args.bakerMode)
+                // {
+                //     case EntityBakerMode.None:
+                //         break;
+                //     case EntityBakerMode.SceneEntityBaker:
+                //         SceneEntityBakerGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
+                //             directory);
+                //         break;
+                //     case EntityBakerMode.SceneEntityBakerOptimized:
+                //         SceneEntityBakerOptimizedGenerator.GenerateFile(concreteType, interfaceType, ns,
+                //             imports, directory);
+                //         break;
+                //     default:
+                //         throw new ArgumentOutOfRangeException();
+                // }
             }
         }
     }

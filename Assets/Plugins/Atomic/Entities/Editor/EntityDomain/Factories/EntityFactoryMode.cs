@@ -7,6 +7,6 @@ namespace Atomic.Entities
     {
         None = 0,
         ScriptableEntityFactory = 1,
-        SceneEntityFactory = 2,
+        SceneEntityFactory = 2
     }
 }

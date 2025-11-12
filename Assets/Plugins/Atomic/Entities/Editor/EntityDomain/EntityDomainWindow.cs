@@ -73,8 +73,9 @@ namespace Atomic.Entities
             DrawHeader();
 
             GUILayout.Space(8);
-            DrawNamespace();
             DrawDirectory();
+            DrawNamespace();
+            DrawImports();
 
             GUILayout.Space(8);
             DrawEntityType();
@@ -83,7 +84,6 @@ namespace Atomic.Entities
             DrawOptions();
 
             GUILayout.Space(10);
-            DrawImports();
 
             GUILayout.FlexibleSpace();
             DrawGenerateButton();
@@ -144,9 +144,8 @@ namespace Atomic.Entities
         // --- Основные опции генерации ---
         private void DrawOptions()
         {
-            GUILayout.Space(4);
-
             DrawProxy();
+            GUILayout.Space(4);
             DrawWorld();
 
             GUILayout.Space(6);
@@ -159,8 +158,7 @@ namespace Atomic.Entities
             DrawPools();
 
             GUILayout.Space(4);
-            GUILayout.Label("Factory Mode", EditorStyles.boldLabel);
-            _factoryMode = (EntityFactoryMode) EditorGUILayout.EnumFlagsField(_factoryMode);
+            DrawFactories();
 
             GUILayout.Space(4);
             GUILayout.Label("Baker Mode", EditorStyles.boldLabel);
@@ -169,13 +167,14 @@ namespace Atomic.Entities
 
         private void DrawPools()
         {
-            using (new EditorGUI.DisabledScope(_entityMode is not (EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)))
+            using (new EditorGUI.DisabledScope(
+                       _entityMode is not (EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)))
             {
                 EditorGUILayout.BeginHorizontal();
-                
+
                 GUILayout.Label("Pools", GUILayout.Width(70));
                 _poolMode = (EntityPoolMode) EditorGUILayout.EnumFlagsField(_poolMode, GUILayout.ExpandWidth(true));
-                
+
                 if (GUILayout.Button("Generate", GUILayout.Width(90)))
                 {
                     EntityPoolGenerator.Generate(
@@ -187,7 +186,33 @@ namespace Atomic.Entities
                         _imports.ToArray()
                     );
                 }
-                
+
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+
+        private void DrawFactories()
+        {
+            using (new EditorGUI.DisabledScope(
+                       _entityMode is not (EntityMode.Entity or EntityMode.EntitySingleton)))
+            {
+                EditorGUILayout.BeginHorizontal();
+
+                GUILayout.Label("Factories", GUILayout.Width(70));
+                _factoryMode = (EntityFactoryMode) EditorGUILayout.EnumFlagsField(_factoryMode, GUILayout.ExpandWidth(true));
+
+                if (GUILayout.Button("Generate", GUILayout.Width(90)))
+                {
+                    EntityFactoryGenerator.Generate(
+                        _factoryMode,
+                        _entityType,
+                        $"I{_entityType}",
+                        _namespace,
+                        _directory,
+                        _imports.ToArray()
+                    );
+                }
+
                 EditorGUILayout.EndHorizontal();
             }
         }
@@ -225,7 +250,7 @@ namespace Atomic.Entities
 
                 _worldRequired = EditorGUILayout.Toggle("SceneEntityWorld", _worldRequired);
 
-                if (GUILayout.Button("Generate", GUILayout.Width(90))) 
+                if (GUILayout.Button("Generate", GUILayout.Width(90)))
                     SceneEntityWorldGenerator.Generate(_entityType, _namespace, _imports.ToArray(), _directory);
 
                 EditorGUILayout.EndHorizontal();
@@ -279,15 +304,15 @@ namespace Atomic.Entities
 
         private void DrawImports()
         {
-            GUILayout.Space(10);
+            // GUILayout.Space(10);
             EditorGUILayout.BeginHorizontal();
-            GUILayout.Label("Imports", EditorStyles.boldLabel);
+            GUILayout.Label("Imports");
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("+", GUILayout.Width(25)))
                 _imports.Add("SampleGame");
             EditorGUILayout.EndHorizontal();
 
-            _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos, GUILayout.Height(100));
+            _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
             for (int i = 0; i < _imports.Count; i++)
             {
                 EditorGUILayout.BeginHorizontal();
