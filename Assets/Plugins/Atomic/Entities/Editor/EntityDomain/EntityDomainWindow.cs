@@ -162,7 +162,7 @@ namespace Atomic.Entities
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Imports", GUILayout.Width(50));
-            if (GUILayout.Button("+", GUILayout.Width(25))) 
+            if (GUILayout.Button("+", GUILayout.Width(25)))
                 _imports.Add("SampleGame");
             EditorGUILayout.EndHorizontal();
 
@@ -278,16 +278,19 @@ namespace Atomic.Entities
 
         private void DrawBakers()
         {
-            EditorGUILayout.BeginHorizontal();
-            GUILayout.Label("Bakers", GUILayout.Width(80));
-            _bakerMode = (EntityBakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
-            if (GUILayout.Button("Generate", GUILayout.Width(100)))
+            using (new EditorGUI.DisabledScope(_entityMode is not (EntityMode.Entity or EntityMode.EntitySingleton)))
             {
-                EntityBakerGenerator.Generate(_bakerMode, _entityType, $"I{_entityType}", _namespace,
-                    _imports.ToArray(), _directory);
-            }
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Label("Bakers", GUILayout.Width(80));
+                _bakerMode = (EntityBakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
+                if (GUILayout.Button("Generate", GUILayout.Width(100)))
+                {
+                    EntityBakerGenerator.Generate(_bakerMode, _entityType, $"I{_entityType}", _namespace,
+                        _imports.ToArray(), _directory);
+                }
 
-            EditorGUILayout.EndHorizontal();
+                EditorGUILayout.EndHorizontal();
+            }
         }
 
         private void DrawUI()
