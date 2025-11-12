@@ -35,6 +35,7 @@ namespace Atomic.Entities
 
             // --- Imports ---
             sb.AppendLine("using Atomic.Entities;");
+            sb.AppendLine("using UnityEngine;");
             if (imports is {Length: > 0})
             {
                 foreach (string import in imports.Where(i => !string.IsNullOrWhiteSpace(i)))
@@ -45,13 +46,25 @@ namespace Atomic.Entities
             }
 
             sb.AppendLine();
+            sb.AppendLine("/**");
+            sb.AppendLine(" * Created by Entity Domain Generator.");
+            sb.AppendLine(" */");
+            sb.AppendLine();
 
-            // --- Namespace + View Class ---
+            // --- Namespace ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
+
+            // --- XML Documentation ---
+            sb.AppendLine("    /// <summary>");
+            sb.AppendLine($"    /// Represents a concrete Unity view bound to the <see cref=\"{entityInterface}\"/> entity type.");
+            sb.AppendLine("    /// </summary>");
+
+            // --- Class Declaration ---
             sb.AppendLine($"    public class {entityType}View : EntityView<{entityInterface}>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
+
             sb.AppendLine("}");
 
             return sb.ToString();

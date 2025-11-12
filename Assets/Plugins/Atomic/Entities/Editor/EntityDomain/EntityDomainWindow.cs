@@ -334,13 +334,12 @@ namespace Atomic.Entities
 
         private void DrawUI()
         {
-            using (new EditorGUI.DisabledScope(
-                       _entityMode is not (EntityMode.Entity or EntityMode.EntitySingleton)))
+            using (new EditorGUI.DisabledScope(_entityMode is not (EntityMode.Entity or EntityMode.EntitySingleton)))
             {
                 EditorGUILayout.BeginHorizontal();
 
                 GUILayout.Label("UI", GUILayout.Width(70));
-                _aspectMode = (EntityAspectMode) EditorGUILayout.EnumFlagsField(_aspectMode, GUILayout.ExpandWidth(true));
+                _viewMode = (EntityViewMode) EditorGUILayout.EnumFlagsField(_viewMode, GUILayout.ExpandWidth(true));
 
                 if (GUILayout.Button("Generate", GUILayout.Width(90))) 
                     EntityUIGenerator.Generate(_viewMode, _entityType, $"I{_entityType}", _namespace, _imports.ToArray(), _directory);
