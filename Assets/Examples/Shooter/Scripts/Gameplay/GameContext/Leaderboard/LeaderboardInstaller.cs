@@ -5,7 +5,7 @@ using Atomic.Entities;
 namespace ShooterGame.Gameplay
 {
     [Serializable]
-    public sealed class LeaderboardInstaller : IEntityInstaller<IGameContext>
+    public sealed class LeaderboardInstaller : IGameContextInstaller
     {
         public void Install(IGameContext context)
         {

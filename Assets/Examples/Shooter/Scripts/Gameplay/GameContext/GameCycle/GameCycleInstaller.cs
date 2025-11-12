@@ -6,7 +6,7 @@ using UnityEngine;
 namespace ShooterGame.Gameplay
 {
     [Serializable]
-    public sealed class GameCycleInstaller : IEntityInstaller<IGameContext>
+    public sealed class GameCycleInstaller : IGameContextInstaller
     {
         [SerializeField]
         private float _gameDuration = 20;

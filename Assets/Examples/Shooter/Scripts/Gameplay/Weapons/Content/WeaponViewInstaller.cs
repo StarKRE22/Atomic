@@ -1,10 +1,9 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class WeaponViewInstaller : SceneEntityInstaller<IWeapon>
+    public sealed class WeaponViewInstaller : WeaponInstaller
     {
         [SerializeField]
         private ParticleSystem _particleSystem;

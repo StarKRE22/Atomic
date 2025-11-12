@@ -5,7 +5,7 @@ using Event = Atomic.Elements.Event;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class ProjectileWeaponInstaller : SceneEntityInstaller<IWeapon>
+    public sealed class ProjectileWeaponInstaller : WeaponInstaller
     {
         [SerializeField]
         private GameEntity _owner;
