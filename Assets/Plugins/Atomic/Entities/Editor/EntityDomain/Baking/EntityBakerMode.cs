@@ -6,7 +6,7 @@ namespace Atomic.Entities
     internal enum EntityBakerMode
     {
         None = 0,
-        SceneEntityBaker = 1,
-        SceneEntityBakerOptimized = 2
+        Standard = 1,
+        Optimized = 2
     }
 }

@@ -46,8 +46,8 @@ namespace Atomic.Entities
 
         [SerializeField]
         private EntityBakerMode _bakerMode =
-            EntityBakerMode.SceneEntityBaker |
-            EntityBakerMode.SceneEntityBakerOptimized;
+            EntityBakerMode.Standard |
+            EntityBakerMode.Optimized;
 
         [SerializeField]
         private EntityViewMode _viewMode =
@@ -161,9 +161,9 @@ namespace Atomic.Entities
             DrawFactories();
 
             GUILayout.Space(4);
-            GUILayout.Label("Baker Mode", EditorStyles.boldLabel);
-            _bakerMode = (EntityBakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
+            DrawBakers();
         }
+
 
         private void DrawPools()
         {
@@ -199,7 +199,8 @@ namespace Atomic.Entities
                 EditorGUILayout.BeginHorizontal();
 
                 GUILayout.Label("Factories", GUILayout.Width(70));
-                _factoryMode = (EntityFactoryMode) EditorGUILayout.EnumFlagsField(_factoryMode, GUILayout.ExpandWidth(true));
+                _factoryMode =
+                    (EntityFactoryMode) EditorGUILayout.EnumFlagsField(_factoryMode, GUILayout.ExpandWidth(true));
 
                 if (GUILayout.Button("Generate", GUILayout.Width(90)))
                 {
@@ -210,6 +211,32 @@ namespace Atomic.Entities
                         _namespace,
                         _directory,
                         _imports.ToArray()
+                    );
+                }
+
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+
+        private void DrawBakers()
+        {
+            using (new EditorGUI.DisabledScope(
+                       _entityMode is not (EntityMode.Entity or EntityMode.EntitySingleton)))
+            {
+                EditorGUILayout.BeginHorizontal();
+
+                GUILayout.Label("Bakers", GUILayout.Width(70));
+                _bakerMode = (EntityBakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
+
+                if (GUILayout.Button("Generate", GUILayout.Width(90)))
+                {
+                    EntityBakerGenerator.Generate(
+                        _bakerMode,
+                        _entityType,
+                        $"I{_entityType}",
+                        _namespace,
+                        _imports.ToArray(),
+                        _directory
                     );
                 }
 
@@ -306,16 +333,19 @@ namespace Atomic.Entities
         {
             // GUILayout.Space(10);
             EditorGUILayout.BeginHorizontal();
+
             GUILayout.Label("Imports");
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("+", GUILayout.Width(25)))
                 _imports.Add("SampleGame");
+
             EditorGUILayout.EndHorizontal();
 
             _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
             for (int i = 0; i < _imports.Count; i++)
             {
                 EditorGUILayout.BeginHorizontal();
+
                 _imports[i] = EditorGUILayout.TextField(_imports[i]);
                 if (GUILayout.Button("-", GUILayout.Width(25)))
                 {

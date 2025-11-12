@@ -52,7 +52,9 @@ namespace Atomic.Entities
             else if (entityMode is EntityMode.Entity or EntityMode.EntitySingleton)
             {
                 EntityFactoryGenerator.Generate(args.factoryMode, concreteType, interfaceType, ns, directory, imports);
-
+                EntityBakerGenerator.Generate(args.bakerMode, concreteType, interfaceType, ns, imports, directory);
+                
+                
                 // if (args.viewRequired)
                 // {
                 //     EntityViewGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
@@ -61,22 +63,6 @@ namespace Atomic.Entities
                 //     EntityViewCatalogGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
                 //         directory);
                 //     EntityViewPoolGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
-                // }
-
-                // switch (args.bakerMode)
-                // {
-                //     case EntityBakerMode.None:
-                //         break;
-                //     case EntityBakerMode.SceneEntityBaker:
-                //         SceneEntityBakerGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
-                //             directory);
-                //         break;
-                //     case EntityBakerMode.SceneEntityBakerOptimized:
-                //         SceneEntityBakerOptimizedGenerator.GenerateFile(concreteType, interfaceType, ns,
-                //             imports, directory);
-                //         break;
-                //     default:
-                //         throw new ArgumentOutOfRangeException();
                 // }
             }
         }
