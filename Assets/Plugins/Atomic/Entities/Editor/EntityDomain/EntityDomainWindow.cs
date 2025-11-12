@@ -13,16 +13,20 @@ namespace Atomic.Entities
         [Header("Base Settings")]
         [SerializeField]
         private string _entityType = "CustomEntity";
+        
         [SerializeField]
         private string _namespace = "SampleGame";
+     
         [SerializeField]
         private string _directory = "Assets/Scripts/";
+        
         [SerializeField]
         private EntityMode _entityMode = EntityMode.SceneEntity;
 
         [Space(5)]
         [SerializeField]
         private bool _proxyRequired = true;
+        
         [SerializeField]
         private bool _worldRequired = true;
 
@@ -310,8 +314,17 @@ namespace Atomic.Entities
         private void DrawGenerateButton()
         {
             EditorGUILayout.Space(10);
+
+            // Создаем стиль кнопки с жирным шрифтом
+            GUIStyle boldButtonStyle = new(GUI.skin.button)
+            {
+                fontStyle = FontStyle.Bold,
+                fontSize = 14 // можно увеличить, чтобы кнопка выглядела выразительнее
+            };
+
             GUI.backgroundColor = new Color(0f, 0.83f, 1f);
-            if (GUILayout.Button("GENERATE ALL", GUILayout.Height(45)))
+
+            if (GUILayout.Button("GENERATE", boldButtonStyle, GUILayout.Height(45)))
             {
                 GUI.backgroundColor = Color.white;
                 EntityDomainGenerator.Generate(new EntityDomainGenerator.GenerateArgs

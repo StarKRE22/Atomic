@@ -1,5 +1,4 @@
 ﻿using Atomic.Entities;
-using System.Collections.Generic;
 
 /**
  * Created by Entity Domain Generator.
