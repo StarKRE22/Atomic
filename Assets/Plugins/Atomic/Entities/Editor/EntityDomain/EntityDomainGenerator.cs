@@ -48,22 +48,12 @@ namespace Atomic.Entities
                 EntityPoolGenerator.Generate(args.poolMode, concreteType, interfaceType, ns, directory, imports);
             }
 
-            // CSharp mode
+            // CSharp
             else if (entityMode is EntityMode.Entity or EntityMode.EntitySingleton)
             {
                 EntityFactoryGenerator.Generate(args.factoryMode, concreteType, interfaceType, ns, directory, imports);
                 EntityBakerGenerator.Generate(args.bakerMode, concreteType, interfaceType, ns, imports, directory);
-                
-                
-                // if (args.viewRequired)
-                // {
-                //     EntityViewGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
-                //     EntityCollectionViewGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
-                //         directory);
-                //     EntityViewCatalogGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
-                //         directory);
-                //     EntityViewPoolGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
-                // }
+                EntityUIGenerator.Generate(args.viewMode, concreteType, interfaceType, ns, imports, directory);
             }
         }
     }

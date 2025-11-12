@@ -161,6 +161,9 @@ namespace Atomic.Entities
             DrawFactories();
 
             GUILayout.Space(4);
+            DrawUI();
+            
+            GUILayout.Space(4);
             DrawBakers();
         }
 
@@ -327,6 +330,23 @@ namespace Atomic.Entities
             }
 
             EditorGUILayout.EndHorizontal();
+        }
+
+        private void DrawUI()
+        {
+            using (new EditorGUI.DisabledScope(
+                       _entityMode is not (EntityMode.Entity or EntityMode.EntitySingleton)))
+            {
+                EditorGUILayout.BeginHorizontal();
+
+                GUILayout.Label("UI", GUILayout.Width(70));
+                _aspectMode = (EntityAspectMode) EditorGUILayout.EnumFlagsField(_aspectMode, GUILayout.ExpandWidth(true));
+
+                if (GUILayout.Button("Generate", GUILayout.Width(90))) 
+                    EntityUIGenerator.Generate(_viewMode, _entityType, $"I{_entityType}", _namespace, _imports.ToArray(), _directory);
+
+                EditorGUILayout.EndHorizontal();
+            }
         }
 
         private void DrawImports()

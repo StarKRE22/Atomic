@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,21 +15,12 @@ namespace Atomic.Entities
                 return;
             }
 
-            try
-            {
-                Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}ViewPool.cs");
-                string content = GenerateContent(entityType, interfaceType, ns, imports);
+            Directory.CreateDirectory(directory);
+            string filePath = Path.Combine(directory, $"{entityType}ViewPool.cs");
+            string content = GenerateContent(entityType, interfaceType, ns, imports);
 
-                File.WriteAllText(filePath, content, Encoding.UTF8);
-                AssetDatabase.Refresh();
-
-                EditorUtility.DisplayDialog("Success", $"ViewPool generated successfully:\n{filePath}", "OK");
-            }
-            catch (Exception ex)
-            {
-                EditorUtility.DisplayDialog("Error", $"Generation failed:\n{ex.Message}", "OK");
-            }
+            File.WriteAllText(filePath, content, Encoding.UTF8);
+            AssetDatabase.Refresh();
         }
 
         private static string GenerateContent(string entityType, string interfaceType, string ns, string[] imports)

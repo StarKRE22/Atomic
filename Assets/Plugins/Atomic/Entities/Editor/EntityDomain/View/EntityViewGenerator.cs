@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,7 +7,7 @@ namespace Atomic.Entities
 {
     internal static class EntityViewGenerator
     {
-        public static void GenerateFile(
+        public static void Generate(
             string entityType,
             string entityInterface,
             string ns,
@@ -22,21 +21,12 @@ namespace Atomic.Entities
                 return;
             }
 
-            try
-            {
-                Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}View.cs");
-                string content = GenerateContent(entityType, entityInterface, ns, imports);
+            Directory.CreateDirectory(directory);
+            string filePath = Path.Combine(directory, $"{entityType}View.cs");
+            string content = GenerateContent(entityType, entityInterface, ns, imports);
 
-                File.WriteAllText(filePath, content, Encoding.UTF8);
-                AssetDatabase.Refresh();
-
-                EditorUtility.DisplayDialog("Success", $"View generated successfully:\n{filePath}", "OK");
-            }
-            catch (Exception ex)
-            {
-                EditorUtility.DisplayDialog("Error", $"Generation failed:\n{ex.Message}", "OK");
-            }
+            File.WriteAllText(filePath, content, Encoding.UTF8);
+            AssetDatabase.Refresh();
         }
 
         private static string GenerateContent(string entityType, string entityInterface, string ns, string[] imports)
@@ -59,7 +49,7 @@ namespace Atomic.Entities
             // --- Namespace + View Class ---
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
-            sb.AppendLine($"    public class {entityType}View : EntityView<{entityInterface}Entity>");
+            sb.AppendLine($"    public class {entityType}View : EntityView<{entityInterface}>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
             sb.AppendLine("}");

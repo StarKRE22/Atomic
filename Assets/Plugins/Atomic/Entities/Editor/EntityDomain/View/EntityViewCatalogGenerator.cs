@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -22,21 +21,12 @@ namespace Atomic.Entities
                 return;
             }
 
-            try
-            {
-                Directory.CreateDirectory(directory);
-                string filePath = Path.Combine(directory, $"{entityType}ViewCatalog.cs");
-                string content = GenerateContent(entityType, interfaceType, ns, imports);
+            Directory.CreateDirectory(directory);
+            string filePath = Path.Combine(directory, $"{entityType}ViewCatalog.cs");
+            string content = GenerateContent(entityType, interfaceType, ns, imports);
 
-                File.WriteAllText(filePath, content, Encoding.UTF8);
-                AssetDatabase.Refresh();
-
-                EditorUtility.DisplayDialog("Success", $"ViewCatalog generated successfully:\n{filePath}", "OK");
-            }
-            catch (Exception ex)
-            {
-                EditorUtility.DisplayDialog("Error", $"Generation failed:\n{ex.Message}", "OK");
-            }
+            File.WriteAllText(filePath, content, Encoding.UTF8);
+            AssetDatabase.Refresh();
         }
 
         private static string GenerateContent(string entityType, string interfaceType, string ns, string[] imports)
@@ -64,8 +54,7 @@ namespace Atomic.Entities
             sb.AppendLine($"        fileName = \"{entityType}ViewCatalog\",");
             sb.AppendLine($"        menuName = \"{ns.Replace('.', '/')}/New {entityType}ViewCatalog\"");
             sb.AppendLine("    )]");
-            sb.AppendLine(
-                $"    public sealed class {entityType}ViewCatalog : EntityViewCatalog<{interfaceType}, {entityType}View>");
+            sb.AppendLine($"    public sealed class {entityType}ViewCatalog : EntityViewCatalog<{interfaceType}, {entityType}View>");
             sb.AppendLine("    {");
             sb.AppendLine("    }");
             sb.AppendLine("}");
