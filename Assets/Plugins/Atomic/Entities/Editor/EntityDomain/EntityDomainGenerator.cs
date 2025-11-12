@@ -1,3 +1,5 @@
+using System;
+
 namespace Atomic.Entities
 {
     internal static class EntityDomainGenerator
@@ -12,12 +14,12 @@ namespace Atomic.Entities
 
             public bool proxyRequired;
             public bool worldRequired;
-            public bool viewRequired;
-            public InstallerMode installerMode;
-            public AspectMode aspectMode;
-            public FactoryMode factoryMode;
-            public PoolMode poolMode;
-            public BakerMode bakerMode;
+            public EntityInstallerMode installerMode;
+            public EntityAspectMode aspectMode;
+            public EntityFactoryMode factoryMode;
+            public EntityPoolMode poolMode;
+            public EntityBakerMode bakerMode;
+            public EntityViewMode viewMode;
         }
 
         public static void Generate(GenerateArgs args)
@@ -37,77 +39,77 @@ namespace Atomic.Entities
             EntityInstallerGenerator.Generate(args.installerMode, concreteType, interfaceType, ns, directory, imports);
 
             // Unity
-            // if (entityMode is EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)
-            // {
-            //     if (args.proxyRequired)
-            //         SceneEntityProxyGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
-            //             directory);
-            //
-            //     if (args.worldRequired)
-            //         SceneEntityWorldGenerator.GenerateFile(concreteType, ns, imports, directory);
-            //
-            //     switch (args.poolMode)
-            //     {
-            //         case PoolMode.None:
-            //             break;
-            //         case PoolMode.SceneEntityPool:
-            //             SceneEntityPoolGenerator.GenerateFile(concreteType, interfaceType, ns, directory,
-            //                 imports);
-            //             break;
-            //         case PoolMode.PrefabEntityPool:
-            //             PrefabEntityPoolGenerator.GenerateFile(concreteType, ns, imports, directory);
-            //             break;
-            //         default:
-            //             throw new ArgumentOutOfRangeException();
-            //     }
-            // }
-            //
-            // // CSharp mode
-            // else if (entityMode is EntityMode.Entity or EntityMode.EntitySingleton)
-            // {
-            //     switch (args.factoryMode)
-            //     {
-            //         case FactoryMode.None:
-            //             break;
-            //         case FactoryMode.ScriptableEntityFactory:
-            //             ScriptableEntityFactoryGenerator.GenerateFile(concreteType, interfaceType, ns,
-            //                 directory,
-            //                 imports);
-            //             break;
-            //         case FactoryMode.SceneEntityFactory:
-            //             SceneEntityFactoryGenerator.GenerateFile(concreteType, interfaceType, ns, directory,
-            //                 imports);
-            //             break;
-            //         default:
-            //             throw new ArgumentOutOfRangeException();
-            //     }
-            //
-            //     if (args.viewRequired)
-            //     {
-            //         EntityViewGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
-            //         EntityCollectionViewGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
-            //             directory);
-            //         EntityViewCatalogGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
-            //             directory);
-            //         EntityViewPoolGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
-            //     }
-            //
-            //     switch (args.bakerMode)
-            //     {
-            //         case BakerMode.None:
-            //             break;
-            //         case BakerMode.SceneEntityBaker:
-            //             SceneEntityBakerGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
-            //                 directory);
-            //             break;
-            //         case BakerMode.SceneEntityBakerOptimized:
-            //             SceneEntityBakerOptimizedGenerator.GenerateFile(concreteType, interfaceType, ns,
-            //                 imports, directory);
-            //             break;
-            //         default:
-            //             throw new ArgumentOutOfRangeException();
-            //     }
-            // }
+            if (entityMode is EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)
+            {
+                if (args.proxyRequired)
+                    SceneEntityProxyGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
+                        directory);
+            
+                if (args.worldRequired)
+                    SceneEntityWorldGenerator.GenerateFile(concreteType, ns, imports, directory);
+            
+                switch (args.poolMode)
+                {
+                    case EntityPoolMode.None:
+                        break;
+                    case EntityPoolMode.SceneEntityPool:
+                        SceneEntityPoolGenerator.GenerateFile(concreteType, interfaceType, ns, directory,
+                            imports);
+                        break;
+                    case EntityPoolMode.PrefabEntityPool:
+                        PrefabEntityPoolGenerator.GenerateFile(concreteType, ns, imports, directory);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            
+            // CSharp mode
+            else if (entityMode is EntityMode.Entity or EntityMode.EntitySingleton)
+            {
+                switch (args.factoryMode)
+                {
+                    case EntityFactoryMode.None:
+                        break;
+                    case EntityFactoryMode.ScriptableEntityFactory:
+                        ScriptableEntityFactoryGenerator.GenerateFile(concreteType, interfaceType, ns,
+                            directory,
+                            imports);
+                        break;
+                    case EntityFactoryMode.SceneEntityFactory:
+                        SceneEntityFactoryGenerator.GenerateFile(concreteType, interfaceType, ns, directory,
+                            imports);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            
+                // if (args.viewRequired)
+                // {
+                //     EntityViewGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
+                //     EntityCollectionViewGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
+                //         directory);
+                //     EntityViewCatalogGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
+                //         directory);
+                //     EntityViewPoolGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
+                // }
+            
+                switch (args.bakerMode)
+                {
+                    case EntityBakerMode.None:
+                        break;
+                    case EntityBakerMode.SceneEntityBaker:
+                        SceneEntityBakerGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
+                            directory);
+                        break;
+                    case EntityBakerMode.SceneEntityBakerOptimized:
+                        SceneEntityBakerOptimizedGenerator.GenerateFile(concreteType, interfaceType, ns,
+                            imports, directory);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
         }
     }
 }

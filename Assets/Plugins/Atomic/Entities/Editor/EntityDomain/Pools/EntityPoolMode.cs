@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     [Flags]
-    internal enum PoolMode
+    internal enum EntityPoolMode
     {
         None = 0,
         SceneEntityPool = 1,

@@ -9,7 +9,7 @@ namespace Atomic.Entities
     internal static class EntityAspectGenerator
     {
         public static void Generate(
-            AspectMode mode,
+            EntityAspectMode mode,
             string concreteType,
             string interfaceType,
             string ns,
@@ -29,8 +29,8 @@ namespace Atomic.Entities
                 return;
             }
             
-            bool scriptableAspectRequired = mode.HasFlag(AspectMode.ScriptableEntityAspect);
-            bool sceneAspectRequired = mode.HasFlag(AspectMode.SceneEntityAspect);
+            bool scriptableAspectRequired = mode.HasFlag(EntityAspectMode.ScriptableEntityAspect);
+            bool sceneAspectRequired = mode.HasFlag(EntityAspectMode.SceneEntityAspect);
             bool bothRequired = scriptableAspectRequired && sceneAspectRequired;
 
             if (scriptableAspectRequired)
@@ -41,7 +41,7 @@ namespace Atomic.Entities
                     ns,
                     directory,
                     imports,
-                    AspectMode.ScriptableEntityAspect,
+                    EntityAspectMode.ScriptableEntityAspect,
                     bothRequired
                 );
             }
@@ -54,7 +54,7 @@ namespace Atomic.Entities
                     ns,
                     directory,
                     imports,
-                    AspectMode.SceneEntityAspect,
+                    EntityAspectMode.SceneEntityAspect,
                     bothRequired
                 );
             }
@@ -66,7 +66,7 @@ namespace Atomic.Entities
             string ns,
             string directory,
             string[] imports,
-            AspectMode mode,
+            EntityAspectMode mode,
             bool usePrefix
         )
         {
@@ -77,7 +77,7 @@ namespace Atomic.Entities
 
             switch (mode)
             {
-                case AspectMode.SceneEntityAspect:
+                case EntityAspectMode.SceneEntityAspect:
                     prefix = usePrefix ? "Scene" : string.Empty;
                     baseType = "SceneEntityAspect";
                     summary =
@@ -89,7 +89,7 @@ namespace Atomic.Entities
                         "Attach this component to a GameObject in your scene to use it.";
                     break;
 
-                case AspectMode.ScriptableEntityAspect:
+                case EntityAspectMode.ScriptableEntityAspect:
                     prefix = usePrefix ? "Scriptable" : string.Empty;
                     baseType = "ScriptableEntityAspect";
                     summary =
@@ -101,7 +101,7 @@ namespace Atomic.Entities
                         "Create and configure instances via the Unity project assets.";
                     break;
 
-                case AspectMode.None:
+                case EntityAspectMode.None:
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, "Unsupported aspect mode.");
             }

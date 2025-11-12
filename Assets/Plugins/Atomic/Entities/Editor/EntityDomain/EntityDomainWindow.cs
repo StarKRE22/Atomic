@@ -8,8 +8,10 @@ namespace Atomic.Entities
     {
         [SerializeField]
         private string _entityType = "CustomEntity";
+        
         [SerializeField]
         private string _namespace = "SampleGame";
+        
         [SerializeField]
         private string _directory = "Assets/Scripts/";
 
@@ -18,28 +20,44 @@ namespace Atomic.Entities
 
         [SerializeField]
         private bool _proxyRequired = true;
+        
         [SerializeField]
         private bool _worldRequired = true;
-        [SerializeField]
-        private bool _viewRequired = true;
 
         [SerializeField]
-        private InstallerMode _installerMode = InstallerMode.ScriptableEntityInstaller |
-                                               InstallerMode.SceneEntityInstaller;
+        private EntityInstallerMode _installerMode =
+            EntityInstallerMode.ScriptableEntityInstaller |
+            EntityInstallerMode.SceneEntityInstaller;
 
         [SerializeField]
-        private AspectMode _aspectMode = AspectMode.SceneEntityAspect | AspectMode.ScriptableEntityAspect;
+        private EntityAspectMode _aspectMode =
+            EntityAspectMode.SceneEntityAspect |
+            EntityAspectMode.ScriptableEntityAspect;
 
         [SerializeField]
-        private PoolMode _poolMode = PoolMode.SceneEntityPool | PoolMode.PrefabEntityPool;
+        private EntityPoolMode _poolMode =
+            EntityPoolMode.SceneEntityPool |
+            EntityPoolMode.PrefabEntityPool;
 
         [SerializeField]
-        private FactoryMode _factoryMode = FactoryMode.ScriptableEntityFactory | FactoryMode.SceneEntityFactory;
+        private EntityFactoryMode _factoryMode =
+            EntityFactoryMode.ScriptableEntityFactory |
+            EntityFactoryMode.SceneEntityFactory;
 
         [SerializeField]
-        private BakerMode _bakerMode = BakerMode.SceneEntityBaker | BakerMode.SceneEntityBakerOptimized;
+        private EntityBakerMode _bakerMode =
+            EntityBakerMode.SceneEntityBaker |
+            EntityBakerMode.SceneEntityBakerOptimized;
+
+        [SerializeField]
+        private EntityViewMode _viewMode =
+            EntityViewMode.EntityView |
+            EntityViewMode.EntityViewCatalog |
+            EntityViewMode.EntityViewPool |
+            EntityViewMode.EntityCollectionView;
 
         private readonly List<string> _imports = new();
+        
         private Vector2 _scrollPos;
 
         [MenuItem("Window/Atomic/Entities/Entity Domain Generator")]
@@ -87,13 +105,12 @@ namespace Atomic.Entities
             if (GUILayout.Button("Generate", GUILayout.Width(90)))
             {
                 EntityInterfaceGenerator.Generate($"I{_entityType}", _namespace, _imports.ToArray(), _directory);
-                EntityConcreteGenerator.Generate(_entityMode, _entityType, $"I{_entityType}", _namespace, _imports.ToArray(), _directory);
+                EntityConcreteGenerator.Generate(_entityMode, _entityType, $"I{_entityType}", _namespace,
+                    _imports.ToArray(), _directory);
                 EntityBehaviourGenerator.Generate($"I{_entityType}", _namespace, _imports.ToArray(), _directory);
             }
-            
-          
 
-            
+
             EditorGUILayout.EndHorizontal();
         }
 
@@ -131,9 +148,8 @@ namespace Atomic.Entities
             GUILayout.Label("Generation Options", EditorStyles.boldLabel);
             GUILayout.Space(4);
 
-            _proxyRequired = EditorGUILayout.ToggleLeft("Generate Proxy", _proxyRequired);
-            _worldRequired = EditorGUILayout.ToggleLeft("Generate World", _worldRequired);
-            _viewRequired = EditorGUILayout.ToggleLeft("Generate View", _viewRequired);
+            _proxyRequired = EditorGUILayout.Toggle("SceneEntityProxy", _proxyRequired);
+            _worldRequired = EditorGUILayout.Toggle("SceneEntityWorld", _worldRequired);
 
             GUILayout.Space(6);
             this.DrawInstallers();
@@ -143,24 +159,25 @@ namespace Atomic.Entities
 
             GUILayout.Space(4);
             GUILayout.Label("Pool Mode", EditorStyles.boldLabel);
-            _poolMode = (PoolMode) EditorGUILayout.EnumFlagsField(_poolMode);
+            _poolMode = (EntityPoolMode) EditorGUILayout.EnumFlagsField(_poolMode);
 
             GUILayout.Space(4);
             GUILayout.Label("Factory Mode", EditorStyles.boldLabel);
-            _factoryMode = (FactoryMode) EditorGUILayout.EnumFlagsField(_factoryMode);
+            _factoryMode = (EntityFactoryMode) EditorGUILayout.EnumFlagsField(_factoryMode);
 
             GUILayout.Space(4);
             GUILayout.Label("Baker Mode", EditorStyles.boldLabel);
-            _bakerMode = (BakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
+            _bakerMode = (EntityBakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
         }
 
         private void DrawInstallers()
         {
             EditorGUILayout.BeginHorizontal();
 
-            GUILayout.Label("Installers", EditorStyles.boldLabel, GUILayout.Width(70));
-            _installerMode = (InstallerMode) EditorGUILayout.EnumFlagsField(_installerMode, GUILayout.ExpandWidth(true));
-            
+            GUILayout.Label("Installers", GUILayout.Width(70));
+            _installerMode =
+                (EntityInstallerMode) EditorGUILayout.EnumFlagsField(_installerMode, GUILayout.ExpandWidth(true));
+
             if (GUILayout.Button("Generate", GUILayout.Width(90)))
             {
                 EntityInstallerGenerator.Generate(
@@ -172,7 +189,7 @@ namespace Atomic.Entities
                     _imports.ToArray()
                 );
             }
-            
+
             EditorGUILayout.EndHorizontal();
         }
 
@@ -180,9 +197,9 @@ namespace Atomic.Entities
         {
             EditorGUILayout.BeginHorizontal();
 
-            GUILayout.Label("Aspects", EditorStyles.boldLabel, GUILayout.Width(70));
-            _aspectMode = (AspectMode) EditorGUILayout.EnumFlagsField(_aspectMode, GUILayout.ExpandWidth(true));
-            
+            GUILayout.Label("Aspects", GUILayout.Width(70));
+            _aspectMode = (EntityAspectMode) EditorGUILayout.EnumFlagsField(_aspectMode, GUILayout.ExpandWidth(true));
+
             if (GUILayout.Button("Generate", GUILayout.Width(90)))
             {
                 EntityAspectGenerator.Generate(
@@ -194,10 +211,10 @@ namespace Atomic.Entities
                     _imports.ToArray()
                 );
             }
-            
+
             EditorGUILayout.EndHorizontal();
         }
-        
+
         private void DrawImports()
         {
             GUILayout.Space(10);
@@ -239,12 +256,12 @@ namespace Atomic.Entities
                     entityMode = _entityMode,
                     proxyRequired = _proxyRequired,
                     worldRequired = _worldRequired,
-                    viewRequired = _viewRequired,
                     installerMode = _installerMode,
                     aspectMode = _aspectMode,
                     poolMode = _poolMode,
                     factoryMode = _factoryMode,
-                    bakerMode = _bakerMode
+                    bakerMode = _bakerMode,
+                    viewMode = _viewMode
                 });
             }
         }

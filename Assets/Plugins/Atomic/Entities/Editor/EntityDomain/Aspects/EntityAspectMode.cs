@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     [Flags]
-    internal enum AspectMode
+    internal enum EntityAspectMode
     {
         None = 0,
         ScriptableEntityAspect = 1,

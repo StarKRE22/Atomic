@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     [Flags]
-    internal enum BakerMode
+    internal enum EntityBakerMode
     {
         None = 0,
         SceneEntityBaker = 1,

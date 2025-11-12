@@ -9,7 +9,7 @@ namespace Atomic.Entities
     internal static class EntityInstallerGenerator
     {
         public static void Generate(
-            InstallerMode mode,
+            EntityInstallerMode mode,
             string entityType,
             string entityInterface,
             string ns,
@@ -29,8 +29,8 @@ namespace Atomic.Entities
                 return;
             }
 
-            bool scriptableInstallerRequired = mode.HasFlag(InstallerMode.ScriptableEntityInstaller);
-            bool sceneInstallerRequired = mode.HasFlag(InstallerMode.SceneEntityInstaller);
+            bool scriptableInstallerRequired = mode.HasFlag(EntityInstallerMode.ScriptableEntityInstaller);
+            bool sceneInstallerRequired = mode.HasFlag(EntityInstallerMode.SceneEntityInstaller);
             bool bothRequired = scriptableInstallerRequired && sceneInstallerRequired;
 
             if (scriptableInstallerRequired)
@@ -41,7 +41,7 @@ namespace Atomic.Entities
                     ns,
                     directory,
                     imports,
-                    InstallerMode.ScriptableEntityInstaller,
+                    EntityInstallerMode.ScriptableEntityInstaller,
                     bothRequired
                 );
             }
@@ -54,7 +54,7 @@ namespace Atomic.Entities
                     ns,
                     directory,
                     imports,
-                    InstallerMode.SceneEntityInstaller,
+                    EntityInstallerMode.SceneEntityInstaller,
                     bothRequired
                 );
             }
@@ -66,7 +66,7 @@ namespace Atomic.Entities
             string ns,
             string directory,
             string[] imports,
-            InstallerMode mode,
+            EntityInstallerMode mode,
             bool usePrefix
         )
         {
@@ -77,7 +77,7 @@ namespace Atomic.Entities
 
             switch (mode)
             {
-                case InstallerMode.SceneEntityInstaller:
+                case EntityInstallerMode.SceneEntityInstaller:
                     prefix = usePrefix ? "Scene" : string.Empty;
                     baseType = "SceneEntityInstaller";
                     summary =
@@ -88,7 +88,7 @@ namespace Atomic.Entities
                         "In the Editor, it supports automatic refresh via <c>OnValidate</c>.";
                     break;
 
-                case InstallerMode.ScriptableEntityInstaller:
+                case EntityInstallerMode.ScriptableEntityInstaller:
                     prefix = usePrefix ? "Scriptable" : string.Empty;
                     baseType = "ScriptableEntityInstaller";
                     summary =
@@ -100,7 +100,7 @@ namespace Atomic.Entities
                         "Supports both runtime and edit-time contexts via utility methods.";
                     break;
 
-                case InstallerMode.None:
+                case EntityInstallerMode.None:
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, "Unsupported installer mode.");
             }

@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     [Flags]
-    internal enum InstallerMode
+    internal enum EntityInstallerMode
     {
         None = 0,
         ScriptableEntityInstaller = 1,
