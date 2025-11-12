@@ -1,16 +1,16 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class BulletCollisionBehaviour : IEntityInit<IGameEntity>, IEntityEnable, IEntityDisable
+    public sealed class BulletCollisionBehaviour : IGameEntityInit, IGameEntityDispose
     {
+        private readonly IGameContext _gameContext;
+
         private IGameEntity _entity;
         private TriggerEvents _trigger;
         private IValue<int> _damage;
         private IAction _destroyAction;
-        private readonly IGameContext _gameContext;
 
         public BulletCollisionBehaviour(IGameContext gameContext)
         {
@@ -23,14 +23,10 @@ namespace ShooterGame.Gameplay
             _destroyAction = entity.GetDestroyAction();
             _damage = entity.GetDamage();
             _trigger = entity.GetTrigger();
-        }
-
-        public void Enable(IEntity entity)
-        {
             _trigger.OnEntered += this.OnTriggerEntered;
         }
 
-        public void Disable(IEntity entity)
+        public void Dispose(IGameEntity entity)
         {
             _trigger.OnEntered -= this.OnTriggerEntered;
         }

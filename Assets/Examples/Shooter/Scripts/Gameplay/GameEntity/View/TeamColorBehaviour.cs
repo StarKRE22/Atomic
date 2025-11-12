@@ -5,7 +5,7 @@ using UnityEngine;
 namespace ShooterGame.Gameplay
 {
     [RunInEditMode]
-    public sealed class TeamColorBehaviour : IEntityInit<IGameEntity>, IEntityDispose
+    public sealed class TeamColorBehaviour : IGameEntityInit, IGameEntityDispose
     {
         private TeamCatalog _catalog;
         private Renderer _renderer;
@@ -22,7 +22,7 @@ namespace ShooterGame.Gameplay
             _team.Observe(this.OnTeamChanged);
         }
 
-        public void Dispose(IEntity entity)
+        public void Dispose(IGameEntity entity)
         {
             _team.Unsubscribe(this.OnTeamChanged);
         }

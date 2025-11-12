@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class BulletViewInstaller : SceneEntityInstaller<IGameEntity>
+    public sealed class BulletViewInstaller : GameEntityInstaller
     {
         [SerializeField]
         private Renderer _renderer;

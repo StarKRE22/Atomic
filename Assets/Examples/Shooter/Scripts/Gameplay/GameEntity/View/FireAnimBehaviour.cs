@@ -1,10 +1,9 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class FireAnimBehaviour : IEntityInit<IGameEntity>, IEntityDispose
+    public sealed class FireAnimBehaviour : IGameEntityInit, IGameEntityDispose
     {
         private static readonly int Fire = Animator.StringToHash(nameof(Fire));
 
@@ -18,7 +17,7 @@ namespace ShooterGame.Gameplay
             _fireEvent.Subscribe(this.OnFire);
         }
 
-        public void Dispose(IEntity entity)
+        public void Dispose(IGameEntity entity)
         {
             _fireEvent.Unsubscribe(this.OnFire);
         }

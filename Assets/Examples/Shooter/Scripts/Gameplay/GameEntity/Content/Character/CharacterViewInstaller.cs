@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class CharacterViewInstaller : SceneEntityInstaller<IGameEntity>
+    public sealed class CharacterViewInstaller : GameEntityInstaller
     {
         [SerializeField]
         private Renderer _renderer;
@@ -35,8 +35,12 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private HitPointsView _hitPointsView;
 
+        private readonly DisposableComposite _disposables = new();
+
         public override void Install(IGameEntity entity)
         {
+            GameContext.TryGetInstance(out GameContext gameContext);
+            
             entity.AddRenderer(_renderer);
             entity.AddAnimator(_animator);
 
@@ -45,15 +49,20 @@ namespace ShooterGame.Gameplay
             entity.AddBehaviour<TakeDamageAnimBehaviour>();
             entity.AddBehaviour(new DeathAnimBehaviour(_viewGO));
             entity.AddBehaviour<FireAnimBehaviour>();
-            entity.AddBehaviour(new TakeDamageBloodBehaviour(_bloodVfx));
-            entity.AddBehaviour(new CameraBillboardBehaviour(_canvas));
+            entity.AddBehaviour(new TakeDamageBloodBehaviour(gameContext, _bloodVfx));
+            entity.AddBehaviour(new CameraBillboardBehaviour(gameContext, _canvas));
 
             entity.AddHitPointsView(_hitPointsView);
             entity.AddBehaviour<HitPointsPresenter>();
             
-            entity.GetTakeDamageEvent().Subscribe(_ => _audioSource.PlayOneShot(_damageClip));
-            entity.GetTakeDeathEvent().Subscribe(_ => _audioSource.PlayOneShot(_deathClip));
-            entity.GetRespawnEvent().Subscribe(() => _viewGO.SetActive(true));
+            entity.GetTakeDamageEvent().Subscribe(_ => _audioSource.PlayOneShot(_damageClip)).AddTo(_disposables);
+            entity.GetTakeDeathEvent().Subscribe(_ => _audioSource.PlayOneShot(_deathClip)).AddTo(_disposables);
+            entity.GetRespawnEvent().Subscribe(() => _viewGO.SetActive(true)).AddTo(_disposables);
+        }
+
+        public override void Uninstall(IGameEntity entity)
+        {
+            _disposables.Dispose();
         }
     }
 }

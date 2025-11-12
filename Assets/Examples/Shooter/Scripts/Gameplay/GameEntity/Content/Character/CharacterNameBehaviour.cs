@@ -1,9 +1,8 @@
 using Atomic.Elements;
-using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class CharacterNameBehaviour : IEntityInit<IGameEntity>, IEntityDispose
+    public sealed class CharacterNameBehaviour : IGameEntityInit, IGameEntityDispose
     {
         private const string NAME_FORMAT = "Character ({0})";
         
@@ -17,7 +16,7 @@ namespace ShooterGame.Gameplay
             _teamType.Observe(this.OnTeamChanged);
         }
 
-        public void Dispose(IEntity entity)
+        public void Dispose(IGameEntity entity)
         {
             _teamType.Unsubscribe(this.OnTeamChanged);
         }

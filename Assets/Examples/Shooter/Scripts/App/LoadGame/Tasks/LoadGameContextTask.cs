@@ -1,4 +1,3 @@
-using Atomic.Entities;
 using Cysharp.Threading.Tasks;
 using ShooterGame.Gameplay;
 using UnityEngine;
@@ -17,7 +16,7 @@ namespace ShooterGame.App
         public UniTask Invoke(IAppContext context, LoadGameBundle bundle)
         {
             GameContext gameContext = GameObject.Instantiate(_prefab);
-            gameContext.AddBehaviour<GameOverObserver>();
+            gameContext.AddBehaviour(new GameOverObserver(context));
             return UniTask.CompletedTask;
         }
     }

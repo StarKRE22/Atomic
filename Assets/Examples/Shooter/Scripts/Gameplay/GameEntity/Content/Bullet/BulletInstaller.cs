@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class BulletInstaller : SceneEntityInstaller<IGameEntity>
+    public sealed class BulletInstaller : GameEntityInstaller
     {
         [SerializeField]
         private GameObject _gameObject;
@@ -38,11 +38,11 @@ namespace ShooterGame.Gameplay
 
             //Team
             entity.AddTeamType(new ReactiveVariable<TeamType>());
-            entity.AddBehaviour<TeamPhysicsLayerBehaviour>();
+            entity.AddBehaviour(new TeamPhysicsLayerBehaviour(gameContext));
 
             //Move
             entity.AddMovementSpeed(_moveSpeed);
-            entity.AddBehaviour<BulletMoveBehaviour>();
+            entity.AddBehaviour<MovementBehaviour>();
 
             //Physics
             entity.AddTrigger(_trigger);

@@ -1,16 +1,15 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class MoveAnimBehaviour : IEntityInit<IGameEntity>, IEntityDispose, IEntityLateTick
+    public sealed class MoveAnimBehaviour : IGameEntityInit, IGameEntityDispose, IGameEntityLateTick
     {
         private static readonly int IsMoving = Animator.StringToHash(nameof(IsMoving));
 
         private Animator _animator;
         private ISignal<Vector3> _moveEvent;
-        private IReactiveVariable<bool> _isMoving;
+        private IReactiveValue<bool> _isMoving;
 
         private readonly float _moveDuration;
         private float _moveTime;
@@ -27,18 +26,18 @@ namespace ShooterGame.Gameplay
             _moveEvent.Subscribe(this.OnMoved);
         }
 
-        public void Dispose(IEntity entity)
+        public void Dispose(IGameEntity entity)
         {
             _moveEvent.Unsubscribe(this.OnMoved);
         }
-        
+
         private void OnMoved(Vector3 _)
         {
             _animator.SetBool(IsMoving, true);
             _moveTime = _moveDuration;
         }
 
-        public void LateTick(IEntity entity, float deltaTime)
+        public void LateTick(IGameEntity entity, float deltaTime)
         {
             if (_moveTime <= 0)
                 return;

@@ -1,11 +1,10 @@
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
     public static class BulletUseCase
     {
-        public static IEntity Spawn(
+        public static IGameEntity Spawn(
             IGameContext context,
             Vector3 position,
             Quaternion rotation,

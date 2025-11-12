@@ -5,7 +5,7 @@ using Event = Atomic.Elements.Event;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
+    public sealed class CharacterInstaller : GameEntityInstaller
     {
         [SerializeField]
         private GameObject _gameObject;
@@ -36,13 +36,15 @@ namespace ShooterGame.Gameplay
 
         public override void Install(IGameEntity entity)
         {
+            GameContext.TryGetInstance(out GameContext gameContext);
+            
             //Transform:
             entity.AddPosition(new TransformPositionVariable(_transform));
             entity.AddRotation(new TransformRotationVariable(_transform));
 
             //Team:
             entity.AddTeamType(_teamType);
-            entity.AddBehaviour<TeamPhysicsLayerBehaviour>();
+            entity.AddBehaviour(new TeamPhysicsLayerBehaviour(gameContext));
 
             //Life:
             entity.AddDamageableTag();
@@ -62,7 +64,7 @@ namespace ShooterGame.Gameplay
             entity.AddMovementDirection(new ReactiveVector3());
             entity.AddMovementCondition(new AndExpression(_health.Exists));
             entity.AddMovementEvent(new Event<Vector3>());
-            entity.AddBehaviour<KinematicMovementBehaviour>();
+            entity.AddBehaviour<RigidbodyMovementBehaviour>();
 
             //Rotation:
             entity.AddRotationSpeed(_rotationSpeed);

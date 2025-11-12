@@ -1,10 +1,9 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class TakeDamageAnimBehaviour : IEntityInit<IGameEntity>, IEntityDispose
+    public sealed class TakeDamageAnimBehaviour : IGameEntityInit, IGameEntityDispose
     {
         private static readonly int TakeDamage = Animator.StringToHash(nameof(TakeDamage));
 
@@ -18,8 +17,14 @@ namespace ShooterGame.Gameplay
             _damageEvent.Subscribe(this.OnDamageTaken);
         }
 
-        public void Dispose(IEntity entity) => _damageEvent.Unsubscribe(this.OnDamageTaken);
+        public void Dispose(IGameEntity entity)
+        {
+            _damageEvent.Unsubscribe(this.OnDamageTaken);
+        }
 
-        private void OnDamageTaken(DamageArgs _) => _animator.SetTrigger(TakeDamage);
+        private void OnDamageTaken(DamageArgs _)
+        {
+            _animator.SetTrigger(TakeDamage);
+        }
     }
 }

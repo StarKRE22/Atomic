@@ -1,11 +1,10 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class RotationBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick
+    public sealed class RotationBehaviour : IGameEntityInit, IGameEntityFixedTick
     {
         private IVariable<Quaternion> _rotation;
         private IValue<float> _rotationSpeed;
@@ -20,7 +19,7 @@ namespace ShooterGame.Gameplay
             _rotationCondition = entity.GetRotationCondition();
         }
 
-        public void FixedTick(IEntity entity, float deltaTime)
+        public void FixedTick(IGameEntity entity, float deltaTime)
         {
             if (!_rotationCondition.Invoke())
                 return;

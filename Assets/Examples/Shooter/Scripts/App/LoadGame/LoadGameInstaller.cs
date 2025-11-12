@@ -1,11 +1,12 @@
 using System;
+using Atomic.Entities;
 using ShooterGame.Gameplay;
 using UnityEngine;
 
 namespace ShooterGame.App
 {
     [Serializable]
-    public sealed class LoadGameInstaller : IAppContextInstaller
+    public sealed class LoadGameInstaller : IEntityInstaller<IAppContext>
     {
         [SerializeField]
         private string _levelNameFormat = "ShooterGame (Level{0})";

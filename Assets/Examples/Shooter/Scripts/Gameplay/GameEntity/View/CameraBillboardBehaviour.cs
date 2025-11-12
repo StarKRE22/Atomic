@@ -1,26 +1,27 @@
 using System;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class CameraBillboardBehaviour : IEntityInit<IGameEntity>, IEntityLateTick
+    public sealed class CameraBillboardBehaviour : IGameEntityInit, IGameEntityLateTick
     {
+        private readonly IGameContext _gameContext;
         private readonly Transform _target;
         private Transform _camera;
 
-        public CameraBillboardBehaviour(Transform target)
+        public CameraBillboardBehaviour(IGameContext gameContext, Transform target)
         {
+            _gameContext = gameContext;
             _target = target ?? throw new ArgumentNullException(nameof(target));
         }
 
         public void Init(IGameEntity entity)
         {
-            IPlayerContext playerContext = PlayersUseCase.GetPlayerFor(GameContext.Instance, entity);
+            IPlayerContext playerContext = PlayersUseCase.GetPlayer(_gameContext, entity);
             _camera = playerContext.GetCamera().transform;
         }
 
-        public void LateTick(IEntity entity, float deltaTime)
+        public void LateTick(IGameEntity entity, float deltaTime)
         {
             Vector3 dir = _target.position - _camera.position;
             _target.rotation = Quaternion.LookRotation(dir, _camera.up);

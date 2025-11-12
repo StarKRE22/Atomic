@@ -1,6 +1,4 @@
-
 using Atomic.Elements;
-using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {

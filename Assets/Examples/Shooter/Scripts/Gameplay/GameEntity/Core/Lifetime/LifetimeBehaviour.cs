@@ -1,9 +1,8 @@
 using Atomic.Elements;
-using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class LifetimeBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick
+    public sealed class LifetimeBehaviour : IGameEntityInit, IGameEntityFixedTick
     {
         private Cooldown _lifetime;
         private IAction _destroyAction;
@@ -14,11 +13,11 @@ namespace ShooterGame.Gameplay
             _lifetime = entity.GetLifetime();
         }
 
-        public void FixedTick(IEntity entity, float deltaTime)
+        public void FixedTick(IGameEntity entity, float deltaTime)
         {
             _lifetime.Tick(deltaTime);
-            
-            if (_lifetime.IsCompleted()) 
+
+            if (_lifetime.IsCompleted())
                 _destroyAction.Invoke();
         }
     }

@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
     [Serializable]
-    public sealed class SpawnPointsInstaller : IGameContextInstaller
+    public sealed class SpawnPointsInstaller : IEntityInstaller<IGameContext>
     {
         private const string SPAWN_POINT_TAG = "Respawn";
 

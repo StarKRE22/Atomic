@@ -20,7 +20,8 @@ namespace ShooterGame.UI
             ScreenView previousScreen = currentScreenPtr.Value;
             if (previousScreen)
             {
-                IEntityBehaviour previousPresenter = screens[previousScreen.GetType()].Item2;
+                Type previousScreenType = previousScreen.GetType();
+                IEntityBehaviour previousPresenter = screens[previousScreenType].Item2;
                 previousScreen.Hide();
                 context.DelBehaviour(previousPresenter);
             }

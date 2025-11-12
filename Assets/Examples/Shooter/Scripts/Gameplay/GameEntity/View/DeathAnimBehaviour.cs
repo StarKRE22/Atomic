@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class DeathAnimBehaviour : IEntityInit<IGameEntity>, IEntityDispose
+    public sealed class DeathAnimBehaviour : IGameEntityInit, IGameEntityDispose
     {
         private static readonly int Death = Animator.StringToHash(nameof(Death));
 
@@ -29,9 +29,13 @@ namespace ShooterGame.Gameplay
             _health.OnHealthEmpty += this.OnDeath;
         }
 
-        public void Dispose(IEntity entity)
+        public void Dispose(IGameEntity entity)
         {
             _health.OnHealthEmpty -= this.OnDeath;
+        }
+
+        public void Dispose(IEntity entity)
+        {
         }
 
         private async void OnDeath()

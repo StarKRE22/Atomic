@@ -20,6 +20,7 @@ namespace ShooterGame.App
             {
                 {"level", level}
             };
+            
             ILoadingTask loadingTask = context.GetGameLoadingAction();
             return loadingTask.Invoke(context, bundle);
         }

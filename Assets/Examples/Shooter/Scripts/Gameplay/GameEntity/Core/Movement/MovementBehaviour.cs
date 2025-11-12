@@ -1,10 +1,9 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class BulletMoveBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick
+    public sealed class MovementBehaviour : IGameEntityInit, IGameEntityFixedTick
     {
         private IVariable<Vector3> _position;
         private IValue<Quaternion> _rotation;
@@ -17,7 +16,7 @@ namespace ShooterGame.Gameplay
             _moveSpeed = entity.GetMovementSpeed();
         }
 
-        public void FixedTick(IEntity entity, float deltaTime)
+        public void FixedTick(IGameEntity entity, float deltaTime)
         {
             _position.Value += _moveSpeed.Value * deltaTime * (_rotation.Value * Vector3.forward);
         }

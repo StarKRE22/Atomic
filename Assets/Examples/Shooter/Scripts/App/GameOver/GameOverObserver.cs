@@ -5,7 +5,13 @@ namespace ShooterGame.App
 {
     public sealed class GameOverObserver : IGameContextInit, IGameContextDispose
     {
+        private readonly IAppContext _appContext;
         private ISignal _gameOverEvent;
+
+        public GameOverObserver(IAppContext appContext)
+        {
+            _appContext = appContext;
+        }
 
         public void Init(IGameContext context)
         {
@@ -20,7 +26,7 @@ namespace ShooterGame.App
 
         private void OnGameOver()
         {
-            LevelsUseCase.IncrementLevel(AppContext.Instance);
+            LevelsUseCase.IncrementLevel(_appContext);
             MenuUseCase.LoadMenu().Forget();
         }
     }
