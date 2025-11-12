@@ -8,10 +8,10 @@ namespace Atomic.Entities
     {
         [SerializeField]
         private string _entityType = "CustomEntity";
-        
+
         [SerializeField]
         private string _namespace = "SampleGame";
-        
+
         [SerializeField]
         private string _directory = "Assets/Scripts/";
 
@@ -20,7 +20,7 @@ namespace Atomic.Entities
 
         [SerializeField]
         private bool _proxyRequired = true;
-        
+
         [SerializeField]
         private bool _worldRequired = true;
 
@@ -57,7 +57,7 @@ namespace Atomic.Entities
             EntityViewMode.EntityCollectionView;
 
         private readonly List<string> _imports = new();
-        
+
         private Vector2 _scrollPos;
 
         [MenuItem("Window/Atomic/Entities/Entity Domain Generator")]
@@ -144,11 +144,9 @@ namespace Atomic.Entities
         // --- Основные опции генерации ---
         private void DrawOptions()
         {
-            GUILayout.Space(6);
-            GUILayout.Label("Generation Options", EditorStyles.boldLabel);
             GUILayout.Space(4);
 
-            _proxyRequired = EditorGUILayout.Toggle("SceneEntityProxy", _proxyRequired);
+            DrawProxy();
             _worldRequired = EditorGUILayout.Toggle("SceneEntityWorld", _worldRequired);
 
             GUILayout.Space(6);
@@ -168,6 +166,30 @@ namespace Atomic.Entities
             GUILayout.Space(4);
             GUILayout.Label("Baker Mode", EditorStyles.boldLabel);
             _bakerMode = (EntityBakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
+        }
+
+        private void DrawProxy()
+        {
+            using (new EditorGUI.DisabledScope(
+                       _entityMode is not (EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)))
+            {
+                EditorGUILayout.BeginHorizontal();
+
+                _proxyRequired = EditorGUILayout.Toggle("SceneEntityProxy", _proxyRequired);
+
+                if (GUILayout.Button("Generate", GUILayout.Width(90)))
+                {
+                    SceneEntityProxyGenerator.Generate(
+                        _entityType,
+                        $"I{_entityType}",
+                        _namespace,
+                        _imports.ToArray(),
+                        _directory
+                    );
+                }
+
+                EditorGUILayout.EndHorizontal();
+            }
         }
 
         private void DrawInstallers()

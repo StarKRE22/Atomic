@@ -8,7 +8,7 @@ namespace Atomic.Entities
 {
     internal static class SceneEntityWorldGenerator
     {
-        public static void GenerateFile(string entityType, string ns, string[] imports, string directory)
+        public static void Generate(string entityType, string ns, string[] imports, string directory)
         {
             if (string.IsNullOrWhiteSpace(entityType))
             {

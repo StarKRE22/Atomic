@@ -42,11 +42,11 @@ namespace Atomic.Entities
             if (entityMode is EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)
             {
                 if (args.proxyRequired)
-                    SceneEntityProxyGenerator.GenerateFile(concreteType, interfaceType, ns, imports,
+                    SceneEntityProxyGenerator.Generate(concreteType, interfaceType, ns, imports,
                         directory);
             
                 if (args.worldRequired)
-                    SceneEntityWorldGenerator.GenerateFile(concreteType, ns, imports, directory);
+                    SceneEntityWorldGenerator.Generate(concreteType, ns, imports, directory);
             
                 switch (args.poolMode)
                 {
