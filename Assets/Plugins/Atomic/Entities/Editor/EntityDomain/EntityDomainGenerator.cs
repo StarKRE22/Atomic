@@ -42,28 +42,14 @@ namespace Atomic.Entities
             if (entityMode is EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)
             {
                 if (args.proxyRequired)
-                    SceneEntityProxyGenerator.Generate(concreteType, interfaceType, ns, imports,
-                        directory);
-            
+                    SceneEntityProxyGenerator.Generate(concreteType, interfaceType, ns, imports, directory);
+
                 if (args.worldRequired)
                     SceneEntityWorldGenerator.Generate(concreteType, ns, imports, directory);
-            
-                switch (args.poolMode)
-                {
-                    case EntityPoolMode.None:
-                        break;
-                    case EntityPoolMode.SceneEntityPool:
-                        SceneEntityPoolGenerator.GenerateFile(concreteType, interfaceType, ns, directory,
-                            imports);
-                        break;
-                    case EntityPoolMode.PrefabEntityPool:
-                        PrefabEntityPoolGenerator.GenerateFile(concreteType, ns, imports, directory);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+
+                EntityPoolGenerator.Generate(args.poolMode, concreteType, interfaceType, ns, directory, imports);
             }
-            
+
             // CSharp mode
             else if (entityMode is EntityMode.Entity or EntityMode.EntitySingleton)
             {
@@ -83,7 +69,7 @@ namespace Atomic.Entities
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-            
+
                 // if (args.viewRequired)
                 // {
                 //     EntityViewGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
@@ -93,7 +79,7 @@ namespace Atomic.Entities
                 //         directory);
                 //     EntityViewPoolGenerator.GenerateFile(concreteType, interfaceType, ns, imports, directory);
                 // }
-            
+
                 switch (args.bakerMode)
                 {
                     case EntityBakerMode.None:

@@ -150,14 +150,13 @@ namespace Atomic.Entities
             DrawWorld();
 
             GUILayout.Space(6);
-            this.DrawInstallers();
+            DrawInstallers();
 
             GUILayout.Space(4);
             DrawAspects();
 
             GUILayout.Space(4);
-            GUILayout.Label("Pool Mode", EditorStyles.boldLabel);
-            _poolMode = (EntityPoolMode) EditorGUILayout.EnumFlagsField(_poolMode);
+            DrawPools();
 
             GUILayout.Space(4);
             GUILayout.Label("Factory Mode", EditorStyles.boldLabel);
@@ -166,6 +165,31 @@ namespace Atomic.Entities
             GUILayout.Space(4);
             GUILayout.Label("Baker Mode", EditorStyles.boldLabel);
             _bakerMode = (EntityBakerMode) EditorGUILayout.EnumFlagsField(_bakerMode);
+        }
+
+        private void DrawPools()
+        {
+            using (new EditorGUI.DisabledScope(_entityMode is not (EntityMode.SceneEntity or EntityMode.SceneEntitySingleton)))
+            {
+                EditorGUILayout.BeginHorizontal();
+                
+                GUILayout.Label("Pools", GUILayout.Width(70));
+                _poolMode = (EntityPoolMode) EditorGUILayout.EnumFlagsField(_poolMode, GUILayout.ExpandWidth(true));
+                
+                if (GUILayout.Button("Generate", GUILayout.Width(90)))
+                {
+                    EntityPoolGenerator.Generate(
+                        _poolMode,
+                        _entityType,
+                        $"I{_entityType}",
+                        _namespace,
+                        _directory,
+                        _imports.ToArray()
+                    );
+                }
+                
+                EditorGUILayout.EndHorizontal();
+            }
         }
 
         private void DrawProxy()
