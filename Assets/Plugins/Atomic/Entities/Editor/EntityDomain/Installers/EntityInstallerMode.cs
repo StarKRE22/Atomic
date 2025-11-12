@@ -6,7 +6,8 @@ namespace Atomic.Entities
     internal enum EntityInstallerMode
     {
         None = 0,
-        ScriptableEntityInstaller = 1,
-        SceneEntityInstaller = 2
+        IEntityInstaller = 1,
+        ScriptableEntityInstaller = 2,
+        SceneEntityInstaller = 4
     }
 }

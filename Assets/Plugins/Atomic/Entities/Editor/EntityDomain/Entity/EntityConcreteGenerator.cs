@@ -128,9 +128,6 @@ namespace Atomic.Entities
                         $"{Indent}/// A base class for singleton scene entities. Ensures a single instance of the entity exists");
                     sb.AppendLine(
                         $"{Indent}/// per scene or globally, depending on the <see cref=\"_dontDestroyOnLoad\"/> flag.");
-                    sb.AppendLine($"{Indent}/// </summary>");
-                    sb.AppendLine(
-                        $"{Indent}/// <typeparam name=\"E\">The concrete type of the singleton scene entity.</typeparam>");
                     break;
 
                 default:

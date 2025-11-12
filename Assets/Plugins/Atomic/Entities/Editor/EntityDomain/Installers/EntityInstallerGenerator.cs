@@ -31,6 +31,8 @@ namespace Atomic.Entities
 
             bool scriptableInstallerRequired = mode.HasFlag(EntityInstallerMode.ScriptableEntityInstaller);
             bool sceneInstallerRequired = mode.HasFlag(EntityInstallerMode.SceneEntityInstaller);
+            bool iInstallerRequired = mode.HasFlag(EntityInstallerMode.IEntityInstaller);
+
             bool bothRequired = scriptableInstallerRequired && sceneInstallerRequired;
 
             if (scriptableInstallerRequired)
@@ -57,6 +59,11 @@ namespace Atomic.Entities
                     EntityInstallerMode.SceneEntityInstaller,
                     bothRequired
                 );
+            }
+
+            if (iInstallerRequired)
+            {
+                GenerateInterfaceFile(entityType, entityInterface, ns, directory, imports);
             }
         }
 
@@ -101,6 +108,7 @@ namespace Atomic.Entities
                     break;
 
                 case EntityInstallerMode.None:
+                case EntityInstallerMode.IEntityInstaller:
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, "Unsupported installer mode.");
             }
@@ -109,9 +117,58 @@ namespace Atomic.Entities
 
             string fileName = $"{prefix}{entityType}Installer.cs";
             string filePath = Path.Combine(directory, fileName);
-            string content = GenerateContent(entityType, entityInterface, ns, imports, prefix, baseType, summary, remarks);
+            string content = GenerateContent(entityType, entityInterface, ns, imports, prefix, baseType, summary,
+                remarks);
 
             File.WriteAllText(filePath, content, Encoding.UTF8);
+            AssetDatabase.Refresh();
+        }
+
+        private static void GenerateInterfaceFile(
+            string entityType,
+            string entityInterface,
+            string ns,
+            string directory,
+            string[] imports
+        )
+        {
+            Directory.CreateDirectory(directory);
+
+            string fileName = $"I{entityType}Installer.cs";
+            string filePath = Path.Combine(directory, fileName);
+
+            var sb = new StringBuilder();
+
+            // --- Header ---
+            sb.AppendLine("using Atomic.Entities;");
+            if (imports is {Length: > 0})
+            {
+                foreach (string import in imports.Where(i => !string.IsNullOrWhiteSpace(i)))
+                {
+                    string clean = import.Trim();
+                    sb.AppendLine(clean.StartsWith("using") ? clean : $"using {clean};");
+                }
+            }
+
+            sb.AppendLine();
+            sb.AppendLine("/**");
+            sb.AppendLine(" * Created by Entity Domain Generator.");
+            sb.AppendLine(" */");
+            sb.AppendLine();
+
+            // --- Namespace ---
+            sb.AppendLine($"namespace {ns}");
+            sb.AppendLine("{");
+            sb.AppendLine("    /// <summary>");
+            sb.AppendLine(
+                $"    /// Interface for installing and configuring an <see cref=\"{entityInterface}\"/> instance.");
+            sb.AppendLine("    /// </summary>");
+            sb.AppendLine($"    public interface I{entityType}Installer : IEntityInstaller<{entityInterface}>");
+            sb.AppendLine("    {");
+            sb.AppendLine("    }");
+            sb.AppendLine("}");
+
+            File.WriteAllText(filePath, sb.ToString(), Encoding.UTF8);
             AssetDatabase.Refresh();
         }
 
@@ -130,7 +187,7 @@ namespace Atomic.Entities
 
             // --- Header ---
             sb.AppendLine("using Atomic.Entities;");
-            if (imports is { Length: > 0 })
+            if (imports is {Length: > 0})
             {
                 foreach (string import in imports.Where(i => !string.IsNullOrWhiteSpace(i)))
                 {

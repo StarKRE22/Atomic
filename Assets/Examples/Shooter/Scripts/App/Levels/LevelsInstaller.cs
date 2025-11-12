@@ -6,7 +6,7 @@ using UnityEngine;
 namespace ShooterGame.App
 {
     [Serializable]
-    public sealed class LevelsInstaller : IEntityInstaller<IAppContext>
+    public sealed class LevelsInstaller : IAppContextInstaller
     {
         [SerializeField]
         private int _startLevel = 1;
