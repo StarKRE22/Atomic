@@ -9,7 +9,7 @@ namespace ShooterGame.App
         public void Init(IAppContext context)
         {
             _currentLevel = context.GetCurrentLevel();
-            _currentLevel.Subscribe(LevelsUseCase.SaveLevel);
+            _currentLevel.OnEvent += LevelsUseCase.SaveLevel;
 
             if (LevelsUseCase.LoadLevel(out int level))
                 _currentLevel.Value = level;
@@ -17,7 +17,7 @@ namespace ShooterGame.App
 
         public void Dispose(IAppContext context)
         {
-            _currentLevel.Unsubscribe(LevelsUseCase.SaveLevel);
+            _currentLevel.OnEvent -= LevelsUseCase.SaveLevel;
         }
     }
 }

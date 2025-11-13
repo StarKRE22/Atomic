@@ -3,12 +3,12 @@ using ShooterGame.Gameplay;
 
 namespace ShooterGame.App
 {
-    public sealed class GameOverObserver : IGameContextInit, IGameContextDispose
+    public sealed class GameCompletionObserver : IGameContextInit, IGameContextDispose
     {
         private readonly IAppContext _appContext;
         private ISignal _gameOverEvent;
 
-        public GameOverObserver(IAppContext appContext)
+        public GameCompletionObserver(IAppContext appContext)
         {
             _appContext = appContext;
         }
@@ -16,18 +16,17 @@ namespace ShooterGame.App
         public void Init(IGameContext context)
         {
             _gameOverEvent = context.GetGameOverEvent();
-            _gameOverEvent.Subscribe(this.OnGameOver);
+            _gameOverEvent.OnEvent += this.OnGameCompleted;
         }
 
         public void Dispose(IGameContext entity)
         {
-            _gameOverEvent.Unsubscribe(this.OnGameOver);
+            _gameOverEvent.OnEvent -= this.OnGameCompleted;
         }
 
-        private void OnGameOver()
+        private void OnGameCompleted()
         {
-            LevelsUseCase.IncrementLevel(_appContext);
-            MenuUseCase.LoadMenu().Forget();
+            LevelsUseCase.TryIncrementLevel(_appContext);
         }
     }
 }

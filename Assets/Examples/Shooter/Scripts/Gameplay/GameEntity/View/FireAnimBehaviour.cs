@@ -14,12 +14,12 @@ namespace ShooterGame.Gameplay
         {
             _animator = entity.GetAnimator();
             _fireEvent = entity.GetFireEvent();
-            _fireEvent.Subscribe(this.OnFire);
+            _fireEvent.OnEvent += this.OnFire;
         }
 
         public void Dispose(IGameEntity entity)
         {
-            _fireEvent.Unsubscribe(this.OnFire);
+            _fireEvent.OnEvent -= this.OnFire;
         }
 
         private void OnFire() => _animator.SetTrigger(Fire);

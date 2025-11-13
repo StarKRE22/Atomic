@@ -21,14 +21,14 @@ namespace ShooterGame.Gameplay
         public void Init(IGameEntity entity)
         {
             _teamType = entity.GetTeamType();
-            _damageEvent = entity.GetTakeDamageEvent();
             _teamCatalog = _gameContext.GetTeamCatalog();
-            _damageEvent.Subscribe(this.OnDamageTaken);
+            _damageEvent = entity.GetTakeDamageEvent();
+            _damageEvent.OnEvent += this.OnDamageTaken;
         }
 
         public void Dispose(IGameEntity entity)
         {
-            _damageEvent.Unsubscribe(this.OnDamageTaken);
+            _damageEvent.OnEvent -= this.OnDamageTaken;
         }
 
         private void OnDamageTaken(DamageArgs obj)

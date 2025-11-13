@@ -14,12 +14,12 @@ namespace ShooterGame.Gameplay
         {
             _animator = entity.GetAnimator();
             _damageEvent = entity.GetTakeDamageEvent();
-            _damageEvent.Subscribe(this.OnDamageTaken);
+            _damageEvent.OnEvent += this.OnDamageTaken;
         }
 
         public void Dispose(IGameEntity entity)
         {
-            _damageEvent.Unsubscribe(this.OnDamageTaken);
+            _damageEvent.OnEvent -= this.OnDamageTaken;
         }
 
         private void OnDamageTaken(DamageArgs _)

@@ -35,6 +35,7 @@ namespace ShooterGame.Gameplay
             //Lifetime
             entity.AddLifetime(_lifetime);
             entity.AddBehaviour<LifetimeBehaviour>();
+            entity.WhenEnable(_lifetime.ResetTime);
 
             //Team
             entity.AddTeamType(new ReactiveVariable<TeamType>());

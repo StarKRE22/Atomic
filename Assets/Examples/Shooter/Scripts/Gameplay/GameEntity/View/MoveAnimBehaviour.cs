@@ -23,12 +23,12 @@ namespace ShooterGame.Gameplay
         {
             _animator = entity.GetAnimator();
             _moveEvent = entity.GetMovementEvent();
-            _moveEvent.Subscribe(this.OnMoved);
+            _moveEvent.OnEvent += this.OnMoved;
         }
 
         public void Dispose(IGameEntity entity)
         {
-            _moveEvent.Unsubscribe(this.OnMoved);
+            _moveEvent.OnEvent -= this.OnMoved;
         }
 
         private void OnMoved(Vector3 _)

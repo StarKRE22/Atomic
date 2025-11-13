@@ -11,12 +11,12 @@ namespace ShooterGame.Gameplay
         {
             _gameContext = context;
             _killEvent = context.GetKillEvent();
-            _killEvent.Subscribe(this.OnKill);
+            _killEvent.OnEvent += this.OnKill;
         }
 
         public void Dispose(IGameContext context)
         {
-            _killEvent.Unsubscribe(this.OnKill);
+            _killEvent.OnEvent -= this.OnKill;
         }
 
         private void OnKill(KillArgs args)

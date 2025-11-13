@@ -39,7 +39,7 @@ namespace ShooterGame.Gameplay
                 damage = _damage.Value
             };
 
-            collider.TakeDamage(args, _gameContext);
+            CombatUseCase.TakeDamage(collider, args, _gameContext);
             _destroyAction.Invoke();
         }
     }

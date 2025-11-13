@@ -20,6 +20,13 @@
 //             _view.OnRestartClicked += RestartUseCase.RestartGame;
 //             _view.OnCloseClicked += this.OnCloseClicked;
 //         }
+
+//
+// private void OnGameOver()
+// {
+//     LevelsUseCase.IncrementLevel(_appContext);
+//     MenuUseCase.LoadMenu().Forget();
+// }
 //
 //         public void Enable(IEntity entity)
 //         {

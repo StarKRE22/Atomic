@@ -18,7 +18,7 @@ namespace ShooterGame.Gameplay
 
         public void Dispose(IGameEntity entity)
         {
-            _teamType.Unsubscribe(this.OnTeamChanged);
+            _teamType.OnEvent -= this.OnTeamChanged;
         }
 
         private void OnTeamChanged(TeamType teamType)

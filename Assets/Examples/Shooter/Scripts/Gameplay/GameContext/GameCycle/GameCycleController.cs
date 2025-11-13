@@ -29,6 +29,7 @@ namespace ShooterGame.Gameplay
             if (_gameTime.Value <= 0)
             {
                 _gameOverEvent.Invoke();
+                context.Disable();
                 Debug.Log("<color=yellow>Game Finished</color>");
             }
         }

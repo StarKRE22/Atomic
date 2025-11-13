@@ -2,9 +2,7 @@ namespace ShooterGame.Gameplay
 {
     public static class GameCycleUseCase
     {
-        public static bool IsPlaying(IGameContext context)
-        {
-            return context.GetGameTime().Value > 0;
-        }
+        public static bool IsPlaying(IGameContext context) => 
+            context.GetGameTime().Value > 0;
     }
 }

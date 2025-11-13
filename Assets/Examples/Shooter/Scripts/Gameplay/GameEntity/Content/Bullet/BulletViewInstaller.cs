@@ -1,4 +1,3 @@
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
@@ -10,8 +9,10 @@ namespace ShooterGame.Gameplay
 
         public override void Install(IGameEntity entity)
         {
+            GameContext.TryGetInstance(out GameContext gameContext);
+            
             entity.AddRenderer(_renderer);
-            entity.AddBehaviour<TeamColorBehaviour>();
+            entity.AddBehaviour(new TeamColorBehaviour(gameContext));
         }
     }
 }

@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public static class TakeDamageUseCase
+    public static class CombatUseCase
     {
-        public static bool TakeDamage(this Collider collider, DamageArgs args, IGameContext context = null) => 
+        public static bool TakeDamage(Collider collider, DamageArgs args, IGameContext context = null) =>
             collider.TryGetComponent(out IGameEntity target) && TakeDamage(target, args, context);
 
-        public static bool TakeDamage(this IGameEntity target, DamageArgs args, IGameContext context = null)
+        public static bool TakeDamage(IGameEntity target, DamageArgs args, IGameContext context = null)
         {
             if (!target.HasDamageableTag())
                 return false;
@@ -18,7 +18,7 @@ namespace ShooterGame.Gameplay
                 return false;
 
             target.GetTakeDamageEvent().Invoke(args);
-            
+
             if (!health.IsEmpty())
                 return true;
 

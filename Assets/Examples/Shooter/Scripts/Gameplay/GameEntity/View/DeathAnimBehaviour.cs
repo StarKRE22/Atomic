@@ -1,4 +1,3 @@
-using Atomic.Entities;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -32,10 +31,6 @@ namespace ShooterGame.Gameplay
         public void Dispose(IGameEntity entity)
         {
             _health.OnHealthEmpty -= this.OnDeath;
-        }
-
-        public void Dispose(IEntity entity)
-        {
         }
 
         private async void OnDeath()

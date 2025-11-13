@@ -44,7 +44,7 @@ namespace ShooterGame.Gameplay
             entity.AddRenderer(_renderer);
             entity.AddAnimator(_animator);
 
-            entity.AddBehaviour<TeamColorBehaviour>();
+            entity.AddBehaviour(new TeamColorBehaviour(gameContext));
             entity.AddBehaviour(new MoveAnimBehaviour());
             entity.AddBehaviour<TakeDamageAnimBehaviour>();
             entity.AddBehaviour(new DeathAnimBehaviour(_viewGO));
