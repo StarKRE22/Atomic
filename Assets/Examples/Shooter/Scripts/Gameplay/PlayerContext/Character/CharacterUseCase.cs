@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using Atomic.Elements;
 using Atomic.Entities;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay

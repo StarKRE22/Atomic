@@ -1,3 +1,4 @@
+using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
@@ -11,14 +12,18 @@ namespace ShooterGame.Gameplay
             TeamType teamType
         )
         {
-            IGameEntity bullet = context.GetBulletPool().Rent();
+            IEntityPool<IGameEntity> bulletPool = context.GetBulletPool();
+            IGameEntity bullet = bulletPool.Rent();
             bullet.GetPosition().Value = position;
             bullet.GetRotation().Value = rotation;
             bullet.GetTeamType().Value = teamType;
             return bullet;
         }
 
-        public static void Despawn(IGameContext context, IGameEntity bullet) => 
-            context.GetBulletPool().Return(bullet);
+        public static void Despawn(IGameContext context, IGameEntity bullet)
+        {
+            IEntityPool<IGameEntity> bulletPool = context.GetBulletPool();
+            bulletPool.Return(bullet);
+        }
     }
 }
