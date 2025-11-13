@@ -1,8 +1,9 @@
 using Atomic.Entities;
+using ShooterGame.Gameplay;
 using TMPro;
 using UnityEngine;
 
-namespace ShooterGame.Gameplay
+namespace ShooterGame.UI
 {
     public sealed class GameUIInstaller : SceneEntityInstaller<IGameUI>
     {
@@ -18,9 +19,11 @@ namespace ShooterGame.Gameplay
 
         public override void Install(IGameUI ui)
         {
-            ui.AddBehaviour(new CountdownPresenter(_countdownView));
-            ui.AddBehaviour(new KillsPresenter(_blueKillsView, TeamType.BLUE));
-            ui.AddBehaviour(new KillsPresenter(_redKillsView, TeamType.RED));
+            GameContext.TryGetInstance(out GameContext gameContext);
+            
+            ui.AddBehaviour(new CountdownPresenter(_countdownView, gameContext));
+            ui.AddBehaviour(new KillsPresenter(_blueKillsView, TeamType.BLUE, gameContext));
+            ui.AddBehaviour(new KillsPresenter(_redKillsView, TeamType.RED, gameContext));
         }
     }
 }

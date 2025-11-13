@@ -1,6 +1,7 @@
 using System;
 using Atomic.Entities;
 using ShooterGame.Gameplay;
+using ShooterGame.UI;
 using UnityEngine;
 
 namespace ShooterGame.App

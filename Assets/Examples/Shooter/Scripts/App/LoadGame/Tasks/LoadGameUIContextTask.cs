@@ -1,5 +1,5 @@
 using Cysharp.Threading.Tasks;
-using ShooterGame.Gameplay;
+using ShooterGame.UI;
 using UnityEngine;
 
 namespace ShooterGame.App

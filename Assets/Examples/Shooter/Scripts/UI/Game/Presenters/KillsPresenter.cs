@@ -1,24 +1,27 @@
 using Atomic.Elements;
+using ShooterGame.Gameplay;
 using TMPro;
 
-namespace ShooterGame.Gameplay
+namespace ShooterGame.UI
 {
     public sealed class KillsPresenter : IGameUIInit, IGameUIDispose
     {
         private readonly TMP_Text _text;
         private readonly TeamType _teamType;
-
+        private readonly IGameContext _gameContext;
+        
         private IReactiveDictionary<TeamType, int> _leaderboard;
-
-        public KillsPresenter(TMP_Text text, TeamType teamType)
+        
+        public KillsPresenter(TMP_Text text, TeamType teamType, IGameContext gameContext)
         {
             _text = text;
             _teamType = teamType;
+            _gameContext = gameContext;
         }
 
         public void Init(IGameUI entity)
         {
-            _leaderboard = GameContext.Instance.GetLeaderboard();
+            _leaderboard = _gameContext.GetLeaderboard();
             _leaderboard.OnItemChanged += this.OnLeaderboardChanged;
             this.UpdateText(_leaderboard[_teamType]);
         }

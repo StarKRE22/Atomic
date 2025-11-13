@@ -4,7 +4,7 @@
  * Created by Entity Domain Generator.
  */
 
-namespace ShooterGame.Gameplay
+namespace ShooterGame.UI
 {
     /// <summary>
     /// Represents a specialized entity interface that extends the core <see cref="IEntity"/> contract.

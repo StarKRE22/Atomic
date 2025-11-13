@@ -4,7 +4,7 @@
  * Created by Entity Domain Generator.
  */
 
-namespace ShooterGame.Gameplay
+namespace ShooterGame.UI
 {
     /// <summary>
     /// Provides initialization logic for the strongly-typed <see cref="IGameUI"/> entity.
