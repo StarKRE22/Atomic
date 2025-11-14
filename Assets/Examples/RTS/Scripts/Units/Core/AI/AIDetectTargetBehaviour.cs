@@ -1,12 +1,11 @@
-using System.Runtime.CompilerServices;
 using Atomic.Elements;
 using Atomic.Entities;
 
 namespace RTSGame
 {
-    public sealed class AIDetectTargetBehaviour : IEntityInit<IUnit>, IEntityFixedTick, IEntityDisable
+    public sealed class AIDetectTargetBehaviour : IEntityInit<IUnit>, IEntityFixedTick
     {
-        private static IUnit[] BUFFER = new IUnit[512];
+        private static readonly IUnit[] BUFFER = new IUnit[512];
 
         private readonly IGameContext _gameContext;
         private readonly ICooldown _cooldown;
@@ -37,23 +36,6 @@ namespace RTSGame
                 _target.Value = UnitsUseCase.FindClosestEnemy(_self, _gameContext, BUFFER);
                 _cooldown.ResetTime();
             }
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void AssignTarget()
-        {
-            // IUnit enemy = UnitsUseCase.FindFreeEnemyFor(_gameContext, _entity);
-            // if (enemy != null) 
-            //     enemy.AddTargetedTag();
-            //
-            // _target.Value = enemy;
-        }
-
-        public void Disable(IEntity entity)
-        {
-            // IUnit target = _target.Value;
-            // if (target != null) 
-            //     target.DelTargetedTag();
         }
     }
 }
