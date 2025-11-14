@@ -29,6 +29,7 @@ namespace RTSGame
             _gameEntityInstaller.Install(context);
             _playerSystemInstaller.Install(context);
             context.AddTeamViewConfig(_teamViewConfig);
+            context.AddSpatialHash(new SpatialHash<IUnit>(10, unit => unit.GetPosition().Value,256, 64));
             return context;
         }
     }

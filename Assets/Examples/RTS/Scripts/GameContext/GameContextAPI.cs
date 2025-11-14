@@ -19,9 +19,10 @@ namespace RTSGame
 	public static class GameContextAPI
 	{
 		///Values
-		public static readonly int EntityWorld; // EntityWorld<IUnitEntity>
-		public static readonly int EntityPool; // IMultiEntityPool<string, IUnitEntity>
+		public static readonly int EntityWorld; // EntityWorld<IUnit>
+		public static readonly int EntityPool; // IMultiEntityPool<string, IUnit>
 		public static readonly int Players; // Dictionary<TeamType, IPlayerContext>
+		public static readonly int SpatialHash; // SpatialHash<IUnit>
 		public static readonly int TeamViewConfig; // TeamViewConfig
 
 		static GameContextAPI()
@@ -30,6 +31,7 @@ namespace RTSGame
 			EntityWorld = NameToId(nameof(EntityWorld));
 			EntityPool = NameToId(nameof(EntityPool));
 			Players = NameToId(nameof(Players));
+			SpatialHash = NameToId(nameof(SpatialHash));
 			TeamViewConfig = NameToId(nameof(TeamViewConfig));
 		}
 
@@ -39,15 +41,15 @@ namespace RTSGame
 		#region EntityWorld
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static EntityWorld<IUnitEntity> GetEntityWorld(this IGameContext entity) => entity.GetValueUnsafe<EntityWorld<IUnitEntity>>(EntityWorld);
+		public static EntityWorld<IUnit> GetEntityWorld(this IGameContext entity) => entity.GetValueUnsafe<EntityWorld<IUnit>>(EntityWorld);
 
-		public static ref EntityWorld<IUnitEntity> RefEntityWorld(this IGameContext entity) => ref entity.GetValueUnsafe<EntityWorld<IUnitEntity>>(EntityWorld);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetEntityWorld(this IGameContext entity, out EntityWorld<IUnitEntity> value) => entity.TryGetValueUnsafe(EntityWorld, out value);
+		public static ref EntityWorld<IUnit> RefEntityWorld(this IGameContext entity) => ref entity.GetValueUnsafe<EntityWorld<IUnit>>(EntityWorld);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddEntityWorld(this IGameContext entity, EntityWorld<IUnitEntity> value) => entity.AddValue(EntityWorld, value);
+		public static bool TryGetEntityWorld(this IGameContext entity, out EntityWorld<IUnit> value) => entity.TryGetValueUnsafe(EntityWorld, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddEntityWorld(this IGameContext entity, EntityWorld<IUnit> value) => entity.AddValue(EntityWorld, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasEntityWorld(this IGameContext entity) => entity.HasValue(EntityWorld);
@@ -56,22 +58,22 @@ namespace RTSGame
 		public static bool DelEntityWorld(this IGameContext entity) => entity.DelValue(EntityWorld);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetEntityWorld(this IGameContext entity, EntityWorld<IUnitEntity> value) => entity.SetValue(EntityWorld, value);
+		public static void SetEntityWorld(this IGameContext entity, EntityWorld<IUnit> value) => entity.SetValue(EntityWorld, value);
 
 		#endregion
 
 		#region EntityPool
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IMultiEntityPool<string, IUnitEntity> GetEntityPool(this IGameContext entity) => entity.GetValueUnsafe<IMultiEntityPool<string, IUnitEntity>>(EntityPool);
+		public static IMultiEntityPool<string, IUnit> GetEntityPool(this IGameContext entity) => entity.GetValueUnsafe<IMultiEntityPool<string, IUnit>>(EntityPool);
 
-		public static ref IMultiEntityPool<string, IUnitEntity> RefEntityPool(this IGameContext entity) => ref entity.GetValueUnsafe<IMultiEntityPool<string, IUnitEntity>>(EntityPool);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetEntityPool(this IGameContext entity, out IMultiEntityPool<string, IUnitEntity> value) => entity.TryGetValueUnsafe(EntityPool, out value);
+		public static ref IMultiEntityPool<string, IUnit> RefEntityPool(this IGameContext entity) => ref entity.GetValueUnsafe<IMultiEntityPool<string, IUnit>>(EntityPool);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddEntityPool(this IGameContext entity, IMultiEntityPool<string, IUnitEntity> value) => entity.AddValue(EntityPool, value);
+		public static bool TryGetEntityPool(this IGameContext entity, out IMultiEntityPool<string, IUnit> value) => entity.TryGetValueUnsafe(EntityPool, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddEntityPool(this IGameContext entity, IMultiEntityPool<string, IUnit> value) => entity.AddValue(EntityPool, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasEntityPool(this IGameContext entity) => entity.HasValue(EntityPool);
@@ -80,7 +82,7 @@ namespace RTSGame
 		public static bool DelEntityPool(this IGameContext entity) => entity.DelValue(EntityPool);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetEntityPool(this IGameContext entity, IMultiEntityPool<string, IUnitEntity> value) => entity.SetValue(EntityPool, value);
+		public static void SetEntityPool(this IGameContext entity, IMultiEntityPool<string, IUnit> value) => entity.SetValue(EntityPool, value);
 
 		#endregion
 
@@ -105,6 +107,30 @@ namespace RTSGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetPlayers(this IGameContext entity, Dictionary<TeamType, IPlayerContext> value) => entity.SetValue(Players, value);
+
+		#endregion
+
+		#region SpatialHash
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static SpatialHash<IUnit> GetSpatialHash(this IGameContext entity) => entity.GetValueUnsafe<SpatialHash<IUnit>>(SpatialHash);
+
+		public static ref SpatialHash<IUnit> RefSpatialHash(this IGameContext entity) => ref entity.GetValueUnsafe<SpatialHash<IUnit>>(SpatialHash);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetSpatialHash(this IGameContext entity, out SpatialHash<IUnit> value) => entity.TryGetValueUnsafe(SpatialHash, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddSpatialHash(this IGameContext entity, SpatialHash<IUnit> value) => entity.AddValue(SpatialHash, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasSpatialHash(this IGameContext entity) => entity.HasValue(SpatialHash);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelSpatialHash(this IGameContext entity) => entity.DelValue(SpatialHash);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetSpatialHash(this IGameContext entity, SpatialHash<IUnit> value) => entity.SetValue(SpatialHash, value);
 
 		#endregion
 

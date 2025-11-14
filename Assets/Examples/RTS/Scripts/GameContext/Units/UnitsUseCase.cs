@@ -5,7 +5,7 @@ namespace RTSGame
 {
     public static class UnitsUseCase
     {
-        public static IUnitEntity Spawn(
+        public static IUnit Spawn(
             IGameContext context,
             string name,
             Vector3 position,
@@ -13,8 +13,8 @@ namespace RTSGame
             TeamType team
         )
         {
-            IMultiEntityPool<string, IUnitEntity> pool = context.GetEntityPool();
-            IUnitEntity entity = pool.Rent(name);
+            IMultiEntityPool<string, IUnit> pool = context.GetEntityPool();
+            IUnit entity = pool.Rent(name);
             entity.GetPosition().Value = position;
             entity.GetRotation().Value = rotation;
             entity.GetTeam().Value = team;
@@ -22,7 +22,7 @@ namespace RTSGame
             return entity;
         }
 
-        public static bool Despawn(IGameContext gameContext, IUnitEntity entity)
+        public static bool Despawn(IGameContext gameContext, IUnit entity)
         {
             if (!gameContext.GetEntityWorld().Remove(entity))
                 return false;
@@ -31,31 +31,39 @@ namespace RTSGame
             return true;
         }
 
-        public static IUnitEntity FindFreeEnemyFor(IGameContext context, IUnitEntity entity)
+        public static IUnit FindClosestEnemy(IUnit self, IGameContext gameContext, IUnit[] buffer)
         {
-            IPlayerContext playerContext = PlayersUseCase.GetPlayerFor(context, entity);
-            EntityFilter<IUnitEntity> enemyFilter = playerContext.GetFreeEnemyFilter();
-            Vector3 center = entity.GetPosition().Value;
-            return FindClosest(enemyFilter, center);
-        }
+            IUnit closestEnemy = null;
+            float closestSqr = float.MaxValue;
 
-        public static IUnitEntity FindClosest(EntityFilter<IUnitEntity> entities, Vector3 center)
-        {
-            IUnitEntity result = null;
-        
-            float minDistance = float.MaxValue;
-            foreach (IUnitEntity entity in entities)
+            Vector3 selfPos = self.GetPosition().Value;
+            TeamType teamType = self.GetTeam().Value;
+            float detectionRadius = self.GetDetectionRadius().Value;
+
+            // Получаем SpatialHash
+            var spatialHash = gameContext.GetSpatialHash();
+
+            // Заполняем буфер найденными юнитами в радиусе
+            int foundCount = spatialHash.Query(selfPos, detectionRadius, buffer);
+
+            // Проходим через массив (минимум аллокаций)
+            for (int i = 0; i < foundCount; i++)
             {
-                Vector3 position = entity.GetPosition().Value;
-                float distance = Vector3.SqrMagnitude(position - center);
-                if (distance < minDistance)
+                IUnit unit = buffer[i];
+                if (unit.Equals(self) || unit.GetTeam().Value == teamType)
+                    continue;
+
+                Vector3 dir = unit.GetPosition().Value - selfPos;
+                float sqrDist = dir.sqrMagnitude;
+
+                if (sqrDist < closestSqr)
                 {
-                    result = entity;
-                    minDistance = distance;
+                    closestSqr = sqrDist;
+                    closestEnemy = unit;
                 }
             }
-        
-            return result;
+
+            return closestEnemy;
         }
     }
 }

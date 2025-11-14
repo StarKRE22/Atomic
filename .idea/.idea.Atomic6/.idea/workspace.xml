@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="40c6c12e-e382-4282-908a-6364831197ae" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsUseCase.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;StarKRE22&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/StarKRE22/Atomic&quot;,
+    &quot;accountId&quot;: &quot;7e4d7979-8bc1-43b4-9e2f-89d48163d907&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Common/SpatialHash/SpatialHash2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/Shooter/Prefabs/App/[AppContext].prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/Shooter/Scripts/App/AppContextInstaller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/GameContext/GameCompletionObserver.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/IAppContextBehaviours.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/Shooter/Scripts/Gameplay/GameContext/Bullet/BulletUseCase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntities/Core/Rotation/RotationBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntities/GameEntityAPI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntities/View/CameraBillboardBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntities/View/DeathAnimBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntities/View/FireAnimBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntities/View/HitPoints/HitPointsPresenter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntities/View/TakeDamage/TakeDamageAnimBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletCollisionBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Bootstrap/SceneEntityBootstrap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Bootstrap/SceneEntityBootstrap.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03fb069b9d44498e9961a63c104533ff2b600/e8/bbc1157e/OrientType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/de80aed0bd3646409e8bfb15c101f005e2000/86/97cb6623/_AppDomain.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/de80aed0bd3646409e8bfb15c101f005e2000/b0/d67f8d7c/_ConstructorBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/de80aed0bd3646409e8bfb15c101f005e2000/d6/2cca2f8a/Enum.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/18/73be7056/Object.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/1c/8722d226/RuntimeInitializeLoadType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/a9/4957b382/Scene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/de/f4a59ec4/InstantiateParameters.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="34TwqDArPa1avlBcp1LekEWO3gQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "experimental",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Game.app/Contents/MacOS/Atomic6" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Game.app/Contents/MacOS" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="40c6c12e-e382-4282-908a-6364831197ae" name="Changes" comment="" />
+      <created>1761251057567</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761251057567</updated>
+      <workItem from="1761251058756" duration="2613000" />
+      <workItem from="1761288689867" duration="8241000" />
+      <workItem from="1761375045307" duration="7021000" />
+      <workItem from="1761382174052" duration="16131000" />
+      <workItem from="1761462723825" duration="2067000" />
+      <workItem from="1761470093820" duration="6833000" />
+      <workItem from="1761663659035" duration="4587000" />
+      <workItem from="1761730746375" duration="12357000" />
+      <workItem from="1761849047307" duration="7994000" />
+      <workItem from="1761897180189" duration="19180000" />
+      <workItem from="1761992275725" duration="7457000" />
+      <workItem from="1762098792202" duration="84000" />
+      <workItem from="1762112082600" duration="2346000" />
+      <workItem from="1762160049677" duration="1558000" />
+      <workItem from="1762277063076" duration="11574000" />
+      <workItem from="1762327674171" duration="26188000" />
+      <workItem from="1762504087711" duration="2173000" />
+      <workItem from="1762772698143" duration="711000" />
+      <workItem from="1762832965417" duration="23196000" />
+      <workItem from="1762928381589" duration="196000" />
+      <workItem from="1762928600682" duration="13139000" />
+      <workItem from="1762941843430" duration="5931000" />
+      <workItem from="1762985064497" duration="34271000" />
+      <workItem from="1763141664531" duration="2939000" />
+    </task>
+    <task id="LOCAL-00062" summary="Сделал Factory для SceneEntitySingleton.cs">
+      <option name="closed" value="true" />
+      <created>1762505646836</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1762505646836</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Поправил Actors на GameEntity">
+      <option name="closed" value="true" />
+      <created>1762833785880</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1762833785880</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Пилим кодогенератор!">
+      <option name="closed" value="true" />
+      <created>1762840826485</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1762840826485</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762843023532</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1762843023532</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762850820419</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1762850820419</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762854139831</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1762854139831</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762855144113</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1762855144113</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Вроде готово все для генерации!">
+      <option name="closed" value="true" />
+      <created>1762857721055</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1762857721055</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Проверяем!">
+      <option name="closed" value="true" />
+      <created>1762858440361</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1762858440361</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762860723711</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1762860723711</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762860730596</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1762860730596</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762861410278</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1762861410278</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762863295253</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1762863295253</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Продолжим после прогулки!">
+      <option name="closed" value="true" />
+      <created>1762863513927</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1762863513927</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Сделал генерацию Behaviours">
+      <option name="closed" value="true" />
+      <created>1762930262563</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1762930262563</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Пилим генераторы для инсталлеров!">
+      <option name="closed" value="true" />
+      <created>1762931508450</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1762931508450</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762932266800</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1762932266800</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Сделал Proxy!">
+      <option name="closed" value="true" />
+      <created>1762933154888</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1762933154888</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Сейчас будем генерировать пулы!">
+      <option name="closed" value="true" />
+      <created>1762934189766</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1762934189766</updated>
+    </task>
+    <task id="LOCAL-00081" summary="EntityPoolGenerator.cs">
+      <option name="closed" value="true" />
+      <created>1762934984840</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1762934984840</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Сделал генерацию фабрик!">
+      <option name="closed" value="true" />
+      <created>1762936450854</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1762936450854</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Сделал фабрики!">
+      <option name="closed" value="true" />
+      <created>1762936489500</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1762936489500</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Сделал Baking!">
+      <option name="closed" value="true" />
+      <created>1762938725281</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1762938725281</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Сделал генератор!">
+      <option name="closed" value="true" />
+      <created>1762939008726</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1762939008726</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Допиливаю UI!">
+      <option name="closed" value="true" />
+      <created>1762940635080</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1762940635080</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Сделал UI">
+      <option name="closed" value="true" />
+      <created>1762942018174</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1762942018174</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762942662201</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1762942662201</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Сделал окошко с кодогенерацией!">
+      <option name="closed" value="true" />
+      <created>1762943254531</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1762943254531</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Сделал генерацию для GameEntity">
+      <option name="closed" value="true" />
+      <created>1762956900179</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1762956900179</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Сделал генерацию для GameEntity">
+      <option name="closed" value="true" />
+      <created>1762956914646</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1762956914646</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762957034246</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1762957034246</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Сгенерировал для контекстов!">
+      <option name="closed" value="true" />
+      <created>1762958589988</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1762958589988</updated>
+    </task>
+    <task id="LOCAL-00094" summary="AppContext.cs">
+      <option name="closed" value="true" />
+      <created>1762960298738</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1762960298738</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762965791481</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1762965791481</updated>
+    </task>
+    <task id="LOCAL-00096" summary="SceneEntityInstaller`1.cs">
+      <option name="closed" value="true" />
+      <created>1762985625919</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1762985625919</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762989140352</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1762989140352</updated>
+    </task>
+    <task id="LOCAL-00098" summary="PlayerContext!">
+      <option name="closed" value="true" />
+      <created>1762989988328</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1762989988328</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1762992711370</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1762992711370</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Обновил презенторы игры!">
+      <option name="closed" value="true" />
+      <created>1763041241403</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1763041241403</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Пилим UI!">
+      <option name="closed" value="true" />
+      <created>1763042882557</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1763042882558</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Обновил проект!">
+      <option name="closed" value="true" />
+      <created>1763106435284</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1763106435284</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Поправил прототип ShooterGame!">
+      <option name="closed" value="true" />
+      <created>1763107540881</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1763107540881</updated>
+    </task>
+    <task id="LOCAL-00104" summary="SimpleMovementBehaviour.cs">
+      <option name="closed" value="true" />
+      <created>1763118267728</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1763118267728</updated>
+    </task>
+    <task id="LOCAL-00105" summary="SimpleMovementBehaviour.cs">
+      <option name="closed" value="true" />
+      <created>1763118400251</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1763118400251</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Обновляем RTS Sample!">
+      <option name="closed" value="true" />
+      <created>1763142576594</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1763142576594</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1763142987709</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1763142987709</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Поправил SpatialHash.cs">
+      <option name="closed" value="true" />
+      <created>1763143835294</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1763143835294</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Пофиксил RTS!">
+      <option name="closed" value="true" />
+      <created>1763144161369</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1763144161369</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Готово!">
+      <option name="closed" value="true" />
+      <created>1763144213899</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1763144213899</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Сделал Proxy!" />
+    <MESSAGE value="Сейчас будем генерировать пулы!" />
+    <MESSAGE value="EntityPoolGenerator.cs" />
+    <MESSAGE value="Сделал генерацию фабрик!" />
+    <MESSAGE value="Сделал фабрики!" />
+    <MESSAGE value="Сделал Baking!" />
+    <MESSAGE value="Сделал генератор!" />
+    <MESSAGE value="Допиливаю UI!" />
+    <MESSAGE value="Сделал UI" />
+    <MESSAGE value="Сделал окошко с кодогенерацией!" />
+    <MESSAGE value="Сделал генерацию для GameEntity" />
+    <MESSAGE value="Сгенерировал для контекстов!" />
+    <MESSAGE value="AppContext.cs" />
+    <MESSAGE value="SceneEntityInstaller`1.cs" />
+    <MESSAGE value="PlayerContext!" />
+    <MESSAGE value="Обновил презенторы игры!" />
+    <MESSAGE value="Пилим UI!" />
+    <MESSAGE value="Обновил проект!" />
+    <MESSAGE value="Поправил прототип ShooterGame!" />
+    <MESSAGE value="SimpleMovementBehaviour.cs" />
+    <MESSAGE value="Обновляем RTS Sample!" />
+    <MESSAGE value="Пилим!" />
+    <MESSAGE value="Поправил SpatialHash.cs" />
+    <MESSAGE value="Пофиксил RTS!" />
+    <MESSAGE value="Готово!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Готово!" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
