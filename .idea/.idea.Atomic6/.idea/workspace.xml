@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40c6c12e-e382-4282-908a-6364831197ae" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Tank.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Tank.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Warrior.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Warrior.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Common/SpatialHash/SpatialHash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Common/SpatialHash/SpatialHash.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Units/Core/SpatialHash/DynamicSpatialHashBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Units/Core/SpatialHash/DynamicSpatialHashBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Units/Core/SpatialHash/StaticSpatialHashBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Units/Core/SpatialHash/StaticSpatialHashBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitSpatialHashAdapter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitSpatialHashAdapter.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,15 +197,7 @@
       <workItem from="1762928600682" duration="13139000" />
       <workItem from="1762941843430" duration="5931000" />
       <workItem from="1762985064497" duration="34271000" />
-      <workItem from="1763141664531" duration="2153000" />
-    </task>
-    <task id="LOCAL-00059" summary="EntityAPI Generation">
-      <option name="closed" value="true" />
-      <created>1762368941780</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1762368941780</updated>
+      <workItem from="1763141664531" duration="2459000" />
     </task>
     <task id="LOCAL-00060" summary="Пилим!">
       <option name="closed" value="true" />
@@ -594,7 +583,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763142987709</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="Поправил SpatialHash.cs">
+      <option name="closed" value="true" />
+      <created>1763143835294</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1763143835294</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,7 +618,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Продолжим после прогулки!" />
     <MESSAGE value="Сделал генерацию Behaviours" />
     <MESSAGE value="Пилим генераторы для инсталлеров!" />
     <MESSAGE value="Сделал Proxy!" />
@@ -646,7 +642,8 @@
     <MESSAGE value="SimpleMovementBehaviour.cs" />
     <MESSAGE value="Обновляем RTS Sample!" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Поправил SpatialHash.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Поправил SpatialHash.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

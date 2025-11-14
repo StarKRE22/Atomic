@@ -7,26 +7,20 @@ namespace RTSGame
 {
     public sealed class SpatialHash<T>
     {
-        // Интерфейс адаптера
-        public interface IAdapter
-        {
-            Vector3 GetPosition(T item);
-        }
-
         private readonly float cellSize;
         private readonly Dictionary<Vector3Int, List<T>> grid;
         private readonly Queue<List<T>> freeLists;
-        private readonly IAdapter adapter;
+        private readonly Func<T, Vector3> func;
 
         public SpatialHash(
             float cellSize,
-            IAdapter adapter,
+            Func<T, Vector3> func,
             int initialCapacity = 32,
             int freeListCapacity = 16
         )
         {
             this.cellSize = cellSize;
-            this.adapter = adapter;
+            this.func = func;
             this.grid = new Dictionary<Vector3Int, List<T>>(initialCapacity);
             this.freeLists = new Queue<List<T>>(freeListCapacity);
         }
@@ -67,7 +61,7 @@ namespace RTSGame
         // Добавить объект
         public void Insert(T obj, out Vector3Int key)
         {
-            var pos = adapter.GetPosition(obj);
+            var pos = func(obj);
             key = Hash(pos.x, pos.y, pos.z);
 
             if (!grid.TryGetValue(key, out var list))
@@ -82,7 +76,7 @@ namespace RTSGame
         // Добавить объект (без out)
         public void Insert(T obj)
         {
-            Vector3 pos = adapter.GetPosition(obj);
+            Vector3 pos = func(obj);
             Vector3Int key = Hash(pos.x, pos.y, pos.z);
 
             if (!grid.TryGetValue(key, out var list))
@@ -130,7 +124,7 @@ namespace RTSGame
 
         public bool Remove(T obj)
         {
-            Vector3 pos = adapter.GetPosition(obj);
+            Vector3 pos = func(obj);
             Vector3Int key = Hash(pos.x, pos.y, pos.z);
 
             if (!grid.TryGetValue(key, out var list))
