@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40c6c12e-e382-4282-908a-6364831197ae" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Common/SpatialHash/SpatialHash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Common/SpatialHash/SpatialHash.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitSpatialHashAdapter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitSpatialHashAdapter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsUseCase.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,23 +194,7 @@
       <workItem from="1762928600682" duration="13139000" />
       <workItem from="1762941843430" duration="5931000" />
       <workItem from="1762985064497" duration="34271000" />
-      <workItem from="1763141664531" duration="2459000" />
-    </task>
-    <task id="LOCAL-00060" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1762372419711</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1762372419711</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Написал Tutorial">
-      <option name="closed" value="true" />
-      <created>1762374699445</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1762374699445</updated>
+      <workItem from="1763141664531" duration="2939000" />
     </task>
     <task id="LOCAL-00062" summary="Сделал Factory для SceneEntitySingleton.cs">
       <option name="closed" value="true" />
@@ -591,7 +572,23 @@
       <option name="project" value="LOCAL" />
       <updated>1763143835294</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="Пофиксил RTS!">
+      <option name="closed" value="true" />
+      <created>1763144161369</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1763144161369</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Готово!">
+      <option name="closed" value="true" />
+      <created>1763144213899</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1763144213899</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,8 +615,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал генерацию Behaviours" />
-    <MESSAGE value="Пилим генераторы для инсталлеров!" />
     <MESSAGE value="Сделал Proxy!" />
     <MESSAGE value="Сейчас будем генерировать пулы!" />
     <MESSAGE value="EntityPoolGenerator.cs" />
@@ -643,7 +638,9 @@
     <MESSAGE value="Обновляем RTS Sample!" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Поправил SpatialHash.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Поправил SpatialHash.cs" />
+    <MESSAGE value="Пофиксил RTS!" />
+    <MESSAGE value="Готово!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Готово!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
