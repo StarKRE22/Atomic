@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace Atomic.Entities
@@ -23,7 +24,7 @@ namespace Atomic.Entities
     /// assigned <see cref="EntityViewPool{E, V}"/> for reuse.
     /// </remarks>
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Baking/SceneEntityBakerOptimized%602.md")]
-    public abstract class SceneEntityBakerOptimized<E, V> : SceneEntityBaker<E>
+    public abstract class SceneEntityBakerOptimized<E, V> : SceneEntityBaker<E>, ISceneEntityBakerOptimized
         where E : class, IEntity
         where V : EntityView<E>
     {
@@ -58,6 +59,11 @@ namespace Atomic.Entities
         protected override void Reset()
         {
             base.Reset();
+            this.Refresh();
+        }
+
+        public void Refresh()
+        {
             _view = this.GetComponent<V>();
             _viewPool = FindObjectOfType<EntityViewPool<E, V>>();
         }
@@ -74,7 +80,7 @@ namespace Atomic.Entities
         /// </summary>
         protected override void Release()
         {
-            if (_viewPool != null && _view != null) 
+            if (_viewPool != null && _view != null)
                 _viewPool.Return(_view.Name, _view);
         }
     }

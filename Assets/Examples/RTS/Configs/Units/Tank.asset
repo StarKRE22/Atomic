@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337105b774754ec7a0b9f51107ef8c70, type: 3}
   m_Name: Tank
   m_EditorClassIdentifier: 
-  InitialTagCount: 3
-  InitialValueCount: 16
-  InitialBehaviourCount: 4
+  initialTagCapacity: 3
+  initialValueCapacity: 17
+  initialBehaviourCapacity: 6
+  autoCompile: 1
   _transformInstaller:
     _scale:
       value: 1
@@ -35,4 +36,5 @@ MonoBehaviour:
   _aiInstaller:
     _minDetectDuration: 0.3
     _maxDetectDuration: 0.5
-    _maxVision: 50
+    _detectionRadius:
+      value: 50

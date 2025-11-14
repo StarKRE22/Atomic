@@ -20,7 +20,7 @@ namespace RTSGame.UI
             bool available = false;
 
             GameContext gameContext = GameContext.Instance;
-            if (gameContext.TryGetEntityWorld(out EntityWorld<IUnitEntity> world))
+            if (gameContext.TryGetEntityWorld(out EntityWorld<IUnit> world))
             {
                 count = world.Count;
                 available = true;

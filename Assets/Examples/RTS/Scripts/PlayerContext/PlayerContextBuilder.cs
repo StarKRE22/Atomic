@@ -13,10 +13,10 @@ namespace RTSGame
     {
         private const string PLAYER_CONTEXT_NAME_FORMAT = "PlayerContext {0}";
 
-        private EntityWorld<IUnitEntity> _entityWorld;
+        private EntityWorld<IUnit> _entityWorld;
         private TeamType _teamType;
 
-        public PlayerContextBuilder SetEntityWorld(EntityWorld<IUnitEntity> entityWorld)
+        public PlayerContextBuilder SetEntityWorld(EntityWorld<IUnit> entityWorld)
         {
             _entityWorld = entityWorld;
             return this;
@@ -41,14 +41,14 @@ namespace RTSGame
             );
 
             playerContext.AddTeam(new Const<TeamType>(_teamType));
-            playerContext.AddFreeEnemyFilter(this.CreateFreeEnemyFilter(playerContext));
+            // playerContext.AddFreeEnemyFilter(this.CreateFreeEnemyFilter(playerContext));
             return playerContext;
         }
 
-        private EntityFilter<IUnitEntity> CreateFreeEnemyFilter(IPlayerContext playerContext) => new(
-            _entityWorld,
-            entity => TeamUseCase.IsFreeEnemyUnit(playerContext, entity),
-            new TeamEntityTrigger(), new TagEntityTrigger<IUnitEntity>()
-        );
+        // private EntityFilter<IUnit> CreateFreeEnemyFilter(IPlayerContext playerContext) => new(
+        //     _entityWorld,
+        //     entity => TeamUseCase.IsFreeEnemyUnit(playerContext, entity),
+        //     new TeamEntityTrigger(), new TagEntityTrigger<IUnit>()
+        // );
     }
 }

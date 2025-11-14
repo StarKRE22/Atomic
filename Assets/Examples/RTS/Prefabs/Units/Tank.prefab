@@ -452,8 +452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialTagCapacity: 3
-  initialValueCapacity: 16
-  initialBehaviourCapacity: 4
+  initialValueCapacity: 17
+  initialBehaviourCapacity: 6
   autoCompile: 1
   onlySelectedGizmos: 0
   onlyEditModeGizmos: 0

@@ -16,5 +16,5 @@ imports:
 tags:
 
 values:
-  - FreeEnemyFilter: EntityFilter<IUnitEntity>
+#  - FreeEnemyFilter: EntityFilter<IUnit>
   - Team: IValue<TeamType>

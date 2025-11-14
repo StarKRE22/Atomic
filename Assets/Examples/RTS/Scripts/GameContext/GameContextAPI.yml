@@ -13,9 +13,10 @@ imports:
 
 #Core
 values:
-  - EntityWorld: EntityWorld<IUnitEntity>
-  - EntityPool: IMultiEntityPool<string, IUnitEntity>
+  - EntityWorld: EntityWorld<IUnit>
+  - EntityPool: IMultiEntityPool<string, IUnit>
   - Players: Dictionary<TeamType, IPlayerContext>
+  - SpatialHash: SpatialHash<IUnit>
 
 #View
   - TeamViewConfig: TeamViewConfig

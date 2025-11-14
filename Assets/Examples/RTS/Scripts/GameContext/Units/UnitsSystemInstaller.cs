@@ -12,9 +12,9 @@ namespace RTSGame
 
         public void Install(IGameContext context)
         {
-            context.AddEntityPool(new MultiEntityPool<string, IUnitEntity>(factoryCatalog));
+            context.AddEntityPool(new MultiEntityPool<string, IUnit>(factoryCatalog));
 
-            EntityWorld<IUnitEntity> entityWorld = new EntityWorld<IUnitEntity>();
+            EntityWorld<IUnit> entityWorld = new EntityWorld<IUnit>();
             context.AddEntityWorld(entityWorld);
 
             context.WhenInit(entityWorld.InitEntities);
