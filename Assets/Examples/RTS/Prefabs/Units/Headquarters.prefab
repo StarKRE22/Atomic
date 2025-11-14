@@ -300,7 +300,9 @@ MonoBehaviour:
   autoCompile: 1
   onlySelectedGizmos: 0
   onlyEditModeGizmos: 0
+  _view: {fileID: 0}
   _factory: {fileID: 11400000, guid: 704fa5493ce284dc0ae48cc3d059a5a9, type: 2}
+  _viewPool: {fileID: 0}
   _lifeBaker:
     _active: 0
     _current: 5

@@ -1,0 +1,20 @@
+header: EntityAPI
+entityType: IGameUI
+aggressiveInlining: true
+
+namespace: ShooterGame.UI
+className: GameUIAPI
+directory: Assets/Examples/Shooter/Scripts/UI/Game
+
+imports:
+  - UnityEngine
+  - Atomic.Elements
+  - System.Collections.Generic
+  - System
+
+values:
+  - PopupTransform: Transform
+  
+  #GameOver
+  - GameOverViewPrefab: GameOverView
+  - GameOverView: GameOverView

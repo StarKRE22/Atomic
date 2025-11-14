@@ -79,7 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameCycleInstaller:
-    _gameDuration: 45
+    _gameDuration:
+      value: 60
   _teamCatalog: {fileID: 11400000, guid: 2a25c920b71554345892bc87c758c68d, type: 2}
   _respawnTime:
     value: 3

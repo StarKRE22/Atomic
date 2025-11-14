@@ -1,0 +1,64 @@
+header: EntityAPI
+entityType: IGameEntity
+aggressiveInlining: true
+namespace: ShooterGame.Gameplay
+className: GameEntityAPI
+directory: Assets/Examples/Shooter/Scripts/Gameplay/GameEntities/  
+
+imports:
+- UnityEngine
+- System
+- Atomic.Elements
+
+tags:
+- Damageable
+
+values:
+  
+#Transform
+- Position: IVariable<Vector3>
+- Rotation: IVariable<Quaternion>
+- Parent: IVariable<Transform>
+
+#Movement  
+- MovementSpeed: IValue<float>
+- MovementCondition: IExpression<bool>
+- MovementDirection: IReactiveVariable<Vector3>
+- MovementEvent: IEvent<Vector3>  
+  
+#Rotate  
+- RotationCondition: IExpression<bool>
+- RotationSpeed: IValue<float>
+- RotationDirection: IReactiveVariable<Vector3>
+- RotationEvent: IEvent<Vector3>
+
+#Life
+- Health: Health
+- Lifetime: Cooldown
+- TakeDamageEvent: IEvent<DamageArgs>
+- TakeDeathEvent: IEvent<DamageArgs>
+- DestroyAction: IAction
+- RespawnEvent: IEvent
+
+#Team
+- TeamType: IReactiveVariable<TeamType>
+
+#Combat
+- Weapon: IWeapon
+- Damage: IValue<int>
+- Target: IReactiveVariable<IGameEntity>  
+- FireCondition: IExpression<bool>
+- FireCooldown: Cooldown
+- FirePoint: Transform
+- FireAction: IAction
+- FireEvent: IEvent
+
+#Physics
+- Trigger: TriggerEvents
+- PhysicsLayer: IVariable<int>
+- Rigidbody: Rigidbody
+
+#View
+- Renderer: Renderer
+- Animator: Animator
+- HitPointsView: HitPointsView

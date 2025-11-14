@@ -1,23 +1,21 @@
-using System;
 using System.Collections;
 using Atomic.Elements;
 using Atomic.Entities;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
     public static class CharacterUseCase
     {
-        public static Actor Spawn(
+        public static GameEntity Spawn(
             IPlayerContext context,
             IGameContext gameContext,
-            Actor prefab
+            GameEntity prefab
         )
         {
             Transform worldTransform = gameContext.GetWorldTransform();
             Transform spawnPoint = SpawnPointsUseCase.NextPoint(gameContext);
-            Actor entity = SceneEntity.Create(prefab, spawnPoint, worldTransform);
+            GameEntity entity = SceneEntity.Create(prefab, spawnPoint, worldTransform);
             entity.GetTeamType().Value = context.GetTeamType().Value;
             return entity;
         }
@@ -32,7 +30,7 @@ namespace ShooterGame.Gameplay
 
         public static void Respawn(IPlayerContext playerContext, IGameContext gameContext)
         {
-            IActor character = playerContext.GetCharacter();
+            IGameEntity character = playerContext.GetCharacter();
             character.GetHealth().AssignMax();
 
             Transform nextPoint = SpawnPointsUseCase.NextPoint(gameContext);
@@ -43,7 +41,7 @@ namespace ShooterGame.Gameplay
             DebugRespawn(character);
         }
 
-        private static void DebugRespawn(IActor character)
+        private static void DebugRespawn(IGameEntity character)
         {
             TeamType teamType = character.GetTeamType().Value;
             Debug.Log($"<color={teamType.ToString().ToLower()}>Player {teamType} has respawned!</color>");

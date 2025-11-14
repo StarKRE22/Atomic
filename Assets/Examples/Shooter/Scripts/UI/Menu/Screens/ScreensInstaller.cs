@@ -4,6 +4,7 @@ using System.Linq;
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
+using AppContext = ShooterGame.App.AppContext;
 
 namespace ShooterGame.UI
 {
@@ -18,18 +19,21 @@ namespace ShooterGame.UI
 
         public override void Install(IMenuUI ui)
         {
+            AppContext.TryGetInstance(out AppContext appContext);
+
             Dictionary<Type, (ScreenView, IEntityBehaviour)> screens = this
-                .ProvideScreens()
+                .ProvideScreens(appContext)
                 .ToDictionary(it => it.Item1.GetType());
 
             ui.AddScreens(screens);
             ui.AddCurrentScreen(new ReactiveVariable<ScreenView>());
         }
 
-        private (ScreenView, IEntityBehaviour)[] ProvideScreens() => new (ScreenView, IEntityBehaviour)[]
-        {
-            (_startScreen, new StartScreenPresenter(_startScreen)),
-            (_levelScreen, new LevelScreenPresenter(_levelScreen))
-        };
+        private (ScreenView, IEntityBehaviour)[] ProvideScreens(AppContext appContext) =>
+            new (ScreenView, IEntityBehaviour)[]
+            {
+                (_startScreen, new StartScreenPresenter(_startScreen, appContext)),
+                (_levelScreen, new LevelScreenPresenter(_levelScreen, appContext))
+            };
     }
 }

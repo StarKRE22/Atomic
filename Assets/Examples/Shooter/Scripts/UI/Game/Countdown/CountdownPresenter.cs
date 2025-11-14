@@ -1,28 +1,32 @@
 using Atomic.Elements;
-using Atomic.Entities;
+using ShooterGame.Gameplay;
 using TMPro;
 
-namespace ShooterGame.Gameplay
+namespace ShooterGame.UI
 {
-    public sealed class CountdownPresenter : IEntityInit, IEntityDispose
+    public sealed class CountdownPresenter : IGameUIInit, IGameUIDispose
     {
         private readonly TMP_Text _view;
-        private IReactiveVariable<float> _gameTime;
+        private readonly IGameContext _gameContext;
+        
+        private Subscription<float> _subscription;
 
-        public CountdownPresenter(TMP_Text view)
+        public CountdownPresenter(TMP_Text view, IGameContext gameContext)
         {
             _view = view;
+            _gameContext = gameContext;
         }
 
-        public void Init(IEntity _)
+        public void Init(IGameUI entity)
         {
-            _gameTime = GameContext.Instance.GetGameTime();
-            _gameTime.Observe(this.OnGameTimeChanged);
+            _subscription = _gameContext
+                .GetGameTime()
+                .Observe(this.OnGameTimeChanged);
         }
-
-        public void Dispose(IEntity _)
+        
+        public void Dispose(IGameUI entity)
         {
-            _gameTime.Unsubscribe(this.OnGameTimeChanged);
+            _subscription.Dispose();
         }
 
         private void OnGameTimeChanged(float time)

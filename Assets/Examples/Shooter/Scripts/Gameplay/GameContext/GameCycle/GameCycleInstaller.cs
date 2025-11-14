@@ -9,11 +9,11 @@ namespace ShooterGame.Gameplay
     public sealed class GameCycleInstaller : IEntityInstaller<IGameContext>
     {
         [SerializeField]
-        private float _gameDuration = 20;
+        private ReactiveFloat _gameDuration = 20;
         
         public void Install(IGameContext context)
         {
-            context.AddGameTime(new ReactiveFloat(_gameDuration));
+            context.AddGameTime(_gameDuration);
             context.AddBehaviour<GameCycleController>();    
         }
     }

@@ -1,10 +1,13 @@
+using Atomic.Elements;
+
 namespace ShooterGame.Gameplay
 {
     public static class GameCycleUseCase
     {
         public static bool IsPlaying(IGameContext context)
         {
-            return context.GetGameTime().Value > 0;
+            IValue<float> variable = context.GetGameTime();
+            return variable.Value > 0;
         }
     }
 }

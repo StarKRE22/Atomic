@@ -170,7 +170,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 4294967295
 --- !u!1 &6921688845189193981
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,18 +218,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d90ce66bd0451d93bc9155481a2c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  installOnAwake: 1
-  installInEditMode: 0
-  disposeValues: 1
   useUnityLifecycle: 1
-  installers:
+  disposeValues: 1
+  installOnAwake: 1
+  uninstallOnDestroy: 1
+  scriptableInstallers: []
+  sceneInstallers:
   - {fileID: 2785717503897597857}
-  children: []
-  _initialBehaviourCapacity: 0
-  _onlySelectedGizmos: 0
-  _onlyEditModeGizmos: 0
-  _initialTagCapacity: 0
-  _initialValueCapacity: 2
+  childInstallers: []
+  onlySelectedGizmos: 0
+  onlyEditModeGizmos: 0
+  autoCompile: 0
+  initialTagCapacity: 0
+  initialValueCapacity: 2
+  initialBehaviourCapacity: 0
+  _isGlobal: 1
   _dontDestroyOnLoad: 0
 --- !u!114 &2785717503897597857
 MonoBehaviour:

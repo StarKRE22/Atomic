@@ -1,10 +1,8 @@
-using Atomic.Entities;
-
 namespace ShooterGame.Gameplay
 {
     public struct KillArgs
     {
-        public IActor instigator;
-        public IActor victim;
+        public IGameEntity instigator;
+        public IGameEntity victim;
     }
 }

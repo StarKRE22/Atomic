@@ -20,6 +20,8 @@ namespace Atomic.Entities
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Entities/SceneEntitySingleton.md")]
     public abstract class SceneEntitySingleton<E> : SceneEntity where E : SceneEntitySingleton<E>
     {
+        private static IEntityFactory<E> _factory;
+
 #if ODIN_INSPECTOR
         [PropertyOrder(-10)]
         [DisableInPlayMode]
@@ -40,6 +42,8 @@ namespace Atomic.Entities
 
         #region Instance
 
+        private static E _instance;
+
         /// <summary>
         /// Gets the singleton instance of type <typeparamref name="E"/> in the current scene or globally.
         /// Throws an exception if no instance is found.
@@ -56,14 +60,16 @@ namespace Atomic.Entities
 #else
                 _instance = FindObjectsOfType<E>().FirstOrDefault(it => it._isGlobal);
 #endif
+                if (_instance)
+                    return _instance;
 
-                return !_instance
-                    ? throw new Exception($"Scene Entity Singleton of type {typeof(E).Name} is not found!")
-                    : _instance;
+                _instance = _factory?.Create();
+
+                return _instance
+                    ? _instance
+                    : throw new Exception($"Scene Entity Singleton of type {typeof(E).Name} is not found!");
             }
         }
-
-        private static E _instance;
 
         /// <summary>
         /// Tries to get the singleton instance of type <typeparamref name="E"/> in the current scene or globally.
@@ -72,20 +78,35 @@ namespace Atomic.Entities
         /// <returns>True if the instance was retrieved</returns>
         public static bool TryGetInstance(out E instance)
         {
-            if (_instance)
-            {
-                instance = _instance;
+            instance = _instance;
+            if (instance)
                 return true;
-            }
 
 #if UNITY_2023_1_OR_NEWER
-            _instance = FindObjectsByType<E>(FindObjectsSortMode.None).FirstOrDefault(it => it._isGlobal);
+            instance = _instance = FindObjectsByType<E>(FindObjectsSortMode.None).FirstOrDefault(it => it._isGlobal);
 #else
-            _instance = FindObjectsOfType<E>().FirstOrDefault(it => it._isGlobal);
+            instance = _instance = FindObjectsOfType<E>().FirstOrDefault(it => it._isGlobal);
 #endif
+            if (instance)
+                return true;
 
-            instance = _instance;
+            instance = _instance = _factory?.Create();
             return instance;
+        }
+
+        /// <summary>
+        /// Registers a custom factory method for creating the singleton instance.
+        /// <para>
+        /// This method must be called before the first access to <see cref="Instance"/>.
+        /// </para>
+        /// </summary>
+        /// <param name="factory">
+        /// The factory that will be used to create new instances of <typeparamref name="E"/>.
+        /// </param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> is <c>null</c>.</exception>
+        public static void SetFactory(IEntityFactory<E> factory)
+        {
+            _factory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
 
         #endregion
@@ -98,7 +119,14 @@ namespace Atomic.Entities
         private protected override void Awake()
         {
             if (_instance == null && _isGlobal)
+            {
                 _instance = (E) this;
+            }
+            else if (_instance != this)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
 
             base.Awake();
 

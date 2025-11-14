@@ -1,5 +1,4 @@
-using Atomic.Elements;
-using Atomic.Entities;
+using System.Collections.Generic;
 
 namespace ShooterGame.Gameplay
 {
@@ -7,8 +6,8 @@ namespace ShooterGame.Gameplay
     {
         public static bool AddScore(IGameContext gameContext, KillArgs args)
         {
-            IActor instigator = args.instigator;
-            IActor victim = args.victim;
+            IGameEntity instigator = args.instigator;
+            IGameEntity victim = args.victim;
 
             if (instigator == null || victim == null || instigator.Equals(victim))
                 return false;
@@ -16,7 +15,7 @@ namespace ShooterGame.Gameplay
             TeamType instigatorTeam = instigator.GetTeamType().Value;
             TeamType victimTeam = victim.GetTeamType().Value;
             if (instigatorTeam == victimTeam)
-                return false; 
+                return false;
 
             AddScore(gameContext, instigatorTeam);
             return true;
@@ -24,8 +23,21 @@ namespace ShooterGame.Gameplay
 
         public static void AddScore(IGameContext gameContext, TeamType teamType, int score = 1)
         {
-            IReactiveDictionary<TeamType,int> leaderboard = gameContext.GetLeaderboard();
+            IDictionary<TeamType, int> leaderboard = gameContext.GetLeaderboard();
             leaderboard[teamType] += score;
+        }
+        
+        public static TeamType GetWinner(IGameContext gameContext)
+        {
+            IDictionary<TeamType, int> leaderboard = gameContext.GetLeaderboard();
+            int redMoney = leaderboard[TeamType.RED];
+            int blueMoney = leaderboard[TeamType.BLUE];
+
+            return redMoney > blueMoney
+                ? TeamType.RED
+                : blueMoney > redMoney
+                    ? TeamType.BLUE
+                    : TeamType.NEUTRAL;
         }
     }
 }

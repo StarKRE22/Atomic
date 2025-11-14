@@ -1,14 +1,21 @@
-using Atomic.Entities;
+using Atomic.Elements;
 using ShooterGame.App;
 using UnityEngine;
 
 namespace ShooterGame
 {
-    public sealed class MenuLoadController : IEntityTick
+    public sealed class MenuLoadController : IAppContextInit, IAppContextTick
     {
-        public void Tick(IEntity entity, float deltaTime)
+        private IValue<KeyCode> _exitKey;
+        
+        public void Init(IAppContext context)
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && !MenuUseCase.InMenu()) 
+            _exitKey = context.GetExitKeyCode();
+        }
+
+        public void Tick(IAppContext entity, float deltaTime)
+        {
+            if (Input.GetKeyDown(_exitKey.Value) && !MenuUseCase.InMenu()) 
                 MenuUseCase.LoadMenu().Forget();
         }
     }

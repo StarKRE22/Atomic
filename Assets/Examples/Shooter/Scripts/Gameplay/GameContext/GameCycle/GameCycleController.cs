@@ -1,10 +1,9 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class GameCycleController : IEntityInit<IGameContext>, IEntityEnable, IEntityTick
+    public sealed class GameCycleController : IGameContextInit, IGameContextEnable, IGameContextTick
     {
         private IVariable<float> _gameTime;
         private IEvent _gameOverEvent;
@@ -15,12 +14,12 @@ namespace ShooterGame.Gameplay
             _gameOverEvent = context.GetGameOverEvent();
         }
 
-        public void Enable(IEntity entity)
+        public void Enable(IGameContext context)
         {
             Debug.Log("<color=yellow>Game Started!</color>");
         }
 
-        public void Tick(IEntity entity, float deltaTime)
+        public void Tick(IGameContext context, float deltaTime)
         {
             if (_gameTime.Value <= 0)
                 return;
@@ -30,6 +29,7 @@ namespace ShooterGame.Gameplay
             if (_gameTime.Value <= 0)
             {
                 _gameOverEvent.Invoke();
+                context.Disable();
                 Debug.Log("<color=yellow>Game Finished</color>");
             }
         }

@@ -1,23 +1,26 @@
-using Atomic.Entities;
-
 namespace ShooterGame.Gameplay
 {
-    public sealed class CharacterFireController : IEntityInit<IPlayerContext>, IEntityTick
+    public sealed class CharacterFireController : IPlayerContextInit, IPlayerContextTick
     {
-        private IGameContext _gameContext;
-        private IActor _character;
+        private readonly IGameContext _gameContext;
+        
+        private IGameEntity _character;
         private IPlayerContext _playerContext;
+        
+        public CharacterFireController(IGameContext gameContext)
+        {
+            _gameContext = gameContext;
+        }
 
         public void Init(IPlayerContext context)
         {
-            _character = context.GetCharacter();
             _playerContext = context;
-            _gameContext = GameContext.Instance;
+            _character = context.GetCharacter();
         }
 
-        public void Tick(IEntity entity, float deltaTime)
+        public void Tick(IPlayerContext entity, float deltaTime)
         {
-            if (FireInputUseCase.FireRequired(_playerContext, _gameContext))
+            if (InputUseCase.FireRequired(_playerContext, _gameContext))
                 _character.GetFireAction().Invoke();
         }
     }

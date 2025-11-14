@@ -1,10 +1,9 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class WeaponViewInstaller : SceneEntityInstaller<IWeapon>
+    public sealed class WeaponViewInstaller : WeaponInstaller
     {
         [SerializeField]
         private ParticleSystem _particleSystem;
@@ -12,10 +11,17 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private AudioSource _audioSource;
 
+        private readonly DisposableComposite _disposables = new();
+
         public override void Install(IWeapon weapon)
         {
-            weapon.GetFireEvent().Subscribe(_particleSystem.Play);
-            weapon.GetFireEvent().Subscribe(_audioSource.Play);
+            weapon.GetFireEvent().Subscribe(_particleSystem.Play).AddTo(_disposables);
+            weapon.GetFireEvent().Subscribe(_audioSource.Play).AddTo(_disposables);
+        }
+
+        public override void Uninstall(IWeapon weapon)
+        {
+            _disposables.Dispose();
         }
     }
 }

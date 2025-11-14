@@ -1,10 +1,8 @@
-
 using Atomic.Elements;
-using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class LeaderboardController : IEntityInit<IGameContext>, IEntityDispose
+    public sealed class LeaderboardController : IGameContextInit, IGameContextDispose
     {
         private ISignal<KillArgs> _killEvent;
         private IGameContext _gameContext;
@@ -13,12 +11,12 @@ namespace ShooterGame.Gameplay
         {
             _gameContext = context;
             _killEvent = context.GetKillEvent();
-            _killEvent.Subscribe(this.OnKill);
+            _killEvent.OnEvent += this.OnKill;
         }
 
-        public void Dispose(IEntity entity)
+        public void Dispose(IGameContext context)
         {
-            _killEvent.Unsubscribe(this.OnKill);
+            _killEvent.OnEvent -= this.OnKill;
         }
 
         private void OnKill(KillArgs args)

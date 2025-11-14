@@ -1,24 +1,25 @@
-using Atomic.Elements;
-using Atomic.Entities;
-
 namespace ShooterGame.Gameplay
 {
-    public sealed class CharacterRespawnController : IEntityInit<IPlayerContext>, IEntityDispose
+    public sealed class CharacterRespawnController : IPlayerContextInit, IPlayerContextDispose
     {
-        private GameContext _gameContext;
+        private readonly GameContext _gameContext;
 
         private IPlayerContext _playerContext;
         private Health _characterHealth;
 
+        public CharacterRespawnController(GameContext gameContext)
+        {
+            _gameContext = gameContext;
+        }
+
         public void Init(IPlayerContext context)
         {
-            _gameContext = GameContext.Instance;
             _playerContext = context;
             _characterHealth = _playerContext.GetCharacter().GetHealth();
             _characterHealth.OnHealthEmpty += this.OnHealthEmpty;
         }
 
-        public void Dispose(IEntity entity)
+        public void Dispose(IPlayerContext entity)
         {
             _characterHealth.OnHealthEmpty -= this.OnHealthEmpty;
         }

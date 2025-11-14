@@ -1,10 +1,9 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.App
 {
-    public sealed class QuitController : IEntityInit<IAppContext>, IEntityTick
+    public sealed class QuitController : IAppContextInit, IAppContextTick
     {
         private IValue<KeyCode> _exitKey;
 
@@ -13,7 +12,7 @@ namespace ShooterGame.App
             _exitKey = context.GetExitKeyCode();
         }
 
-        public void Tick(IEntity entity, float deltaTime)
+        public void Tick(IAppContext entity, float deltaTime)
         {
             if (Input.GetKey(_exitKey.Value) && MenuUseCase.InMenu()) 
                 QuitUseCase.Quit();
