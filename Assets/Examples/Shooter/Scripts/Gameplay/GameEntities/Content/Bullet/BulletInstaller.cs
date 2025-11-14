@@ -43,7 +43,7 @@ namespace ShooterGame.Gameplay
 
             //Move
             entity.AddMovementSpeed(_moveSpeed);
-            entity.AddBehaviour<MovementBehaviour>();
+            entity.AddBehaviour<SimpleMovementBehaviour>();
 
             //Physics
             entity.AddTrigger(_trigger);

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class MovementBehaviour : IGameEntityInit, IGameEntityFixedTick
+    public sealed class SimpleMovementBehaviour : IGameEntityInit, IGameEntityFixedTick
     {
         private IVariable<Vector3> _position;
         private IValue<Quaternion> _rotation;

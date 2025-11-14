@@ -384,7 +384,7 @@ MonoBehaviour:
   sceneInstallers:
   - {fileID: 5970605582733860260}
   - {fileID: 9134219916602173294}
-  children:
+  childInstallers:
   - {fileID: 6224001954257250313}
   onlySelectedGizmos: 0
   onlyEditModeGizmos: 0
@@ -412,6 +412,12 @@ MonoBehaviour:
     value: 3
   _rotationSpeed:
     value: 720
+  _stoppingDistance:
+    value: 0.25
+  _obstacleLayerMask:
+    value:
+      serializedVersion: 2
+      m_Bits: 64
   _health:
     current: 3
     max: 3

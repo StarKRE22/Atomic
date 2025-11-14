@@ -26,6 +26,12 @@ namespace ShooterGame.Gameplay
         private Const<float> _rotationSpeed = 15;
 
         [SerializeField]
+        private Const<float> _stoppingDistance = 0.25f;
+
+        [SerializeField]
+        private Const<LayerMask> _obstacleLayerMask;
+
+        [SerializeField]
         private Health _health = new(3);
 
         [SerializeField]
@@ -64,7 +70,7 @@ namespace ShooterGame.Gameplay
             entity.AddMovementDirection(new ReactiveVector3());
             entity.AddMovementCondition(new AndExpression(_health.Exists));
             entity.AddMovementEvent(new Event<Vector3>());
-            entity.AddBehaviour<RigidbodyMovementBehaviour>();
+            entity.AddBehaviour(new KinematicMovementBehaviour(_stoppingDistance, _obstacleLayerMask));
 
             //Rotation:
             entity.AddRotationSpeed(_rotationSpeed);

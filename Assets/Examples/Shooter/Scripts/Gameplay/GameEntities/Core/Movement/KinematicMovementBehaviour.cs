@@ -3,19 +3,26 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class RigidbodyMovementBehaviour : IGameEntityInit, IGameEntityFixedTick
+    public sealed class KinematicMovementBehaviour : IGameEntityInit, IGameEntityFixedTick
     {
-        private const float SWEEP_TEST_FACTOR = 2;
-        
-        private Rigidbody _rigidbody;
+        private readonly IValue<float> _maxDistance;
+        private readonly IValue<LayerMask> _layerMask;
+        private IVariable<Vector3> _position;
+
         private IValue<float> _moveSpeed;
         private IValue<Vector3> _moveDirection;
         private IFunction<bool> _moveCondition;
         private IEvent<Vector3> _moveEvent;
 
+        public KinematicMovementBehaviour(IValue<float> maxDistance, IValue<LayerMask> layerMask)
+        {
+            _maxDistance = maxDistance;
+            _layerMask = layerMask;
+        }
+
         public void Init(IGameEntity entity)
         {
-            _rigidbody = entity.GetRigidbody();
+            _position = entity.GetPosition();
             _moveSpeed = entity.GetMovementSpeed();
             _moveDirection = entity.GetMovementDirection();
             _moveCondition = entity.GetMovementCondition();
@@ -28,11 +35,15 @@ namespace ShooterGame.Gameplay
             if (direction == Vector3.zero || !_moveCondition.Invoke())
                 return;
 
-            float moveStep = _moveSpeed.Value * deltaTime;
-            if (_rigidbody.SweepTest(direction, out _, moveStep * SWEEP_TEST_FACTOR))
+            Vector3 position = _position.Value;
+
+            bool hasObstacle = Physics.Raycast(position, direction, _maxDistance.Value, _layerMask.Value, 
+                QueryTriggerInteraction.Ignore);
+            
+            if (hasObstacle) 
                 return;
 
-            _rigidbody.MovePosition(_rigidbody.position + direction * moveStep);
+            _position.Value += direction * (_moveSpeed.Value * deltaTime); 
             _moveEvent.Invoke(direction);
         }
     }
