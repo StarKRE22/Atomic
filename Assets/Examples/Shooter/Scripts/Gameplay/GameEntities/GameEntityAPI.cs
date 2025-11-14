@@ -17,7 +17,7 @@ namespace ShooterGame.Gameplay
 #if UNITY_EDITOR
 	[InitializeOnLoad]
 #endif
-	public static class ActorAPI
+	public static class GameEntityAPI
 	{
 
 		///Tags
@@ -44,7 +44,7 @@ namespace ShooterGame.Gameplay
 		public static readonly int TeamType; // IReactiveVariable<TeamType>
 		public static readonly int Weapon; // IWeapon
 		public static readonly int Damage; // IValue<int>
-		public static readonly int Target; // IReactiveVariable<IActor>
+		public static readonly int Target; // IReactiveVariable<IGameEntity>
 		public static readonly int FireCondition; // IExpression<bool>
 		public static readonly int FireCooldown; // Cooldown
 		public static readonly int FirePoint; // Transform
@@ -57,7 +57,7 @@ namespace ShooterGame.Gameplay
 		public static readonly int Animator; // Animator
 		public static readonly int HitPointsView; // HitPointsView
 
-		static ActorAPI()
+		static GameEntityAPI()
 		{
 			//Tags
 			Damageable = NameToId(nameof(Damageable));

@@ -1,38 +1,27 @@
-using Atomic.Entities;
 using ShooterGame.App;
 
 namespace ShooterGame.UI
 {
-    public sealed class LevelScreenPresenter : 
-        IEntityInit<IMenuUI>, 
-        IEntityDispose,
-        IEntityEnable,
-        IEntityDisable
+    public sealed class LevelScreenPresenter :
+        IMenuUIInit,
+        IMenuUIDispose,
+        IMenuUIEnable,
+        IMenuUIDisable
     {
+        private readonly IAppContext _appContext;
         private readonly LevelScreenView _screenView;
         private IMenuUI _uiContext;
-        private IAppContext _appContext;
 
-        public LevelScreenPresenter(LevelScreenView screenView)
+        public LevelScreenPresenter(LevelScreenView screenView, IAppContext appContext)
         {
             _screenView = screenView;
+            _appContext = appContext;
         }
 
         public void Init(IMenuUI context)
         {
-            _appContext = AppContext.Instance;
             _uiContext = context;
             this.SpawnLevelItems();
-        }
-        
-        public void Enable(IEntity entity)
-        {
-            _screenView.OnCloseClicked += this.OnCloseClicked;
-        }
-
-        public void Disable(IEntity entity)
-        {
-            _screenView.OnCloseClicked -= this.OnCloseClicked;
         }
 
         private void SpawnLevelItems()
@@ -46,13 +35,23 @@ namespace ShooterGame.UI
                 _uiContext.AddBehaviour(itemPresenter);
             }
         }
-        
-        public void Dispose(IEntity entity)
+
+        public void Enable(IMenuUI entity)
+        {
+            _screenView.OnCloseClicked += this.OnCloseClicked;
+        }
+
+        public void Disable(IMenuUI entity)
+        {
+            _screenView.OnCloseClicked -= this.OnCloseClicked;
+        }
+
+        private void OnCloseClicked() => ScreenUseCase.ShowScreen<StartScreenView>(_uiContext);
+
+        public void Dispose(IMenuUI entity)
         {
             _uiContext.DelBehaviours<LevelItemPresenter>();
             _screenView.ClearAllItems();
         }
-
-        private void OnCloseClicked() => ScreenUseCase.ShowScreen<StartScreenView>(_uiContext);
     }
 }

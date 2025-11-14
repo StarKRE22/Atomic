@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 
 namespace ShooterGame.App
 {
-    public static class LoadGameUseCase
+    public static class GameLoadingUseCase
     {
         public static void StartGame(IAppContext context)
         {
@@ -16,7 +16,7 @@ namespace ShooterGame.App
             if (level <= 0 || level > context.GetMaxLevel().Value)
                 throw new ArgumentOutOfRangeException(nameof(level));
 
-            var bundle = new LoadGameBundle
+            var bundle = new LoadingBundle
             {
                 {"level", level}
             };

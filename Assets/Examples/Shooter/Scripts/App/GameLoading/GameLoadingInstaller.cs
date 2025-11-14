@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ShooterGame.App
 {
     [Serializable]
-    public sealed class LoadGameInstaller : IEntityInstaller<IAppContext>
+    public sealed class GameLoadingInstaller : IEntityInstaller<IAppContext>
     {
         [SerializeField]
         private string _levelNameFormat = "ShooterGame (Level{0})";

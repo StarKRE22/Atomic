@@ -4,7 +4,7 @@ using TMPro;
 
 namespace ShooterGame.UI
 {
-    public sealed class KillsPresenter : IGameUIInit, IGameUIDispose
+    public sealed class ScorePresenter : IGameUIInit, IGameUIDispose
     {
         private readonly TMP_Text _text;
         private readonly TeamType _teamType;
@@ -12,7 +12,7 @@ namespace ShooterGame.UI
         
         private IReactiveDictionary<TeamType, int> _leaderboard;
         
-        public KillsPresenter(TMP_Text text, TeamType teamType, IGameContext gameContext)
+        public ScorePresenter(TMP_Text text, TeamType teamType, IGameContext gameContext)
         {
             _text = text;
             _teamType = teamType;

@@ -1,19 +1,18 @@
-using Atomic.Entities;
 using ShooterGame.App;
 
 namespace ShooterGame.UI
 {
-    public sealed class LevelItemPresenter : IEntityInit<IMenuUI>, IEntityDispose
+    public sealed class LevelItemPresenter : IMenuUIInit, IMenuUIDispose
     {
         private readonly IAppContext _context;
-        private readonly int _level;
         private readonly LevelItemView _view;
+        private readonly int _level;
         
         public LevelItemPresenter(IAppContext context, int level, LevelItemView view)
         {
             _context = context;
-            _level = level;
             _view = view;
+            _level = level;
         }
 
         public void Init(IMenuUI context)
@@ -30,11 +29,11 @@ namespace ShooterGame.UI
             _view.OnClicked += this.OnClicked;
         }
 
-        public void Dispose(IEntity entity)
+        public void Dispose(IMenuUI entity)
         {
             _view.OnClicked -= this.OnClicked;
         }
 
-        private void OnClicked() => LoadGameUseCase.StartGame(_context, _level);
+        private void OnClicked() => GameLoadingUseCase.StartGame(_context, _level);
     }
 }

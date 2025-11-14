@@ -1,44 +1,43 @@
-using Atomic.Entities;
 using ShooterGame.App;
 
 namespace ShooterGame.UI
 {
     public sealed class StartScreenPresenter :
-        IEntityInit<IMenuUI>,
-        IEntityEnable,
-        IEntityDisable
+        IMenuUIInit,
+        IMenuUIEnable,
+        IMenuUIDisable
     {
         private readonly StartScreenView _screenView;
+        private readonly IAppContext _appContext;
         
-        private IAppContext _appContext;
         private IMenuUI _uIContext;
 
-        public StartScreenPresenter(StartScreenView screenView)
+        public StartScreenPresenter(StartScreenView screenView, IAppContext appContext)
         {
             _screenView = screenView;
+            _appContext = appContext;
         }
 
         public void Init(IMenuUI context)
         {
             _uIContext = context;
-            _appContext = AppContext.Instance;
-        }   
+        }
 
-        public void Enable(IEntity entity)
+        public void Enable(IMenuUI entity)
         {
             _screenView.OnSelectLevelClicked += this.OnSelectLevelClicked;
             _screenView.OnStartClicked += this.OnStartClicked;
             _screenView.OnExitClicked += QuitUseCase.Quit;
         }
 
-        public void Disable(IEntity entity)
+        public void Disable(IMenuUI entity)
         {
             _screenView.OnStartClicked -= this.OnStartClicked;
             _screenView.OnSelectLevelClicked -= this.OnSelectLevelClicked;
             _screenView.OnExitClicked -= QuitUseCase.Quit;
         }
 
-        private void OnStartClicked() => LoadGameUseCase.StartGame(_appContext);
+        private void OnStartClicked() => GameLoadingUseCase.StartGame(_appContext);
 
         private void OnSelectLevelClicked() => ScreenUseCase.ShowScreen<LevelScreenView>(_uIContext);
     }

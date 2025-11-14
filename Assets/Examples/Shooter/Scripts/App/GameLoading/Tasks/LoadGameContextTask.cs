@@ -13,7 +13,7 @@ namespace ShooterGame.App
             _prefab = prefab;
         }
 
-        public UniTask Invoke(IAppContext context, LoadGameBundle bundle)
+        public UniTask Invoke(IAppContext context, LoadingBundle bundle)
         {
             GameContext gameContext = GameObject.Instantiate(_prefab);
             gameContext.AddBehaviour(new GameCompletionObserver(context));
