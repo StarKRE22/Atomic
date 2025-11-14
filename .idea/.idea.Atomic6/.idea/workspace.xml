@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40c6c12e-e382-4282-908a-6364831197ae" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Tank.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Tank.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Warrior.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Warrior.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Common/SpatialHash/SpatialHash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Common/SpatialHash/SpatialHash.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Units/Core/SpatialHash/DynamicSpatialHashBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Units/Core/SpatialHash/DynamicSpatialHashBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Units/Core/SpatialHash/StaticSpatialHashBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Units/Core/SpatialHash/StaticSpatialHashBehaviour.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,15 +200,7 @@
       <workItem from="1762928600682" duration="13139000" />
       <workItem from="1762941843430" duration="5931000" />
       <workItem from="1762985064497" duration="34271000" />
-      <workItem from="1763141664531" duration="1119000" />
-    </task>
-    <task id="LOCAL-00058" summary="EntityAPI Generation">
-      <option name="closed" value="true" />
-      <created>1762368879587</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1762368879587</updated>
+      <workItem from="1763141664531" duration="2153000" />
     </task>
     <task id="LOCAL-00059" summary="EntityAPI Generation">
       <option name="closed" value="true" />
@@ -589,7 +586,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763142576594</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1763142987709</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1763142987709</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,14 +639,14 @@
     <MESSAGE value="AppContext.cs" />
     <MESSAGE value="SceneEntityInstaller`1.cs" />
     <MESSAGE value="PlayerContext!" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Обновил презенторы игры!" />
     <MESSAGE value="Пилим UI!" />
     <MESSAGE value="Обновил проект!" />
     <MESSAGE value="Поправил прототип ShooterGame!" />
     <MESSAGE value="SimpleMovementBehaviour.cs" />
     <MESSAGE value="Обновляем RTS Sample!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Обновляем RTS Sample!" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

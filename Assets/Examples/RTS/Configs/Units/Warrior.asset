@@ -33,7 +33,7 @@ MonoBehaviour:
     _damage:
       value: 1
   _aiInstaller:
-    _minDetectDuration: 0.3
-    _maxDetectDuration: 0.5
+    _minDetectDuration: 0.4
+    _maxDetectDuration: 0.6
     _detectionRadius:
-      value: 50
+      value: 40

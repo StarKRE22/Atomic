@@ -62,7 +62,7 @@ namespace RTSGame
             }
 
             // Удаляем из старой клетки
-            _spatialHash.FastMove(_self, _key, _newKey);
+            _spatialHash.Move(_self, _key, _newKey);
 
             // Обновляем текущий ключ
             _key = _newKey;

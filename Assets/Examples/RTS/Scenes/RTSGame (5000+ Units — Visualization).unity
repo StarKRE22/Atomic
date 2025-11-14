@@ -201,7 +201,7 @@ MonoBehaviour:
   _showEntityViews: 1
   _bakeUnits: 0
   _bakeIncludeInactive: 0
-  _unitColumns: 400
+  _unitColumns: 360
 --- !u!1001 &263788856
 PrefabInstance:
   m_ObjectHideFlags: 0

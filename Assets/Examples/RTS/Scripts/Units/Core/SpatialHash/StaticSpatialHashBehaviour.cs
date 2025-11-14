@@ -26,7 +26,7 @@ namespace RTSGame
         // Вставка в SpatialHash (один раз)
         public void Enable(IEntity entity)
         {
-            _spatialHash.Insert(_self, out _);
+            _spatialHash.Insert(_self);
         }
 
         // Удаление из SpatialHash
