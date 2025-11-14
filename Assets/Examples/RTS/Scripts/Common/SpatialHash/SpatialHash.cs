@@ -132,32 +132,38 @@ public class SpatialHash<T>
         Insert(obj);
     }
 
-    // Быстрый Query: объекты в объёме (сфера)
-    public IEnumerable<T> Query(float x, float y, float z, float radius)
+    /// <summary>
+    /// Быстрый поиск объектов в кубе вокруг точки с использованием заранее выделенного массива.
+    /// </summary>
+    /// <param name="center">Центр поиска.</param>
+    /// <param name="radius">Радиус поиска.</param>
+    /// <param name="buffer">Предварительно выделенный массив для результатов.</param>
+    /// <returns>Количество найденных объектов.</returns>
+    public int Query(Vector3 center, float radius, T[] buffer)
     {
-        int minX = (int) ((x - radius) / cellSize);
-        int maxX = (int) ((x + radius) / cellSize);
-        int minY = (int) ((y - radius) / cellSize);
-        int maxY = (int) ((y + radius) / cellSize);
-        int minZ = (int) ((z - radius) / cellSize);
-        int maxZ = (int) ((z + radius) / cellSize);
+        if (buffer == null)
+            throw new ArgumentNullException(nameof(buffer));
+
+        int count = 0;
+
+        int minX = (int) ((center.x - radius) / cellSize);
+        int maxX = (int) ((center.x + radius) / cellSize);
+        int minY = (int) ((center.y - radius) / cellSize);
+        int maxY = (int) ((center.y + radius) / cellSize);
+        int minZ = (int) ((center.z - radius) / cellSize);
+        int maxZ = (int) ((center.z + radius) / cellSize);
 
         for (int cx = minX; cx <= maxX; cx++)
-        {
-            for (int cy = minY; cy <= maxY; cy++)
-            {
-                for (int cz = minZ; cz <= maxZ; cz++)
-                {
-                    var key = new Vector3Int(cx, cy, cz);
+        for (int cy = minY; cy <= maxY; cy++)
+        for (int cz = minZ; cz <= maxZ; cz++)
+            if (grid.TryGetValue(new Vector3Int(cx, cy, cz), out var list))
+                for (int i = 0, length = list.Count; i < length; i++)
+                    if (count < buffer.Length)
+                        buffer[count++] = list[i];
+                    else
+                        break; // массив переполнен, остальное игнорируем
 
-                    if (grid.TryGetValue(key, out var list))
-                    {
-                        for (int i = 0; i < list.Count; i++)
-                            yield return list[i];
-                    }
-                }
-            }
-        }
+        return count;
     }
 
     public bool Remove(T obj)
@@ -180,51 +186,6 @@ public class SpatialHash<T>
 
         return true;
     }
-
-    // Очистка без аллокаций
-    public void Clear()
-    {
-        foreach (var list in grid.Values)
-            ReturnList(list);
-
-        grid.Clear();
-    }
-
-    /// <summary>
-    /// Находит все объекты в радиусе radius от центра.
-    /// </summary>
-    public IEnumerable<T> QueryRadius(Vector3 center, float radius)
-    {
-        // Диапазон клеток, которые потенциально пересекают сферу
-        int minX = (int) ((center.x - radius) / cellSize);
-        int maxX = (int) ((center.x + radius) / cellSize);
-        int minY = (int) ((center.y - radius) / cellSize);
-        int maxY = (int) ((center.y + radius) / cellSize);
-        int minZ = (int) ((center.z - radius) / cellSize);
-        int maxZ = (int) ((center.z + radius) / cellSize);
-
-        float radiusSqr = radius * radius;
-
-        for (int cx = minX; cx <= maxX; cx++)
-        for (int cy = minY; cy <= maxY; cy++)
-        for (int cz = minZ; cz <= maxZ; cz++)
-        {
-            Vector3Int key = new Vector3Int(cx, cy, cz);
-
-            if (grid.TryGetValue(key, out var list))
-            {
-                for (int i = 0; i < list.Count; i++)
-                {
-                    Vector3 pos = adapter.GetPosition(list[i]);
-                    if ((pos - center).sqrMagnitude <= radiusSqr)
-                    {
-                        yield return list[i];
-                    }
-                }
-            }
-        }
-    }
-
 
     /// <summary>
     /// Находит все объекты в радиусе и складывает их в массив.

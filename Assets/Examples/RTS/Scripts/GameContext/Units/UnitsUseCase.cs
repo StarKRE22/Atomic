@@ -47,17 +47,13 @@ namespace RTSGame
             var spatialHash = gameContext.GetSpatialHash();
 
             // Заполняем буфер найденными юнитами в радиусе
-            int foundCount = spatialHash.QueryRadius(selfPos, detectionRadius, buffer);
+            int foundCount = spatialHash.Query(selfPos, detectionRadius, buffer);
 
             // Проходим через массив (минимум аллокаций)
             for (int i = 0; i < foundCount; i++)
             {
                 IUnit unit = buffer[i];
-
-                if (unit.Equals(self))
-                    continue;
-
-                if (unit.GetTeam().Value == teamType)
+                if (unit.Equals(self) || unit.GetTeam().Value == teamType)
                     continue;
 
                 Vector3 dir = unit.GetPosition().Value - selfPos;

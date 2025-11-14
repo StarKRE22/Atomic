@@ -5,150 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40c6c12e-e382-4282-908a-6364831197ae" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Tank.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Tank.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Warrior.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/Units/Warrior.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Headquarters.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Headquarters.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Tank.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Tank.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Warrior.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (Entity Baking).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (Entity Baking).unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextAPI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextAPI.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextAPI.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Players/PlayersUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Players/PlayersUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsSystemInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsSystemInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Common/SpatialHash/SpatialHash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/Common/SpatialHash/SpatialHash.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextAPI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextAPI.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextAPI.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UI/GUIEntityCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UI/GUIEntityCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileLifetimeBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileLifetimeBehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileMoveBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileMoveBehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileViewInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileViewInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersBaker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersBaker.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersViewInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersViewInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankBaker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankBaker.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankViewInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankViewInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorBaker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorBaker.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorViewInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorViewInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIAttackTargetBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIAttackTargetBehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIDetectTargetBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIDetectTargetBehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIEntityInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIEntityInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/CombatEntityBaker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/CombatEntityBaker.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/CombatUseCase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/CombatUseCase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/MeleeCombatEntityInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/MeleeCombatEntityInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/RangeCombatEntityInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/RangeCombatEntityInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Damage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Damage/DamageUseCase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Damage/DamageUseCase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeBehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeEntityBaker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeEntityBaker.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeEntityInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeEntityInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeUseCase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeUseCase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveEntityBaker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveEntityBaker.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveEntityInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveEntityInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveUseCase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveUseCase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Rotate.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Rotate/RotateUseCase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Rotate/RotateUseCase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamEntityBaker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamEntityBaker.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamEntityTrigger.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamEntityTrigger.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamUseCase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamUseCase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformEntityBaker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformEntityBaker.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformEntityInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformEntityInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformGizmos.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformGizmos.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformUseCase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformUseCase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/IUnitEntity.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/IUnitEntity.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitBaker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitBaker.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitCatalog.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitCatalog.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitCollectionView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitCollectionView.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntity.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntity.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.yml.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitView.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitViewCatalog.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitViewCatalog.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitViewPool.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitViewPool.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/PositionViewBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/PositionViewBehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/RendererUseCase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/RendererUseCase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/RotationViewBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/RotationViewBehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/TakeDamageViewBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/TakeDamageViewBehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/TeamColorViewBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/TeamColorViewBehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/WeaponRecoilViewBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/WeaponRecoilViewBehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBakerOptimized`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBakerOptimized`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entities/Core/Entity_Behaviours.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entities/Core/Entity_Behaviours.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core/EntityWorld`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core/EntityWorld`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface/IEntityWorld`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface/IEntityWorld`1.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,15 +195,7 @@
       <workItem from="1762928600682" duration="13139000" />
       <workItem from="1762941843430" duration="5931000" />
       <workItem from="1762985064497" duration="34271000" />
-      <workItem from="1763141664531" duration="770000" />
-    </task>
-    <task id="LOCAL-00057" summary="EntityAPI Generation">
-      <option name="closed" value="true" />
-      <created>1762368783666</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1762368783667</updated>
+      <workItem from="1763141664531" duration="1119000" />
     </task>
     <task id="LOCAL-00058" summary="EntityAPI Generation">
       <option name="closed" value="true" />
@@ -731,7 +581,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763118400251</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="Обновляем RTS Sample!">
+      <option name="closed" value="true" />
+      <created>1763142576594</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1763142576594</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -758,7 +616,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Проверяем!" />
     <MESSAGE value="Продолжим после прогулки!" />
     <MESSAGE value="Сделал генерацию Behaviours" />
     <MESSAGE value="Пилим генераторы для инсталлеров!" />
@@ -783,7 +640,8 @@
     <MESSAGE value="Обновил проект!" />
     <MESSAGE value="Поправил прототип ShooterGame!" />
     <MESSAGE value="SimpleMovementBehaviour.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="SimpleMovementBehaviour.cs" />
+    <MESSAGE value="Обновляем RTS Sample!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Обновляем RTS Sample!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
