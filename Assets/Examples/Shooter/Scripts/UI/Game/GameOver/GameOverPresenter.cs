@@ -1,5 +1,6 @@
 using ShooterGame.App;
 using ShooterGame.Gameplay;
+using UnityEngine;
 
 namespace ShooterGame.UI
 {
@@ -31,16 +32,20 @@ namespace ShooterGame.UI
             _view.OnCloseClicked -= this.OnCloseClicked;
         }
 
-        private void OnRestartClicked() => GameLoadingUseCase.StartGame(_appContext);
-
-        private void OnCloseClicked() => MenuUseCase.LoadMenu().Forget();
-        
         public void Enable(IGameUI entity)
         {
             TeamType teamType = LeaderboardUseCase.GetWinner(_gameContext);
-            _view.SetMessage($"{teamType} PLAYER \nWINS");
-            _view.SetMessageColor(_catalog.GetInfo(teamType).Material.color);
+
+            string message = teamType == TeamType.NEUTRAL ? "DRAW" : $"{teamType} PLAYER \nWINS";
+            _view.SetMessage(message);
+            
+            Color color = _catalog.GetInfo(teamType).Material.color;
+            _view.SetMessageColor(color);
             _view.Show();
         }
+
+        private void OnRestartClicked() => GameLoadingUseCase.StartGame(_appContext);
+
+        private void OnCloseClicked() => MenuUseCase.LoadMenu().Forget();
     }
 }

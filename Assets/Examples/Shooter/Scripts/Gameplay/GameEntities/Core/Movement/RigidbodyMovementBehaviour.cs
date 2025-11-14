@@ -5,6 +5,8 @@ namespace ShooterGame.Gameplay
 {
     public sealed class RigidbodyMovementBehaviour : IGameEntityInit, IGameEntityFixedTick
     {
+        private const float SWEEP_TEST_FACTOR = 2;
+        
         private Rigidbody _rigidbody;
         private IValue<float> _moveSpeed;
         private IValue<Vector3> _moveDirection;
@@ -27,7 +29,7 @@ namespace ShooterGame.Gameplay
                 return;
 
             float moveStep = _moveSpeed.Value * deltaTime;
-            if (_rigidbody.SweepTest(direction, out _, moveStep))
+            if (_rigidbody.SweepTest(direction, out _, moveStep * SWEEP_TEST_FACTOR))
                 return;
 
             _rigidbody.MovePosition(_rigidbody.position + direction * moveStep);

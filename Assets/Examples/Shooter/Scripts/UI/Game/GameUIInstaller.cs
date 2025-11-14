@@ -14,10 +14,10 @@ namespace ShooterGame.UI
 
         [Header("Score")]
         [SerializeField]
-        private TMP_Text _blueKillsView;
+        private TMP_Text _blueScoreView;
 
         [SerializeField]
-        private TMP_Text _redKillsView;
+        private TMP_Text _redScoreView;
 
         [Header("Popups")]
         [SerializeField]
@@ -36,8 +36,8 @@ namespace ShooterGame.UI
             ui.AddBehaviour(new CountdownPresenter(_countdownView, gameContext));
 
             // Score
-            ui.AddBehaviour(new ScorePresenter(_blueKillsView, TeamType.BLUE, gameContext));
-            ui.AddBehaviour(new ScorePresenter(_redKillsView, TeamType.RED, gameContext));
+            ui.AddBehaviour(new ScorePresenter(_blueScoreView, TeamType.BLUE, gameContext));
+            ui.AddBehaviour(new ScorePresenter(_redScoreView, TeamType.RED, gameContext));
             
             // Popups
             ui.AddPopupTransform(_popupTransform);

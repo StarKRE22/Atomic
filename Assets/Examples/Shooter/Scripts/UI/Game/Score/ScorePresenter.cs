@@ -6,15 +6,15 @@ namespace ShooterGame.UI
 {
     public sealed class ScorePresenter : IGameUIInit, IGameUIDispose
     {
-        private readonly TMP_Text _text;
+        private readonly TMP_Text _view;
         private readonly TeamType _teamType;
         private readonly IGameContext _gameContext;
         
         private IReactiveDictionary<TeamType, int> _leaderboard;
         
-        public ScorePresenter(TMP_Text text, TeamType teamType, IGameContext gameContext)
+        public ScorePresenter(TMP_Text view, TeamType teamType, IGameContext gameContext)
         {
-            _text = text;
+            _view = view;
             _teamType = teamType;
             _gameContext = gameContext;
         }
@@ -39,7 +39,7 @@ namespace ShooterGame.UI
 
         private void UpdateText(int value)
         {
-            _text.text = $"Kills: {value}";
+            _view.text = $"Score: {value}";
         }
     }
 }

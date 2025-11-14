@@ -45,18 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581af096eaac4a9aba0180a969e952bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  installOnAwake: 1
-  installInEditMode: 0
-  disposeValues: 1
   useUnityLifecycle: 1
-  installers:
+  disposeValues: 1
+  installOnAwake: 1
+  uninstallOnDestroy: 1
+  scriptableInstallers: []
+  sceneInstallers:
   - {fileID: 3011129282913887316}
-  children: []
-  _initialBehaviourCapacity: 2
-  _onlySelectedGizmos: 0
-  _onlyEditModeGizmos: 0
-  _initialTagCapacity: 0
-  _initialValueCapacity: 2
+  childInstallers: []
+  onlySelectedGizmos: 0
+  onlyEditModeGizmos: 0
+  autoCompile: 0
+  initialTagCapacity: 1
+  initialValueCapacity: 1
+  initialBehaviourCapacity: 0
   _isGlobal: 1
   _dontDestroyOnLoad: 1
 --- !u!114 &3011129282913887316
@@ -74,9 +76,12 @@ MonoBehaviour:
   _exitAppInstaller:
     _exitKey: 27
   _levelsInstaller:
-    _startLevel: 1
-    _maxLevel: 3
-    _currentLevel: 1
+    _startLevel:
+      value: 1
+    _maxLevel:
+      value: 3
+    _currentLevel:
+      value: 1
   _loadGameInstaller:
     _levelNameFormat: ShooterGame (Level{0})
     _gameContextPrefab: {fileID: 2721497269382895227, guid: a242cc7a6ad034a13b45e36d0de66287, type: 3}
