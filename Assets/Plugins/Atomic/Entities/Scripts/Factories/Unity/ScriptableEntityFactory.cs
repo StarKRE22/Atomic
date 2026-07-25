@@ -11,21 +11,29 @@ namespace Atomic.Entities
     /// that allows injecting additional behaviors, components, or configuration into the newly created entity.
     /// </remarks>
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Factories/ScriptableEntityFactory.md")]
-    public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
+    public abstract class ScriptableEntityFactory<TArgs> :
+        ScriptableEntityFactory<IEntity, TArgs>, IEntityFactory<TArgs>
+        where TArgs : IArgs
     {
-        /// <summary>
-        /// Creates a new <see cref="Entity"/> using the initial parameters defined in the factory
-        /// and applies additional configuration via the <see cref="Install"/> method.
-        /// </summary>
-        /// <returns>A fully constructed and configured <see cref="Entity"/>.</returns>
-        public sealed override IEntity Create()
+        [field: SerializeField]
+        public virtual string Name { get; private set; }
+
+        protected override IEntity Create(
+            int tagCapacity,
+            int valueCapacity,
+            int behaviourCapacity,
+            Entity.Settings settings,
+            TArgs args
+        )
         {
-            var entity = new Entity(
-                this.name,
-                this.initialTagCapacity,
-                this.initialValueCapacity,
-                this.initialBehaviourCapacity
+            Entity entity = new Entity(
+                this.Name,
+                tagCapacity,
+                valueCapacity,
+                behaviourCapacity,
+                settings
             );
+
             this.Install(entity);
             return entity;
         }

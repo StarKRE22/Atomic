@@ -1,6 +1,8 @@
 #if UNITY_5_3_OR_NEWER
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
@@ -28,7 +30,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
-        public float RemainingTime => this.GetRemainingTime();
+        public float RemainingSeconds => this.GetRemainingSeconds();
 
         private int _endTick;
 
@@ -36,12 +38,16 @@ namespace Atomic.Elements
         /// Initializes a new instance of the <see cref="FixedTimestamp"/> class.
         /// </summary>
         /// <param name="endTick">Optional end tick value. Default is -1 (inactive).</param>
-        public FixedTimestamp(int endTick = -1) => _endTick = endTick;
+        public FixedTimestamp(int endTick = -1)
+        {
+            _endTick = endTick;
+        }
 
         /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button]
 #endif
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void StartFromSeconds(float seconds)
         {
             if (seconds < 0)
@@ -66,12 +72,12 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void Stop() => _endTick = -1;
+        public void ResetEndTick() => _endTick = -1;
 
         /// <inheritdoc />
-        public float GetProgress(float duration) => 1 - this.GetRemainingTime() / duration;
+        public float GetProgress(float duration) => 1 - this.GetRemainingSeconds() / duration;
 
-        private float GetRemainingTime()
+        private float GetRemainingSeconds()
         {
             int ticks = this.GetRemainingTicks();
             return ticks != -1 ? ticks * Time.fixedDeltaTime : 0;

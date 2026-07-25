@@ -29,9 +29,15 @@ namespace Atomic.Elements
         /// <summary>
         /// Marks the request as required.
         /// </summary>
+#if ODIN_INSPECTOR
+        [Button, HideInEditorMode]
+#endif
         public void Invoke() => _required = true;
 
         /// <inheritdoc />
+#if ODIN_INSPECTOR
+        [Button, HideInEditorMode]
+#endif
         public bool Consume()
         {
             if (!_required)
@@ -69,6 +75,9 @@ namespace Atomic.Elements
         /// Marks the request as required and assigns an argument.
         /// </summary>
         /// <param name="arg">The argument to be stored.</param>
+#if ODIN_INSPECTOR
+        [Button, HideInEditorMode]
+#endif
         public void Invoke(T arg)
         {
             _required = true;
@@ -83,6 +92,9 @@ namespace Atomic.Elements
         }
 
         /// <inheritdoc />
+#if ODIN_INSPECTOR
+        [Button, HideInEditorMode]
+#endif
         public bool Consume(out T arg)
         {
             arg = _arg;
@@ -132,6 +144,9 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="arg1">The first argument.</param>
         /// <param name="arg2">The second argument.</param>
+#if ODIN_INSPECTOR
+        [Button, HideInEditorMode]
+#endif
         public void Invoke(T1 arg1, T2 arg2)
         {
             _required = true;
@@ -148,6 +163,9 @@ namespace Atomic.Elements
         }
 
         /// <inheritdoc />
+#if ODIN_INSPECTOR
+        [Button, HideInEditorMode]
+#endif
         public bool Consume(out T1 arg1, out T2 arg2)
         {
             arg1 = _arg1;
@@ -208,6 +226,9 @@ namespace Atomic.Elements
         /// <param name="arg1">The first argument.</param>
         /// <param name="arg2">The second argument.</param>
         /// <param name="arg3">The third argument.</param>
+#if ODIN_INSPECTOR
+        [Button, HideInEditorMode]
+#endif
         public void Invoke(T1 arg1, T2 arg2, T3 arg3)
         {
             _required = true;
@@ -226,6 +247,9 @@ namespace Atomic.Elements
         }
 
         /// <inheritdoc />
+#if ODIN_INSPECTOR
+        [Button, HideInEditorMode]
+#endif
         public bool Consume(out T1 arg1, out T2 arg2, out T3 arg3)
         {
             arg1 = _arg1;
@@ -297,6 +321,9 @@ namespace Atomic.Elements
         /// <param name="arg2">The second argument.</param>
         /// <param name="arg3">The third argument.</param>
         /// <param name="arg4">The fourth argument.</param>
+#if ODIN_INSPECTOR
+        [Button, HideInEditorMode]
+#endif
         public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             _required = true;
@@ -317,6 +344,9 @@ namespace Atomic.Elements
         }
 
         /// <inheritdoc />
+#if ODIN_INSPECTOR
+        [Button, HideInEditorMode]
+#endif
         public bool Consume(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4)
         {
             arg1 = _arg1;

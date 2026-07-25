@@ -74,7 +74,7 @@ namespace Atomic.Entities
             var source = new EntityCollection();
             source.Add(entity);
 
-            var trigger = new EntityTriggerStub();
+            var trigger = new EntityTriggerTestDouble();
             var filter = new EntityFilter(source, e => e.HasTag("Enemy"), trigger);
 
             // Pre-check: tracked

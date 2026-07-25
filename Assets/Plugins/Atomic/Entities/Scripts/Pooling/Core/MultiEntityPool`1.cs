@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -10,9 +11,11 @@ namespace Atomic.Entities
     /// <summary>
     /// A registry that manages multiple pools of entities, each identified by a unique key.
     /// </summary>
-    /// <typeparam name="K">The key type used to identify each pool.</typeparam>
-    /// <typeparam name="E">The entity type managed by the pools. Must implement <see cref="IEntity"/>.</typeparam>
-    public class MultiEntityPool<K, E> : IMultiEntityPool<K, E> where E : IEntity
+    /// <typeparam name="TKey">The key type used to identify each pool.</typeparam>
+    /// <typeparam name="TEntity">The entity type managed by the pools. Must implement <see cref="IEntity"/>.</typeparam>
+    public class MultiEntityPool<TKey, TEntity, TArgs> : IMultiEntityPool<TKey, TEntity>
+        where TEntity : IEntity
+        where TArgs : IArgs
     {
         /// <summary>
         /// Internal storage of pooled (available) entities, mapped by their pool key.
@@ -20,7 +23,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
-        private readonly Dictionary<K, Stack<E>> _pooledEntities = new();
+        private readonly Dictionary<TKey, Stack<TEntity>> _pooledEntities = new();
 
         /// <summary>
         /// Tracks entities that are currently rented, mapping them back to their original pool key.
@@ -28,50 +31,54 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
-        private readonly Dictionary<E, K> _rentEntities = new();
+        private readonly Dictionary<TEntity, TKey> _rentEntities = new();
 
         /// <summary>
         /// The factory registry used to create entities on demand.
         /// </summary>
-        private readonly IMultiEntityFactory<K, E> _factory;
+        private readonly IMultiEntityFactory<TKey, TEntity, TArgs> _factory;
+        private readonly TArgs _args;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiEntityPool{TKey,E}"/> class.
         /// </summary>
         /// <param name="factory">The factory registry used to create entities for each key.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> is null.</exception>
-        public MultiEntityPool(IMultiEntityFactory<K, E> factory) =>
+        public MultiEntityPool(IMultiEntityFactory<TKey, TEntity, TArgs> factory, TArgs args)
+        {
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
+            _args = args ?? throw new ArgumentNullException(nameof(args));
+        }
 
         /// <inheritdoc />
-        public void Init(K key, int count)
+        public void Init(TKey key, int count)
         {
-            if (!_pooledEntities.TryGetValue(key, out Stack<E> pool))
+            if (!_pooledEntities.TryGetValue(key, out Stack<TEntity> pool))
             {
-                pool = new Stack<E>();
+                pool = new Stack<TEntity>();
                 _pooledEntities.Add(key, pool);
             }
 
             for (int i = 0; i < count; i++)
             {
-                E entity = _factory.Create(key);
+                TEntity entity = _factory.Create(key, _args);
                 this.OnCreate(entity);
                 pool.Push(entity);
             }
         }
 
         /// <inheritdoc />
-        public E Rent(K key)
+        public TEntity Rent(TKey key)
         {
-            if (!_pooledEntities.TryGetValue(key, out Stack<E> pool))
+            if (!_pooledEntities.TryGetValue(key, out Stack<TEntity> pool))
             {
-                pool = new Stack<E>();
+                pool = new Stack<TEntity>();
                 _pooledEntities.Add(key, pool);
             }
 
-            if (!pool.TryPop(out E entity))
+            if (!pool.TryPop(out TEntity entity))
             {
-                entity = _factory.Create(key);
+                entity = _factory.Create(key, _args);
                 this.OnCreate(entity);
             }
 
@@ -81,14 +88,14 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc />
-        public void Return(E entity)
+        public void Return(TEntity entity)
         {
-            if (!_rentEntities.Remove(entity, out K key))
+            if (!_rentEntities.Remove(entity, out TKey key))
                 return;
 
-            if (!_pooledEntities.TryGetValue(key, out Stack<E> pool))
+            if (!_pooledEntities.TryGetValue(key, out Stack<TEntity> pool))
             {
-                pool = new Stack<E>();
+                pool = new Stack<TEntity>();
                 _pooledEntities.Add(key, pool);
             }
 
@@ -102,13 +109,13 @@ namespace Atomic.Entities
         /// <inheritdoc />
         public void Dispose()
         {
-            foreach (KeyValuePair<K, Stack<E>> pool in _pooledEntities)
-            foreach (E entity in pool.Value)
+            foreach (KeyValuePair<TKey, Stack<TEntity>> pool in _pooledEntities)
+            foreach (TEntity entity in pool.Value)
                 this.OnDispose(entity);
 
-            foreach (E entity in _rentEntities.Keys) 
+            foreach (TEntity entity in _rentEntities.Keys)
                 this.OnDispose(entity);
-            
+
             _pooledEntities.Clear();
             _rentEntities.Clear();
         }
@@ -117,7 +124,7 @@ namespace Atomic.Entities
         /// Called when a new entity is created for the pool.
         /// </summary>
         /// <param name="entity">The newly created entity.</param>
-        protected virtual void OnCreate(E entity)
+        protected virtual void OnCreate(TEntity entity)
         {
         }
 
@@ -125,7 +132,7 @@ namespace Atomic.Entities
         /// Called when an entity is permanently removed from the pool (e.g., during <see cref="Clear"/>).
         /// </summary>
         /// <param name="entity">The entity being disposed.</param>
-        protected virtual void OnDispose(E entity)
+        protected virtual void OnDispose(TEntity entity)
         {
         }
 
@@ -133,7 +140,7 @@ namespace Atomic.Entities
         /// Called when an entity is rented from a pool.
         /// </summary>
         /// <param name="entity">The rented entity.</param>
-        protected virtual void OnRent(E entity)
+        protected virtual void OnRent(TEntity entity)
         {
         }
 
@@ -141,7 +148,7 @@ namespace Atomic.Entities
         /// Called when an entity is returned to its pool.
         /// </summary>
         /// <param name="entity">The returned entity.</param>
-        protected virtual void OnReturn(E entity)
+        protected virtual void OnReturn(TEntity entity)
         {
         }
     }

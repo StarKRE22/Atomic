@@ -35,6 +35,9 @@
 .opencode/
 .agents/
 
+# OS generated
+.DS_Store
+
 # Gradle cache directory
 .gradle/
 

@@ -4,7 +4,7 @@ namespace Atomic.Entities
 {
     public class EntityFilter_IntegrationTests
     {
-        private enum TeamType
+        private enum _TeamType
         {
             BLUE = 0,
             RED = 1
@@ -16,18 +16,18 @@ namespace Atomic.Entities
             //Arrange:
             var alex = new Entity("Alex");
             alex.AddTag("Warrior");
-            alex.AddValue("Team", TeamType.BLUE);
+            alex.AddValue("Team", _TeamType.BLUE);
 
             var george = new Entity("George");
             george.AddTag("Warrior");
-            george.AddValue("Team", TeamType.RED);
+            george.AddValue("Team", _TeamType.RED);
 
             var ivan = new Entity("Ivan");
             ivan.AddTag("Warrior");
 
             var mike = new Entity("Mike");
             mike.AddTag("Warrior");
-            mike.AddValue("Team", TeamType.BLUE);
+            mike.AddValue("Team", _TeamType.BLUE);
 
             var world = new EntityWorld("Entity World", alex, george, ivan, mike);
             var filter = new EntityFilter(world, this.IsBlueWarrior);
@@ -47,15 +47,15 @@ namespace Atomic.Entities
             //Arrange:
             var alex = new Entity("Alex");
             alex.AddTag("Warrior");
-            alex.AddValue("Team", TeamType.BLUE);
+            alex.AddValue("Team", _TeamType.BLUE);
 
             var george = new Entity("George");
             george.AddTag("Warrior");
-            george.AddValue("Team", TeamType.BLUE);
+            george.AddValue("Team", _TeamType.BLUE);
 
             var mike = new Entity("Mike");
             mike.AddTag("Warrior");
-            mike.AddValue("Team", TeamType.BLUE);
+            mike.AddValue("Team", _TeamType.BLUE);
 
             var ivan = new Entity("Ivan");
             ivan.AddTag("Warrior");
@@ -89,15 +89,15 @@ namespace Atomic.Entities
             //Arrange:
             var alex = new Entity("Alex");
             alex.AddTag("Warrior");
-            alex.AddValue("Team", TeamType.BLUE);
+            alex.AddValue("Team", _TeamType.BLUE);
 
             var george = new Entity("George");
             george.AddTag("Warrior");
-            george.AddValue("Team", TeamType.BLUE);
+            george.AddValue("Team", _TeamType.BLUE);
 
             var mike = new Entity("Mike");
             mike.AddTag("Warrior");
-            mike.AddValue("Team", TeamType.BLUE);
+            mike.AddValue("Team", _TeamType.BLUE);
 
             var ivan = new Entity("Ivan");
             ivan.AddTag("Warrior");
@@ -134,15 +134,15 @@ namespace Atomic.Entities
             //Arrange:
             var alex = new Entity("Alex");
             alex.AddTag("Warrior");
-            alex.AddValue("Team", TeamType.BLUE);
+            alex.AddValue("Team", _TeamType.BLUE);
 
             var george = new Entity("George");
             george.AddTag("Warrior");
-            george.AddValue("Team", TeamType.RED);
+            george.AddValue("Team", _TeamType.RED);
 
             var mike = new Entity("Mike");
             mike.AddTag("Warrior");
-            mike.AddValue("Team", TeamType.BLUE);
+            mike.AddValue("Team", _TeamType.BLUE);
 
             var ivan = new Entity("Ivan");
             ivan.AddTag("Warrior");
@@ -158,12 +158,12 @@ namespace Atomic.Entities
 
             //Act:
             Assert.IsFalse(filter.Contains(george));
-            george.SetValue("Team", TeamType.BLUE);
+            george.SetValue("Team", _TeamType.BLUE);
             Assert.IsTrue(filter.Contains(george));
             Assert.AreEqual(george, addedEntity);
 
             Assert.IsTrue(filter.Contains(mike));
-            mike.SetValue("Team", TeamType.RED);
+            mike.SetValue("Team", _TeamType.RED);
             Assert.IsFalse(filter.Contains(mike));
             Assert.AreEqual(mike, removedEntity);
 
@@ -173,7 +173,7 @@ namespace Atomic.Entities
             Assert.AreEqual(alex, removedEntity);
 
             Assert.IsFalse(filter.Contains(ivan));
-            ivan.AddValue("Team", TeamType.BLUE);
+            ivan.AddValue("Team", _TeamType.BLUE);
             Assert.IsTrue(filter.Contains(ivan));
             Assert.AreEqual(ivan, addedEntity);
         }
@@ -184,11 +184,11 @@ namespace Atomic.Entities
         {
             //Arrange:
             var mike = new Entity("Mike");
-            mike.AddValue("Team", TeamType.BLUE);
+            mike.AddValue("Team", _TeamType.BLUE);
 
             var alex = new Entity("Alex");
             alex.AddTag("Warrior");
-            alex.AddValue("Team", TeamType.BLUE);
+            alex.AddValue("Team", _TeamType.BLUE);
 
             var world = new EntityWorld("Entity World", alex, mike);
             var filter = new EntityFilter(world, this.IsBlueWarrior, new TagEntityTrigger());
@@ -217,7 +217,7 @@ namespace Atomic.Entities
 
         private bool IsBlueWarrior(IEntity e) =>
             e.HasTag("Warrior") &&
-            e.TryGetValue("Team", out TeamType teamType) &&
-            teamType == TeamType.BLUE;
+            e.TryGetValue("Team", out _TeamType teamType) &&
+            teamType == _TeamType.BLUE;
     }
 }

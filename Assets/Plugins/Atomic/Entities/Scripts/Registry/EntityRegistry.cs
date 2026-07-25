@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -47,23 +48,25 @@ namespace Atomic.Entities
         public event Action<IEntity> OnRemoved;
 
         /// <inheritdoc />
-        public int Count => _entityCount;
+        public int Count => _count;
 
         internal struct Slot
         {
             public int id;
             public IEntity entity;
+            public int orderIndex;
             public int next;
         }
 
-        private Slot[] _entitySlots;
+        private Slot[] _slots;
+        private int[] _order;
         private int _entityCapacity;
-        private int _entityCount;
-        private int _entityPrimeIndex;
+        private int _count;
+        private int _primeIndex;
 
-        private int[] _entityBuckets;
-        private int _entityLastIndex;
-        private int _entityFreeList;
+        private int[] _buckets;
+        private int _lastIndex;
+        private int _freeList;
 
         private int[] _recycledIds;
         private int _recycledCount;
@@ -71,34 +74,51 @@ namespace Atomic.Entities
 
         private EntityRegistry()
         {
-            _entityCapacity = InternalUtils.CeilToPrime(INITIAL_CAPACITY, out _entityPrimeIndex);
-            _entitySlots = new Slot[_entityCapacity];
-            _entityBuckets = new int[_entityCapacity];
-            Array.Fill(_entityBuckets, UNDEFINED_INDEX);
+            _entityCapacity = InternalUtils.CeilToPrime(INITIAL_CAPACITY, out _primeIndex);
+            _slots = new Slot[_entityCapacity];
+            _buckets = new int[_entityCapacity];
+            _order = new int[_entityCapacity];
+            Array.Fill(_buckets, UNDEFINED_INDEX);
 
-            _entityCount = 0;
-            _entityLastIndex = 0;
-            _entityFreeList = UNDEFINED_INDEX;
+            _count = 0;
+            _lastIndex = 0;
+            _freeList = UNDEFINED_INDEX;
         }
 
+        public IEntity this[int index] => index < 0 || index >= _count
+            ? throw new ArgumentOutOfRangeException(nameof(index))
+            : _slots[_order[index]].entity;
+
+        public bool TryGetAt(int index, out IEntity entity)
+        {
+            if (index < 0 || index >= _count)
+            {
+                entity = null;
+                return false;
+            }
+
+            entity = _slots[_order[index]].entity;
+            return true;
+        }
+        
         /// <summary>
         /// Determines whether the registry contains the specified entity.
         /// </summary>
         /// <param name="entity">The entity to check for existence.</param>
-        /// <returns>True if the entity is registered; otherwise, false.</returns>
+        /// <returns>True, if the entity is registered; otherwise, false.</returns>
         public bool Contains(IEntity entity)
         {
-            if (_entityCount > 0 && entity != null)
+            if (_count > 0 && entity != null)
             {
                 int id = entity.InstanceID;
                 if (id > 0)
                 {
                     int bucket = id % _entityCapacity;
-                    int index = _entityBuckets[bucket];
+                    int index = _buckets[bucket];
 
                     while (index >= 0)
                     {
-                        ref readonly Slot slot = ref _entitySlots[index];
+                        ref readonly Slot slot = ref _slots[index];
                         if (slot.id == id)
                             return true;
 
@@ -117,14 +137,14 @@ namespace Atomic.Entities
         /// <returns>True if the entity is registered; otherwise, false.</returns>
         public bool Contains(int id)
         {
-            if (_entityCount > 0 && id > 0)
+            if (_count > 0 && id > 0)
             {
                 int bucket = id % _entityCapacity;
-                int index = _entityBuckets[bucket];
+                int index = _buckets[bucket];
 
                 while (index >= 0)
                 {
-                    ref readonly Slot slot = ref _entitySlots[index];
+                    ref readonly Slot slot = ref _slots[index];
                     if (slot.id == id)
                         return true;
 
@@ -144,12 +164,11 @@ namespace Atomic.Entities
             if (results == null)
                 throw new ArgumentNullException(nameof(results));
 
-            for (int i = 0; i < _entityLastIndex; i++)
-            {
-                ref readonly Slot slot = ref _entitySlots[i];
-                if (slot.id > 0)
-                    results.Add(slot.entity);
-            }
+            var slots = _slots;
+            var order = _order;
+
+            for (int i = 0; i < _count; i++)
+                results.Add(slots[order[i]].entity);
         }
 
         /// <summary>
@@ -167,9 +186,9 @@ namespace Atomic.Entities
 
             int count = 0;
 
-            for (int i = 0; i < _entityLastIndex; i++)
+            for (int i = 0; i < _lastIndex; i++)
             {
-                ref readonly Slot slot = ref _entitySlots[i];
+                ref readonly Slot slot = ref _slots[i];
                 if (slot.id == 0)
                     continue;
 
@@ -186,15 +205,15 @@ namespace Atomic.Entities
         /// <exception cref="KeyNotFoundException">Thrown if no entity with the specified ID exists.</exception>
         public IEntity Get(int id)
         {
-            if (id <= 0 || _entityCount == 0)
+            if (id <= 0 || _count == 0)
                 throw new KeyNotFoundException($"Entity with ID {id} not found.");
 
             int bucket = id % _entityCapacity;
-            int index = _entityBuckets[bucket];
+            int index = _buckets[bucket];
 
             while (index >= 0)
             {
-                ref readonly Slot slot = ref _entitySlots[index];
+                ref readonly Slot slot = ref _slots[index];
                 if (slot.id == id && slot.entity != null)
                     return slot.entity;
 
@@ -214,15 +233,15 @@ namespace Atomic.Entities
         {
             entity = null;
 
-            if (id <= 0 || _entityCount == 0)
+            if (id <= 0 || _count == 0)
                 return false;
 
             int bucket = id % _entityCapacity;
-            int index = _entityBuckets[bucket];
+            int index = _buckets[bucket];
 
             while (index >= 0)
             {
-                ref readonly Slot slot = ref _entitySlots[index];
+                ref readonly Slot slot = ref _slots[index];
                 if (slot.id == id)
                 {
                     entity = slot.entity;
@@ -246,15 +265,15 @@ namespace Atomic.Entities
         /// <exception cref="KeyNotFoundException">Thrown if no entity with the specified ID exists.</exception>
         public T GetUnsafe<T>(int id) where T : class, IEntity
         {
-            if (_entityCount == 0 || id <= 0)
+            if (_count == 0 || id <= 0)
                 return null;
 
             int bucket = id % _entityCapacity;
-            int index = _entityBuckets[bucket];
+            int index = _buckets[bucket];
 
             while (index >= 0)
             {
-                ref Slot slot = ref _entitySlots[index];
+                ref Slot slot = ref _slots[index];
 
                 if (slot.id == id && slot.entity != null)
                     return Unsafe.As<IEntity, T>(ref slot.entity);
@@ -278,15 +297,15 @@ namespace Atomic.Entities
         {
             entity = null;
 
-            if (_entityCount == 0 || id <= 0)
+            if (_count == 0 || id <= 0)
                 return false;
 
             int bucket = id % _entityCapacity;
-            int index = _entityBuckets[bucket];
+            int index = _buckets[bucket];
 
             while (index >= 0)
             {
-                ref Slot slot = ref _entitySlots[index];
+                ref Slot slot = ref _slots[index];
                 if (slot.id == id && slot.entity != null)
                 {
                     entity = Unsafe.As<IEntity, T>(ref slot.entity);
@@ -326,18 +345,12 @@ namespace Atomic.Entities
 
             public bool MoveNext()
             {
-                while (_index < _registry._entityLastIndex)
-                {
-                    ref readonly Slot slot = ref _registry._entitySlots[_index++];
-                    if (slot.id == 0)
-                        continue;
+                if (_index >= _registry._count)
+                    return false;
 
-                    _current = slot.entity;
-                    return true;
-                }
-
-                _current = null;
-                return false;
+                int slotIndex = _registry._order[_index++];
+                _current = _registry._slots[slotIndex].entity;
+                return true;
             }
 
             public void Reset()
@@ -356,18 +369,18 @@ namespace Atomic.Entities
         {
             int index;
 
-            if (_entityFreeList >= 0)
+            if (_freeList >= 0)
             {
-                index = _entityFreeList;
-                _entityFreeList = _entitySlots[index].next;
+                index = _freeList;
+                _freeList = _slots[index].next;
             }
             else
             {
-                if (_entityLastIndex == _entityCapacity)
+                if (_lastIndex == _entityCapacity)
                     this.Resize();
 
-                index = _entityLastIndex;
-                _entityLastIndex++;
+                index = _lastIndex;
+                _lastIndex++;
             }
 
             int id = _recycledCount > 0
@@ -375,9 +388,9 @@ namespace Atomic.Entities
                 : ++_maxId;
 
             int bucket = id % _entityCapacity;
-            ref int next = ref _entityBuckets[bucket];
+            ref int next = ref _buckets[bucket];
 
-            _entitySlots[index] = new Slot
+            _slots[index] = new Slot
             {
                 id = id,
                 entity = entity,
@@ -385,10 +398,13 @@ namespace Atomic.Entities
             };
 
             next = index;
-            _entityCount++;
+            
+            _order[_count] = index;
+            _slots[index].orderIndex = _count;
+            _count++;
 
             entity.InstanceID = id;
-
+            
             this.OnAdded?.Invoke(entity);
             this.OnStateChanged?.Invoke();
         }
@@ -397,24 +413,24 @@ namespace Atomic.Entities
         {
             int id = entity.InstanceID;
             int bucket = id % _entityCapacity;
-            ref int next = ref _entityBuckets[bucket];
+            ref int next = ref _buckets[bucket];
 
             int index = next;
             int last = UNDEFINED_INDEX;
 
             while (index >= 0)
             {
-                ref Slot slot = ref _entitySlots[index];
+                ref Slot slot = ref _slots[index];
                 if (slot.id == id)
                 {
                     if (last == UNDEFINED_INDEX)
                         next = slot.next;
                     else
-                        _entitySlots[last].next = slot.next;
+                        _slots[last].next = slot.next;
 
                     slot.id = 0;
                     slot.entity = null;
-                    slot.next = _entityFreeList;
+                    slot.next = _freeList;
 
                     // Recycle ID to stack
                     _recycledIds ??= new int[INITIAL_CAPACITY];
@@ -424,17 +440,28 @@ namespace Atomic.Entities
 
                     _recycledIds[_recycledCount++] = id;
 
-                    // Reduce entity count
-                    _entityCount--;
+                    int orderIndex = slot.orderIndex;
+                    int lastOrderIndex = _count - 1;
 
-                    if (_entityCount == 0)
+                    if (orderIndex != lastOrderIndex)
                     {
-                        _entityLastIndex = 0;
-                        _entityFreeList = UNDEFINED_INDEX;
+                        int swapped = _order[lastOrderIndex];
+
+                        _order[orderIndex] = swapped;
+                        _slots[swapped].orderIndex = orderIndex;
+                    }
+
+                    _order[lastOrderIndex] = UNDEFINED_INDEX;
+                    _count--;
+
+                    if (_count == 0)
+                    {
+                        _lastIndex = 0;
+                        _freeList = UNDEFINED_INDEX;
                     }
                     else
                     {
-                        _entityFreeList = index;
+                        _freeList = index;
                     }
 
                     // Reset instance id 
@@ -451,12 +478,12 @@ namespace Atomic.Entities
 
         internal void Clear()
         {
-            if (_entityCount == 0)
+            if (_count == 0)
                 return;
 
-            for (int i = 0; i < _entityLastIndex; i++)
+            for (int i = 0; i < _lastIndex; i++)
             {
-                ref Slot slot = ref _entitySlots[i];
+                ref Slot slot = ref _slots[i];
                 if (slot is {id: > 0, entity: not null})
                 {
                     // Reset instance ID
@@ -473,12 +500,12 @@ namespace Atomic.Entities
             }
 
             // Reset buckets
-            Array.Fill(_entityBuckets, UNDEFINED_INDEX);
+            Array.Fill(_buckets, UNDEFINED_INDEX);
 
             // Reset counters and free list
-            _entityCount = 0;
-            _entityLastIndex = 0;
-            _entityFreeList = UNDEFINED_INDEX;
+            _count = 0;
+            _lastIndex = 0;
+            _freeList = UNDEFINED_INDEX;
 
             // Reset recycled IDs
             _recycledIds = null;
@@ -492,20 +519,21 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Resize()
         {
-            _entityCapacity = InternalUtils.PrimeTable[++_entityPrimeIndex];
+            _entityCapacity = InternalUtils.PrimeTable[++_primeIndex];
+            
+            Array.Resize(ref _order, _entityCapacity);
+            Array.Resize(ref _slots, _entityCapacity);
+            Array.Resize(ref _buckets, _entityCapacity);
+            Array.Fill(_buckets, UNDEFINED_INDEX);
 
-            Array.Resize(ref _entitySlots, _entityCapacity);
-            Array.Resize(ref _entityBuckets, _entityCapacity);
-            Array.Fill(_entityBuckets, UNDEFINED_INDEX);
-
-            for (int i = 0; i < _entityLastIndex; i++)
+            for (int i = 0; i < _lastIndex; i++)
             {
-                ref Slot slot = ref _entitySlots[i];
+                ref Slot slot = ref _slots[i];
                 if (slot.entity == null)
                     continue;
 
                 int bucket = slot.id % _entityCapacity;
-                ref int next = ref _entityBuckets[bucket];
+                ref int next = ref _buckets[bucket];
 
                 slot.next = next;
                 next = i;
@@ -518,6 +546,7 @@ namespace Atomic.Entities
         /// </summary>
         [InitializeOnEnterPlayMode]
 #endif
+
         internal static void ResetAll()
         {
             if (_instance != null)

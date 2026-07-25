@@ -200,37 +200,41 @@ namespace Atomic.Elements
             if (newItems == null)
                 throw new ArgumentNullException(nameof(newItems));
 
-            using var enumerator = newItems.GetEnumerator();
+            int capacity = this.items.Length;
+            using IEnumerator<T> enumerator = newItems.GetEnumerator();
             int index = 0;
 
-            // Update existing elements
-            while (index < this.items.Length && enumerator.MoveNext())
+            // Fill from newItems
+            while (index < capacity && enumerator.MoveNext())
             {
                 T newValue = enumerator.Current;
-                ref T current = ref this.items[index];
+                ref T current = ref items[index];
 
                 if (!s_comparer.Equals(current, newValue))
                 {
                     current = newValue;
-                    this.OnItemChanged?.Invoke(index, newValue);
+                    OnItemChanged?.Invoke(index, newValue);
                 }
 
                 index++;
             }
 
-            // If there are still items in newItems but array is full — throw
+            // If newItems still has more elements — it's too many
             if (enumerator.MoveNext())
                 throw new ArgumentException("Item count does not match array length.", nameof(newItems));
 
-            // Clear remaining elements if newItems has fewer elements
-            for (int i = index; i < this.items.Length; i++)
+            // Clear the remaining elements
+            for (int i = index; i < capacity; i++)
             {
-                T removedItem = this.items[i];
-                this.items[i] = default;
-                this.OnItemChanged?.Invoke(i, removedItem);
+                ref T current = ref this.items[i];
+                if (!s_comparer.Equals(current, default))
+                {
+                    current = default;
+                    OnItemChanged?.Invoke(i, default);
+                }
             }
 
-            this.OnStateChanged?.Invoke();
+            OnStateChanged?.Invoke();
         }
 
         /// <summary>

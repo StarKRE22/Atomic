@@ -6,21 +6,21 @@ using UnityEngine.TestTools;
 
 namespace Atomic.Entities
 {
-    public class SceneEntityPoolTests
+    public class MonoEntityPoolTests
     {
-        private SceneEntity _prefab;
-        private SceneEntityPool _pool;
+        private MonoEntity _prefab;
+        private MonoEntityPool _pool;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            _prefab = SceneEntity.Create();
+            _prefab = MonoEntity.Create();
         }
         
         [SetUp]
         public void SetUp()
         {
-            _pool = SceneEntityPool.Create(new SceneEntityPool<SceneEntity>.CreateArgs
+            _pool = MonoEntityPool.Create(new MonoEntityPool.CreateArgs
             {
                 prefab = _prefab,
                 initOnAwake = false
@@ -30,7 +30,7 @@ namespace Atomic.Entities
         [UnityTearDown]
         public IEnumerator TearDown()
         {
-            SceneEntityPool.Destroy(_pool);
+            MonoEntityPool.Destroy(_pool);
             yield return null;
         }
 
@@ -51,7 +51,7 @@ namespace Atomic.Entities
             _pool.Init(1);
             yield return null;
 
-            var entity = _pool.Rent();
+            var entity = MonoEntity.Cast(_pool.Rent());
             Assert.NotNull(entity);
             Assert.IsTrue(entity.gameObject.activeSelf);
             Assert.AreEqual(0, _pool._pooledEntities.Count);
@@ -60,7 +60,7 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator Return_DeactivatesEntityAndParentsIt()
         {
-            var entity = _pool.Rent();
+            var entity = MonoEntity.Cast(_pool.Rent());
             _pool.Return(entity);
 
             yield return null;
@@ -99,7 +99,7 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator Awake_AutoInit_CreatesEntities()
         {
-            _pool = SceneEntityPool.Create(new SceneEntityPool<SceneEntity>.CreateArgs
+            _pool = MonoEntityPool.Create(new MonoEntityPool.CreateArgs
             {
                 prefab = _prefab,
                 initOnAwake = true,
@@ -114,8 +114,10 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator Return_UntrackedEntity_ShowsWarning()
         {
-            var foreign = SceneEntity.Create();
+            var foreign = MonoEntity.Create();
             LogAssert.Expect(LogType.Warning, $"[EntityPool] Attempted to return untracked entity: {foreign}");
+            
+            _pool._acceptExternalReturns = false;
             _pool.Return(foreign);
             yield return null;
         }

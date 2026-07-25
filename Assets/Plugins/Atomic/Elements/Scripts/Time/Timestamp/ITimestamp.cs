@@ -18,7 +18,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets the remaining time (in seconds) until expiration.
         /// </summary>
-        float RemainingTime { get; }
+        float RemainingSeconds { get; }
 
         /// <summary>
         /// Starts the timestamp from the current time with the specified duration in seconds.
@@ -35,7 +35,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Stops and resets the timestamp.
         /// </summary>
-        void Stop();
+        void ResetEndTick();
 
         /// <summary>
         /// Returns the progress of the timestamp relative to a given duration.

@@ -4,14 +4,14 @@ using UnityEngine.TestTools;
 
 namespace Atomic.Entities
 {
-    public sealed partial class SceneEntityTests
+    public sealed partial class MonoEntityTests
     {
         #region OnInitialized
 
         [Test]
         public void OnInitialized_IsInvoked_WhenEntityIsSpawned()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             bool wasCalled = false;
 
             entity.OnInitialized += () => wasCalled = true;
@@ -24,7 +24,7 @@ namespace Atomic.Entities
         [Test]
         public void OnInitialized_IsNotInvoked_WhenNotSpawned()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             bool wasCalled = false;
 
             entity.OnInitialized += () => wasCalled = true;
@@ -37,7 +37,7 @@ namespace Atomic.Entities
         [Test]
         public void OnInitialized_IsInvokedOnlyOnce_WhenSpawnCalledMultipleTimes()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             int callCount = 0;
 
             entity.OnInitialized += () => callCount++;
@@ -56,7 +56,7 @@ namespace Atomic.Entities
         [Test]
         public void OnEnabled_IsInvoked_WhenEntityIsEnabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             bool wasCalled = false;
 
             entity.OnEnabled += () => wasCalled = true;
@@ -69,7 +69,7 @@ namespace Atomic.Entities
         [Test]
         public void OnEnabled_IsNotInvoked_WhenAlreadyEnabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Enable(); // уже включено
 
             bool wasCalled = false;
@@ -83,7 +83,7 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator OnEnabled_IsNotInvoked_WhenEntityRemainsDisabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false); // по умолчанию выключен
+            var entity = MonoEntity.Create(useUnityLifecycle: false); // по умолчанию выключен
 
             bool wasCalled = false;
             entity.OnEnabled += () => wasCalled = true;
@@ -101,7 +101,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDisabled_IsInvoked_WhenEntityIsDisabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init(); // сначала нужно заспаунить
             entity.Enable();
 
@@ -116,7 +116,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDisabled_IsNotInvoked_IfEntityNotEnabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init(); // только спаун, не включаем
 
             bool wasCalled = false;
@@ -130,7 +130,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDisabled_IsInvoked_OnlyOnce_WhenCalledMultipleTimes()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -147,7 +147,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_ChangesEnabledStateToFalse()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -163,7 +163,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDisposed_IsInvoked_WhenEntityIsDisposeed()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             bool wasCalled = false;
@@ -177,7 +177,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDisposed_IsNotInvoked_WhenNotSpawned()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false); // не спаунен
+            var entity = MonoEntity.Create(useUnityLifecycle: false); // не спаунен
 
             bool wasCalled = false;
             entity.OnDisposed += () => wasCalled = true;
@@ -190,7 +190,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDisposed_IsInvoked_OnlyOnce_WhenDisposeCalledMultipleTimes()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             int callCount = 0;
@@ -206,7 +206,7 @@ namespace Atomic.Entities
         [Test]
         public void Dispose_ChangesSpawnedStateToFalse()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             entity.Dispose();
@@ -221,7 +221,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdated_IsInvoked_WhenEntityIsEnabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -236,7 +236,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdated_IsNotInvoked_WhenEntityIsDisabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             // не вызываем Enable()
 
@@ -251,7 +251,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdated_CanBeCalledMultipleTimes()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -268,7 +268,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_DoesNothing_WhenNotSpawned()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false); // не вызываем Spawn()
+            var entity = MonoEntity.Create(useUnityLifecycle: false); // не вызываем Spawn()
 
             bool wasCalled = false;
             entity.OnTicked += _ => wasCalled = true;
@@ -285,7 +285,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdated_IsInvoked_WhenEntityIsEnabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -300,7 +300,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdated_IsNotInvoked_WhenEntityIsDisabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init(); // Не включаем
 
             bool wasCalled = false;
@@ -314,7 +314,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdated_CanBeCalledMultipleTimes()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -331,7 +331,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_DoesNothing_WhenNotSpawned()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false); // Не вызываем Spawn()
+            var entity = MonoEntity.Create(useUnityLifecycle: false); // Не вызываем Spawn()
 
             bool wasCalled = false;
             entity.OnFixedTicked += _ => wasCalled = true;
@@ -348,7 +348,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdated_IsInvoked_WhenEntityIsEnabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -363,7 +363,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdated_IsNotInvoked_WhenEntityIsDisabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init(); // не вызываем Enable()
 
             bool wasCalled = false;
@@ -377,7 +377,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdated_CanBeCalledMultipleTimes()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -394,7 +394,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_DoesNothing_WhenNotSpawned()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false); // не спаунен
+            var entity = MonoEntity.Create(useUnityLifecycle: false); // не спаунен
 
             bool wasCalled = false;
             entity.OnLateTicked += _ => wasCalled = true;
@@ -411,14 +411,14 @@ namespace Atomic.Entities
         [Test]
         public void Spawned_IsFalse_ByDefault()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             Assert.IsFalse(entity.Initialized);
         }
 
         [Test]
         public void Spawned_IsTrue_AfterSpawn()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             Assert.IsTrue(entity.Initialized);
@@ -427,7 +427,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawned_IsFalse_AfterDispose()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Dispose();
 
@@ -437,7 +437,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawned_RemainsTrue_OnMultipleSpawnCalls()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Init(); // повторный вызов
 
@@ -451,14 +451,14 @@ namespace Atomic.Entities
         [Test]
         public void Enabled_IsFalse_ByDefault()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             Assert.IsFalse(entity.Enabled);
         }
 
         [Test]
         public void Enabled_IsTrue_AfterEnable()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -468,7 +468,7 @@ namespace Atomic.Entities
         [Test]
         public void Enabled_IsFalse_AfterDisable()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
             entity.Disable();
@@ -479,7 +479,7 @@ namespace Atomic.Entities
         [Test]
         public void Enabled_IsFalse_AfterDispose()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
             entity.Dispose(); // вызывает Disable()
@@ -490,7 +490,7 @@ namespace Atomic.Entities
         [Test]
         public void Enabled_RemainsTrue_OnMultipleEnableCalls()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
             entity.Enable(); // повторный вызов
@@ -501,7 +501,7 @@ namespace Atomic.Entities
         [Test]
         public void Enabled_RemainsFalse_OnMultipleDisableCalls()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
             entity.Disable();
@@ -517,7 +517,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawn_SetsSpawnedTrue()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             Assert.IsTrue(entity.Initialized);
@@ -526,7 +526,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawn_DoesNothing_IfAlreadySpawned()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             bool called = false;
@@ -540,7 +540,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawn_InvokesOnInitialized()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
 
             bool called = false;
             entity.OnInitialized += () => called = true;
@@ -553,19 +553,19 @@ namespace Atomic.Entities
         [Test]
         public void Spawn_InvokesIEntitySpawnInterfaces()
         {
-            var stub = new EntityInitStub();
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var stub = new EntityInitSpy();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
 
             entity.AddBehaviour(stub);
             entity.Init();
 
-            Assert.IsTrue(stub.WasInit);
+            Assert.IsTrue(stub.WasInitialized);
         }
 
         [Test]
         public void Spawn_InvokesOnStateChanged()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
 
             bool called = false;
             entity.OnStateChanged += _ => called = true;
@@ -579,9 +579,9 @@ namespace Atomic.Entities
         public void Spawn()
         {
             //Arrange
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             var wasEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnInitialized += () => wasEvent = true;
@@ -602,7 +602,7 @@ namespace Atomic.Entities
         [Test]
         public void Dispose_SetsSpawnedFalse()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             entity.Dispose();
@@ -613,7 +613,7 @@ namespace Atomic.Entities
         [Test]
         public void Dispose_DoesNothing_IfNotSpawned()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false); // Не вызывали Spawn()
+            var entity = MonoEntity.Create(useUnityLifecycle: false); // Не вызывали Spawn()
 
             bool called = false;
             entity.OnDisposed += () => called = true;
@@ -626,7 +626,7 @@ namespace Atomic.Entities
         [Test]
         public void Dispose_DisablesEntity_IfEnabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -638,20 +638,20 @@ namespace Atomic.Entities
         [Test]
         public void Dispose_InvokesIEntityDisposeBehaviours()
         {
-            var stub = new EntityDisposeStub();
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var stub = new EntityDisposeSpy();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init();
             entity.Dispose();
 
-            Assert.IsTrue(stub.WasDispose);
+            Assert.IsTrue(stub.WasDisposed);
         }
 
         [Test]
         public void Dispose_InvokesOnDisposedEvent()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             bool called = false;
@@ -665,7 +665,7 @@ namespace Atomic.Entities
         [Test]
         public void Dispose_InvokesOnStateChanged()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             bool stateChanged = false;
@@ -679,7 +679,7 @@ namespace Atomic.Entities
         [Test]
         public void Dispose_CalledMultipleTimes_OnlyFirstAffectsState()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Dispose();
 
@@ -695,9 +695,9 @@ namespace Atomic.Entities
         public void Dispose()
         {
             //Arrange
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             var wasEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnDisposed += () => wasEvent = true;
@@ -722,7 +722,7 @@ namespace Atomic.Entities
         [Test]
         public void Enable_SetsEnabledTrue()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             entity.Enable();
@@ -733,7 +733,7 @@ namespace Atomic.Entities
         [Test]
         public void Enable_CallsSpawn_IfNotSpawned()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             bool spawned = false;
             entity.OnInitialized += () => spawned = true;
 
@@ -746,20 +746,20 @@ namespace Atomic.Entities
         [Test]
         public void Enable_InvokesIEntityEnable()
         {
-            var stub = new EntityEnableStub();
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var stub = new EntityEnableSpy();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init();
             entity.Enable();
 
-            Assert.IsTrue(stub.WasEnable);
+            Assert.IsTrue(stub.WasEnabled);
         }
 
         [Test]
         public void Enable_InvokesOnEnabledEvent()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             bool called = false;
@@ -773,7 +773,7 @@ namespace Atomic.Entities
         [Test]
         public void Enable_InvokesOnStateChanged()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             bool stateChanged = false;
@@ -787,7 +787,7 @@ namespace Atomic.Entities
         [Test]
         public void Enable_DoesNotCallTwice()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -803,10 +803,10 @@ namespace Atomic.Entities
         public void Enable()
         {
             //Arrange
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             var initEvent = false;
             var enabledEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnInitialized += () => initEvent = true;
@@ -838,9 +838,9 @@ namespace Atomic.Entities
         public void Disable()
         {
             //Arrange
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             var wasEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnDisabled += () => wasEvent = true;
@@ -859,7 +859,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_SetsEnabledFalse()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -871,21 +871,21 @@ namespace Atomic.Entities
         [Test]
         public void Disable_InvokesIEntityDisable()
         {
-            var stub = new EntityDisableStub();
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var stub = new EntityDisableSpy();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init();
             entity.Enable();
             entity.Disable();
 
-            Assert.IsTrue(stub.WasDisable);
+            Assert.IsTrue(stub.WasDisabled);
         }
 
         [Test]
         public void Disable_InvokesOnDisabledEvent()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -900,7 +900,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_InvokesOnStateChanged()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
 
@@ -915,7 +915,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_DoesNothing_IfNotEnabled()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
 
             bool wasCalled = false;
@@ -929,7 +929,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_CanBeCalledMultipleTimes_Safely()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.Init();
             entity.Enable();
             entity.Disable();
@@ -950,8 +950,8 @@ namespace Atomic.Entities
         public void Update()
         {
             //Arrange
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
-            var behaviourStub = new EntityBehaviourStub();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
+            var behaviourStub = new EntityBehaviourSpy();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
@@ -969,8 +969,8 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_DoesNothing_IfEntityNotEnabled()
         {
-            var stub = new EntityTickStub();
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var stub = new EntityTickSpy();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init(); // но не Enable()
@@ -982,8 +982,8 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_CallsUpdateOnRegisteredBehaviours()
         {
-            var stub = new EntityTickStub();
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var stub = new EntityTickSpy();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init();
@@ -997,7 +997,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_InvokesOnUpdatedEvent()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             float calledDelta = -1f;
 
             entity.OnTicked += dt => calledDelta = dt;
@@ -1012,10 +1012,10 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_StopsCallingIfEntityDisabledMidLoop()
         {
-            var stub1 = new DisableDuringTickStub();
-            var stub2 = new EntityTickStub();
+            var stub1 = new DisableDuringTickTestDouble();
+            var stub2 = new EntityTickSpy();
 
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
             entity.Init();
@@ -1034,8 +1034,8 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_DoesNothing_IfEntityNotEnabled()
         {
-            var stub = new EntityFixedTickStub();
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var stub = new EntityFixedTickSpy();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init(); // не включаем
@@ -1047,8 +1047,8 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_CallsRegisteredFixedUpdateBehaviours()
         {
-            var stub = new EntityFixedTickStub();
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var stub = new EntityFixedTickSpy();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init();
@@ -1063,7 +1063,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_InvokesOnFixedUpdatedEvent()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             float delta = -1f;
 
             entity.OnFixedTicked += dt => delta = dt;
@@ -1079,10 +1079,10 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_StopsIfEntityDisabledMidIteration()
         {
-            var stub1 = new DisableDuringFixedTickStub();
-            var stub2 = new EntityFixedTickStub();
+            var stub1 = new DisableDuringFixedTickTestDouble();
+            var stub2 = new EntityFixedTickSpy();
 
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
             entity.Init();
@@ -1098,8 +1098,8 @@ namespace Atomic.Entities
         public void FixedUpdate()
         {
             //Arrange
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
-            var behaviourStub = new EntityBehaviourStub();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
+            var behaviourStub = new EntityBehaviourSpy();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
@@ -1121,8 +1121,8 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_DoesNothing_WhenEntityDisabled()
         {
-            var stub = new EntityLateTickStub();
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var stub = new EntityLateTickSpy();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init();
@@ -1135,8 +1135,8 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_CallsRegisteredLateUpdateBehaviours()
         {
-            var stub = new EntityLateTickStub();
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var stub = new EntityLateTickSpy();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init();
@@ -1151,7 +1151,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_InvokesOnLateUpdatedEvent()
         {
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             float calledDelta = -1f;
 
             entity.OnLateTicked += dt => calledDelta = dt;
@@ -1166,10 +1166,10 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_StopsIteration_WhenDisabledMidUpdate()
         {
-            var stub1 = new DisableDuringLateTickStub();
-            var stub2 = new EntityLateTickStub();
+            var stub1 = new DisableDuringLateTickTestDouble();
+            var stub2 = new EntityLateTickSpy();
 
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
             entity.Init();
@@ -1185,8 +1185,8 @@ namespace Atomic.Entities
         public void LateUpdate()
         {
             //Arrange
-            var entity = SceneEntity.Create(useUnityLifecycle: false);
-            var behaviourStub = new EntityBehaviourStub();
+            var entity = MonoEntity.Create(useUnityLifecycle: false);
+            var behaviourStub = new EntityBehaviourSpy();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);

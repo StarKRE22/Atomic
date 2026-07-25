@@ -12,6 +12,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatMulExpression"/> class.
         /// </summary>
+        /// <param name="capacity">Initial internal capacity.</param>
         public FloatMulExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
@@ -20,7 +21,7 @@ namespace Atomic.Elements
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of float-returning functions.</param>
-        public FloatMulExpression(params Func<float>[] members) : base(members)
+        public FloatMulExpression(params ExpressionMember<float>[] members) : base(members)
         {
         }
 
@@ -28,7 +29,7 @@ namespace Atomic.Elements
         /// Initializes the expression with the specified collection of function members.
         /// </summary>
         /// <param name="members">A collection of float-returning functions.</param>
-        public FloatMulExpression(IEnumerable<Func<float>> members) : base(members)
+        public FloatMulExpression(IEnumerable<ExpressionMember<float>> members) : base(members)
         {
         }
 
@@ -52,6 +53,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatMulExpression{T}"/> class.
         /// </summary>
+        /// <param name="capacity">Initial internal capacity.</param>
         public FloatMulExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
@@ -60,7 +62,7 @@ namespace Atomic.Elements
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of functions that take a <typeparamref name="T"/> and return a float.</param>
-        public FloatMulExpression(params Func<T, float>[] members) : base(members)
+        public FloatMulExpression(params ExpressionMember<T, float>[] members) : base(members)
         {
         }
 
@@ -68,7 +70,7 @@ namespace Atomic.Elements
         /// Initializes the expression with the specified collection of function members.
         /// </summary>
         /// <param name="members">A collection of functions that take a <typeparamref name="T"/> and return a float.</param>
-        public FloatMulExpression(IEnumerable<Func<T, float>> members) : base(members)
+        public FloatMulExpression(IEnumerable<ExpressionMember<T, float>> members) : base(members)
         {
         }
 
@@ -93,6 +95,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatMulExpression{T1, T2}"/> class.
         /// </summary>
+        /// <param name="capacity">Initial internal capacity.</param>
         public FloatMulExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
@@ -100,16 +103,16 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes the expression with the specified function members.
         /// </summary>
-        /// <param name="members">An array of functions that take <typeparamref name="T1"/> and <typeparamref name="T2"/> and return a float.</param>
-        public FloatMulExpression(params Func<T1, T2, float>[] members) : base(members)
+        /// <param name="members">An array of functions taking <typeparamref name="T1"/> and <typeparamref name="T2"/> and returning a float.</param>
+        public FloatMulExpression(params ExpressionMember<T1, T2, float>[] members) : base(members)
         {
         }
 
         /// <summary>
         /// Initializes the expression with the specified collection of function members.
         /// </summary>
-        /// <param name="members">A collection of functions that take <typeparamref name="T1"/> and <typeparamref name="T2"/> and return a float.</param>
-        public FloatMulExpression(IEnumerable<Func<T1, T2, float>> members) : base(members)
+        /// <param name="members">A collection of functions taking <typeparamref name="T1"/> and <typeparamref name="T2"/> and returning a float.</param>
+        public FloatMulExpression(IEnumerable<ExpressionMember<T1, T2, float>> members) : base(members)
         {
         }
 

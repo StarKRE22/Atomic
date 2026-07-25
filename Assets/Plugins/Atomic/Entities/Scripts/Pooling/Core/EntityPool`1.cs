@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
@@ -12,35 +13,41 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A simple object pool for entities of type <typeparamref name="E"/>.
+    /// A simple object pool for entities of type <typeparamref name="TEntity"/>.
     /// </summary>
-    /// <typeparam name="E">The entity type managed by the pool. Must implement <see cref="IEntity"/>.</typeparam>
+    /// <typeparam name="TEntity">The entity type managed by the pool. Must implement <see cref="IEntity"/>.</typeparam>
     /// <remarks>
     /// This pool creates entities using an <see cref="IEntityFactory{E}"/> and supports reuse through
-    /// <see cref="Rent"/> and <see cref="Return(E)"/> methods.
+    /// <see cref="Rent"/> and <see cref="Return(TEntity)"/> methods.
     /// It also provides virtual lifecycle hooks for spawn, rent, return, and despawn operations.
     /// </remarks>
-    public class EntityPool<E> : IEntityPool<E> where E : IEntity
+    public class EntityPool<TEntity, TArgs> : IEntityPool<TEntity>
+        where TEntity : IEntity
+        where TArgs : IArgs
     {
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
-        private protected readonly Stack<E> _pooledEntities = new();
-        
+        private protected readonly Stack<TEntity> _pooledEntities = new();
+
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
-        private protected readonly HashSet<E> _rentEntities = new();
-      
-        private readonly IEntityFactory<E> _factory;
+        private protected readonly HashSet<TEntity> _rentEntities = new();
+
+        private readonly IEntityFactory<TEntity, TArgs> _factory;
+        private readonly TArgs _args;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityPool{E}"/> class using the specified factory.
         /// </summary>
         /// <param name="factory">The factory used to create new entity instances when needed.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> is null.</exception>
-        public EntityPool(IEntityFactory<E> factory) =>
+        public EntityPool(IEntityFactory<TEntity, TArgs> factory, TArgs args)
+        {
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
+            _args = args ?? throw new ArgumentNullException(nameof(args));
+        }
 
         /// <summary>
         /// Pre-populates the pool with a specified number of entities.
@@ -50,7 +57,7 @@ namespace Atomic.Entities
         {
             for (int i = 0; i < initialCount; i++)
             {
-                E entity = _factory.Create();
+                TEntity entity = _factory.Create(_args);
                 this.OnCreate(entity);
                 _pooledEntities.Push(entity);
             }
@@ -61,12 +68,12 @@ namespace Atomic.Entities
         /// </summary>
         public void Dispose()
         {
-            foreach (E entity in _pooledEntities)
+            foreach (TEntity entity in _pooledEntities)
                 this.OnDispose(entity);
 
-            foreach (E entity in _rentEntities) 
+            foreach (TEntity entity in _rentEntities)
                 this.OnDispose(entity);
-            
+
             _pooledEntities.Clear();
             _rentEntities.Clear();
         }
@@ -75,11 +82,11 @@ namespace Atomic.Entities
         /// Retrieves an entity from the pool or creates a new one if the pool is empty.
         /// </summary>
         /// <returns>An available entity instance.</returns>
-        public E Rent()
+        public TEntity Rent()
         {
-            if (!_pooledEntities.TryPop(out E entity))
+            if (!_pooledEntities.TryPop(out TEntity entity))
             {
-                entity = _factory.Create();
+                entity = _factory.Create(_args);
                 this.OnCreate(entity);
             }
 
@@ -93,7 +100,7 @@ namespace Atomic.Entities
         /// If the entity is already present, it will not be added again.
         /// </summary>
         /// <param name="entity">The entity to return to the pool.</param>
-        public void Return(E entity)
+        public void Return(TEntity entity)
         {
             if (_rentEntities.Remove(entity))
             {
@@ -112,7 +119,7 @@ namespace Atomic.Entities
         /// Called when a new entity is created and added to the pool.
         /// </summary>
         /// <param name="entity">The newly created entity.</param>
-        protected virtual void OnCreate(E entity)
+        protected virtual void OnCreate(TEntity entity)
         {
         }
 
@@ -120,7 +127,7 @@ namespace Atomic.Entities
         /// Called when the pool is being cleared and an entity is removed permanently.
         /// </summary>
         /// <param name="entity">The entity being despawned.</param>
-        protected virtual void OnDispose(E entity)
+        protected virtual void OnDispose(TEntity entity)
         {
         }
 
@@ -128,7 +135,7 @@ namespace Atomic.Entities
         /// Called when an entity is rented from the pool.
         /// </summary>
         /// <param name="entity">The entity being rented.</param>
-        protected virtual void OnRent(E entity)
+        protected virtual void OnRent(TEntity entity)
         {
         }
 
@@ -136,7 +143,7 @@ namespace Atomic.Entities
         /// Called when an entity is returned to the pool.
         /// </summary>
         /// <param name="entity">The entity being returned.</param>
-        protected virtual void OnReturn(E entity)
+        protected virtual void OnReturn(TEntity entity)
         {
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 namespace Atomic.Elements
@@ -9,21 +10,23 @@ namespace Atomic.Elements
         public void CreateAndInvoke()
         {
             //Arrange:
-            var a1 = new ActionStub();
-            var a2 = new ActionStub();
-            var a3 = new ActionStub();
-            var a4 = new ActionStub();
+            bool invoked1 = false;
+            bool invoked2 = false;
+            bool invoked3 = false;
             
-            IAction actionGroup = new CompositeAction(a1, a2, a3, a4);
+            var a1 = new Action(() => invoked1 = true);
+            var a2 = new Action(() => invoked2 = true);
+            var a3 = new Action(() => invoked3 = true);
+            
+            IAction actionGroup = new CompositeAction(a1, a2, a3);
             
             //Act:
             actionGroup.Invoke();
             
             //Assert:
-            Assert.IsTrue(a1.wasInvoke);
-            Assert.IsTrue(a2.wasInvoke);
-            Assert.IsTrue(a3.wasInvoke);
-            Assert.IsTrue(a4.wasInvoke);
+            Assert.IsTrue(invoked1);
+            Assert.IsTrue(invoked2);
+            Assert.IsTrue(invoked3);
         }
     }
 }

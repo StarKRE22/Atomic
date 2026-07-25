@@ -4,14 +4,14 @@ using NUnit.Framework;
 
 namespace Atomic.Entities
 {
-    public sealed partial class SceneEntityTests
+    public sealed partial class MonoEntityTests
     {
         #region OnTagAdded
 
         [Test]
         public void OnTagAdded_IsInvoked_WhenTagIsAdded()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             int? receivedTag = null;
             IEntity receivedEntity = null;
 
@@ -30,7 +30,7 @@ namespace Atomic.Entities
         [Test]
         public void OnTagAdded_IsNotInvoked_WhenTagAlreadyExists()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(1);
 
             bool wasCalled = false;
@@ -44,7 +44,7 @@ namespace Atomic.Entities
         [Test]
         public void OnTagAdded_CanHandleMultipleTags()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             var addedTags = new List<int>();
 
             entity.OnTagAdded += (_, tag) => addedTags.Add(tag);
@@ -63,7 +63,7 @@ namespace Atomic.Entities
         [Test]
         public void OnTagDeleted_IsInvoked_WhenTagIsRemoved()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(42);
 
             int? removedTag = null;
@@ -84,7 +84,7 @@ namespace Atomic.Entities
         [Test]
         public void OnTagDeleted_IsNotInvoked_WhenTagDoesNotExist()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             bool wasCalled = false;
 
             entity.OnTagDeleted += (_, _) => wasCalled = true;
@@ -97,7 +97,7 @@ namespace Atomic.Entities
         [Test]
         public void OnTagDeleted_HandlesMultipleTagRemovals()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(1);
             entity.AddTag(2);
             entity.AddTag(3);
@@ -119,7 +119,7 @@ namespace Atomic.Entities
         [Test]
         public void TagCount_IsZero_WhenNoTagsAdded()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
 
             Assert.AreEqual(0, entity.TagCount);
         }
@@ -127,7 +127,7 @@ namespace Atomic.Entities
         [Test]
         public void TagCount_Increases_WhenTagIsAdded()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(100);
 
             Assert.AreEqual(1, entity.TagCount);
@@ -136,7 +136,7 @@ namespace Atomic.Entities
         [Test]
         public void TagCount_DoesNotIncrease_WhenSameTagAddedTwice()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(10);
             entity.AddTag(10); // Повтор
 
@@ -146,7 +146,7 @@ namespace Atomic.Entities
         [Test]
         public void TagCount_Decreases_WhenTagIsDeleted()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(5);
             entity.AddTag(6);
 
@@ -158,7 +158,7 @@ namespace Atomic.Entities
         [Test]
         public void TagCount_DoesNotGoBelowZero_WhenDeletingNonexistentTag()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.DelTag(999); // Ничего не было
 
             Assert.AreEqual(0, entity.TagCount);
@@ -186,7 +186,7 @@ namespace Atomic.Entities
         [Test]
         public void HasTag_ReturnsFalse_WhenNoTags()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
 
             Assert.IsFalse(entity.HasTag(1));
         }
@@ -194,7 +194,7 @@ namespace Atomic.Entities
         [Test]
         public void HasTag_ReturnsTrue_WhenTagExists()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(42);
 
             Assert.IsTrue(entity.HasTag(42));
@@ -203,7 +203,7 @@ namespace Atomic.Entities
         [Test]
         public void HasTag_ReturnsFalse_WhenTagWasDeleted()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(7);
             entity.DelTag(7);
 
@@ -213,7 +213,7 @@ namespace Atomic.Entities
         [Test]
         public void HasTag_IsAccurate_ForMultipleTags()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(1);
             entity.AddTag(2);
             entity.AddTag(3);
@@ -229,7 +229,7 @@ namespace Atomic.Entities
         [Test]
         public void AddTag_ReturnsTrue_WhenTagIsNew()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
 
             bool result = entity.AddTag(10);
 
@@ -240,7 +240,7 @@ namespace Atomic.Entities
         [Test]
         public void AddTag_ReturnsFalse_WhenTagAlreadyExists()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(42);
 
             bool result = entity.AddTag(42);
@@ -251,7 +251,7 @@ namespace Atomic.Entities
         [Test]
         public void AddTag_InvokesOnTagAdded_WhenNewTag()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             int? receivedTag = null;
 
             entity.OnTagAdded += (_, tag) => receivedTag = tag;
@@ -264,7 +264,7 @@ namespace Atomic.Entities
         [Test]
         public void AddTag_DoesNotInvokeOnTagAdded_WhenDuplicate()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(5);
 
             bool wasCalled = false;
@@ -278,7 +278,7 @@ namespace Atomic.Entities
         [Test]
         public void AddTag_InvokesOnStateChanged_WhenTagIsNew()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             bool stateChanged = false;
 
             entity.OnStateChanged += _ => stateChanged = true;
@@ -291,7 +291,7 @@ namespace Atomic.Entities
         [Test]
         public void AddTag_DoesNotInvokeOnStateChanged_WhenTagExists()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(1);
 
             bool stateChanged = false;
@@ -334,7 +334,7 @@ namespace Atomic.Entities
         [Test]
         public void DelTag_ReturnsTrue_WhenTagExisted()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(10);
 
             bool result = entity.DelTag(10);
@@ -346,7 +346,7 @@ namespace Atomic.Entities
         [Test]
         public void DelTag_ReturnsFalse_WhenTagDoesNotExist()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
 
             bool result = entity.DelTag(999);
 
@@ -356,7 +356,7 @@ namespace Atomic.Entities
         [Test]
         public void DelTag_InvokesOnTagDeleted_WhenSuccessful()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(5);
 
             int? deletedTag = null;
@@ -370,7 +370,7 @@ namespace Atomic.Entities
         [Test]
         public void DelTag_DoesNotInvokeOnTagDeleted_WhenNotPresent()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
 
             bool wasCalled = false;
             entity.OnTagDeleted += (_, _) => wasCalled = true;
@@ -383,7 +383,7 @@ namespace Atomic.Entities
         [Test]
         public void DelTag_InvokesOnStateChanged_WhenTagRemoved()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(7);
 
             bool stateChanged = false;
@@ -397,7 +397,7 @@ namespace Atomic.Entities
         [Test]
         public void DelTag_DoesNotInvokeOnStateChanged_WhenTagNotFound()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
 
             bool stateChanged = false;
             entity.OnStateChanged += _ => stateChanged = true;
@@ -439,7 +439,7 @@ namespace Atomic.Entities
         [Test]
         public void GetTags_ReturnsAllTags_WhenTagsExist()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(1);
             entity.AddTag(2);
             entity.AddTag(3);
@@ -452,7 +452,7 @@ namespace Atomic.Entities
         [Test]
         public void GetTags_ReturnsEmptyArray_WhenNoTags()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
 
             var tags = entity.GetTags();
 
@@ -463,7 +463,7 @@ namespace Atomic.Entities
         [Test]
         public void GetTags_ReturnedArrayIsIndependent()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(100);
 
             var tags = entity.GetTags();
@@ -482,7 +482,7 @@ namespace Atomic.Entities
         [Test]
         public void CopyTags_CopiesAllTagsInOrder()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(10);
             entity.AddTag(20);
             entity.AddTag(30);
@@ -497,7 +497,7 @@ namespace Atomic.Entities
         [Test]
         public void CopyTags_ReturnsZero_WhenNoTags()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             var results = Array.Empty<int>();
 
             int count = entity.CopyTags(results);
@@ -508,7 +508,7 @@ namespace Atomic.Entities
         [Test]
         public void CopyTags_ThrowsArgumentNullException_WhenArrayIsNull()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(1);
 
             Assert.Throws<ArgumentNullException>(() => { entity.CopyTags(null); });
@@ -517,7 +517,7 @@ namespace Atomic.Entities
         [Test]
         public void CopyTags_CopiesOnlyExistingTags_IgnoresDeleted()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(1);
             entity.AddTag(2);
             entity.AddTag(3);
@@ -533,7 +533,7 @@ namespace Atomic.Entities
         [Test]
         public void CopyTags_OverwritesGivenArrayFromStart()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(7);
             entity.AddTag(8);
 
@@ -553,7 +553,7 @@ namespace Atomic.Entities
         [Test]
         public void ClearTags_RemovesAllTags()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(1);
             entity.AddTag(2);
             entity.AddTag(3);
@@ -569,7 +569,7 @@ namespace Atomic.Entities
         [Test]
         public void ClearTags_InvokesOnTagDeleted_ForEachTag()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(10);
             entity.AddTag(20);
             entity.AddTag(30);
@@ -585,7 +585,7 @@ namespace Atomic.Entities
         [Test]
         public void ClearTags_InvokesOnStateChanged_Once()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(100);
 
             bool stateChanged = false;
@@ -599,7 +599,7 @@ namespace Atomic.Entities
         [Test]
         public void ClearTags_DoesNothing_WhenNoTags()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
 
             bool tagDeletedCalled = false;
             bool stateChangedCalled = false;
@@ -639,7 +639,7 @@ namespace Atomic.Entities
         [Test]
         public void GetTagEnumerator_IteratesAllTags()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(1);
             entity.AddTag(2);
             entity.AddTag(3);
@@ -656,7 +656,7 @@ namespace Atomic.Entities
         [Test]
         public void GetTagEnumerator_ReturnsNoElements_WhenNoTags()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
 
             var enumerator = entity.GetTagEnumerator();
             var collected = new List<int>();
@@ -670,11 +670,11 @@ namespace Atomic.Entities
         [Test]
         public void GetTagEnumerator_ResetsProperly()
         {
-            var entity = SceneEntity.Create();
+            var entity = MonoEntity.Create();
             entity.AddTag(10);
             entity.AddTag(20);
 
-            SceneEntity.TagEnumerator enumerator = entity.GetTagEnumerator();
+            MonoEntity.TagEnumerator enumerator = entity.GetTagEnumerator();
 
             Assert.IsTrue(enumerator.MoveNext());
             var first = enumerator.Current;

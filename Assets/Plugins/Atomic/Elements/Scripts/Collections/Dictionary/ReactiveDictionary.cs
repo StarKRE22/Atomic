@@ -44,8 +44,8 @@ namespace Atomic.Elements
             remove => this.onItemRemoved -= value;
         }
 
-        private Action<KeyValuePair<K, V>> onItemAdded;
-        private Action<KeyValuePair<K, V>> onItemRemoved;
+        private event Action<KeyValuePair<K, V>> onItemAdded;
+        private event Action<KeyValuePair<K, V>> onItemRemoved;
 
         /// <summary>
         /// Gets a collection containing the keys in the dictionary.

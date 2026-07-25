@@ -102,7 +102,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="duration">The countdown duration.</param>
         public DownTimer(float duration) => this.duration = duration;
-        
+
         /// <summary>
         /// Implicitly converts a <see cref="float"/> value to a <see cref="DownTimer"/> instance.
         /// </summary>
@@ -151,7 +151,7 @@ namespace Atomic.Elements
         public void Start() => this.Start(this.duration);
 
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void Start(float time)
         {
@@ -166,7 +166,7 @@ namespace Atomic.Elements
 
         /// <summary>Pauses the countdown if it is currently playing.</summary>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void Pause()
         {
@@ -180,7 +180,7 @@ namespace Atomic.Elements
 
         /// <summary>Resumes the countdown if it is currently paused.</summary>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void Resume()
         {
@@ -194,7 +194,7 @@ namespace Atomic.Elements
 
         /// <summary>Stops the countdown and resets the current time to zero.</summary>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void Stop()
         {
@@ -209,7 +209,7 @@ namespace Atomic.Elements
 
         /// <summary>Advances the countdown by deltaTime and triggers completion if needed.</summary>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void Tick(float deltaTime)
         {
@@ -248,7 +248,7 @@ namespace Atomic.Elements
 
         /// <summary>Sets the current progress of the countdown (0–1).</summary>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void SetProgress(float progress)
         {
@@ -262,7 +262,7 @@ namespace Atomic.Elements
 
         /// <summary>Sets the total duration of the countdown.</summary>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void SetDuration(float duration)
         {
@@ -278,7 +278,7 @@ namespace Atomic.Elements
 
         /// <summary>Sets the current time remaining in the countdown.</summary>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void SetTime(float time)
         {
@@ -293,7 +293,7 @@ namespace Atomic.Elements
 
         /// <summary>Resets the current time to the full duration.</summary>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void ResetTime() => this.SetTime(this.duration);
     }

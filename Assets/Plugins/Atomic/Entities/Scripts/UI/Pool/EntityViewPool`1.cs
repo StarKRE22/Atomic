@@ -1,5 +1,7 @@
 #if UNITY_5_3_OR_NEWER
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Unity.Profiling;
 using UnityEngine;
 
 #if ODIN_INSPECTOR
@@ -8,81 +10,77 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// A pool system for managing reusable EntityView instances.
-    /// Supports preloading from catalogs, runtime instantiation, renting, and returning views to minimize runtime allocations.
-    /// Use for efficient management of frequently spawned or displayed entity views.
-    /// </summary>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityViewPool%601.md")]
-    public abstract class EntityViewPool<E, V> : MonoBehaviour
+    public abstract class EntityViewPool<K, E, V> : MonoBehaviour
         where E : class, IEntity
         where V : EntityView<E>
     {
+        private static readonly ProfilerMarker s_rentMarker = new($"EntityViewPool<{typeof(E).Name}>.Rent");
+        private static readonly ProfilerMarker s_returnMarker = new($"EntityViewPool<{typeof(E).Name}>.Return");
+
         [Tooltip("The parent transform under which all pooled views will be stored")]
         [SerializeField]
-        internal Transform container;
+        private Transform container;
+
+        [SerializeField]
+        private int initialCapacity = 32;
 
         [Space]
         [Tooltip("A list of view catalogs to preload view prefabs from on Awake")]
         [SerializeField]
-        internal EntityViewCatalog<E, V>[] catalogs;
+        private EntityViewCatalog<E, V>[] catalogs;
 
-        /// <summary>
-        /// A dictionary mapping view names to their prefab instances.
-        /// </summary>
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        private readonly Dictionary<string, V> _prefabs = new();
+        private readonly Dictionary<K, V> _prefabs = new();
 
-        /// <summary>
-        /// A dictionary mapping view names to stacks of pooled instances.
-        /// </summary>
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        private readonly Dictionary<string, Stack<V>> _pools = new();
+        private readonly Dictionary<K, Stack<V>> _pools = new();
 
-        /// <summary>
-        /// Called by Unity when the component is initialized.
-        /// Loads prefabs from the assigned catalogs.
-        /// </summary>
-        protected virtual void Awake()
+        private protected virtual void Awake()
         {
-            if (this.catalogs != null)
-                for (int i = 0, count = this.catalogs.Length; i < count; i++)
-                    this.RegisterPrefabs(this.catalogs[i]);
+            this.RegisterCatalogs();
         }
 
         /// <summary>
-        /// Rents a view by name from the pool. If the pool is empty, a new instance is created.
+        /// Registers a new view prefab to the pool by name.
         /// </summary>
-        /// <param name="name">The name of the view to retrieve.</param>
-        /// <returns>A reusable <see cref="EntityView"/> instance.</returns>
-        /// <exception cref="KeyNotFoundException">Thrown if the view prefab was not registered.</exception>
-        public V Rent(string name)
+        /// <param name="key">The name identifier for the view prefab.</param>
+        /// <param name="prefab">The prefab to register.</param>
+        public void Register(K key, V prefab) => _prefabs.Add(key, prefab);
+
+        /// <summary>
+        /// Removes a registered prefab from the pool.
+        /// </summary>
+        /// <param name="key">The name of the prefab to remove.</param>
+        public void Unregister(K key) => _prefabs.Remove(key);
+
+        /// <summary>
+        /// Add all prefabs from a given catalogue to the internal registry.
+        /// </summary>
+        /// <param name="catalog">The catalogue containing view prefabs to register.</param>
+        public void Register(EntityViewCatalog<E, V> catalog)
         {
-            Stack<V> pool = this.GetPool(name);
-            if (pool.TryPop(out V view))
-                return view;
-
-            if (!_prefabs.TryGetValue(name, out V prefab))
-                throw new KeyNotFoundException($"EntityView with name \"{name}\" was not present in EntityViewPool!");
-
-            return Instantiate(prefab, this.container);
+            for (int i = 0, count = catalog.Count; i < count; i++)
+            {
+                V value = catalog.GetPrefab(i);
+                _prefabs.Add(this.GetKey(value), value);
+            }
         }
 
         /// <summary>
-        /// Returns a view back to its corresponding pool for future reuse.
+        /// Removes all prefabs from a given catalogue from the internal registry.
         /// </summary>
-        /// <param name="name">The name of the view being returned.</param>
-        /// <param name="view">The view instance to return.</param>
-        public void Return(string name, V view)
+        /// <param name="catalog">The catalogue containing view prefabs to unregister.</param>
+        public void Unregister(EntityViewCatalog<E, V> catalog)
         {
-            Stack<V> pool = this.GetPool(name);
-            pool.Push(view);
-            if (view)
-                view.transform.parent = this.container;
+            for (int i = 0, count = catalog.Count; i < count; i++)
+            {
+                V prefab = catalog.GetPrefab(i);
+                _prefabs.Remove(this.GetKey(prefab));
+            }
         }
 
         /// <summary>
@@ -101,58 +99,90 @@ namespace Atomic.Entities
             _pools.Clear();
         }
 
-        /// <summary>
-        /// Retrieves the pool stack for a given view name. Creates one if it does not exist.
-        /// </summary>
-        /// <param name="name">The name of the view.</param>
-        /// <returns>A stack of pooled views for the given name.</returns>
-        private Stack<V> GetPool(string name)
+        public async ValueTask InitAsync(K key, int count)
         {
-            if (_pools.TryGetValue(name, out Stack<V> pool))
-                return pool;
+            if (!_prefabs.TryGetValue(key, out V prefab))
+                throw new KeyNotFoundException($"EntityView<{typeof(E).Name}> with \"{key}\" was not present in pool!");
 
-            pool = new Stack<V>();
-            _pools.Add(name, pool);
+            AsyncInstantiateOperation<V> operation = InstantiateAsync(prefab, count, this.container);
+            V[] views = await operation;
+
+            int viewCount = views.Length;
+            Stack<V> pool = this.GetOrCreatePool(key, Mathf.Max(viewCount, this.initialCapacity));
+
+            for (int i = 0; i < viewCount; i++)
+            {
+                V view = views[i];
+                view.gameObject.SetActive(false);
+                pool.Push(view);
+            }
+        }
+        
+        public void Init(K key, int count)
+        {
+            if (!_prefabs.TryGetValue(key, out V prefab))
+                throw new KeyNotFoundException($"EntityView<{typeof(E).Name}> with name \"{key}\" was not present in pool!");
+
+            Stack<V> pool = this.GetOrCreatePool(key, Mathf.Max(count, this.initialCapacity));
+            for (int i = 0; i < count; i++)
+            {
+                V view = Instantiate(prefab, this.container);
+                view.gameObject.SetActive(false);
+                pool.Push(view);
+            }
+        }
+
+        private void RegisterCatalogs()
+        {
+            if (this.catalogs != null)
+                for (int i = 0, count = this.catalogs.Length; i < count; i++)
+                    this.Register(this.catalogs[i]);
+        }
+
+        internal V Rent(K key, Transform parent)
+        {
+            using (s_rentMarker.Auto())
+            {
+                Stack<V> pool = this.GetOrCreatePool(key, this.initialCapacity);
+                if (pool.TryPop(out V view))
+                {
+                    view.transform.SetParent(parent);
+                    view.gameObject.SetActive(true);
+                    return view;
+                }
+
+                return !_prefabs.TryGetValue(key, out V prefab)
+                    ? throw new KeyNotFoundException($"EntityView<{typeof(E).Name}> with key \"{key}\" was not present in pool!")
+                    : Instantiate(prefab, parent);
+            }
+        }
+
+        internal void Return(V view)
+        {
+            using (s_returnMarker.Auto())
+            {
+                Stack<V> pool = this.GetOrCreatePool(this.GetKey(view), this.initialCapacity);
+                pool.Push(view);
+
+                if (view)
+                {
+                    view.transform.parent = this.container;
+                    view.gameObject.SetActive(false);
+                }
+            }
+        }
+
+        protected abstract K GetKey(V view);
+
+        private Stack<V> GetOrCreatePool(K key, int initialCapacity)
+        {
+            if (!_pools.TryGetValue(key, out Stack<V> pool))
+            {
+                pool = new Stack<V>(initialCapacity);
+                _pools.Add(key, pool);
+            }
+
             return pool;
-        }
-
-        /// <summary>
-        /// Registers a new view prefab to the pool by name.
-        /// </summary>
-        /// <param name="name">The name identifier for the view prefab.</param>
-        /// <param name="prefab">The prefab to register.</param>
-        public void RegisterPrefab(string name, V prefab) => _prefabs.Add(name, prefab);
-
-        /// <summary>
-        /// Removes a registered prefab from the pool.
-        /// </summary>
-        /// <param name="name">The name of the prefab to remove.</param>
-        public void UnregisterPrefab(string name) => _prefabs.Remove(name);
-
-        /// <summary>
-        /// Adds all prefabs from a given catalog to the internal registry.
-        /// </summary>
-        /// <param name="catalog">The catalog containing view prefabs to register.</param>
-        public void RegisterPrefabs(EntityViewCatalog<E, V> catalog)
-        {
-            for (int i = 0, count = catalog.Count; i < count; i++)
-            {
-                (string key, V value) = catalog.GetPrefab(i);
-                _prefabs.Add(key, value);
-            }
-        }
-
-        /// <summary>
-        /// Removes all prefabs from a given catalog from the internal registry.
-        /// </summary>
-        /// <param name="catalog">The catalog containing view prefabs to unregister.</param>
-        public void UnregisterPrefabs(EntityViewCatalog<E, V> catalog)
-        {
-            for (int i = 0, count = catalog.Count; i < count; i++)
-            {
-                (string key, _) = catalog.GetPrefab(i);
-                _prefabs.Remove(key);
-            }
         }
     }
 }

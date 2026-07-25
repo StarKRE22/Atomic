@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Atomic.Entities
 {
     [TestFixture]
-    public sealed class SceneEntityProxyTests
+    public sealed class MonoEntityProxyTests
     {
         [Test]
         public void NewEntityProxy()
@@ -21,13 +21,13 @@ namespace Atomic.Entities
             object val1 = new object();
             string val2 = new string("Test");
 
-            IEntityBehaviour behaviour1 = new EntityBehaviourStub();
-            IEntityBehaviour behaviour2 = new EntityBehaviourStub();
-            IEntityBehaviour behaviour3 = new EntityBehaviourStub();
+            IEntityBehaviour behaviour1 = new EntityBehaviourSpy();
+            IEntityBehaviour behaviour2 = new EntityBehaviourSpy();
+            IEntityBehaviour behaviour3 = new EntityBehaviourSpy();
 
             //Act:
 
-            SceneEntity entity = SceneEntity.Create("123",
+            MonoEntity entity = MonoEntity.Create("123",
                 new[] {tag1, tag2},
                 new Dictionary<int, object>
                 {
@@ -41,7 +41,7 @@ namespace Atomic.Entities
                 }
             );
 
-            SceneEntityProxy proxy = entity.gameObject.AddComponent<SceneEntityProxy>();
+            MonoEntityProxy proxy = entity.gameObject.AddComponent<MonoEntityProxy>();
             proxy.Source = entity;
 
             //Assert:
@@ -88,12 +88,12 @@ namespace Atomic.Entities
         public void NotEquals()
         {
             //Arrange:
-            var entity1 = SceneEntity.Create("1");
-            var proxy1 = entity1.gameObject.AddComponent<SceneEntityProxy>();
+            var entity1 = MonoEntity.Create("1");
+            var proxy1 = entity1.gameObject.AddComponent<MonoEntityProxy>();
             proxy1.Source = entity1;
             
-            var entity2 = SceneEntity.Create("2");
-            var proxy2 = entity2.gameObject.AddComponent<SceneEntityProxy>();
+            var entity2 = MonoEntity.Create("2");
+            var proxy2 = entity2.gameObject.AddComponent<MonoEntityProxy>();
             proxy2.Source = entity2;
         
             //Assert:
@@ -104,8 +104,8 @@ namespace Atomic.Entities
         [Test]
         public void HashCodeTest()
         {
-            var entity1 = SceneEntity.Create("1");
-            var proxy1 = entity1.gameObject.AddComponent<SceneEntityProxy>();
+            var entity1 = MonoEntity.Create("1");
+            var proxy1 = entity1.gameObject.AddComponent<MonoEntityProxy>();
             proxy1.Source = entity1;
 
             Assert.AreEqual(entity1.InstanceID, proxy1.GetHashCode());
@@ -115,12 +115,12 @@ namespace Atomic.Entities
         public void WhenSourcesEqualsThenEquals()
         {
             //Arrange:
-            var entity1 = SceneEntity.Create("1");
-            var proxy1 = entity1.gameObject.AddComponent<SceneEntityProxy>();
+            var entity1 = MonoEntity.Create("1");
+            var proxy1 = entity1.gameObject.AddComponent<MonoEntityProxy>();
             proxy1.Source = entity1;
             
-            var entity2 = SceneEntity.Create("2");
-            var proxy2 = entity2.gameObject.AddComponent<SceneEntityProxy>();
+            var entity2 = MonoEntity.Create("2");
+            var proxy2 = entity2.gameObject.AddComponent<MonoEntityProxy>();
             proxy2.Source = entity1;
             
             Assert.IsTrue(proxy1.Equals(proxy2));

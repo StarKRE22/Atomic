@@ -9,9 +9,9 @@ namespace Atomic.Entities
     public class SceneEntityTests_Install
     {
         private GameObject _go;
-        private SceneEntity _entity;
+        private MonoEntity _entity;
         
-        private class TestableSceneEntity : SceneEntity
+        private sealed class MonoEntitySpy : MonoEntity
         {
             public int installCounter = 0;
 
@@ -25,7 +25,7 @@ namespace Atomic.Entities
         public void SetUp()
         {
             _go = new GameObject("TestEntity");
-            _entity = _go.AddComponent<SceneEntity>();
+            _entity = _go.AddComponent<MonoEntity>();
             _entity.Uninstall();
         }
 
@@ -45,11 +45,11 @@ namespace Atomic.Entities
             Assert.IsTrue(_entity.Installed);
         }
 
-        private class MockInstaller : SceneEntityInstaller<SceneEntity>
+        private class MockInstaller : MonoEntityInstaller<MonoEntity>
         {
             public bool called;
 
-            public override void Install(SceneEntity entity)
+            public override void Install(MonoEntity entity)
             {
                 called = true;
             }
@@ -61,29 +61,10 @@ namespace Atomic.Entities
             yield return null;
 
             var mockInstaller = _go.AddComponent<MockInstaller>();
-            _entity.sceneInstallers = new List<SceneEntityInstaller> {mockInstaller};
+            _entity.sceneInstallers = new List<MonoEntityInstaller> {mockInstaller};
             _entity.Install();
 
             Assert.IsTrue(mockInstaller.called);
-        }
-
-        [UnityTest]
-        public IEnumerator Install_CallsChildren()
-        {
-            yield return null;
-
-            var childGO = new GameObject("Child");
-            childGO.transform.parent = _go.transform;
-            var childEntity = childGO.AddComponent<SceneEntity>();
-            childEntity.Uninstall();
-
-            _entity.childInstallers = new List<SceneEntity> {childEntity};
-
-            _entity.Install();
-
-            Assert.IsTrue(childEntity.Installed);
-
-            Object.DestroyImmediate(childGO);
         }
 
         [UnityTest]
@@ -91,23 +72,9 @@ namespace Atomic.Entities
         {
             yield return null;
 
-            _entity.sceneInstallers = new List<SceneEntityInstaller> {null};
+            _entity.sceneInstallers = new List<MonoEntityInstaller> {null};
 
             // LogAssert.Expect(LogType.Warning, "SceneEntity TestEntity: Ops! Detected null installer!");
-
-            _entity.Install();
-
-            Assert.IsTrue(_entity.Installed);
-        }
-
-        [UnityTest]
-        public IEnumerator Install_SkipsNullChild()
-        {
-            yield return null;
-
-            _entity.childInstallers = new List<SceneEntity> {null};
-
-            // LogAssert.Expect(LogType.Warning, "SceneEntity TestEntity: Ops! Detected null child entity!");
 
             _entity.Install();
 
@@ -122,7 +89,7 @@ namespace Atomic.Entities
             _entity.Install();
             Assert.IsTrue(_entity.Installed);
 
-            _entity.sceneInstallers = new List<SceneEntityInstaller>
+            _entity.sceneInstallers = new List<MonoEntityInstaller>
             {
                 new GameObject("ignoredInstaller").AddComponent<MockInstaller>()
             };
@@ -140,7 +107,7 @@ namespace Atomic.Entities
         public IEnumerator Install_SecondCall_DoesNotReinstall()
         {
             _go = new GameObject("Entity");
-            var entity = _go.AddComponent<TestableSceneEntity>();
+            var entity = _go.AddComponent<MonoEntitySpy>();
 
             entity.Install();
             Assert.AreEqual(1, entity.installCounter);
@@ -155,7 +122,7 @@ namespace Atomic.Entities
         public IEnumerator Install_TriggersOnInstallOverride()
         {
             _go = new GameObject("Entity");
-            var entity = _go.AddComponent<TestableSceneEntity>();
+            var entity = _go.AddComponent<MonoEntitySpy>();
 
             entity.Install();
 
@@ -168,7 +135,7 @@ namespace Atomic.Entities
         public IEnumerator Awake_CallsInstall_WhenInstallOnAwakeEnabled()
         {
             _go = new GameObject("Entity");
-            var entity = _go.AddComponent<TestableSceneEntity>();
+            var entity = _go.AddComponent<MonoEntitySpy>();
             entity.installOnAwake = true;
 
             yield return null;
@@ -181,7 +148,7 @@ namespace Atomic.Entities
         {
             _go = new GameObject("Entity");
             _go.SetActive(false);
-            var entity = _go.AddComponent<TestableSceneEntity>();
+            var entity = _go.AddComponent<MonoEntitySpy>();
             entity.installOnAwake = false;
             _go.SetActive(true);
 

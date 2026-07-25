@@ -36,11 +36,7 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             bool called = false;
-            world.OnStateChanged += () =>
-            {
-                Debug.Log("AAA");
-                called = true;
-            };
+            world.OnStateChanged += () => called = true;
 
             world.Add(new Entity());
 

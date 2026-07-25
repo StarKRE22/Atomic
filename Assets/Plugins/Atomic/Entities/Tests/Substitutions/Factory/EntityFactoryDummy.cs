@@ -1,13 +1,10 @@
-namespace Atomic.Entities
-{
-    public class EntityFactoryDummy : IEntityFactory<EntityDummy>
-    {
-        public EntityDummy Created;
-
-        public EntityDummy Create()
-        {
-            this.Created = new EntityDummy();
-            return this.Created;
-        }
-    }
-}
+// namespace Atomic.Entities
+// {
+//     public class EntityFactoryDummy : IEntityFactory
+//     {
+//         public IEntity Create()
+//         {
+//             throw new System.NotImplementedException();
+//         }
+//     }
+// }

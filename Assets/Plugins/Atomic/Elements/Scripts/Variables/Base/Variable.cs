@@ -52,6 +52,8 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="value">The value to wrap.</param>
         public static implicit operator Variable<T>(T value) => new(value);
+        
+        public static implicit operator T(Variable<T> variable) => variable.value;
 
         /// <summary>
         /// Returns a string that represents the current value.

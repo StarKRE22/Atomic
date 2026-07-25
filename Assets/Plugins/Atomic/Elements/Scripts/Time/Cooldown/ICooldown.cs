@@ -11,5 +11,6 @@ namespace Atomic.Elements
         ICompleteSource,
         ITickSource
     {
+        bool IsPlaying();
     }
 }

@@ -56,9 +56,9 @@ namespace Atomic.Entities
         [Test]
         public void Constructor_AddsBehaviours()
         {
-            var behaviour1 = new EntityBehaviourStub();
-            var behaviour2 = new EntityBehaviourStub();
-            var behaviour3 = new EntityBehaviourStub();
+            var behaviour1 = new EntityBehaviourSpy();
+            var behaviour2 = new EntityBehaviourSpy();
+            var behaviour3 = new EntityBehaviourSpy();
 
             var entity = new Entity("123", Array.Empty<string>(), null, new[]
             {

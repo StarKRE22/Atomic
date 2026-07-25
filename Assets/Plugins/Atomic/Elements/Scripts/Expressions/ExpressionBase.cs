@@ -17,7 +17,9 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
     [InlineProperty]
 #endif
-    public abstract class ExpressionBase<R> : ReactiveLinkedList<Func<R>>, IExpression<R>
+    public abstract class ExpressionBase<R> : 
+        ReactiveLinkedList<ExpressionMember<R>>,
+        IExpression<R>
     {
         /// <summary>
         /// Gets the evaluated result of the expression by invoking all registered function members.
@@ -48,18 +50,18 @@ namespace Atomic.Elements
         }
 
         /// <summary>Initializes the expression with an array of function members.</summary>
-        protected ExpressionBase(params Func<R>[] members) : base(members)
+        protected ExpressionBase(params ExpressionMember<R>[] members) : base(members)
         {
         }
 
         /// <summary>Initializes the expression with an enumerable of function members.</summary>
-        protected ExpressionBase(IEnumerable<Func<R>> members) : base(members)
+        protected ExpressionBase(IEnumerable<ExpressionMember<R>> members) : base(members)
         {
         }
     }
 
     /// <summary>
-    /// Represents a base implementation of <see cref="IExpression{T, R}"/> that aggregates multiple functions with one input parameter of type <typeparamref name="T"/>.
+    /// Represents a base implementation of <see cref="IExpression{T,R}"/> that aggregates multiple functions with one input parameter of type <typeparamref name="T"/>.
     /// Inherits from <see cref="ReactiveLinkedList{T}"/> and provides dynamic evaluation of its function members.
     /// </summary>
     /// <typeparam name="T">The input parameter type of the functions.</typeparam>
@@ -68,7 +70,9 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
     [InlineProperty]
 #endif
-    public abstract class ExpressionBase<T, R> : ReactiveLinkedList<Func<T, R>>, IExpression<T, R>
+    public abstract class ExpressionBase<T, R> : 
+        ReactiveLinkedList<ExpressionMember<T, R>>,
+        IExpression<T, R>
     {
         /// <summary>
         /// Invokes all function members of the expression with the specified argument and returns the aggregated result.
@@ -94,17 +98,17 @@ namespace Atomic.Elements
         {
         }
 
-        protected ExpressionBase(params Func<T, R>[] members) : base(members)
+        protected ExpressionBase(params ExpressionMember<T, R>[] members) : base(members)
         {
         }
 
-        protected ExpressionBase(IEnumerable<Func<T, R>> members) : base(members)
+        protected ExpressionBase(IEnumerable<ExpressionMember<T, R>> members) : base(members)
         {
         }
     }
 
     /// <summary>
-    /// Represents a base implementation of <see cref="IExpression{T1, T2, R}"/> that aggregates multiple functions with two input parameters of type <typeparamref name="T1"/> and <typeparamref name="T2"/>.
+    /// Represents a base implementation of <see cref="IExpression{T1,T2,R}"/> that aggregates multiple functions with two input parameters of type <typeparamref name="T1"/> and <typeparamref name="T2"/>.
     /// Inherits from <see cref="ReactiveLinkedList{T}"/> and provides dynamic evaluation of its function members.
     /// </summary>
     /// <typeparam name="T1">The first input parameter type of the functions.</typeparam>
@@ -114,7 +118,9 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
     [InlineProperty]
 #endif
-    public abstract class ExpressionBase<T1, T2, R> : ReactiveLinkedList<Func<T1, T2, R>>, IExpression<T1, T2, R>
+    public abstract class ExpressionBase<T1, T2, R> : 
+        ReactiveLinkedList<ExpressionMember<T1, T2, R>>, 
+        IExpression<T1, T2, R>
     {
         /// <summary>
         /// Invokes all function members of the expression with the specified arguments and returns the aggregated result.
@@ -142,11 +148,11 @@ namespace Atomic.Elements
         {
         }
 
-        protected ExpressionBase(params Func<T1, T2, R>[] members) : base(members)
+        protected ExpressionBase(params ExpressionMember<T1, T2, R>[] members) : base(members)
         {
         }
 
-        protected ExpressionBase(IEnumerable<Func<T1, T2, R>> members) : base(members)
+        protected ExpressionBase(IEnumerable<ExpressionMember<T1, T2, R>> members) : base(members)
         {
         }
     }

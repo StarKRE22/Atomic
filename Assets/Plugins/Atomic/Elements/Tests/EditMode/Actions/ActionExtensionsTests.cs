@@ -9,10 +9,10 @@ namespace Atomic.Elements
         public void InvokeAll()
         {
             //Arrange:
-            var a1 = new ActionStub();
-            var a2 = new ActionStub();
-            var a3 = new ActionStub();
-            var a4 = new ActionStub();
+            var a1 = new ActionSpy();
+            var a2 = new ActionSpy();
+            var a3 = new ActionSpy();
+            var a4 = new ActionSpy();
 
             var collection = new IAction[]
             {
@@ -28,10 +28,10 @@ namespace Atomic.Elements
             
 
             //Assert:
-            Assert.IsTrue(a1.wasInvoke);
-            Assert.IsTrue(a2.wasInvoke);
-            Assert.IsTrue(a3.wasInvoke);
-            Assert.IsTrue(a4.wasInvoke);
+            Assert.IsTrue(a1.WasInvoked);
+            Assert.IsTrue(a2.WasInvoked);
+            Assert.IsTrue(a3.WasInvoked);
+            Assert.IsTrue(a4.WasInvoked);
         }
 
         [Test]

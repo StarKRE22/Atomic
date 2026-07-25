@@ -3,33 +3,23 @@ using System;
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using Unity.Profiling;
 using UnityEngine;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// A base class for managing collections of entity views in a Unity scene.
-    /// Provides functionality to show, hide, add, remove, and clear entity views,
-    /// backed by a pool of reusable instances.
-    /// </summary>
-    /// <typeparam name="E">The type of entity (<see cref="IEntity"/>) managed by this collection.</typeparam>
-    /// <typeparam name="V">The type of entity view (<see cref="EntityView{E}"/>) associated with entities.</typeparam>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityCollectionView%601.md")]
-    public abstract class EntityCollectionView<E, V> : MonoBehaviour, IEnumerable<KeyValuePair<E, V>>
+    public abstract class EntityCollectionView<K, E, V> : MonoBehaviour, IReadOnlyCollection<KeyValuePair<E, V>>
         where E : class, IEntity
         where V : EntityView<E>
     {
-        private static readonly ArrayPool<E> s_entityPool = ArrayPool<E>.Shared;
+        private static readonly ProfilerMarker s_removeMarker = new($"EntityCollectionView<{typeof(E).Name}>.Remove");
+        private static readonly ProfilerMarker s_addMarker = new($"EntityCollectionView<{typeof(E).Name}>.Add");
 
-        [Space]
-        [Tooltip("The viewport or container under which views will be placed in the scene hierarchy")]
-        [SerializeField]
-        internal Transform viewport;
-
-        [Tooltip("The pool responsible for providing and recycling entity view instances")]
-        [SerializeField]
-        internal EntityViewPool<E, V> viewPool;
+        private static readonly ArrayPool<E> s_arrayPool = ArrayPool<E>.Shared;
 
         /// <summary>
         /// Raised when a view is spawned for a newly added entity.
@@ -46,47 +36,19 @@ namespace Atomic.Entities
         /// </summary>
         public int Count => _views.Count;
 
-        /// <summary>
-        /// Gets a value indicating whether this collection is currently visible 
-        /// (i.e., has a bound <see cref="IReadOnlyEntityCollection{E}"/> source).
-        /// </summary>
-        public bool IsVisible => _source != null;
+        internal EntityViewPool<K, E, V> Pool => _pool;
 
+        [Tooltip("The viewport or container under which views will be placed in the scene hierarchy")]
+        [SerializeField]
+        private Transform viewport;
+
+        [Space, SerializeField]
+        private EntityViewPool<K, E, V> _pool;
+
+#if ODIN_INSPECTOR
+        [ShowInInspector, ReadOnly, HideInEditorMode]
+#endif
         private readonly Dictionary<E, V> _views = new();
-
-        private IReadOnlyEntityCollection<E> _source;
-
-        /// <summary>
-        /// Shows this collection, binding it to the specified source of entities.
-        /// </summary>
-        /// <param name="source">The entity collection to visualize.</param>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> is null.</exception>
-        public void Show(IReadOnlyEntityCollection<E> source)
-        {
-            this.Hide();
-
-            _source = source ?? throw new ArgumentNullException(nameof(source));
-            _source.OnAdded += this.Add;
-            _source.OnRemoved += this.Remove;
-
-            foreach (E entity in _source)
-                this.Add(entity);
-        }
-
-        /// <summary>
-        /// Hides this collection, detaching it from the bound entity source and removing all views.
-        /// </summary>
-        public void Hide()
-        {
-            this.Clear();
-
-            if (_source != null)
-            {
-                _source.OnAdded -= this.Add;
-                _source.OnRemoved -= this.Remove;
-                _source = null;
-            }
-        }
 
         /// <summary>
         /// Gets the view instance associated with the specified entity.
@@ -95,7 +57,6 @@ namespace Atomic.Entities
         /// <returns>The active <see cref="EntityView{E}"/> instance associated with the entity.</returns>
         /// <exception cref="KeyNotFoundException">Thrown if the entity is not in the collection.</exception>
         public V Get(E entity) => _views[entity];
-
 
         /// <summary>
         /// Tries to retrieve the view for a given entity.
@@ -116,19 +77,23 @@ namespace Atomic.Entities
         /// Creates and shows a view for the specified entity, if it does not already exist.
         /// </summary>
         /// <param name="entity">The entity to visualize.</param>
-        public void Add(E entity)
+        public V Add(E entity)
         {
-            if (_views.ContainsKey(entity))
-                return;
+            using (s_addMarker.Auto())
+            {
+                if (_views.TryGetValue(entity, out V view))
+                    return view;
 
-            string name = this.GetName(entity);
-            V view = this.viewPool.Rent(name);
-            view.transform.SetParent(this.viewport);
-            view.Show(entity);
+                view = _pool.Rent(this.GetKey(entity), this.viewport);
+                view.Activate(entity);
 
-            _views.Add(entity, view);
-            this.OnAdded?.Invoke(entity, view);
+                _views.Add(entity, view);
+                this.OnAdded?.Invoke(entity, view);
+                return view;
+            }
         }
+
+        protected abstract K GetKey(E entity);
 
         /// <summary>
         /// Hides and returns the view associated with the specified entity to the view pool.
@@ -136,18 +101,36 @@ namespace Atomic.Entities
         /// <param name="entity">The entity whose view should be removed.</param>
         public void Remove(E entity)
         {
-            if (!_views.Remove(entity, out V view))
-                return;
+            using (s_removeMarker.Auto())
+            {
+                if (!_views.Remove(entity, out V view))
+                    return;
 
-            view.Hide();
-            this.OnRemoved?.Invoke(entity, view);
-
-            string name = this.GetName(entity);
-            this.viewPool.Return(name, view);
+                this.OnRemoved?.Invoke(entity, view);
+                view.Deactivate();
+                _pool.Return(view);
+            }
         }
 
+        public void Remove(V view) => 
+            this.Remove(view.Entity);
+
+        public Dictionary<E, V>.Enumerator GetEnumerator() => _views.GetEnumerator();
+
         /// <summary>
-        /// Removes all active entity views, returning them to the view pool.
+        /// Returns an enumerator that iterates through the collection of entity-view pairs.
+        /// </summary>
+        /// <returns>An enumerator of <see cref="KeyValuePair{TKey, TValue}"/> containing entity-view pairs.</returns>
+        IEnumerator<KeyValuePair<E, V>> IEnumerable<KeyValuePair<E, V>>.GetEnumerator() => _views.GetEnumerator();
+
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection of entity-view pairs.
+        /// </summary>
+        /// <returns>An enumerator containing entity-view pairs.</returns>
+        IEnumerator IEnumerable.GetEnumerator() => _views.GetEnumerator();
+
+        /// <summary>
+        /// Removes active entity views, returning them to the view pool.
         /// </summary>
         public void Clear()
         {
@@ -155,7 +138,7 @@ namespace Atomic.Entities
             if (viewCount == 0)
                 return;
 
-            E[] buffer = s_entityPool.Rent(viewCount);
+            E[] buffer = s_arrayPool.Rent(viewCount);
             _views.Keys.CopyTo(buffer, 0);
 
             try
@@ -165,34 +148,9 @@ namespace Atomic.Entities
             }
             finally
             {
-                s_entityPool.Return(buffer);
+                s_arrayPool.Return(buffer);
             }
         }
-
-        /// <summary>
-        /// Returns an enumerator that iterates through the collection of entity-view pairs.
-        /// </summary>
-        /// <returns>An enumerator of <see cref="KeyValuePair{TKey, TValue}"/> containing entity-view pairs.</returns>
-        public IEnumerator<KeyValuePair<E, V>> GetEnumerator() => _views.GetEnumerator();
-
-        /// <summary>
-        /// Returns an enumerator that iterates through the collection of entity-view pairs.
-        /// </summary>
-        /// <returns>An enumerator containing entity-view pairs.</returns>
-        IEnumerator IEnumerable.GetEnumerator() => _views.GetEnumerator();
-
-        /// <summary>
-        /// Determines the name used to retrieve the view prefab for a given entity.
-        /// </summary>
-        /// <param name="entity">The entity to evaluate.</param>
-        /// <returns>The name used in the view pool.</returns>
-        /// <remarks>
-        /// The default implementation returns <see cref="IEntity.Name"/>.
-        /// Override this method to implement custom naming logic 
-        /// (e.g., categorizing entities or supporting localization).
-        /// </remarks>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual string GetName(E entity) => entity.Name;
     }
 }
 #endif

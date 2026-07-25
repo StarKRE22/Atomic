@@ -11,14 +11,14 @@ namespace Atomic.Entities
         [Test]
         public void CreateEntity_SetsNameCorrectly()
         {
-            var entity = SceneEntity.Create("123");
+            var entity = MonoEntity.Create("123");
             Assert.AreEqual("123", entity.Name);
         }
 
         [Test]
         public void CreateEntity_SetsTagsCorrectly()
         {
-            var entity = SceneEntity.Create("123", new[] { 1, 2 });
+            var entity = MonoEntity.Create("123", new[] { 1, 2 });
 
             Assert.IsTrue(entity.HasTag(1));
             Assert.IsTrue(entity.HasTag(2));
@@ -37,7 +37,7 @@ namespace Atomic.Entities
                 { 2, str }
             };
 
-            var entity = SceneEntity.Create("123", null, values);
+            var entity = MonoEntity.Create("123", null, values);
 
             Assert.IsTrue(entity.HasValue(1));
             Assert.IsTrue(entity.HasValue(2));
@@ -50,11 +50,11 @@ namespace Atomic.Entities
         [Test]
         public void CreateEntity_SetsBehavioursCorrectly()
         {
-            IEntityBehaviour b1 = new EntityBehaviourStub();
-            IEntityBehaviour b2 = new EntityBehaviourStub();
-            IEntityBehaviour b3 = new EntityBehaviourStub();
+            IEntityBehaviour b1 = new EntityBehaviourSpy();
+            IEntityBehaviour b2 = new EntityBehaviourSpy();
+            IEntityBehaviour b3 = new EntityBehaviourSpy();
 
-            var entity = SceneEntity.Create("123", null, null, new[] { b1, b2, b3 });
+            var entity = MonoEntity.Create("123", null, null, new[] { b1, b2, b3 });
 
             Assert.IsTrue(entity.HasBehaviour(b1));
             Assert.IsTrue(entity.HasBehaviour(b2));
@@ -69,7 +69,7 @@ namespace Atomic.Entities
         [Test]
         public void CreateTEntity_SetsName()
         {
-            var entity = SceneEntity.Create<SceneEntityDummy>("MyEntity");
+            var entity = MonoEntity.Create<MonoEntityDummy>("MyEntity");
 
             Assert.AreEqual("MyEntity", entity.Name);
             Assert.AreEqual("MyEntity", entity.gameObject.name);
@@ -78,7 +78,7 @@ namespace Atomic.Entities
         [Test]
         public void CreateTEntity_AssignsTags()
         {
-            var entity = SceneEntity.Create<SceneEntityDummy>("Entity", new[] { 10, 20 });
+            var entity = MonoEntity.Create<MonoEntityDummy>("Entity", new[] { 10, 20 });
 
             Assert.IsTrue(entity.HasTag(10));
             Assert.IsTrue(entity.HasTag(20));
@@ -93,7 +93,7 @@ namespace Atomic.Entities
                 { 2, 42 }
             };
 
-            var entity = SceneEntity.Create<SceneEntityDummy>("Entity", values: values);
+            var entity = MonoEntity.Create<MonoEntityDummy>("Entity", values: values);
 
             Assert.AreEqual("value", entity.GetValue<string>(1));
             Assert.AreEqual(42, entity.GetValue<int>(2));
@@ -102,10 +102,10 @@ namespace Atomic.Entities
         [Test]
         public void CreateTEntity_AssignsBehaviours()
         {
-            var b1 = new EntityBehaviourStub();
-            var b2 = new EntityBehaviourStub();
+            var b1 = new EntityBehaviourSpy();
+            var b2 = new EntityBehaviourSpy();
 
-            var entity = SceneEntity.Create<SceneEntityDummy>("Entity", behaviours: new[] { b1, b2 });
+            var entity = MonoEntity.Create<MonoEntityDummy>("Entity", behaviours: new[] { b1, b2 });
 
             Assert.IsTrue(entity.HasBehaviour(b1));
             Assert.IsTrue(entity.HasBehaviour(b2));
@@ -115,10 +115,10 @@ namespace Atomic.Entities
         [Test]
         public void CreateTEntity_CreatesGameObjectWithComponent()
         {
-            var entity = SceneEntity.Create<SceneEntityDummy>("GameObjectCheck");
+            var entity = MonoEntity.Create<MonoEntityDummy>("GameObjectCheck");
 
             Assert.IsNotNull(entity);
-            Assert.IsInstanceOf<SceneEntityDummy>(entity);
+            Assert.IsInstanceOf<MonoEntityDummy>(entity);
             Assert.AreEqual("GameObjectCheck", entity.gameObject.name);
         }
 
@@ -131,10 +131,10 @@ namespace Atomic.Entities
         {
             // Arrange
             var parent = new GameObject("Parent").transform;
-            var prefab = new GameObject("Prefab").AddComponent<SceneEntity>();
+            var prefab = new GameObject("Prefab").AddComponent<MonoEntity>();
 
             // Act
-            var instance = SceneEntity.Create(prefab, parent);
+            var instance = MonoEntity.Create(prefab, parent);
 
             // Assert
             Assert.NotNull(instance);
@@ -148,10 +148,10 @@ namespace Atomic.Entities
             // Arrange
             var parent = new GameObject("Parent").transform;
             var prefabObj = new GameObject("Prefab");
-            var prefab = prefabObj.AddComponent<SceneEntity>();
+            var prefab = prefabObj.AddComponent<MonoEntity>();
 
             // Act
-            var instance = SceneEntity.Create(prefab, parent);
+            var instance = MonoEntity.Create(prefab, parent);
 
             // Assert
             Assert.IsTrue(instance.Installed);

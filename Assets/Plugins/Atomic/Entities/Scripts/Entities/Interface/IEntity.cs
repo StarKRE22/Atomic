@@ -18,7 +18,7 @@ namespace Atomic.Entities
     ///   <item>Unique Identity<description>Runtime instance ID for entity tracking</description></item>
     /// </list>
     /// </remarks>
-    public partial interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
+    public partial interface IEntity : IInitSource, IEnableSource, ITickSource
     {
         /// <summary>
         /// Raised when the internal state of the entity changes.
@@ -30,7 +30,7 @@ namespace Atomic.Entities
         /// The runtime-generated unique identifier for this entity instance.
         /// This value is valid only during runtime and should not be used for persistence or serialization.
         /// </summary>
-        public int InstanceID { get; protected internal set; }
+        int InstanceID { get; protected internal set; }
 
         /// <summary>
         /// Optional user-defined name of the entity.

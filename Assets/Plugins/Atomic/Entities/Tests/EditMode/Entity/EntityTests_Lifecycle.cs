@@ -550,13 +550,13 @@ namespace Atomic.Entities
         [Test]
         public void Init_InvokesIEntityInitInterfaces()
         {
-            var stub = new EntityInitStub();
+            var stub = new EntityInitSpy();
             var entity = new Entity();
 
             entity.AddBehaviour(stub);
             entity.Init();
 
-            Assert.IsTrue(stub.WasInit);
+            Assert.IsTrue(stub.WasInitialized);
         }
 
         [Test]
@@ -578,7 +578,7 @@ namespace Atomic.Entities
             //Arrange
             var entity = new Entity();
             var wasEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnInitialized += () => wasEvent = true;
@@ -635,14 +635,14 @@ namespace Atomic.Entities
         [Test]
         public void Dispose_InvokesIEntityDisposeBehaviours()
         {
-            var stub = new EntityDisposeStub();
+            var stub = new EntityDisposeSpy();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
             entity.Init();
             entity.Dispose();
 
-            Assert.IsTrue(stub.WasDispose);
+            Assert.IsTrue(stub.WasDisposed);
         }
 
         [Test]
@@ -694,7 +694,7 @@ namespace Atomic.Entities
             //Arrange
             var entity = new Entity();
             var wasEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnDisposed += () => wasEvent = true;
@@ -743,14 +743,14 @@ namespace Atomic.Entities
         [Test]
         public void Enable_InvokesIEntityEnable()
         {
-            var stub = new EntityEnableStub();
+            var stub = new EntityEnableSpy();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
             entity.Init();
             entity.Enable();
 
-            Assert.IsTrue(stub.WasEnable);
+            Assert.IsTrue(stub.WasEnabled);
         }
 
         [Test]
@@ -803,7 +803,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             var initEvent = false;
             var enabledEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnInitialized += () => initEvent = true;
@@ -837,7 +837,7 @@ namespace Atomic.Entities
             //Arrange
             var entity = new Entity();
             var wasEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnDisabled += () => wasEvent = true;
@@ -868,7 +868,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_InvokesIEntityDisable()
         {
-            var stub = new EntityDisableStub();
+            var stub = new EntityDisableSpy();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
@@ -876,7 +876,7 @@ namespace Atomic.Entities
             entity.Enable();
             entity.Disable();
 
-            Assert.IsTrue(stub.WasDisable);
+            Assert.IsTrue(stub.WasDisabled);
         }
 
         [Test]
@@ -948,7 +948,7 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = new Entity();
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
@@ -966,7 +966,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_DoesNothing_IfEntityNotEnabled()
         {
-            var stub = new EntityTickStub();
+            var stub = new EntityTickSpy();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
@@ -979,7 +979,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_CallsUpdateOnRegisteredBehaviours()
         {
-            var stub = new EntityTickStub();
+            var stub = new EntityTickSpy();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
@@ -1009,8 +1009,8 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_StopsCallingIfEntityDisabledMidLoop()
         {
-            var stub1 = new DisableDuringTickStub();
-            var stub2 = new EntityTickStub();
+            var stub1 = new DisableDuringTickTestDouble();
+            var stub2 = new EntityTickSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
@@ -1031,7 +1031,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_DoesNothing_IfEntityNotEnabled()
         {
-            var stub = new EntityFixedTickStub();
+            var stub = new EntityFixedTickSpy();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
@@ -1044,7 +1044,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_CallsRegisteredFixedUpdateBehaviours()
         {
-            var stub = new EntityFixedTickStub();
+            var stub = new EntityFixedTickSpy();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
@@ -1076,8 +1076,8 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_StopsIfEntityDisabledMidIteration()
         {
-            var stub1 = new DisableDuringFixedTickStub();
-            var stub2 = new EntityFixedTickStub();
+            var stub1 = new DisableDuringFixedTickTestDouble();
+            var stub2 = new EntityFixedTickSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
@@ -1096,7 +1096,7 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = new Entity();
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
@@ -1118,7 +1118,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_DoesNothing_WhenEntityDisabled()
         {
-            var stub = new EntityLateTickStub();
+            var stub = new EntityLateTickSpy();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
@@ -1132,7 +1132,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_CallsRegisteredLateUpdateBehaviours()
         {
-            var stub = new EntityLateTickStub();
+            var stub = new EntityLateTickSpy();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
@@ -1163,8 +1163,8 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_StopsIteration_WhenDisabledMidUpdate()
         {
-            var stub1 = new DisableDuringLateTickStub();
-            var stub2 = new EntityLateTickStub();
+            var stub1 = new DisableDuringLateTickTestDouble();
+            var stub2 = new EntityLateTickSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
@@ -1183,7 +1183,7 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = new Entity();
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);

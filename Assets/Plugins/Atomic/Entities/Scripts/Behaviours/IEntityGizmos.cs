@@ -1,3 +1,5 @@
+using System;
+
 #if UNITY_5_3_OR_NEWER
 namespace Atomic.Entities
 {
@@ -34,7 +36,18 @@ namespace Atomic.Entities
         /// <param name="entity">The entity instance of type <typeparamref name="E"/>.</param>
         void DrawGizmos(E entity);
 
-        void IEntityGizmos.DrawGizmos(IEntity entity) => this.DrawGizmos((E) entity);
+        void IEntityGizmos.DrawGizmos(IEntity entity)
+        {
+            if (entity is not E e)
+                throw new InvalidCastException(
+                    $"[IEntityGizmos<{typeof(E).Name}>] Invalid entity type for {this.GetType().Name}.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    "Please make sure the correct IEntityGizmos is used for this entity type."
+                );
+
+            this.DrawGizmos(e);
+        }
     }
 }
 #endif

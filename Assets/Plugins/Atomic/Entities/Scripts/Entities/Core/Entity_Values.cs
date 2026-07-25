@@ -1,4 +1,5 @@
 using System;
+using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -17,17 +18,17 @@ namespace Atomic.Entities
         /// <summary>
         /// Invoked when a new value is added to the entity.
         /// </summary>
-        public event Action<IEntity, int> OnValueAdded;
+        public event Action<IEntity, int, object> OnValueAdded;
 
         /// <summary>
         /// Invoked when a value is deleted from the entity.
         /// </summary>
-        public event Action<IEntity, int> OnValueDeleted;
+        public event Action<IEntity, int, object> OnValueDeleted;
 
         /// <summary>
         /// Invoked when a value is changed in the entity.
         /// </summary>
-        public event Action<IEntity, int> OnValueChanged;
+        public event Action<IEntity, int, object> OnValueChanged;
 
         /// <summary>
         /// Gets the total number of values stored in the entity.
@@ -38,37 +39,10 @@ namespace Atomic.Entities
         {
             public int key;
             public object value;
-
-            public bool primitive;
             public bool exists;
             public int next;
         }
-
-        private interface IBoxing
-        {
-            object Value { get; }
-
-            Type Type { get; }
-        }
-
-        private sealed class Boxing<T> : IBoxing
-        {
-            public Boxing()
-            {
-            }
-
-            public Boxing(T value)
-            {
-                this.value = value;
-            }
-
-            object IBoxing.Value => value;
-
-            Type IBoxing.Type => typeof(T);
-
-            public T value;
-        }
-
+        
         private ValueSlot[] _valueSlots;
         private int _valueCapacity;
         private int _valueCount;
@@ -113,7 +87,7 @@ namespace Atomic.Entities
             {
                 ref readonly ValueSlot slot = ref _valueSlots[index];
                 if (slot.exists && slot.key == key)
-                    return slot.primitive ? ((IBoxing) slot.value).Value : slot.value;
+                    return slot.value;
 
                 index = slot.next;
             }
@@ -140,9 +114,7 @@ namespace Atomic.Entities
                 {
                     ref readonly ValueSlot slot = ref _valueSlots[index];
                     if (slot.exists && slot.key == key)
-                        return slot.primitive
-                            ? ((Boxing<T>) slot.value).value
-                            : (T) slot.value;
+                        return (T) slot.value;
 
                     index = slot.next;
                 }
@@ -171,7 +143,7 @@ namespace Atomic.Entities
                     ref readonly ValueSlot slot = ref _valueSlots[index];
                     if (slot.exists && slot.key == key)
                     {
-                        value = slot.primitive ? ((Boxing<T>) slot.value).value : (T) slot.value;
+                        value = (T) slot.value;
                         return true;
                     }
 
@@ -202,7 +174,7 @@ namespace Atomic.Entities
                     ref readonly ValueSlot slot = ref _valueSlots[index];
                     if (slot.exists && slot.key == key)
                     {
-                        value = slot.primitive ? ((IBoxing) slot.value).Value : slot.value;
+                        value = slot.value;
                         return true;
                     }
 
@@ -221,7 +193,7 @@ namespace Atomic.Entities
         /// <param name="key">The key associated with the value.</param>
         /// <returns>A reference to the stored value.</returns>
         /// <exception cref="KeyNotFoundException">Thrown if the key does not exist in the entity.</exception>
-        public ref T GetValueUnsafe<T>(int key)
+        public ref T GetValueUnsafe<T>(int key) where T : class
         {
             if (_valueCount != 0)
             {
@@ -233,9 +205,7 @@ namespace Atomic.Entities
                 {
                     ref ValueSlot slot = ref _valueSlots[index];
                     if (slot.exists && slot.key == key)
-                        return ref slot.primitive
-                            ? ref Unsafe.As<object, Boxing<T>>(ref slot.value).value
-                            : ref Unsafe.As<object, T>(ref slot.value);
+                        return ref Unsafe.As<object, T>(ref slot.value);
 
                     index = slot.next;
                 }
@@ -251,11 +221,11 @@ namespace Atomic.Entities
         /// <param name="key">The key associated with the value.</param>
         /// <param name="value">The output value if found.</param>
         /// <returns>True if the value is found; otherwise, false.</returns>
-        public bool TryGetValueUnsafe<T>(int key, out T value)
+        public bool TryGetValueUnsafe<T>(int key, out T value) where T : class
         {
             if (_valueCount == 0)
             {
-                value = default;
+                value = null;
                 return false;
             }
 
@@ -268,17 +238,14 @@ namespace Atomic.Entities
                 ref ValueSlot slot = ref _valueSlots[index];
                 if (slot.exists && slot.key == key)
                 {
-                    value = slot.primitive
-                        ? Unsafe.As<object, Boxing<T>>(ref slot.value).value
-                        : Unsafe.As<object, T>(ref slot.value);
-
+                    value = Unsafe.As<object, T>(ref slot.value);
                     return true;
                 }
 
                 index = slot.next;
             }
 
-            value = default;
+            value = null;
             return false;
         }
 
@@ -322,7 +289,6 @@ namespace Atomic.Entities
                 throw new ArgumentNullException(nameof(value));
 
             int hash, bucket, index;
-
             if (_valueCount > 0)
             {
                 hash = key & 0x7FFFFFFF;
@@ -356,12 +322,11 @@ namespace Atomic.Entities
             hash = key & 0x7FFFFFFF;
             bucket = hash % _valueCapacity;
             ref int next = ref _valueBuckets[bucket];
-
+            
             _valueSlots[index] = new ValueSlot
             {
                 key = key,
                 value = value,
-                primitive = false,
                 next = next,
                 exists = true
             };
@@ -369,67 +334,7 @@ namespace Atomic.Entities
             next = index;
             _valueCount++;
 
-            this.OnValueAdded?.Invoke(this, key);
-            this.OnStateChanged?.Invoke(this);
-        }
-
-        /// Adds a strongly-typed struct value to the entity.
-        /// </summary>
-        /// <typeparam name="T">The struct type of the value.</typeparam>
-        /// <param name="key">The key for the value.</param>
-        /// <param name="value">The value to add.</param>
-        /// <exception cref="ArgumentException">Thrown if a value with the same key already exists.</exception>
-        public void AddValue<T>(int key, T value) where T : struct
-        {
-            int hash, bucket, index;
-
-            if (_valueCount > 0)
-            {
-                hash = key & 0x7FFFFFFF;
-                bucket = hash % _valueCapacity;
-                index = _valueBuckets[bucket];
-
-                while (index >= 0)
-                {
-                    ref readonly ValueSlot slot = ref _valueSlots[index];
-                    if (slot.exists && slot.key == key)
-                        throw ValueAlreadyAddedException(key);
-
-                    index = slot.next;
-                }
-            }
-
-            if (_valueFreeList >= 0)
-            {
-                index = _valueFreeList;
-                _valueFreeList = _valueSlots[index].next;
-            }
-            else
-            {
-                if (_valueLastIndex == _valueCapacity)
-                    this.IncreaseValueCapacity();
-
-                index = _valueLastIndex;
-                _valueLastIndex++;
-            }
-
-            hash = key & 0x7FFFFFFF;
-            bucket = hash % _valueCapacity;
-            ref int next = ref _valueBuckets[bucket];
-
-            _valueSlots[index] = new ValueSlot
-            {
-                key = key,
-                value = new Boxing<T>(value),
-                primitive = true,
-                next = next,
-                exists = true
-            };
-
-            next = index;
-            _valueCount++;
-
-            this.OnValueAdded?.Invoke(this, key);
+            this.OnValueAdded?.Invoke(this, key, value);
             this.OnStateChanged?.Invoke(this);
         }
 
@@ -459,6 +364,7 @@ namespace Atomic.Entities
                         else
                             _valueSlots[last].next = node.next;
 
+                        object removed = node.value;
                         node.next = _valueFreeList;
                         node.exists = false;
 
@@ -474,7 +380,7 @@ namespace Atomic.Entities
                             _valueFreeList = index;
                         }
 
-                        this.OnValueDeleted?.Invoke(this, key);
+                        this.OnValueDeleted?.Invoke(this, key, removed);
                         this.OnStateChanged?.Invoke(this);
                         return true;
                     }
@@ -501,59 +407,46 @@ namespace Atomic.Entities
             if (this.FindValueIndex(key, out int index))
             {
                 ref ValueSlot slot = ref _valueSlots[index];
-                if (!slot.primitive && slot.value.Equals(value))
-                    return;
-
-                slot.value = value;
-                slot.primitive = false;
-
-                this.NotifyAboutValueChanged(key);
+                if (!slot.value.Equals(value))
+                {
+                    slot.value = value;
+                    this.OnValueChanged?.Invoke(this, key, value);
+                    this.OnStateChanged?.Invoke(this);
+                }
             }
             else
             {
-                this.AddValueInternal(key, value, boxing: false);
-                this.NotifyAboutValueAdded(key);
-            }
-        }
-
-        /// <summary>
-        /// Sets or updates a value of struct type.
-        /// </summary>
-        /// <typeparam name="T">The struct type of the value.</typeparam>
-        /// <param name="key">The key associated with the value.</param>
-        /// <param name="value">The new value.</param>
-        public void SetValue<T>(int key, T value) where T : struct
-        {
-            if (this.FindValueIndex(key, out int index))
-            {
-                ref ValueSlot slot = ref _valueSlots[index];
-                if (!slot.primitive)
+                if (_valueFreeList >= 0)
                 {
-                    slot.value = new Boxing<T> {value = value};
-                    slot.primitive = true;
-                    this.NotifyAboutValueChanged(key);
-                    return;
+                    index = _valueFreeList;
+                    _valueFreeList = _valueSlots[index].next;
+                }
+                else
+                {
+                    if (_valueLastIndex == _valueCapacity)
+                        this.IncreaseValueCapacity();
+
+                    index = _valueLastIndex;
+                    _valueLastIndex++;
                 }
 
-                IBoxing iBoxing = (IBoxing) slot.value;
-                if (iBoxing.Type != typeof(T))
+                int hash = key & 0x7FFFFFFF;
+                int bucket = hash % _valueCapacity;
+                ref int next = ref _valueBuckets[bucket];
+
+                _valueSlots[index] = new ValueSlot
                 {
-                    slot.value = new Boxing<T> {value = value};
-                    this.NotifyAboutValueChanged(key);
-                    return;
-                }
+                    key = key,
+                    value = value,
+                    next = next,
+                    exists = true
+                };
 
-                Boxing<T> tBoxing = (Boxing<T>) iBoxing;
-                if (tBoxing.value.Equals(value))
-                    return;
-
-                tBoxing.value = value;
-                this.NotifyAboutValueChanged(key);
-            }
-            else
-            {
-                this.AddValueInternal(key, new Boxing<T> {value = value}, boxing: true);
-                this.NotifyAboutValueChanged(key);
+                next = index;
+                _valueCount++;
+                
+                this.OnValueAdded?.Invoke(this, key, value);
+                this.OnStateChanged?.Invoke(this);
             }
         }
 
@@ -566,7 +459,8 @@ namespace Atomic.Entities
             if (_valueCount == 0)
                 return;
 
-            Span<int> removedItems = stackalloc int[_valueCount];
+            var arrayPool = ArrayPool<KeyValuePair<int, object>>.Shared;
+            KeyValuePair<int, object>[] removedItems = arrayPool.Rent(_valueCount);
             int removedCount = 0;
 
             for (int i = 0; i < _valueLastIndex; i++)
@@ -579,17 +473,27 @@ namespace Atomic.Entities
 
                 slot.exists = false;
                 slot.next = UNDEFINED_INDEX;
-                removedItems[removedCount++] = slot.key;
+                removedItems[removedCount++] = new KeyValuePair<int, object>(slot.key, slot.value);
             }
 
             _valueCount = 0;
             _valueFreeList = UNDEFINED_INDEX;
             _valueLastIndex = 0;
 
-            this.OnStateChanged?.Invoke(this);
+            try
+            {
+                this.OnStateChanged?.Invoke(this);
 
-            for (int i = 0; i < removedCount; i++)
-                this.OnValueDeleted?.Invoke(this, removedItems[i]);
+                for (int i = 0; i < removedCount; i++)
+                {
+                    KeyValuePair<int, object> item = removedItems[i];
+                    this.OnValueDeleted?.Invoke(this, item.Key, item.Value);
+                }
+            }
+            finally
+            {
+                arrayPool.Return(removedItems);
+            }
         }
 
         /// <summary>
@@ -619,19 +523,18 @@ namespace Atomic.Entities
             for (int i = 0; i < _valueLastIndex; i++)
             {
                 ref readonly ValueSlot slot = ref _valueSlots[i];
-                if (!slot.exists)
-                    continue;
-
-                object value = slot.primitive ? ((IBoxing) slot.value).Value : slot.value;
-                KeyValuePair<int, object> pair = new KeyValuePair<int, object>(slot.key, value);
-                results[count++] = pair;
+                if (slot.exists)
+                {
+                    KeyValuePair<int, object> pair = new KeyValuePair<int, object>(slot.key, slot.value);
+                    results[count++] = pair;
+                }
             }
 
             return count;
         }
 
         /// <summary>
-        /// Enumerates all key-value pairs stored in the entity.
+        /// Lists all key-value pairs stored in the entity.
         /// </summary>
         /// <returns>An enumerator over key-value pairs.</returns>
         IEnumerator<KeyValuePair<int, object>> IEntity.GetValueEnumerator()
@@ -670,41 +573,6 @@ namespace Atomic.Entities
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void AddValueInternal(int key, object value, bool boxing)
-        {
-            int index;
-            if (_valueFreeList >= 0)
-            {
-                index = _valueFreeList;
-                _valueFreeList = _valueSlots[index].next;
-            }
-            else
-            {
-                if (_valueLastIndex == _valueCapacity)
-                    this.IncreaseValueCapacity();
-
-                index = _valueLastIndex;
-                _valueLastIndex++;
-            }
-
-            int hash = key & 0x7FFFFFFF;
-            int bucket = hash % _valueCapacity;
-            ref int next = ref _valueBuckets[bucket];
-
-            _valueSlots[index] = new ValueSlot
-            {
-                key = key,
-                value = value,
-                primitive = boxing,
-                next = next,
-                exists = true
-            };
-
-            next = index;
-            _valueCount++;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void IncreaseValueCapacity()
         {
             _valueCapacity = PrimeTable[++_valuePrimeIndex];
@@ -729,27 +597,13 @@ namespace Atomic.Entities
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void NotifyAboutValueChanged(int key)
-        {
-            this.OnValueChanged?.Invoke(this, key);
-            this.OnStateChanged?.Invoke(this);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void NotifyAboutValueAdded(int key)
-        {
-            this.OnValueAdded?.Invoke(this, key);
-            this.OnStateChanged?.Invoke(this);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private KeyNotFoundException ValueNotFoundException(int key) =>
-            new($"The given value {EntityNames.IdToName(key)} was not present in the entity: {_name}");
+            new($"The given value {EntityKeyStore.IdToName(key)} was not present in the entity: {_name}");
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private Exception ValueAlreadyAddedException(int key) =>
             new ArgumentException(
-                $"A value with the same key {EntityNames.IdToName(key)} already has been added in the entity: {_name}!");
+                $"A value with the same key {EntityKeyStore.IdToName(key)} already has been added in the entity: {_name}!");
 
         public struct ValueEnumerator : IEnumerator<KeyValuePair<int, object>>
         {
@@ -775,10 +629,7 @@ namespace Atomic.Entities
                     if (!slot.exists)
                         continue;
 
-                    _current = new KeyValuePair<int, object>(slot.key, slot.primitive
-                        ? ((IBoxing) slot.value).Value
-                        : slot.value);
-
+                    _current = new KeyValuePair<int, object>(slot.key, slot.value);
                     return true;
                 }
 

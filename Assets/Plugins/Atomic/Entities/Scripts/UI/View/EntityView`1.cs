@@ -8,6 +8,11 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 #endif
 
+#if ENABLE_PROFILER
+using Unity.Profiling;
+#endif
+
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -18,94 +23,106 @@ namespace Atomic.Entities
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityView%601.md")]
     public abstract partial class EntityView<E> : MonoBehaviour where E : class, IEntity
     {
-#if ODIN_INSPECTOR
-        [GUIColor(0f, 0.83f, 1f)]
+        private const string NAME_FORMAT = "{0}:{1}";
+
+#if ENABLE_PROFILER
+        private static readonly ProfilerMarker s_activateMarker = new($"EntityView<{typeof(E).Name}>.Activate");
+        private static readonly ProfilerMarker s_deactivateMarker = new($"EntityView<{typeof(E).Name}>.Deactivate");
 #endif
-        /// <summary>
-        /// If true, <see cref="GameObject.SetActive"/> will be called when <see cref="Show(E)"/>
-        /// and <see cref="Hide"/> are invoked.
-        /// </summary>
-        [Tooltip("Should activate and deactivate GameObject when Show / Hide are invoked?")]
-        [SerializeField]
-        internal bool controlGameObject = true;
-
-        /// <summary>
-        /// Determines whether the view should use a custom name instead of the GameObject's name.
-        /// </summary>
-        [Header("Name")]
-        [Tooltip("If true, the view will use the custom name instead of the GameObject's name")]
-        [SerializeField]
-        internal bool overrideName;
-
-#if ODIN_INSPECTOR
-        [ShowIf(nameof(overrideName))]
-#endif
-        /// <summary>
-        /// Custom display name for the view, used only if <see cref="overrideName"/> is enabled.
-        /// </summary>
-        [Tooltip("The custom name to use for the view when _overrideName is enabled")]
-        [SerializeField]
-        internal string customName;
-
         /// <summary>
         /// List of installers that provide values and behaviors to the attached entity.
         /// </summary>
         [Header("Installing")]
         [Tooltip("Specify the installers that will put values and behaviours to an attached entity")]
         [SerializeField]
-        internal List<SceneEntityInstaller> installers;
-
-        /// <summary>
-        /// Gets the display name of the view.
-        /// Returns <see cref="customName"/> if <see cref="overrideName"/> is true; 
-        /// otherwise, returns the <see cref="GameObject.name"/>.
-        /// </summary>
-        public virtual string Name => this.overrideName
-            ? this.customName
-            : this != null
-                ? this.name
-                : "#Unknown";
+#if ODIN_INSPECTOR
+        [PropertyOrder(5)]
+        [DisableInPlayMode]
+#endif
+        internal List<MonoEntityInstaller> installers;
 
         /// <summary>
         /// Gets the entity currently associated with this view.
         /// </summary>
-#if ODIN_INSPECTOR
-        [Title("Debug")]
-        [ShowInInspector]
-#endif
         public E Entity => _entity;
 
+#if ODIN_INSPECTOR
+        [Title("Debug")]
+        [PropertyOrder(1000)]
+        [ShowInInspector]
+        [HideInEditorMode]
+#endif
         private E _entity;
 
         /// <summary>
         /// Gets a value indicating whether the view is currently visible (i.e., has an entity assigned).
         /// </summary>
-        public bool IsVisible => _entity != null;
+        public bool IsActive => _entity != null;
 
         /// <summary>
         /// Displays the view and associates it with the specified entity.
         /// </summary>
         /// <param name="entity">The entity to associate with and display through this view.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="entity"/> is null.</exception>
-        public void Show(E entity)
+        public void Activate(E entity)
         {
-            _entity = entity ?? throw new ArgumentNullException(nameof(entity));
-
-            if (this.controlGameObject && this != null)
-                this.gameObject.SetActive(true);
-
-            this.OnShow(entity);
-
-            if (this.installers != null)
+#if ENABLE_PROFILER
+            using (s_activateMarker.Auto())
+#endif
             {
-                for (int i = 0, count = this.installers.Count; i < count; i++)
+                this.Deactivate();
+                _entity = entity ?? throw new ArgumentNullException(nameof(entity));
+
+                this.name = this.FormateName(entity);
+                this.OnActivate(entity);
+
+                if (this.installers != null)
                 {
-                    SceneEntityInstaller installer = this.installers[i];
-                    if (installer)
-                        installer.Install(entity);
-                    else
-                        Debug.LogWarning($"EntityView {this.Name}: Oops! Detected null installer!", this);
+                    for (int i = 0, count = this.installers.Count; i < count; i++)
+                    {
+                        MonoEntityInstaller installer = this.installers[i];
+                        if (installer)
+                            installer.Install(entity);
+                        else
+                            Debug.LogWarning(
+                                $"EntityView<{typeof(E).Name}>: Oops! Detected null installer!",
+                                this);
+                    }
                 }
+            }
+        }
+
+        protected virtual string FormateName(E entity) =>
+            string.Format(NAME_FORMAT, entity.Name, entity.InstanceID);
+
+        /// <summary>
+        /// Hides the view and removes its association with the current entity.
+        /// </summary>
+        public void Deactivate()
+        {
+#if ENABLE_PROFILER
+            using (s_deactivateMarker.Auto())
+#endif
+            {
+                if (_entity == null)
+                    return;
+
+                if (this.installers != null)
+                {
+                    for (int i = 0, count = this.installers.Count; i < count; i++)
+                    {
+                        MonoEntityInstaller installer = this.installers[i];
+                        if (installer)
+                            installer.Uninstall(_entity);
+                        else
+                            Debug.LogWarning(
+                                $"EntityView<{typeof(E).Name}>: Oops! Detected null installer!",
+                                this);
+                    }
+                }
+
+                this.OnDeactivate(_entity);
+                _entity = null;
             }
         }
 
@@ -115,36 +132,8 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity being displayed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void OnShow(E entity)
+        protected virtual void OnActivate(E entity)
         {
-        }
-
-        /// <summary>
-        /// Hides the view and removes its association with the current entity.
-        /// </summary>
-        public void Hide()
-        {
-            if (_entity == null)
-                return;
-
-            if (this.installers != null)
-            {
-                for (int i = 0, count = this.installers.Count; i < count; i++)
-                {
-                    SceneEntityInstaller installer = this.installers[i];
-                    if (installer)
-                        installer.Uninstall(_entity);
-                    else
-                        Debug.LogWarning($"EntityView {this.Name}: Oops! Detected null installer!", this);
-                }
-            }
-
-            this.OnHide(_entity);
-
-            if (this.controlGameObject && this != null)
-                this.gameObject.SetActive(false);
-
-            _entity = null;
         }
 
         /// <summary>
@@ -153,17 +142,8 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity that was being displayed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void OnHide(E entity)
+        protected virtual void OnDeactivate(E entity)
         {
-        }
-
-        /// <summary>
-        /// Assigns the GameObject's name to the custom name field.
-        /// </summary>
-        [ContextMenu("Assign Custom Name From GameObject")]
-        private void AssignCustomNameFromGameObject()
-        {
-            this.customName = this.name;
         }
     }
 }

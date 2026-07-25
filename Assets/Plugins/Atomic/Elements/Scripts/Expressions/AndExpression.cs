@@ -21,7 +21,7 @@ namespace Atomic.Elements
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of parameterless boolean-returning functions.</param>
-        public AndExpression(params Func<bool>[] members) : base(members)
+        public AndExpression(params ExpressionMember<bool>[] members) : base(members)
         {
         }
 
@@ -29,7 +29,7 @@ namespace Atomic.Elements
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">A collection of parameterless boolean-returning functions.</param>
-        public AndExpression(IEnumerable<Func<bool>> members) : base(members)
+        public AndExpression(IEnumerable<ExpressionMember<bool>> members) : base(members)
         {
         }
 
@@ -62,7 +62,7 @@ namespace Atomic.Elements
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of boolean-returning functions that take an argument of type <typeparamref name="T"/>.</param>
-        public AndExpression(params Func<T, bool>[] members) : base(members)
+        public AndExpression(params ExpressionMember<T, bool>[] members) : base(members)
         {
         }
     
@@ -70,7 +70,7 @@ namespace Atomic.Elements
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">A collection of boolean-returning functions that take an argument of type <typeparamref name="T"/>.</param>
-        public AndExpression(IEnumerable<Func<T, bool>> members) : base(members)
+        public AndExpression(IEnumerable<ExpressionMember<T, bool>> members) : base(members)
         {
         }
 
@@ -104,7 +104,7 @@ namespace Atomic.Elements
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of boolean-returning functions that take arguments of types <typeparamref name="T1"/> and <typeparamref name="T2"/>.</param>
-        public AndExpression(params Func<T1, T2, bool>[] members) : base(members)
+        public AndExpression(params ExpressionMember<T1, T2, bool>[] members) : base(members)
         {
         }
     
@@ -112,7 +112,7 @@ namespace Atomic.Elements
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">A collection of boolean-returning functions that take arguments of types <typeparamref name="T1"/> and <typeparamref name="T2"/>.</param>
-        public AndExpression(IEnumerable<Func<T1, T2, bool>> members) : base(members)
+        public AndExpression(IEnumerable<ExpressionMember<T1, T2, bool>> members) : base(members)
         {
         }
         

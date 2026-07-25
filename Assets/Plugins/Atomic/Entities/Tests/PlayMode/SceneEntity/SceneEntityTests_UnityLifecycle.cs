@@ -11,12 +11,12 @@ namespace Atomic.Entities
         public IEnumerator EntityLifecycle_ByUnityLifecycle()
         {
             //Arrange:
-            EntityBehaviourStub stub = new EntityBehaviourStub();
+            EntityBehaviourSpy spy = new EntityBehaviourSpy();
 
             //Act:
-            SceneEntity entity = SceneEntity.Create(behaviours: new IEntityBehaviour[]
+            MonoEntity entity = MonoEntity.Create(behaviours: new IEntityBehaviour[]
             {
-                stub
+                spy
             });
 
             //Wait awake:
@@ -26,71 +26,71 @@ namespace Atomic.Entities
             Assert.IsTrue(entity.Initialized);
             Assert.IsTrue(entity.Enabled);
 
-            Assert.IsTrue(entity.HasBehaviour(stub));
-            Assert.IsTrue(stub.Initialized);
-            Assert.IsTrue(stub.Enabled);
+            Assert.IsTrue(entity.HasBehaviour(spy));
+            Assert.IsTrue(spy.Initialized);
+            Assert.IsTrue(spy.Enabled);
 
-            Assert.AreEqual(nameof(IEntityInit.Init), stub.InvocationList[0]);
-            Assert.AreEqual(nameof(IEntityEnable.Enable), stub.InvocationList[1]);
+            Assert.AreEqual(nameof(IEntityInit.Init), spy.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntityEnable.Enable), spy.InvocationList[1]);
 
             //Wait update:
             yield return null;
-            Assert.IsTrue(stub.Updated);
+            Assert.IsTrue(spy.Updated);
 
             //Wait fixed & late update
             yield return new WaitForFixedUpdate();
 
-            Assert.IsTrue(stub.FixedUpdated);
-            Assert.IsTrue(stub.LateUpdated);
+            Assert.IsTrue(spy.FixedUpdated);
+            Assert.IsTrue(spy.LateUpdated);
 
             //Finalize:
-            SceneEntity.Destroy(entity);
+            MonoEntity.Destroy(entity);
             Assert.IsFalse(entity.Enabled);
-            Assert.IsTrue(stub.Disabled);
+            Assert.IsTrue(spy.Disabled);
 
             //Wait for OnDestroy
             yield return null;
             Assert.IsFalse(entity.Initialized);
-            Assert.IsTrue(stub.Disposed);
+            Assert.IsTrue(spy.Disposed);
 
-            Assert.AreEqual(nameof(IEntityDisable.Disable), stub.InvocationList[^2]);
-            Assert.AreEqual(nameof(IEntityDispose.Dispose), stub.InvocationList[^1]);
+            Assert.AreEqual(nameof(IEntityDisable.Disable), spy.InvocationList[^2]);
+            Assert.AreEqual(nameof(IEntityDispose.Dispose), spy.InvocationList[^1]);
         }
 
         [UnityTest]
         public IEnumerator AddBehaviour_EntityIsActive_ByUnityLifecycle()
         {
             //Arrange:
-            EntityBehaviourStub stub = new EntityBehaviourStub();
+            EntityBehaviourSpy spy = new EntityBehaviourSpy();
 
             //Act:
-            SceneEntity entity = SceneEntity.Create();
+            MonoEntity entity = MonoEntity.Create();
 
             //Wait unity callbacks
             yield return new WaitForEndOfFrame();
             Assert.IsTrue(entity.Initialized);
             Assert.IsTrue(entity.Enabled);
 
-            entity.AddBehaviour(stub);
+            entity.AddBehaviour(spy);
 
-            Assert.IsTrue(entity.HasBehaviour(stub));
-            Assert.IsTrue(stub.Initialized);
-            Assert.IsTrue(stub.Enabled);
-            Assert.AreEqual(nameof(IEntityInit.Init), stub.InvocationList[0]);
-            Assert.AreEqual(nameof(IEntityEnable.Enable), stub.InvocationList[1]);
+            Assert.IsTrue(entity.HasBehaviour(spy));
+            Assert.IsTrue(spy.Initialized);
+            Assert.IsTrue(spy.Enabled);
+            Assert.AreEqual(nameof(IEntityInit.Init), spy.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntityEnable.Enable), spy.InvocationList[1]);
 
             //Wait update
             yield return null;
-            Assert.IsTrue(stub.Updated);
+            Assert.IsTrue(spy.Updated);
 
             //Wait fixed update
             yield return new WaitForFixedUpdate();
 
-            Assert.IsTrue(stub.FixedUpdated);
-            Assert.IsTrue(stub.LateUpdated);
+            Assert.IsTrue(spy.FixedUpdated);
+            Assert.IsTrue(spy.LateUpdated);
 
             //Finalize:
-            SceneEntity.Destroy(entity);
+            MonoEntity.Destroy(entity);
         }
 
 
@@ -98,37 +98,37 @@ namespace Atomic.Entities
         public IEnumerator Add_And_Remove_EntityBehaviour_EntityIsActive()
         {
             //Arrange:
-            EntityBehaviourStub stub = new EntityBehaviourStub();
+            EntityBehaviourSpy spy = new EntityBehaviourSpy();
 
             //Act:
-            SceneEntity entity = SceneEntity.Create(behaviours: new IEntityBehaviour[]
+            MonoEntity entity = MonoEntity.Create(behaviours: new IEntityBehaviour[]
             {
-                stub
+                spy
             }, useUnityLifecycle: true);
 
             //Wait Awake, Start
             yield return new WaitForEndOfFrame();
 
-            Assert.IsTrue(stub.Initialized);
-            Assert.IsTrue(stub.Enabled);
+            Assert.IsTrue(spy.Initialized);
+            Assert.IsTrue(spy.Enabled);
             
-            Assert.AreEqual(nameof(IEntityInit.Init), stub.InvocationList[0]);
-            Assert.AreEqual(nameof(IEntityEnable.Enable), stub.InvocationList[1]);
+            Assert.AreEqual(nameof(IEntityInit.Init), spy.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntityEnable.Enable), spy.InvocationList[1]);
 
             yield return new WaitForFixedUpdate();
-            Assert.IsTrue(stub.FixedUpdated);
+            Assert.IsTrue(spy.FixedUpdated);
 
             yield return new WaitForEndOfFrame();
-            Assert.IsTrue(stub.Updated);
-            Assert.IsTrue(stub.LateUpdated);
+            Assert.IsTrue(spy.Updated);
+            Assert.IsTrue(spy.LateUpdated);
 
-            entity.DelBehaviour(stub);
+            entity.DelBehaviour(spy);
             
-            Assert.IsTrue(stub.Disabled);
-            Assert.IsTrue(stub.Disposed);
+            Assert.IsTrue(spy.Disabled);
+            Assert.IsTrue(spy.Disposed);
 
-            Assert.AreEqual(nameof(IEntityDisable.Disable), stub.InvocationList[^2]);
-            Assert.AreEqual(nameof(IEntityDispose.Dispose), stub.InvocationList[^1]);
+            Assert.AreEqual(nameof(IEntityDisable.Disable), spy.InvocationList[^2]);
+            Assert.AreEqual(nameof(IEntityDispose.Dispose), spy.InvocationList[^1]);
         }
     }
 }

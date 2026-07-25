@@ -27,8 +27,7 @@ namespace Atomic.Entities
             public int hashCode;
 
             public int next; //hash collision chain
-            public int left; //previous in linked list
-            public int right; //next in linked list
+            public int orderIndex;
         }
 
         /// <inheritdoc/>
@@ -45,19 +44,16 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public bool IsReadOnly => false;
 
-        private protected Slot[] _slots;
         private protected int _capacity;
         private protected int _count;
         private int _primeIndex;
 
-        //hash table
+        private protected Slot[] _slots;
         private protected int[] _buckets;
         private protected int _freeList;
         private protected int _lastIndex;
 
-        //linked list
-        private protected int _tail;
-        private protected int _head;
+        private protected int[] _order;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityCollection{E}"/> class with default capacity.
@@ -76,19 +72,23 @@ namespace Atomic.Entities
                 throw new ArgumentOutOfRangeException(nameof(capacity));
 
             _capacity = CeilToPrime(capacity, out _primeIndex);
+            _order = new int[_capacity];
             _count = 0;
             _lastIndex = 0;
 
             _freeList = UNDEFINED_INDEX;
-            _tail = UNDEFINED_INDEX;
-            _head = UNDEFINED_INDEX;
-
             _slots = new Slot[_capacity];
             _buckets = new int[_capacity];
 
             Array.Fill(_buckets, UNDEFINED_INDEX, 0, _capacity);
         }
 
+        /// <summary>
+        /// Initializes a new instance with an enumerable of entities.
+        /// </summary>
+        /// <param name="elements">Enumerable to populate the collection with.</param>
+        public EntityCollection(IEnumerable<E> elements) : this(elements.Count()) => this.AddRange(elements);
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityCollection{E}"/> class with the provided entities.
         /// </summary>
@@ -101,11 +101,22 @@ namespace Atomic.Entities
         /// <param name="elements">Entities to populate the collection with.</param>
         public EntityCollection(IReadOnlyCollection<E> elements) : this(elements.Count) => this.AddRange(elements);
 
-        /// <summary>
-        /// Initializes a new instance with an enumerable of entities.
-        /// </summary>
-        /// <param name="elements">Enumerable to populate the collection with.</param>
-        public EntityCollection(IEnumerable<E> elements) : this(elements.Count()) => this.AddRange(elements);
+
+        public E this[int index] => index < 0 || index >= _count
+            ? throw new ArgumentOutOfRangeException(nameof(index))
+            : _slots[_order[index]].value;
+
+        public bool TryGetAt(int index, out E entity)
+        {
+            if (index < 0 || index >= _count)
+            {
+                entity = default;
+                return false;
+            }
+
+            entity = _slots[_order[index]].value;
+            return true;
+        }
 
         /// <inheritdoc cref="IEntityCollection{E}.Contains" />
         public bool Contains(E item)
@@ -113,8 +124,8 @@ namespace Atomic.Entities
             if (_count == 0 || item == null)
                 return false;
 
-            int hashCode = item.GetHashCode();
-            int bucket = (hashCode & 0x7FFFFFFF) % _capacity;
+            int hashCode = item.InstanceID;
+            int bucket = hashCode % _capacity;
             int current = _buckets[bucket];
 
             while (current != UNDEFINED_INDEX)
@@ -141,9 +152,8 @@ namespace Atomic.Entities
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
 
-            int itemHash = item.GetHashCode();
-            int itemMaskedHash = itemHash & 0x7FFFFFFF;
-            int bucket = itemMaskedHash % _capacity;
+            int hashCode = item.InstanceID;
+            int bucket = hashCode % _capacity;
             ref int head = ref _buckets[bucket];
 
             // Check if item already exists
@@ -151,7 +161,7 @@ namespace Atomic.Entities
             while (current != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[current];
-                if (slot.hashCode == itemHash)
+                if (slot.hashCode == hashCode)
                     return false;
 
                 current = slot.next;
@@ -159,7 +169,7 @@ namespace Atomic.Entities
 
             int index;
 
-            // Allocate new slot or reuse from free list
+            // Allocate new slot or reuse from a free list
             if (_freeList >= 0)
             {
                 index = _freeList;
@@ -171,6 +181,8 @@ namespace Atomic.Entities
                 if (_lastIndex == _capacity)
                 {
                     int newCapacity = PrimeTable[++_primeIndex];
+                    Array.Resize(ref _order, newCapacity);
+
                     var newSlots = new Slot[newCapacity];
                     Array.Copy(_slots, newSlots, _lastIndex);
                     _slots = newSlots;
@@ -189,37 +201,24 @@ namespace Atomic.Entities
                     _buckets = newBuckets;
                     _capacity = newCapacity;
 
-                    // Recalculate bucket + head after resize
-                    bucket = itemMaskedHash % _capacity;
+                    // Recalculate bucket and head after resize
+                    bucket = hashCode % _capacity;
                     head = ref _buckets[bucket];
                 }
 
                 index = _lastIndex++;
             }
 
-            // Insert into doubly linked list
-            if (_count == 0)
-            {
-                _head = _tail = index;
-                _slots[index].left = UNDEFINED_INDEX;
-                _slots[index].right = UNDEFINED_INDEX;
-            }
-            else
-            {
-                _slots[_tail].right = index;
-                _slots[index].left = _tail;
-                _slots[index].right = UNDEFINED_INDEX;
-                _tail = index;
-            }
-
             // Store slot
             _slots[index].value = item;
-            _slots[index].hashCode = itemHash;
+            _slots[index].hashCode = hashCode;
             _slots[index].next = head;
+            _slots[index].orderIndex = _count;
 
             // Update bucket
             head = index;
 
+            _order[_count] = index;
             _count++;
 
             this.OnAdd(item);
@@ -246,7 +245,7 @@ namespace Atomic.Entities
             var slots = _slots;
             var buckets = _buckets;
 
-            int hash = item.GetHashCode() & 0x7FFFFFFF;
+            int hash = item.InstanceID;
             int bucket = hash % _capacity;
             ref int cur = ref buckets[bucket];
 
@@ -261,28 +260,32 @@ namespace Atomic.Entities
                 {
                     cur = slot.next;
 
-                    int left = slot.left;
-                    int right = slot.right;
-
-                    if (left != UNDEFINED_INDEX) slots[left].right = right;
-                    else _head = right;
-
-                    if (right != UNDEFINED_INDEX) slots[right].left = left;
-                    else _tail = left;
-
                     slot.next = _freeList;
                     _freeList = idx;
 
+                    int orderIndex = slot.orderIndex;
+
                     slot.hashCode = UNDEFINED_INDEX;
                     slot.value = default;
+                    slot.orderIndex = UNDEFINED_INDEX;
+
+                    int lastOrderIndex = _count - 1;
+
+                    if (orderIndex != lastOrderIndex)
+                    {
+                        int swappedSlotIndex = _order[lastOrderIndex];
+
+                        _order[orderIndex] = swappedSlotIndex;
+                        _slots[swappedSlotIndex].orderIndex = orderIndex;
+                    }
+
+                    _order[lastOrderIndex] = UNDEFINED_INDEX;
 
                     _count--;
                     if (_count == 0)
                     {
                         _lastIndex = 0;
                         _freeList = UNDEFINED_INDEX;
-                        _head = UNDEFINED_INDEX;
-                        _tail = UNDEFINED_INDEX;
                     }
 
                     this.OnRemove(item);
@@ -311,6 +314,8 @@ namespace Atomic.Entities
             if (_count == 0)
                 return;
 
+            Array.Clear(_order, 0, _count);
+
             int removeCount = 0;
             E[] removedEntities = s_arrayPool.Rent(_count);
 
@@ -324,8 +329,6 @@ namespace Atomic.Entities
 
                 slot.hashCode = UNDEFINED_INDEX;
                 slot.next = UNDEFINED_INDEX;
-                slot.left = UNDEFINED_INDEX;
-                slot.right = UNDEFINED_INDEX;
 
                 removedEntities[removeCount++] = slot.value;
             }
@@ -382,13 +385,8 @@ namespace Atomic.Entities
             if (array.Length - arrayIndex < _count)
                 throw new ArgumentException("The target array is too small to hold all elements.");
 
-            int currentIndex = _head;
-            while (currentIndex != UNDEFINED_INDEX)
-            {
-                ref readonly Slot slot = ref _slots[currentIndex];
-                array[arrayIndex++] = slot.value;
-                currentIndex = slot.right;
-            }
+            for (int i = 0; i < _count; i++) 
+                array[arrayIndex + i] = _slots[_order[i]].value;
         }
 
         /// <summary>
@@ -400,13 +398,8 @@ namespace Atomic.Entities
             if (results == null)
                 throw new ArgumentNullException(nameof(results));
 
-            int index = _head;
-            while (index != UNDEFINED_INDEX)
-            {
-                ref readonly Slot slot = ref _slots[index];
-                results.Add(slot.value);
-                index = slot.right;
-            }
+            for (int i = 0; i < _count; i++)
+                results.Add(_slots[_order[i]].value);
         }
 
         /// <summary>
@@ -433,24 +426,23 @@ namespace Atomic.Entities
             public Enumerator(EntityCollection<E> collection)
             {
                 _collection = collection;
-                _index = collection._head;
+                _index = 0;
                 _current = default;
             }
 
             public bool MoveNext()
             {
-                if (_index == UNDEFINED_INDEX)
+                if (_index >= _collection._count)
                     return false;
 
-                ref readonly Slot slot = ref _collection._slots[_index];
-                _current = slot.value;
-                _index = slot.right;
+                int slotIndex = _collection._order[_index++];
+                _current = _collection._slots[slotIndex].value;
                 return true;
             }
 
             public void Reset()
             {
-                _index = _collection._head;
+                _index = 0;
             }
 
             public void Dispose()
