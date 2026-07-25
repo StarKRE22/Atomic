@@ -297,8 +297,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 94133866}
-  - component: {fileID: 94133865}
-  - component: {fileID: 94133864}
   m_Layer: 0
   m_Name: '[UI]'
   m_TagString: Untagged
@@ -306,71 +304,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &94133864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 94133863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c76e1e496ac342c2bc9332520b4d4075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _countdownView: {fileID: 0}
-  _popupTransform: {fileID: 8258209}
-  _gameOverViewPrefab: {fileID: 2431740511830322697, guid: 3ef7f6b561be747ac93632a68ea4b95b, type: 3}
---- !u!114 &94133865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 94133863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d81c35a679e45ad81a7a487dc0164e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _instanceId: 0
-  _behaviourCount: 0
-  useUnityLifecycle: 1
-  disposeValues: 1
-  installOnAwake: 1
-  uninstallOnDestroy: 1
-  scriptableInstallers: []
-  sceneInstallers:
-  - {fileID: 94133864}
-  childInstallers: []
-  onlySelectedGizmos: 0
-  onlyEditModeGizmos: 0
-  autoCompile: 0
-  initialTagCapacity: 0
-  initialValueCapacity: 3
-  initialBehaviourCapacity: 2
-  _installed: 0
-  _initialized: 0
-  _enabled: 0
-  updateCount: 0
-  fixedUpdateCount: 0
-  lateUpdateCount: 0
-  _registered: 0
-  _tagCapacity: 2
-  _tagCount: 0
-  _tagPrimeIndex: 0
-  _tagBuckets: ffffffffffffffff
-  _tagFreeList: -1
-  _tagLastIndex: 0
-  _started: 0
-  _valueCapacity: 3
-  _valueCount: 0
-  _valuePrimeIndex: 1
-  _valueBuckets: ffffffffffffffffffffffff
-  _valueFreeList: -1
-  _valueLastIndex: 0
-  _isGlobal: 1
-  _dontDestroyOnLoad: 0
 --- !u!4 &94133866
 Transform:
   m_ObjectHideFlags: 0
