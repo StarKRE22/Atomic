@@ -3,7 +3,7 @@
 **/
 
 using Atomic.Entities;
-using static Atomic.Entities.EntityNames;
+using static Atomic.Entities.EntityKeyStore;
 using System.Runtime.CompilerServices;
 #if UNITY_EDITOR
 using UnityEditor;

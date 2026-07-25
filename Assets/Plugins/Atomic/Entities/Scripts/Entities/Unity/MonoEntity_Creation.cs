@@ -38,11 +38,11 @@ namespace Atomic.Entities
         public static MonoEntity Create(in CreateArgs args) => Create<MonoEntity>(in args);
 
         /// <summary>
-        /// Creates a new SceneEntity of type <typeparamref name="E"/> and configures it with optional tags, values, behaviours, and other initialization options.
+        /// Creates a new MonoEntity of type <typeparamref name="E"/> and configures it with optional tags, values, behaviours, and other initialization options.
         /// </summary>
         /// <typeparam name="E">The type of <see cref="MonoEntity"/> to create.</typeparam>
-        /// <param name="args">A <see cref="CreateArgs"/> structure containing configuration options for the SceneEntity.</param>
-        /// <returns>The newly created SceneEntity of type <typeparamref name="E"/>.</returns>
+        /// <param name="args">A <see cref="CreateArgs"/> structure containing configuration options for the MonoEntity.</param>
+        /// <returns>The newly created MonoEntity of type <typeparamref name="E"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(in CreateArgs args) where E : MonoEntity
         {
@@ -77,7 +77,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Creates a new SceneEntity of type <typeparamref name="E"/> with optional configuration parameters.
+        /// Creates a new MonoEntity of type <typeparamref name="E"/> with optional configuration parameters.
         /// This overload constructs a <see cref="CreateArgs"/> object internally.
         /// </summary>
         /// <typeparam name="E">The type of <see cref="MonoEntity"/> to create.</typeparam>
@@ -91,7 +91,7 @@ namespace Atomic.Entities
         /// <param name="initialTagCount">Initial capacity for tags.</param>
         /// <param name="initialValueCount">Initial capacity for values.</param>
         /// <param name="initialBehaviourCount">Initial capacity for behaviours.</param>
-        /// <returns>The newly created SceneEntity of type <typeparamref name="E"/>.</returns>
+        /// <returns>The newly created MonoEntity of type <typeparamref name="E"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(
             string name = null,
@@ -122,7 +122,7 @@ namespace Atomic.Entities
 
         /// <summary>
         /// Creates a new <see cref="MonoEntity"/> with optional configuration parameters.
-        /// This overload constructs a <see cref="CreateArgs"/> object internally and returns a non-generic SceneEntity.
+        /// This overload constructs a <see cref="CreateArgs"/> object internally and returns a non-generic MonoEntity.
         /// </summary>
         /// <param name="name">Optional name for the GameObject.</param>
         /// <param name="tags">Optional collection of integer tags to assign to the entity.</param>
@@ -172,13 +172,13 @@ namespace Atomic.Entities
             Create(prefab, Vector3.zero, Quaternion.identity, parent);
 
         /// <summary>
-        /// Instantiates a new SceneEntity of type <typeparamref name="E"/> from the given prefab, optionally setting its parent transform.
+        /// Instantiates a new MonoEntity of type <typeparamref name="E"/> from the given prefab, optionally setting its parent transform.
         /// The entity is positioned at <see cref="Vector3.zero"/> and rotated with <see cref="Quaternion.identity"/> by default.
         /// </summary>
         /// <typeparam name="E">The type of <see cref="MonoEntity"/> to create.</typeparam>
         /// <param name="prefab">The prefab instance of <typeparamref name="E"/> to instantiate.</param>
         /// <param name="parent">Optional parent <see cref="Transform"/> under which the new entity will be placed. Defaults to <c>null</c>.</param>
-        /// <returns>The newly instantiated SceneEntity of type <typeparamref name="E"/>.</returns>
+        /// <returns>The newly instantiated MonoEntity of type <typeparamref name="E"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(E prefab, Transform parent = null) where E : MonoEntity =>
             Create(prefab, Vector3.zero, Quaternion.identity, parent);
@@ -195,14 +195,14 @@ namespace Atomic.Entities
         ) => Create<MonoEntity>(prefab, position, rotation, parent);
 
         /// <summary>
-        /// Instantiates a new SceneEntity of type <typeparamref name="E"/> from the given prefab at the position and rotation of a reference transform,
+        /// Instantiates a new MonoEntity of type <typeparamref name="E"/> from the given prefab at the position and rotation of a reference transform,
         /// optionally assigning a parent transform.
         /// </summary>
         /// <typeparam name="E">The type of <see cref="MonoEntity"/> to create.</typeparam>
         /// <param name="prefab">The prefab instance of <typeparamref name="E"/> to instantiate.</param>
         /// <param name="point">The reference <see cref="Transform"/> from which the position and rotation are copied.</param>
         /// <param name="parent">Optional parent <see cref="Transform"/> under which the new entity will be placed. Defaults to <c>null</c>.</param>
-        /// <returns>The newly instantiated SceneEntity of type <typeparamref name="E"/>.</returns>
+        /// <returns>The newly instantiated MonoEntity of type <typeparamref name="E"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(E prefab, Transform point, Transform parent) where E : MonoEntity
         {
@@ -212,7 +212,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Instantiates a new SceneEntity of type <typeparamref name="E"/> from the given prefab at a specific position and rotation,
+        /// Instantiates a new MonoEntity of type <typeparamref name="E"/> from the given prefab at a specific position and rotation,
         /// optionally assigning a parent transform.
         /// </summary>
         /// <typeparam name="E">The type of <see cref="MonoEntity"/> to create.</typeparam>
@@ -220,7 +220,7 @@ namespace Atomic.Entities
         /// <param name="position">The position at which to place the new entity.</param>
         /// <param name="rotation">The rotation to apply to the new entity.</param>
         /// <param name="parent">Optional parent <see cref="Transform"/> under which the new entity will be placed. Defaults to <c>null</c>.</param>
-        /// <returns>The newly instantiated SceneEntity of type <typeparamref name="E"/>.</returns>
+        /// <returns>The newly instantiated MonoEntity of type <typeparamref name="E"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(
             E prefab,
