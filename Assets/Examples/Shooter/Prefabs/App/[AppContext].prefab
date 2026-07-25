@@ -52,15 +52,13 @@ MonoBehaviour:
   scriptableInstallers: []
   sceneInstallers:
   - {fileID: 3011129282913887316}
-  childInstallers: []
   onlySelectedGizmos: 0
   onlyEditModeGizmos: 0
   autoCompile: 0
-  initialTagCapacity: 1
-  initialValueCapacity: 1
-  initialBehaviourCapacity: 0
-  _isGlobal: 1
-  _dontDestroyOnLoad: 1
+  initialTagCapacity: 0
+  initialValueCapacity: 5
+  initialBehaviourCapacity: 3
+  dontDestroyOnLoad: 1
 --- !u!114 &3011129282913887316
 MonoBehaviour:
   m_ObjectHideFlags: 0

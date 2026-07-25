@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d6218ef44945059dc5bc350753ead2, type: 3}
   m_Name: GameContextBootstrap
   m_EditorClassIdentifier: 
+  isEnabled: 1
   _sceneRegex: ^ShooterGame \(Level\d+\)$
   _mode: 1
-  _entities:
+  _entityPrefabs:
   - {fileID: 2721497269382895227, guid: a242cc7a6ad034a13b45e36d0de66287, type: 3}
   - {fileID: 1031260549355080343, guid: 9772a4540a3374d25b2bd23f26ced795, type: 3}
