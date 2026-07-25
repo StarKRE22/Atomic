@@ -60,7 +60,7 @@ namespace ShooterGame.Gameplay
             entity.AddRespawnEvent(new Event());
             
             //Combat:
-            entity.AddFireCondition(new AndExpression(_health.Exists));
+            entity.AddFireCondition(new AndExpression().Add(_health.Exists));
             entity.AddFireAction(new CharacterFireAction(entity));
             entity.AddFireEvent(new Event());
             entity.AddWeapon(_initialWeapon);
@@ -68,14 +68,14 @@ namespace ShooterGame.Gameplay
             //Movement:
             entity.AddMovementSpeed(_moveSpeed);
             entity.AddMovementDirection(new ReactiveVector3());
-            entity.AddMovementCondition(new AndExpression(_health.Exists));
+            entity.AddMovementCondition(new AndExpression().Add(_health.Exists));
             entity.AddMovementEvent(new Event<Vector3>());
             entity.AddBehaviour(new KinematicMovementBehaviour(_stoppingDistance, _obstacleLayerMask));
 
             //Rotation:
             entity.AddRotationSpeed(_rotationSpeed);
             entity.AddRotationDirection(new ReactiveVariable<Vector3>());
-            entity.AddRotationCondition(new AndExpression(_health.Exists));
+            entity.AddRotationCondition(new AndExpression().Add(_health.Exists));
             entity.AddRotationEvent(new Event<Vector3>());
             entity.AddBehaviour<RotationBehaviour>();
 
