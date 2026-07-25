@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public abstract class GameEntityFactory : EntityFactory<IGameEntity, Args<IGameContext>>
+    public abstract class GameEntityFactory : ScriptableEntityFactory<IGameEntity, Args<IGameContext>>
     {
         public GameEntityType Type => _type;
         

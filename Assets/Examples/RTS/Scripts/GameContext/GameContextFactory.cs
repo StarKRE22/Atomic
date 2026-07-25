@@ -7,7 +7,7 @@ namespace RTSGame
         fileName = "GameContextFactory",
         menuName = "RTSGame/New GameContextFactory"
     )]
-    public sealed class GameContextFactory : EntityFactory<IGameContext, NoArgs>
+    public sealed class GameContextFactory : ScriptableEntityFactory<IGameContext, NoArgs>
     {
         [SerializeField]
         private EntitySystemInstaller _gameEntityInstaller;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class TankViewInstaller : SceneEntityInstaller<IGameEntity>
+    public sealed class TankViewInstaller : MonoEntityInstaller<IGameEntity>
     {
         [SerializeField]
         private TakeDamageViewBehaviour _takeDamageBehaviour;

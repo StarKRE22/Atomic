@@ -48,7 +48,7 @@ namespace RTSGame
         {
             Vector3 center = entity.GetPosition().Value;
             float scale = entity.GetDetectionRadius().Value;
-            Handles.color = Color.blueViolet;
+            Handles.color = Color.blue;
             Handles.DrawWireDisc(center, Vector3.up, scale);
         }
     }

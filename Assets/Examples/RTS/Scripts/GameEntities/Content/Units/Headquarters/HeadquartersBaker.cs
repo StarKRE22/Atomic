@@ -14,9 +14,8 @@ namespace RTSGame
         [SerializeField]
         private TransformEntityBaker _transformBaker;
 
-        protected override void OnValidate()
+        protected void OnValidate()
         {
-            base.OnValidate();
             _teamBaker.OnValidate();
         }
 

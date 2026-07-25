@@ -8,7 +8,7 @@ namespace RTSGame
         fileName = "PlayerContextBuilder",
         menuName = "RTSGame/New PlayerContextBuilder"
     )]
-    public sealed class PlayerContextFactory : EntityFactory<IPlayerContext, Args<TeamType, IGameContext>>
+    public sealed class PlayerContextFactory : ScriptableEntityFactory<IPlayerContext, Args<TeamType, IGameContext>>
     {
         private const string PLAYER_CONTEXT_NAME_FORMAT = "PlayerContext {0}";
 

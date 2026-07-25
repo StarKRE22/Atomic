@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public class ProjectileViewInstaller : SceneEntityInstaller<IGameEntity>
+    public class ProjectileViewInstaller : MonoEntityInstaller<IGameEntity>
     {
         [SerializeField]
         private PositionViewBehaviour _positionBehaviour;

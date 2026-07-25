@@ -13,8 +13,8 @@ namespace RTSGame
 
         public void Install(IGameEntity entity)
         {
-            entity.AddPosition(new AtomicReactiveVariable<Vector3>());
-            entity.AddRotation(new AtomicReactiveVariable<Quaternion>());
+            entity.AddPosition(new ReactiveVariable<Vector3>());
+            entity.AddRotation(new ReactiveVariable<Quaternion>());
             entity.AddScale(_scale);
 
 #if UNITY_EDITOR

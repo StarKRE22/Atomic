@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class HeadquartersViewInstaller : SceneEntityInstaller<IGameEntity>
+    public sealed class HeadquartersViewInstaller : MonoEntityInstaller<IGameEntity>
     {
         [SerializeField]
         private TakeDamageViewBehaviour _takeDamageBehaviour;

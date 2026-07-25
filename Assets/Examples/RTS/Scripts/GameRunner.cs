@@ -38,7 +38,7 @@ namespace RTSGame
 
         private void Awake()
         {
-            _gameContext = _gameFactory.Create(NoArgs.Value);
+            _gameContext = _gameFactory.Create(NoArgs.Default);
             _gameContext.AddPlayerPoint(_playerPoint);
 
             this.SpawnUnits();
