@@ -7,12 +7,14 @@ namespace RTSGame
     [Serializable]
     public sealed class ProjectileMoveSystem : FixedTickPriorityGameEntitySystem
     {
-        private IGameContext _gameContext;
-        
-        protected override IReadOnlyEntityCollection<IGameEntity> ProvideEntityCollection(IGameContext context) => 
-            new EntityFilter<IGameEntity>(context.GetEntityWorld(), e => e.HasProjectileTag());
+        private readonly IGameContext _gameContext;
 
-        protected override void OnInit(IGameContext context)
+        public ProjectileMoveSystem(
+            IGameContext context,
+            GamePriorityEntitySystemSettings settings)
+            : base(
+                new EntityFilter<IGameEntity>(context.GetEntityWorld(), e => e.HasProjectileTag()),
+                settings)
         {
             _gameContext = context;
         }
@@ -30,7 +32,7 @@ namespace RTSGame
             float scale = entity.GetScale().Value;
             if (vector.sqrMagnitude > scale * scale)
             {
-                entity.GetRotation().Value= Quaternion.LookRotation(vector.normalized);
+                entity.GetRotation().Value = Quaternion.LookRotation(vector.normalized);
                 entity.MoveStep(vector.normalized, deltaTime);
             }
             else if (entity.DealDamage(target)) 

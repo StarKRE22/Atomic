@@ -6,8 +6,14 @@ namespace RTSGame
     [Serializable]
     public sealed class AttackTargetSystem : FixedTickPriorityGameEntitySystem
     {
-        protected override IReadOnlyEntityCollection<IGameEntity> ProvideEntityCollection(IGameContext context) =>
-            new EntityFilter<IGameEntity>(context.GetEntityWorld(), entity => entity.HasAttackerTag());
+        public AttackTargetSystem(
+            IGameContext context,
+            GamePriorityEntitySystemSettings settings)
+            : base(
+                new EntityFilter<IGameEntity>(context.GetEntityWorld(), entity => entity.HasAttackerTag()),
+                settings)
+        {
+        }
 
         protected override void Update(IGameEntity entity, float deltaTime) =>
             entity.Attack();

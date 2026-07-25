@@ -7,15 +7,16 @@ namespace RTSGame
     [Serializable]
     public sealed class DetectTargetSystem : FixedTickPriorityGameEntitySystem
     {
-        private IEntityWorld<IGameEntity> _entityWorld;
-        private IGameContext _gameContext;
+        private readonly IEntityWorld<IGameEntity> _entityWorld;
+        private readonly IGameContext _gameContext;
 
-        protected override IReadOnlyEntityCollection<IGameEntity> ProvideEntityCollection(IGameContext context) => 
-            new EntityFilter<IGameEntity>(context.GetEntityWorld(), e => e.HasDetectorTag());
-
-        protected override void OnInit(IGameContext context)
+        public DetectTargetSystem(
+            IGameContext context,
+            GamePriorityEntitySystemSettings settings)
+            : base(
+                new EntityFilter<IGameEntity>(context.GetEntityWorld(), e => e.HasDetectorTag()),
+                settings)
         {
-            base.OnInit(context);
             _gameContext = context;
             _entityWorld = context.GetEntityWorld();
         }

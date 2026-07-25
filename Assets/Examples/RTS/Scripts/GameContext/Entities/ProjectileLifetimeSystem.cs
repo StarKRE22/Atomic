@@ -7,12 +7,14 @@ namespace RTSGame
     [Serializable]
     public sealed class ProjectileLifetimeSystem : FixedTickPriorityGameEntitySystem
     {
-        private IGameContext _gameContext;
-        
-        protected override IReadOnlyEntityCollection<IGameEntity> ProvideEntityCollection(IGameContext context) => 
-            new EntityFilter<IGameEntity>(context.GetEntityWorld(), e => e.HasProjectileTag());
+        private readonly IGameContext _gameContext;
 
-        protected override void OnInit(IGameContext context)
+        public ProjectileLifetimeSystem(
+            IGameContext context,
+            GamePriorityEntitySystemSettings settings)
+            : base(
+                new EntityFilter<IGameEntity>(context.GetEntityWorld(), e => e.HasProjectileTag()),
+                settings)
         {
             _gameContext = context;
         }
@@ -22,7 +24,7 @@ namespace RTSGame
             Cooldown lifetime = entity.GetLifetime();
             lifetime.Tick(deltaTime);
             if (lifetime.IsCompleted())
-                _gameContext.Despawn(entity);    
+                _gameContext.Despawn(entity);
         }
     }
 }

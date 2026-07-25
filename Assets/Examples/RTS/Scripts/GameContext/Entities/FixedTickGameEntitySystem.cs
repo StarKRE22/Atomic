@@ -5,13 +5,13 @@ using UnityEngine;
 namespace RTSGame
 {
     [Serializable]
-    public abstract class FixedTickGameEntitySystem : FixedTickEntitySystem<IGameContext, IGameEntity>
+    public abstract class FixedTickGameEntitySystem : EntitySystem<IGameEntity>
     {
-        [SerializeField]
-        private EntityUpdateSettings _settings;
-        
-        protected override EntityUpdateSettings ProvideUpdateSettings(IGameContext context) => 
-            _settings;
-
+        protected FixedTickGameEntitySystem(
+            IReadOnlyEntityCollection<IGameEntity> source,
+            GameEntitySystemSettings settings)
+            : base(source, settings)
+        {
+        }
     }
 }
