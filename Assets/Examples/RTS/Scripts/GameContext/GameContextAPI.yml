@@ -5,18 +5,20 @@ unsafeAccess: true
 
 namespace: RTSGame
 className: GameContextAPI
-directory: Assets/Examples/RTS/Scripts/GameContext/
+directory: Assets/RTS/Scripts/GameContext/
 
 imports:
   - UnityEngine
   - System.Collections.Generic
+  - Modules.SpatialStructures
 
 #Core
 values:
-  - EntityWorld: EntityWorld<IUnit>
-  - EntityPool: IMultiEntityPool<string, IUnit>
+  - EntityWorld: EntityWorld<IGameEntity>
+  - EntityPool: IMultiEntityPool<GameEntityType, IGameEntity>
   - Players: Dictionary<TeamType, IPlayerContext>
-  - SpatialHash: SpatialHash<IUnit>
 
 #View
   - TeamViewConfig: TeamViewConfig
+  - PlayerPoint: Transform
+  - EntitySpace: SpatialGrid2D<IGameEntity>

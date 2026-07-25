@@ -4,76 +4,86 @@ namespace RTSGame
 {
     public static class InitGameCase
     {
-        private const string HEADQUARTERS_NAME = "Headquarters";
-        private const string WARRIOR_NAME = "Warrior";
-        private const string TANK_NAME = "Tank";
-
-        public static void SpawnUnits(IGameContext context, int columns = 10)
+        public static void SpawnInitialUnits(this IGameContext context, int columns = 10)
         {
-            const float step = 10f;
-            const float offsetBetweenTeams = -50f; 
+            const float stepX = 10f;
+
+            const float blueBaseZ = 5f;     // нижняя часть карты
+            const float redBaseZ = 50f;     // верхняя часть карты
 
             for (int i = 0; i < columns; i++)
             {
-                float x = i * step;
+                float x = i * stepX;
 
-                // Синие — пехота, танки, штабы
-                SpawnRow(context, TeamType.BLUE, x, 0f, Quaternion.identity);
-
-                // Красные — штабы, танки, пехота
-                SpawnRow(context, TeamType.RED, x, offsetBetweenTeams, Quaternion.Euler(0, 180, 0));
-
+                context.SpawnRow(TeamType.BLUE, x, blueBaseZ, Quaternion.identity);
+                context.SpawnRow(TeamType.RED, x, redBaseZ, Quaternion.Euler(0, 180, 0));
             }
         }
 
-        private static void SpawnRow(IGameContext context, TeamType team, float x, float zOffset, Quaternion rotation)
+        private static void SpawnRow(
+            this IGameContext context,
+            TeamType team,
+            float x,
+            float baseZ,
+            Quaternion rotation
+        )
         {
-            float infantryZ = zOffset; // ближе всего
-            float tankZ = zOffset + 3f; // чуть дальше
-            float hqZ = zOffset + 6f; // ещё дальше
+            const float rowSpacing = 3f;
 
-            if (team == TeamType.BLUE)
+            // 🔥 направление "вперёд"
+            float dir = team == TeamType.BLUE ? +1f : -1f;
+
+            // 👉 формируем линию от базы назад → вперёд
+            float tankZ = baseZ + dir * rowSpacing;
+            float infantryZ = baseZ + dir * rowSpacing * 2f;
+
+            // 🔥 порядок одинаковый для обеих команд!
+    
+            // 🏠 Штаб (самый сзади)
+            context.SpawnSingle(GameEntityType.Headquarters, team, x, baseZ, rotation);
+
+            // 🚜 Танки (середина)
+            context.SpawnLine(GameEntityType.Tank, team, x, tankZ, 3f, 3, rotation);
+
+            // ⚔️ Пехота (впереди)
+            context.SpawnLine(GameEntityType.Warrior, team, x, infantryZ, 2f, 3, rotation);
+        }
+
+        // 🔥 универсальный спавн линии
+        private static void SpawnLine(
+            this IGameContext context,
+            GameEntityType unitType,
+            TeamType team,
+            float startX,
+            float z,
+            float step,
+            int count,
+            Quaternion rotation
+        )
+        {
+            float x = startX;
+
+            for (int i = 0; i < count; i++)
             {
-                // Пехота
-                Vector3 infantryPos = new Vector3(x, 0, -infantryZ);
-                UnitsUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
-                infantryPos.x += 2;
-                UnitsUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
-                infantryPos.x += 2;
-                UnitsUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
+                Vector3 pos = new Vector3(x, 0f, z);
+                context.Spawn(unitType, pos, rotation, team);
 
-                // Танки
-                Vector3 tankPos = new Vector3(x, 0, -tankZ);
-                UnitsUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
-                tankPos.x += 3;
-                UnitsUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
-                tankPos.x += 3;
-                UnitsUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
-
-                // Штаб
-                Vector3 hqPos = new Vector3(x, 0, -hqZ);
-                UnitsUseCase.Spawn(context, HEADQUARTERS_NAME, hqPos, rotation, team);
+                x += step;
             }
-            else
-            {
-                // Красные зеркально: штабы ближе, потом танки, потом пехота
-                Vector3 hqPos = new Vector3(x, 0, -infantryZ);
-                UnitsUseCase.Spawn(context, HEADQUARTERS_NAME, hqPos, rotation, team);
+        }
 
-                Vector3 tankPos = new Vector3(x, 0, -tankZ);
-                UnitsUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
-                tankPos.x += 3;
-                UnitsUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
-                tankPos.x += 3;
-                UnitsUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
-
-                Vector3 infantryPos = new Vector3(x, 0, -hqZ);
-                UnitsUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
-                infantryPos.x += 2;
-                UnitsUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
-                infantryPos.x += 2;
-                UnitsUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
-            }
+        // 🔥 одиночный объект
+        private static void SpawnSingle(
+            this IGameContext context,
+            GameEntityType unitType,
+            TeamType team,
+            float x,
+            float z,
+            Quaternion rotation
+        )
+        {
+            Vector3 pos = new Vector3(x, 0f, z);
+            context.Spawn(unitType, pos, rotation, team);
         }
     }
 }

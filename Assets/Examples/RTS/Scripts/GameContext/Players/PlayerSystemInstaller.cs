@@ -9,20 +9,15 @@ namespace RTSGame
     public sealed class PlayerSystemInstaller : IEntityInstaller<IGameContext>
     {
         [SerializeField]
-        private PlayerContextBuilder _playerFactory;
+        private PlayerContextFactory _playerFactory;
 
         public void Install(IGameContext context)
         {
-            _playerFactory.SetEntityWorld(context.GetEntityWorld());
-
             context.AddPlayers(new Dictionary<TeamType, IPlayerContext>
             {
-                {TeamType.BLUE, this.CreatePlayerContext(TeamType.BLUE)},
-                {TeamType.RED, this.CreatePlayerContext(TeamType.RED)}
+                {TeamType.BLUE, _playerFactory.Create(new Args<TeamType, IGameContext>(TeamType.BLUE, context))},
+                {TeamType.RED, _playerFactory.Create(new Args<TeamType, IGameContext>(TeamType.RED, context))}
             });
         }
-
-        private IPlayerContext CreatePlayerContext(TeamType teamType) =>
-            _playerFactory.SetTeamType(teamType).Create();
     }
 }

@@ -5,7 +5,7 @@ unsafeAccess: true
 
 namespace: RTSGame
 className: PlayerContextAPI
-directory: Assets/Examples/RTS/Scripts/PlayerContext/
+directory: Assets/RTS/Scripts/PlayerContext/
  
 imports:
 
@@ -16,5 +16,5 @@ imports:
 tags:
 
 values:
-#  - FreeEnemyFilter: EntityFilter<IUnit>
   - Team: IValue<TeamType>
+  - Enemies: EntityFilter<IGameEntity>

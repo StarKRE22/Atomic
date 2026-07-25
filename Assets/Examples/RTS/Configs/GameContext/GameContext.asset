@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c7397b416b40d09b3c99c36221edd7, type: 3}
+  m_Name: GameContext
+  m_EditorClassIdentifier: 
+  tagCapacity: 0
+  valueCapacity: 5
+  behaviourCapacity: 7
+  settings:
+    disposeValues: 0
+  autoCompile: 1
+  _gameEntityInstaller:
+    _entityCatalog: {fileID: 11400000, guid: 87c990609c5ea4403b71dea5013d73e7, type: 2}
+    _unitPrioritySystem:
+      _settings:
+        frameBudget: 0.003
+        minBatchSize: 1024
+        maxBatchSize: 2048
+        batchScaleDown: 2
+        batchStepUp: 256
+      _highDistance: 200
+      _mediumDistance: 400
+    _attackTargetSystem:
+      _settings:
+        frameBudget: 0.003
+        minBatchSize: 1024
+        maxBatchSize: 2048
+        batchScaleDown: 2
+        batchStepUp: 256
+        highPercent: 70
+        midPercent: 20
+    _detectTargetSystem:
+      _settings:
+        frameBudget: 0.003
+        minBatchSize: 1024
+        maxBatchSize: 2048
+        batchScaleDown: 2
+        batchStepUp: 256
+        highPercent: 70
+        midPercent: 20
+    _moveUnitSystem:
+      _settings:
+        frameBudget: 0.0015
+        minBatchSize: 1024
+        maxBatchSize: 2048
+        batchScaleDown: 2
+        batchStepUp: 256
+        highPercent: 70
+        midPercent: 20
+    _fireUnitsSystem:
+      _settings:
+        frameBudget: 0.0015
+        minBatchSize: 1024
+        maxBatchSize: 2048
+        batchScaleDown: 2
+        batchStepUp: 256
+        highPercent: 70
+        midPercent: 20
+    _projectileMoveSystem:
+      _settings:
+        frameBudget: 0.002
+        minBatchSize: 1024
+        maxBatchSize: 2048
+        batchScaleDown: 2
+        batchStepUp: 256
+        highPercent: 70
+        midPercent: 20
+    _projectileLifetimeSystem:
+      _settings:
+        frameBudget: 0.002
+        minBatchSize: 1024
+        maxBatchSize: 2048
+        batchScaleDown: 2
+        batchStepUp: 256
+        highPercent: 70
+        midPercent: 20
+    sizeX: 1000
+    sizeY: 100
+    cellSize: 20
+  _playerSystemInstaller:
+    _playerFactory: {fileID: 11400000, guid: 78971eefd1c7e419f975222b5514a417, type: 2}
+  _teamViewConfig: {fileID: 11400000, guid: 092153cc4c1644aa284e47f2e0128f60, type: 2}

@@ -2,12 +2,8 @@ using Atomic.Entities;
 
 namespace RTSGame
 {
-    public sealed class GameContext : EntitySingleton<GameContext>, IGameContext
+    public sealed class GameContext : Entity, IGameContext
     {
-        public GameContext()
-        {
-        }
-
         public GameContext(
             string name = null,
             int tagCapacity = 0,

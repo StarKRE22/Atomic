@@ -5,7 +5,9 @@
         "Atomic.Elements",
         "Atomic.Entities",
         "Unity.Burst",
-        "Unity.Mathematics"
+        "Unity.Mathematics",
+        "Modules.SpatialStructures",
+        "Unity.Collections"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

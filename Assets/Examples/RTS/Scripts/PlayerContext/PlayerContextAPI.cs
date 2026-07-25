@@ -3,7 +3,7 @@
 **/
 
 using Atomic.Entities;
-using static Atomic.Entities.EntityKeyStore;
+using static Atomic.Entities.EntityNames;
 using System.Runtime.CompilerServices;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -21,11 +21,13 @@ namespace RTSGame
 	{
 		///Values
 		public static readonly int Team; // IValue<TeamType>
+		public static readonly int Enemies; // EntityFilter<IGameEntity>
 
 		static PlayerContextAPI()
 		{
 			//Values
 			Team = NameToId(nameof(Team));
+			Enemies = NameToId(nameof(Enemies));
 		}
 
 
@@ -52,6 +54,30 @@ namespace RTSGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetTeam(this IPlayerContext entity, IValue<TeamType> value) => entity.SetValue(Team, value);
+
+		#endregion
+
+		#region Enemies
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static EntityFilter<IGameEntity> GetEnemies(this IPlayerContext entity) => entity.GetValueUnsafe<EntityFilter<IGameEntity>>(Enemies);
+
+		public static ref EntityFilter<IGameEntity> RefEnemies(this IPlayerContext entity) => ref entity.GetValueUnsafe<EntityFilter<IGameEntity>>(Enemies);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetEnemies(this IPlayerContext entity, out EntityFilter<IGameEntity> value) => entity.TryGetValueUnsafe(Enemies, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddEnemies(this IPlayerContext entity, EntityFilter<IGameEntity> value) => entity.AddValue(Enemies, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasEnemies(this IPlayerContext entity) => entity.HasValue(Enemies);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelEnemies(this IPlayerContext entity) => entity.DelValue(Enemies);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetEnemies(this IPlayerContext entity, EntityFilter<IGameEntity> value) => entity.SetValue(Enemies, value);
 
 		#endregion
     }

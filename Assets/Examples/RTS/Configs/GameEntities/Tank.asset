@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337105b774754ec7a0b9f51107ef8c70, type: 3}
+  m_Name: Tank
+  m_EditorClassIdentifier: 
+  tagCapacity: 5
+  valueCapacity: 17
+  behaviourCapacity: 10
+  settings:
+    disposeValues: 0
+  autoCompile: 0
+  _type:
+    value: 4
+  transformInstaller:
+    _scale:
+      value: 1
+  _unitMoveInstaller:
+    _moveSpeed:
+      value: 2
+    _rotationSpeed:
+      value: 45
+  _lifeInstaller:
+    _health: 10
+  _combatInstaller:
+    _fireDistance:
+      value: 10
+    _fireCooldown: 1
+    _fireOffset:
+      value: {x: 0, y: 1, z: 1}
+  _aiInstaller:
+    _minDetectDuration: 0.4
+    _maxDetectDuration: 0.6
+    _detectionRadius:
+      value: 50
