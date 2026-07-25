@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ShooterGame.UI
 {
-    public sealed class GameUIInstaller : SceneEntityInstaller<IGameUI>
+    public sealed class GameUIInstaller : MonoEntityInstaller<IGameUI>
     {
         [Header("Countdown")]
         [SerializeField]

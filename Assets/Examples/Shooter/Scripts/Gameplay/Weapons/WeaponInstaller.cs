@@ -13,7 +13,7 @@ namespace ShooterGame.Gameplay
     /// Used to declaratively configure entities placed in a scene.
     /// In the Editor, it supports automatic refresh via <c>OnValidate</c>.
     /// </remarks>
-    public abstract class WeaponInstaller : SceneEntityInstaller<IWeapon>
+    public abstract class WeaponInstaller : MonoEntityInstaller<IWeapon>
     {
     }
 }

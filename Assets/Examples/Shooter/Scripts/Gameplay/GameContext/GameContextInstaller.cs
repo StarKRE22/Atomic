@@ -6,7 +6,7 @@ using Event = Atomic.Elements.Event;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
+    public sealed class GameContextInstaller : MonoEntityInstaller<IGameContext>
     {
         private const string WORLD_TRANSFORM_NAME = "[World]";
 

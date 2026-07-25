@@ -9,11 +9,11 @@ namespace BeginnerGame
     /// </summary>
     /// <remarks>
     /// This behaviour retrieves spawn configuration data from the <see cref="SpawnInfo"/> value
-    /// and periodically spawns new coin entities using <see cref="SceneEntity.Create"/>.  
+    /// and periodically spawns new coin entities using <see cref="MonoEntity.Create"/>.  
     /// The spawn area and interval are fully configurable through the <see cref="SpawnInfo"/> asset.
     /// </remarks>
     /// <seealso cref="SpawnInfo"/>
-    /// <seealso cref="SceneEntity.Create(SceneEntity, Vector3, Quaternion, Transform)"/>
+    /// <seealso cref="MonoEntity.Create(MonoEntity, Vector3, Quaternion, Transform)"/>
 
     public sealed class CoinSpawnBehaviour : IEntityInit, IEntityFixedTick, IEntityGizmos
     {
@@ -39,7 +39,7 @@ namespace BeginnerGame
         private void SpawnCoin()
         {
             Vector3 position = GetRandomPosition();
-            SceneEntity.Create(_spawnInfo.prefab, position, Quaternion.identity, _spawnInfo.container);
+            MonoEntity.Create(_spawnInfo.prefab, position, Quaternion.identity, _spawnInfo.container);
         }
 
         private Vector3 GetRandomPosition()

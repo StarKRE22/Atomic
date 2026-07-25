@@ -21,6 +21,6 @@ namespace BeginnerGame
         /// <summary>
         /// Reference to the player's character entity in the scene.
         /// </summary>
-        public SceneEntity character;
+        public MonoEntity character;
     }
 }

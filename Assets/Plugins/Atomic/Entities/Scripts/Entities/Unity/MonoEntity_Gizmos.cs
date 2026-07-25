@@ -42,7 +42,7 @@ namespace Atomic.Entities
             }
             catch (Exception e)
             {
-                Debug.LogWarning($"SceneEntity: Ops! Detected exception in OnDrawGizmos: {e.StackTrace}", this);
+                Debug.LogWarning($"MonoEntity: Ops! Detected exception in OnDrawGizmos: {e.StackTrace}", this);
             }
         }
 

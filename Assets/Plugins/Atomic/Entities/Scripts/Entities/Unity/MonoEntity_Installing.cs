@@ -18,7 +18,7 @@ namespace Atomic.Entities
         private event Action _onUninstalled;
 
         /// <summary>
-        /// Installs all configured installers and child entities into this SceneEntity.
+        /// Installs all configured installers and child entities into this MonoEntity.
         /// </summary>
         public void Install()
         {
@@ -36,7 +36,7 @@ namespace Atomic.Entities
                         installer.Install(this);
                     else
                         Debug.LogWarning(
-                            $"SceneEntity {this.name}: Ops! Detected missing {nameof(ScriptableEntityInstaller)} at index {i}!",
+                            $"MonoEntity {this.name}: Ops! Detected missing {nameof(ScriptableEntityInstaller)} at index {i}!",
                             this);
                 }
             }
@@ -50,7 +50,7 @@ namespace Atomic.Entities
                         installer.Install(this);
                     else
                         Debug.LogWarning(
-                            $"SceneEntity {this.name}: Ops! Detected missing {nameof(MonoEntityInstaller)} at index {i}!",
+                            $"MonoEntity {this.name}: Ops! Detected missing {nameof(MonoEntityInstaller)} at index {i}!",
                             this);
                 }
             }
@@ -76,7 +76,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Uninstalls all configured installers and child entities from this SceneEntity.
+        /// Uninstalls all configured installers and child entities from this MonoEntity.
         /// Marks the entity as not installed, allowing it to be reinstalled.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -97,7 +97,7 @@ namespace Atomic.Entities
                         installer.Uninstall(this);
                     else
                         Debug.LogWarning(
-                            $"SceneEntity {this.name}: Ops! Detected missing {nameof(MonoEntityInstaller)} at index {i}!",
+                            $"MonoEntity {this.name}: Ops! Detected missing {nameof(MonoEntityInstaller)} at index {i}!",
                             this);
                 }
             }
@@ -111,7 +111,7 @@ namespace Atomic.Entities
                         installer.Uninstall(this);
                     else
                         Debug.LogWarning(
-                            $"SceneEntity {this.name}: Ops! Detected missing {nameof(ScriptableEntityInstaller)} at index {i}!",
+                            $"MonoEntity {this.name}: Ops! Detected missing {nameof(ScriptableEntityInstaller)} at index {i}!",
                             this);
                 }
             }

@@ -16,7 +16,7 @@ namespace BeginnerGame
     public sealed class MoneyView : MonoBehaviour
     {
         [SerializeField]
-        private SceneEntity _player;
+        private MonoEntity _player;
         
         [SerializeField]
         private TMP_Text _moneyText;

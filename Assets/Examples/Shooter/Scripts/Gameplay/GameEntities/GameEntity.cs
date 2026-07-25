@@ -7,10 +7,10 @@
 namespace ShooterGame.Gameplay
 {
     /// <summary>
-    /// Represents a Unity <see cref="SceneEntity"/> implementation for <see cref="IGameEntity"/>.
+    /// Represents a Unity <see cref="MonoEntity"/> implementation for <see cref="IGameEntity"/>.
     /// This component can be instantiated directly in a Scene and composed via the Unity Inspector.
     /// </summary>
-    public sealed class GameEntity : SceneEntity, IGameEntity
+    public sealed class GameEntity : MonoEntity, IGameEntity
     {
     }
 }

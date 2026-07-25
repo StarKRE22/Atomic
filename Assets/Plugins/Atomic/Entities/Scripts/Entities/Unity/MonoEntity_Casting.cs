@@ -17,7 +17,7 @@ namespace Atomic.Entities
 
         /// <summary>
         /// Casts the specified <see cref="IEntity"/> to the target type <typeparamref name="E"/> if possible.
-        /// Supports direct SceneEntity instances and <see cref="MonoEntityProxy{E}"/> wrappers.
+        /// Supports direct MonoEntity instances and <see cref="MonoEntityProxy{E}"/> wrappers.
         /// </summary>
         /// <typeparam name="E">The type of <see cref="MonoEntity"/> to cast to.</typeparam>
         /// <param name="entity">The entity to cast.</param>

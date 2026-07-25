@@ -12,7 +12,7 @@ namespace ShooterGame.Gameplay
     /// </summary>
     /// <typeparam name="E">The concrete type of the singleton scene entity.</typeparam>
     /// </summary>
-    public sealed class GameContext : SceneEntitySingleton<GameContext>, IGameContext
+    public sealed class GameContext : MonoEntitySingleton<GameContext>, IGameContext
     {
     }
 }

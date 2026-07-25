@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class PlayerContextInstaller : SceneEntityInstaller<IPlayerContext>
+    public sealed class PlayerContextInstaller : MonoEntityInstaller<IPlayerContext>
     {
         [SerializeField]
         private Const<TeamType> _teamType;

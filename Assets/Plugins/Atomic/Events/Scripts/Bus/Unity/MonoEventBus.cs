@@ -5,7 +5,7 @@ namespace Atomic.Events
 {
     [AddComponentMenu("Atomic/Events/Event Bus")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    public partial class SceneEventBus : MonoBehaviour, IEventBus
+    public partial class MonoEventBus : MonoBehaviour, IEventBus
     {
         private readonly EventBus _eventBus = new();
 

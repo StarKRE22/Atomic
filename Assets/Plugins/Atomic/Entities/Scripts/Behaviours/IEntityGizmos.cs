@@ -7,7 +7,7 @@ namespace Atomic.Entities
     /// Defines a behavior that allows drawing gizmos for an <see cref="IEntity"/> during the editor or debug rendering phase.
     /// </summary>
     /// <remarks>
-    /// This method is automatically called by <c>SceneEntity.OnDrawGizmos()</c> or <c>SceneEntity.OnDrawGizmosSelected()</c>
+    /// This method is automatically called by <c>MonoEntity.OnDrawGizmos()</c> or <c>MonoEntity.OnDrawGizmosSelected()</c>
     /// in the Unity Editor, allowing you to visualize entity data in the scene view.
     /// </remarks>
     public interface IEntityGizmos : IEntityBehaviour
@@ -25,7 +25,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="E">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
-    /// This method is automatically invoked by <c>SceneEntity.OnDrawGizmos()</c> or <c>SceneEntity.OnDrawGizmosSelected()</c>
+    /// This method is automatically invoked by <c>MonoEntity.OnDrawGizmos()</c> or <c>MonoEntity.OnDrawGizmosSelected()</c>
     /// if the entity implements this behavior and is currently visible in the editor.
     /// </remarks>
     public interface IEntityGizmos<in E> : IEntityGizmos where E : IEntity

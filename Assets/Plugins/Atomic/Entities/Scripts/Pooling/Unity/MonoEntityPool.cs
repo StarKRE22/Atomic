@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Default non-generic implementation of a <see cref="SceneEntityPool{T}"/> for base <see cref="MonoEntity"/> types.
+    /// Default non-generic implementation of a <see cref="MonoEntityPool{T}"/> for base <see cref="MonoEntity"/> types.
     /// </summary>
     /// <remarks>
     /// This component can be added to a GameObject in the Unity scene to manage pooling of <see cref="MonoEntity"/> instances
@@ -29,7 +29,7 @@ namespace Atomic.Entities
         /// <returns>A newly created <see cref="MonoEntityPool"/> instance added to a new GameObject in the scene.</returns>
         /// <example>
         /// <code>
-        /// var poolArgs = new SceneEntityPool.CreateArgs
+        /// var poolArgs = new MonoEntityPool.CreateArgs
         /// {
         ///     name = "EnemyPool",
         ///     prefab = enemyPrefab,
@@ -38,7 +38,7 @@ namespace Atomic.Entities
         ///     initialCount = 10
         /// };
         /// 
-        /// SceneEntityPool pool = SceneEntityPool.Create(poolArgs);
+        /// MonoEntityPool pool = MonoEntityPool.Create(poolArgs);
         /// </code>
         /// </example>
         public static MonoEntityPool Create(in CreateArgs args) => Create<MonoEntityPool>(in args);

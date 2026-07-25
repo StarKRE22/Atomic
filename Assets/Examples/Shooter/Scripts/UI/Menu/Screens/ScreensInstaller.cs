@@ -9,7 +9,7 @@ using AppContext = ShooterGame.App.AppContext;
 namespace ShooterGame.UI
 {
     [Serializable]
-    public sealed class ScreensInstaller : SceneEntityInstaller<IMenuUI>
+    public sealed class ScreensInstaller : MonoEntityInstaller<IMenuUI>
     {
         [SerializeField]
         private StartScreenView _startScreen;

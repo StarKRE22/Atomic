@@ -8,10 +8,10 @@ using System.Collections.Generic;
 namespace ShooterGame.Gameplay
 {
     /// <summary>
-    /// Represents a Unity <see cref="SceneEntity"/> implementation for <see cref="IWeapon"/>.
+    /// Represents a Unity <see cref="MonoEntity"/> implementation for <see cref="IWeapon"/>.
     /// This component can be instantiated directly in a Scene and composed via the Unity Inspector.
     /// </summary>
-    public sealed class Weapon : SceneEntity, IWeapon
+    public sealed class Weapon : MonoEntity, IWeapon
     {
     }
 }

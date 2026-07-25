@@ -16,7 +16,7 @@ namespace BeginnerGame
     /// which is read by other entities (e.g., player characters) upon trigger collisions.
     /// </para>
     /// </remarks>
-    public sealed class CoinInstaller : SceneEntityInstaller
+    public sealed class CoinInstaller : MonoEntityInstaller
     {
         [SerializeField]
         private ReactiveVariable<int> _money = 1;

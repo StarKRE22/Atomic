@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    [RunInEditMode]
     public sealed class TeamColorBehaviour : IGameEntityInit, IGameEntityDispose
     {
         private readonly IGameContext _gameContext;

@@ -15,7 +15,7 @@ namespace ShooterGame.Gameplay
         {
             Transform worldTransform = gameContext.GetWorldTransform();
             Transform spawnPoint = SpawnPointsUseCase.NextPoint(gameContext);
-            GameEntity entity = SceneEntity.Create(prefab, spawnPoint, worldTransform);
+            GameEntity entity = MonoEntity.Create(prefab, spawnPoint, worldTransform);
             entity.GetTeamType().Value = context.GetTeamType().Value;
             return entity;
         }

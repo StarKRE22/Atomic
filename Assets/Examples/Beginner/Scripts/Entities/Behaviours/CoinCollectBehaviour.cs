@@ -42,7 +42,7 @@ namespace BeginnerGame
                 return;
             
             _money.Value++;
-            SceneEntity.Destroy(target);
+            MonoEntity.Destroy(target);
         }
     }
 }

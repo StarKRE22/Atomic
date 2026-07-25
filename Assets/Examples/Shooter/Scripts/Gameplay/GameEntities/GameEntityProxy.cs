@@ -33,7 +33,7 @@ namespace ShooterGame.Gameplay
     /// </code>
     /// </example>
     /// </remarks>
-    public sealed class GameEntityProxy : SceneEntityProxy<GameEntity>, IGameEntity
+    public sealed class GameEntityProxy : MonoEntityProxy<GameEntity>, IGameEntity
     {
     }
 }

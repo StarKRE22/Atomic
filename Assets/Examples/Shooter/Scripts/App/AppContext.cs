@@ -11,7 +11,7 @@ namespace ShooterGame.App
     /// A base class for singleton scene entities. Ensures a single instance of the entity exists
     /// per scene or globally, depending on the <see cref="_dontDestroyOnLoad"/> flag.
     /// </summary>
-    public sealed class AppContext : SceneEntitySingleton<AppContext>, IAppContext
+    public sealed class AppContext : MonoEntitySingleton<AppContext>, IAppContext
     {
     }
 }

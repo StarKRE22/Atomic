@@ -20,12 +20,12 @@ namespace BeginnerGame
     /// </para>
     /// </remarks>
    
-    /// <seealso cref="SceneEntityInstaller"/>
+    /// <seealso cref="MonoEntityInstaller"/>
     /// <seealso cref="CoinSpawnBehaviour"/>
     /// <seealso cref="GameOverBehaviour"/>
     /// <seealso cref="PlayerInfo"/>
     /// <seealso cref="TeamType"/>
-    public sealed class GameContextInstaller : SceneEntityInstaller
+    public sealed class GameContextInstaller : MonoEntityInstaller
     {
         [SerializeField]
         private Transform _worldTransform;
@@ -46,7 +46,7 @@ namespace BeginnerGame
             foreach (PlayerInfo playerInfo in _players)
             {
                 TeamType team = playerInfo.team;
-                SceneEntity character = playerInfo.character;
+                MonoEntity character = playerInfo.character;
                 players.Add(team, character);
             }
 

@@ -19,7 +19,7 @@ namespace Atomic.Entities
         {
             if (entity is not E e)
                 throw new InvalidCastException(
-                    $"[SceneEntityInstaller<{typeof(E).Name}>] Invalid entity type.\n" +
+                    $"[MonoEntityInstaller<{typeof(E).Name}>] Invalid entity type.\n" +
                     $"Expected: {typeof(E).FullName}\n" +
                     $"Received: {entity?.GetType().FullName ?? "null"}\n" +
                     "Please make sure the correct installer is attached for this entity type."
@@ -33,10 +33,10 @@ namespace Atomic.Entities
         {
             if (entity is not E e)
                 throw new InvalidCastException(
-                    $"[SceneEntityInstaller<{typeof(E).Name}>] Invalid entity type for {this.GetType().Name}.\n" +
+                    $"[MonoEntityInstaller<{typeof(E).Name}>] Invalid entity type for {this.GetType().Name}.\n" +
                     $"Expected: {typeof(E).FullName}\n" +
                     $"Received: {entity?.GetType().FullName ?? "null"}\n" +
-                    "Please connect the correct SceneEntityInstaller for this entity type."
+                    "Please connect the correct MonoEntityInstaller for this entity type."
                 );
 
             this.Uninstall(e);

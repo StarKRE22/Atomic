@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace Atomic.Events
 {
-    public abstract class SceneEventBusSingleton<T> : SceneEventBus where T : SceneEventBus
+    public abstract class MonoEventBusSingleton<T> : MonoEventBus where T : MonoEventBus
     {
         [SerializeField]
         private bool _dontDestroyOnLoad;
@@ -26,7 +26,7 @@ namespace Atomic.Events
 
                 if (_instance == null)
                     throw new NullReferenceException(
-                        $"Scene Event Bus Singleton of type {typeof(T).Name} is not found on scene!");
+                        $"Mono Event Bus Singleton of type {typeof(T).Name} is not found on scene!");
 
                 return _instance;
             }
@@ -69,7 +69,7 @@ namespace Atomic.Events
             }
 
             ListPool<GameObject>.Release(gameObjects);
-            throw new Exception($"Scene Event Bus Sigleton of type {typeof(T).Name} is not found!");
+            throw new Exception($"Mono Event Bus Singleton of type {typeof(T).Name} is not found!");
         }
 
         #endregion

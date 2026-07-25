@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Events
 {
-    public partial class SceneEventBus
+    public partial class MonoEventBus
     {
         ///Events
         private static readonly IComparer<DebugEvent> _debugEventComparer = new DebugEvent.Comparer();

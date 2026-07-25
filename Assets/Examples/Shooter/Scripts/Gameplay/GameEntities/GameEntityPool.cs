@@ -12,7 +12,7 @@ namespace ShooterGame.Gameplay
     /// <remarks>
     /// Implements <see cref="IEntityPool{IGameEntity}"/> for renting and returning scene-based entities.
     /// </remarks>
-    public sealed class GameEntityPool : SceneEntityPool<GameEntity>, IEntityPool<IGameEntity>
+    public sealed class GameEntityPool : MonoEntityPool<IGameEntity, GameEntity>, IEntityPool<IGameEntity>
     {
         IGameEntity IEntityPool<IGameEntity>.Rent() => this.Rent();
 

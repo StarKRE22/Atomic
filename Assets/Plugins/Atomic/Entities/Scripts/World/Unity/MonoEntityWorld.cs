@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A non-generic alias for <see cref="MonoEntityWorld{SceneEntity}"/>.
+    /// A non-generic alias for <see cref="MonoEntityWorld{IEntity}"/>.
     /// Represents a Unity scene-bound entity world operating on base <see cref="MonoEntity"/> types.
     /// </summary>
     /// <remarks>

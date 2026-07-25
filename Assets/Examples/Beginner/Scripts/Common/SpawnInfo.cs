@@ -19,7 +19,7 @@ namespace BeginnerGame
         /// <summary>
         /// The entity prefab that will be instantiated.
         /// </summary>
-        public SceneEntity prefab;
+        public MonoEntity prefab;
         
         /// <summary>
         /// The parent transform under which spawned entities will be placed.

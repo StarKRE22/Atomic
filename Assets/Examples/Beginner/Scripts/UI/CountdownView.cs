@@ -15,7 +15,7 @@ namespace BeginnerGame
     public sealed class CountdownView : MonoBehaviour
     {
         [SerializeField]
-        private SceneEntity _gameContext;
+        private MonoEntity _gameContext;
         
         [SerializeField]
         private TMP_Text _timeText;

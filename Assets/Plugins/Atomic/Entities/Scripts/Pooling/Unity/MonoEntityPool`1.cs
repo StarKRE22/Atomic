@@ -217,7 +217,7 @@ namespace Atomic.Entities
         #region Static
 
         /// <summary>
-        /// Arguments used to create a new <see cref="SceneEntityPool{E}"/> instance.
+        /// Arguments used to create a new <see cref="MonoEntityPool{E}"/> instance.
         /// </summary>
         [Serializable]
         public struct CreateArgs
@@ -240,14 +240,14 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Creates a new instance of <typeparamref name="TPool"/> (a <see cref="SceneEntityPool{E}"/>) in the scene.
+        /// Creates a new instance of <typeparamref name="TPool"/> (a <see cref="MonoEntityPool{E}"/>) in the scene.
         /// </summary>
         /// <typeparam name="TPool">The type of scene entity pool to create.</typeparam>
         /// <param name="args">Initialization parameters encapsulated in <see cref="CreateArgs"/>.</param>
         /// <returns>A new instance of <typeparamref name="TPool"/> added to a new GameObject in the scene.</returns>
         /// <example>
         /// <code>
-        /// var poolArgs = new SceneEntityPool<E>.CreateArgs
+        /// var poolArgs = new MonoEntityPool<E>.CreateArgs
         /// {
         /// name = "EnemyPool",
         /// prefab = enemyPrefab,
@@ -255,7 +255,7 @@ namespace Atomic.Entities
         /// initOnAwake = true,
         /// initialCount = 10
         /// };
-        /// SceneEntityPool<EnemyEntity> pool = SceneEntityPool<EnemyEntity>.Create<SceneEntityPool<EnemyEntity>>(poolArgs);
+        /// MonoEntityPool<EnemyEntity> pool = MonoEntityPool<EnemyEntity>.Create<MonoEntityPool<EnemyEntity>>(poolArgs);
         /// </code>
         /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -279,8 +279,8 @@ namespace Atomic.Entities
         /// <param name="t">Optional delay (in seconds) before destroying the pool's GameObject. Defaults to 0.</param>
         /// <example>
         /// <code>
-        /// SceneEntityPool<EnemyEntity> pool = ...;
-        /// SceneEntityPool<EnemyEntity>.Destroy(pool, 1.0f); // Dispose and destroy after 1 second
+        /// MonoEntityPool<EnemyEntity> pool = ...;
+        /// MonoEntityPool<EnemyEntity>.Destroy(pool, 1.0f); // Dispose and destroy after 1 second
         /// </code>
         /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

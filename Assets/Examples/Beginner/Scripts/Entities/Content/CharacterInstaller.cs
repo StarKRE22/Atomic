@@ -13,15 +13,15 @@ namespace BeginnerGame
     /// reactive money counter, and movement speed configuration.
     ///
     /// <para>
-    /// The installer uses the <see cref="SceneEntityInstaller"/> base class to register components
+    /// The installer uses the <see cref="MonoEntityInstaller"/> base class to register components
     /// directly into the entity lifecycle at scene initialization.
     /// </para>
     /// </remarks>
     /// <seealso cref="MovementBehaviour"/>
     /// <seealso cref="InputBehaviour"/>
     /// <seealso cref="CoinCollectBehaviour"/>
-    /// <seealso cref="SceneEntityInstaller"/>
-    public sealed class CharacterInstaller : SceneEntityInstaller
+    /// <seealso cref="MonoEntityInstaller"/>
+    public sealed class CharacterInstaller : MonoEntityInstaller
     {
         [SerializeField]
         private Const<float> _moveSpeed = 3;

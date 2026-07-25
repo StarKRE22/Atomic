@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShooterGame.App
 {
-    public sealed class AppContextInstaller : SceneEntityInstaller<IAppContext>
+    public sealed class AppContextInstaller : MonoEntityInstaller<IAppContext>
     {
         [SerializeField]
         private QuitInstaller _exitAppInstaller;
