@@ -5,10 +5,6 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using static Atomic.Entities.InternalUtils;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
-
 namespace Atomic.Entities
 {
     public partial class MonoEntity

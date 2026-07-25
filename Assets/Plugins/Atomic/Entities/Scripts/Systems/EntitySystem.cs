@@ -10,16 +10,24 @@ namespace Atomic.Entities
     [Serializable]
     public abstract class EntitySystem<E> : EntitySystemBase<E>, IDisposable where E : IEntity
     {
+#if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
+#endif
         private readonly Dictionary<E, int> _lookup;
 
+#if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
+#endif
         private E[] _entities;
 
+#if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
+#endif
         private int _entityCount;
 
+#if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
+#endif
         private int _cursor;
 
         protected EntitySystem(IReadOnlyEntityCollection<E> source, Settings settings) :

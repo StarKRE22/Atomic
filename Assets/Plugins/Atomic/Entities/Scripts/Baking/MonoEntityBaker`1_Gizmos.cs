@@ -15,8 +15,8 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [PropertyOrder(500)]
         [HideInPlayMode]
-        [SerializeField]
 #endif
+        [SerializeField]
         private bool onlySelectedGizmos;
 
 #if ODIN_INSPECTOR

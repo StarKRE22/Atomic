@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+
+#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
+#endif
+
 using UnityEngine;
 
 namespace Atomic.Entities
@@ -14,17 +18,23 @@ namespace Atomic.Entities
         {
             public float cooldown = 0.25f;
 
+#if ODIN_INSPECTOR
             [LabelText("High")]
             [PropertyRange(0, 100)]
             [OnValueChanged(nameof(Validate))]
+#endif
             public int highPercent = 70;
 
+#if ODIN_INSPECTOR
             [LabelText("Mid")]
             [PropertyRange(0, 100)]
             [OnValueChanged(nameof(Validate))]
+#endif
             public int midPercent = 20;
 
+#if ODIN_INSPECTOR
             [ShowInInspector, ReadOnly]
+#endif
             public int lowPercent => 100 - this.highPercent - this.midPercent;
 
             private void Validate()
@@ -71,10 +81,14 @@ namespace Atomic.Entities
 
         private bool _isUpdating;
 
+#if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
+#endif
         private readonly Settings _settings;
 
+#if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
+#endif
         private float _priorityTime;
 
         private readonly IEntityTrigger<E>[] _triggers;

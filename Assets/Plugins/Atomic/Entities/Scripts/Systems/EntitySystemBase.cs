@@ -1,6 +1,10 @@
 using System;
 using System.Runtime.CompilerServices;
+
+#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
+#endif
+
 using Unity.Profiling;
 using UnityEngine;
 
@@ -27,14 +31,20 @@ namespace Atomic.Entities
             }
         }
 
+#if ODIN_INSPECTOR
         [Title("Debug")]
         [ShowInInspector, HideInEditorMode]
+#endif
         private Settings _settings;
         
+#if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
+#endif
         private int _batchSize;
         
+#if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
+#endif
         private bool _enabled;
 
 #if ENABLE_PROFILER

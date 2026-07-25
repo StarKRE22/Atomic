@@ -18,7 +18,7 @@ namespace Atomic.Elements
         private Action _action;
 
 #if ODIN_INSPECTOR
-    [Button]
+        [Button]
 #endif
         public bool CanInvoke()
         {
@@ -39,7 +39,7 @@ namespace Atomic.Elements
         }
 
 #if ODIN_INSPECTOR
-    [Button]
+        [Button]
 #endif
         public void Invoke()
         {
@@ -172,7 +172,7 @@ namespace Atomic.Elements
         }
 
 #if ODIN_INSPECTOR
-    [Button]
+        [Button]
 #endif
         public bool CanInvoke(T arg)
         {
@@ -308,7 +308,7 @@ namespace Atomic.Elements
         }
 
 #if ODIN_INSPECTOR
-    [Button]
+        [Button]
 #endif
         public bool CanInvoke(T1 arg1, T2 arg2)
         {
@@ -451,7 +451,7 @@ namespace Atomic.Elements
         }
 
 #if ODIN_INSPECTOR
-    [Button]
+        [Button]
 #endif
         public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3)
         {
@@ -598,7 +598,7 @@ namespace Atomic.Elements
         }
 
 #if ODIN_INSPECTOR
-    [Button]
+        [Button]
 #endif
         public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {

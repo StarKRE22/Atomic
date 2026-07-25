@@ -5,10 +5,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
-
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities

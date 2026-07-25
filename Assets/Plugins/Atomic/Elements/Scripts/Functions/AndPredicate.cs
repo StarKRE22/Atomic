@@ -1,6 +1,10 @@
 using System;
 using System.Runtime.CompilerServices;
+
+#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
+#endif
+
 using UnityEngine;
 
 namespace Atomic.Elements
@@ -8,7 +12,10 @@ namespace Atomic.Elements
     [Serializable]
     public sealed class AndPredicate : IPredicate
     {
-        [SerializeReference, HideLabel]
+#if ODIN_INSPECTOR
+        [HideLabel]
+#endif
+        [SerializeReference]
         private IPredicate[] conditions;
 
         public AndPredicate()
