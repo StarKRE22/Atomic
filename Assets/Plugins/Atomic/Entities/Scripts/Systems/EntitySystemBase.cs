@@ -58,7 +58,9 @@ namespace Atomic.Entities
         {
             _source = source ?? throw new ArgumentNullException(nameof(source));
             _settings = settings ?? throw new ArgumentNullException(nameof(settings));
+#if ENABLE_PROFILER
             _marker = new ProfilerMarker(this.GetType().Name + ".Update");
+#endif
         }
 
         public void Enable()

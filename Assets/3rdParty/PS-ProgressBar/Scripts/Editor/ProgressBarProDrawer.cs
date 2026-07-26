@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(ProgressBarPro))]
@@ -74,6 +75,5 @@ public class ProgressBarProDrawer : Editor {
         progressBarPro.DetectViewObjects();
         EditorUtility.SetDirty(progressBarPro);
     }
-
-
 }
+#endif

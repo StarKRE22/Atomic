@@ -2,7 +2,6 @@ using Atomic.Elements;
 using Atomic.Entities;
 using Unity.Profiling;
 using UnityEngine;
-using UnityEditor;
 
 namespace RTSGame
 {
@@ -43,13 +42,15 @@ namespace RTSGame
                 }
             }
         }
-        
+
         public void DrawGizmos(IGameEntity entity)
         {
             Vector3 center = entity.GetPosition().Value;
             float scale = entity.GetDetectionRadius().Value;
-            Handles.color = Color.blue;
-            Handles.DrawWireDisc(center, Vector3.up, scale);
+            #if UNITY_EDITOR
+            UnityEditor.Handles.color = Color.blue;
+            UnityEditor.Handles.DrawWireDisc(center, Vector3.up, scale);
+            #endif
         }
     }
 }
