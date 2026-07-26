@@ -1,4 +1,4 @@
-# 🧩 IInitLifecycle
+# 🧩 IInitSource
 
 Represents a **runtime-controllable initialization and disposal contract** for entities or systems.
 Provides events for initialization and disposal state changes, as well as a method to explicitly initialize the
@@ -48,8 +48,8 @@ object.
 ## 🗂 Example of Usage
 
 ```csharp
-// Assume we have an instance of IInitLifecycle
-IInitLifecycle initSource = ...;
+// Assume we have an instance of IInitSource
+IInitSource initSource = ...;
 
 // Subscribe to events
 initSource.OnInitialized += () => Console.WriteLine("Object initialized");
@@ -72,7 +72,7 @@ initSource.Dispose();
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public interface IInitLifecycle
+public interface IInitSource
 ```
 
 - **Inheritance:** `IDisposable`

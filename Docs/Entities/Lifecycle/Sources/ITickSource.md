@@ -1,4 +1,4 @@
-# 🧩 ITickLifecycle
+# 🧩 ITickSource
 
 Represents a **runtime-controllable update contract** for entities or systems.  
 Provides events and methods for subscribing to or triggering **Update**, **FixedUpdate**, and **LateUpdate**
@@ -44,8 +44,8 @@ callbacks.
 ## 🗂 Example of Usage
 
 ```csharp
-// Assume we have an instance of ITickLifecycle
-ITickLifecycle tickSource = ...;
+// Assume we have an instance of ITickSource
+ITickSource tickSource = ...;
 
 // Subscribe to events
 tickSource.OnTicked += deltaTime => Console.WriteLine($"Update tick: {deltaTime:F3}s");
@@ -72,7 +72,7 @@ tickSource.LateTick(deltaTime);
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public interface ITickLifecycle
+public interface ITickSource
 ```
 
 ---

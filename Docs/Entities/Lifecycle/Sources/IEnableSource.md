@@ -1,4 +1,4 @@
-# 🧩 IEnableLifecycle
+# 🧩 IEnableSource
 
 Represents a **runtime-controllable enable and disable contract** for entities or systems. Provides
 events for enable and disable state changes, as well as methods to programmatically toggle the state.
@@ -46,8 +46,8 @@ events for enable and disable state changes, as well as methods to programmatica
 ## 🗂 Example of Usage
 
 ```csharp
-//Assume we have an instance of IEnableLifecycle
-IEnableLifecycle enableSource = ...;
+//Assume we have an instance of IEnableSource
+IEnableSource enableSource = ...;
 
 // Subscribe to events
 enableSource.OnEnabled += () => Console.WriteLine("Player enabled");
@@ -70,7 +70,7 @@ enableSource.Disable();
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public interface IEnableLifecycle
+public interface IEnableSource
 ```
 
 ---

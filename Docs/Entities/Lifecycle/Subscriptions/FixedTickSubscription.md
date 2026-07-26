@@ -1,6 +1,6 @@
 # 🧩 FixedTickSubscription
 
-Represents a disposable subscription handle for an [ITickLifecycle's](../Sources/ITickLifecycle.md)
+Represents a disposable subscription handle for an [ITickSource's](../Sources/ITickSource.md)
 **OnFixedTicked** event. Automatically unsubscribes the callback when disposed, ensuring safe handling of physics or
 fixed-timestep updates.
 
@@ -17,7 +17,7 @@ fixed-timestep updates.
       <li>
         <a href="#ctor">Constructors</a>
         <ul>
-          <li><a href="#fixedticksubscriptioniticklifecycle-actionfloat">FixedTickSubscription(ITickLifecycle, Action&lt;float&gt;)</a></li>
+          <li><a href="#fixedticksubscriptionITickSource-actionfloat">FixedTickSubscription(ITickSource, Action&lt;float&gt;)</a></li>
         </ul>
       </li>
       <li>
@@ -35,8 +35,8 @@ fixed-timestep updates.
 ## 🗂 Example of Usage
 
 ```csharp
-// Assume we have an instance of ITickLifecycle
-ITickLifecycle tickSource = ...;
+// Assume we have an instance of ITickSource
+ITickSource tickSource = ...;
 
 // Subscribe to the FixedUpdate event
 var subscription = new FixedTickSubscription(tickSource, deltaTime => 
@@ -67,10 +67,10 @@ public readonly struct FixedTickSubscription : IDisposable
 
 ### 🏗️ Constructors
 
-#### `FixedTickSubscription(ITickLifecycle, Action<float>)`
+#### `FixedTickSubscription(ITickSource, Action<float>)`
 
 ```csharp
-public FixedTickSubscription(ITickLifecycle source, Action<float> callback)
+public FixedTickSubscription(ITickSource source, Action<float> callback)
 ```
 
 - **Description:** Subscribes the provided callback to the `OnFixedTicked` event of the given source.

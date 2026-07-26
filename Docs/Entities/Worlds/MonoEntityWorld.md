@@ -1,8 +1,9 @@
-# 🧩 SceneEntityWorld\<E>
+# 🧩 MonoEntityWorld
 
-A **Unity-compatible world manager for scene-based entities** of type `E`.Integrates with Unity lifecycle events (
-`Awake`, `Start`, `OnEnable`, etc.) to manage entity enabling, updating, and cleanup. Ideal for managing scene entities
-dynamically, supporting both runtime and editor workflows, including automatic scanning and registration.
+A **non-generic** alias for [MonoEntityWorld\<E>](MonoEntityWorld%601.md). Represents a Unity scene-bound entity world
+operating on the base [MonoEntity](../Entities/MonoEntity.md) type. Use this class when you do not need to specialize
+the world with a custom entity type. Ideal for simple scenarios where only [MonoEntity](../Entities/MonoEntity.md) is
+involved.
 
 ---
 
@@ -10,7 +11,8 @@ dynamically, supporting both runtime and editor workflows, including automatic s
 
 <ul>
   <li><a href="#-example-of-usage">Example of Usage</a></li>
-  <li><a href="#-inspector-settings">Inspector Settings</a></li>
+  <li>
+    <a href="#-inspector-settings">Inspector Settings</a></li>
   <li>
     <a href="#-api-reference">API Reference</a>
     <ul>
@@ -45,20 +47,20 @@ dynamically, supporting both runtime and editor workflows, including automatic s
         <details>
           <summary><a href="#-methods">Methods</a></summary>
           <ul>
-            <li><a href="#adde">Add(E)</a></li>
-            <li><a href="#removee">Remove(E)</a></li>
+            <li><a href="#addsceneentity">Add(MonoEntity)</a></li>
+            <li><a href="#removesceneentity">Remove(MonoEntity)</a></li>
             <li><a href="#clear">Clear()</a></li>
-            <li><a href="#containse">Contains(E)</a></li>
-            <li><a href="#copytoicollectione">CopyTo(ICollection&lt;E&gt;)</a></li>
+            <li><a href="#containssceneentity">Contains(MonoEntity)</a></li>
+            <li><a href="#copytoicollectionsceneentity">CopyTo(ICollection&lt;MonoEntity&gt;)</a></li>
             <li><a href="#enable">Enable()</a></li>
             <li><a href="#disable">Disable()</a></li>
             <li><a href="#tickfloat">Tick(float)</a></li>
             <li><a href="#fixedtickfloat">FixedTick(float)</a></li>
             <li><a href="#latetickfloat">LateTick(float)</a></li>
             <li><a href="#dispose">Dispose()</a></li>
-            <li><a href="#create-tstring-bool-bool">Create&lt;T&gt;(string, bool, bool)</a></li>
-            <li><a href="#destroysceneentityworldt-float">Destroy(SceneEntityWorld&lt;E&gt;, float)</a></li>
-          </ul>
+            <li><a href="#createstring-bool-bool">Create(string, bool, bool)</a></li>
+            <li><a href="#destroysceneentityworld-float">Destroy(MonoEntityWorld, float)</a></li>
+        </ul>
         </details>
       </li>
     </ul>
@@ -69,71 +71,51 @@ dynamically, supporting both runtime and editor workflows, including automatic s
 
 ## 🗂 Example of Usage
 
-Below is an example of creating and using `SceneEntityWorld<E>`
+Below is an example of creating and using `MonoEntityWorld`
 
-#### 1. Assume we have a GameEntity type
+#### 1. Add and configure `Atomic/Entities/EntityWorld` component
 
-```csharp
-public class GameEntity : SceneEntity
-{
-}
-```
+<img width="400" height="" alt="Entity component" src="../../Images/EntityWorld.png" />
 
-#### 2. Create `GameEntityWorld` extending from `SceneEntityWorld<GameEntity>`
+#### 2. Use `MonoEntityWorld` in runtime
 
-```csharp
-public class GameEntityWorld : SceneEntityWorld<GameEntity>
-{
-}
-```
+```csharp  
+MonoEntityWorld world = ...
 
-#### 3. Add and configure `GameEntityWorld` component
-
-<img width="400" height="" alt="Entity component" src="../../Images/GameEntityWorld.png" />
-
-#### 4. Use `GameEntityWorld` in runtime
-
-```csharp
-GameEntityWorld world = ...
-
-// Subscribe to events  
-world.OnAdded += e => Debug.Log($"Added entity: {e.name}");  
-world.OnRemoved += e => Debug.Log($"Removed entity: {e.name}");  
+// Subscribe to events
+world.OnAdded += e => Debug.Log($"Added entity: {e.name}");
+world.OnRemoved += e => Debug.Log($"Removed entity: {e.name}");
 world.OnEnabled += () => Debug.Log("World enabled");
 
-// Enable world  
+// Enable the world
 world.Enable();
 
-// Add entity manually  
-GameEntity entity = GameEntity.Create("Entity1");  
-world.Add(entity);
-
-// Tick updates  
-world.Tick(Time.deltaTime);  
-world.FixedTick(Time.fixedDeltaTime);  
+// Tick updates
+world.Tick(Time.deltaTime);
+world.FixedTick(Time.fixedDeltaTime);
 world.LateTick(Time.deltaTime);
 ```
 
-Also, you can create and destroy an instance of `GameEntityWorld` dynamically
+Also, you can create and destroy an instance of `MonoEntityWorld` dynamically
 
 ```csharp
-// Create a SceneEntityWorld for GameEntity type
-GameEntityWorld world = GameEntityWorld.Create("GameEntityWorld", scanEntities: true);
+// Create a MonoEntityWorld
+MonoEntityWorld world = MonoEntityWorld.Create("MonoEntityWorld", scanEntities: true);
 
-// Destroy world after use  
-GameEntityWorld.Destroy(world);  
+// Destroy the world when done
+MonoEntityWorld.Destroy(world);
 ```
 
 ---
 
 ## 🛠 Inspector Settings
 
-| Parameter                  | Description                                                                                                        |
-|----------------------------|--------------------------------------------------------------------------------------------------------------------|
-| `useUnityLifecycle`        | Enable automatic syncing with Unity MonoBehaviour lifecycle (`Start`, `OnEnable`, `OnDisable`). Default is `true`. |
-| `dontDestroyOnLoad`        | Prevent this world from being destroyed when the scene changes. Default is `false`.                                |
-| `collectOnAwake`           | If enabled, the world automatically adds all entities in the scene during `Awake()`. Default is `true`.            |
-| `includeInactiveOnCollect` | If enabled, the world will also scan and register inactive entities in the scene. Default is `true`.               |
+| Parameter                   | Description                                                                                                        |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------|
+| `useUnityLifecycle`         | Enable automatic syncing with Unity MonoBehaviour lifecycle (`Start`, `OnEnable`, `OnDisable`). Default is `true`. |
+| `dontDestroyOnLoad`         | Prevent this world from being destroyed when the scene changes. Default is `false`.                                |
+| `registerOnAwake`           | If enabled, the world automatically adds all entities in the scene during `Awake()`. Default is `true`.            |
+| `includeInactiveOnRegister` | If enabled, the world will also scan and register inactive entities in the scene. Default is `true`.               |
 
 ---
 
@@ -142,13 +124,14 @@ GameEntityWorld.Destroy(world);
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneEntityWorld<E> : MonoBehaviour, IEntityWorld<E> where E : SceneEntity  
+[DefaultExecutionOrder(-1000)]
+[DisallowMultipleComponent]
+[AddComponentMenu("Atomic/Entities/Entity World")]
+public class MonoEntityWorld : MonoEntityWorld<MonoEntity>  
 ```
 
-- **Type Parameter:** `E` — The type of scene entity this world manages. Must inherit
-  from [SceneEntity](../Entities/SceneEntity.md).
-- **Inheritance:** `MonoBehaviour`, [IEntityWorld\<E>](IEntityWorld%601.md)
-- **See also:** [SceneEntityWorld](SceneEntityWorld.md), [SceneEntity](../Entities/SceneEntity.md)
+- **Inheritance:** [MonoEntityWorld\<E>](MonoEntityWorld%601.md)
+- **See also:** [MonoEntity](../Entities/MonoEntity.md)
 
 ---
 
@@ -164,8 +147,8 @@ public event Action OnStateChanged;
 
 #### `OnAdded`
 
-```csharp
-public event Action<E> OnAdded;  
+```csharp  
+public event Action<MonoEntity> OnAdded;  
 ```
 
 - **Description:** Raised when an entity is added.
@@ -173,8 +156,8 @@ public event Action<E> OnAdded;
 
 #### `OnRemoved`
 
-```csharp
-public event Action<E> OnRemoved;  
+```csharp  
+public event Action<MonoEntity> OnRemoved;  
 ```
 
 - **Description:** Raised when an entity is removed.
@@ -264,19 +247,19 @@ public int Count { get; }
 
 ### 🏹 Methods
 
-#### `Add(E)`
+#### `Add(MonoEntity)`
 
 ```csharp  
-public bool Add(E entity);  
+public bool Add(MonoEntity entity);  
 ```
 
 - **Description:** Adds an entity to the world.
 - **Returns:** `true` if added, `false` if it already exists.
 
-#### `Remove(E)`
+#### `Remove(MonoEntity)`
 
 ```csharp  
-public bool Remove(E entity);  
+public bool Remove(MonoEntity entity);  
 ```
 
 - **Description:** Removes an entity from the world.
@@ -290,18 +273,18 @@ public void Clear();
 
 - **Description:** Removes all entities from the world.
 
-#### `Contains(E)`
+#### `Contains(MonoEntity)`
 
 ```csharp  
-public bool Contains(E entity);  
+public bool Contains(MonoEntity entity);  
 ```
 
 - **Description:** Checks whether the entity exists in the world.
 
-#### `CopyTo(ICollection<E>)`
+#### `CopyTo(ICollection<MonoEntity>)`
 
 ```csharp  
-public void CopyTo(ICollection<E> results);  
+public void CopyTo(ICollection<MonoEntity> results);  
 ```
 
 - **Description:** Copies all entities into a provided collection.
@@ -316,7 +299,7 @@ public void Enable();
 
 #### `Disable()`
 
-```csharp  
+```csharp 
 public void Disable();  
 ```
 
@@ -354,27 +337,23 @@ public void Dispose();
 
 - **Description:** Disposes the world and all entities, unsubscribing events.
 
-<div id="create-tstring-bool-bool"></div>
+#### `Create(string, bool, bool)`
 
-#### `Create<T>(string, bool, bool)`
-
-```csharp
-public static T Create<T>(string name = null, bool scanEntities = true, bool useUnityLifecycle = true) where T : SceneEntityWorld<E>;  
+```csharp  
+public static MonoEntityWorld Create(string name = null, bool scanEntities = true, bool useUnityLifecycle = true);  
 ```
 
-- **Description:** Creates a new inactive GameObject with a `SceneEntityWorld<E>` component.
+- **Description:** Creates a new inactive GameObject with a `MonoEntityWorld` component.
 - **Parameters:**
     - `name` — Optional GameObject/world name.
     - `scanEntities` — Whether to automatically scan scene entities on Awake.
     - `useUnityLifecycle` — Whether to integrate with Unity lifecycle callbacks.
-- **Returns:** The initialized world instance.
+- **Returns:** The initialized `MonoEntityWorld` instance.
 
-<div id="destroysceneentityworldt-float"></div>
-
-#### `Destroy(SceneEntityWorld<E>, float)`
+#### `Destroy(MonoEntityWorld, float)`
 
 ```csharp  
-public static void Destroy(SceneEntityWorld<E> world, float t = 0);  
+public static void Destroy(MonoEntityWorld world, float t = 0);  
 ```
 
 - **Description:** Destroys the world and its GameObject after an optional delay.
