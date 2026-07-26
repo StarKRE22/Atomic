@@ -54,6 +54,23 @@ namespace Atomic.Elements
             MainThreadDispatcher.MarkDirty(this);
         }
 
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        public bool TryInvoke()
+        {
+            Action action;
+            lock (_lock)
+                action = _action;
+
+            if (!CanInvoke())
+                return false;
+
+            action?.Invoke();
+            MainThreadDispatcher.MarkDirty(this);
+            return true;
+        }
+
         void MainThreadDispatcher.IFlushable.Flush()
         {
             Action handler = OnEvent;
@@ -151,6 +168,41 @@ namespace Atomic.Elements
             }
 
             MainThreadDispatcher.MarkDirty(this);
+        }
+
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        public bool TryInvoke(T arg)
+        {
+            Action<T> action;
+            Func<T, bool>[] conditions;
+            int count;
+
+            lock (_lock)
+            {
+                action = _action;
+                conditions = _conditions;
+                count = _conditionCount;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                Func<T, bool> cond = conditions[i];
+                if (!cond(arg))
+                    return false;
+            }
+
+            action?.Invoke(arg);
+
+            lock (_lock)
+            {
+                _arg = arg;
+                _hasValue = true;
+            }
+
+            MainThreadDispatcher.MarkDirty(this);
+            return true;
         }
 
         void MainThreadDispatcher.IFlushable.Flush()
@@ -285,6 +337,42 @@ namespace Atomic.Elements
             }
 
             MainThreadDispatcher.MarkDirty(this);
+        }
+
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        public bool TryInvoke(T1 arg1, T2 arg2)
+        {
+            Action<T1, T2> action;
+            Func<T1, T2, bool>[] conditions;
+            int count;
+
+            lock (_lock)
+            {
+                action = _action;
+                conditions = _conditions;
+                count = _conditionCount;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                Func<T1, T2, bool> cond = conditions[i];
+                if (!cond(arg1, arg2))
+                    return false;
+            }
+
+            action?.Invoke(arg1, arg2);
+
+            lock (_lock)
+            {
+                _arg1 = arg1;
+                _arg2 = arg2;
+                _hasValue = true;
+            }
+
+            MainThreadDispatcher.MarkDirty(this);
+            return true;
         }
 
         void MainThreadDispatcher.IFlushable.Flush()
@@ -426,6 +514,43 @@ namespace Atomic.Elements
             }
 
             MainThreadDispatcher.MarkDirty(this);
+        }
+
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3)
+        {
+            Action<T1, T2, T3> action;
+            Func<T1, T2, T3, bool>[] conditions;
+            int count;
+
+            lock (_lock)
+            {
+                action = _action;
+                conditions = _conditions;
+                count = _conditionCount;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                Func<T1, T2, T3, bool> cond = conditions[i];
+                if (!cond(arg1, arg2, arg3))
+                    return false;
+            }
+
+            action?.Invoke(arg1, arg2, arg3);
+
+            lock (_lock)
+            {
+                _arg1 = arg1;
+                _arg2 = arg2;
+                _arg3 = arg3;
+                _hasValue = true;
+            }
+
+            MainThreadDispatcher.MarkDirty(this);
+            return true;
         }
 
         void MainThreadDispatcher.IFlushable.Flush()
@@ -571,6 +696,44 @@ namespace Atomic.Elements
             }
 
             MainThreadDispatcher.MarkDirty(this);
+        }
+
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            Action<T1, T2, T3, T4> action;
+            Func<T1, T2, T3, T4, bool>[] conditions;
+            int count;
+
+            lock (_lock)
+            {
+                action = _action;
+                conditions = _conditions;
+                count = _conditionCount;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                Func<T1, T2, T3, T4, bool> cond = conditions[i];
+                if (!cond(arg1, arg2, arg3, arg4))
+                    return false;
+            }
+
+            action?.Invoke(arg1, arg2, arg3, arg4);
+
+            lock (_lock)
+            {
+                _arg1 = arg1;
+                _arg2 = arg2;
+                _arg3 = arg3;
+                _arg4 = arg4;
+                _hasValue = true;
+            }
+
+            MainThreadDispatcher.MarkDirty(this);
+            return true;
         }
 
         void MainThreadDispatcher.IFlushable.Flush()

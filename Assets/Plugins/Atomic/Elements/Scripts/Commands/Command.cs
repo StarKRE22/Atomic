@@ -26,6 +26,19 @@ namespace Atomic.Elements
 
             return true;
         }
+
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        public bool TryInvoke()
+        {
+            if (!CanInvoke())
+                return false;
+
+            _action?.Invoke();
+            OnEvent?.Invoke();
+            return true;
+        }
         
 #if ODIN_INSPECTOR
         [Button]
@@ -96,6 +109,19 @@ namespace Atomic.Elements
                 if (!_conditions[i](arg1))
                     return false;
 
+            return true;
+        }
+
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        public bool TryInvoke(T1 arg1)
+        {
+            if (!CanInvoke(arg1))
+                return false;
+
+            _action?.Invoke(arg1);
+            OnEvent?.Invoke(arg1);
             return true;
         }
 
@@ -171,6 +197,19 @@ namespace Atomic.Elements
             return true;
         }
 
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        public bool TryInvoke(T1 arg1, T2 arg2)
+        {
+            if (!CanInvoke(arg1, arg2))
+                return false;
+
+            _action?.Invoke(arg1, arg2);
+            OnEvent?.Invoke(arg1, arg2);
+            return true;
+        }
+
 #if ODIN_INSPECTOR
         [Button]
 #endif
@@ -243,6 +282,19 @@ namespace Atomic.Elements
             return true;
         }
 
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3)
+        {
+            if (!CanInvoke(arg1, arg2, arg3))
+                return false;
+
+            _action?.Invoke(arg1, arg2, arg3);
+            OnEvent?.Invoke(arg1, arg2, arg3);
+            return true;
+        }
+
 #if ODIN_INSPECTOR
         [Button]
 #endif
@@ -312,6 +364,19 @@ namespace Atomic.Elements
                 if (!_conditions[i](arg1, arg2, arg3, arg4))
                     return false;
 
+            return true;
+        }
+
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            if (!CanInvoke(arg1, arg2, arg3, arg4))
+                return false;
+
+            _action?.Invoke(arg1, arg2, arg3, arg4);
+            OnEvent?.Invoke(arg1, arg2, arg3, arg4);
             return true;
         }
 
