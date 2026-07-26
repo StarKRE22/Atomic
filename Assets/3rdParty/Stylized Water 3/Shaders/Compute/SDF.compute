@@ -1,0 +1,51 @@
+﻿// Stylized Water 3 by Staggart Creations (http://staggart.xyz)
+// COPYRIGHT PROTECTED UNDER THE UNITY ASSET STORE EULA (https://unity.com/legal/as-terms)
+//    • Copying or referencing source code for the production of new asset store, or public, content is strictly prohibited!
+//    • Uploading this file to a public repository will subject it to an automated DMCA takedown request.
+
+#pragma kernel CSMain
+
+Texture2D<float4> _InputTexture;
+RWTexture2D<float> _OutputTexture;
+
+float _MaxDistance;
+
+uint2 _TextureSize;
+
+[numthreads(8, 8, 1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _TextureSize.x || id.y >= _TextureSize.y) return;
+
+    float pixel = _InputTexture[id.xy].r;
+    bool isBackground = pixel.r > 0.5; //Assume white is the background
+
+    float minDistance = _MaxDistance;
+    
+    //Reduced search window based on _MaxDistance
+    int searchRadius = int(_MaxDistance);
+    int2 start = max(int2(0, 0), int2(id.xy) - searchRadius);
+    int2 end = min(_TextureSize, int2(id.xy) + searchRadius + 1);
+    
+    for (int y = start.y; y < end.y; y++)
+    {
+        for (int x = start.x; x < end.x; x++)
+        {
+            float sample = _InputTexture[int2(x, y)].r;
+            bool sampleIsBackground = sample.r > 0.5;
+
+            if(sampleIsBackground == isBackground || sample < pixel) continue;
+            //if (sampleIsBackground != isBackground && sample > pixel)
+            {
+                float2 diff = float2(x, y) - id.xy;
+                float distance = length(diff);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                }
+            }
+        }
+    }
+
+    _OutputTexture[id.xy] = 1-(minDistance / _MaxDistance); // Normalize
+}

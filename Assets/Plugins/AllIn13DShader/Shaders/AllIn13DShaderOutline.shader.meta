@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: 6034452bd7752ab41918b7826b5cfd4f
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _MainTex: {instanceID: 0}
+  - _ColorRampTex: {fileID: 2800000, guid: 99b6592afee2790429156fef1dc9ba44, type: 3}
+  - _ToonRamp: {fileID: 2800000, guid: 339398f75cfa2714d93579662d08ec9a, type: 3}
+  - _SpecularMap: {instanceID: 0}
+  - _NormalMap: {fileID: 2800000, guid: 120df76dc2d17ed4cb2d4b8b08292ed9, type: 3}
+  - _TriplanarTopTex: {fileID: 2800000, guid: 2af6ba1567607124eb61349fa044375b, type: 3}
+  - _TriplanarTopNormalMap: {fileID: 2800000, guid: 8175cba73bf87af41aeba7bbd2f3c4cd, type: 3}
+  - _AOMap: {instanceID: 0}
+  - _DistortTex: {fileID: 2800000, guid: fcb69fdadf254834880fe3c443965278, type: 3}
+  - _VertexDistortionNoiseTex: {fileID: 2800000, guid: fcb69fdadf254834880fe3c443965278, type: 3}
+  - _EmissionMap: {instanceID: 0}
+  - _MatcapTex: {fileID: 2800000, guid: cf3a2315564d4de4eb8601b697dea358, type: 3}
+  - _TexBlendingMask: {fileID: 2800000, guid: 5a775794f8704ba4385b9c92cf9f1224, type: 3}
+  - _BlendingTextureG: {fileID: 2800000, guid: 2af6ba1567607124eb61349fa044375b, type: 3}
+  - _BlendingTextureB: {fileID: 2800000, guid: f39690d17007ab242928cd91e5a530a6, type: 3}
+  - _BlendingTextureWhite: {fileID: 2800000, guid: 2af6ba1567607124eb61349fa044375b, type: 3}
+  - _BlendingNormalMapG: {fileID: 2800000, guid: 8175cba73bf87af41aeba7bbd2f3c4cd, type: 3}
+  - _BlendingNormalMapB: {fileID: 2800000, guid: 6246e3fe4a63c1f4f9acec9623576fc7, type: 3}
+  - _BlendingNormalMapWhite: {fileID: 2800000, guid: 8175cba73bf87af41aeba7bbd2f3c4cd, type: 3}
+  - _SSSMap: {instanceID: 0}
+  - _FadeTex: {fileID: 2800000, guid: fcb69fdadf254834880fe3c443965278, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

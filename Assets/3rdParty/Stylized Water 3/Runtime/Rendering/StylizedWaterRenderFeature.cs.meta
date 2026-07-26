@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 1c6e585d9d2317e438a403bbb1965d5e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - heightReadbackCS: {fileID: 7200000, guid: 768e0c28dfdbc6b429fd59518fa03f2d, type: 3}
+  - heightProcessingShader: {fileID: 4800000, guid: a1cfcf2c2c8140c084fb10845093540e, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

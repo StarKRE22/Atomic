@@ -1,0 +1,23 @@
+{
+    "name": "com.staggartcreations.stylizedwater3",
+    "displayName": "Stylized Water 3",
+    "description": "Stylized water shader for the Universal Render Pipeline",
+    "version": "3.0.1",
+    "unity": "6000.0",
+    "unityRelease": "15f1",
+    "dependencies": {
+        "com.unity.render-pipelines.universal": "17.0.3"
+    },
+    "author": {
+        "name": "Staggart Creations",
+        "email": "contact@staggart.xyz",
+        "url": "http://staggart.xyz/"
+    },
+    "keywords": [
+        "water",
+        "shader",
+        "stylized",
+        "mobile",
+        "urp"
+    ]
+}

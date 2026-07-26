@@ -1,0 +1,110 @@
+Shader "AllIn13DShader/AllIn13DShaderOutline_NoShadowCaster"
+{
+	Properties
+	{
+		<COMMON_PROPERTIES>
+
+		[EffectProperty(OUTLINETYPE, SIMPLE, CONSTANT, FADEWITHDISTANCE)]_OutlineColor("Outline Color", Color) = (0, 0, 0, 1)
+		[EffectProperty(OUTLINETYPE, CONSTANT)]_MaxCameraDistance("Max Camera Distance", Float) = 1000
+		[EffectProperty(OUTLINETYPE, FADEWITHDISTANCE)]_MaxFadeDistance("Max Fade Distance", Float) = 250
+		[EffectProperty(OUTLINETYPE, SIMPLE, CONSTANT, FADEWITHDISTANCE)]_OutlineThickness("Outline Thickness", Float) = 1
+		[EffectProperty(OUTLINETYPE, SIMPLE, CONSTANT, FADEWITHDISTANCE)][Enum(Basic, 8, Clean, 6)]_OutlineMode("Outline Mode", Float) = 8
+		[IntRange]_StencilRef("Stencil Reference Value", Range(1, 255)) = 1	
+	}
+
+	SubShader
+	{
+		PackageRequirements
+		{
+			"com.unity.render-pipelines.universal" : "12.0"
+		}
+
+		<BASE_PASS_URP>
+
+		Pass
+		{
+			Name "AllIn13D_Outline_URP"
+			Tags {"LightMode"="OutlinePass"}
+
+			Cull Front
+
+			Stencil
+            {
+                 Ref [_StencilRef]
+                 Comp NotEqual
+			}
+
+			HLSLPROGRAM
+
+            #pragma vertex OutlinePass_Vertex
+            #pragma fragment OutlinePass_Fragment
+			
+			#define URP_PASS
+
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+			#include_with_pragmas  "ShaderLibrary/AllIn13DShader_Features.hlsl"
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_CommonStructs.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_CommonFunctions.hlsl"
+			#include "ShaderLibrary/AllIn13DShaderHelper_URP.hlsl"
+			#include "ShaderLibrary/AllIn13DShaderLight.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_UVEffects.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_VertexEffects.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_FragmentEffects.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_AlphaEffects.hlsl"
+			#include "ShaderLibrary/AllIn13DShaderCore.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_OutlinePass.hlsl"
+
+            ENDHLSL
+		}
+
+		<DEPTH_NORMALS_PASS_URP>
+	}
+
+	SubShader
+	{
+		<BASE_PASS>
+		
+		Pass
+		{
+			Name "AllIn13D_Outline"
+
+			Blend [_BlendSrc] [_BlendDst]
+
+			Cull Front
+
+			Stencil
+            {
+                 Ref [_StencilRef]
+                 Comp [_OutlineMode]
+			} 
+			
+			HLSLPROGRAM
+			#pragma target 3.0
+			#pragma multi_compile_fog
+
+            #pragma vertex OutlinePass_Vertex
+            #pragma fragment OutlinePass_Fragment
+
+            #include "UnityCG.cginc"
+			#include_with_pragmas "ShaderLibrary/AllIn13DShader_Features.hlsl"
+			#include "AutoLight.cginc"
+			#include "UnityLightingCommon.cginc"
+			#include "ShaderLibrary/AllIn13DShader_CommonStructs.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_CommonFunctions.hlsl"
+			#include "ShaderLibrary/AllIn13DShaderHelper_BIRP.hlsl"
+			#include "ShaderLibrary/AllIn13DShaderLight.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_UVEffects.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_VertexEffects.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_FragmentEffects.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_AlphaEffects.hlsl"
+			#include "ShaderLibrary/AllIn13DShaderCore.hlsl"
+			#include "ShaderLibrary/AllIn13DShader_OutlinePass.hlsl"
+			ENDHLSL
+		}
+	
+		<FORWARD_ADD_PASS>
+	}
+
+	<CUSTOM_EDITOR>
+}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ddca8ef013926408780e6e292bad16, type: 3}
+  m_Name: DemoElement_EllenCompare
+  m_EditorClassIdentifier: 
+  demoName: Ellen Compare
+  prefab: {fileID: 2481555142680936367, guid: cf4d238a92a3f834393330aebe06aeab, type: 3}
+  environment: {fileID: 11400000, guid: aca14662271bdc748ad059880a6d05e8, type: 2}
+  info: Compare how different, smoother and more stylized the 3D Shader looks vs
+    the Standard shader Unity defaults to.
+  directionalLightEnabled: 1
+  mainLightIntensity: 1
+  skyboxEnabled: 1
+  postProcessEnabled: 1

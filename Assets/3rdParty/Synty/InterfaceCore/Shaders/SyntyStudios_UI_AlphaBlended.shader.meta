@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 27576329d3acb5d4ba256df145309136
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _Sprite: {fileID: 2800000, guid: 27bf9c32ac848864e8fd0069cf379edc, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

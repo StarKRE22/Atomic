@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ddca8ef013926408780e6e292bad16, type: 3}
+  m_Name: DemoElement_ColorRamp
+  m_EditorClassIdentifier: 
+  demoName: Color Ramp
+  prefab: {fileID: 2481555142680936367, guid: f1939858350c542459a67b501e8f311a, type: 3}
+  environment: {fileID: 11400000, guid: d20ddb4e454b71f49ae3cca107ef59cc, type: 2}
+  info: Remaps the luminance colors of the building to a gradient. The building on
+    the left is the original look.
+  directionalLightEnabled: 1
+  mainLightIntensity: 1
+  skyboxEnabled: 1
+  postProcessEnabled: 1

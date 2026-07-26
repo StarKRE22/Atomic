@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca52dc65c92791641abb4a20efacdf21, type: 3}
+  m_Name: Ocean Wave Profile
+  m_EditorClassIdentifier: 
+  waveLengthMultiplier: 1
+  amplitudeMultiplier: 1
+  steepnessMultiplier: 1
+  steepnessClamping: 0.378
+  waveLengthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  amplitudeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  steepnessCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  proceduralSettings:
+    seed: 12
+    numLayers: 8
+    minMaxWaveLength: {x: 0.5, y: 25}
+    minMaxAmplitude: {x: 0.02, y: 0.05}
+    amplitudeByLength: 0
+    minMaxSteepness: {x: 10, y: 10}
+    steepnessByLength: 1
+    directionAngleVariation: 360
+  layers:
+  - enabled: 1
+    waveLength: 17.769247
+    amplitude: 0.11564666
+    steepness: 11.255402
+    mode: 0
+    direction: -47.65445
+    origin: {x: 0, y: 0}
+  - enabled: 1
+    waveLength: 26.264751
+    amplitude: 0.08390128
+    steepness: 10
+    mode: 0
+    direction: -344.57135
+    origin: {x: 0, y: 0}
+  - enabled: 1
+    waveLength: 11.737302
+    amplitude: 0.124752164
+    steepness: 17.039692
+    mode: 0
+    direction: 77.5788
+    origin: {x: 0, y: 0}
+  - enabled: 1
+    waveLength: 32.612656
+    amplitude: 0.19603142
+    steepness: 10
+    mode: 0
+    direction: -219.5338
+    origin: {x: 0, y: 0}
+  - enabled: 1
+    waveLength: 18.295626
+    amplitude: 0.13645424
+    steepness: 10.931576
+    mode: 0
+    direction: 202.36713
+    origin: {x: 0, y: 0}
+  - enabled: 1
+    waveLength: 49.6259
+    amplitude: 0.19036472
+    steepness: 10
+    mode: 0
+    direction: -96.874664
+    origin: {x: 0, y: 0}
+  - enabled: 1
+    waveLength: 8.436981
+    amplitude: 0.1696281
+    steepness: 23.70516
+    mode: 0
+    direction: 325.13943
+    origin: {x: 0, y: 0}
+  - enabled: 1
+    waveLength: 14.244605
+    amplitude: 0.13306028
+    steepness: 14.040403
+    mode: 0
+    direction: 26.609344
+    origin: {x: 0, y: 0}
+  shaderParametersLUT: {fileID: 5393152077581806659}
+--- !u!28 &5393152077581806659
+Texture2D:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ocean Wave Profile Shader Parameters
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 3
+  m_Width: 8
+  m_Height: 2
+  m_CompleteImageSize: 128
+  m_MipsStripped: 0
+  m_TextureFormat: 17
+  m_MipCount: 1
+  m_IsReadable: 1
+  m_IsPreProcessed: 0
+  m_IgnoreMipmapLimit: 1
+  m_MipmapLimitGroupName: 
+  m_StreamingMipmaps: 0
+  m_StreamingMipmapsPriority: 0
+  m_VTOnly: 0
+  m_AlphaIsTransparency: 0
+  m_ImageCount: 1
+  m_TextureDimension: 2
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_LightmapFormat: 0
+  m_ColorSpace: 0
+  m_PlatformBlob: 
+  image data: 128
+  _typelessdata: 672f714ca7ba003c5f2d914e04c6003cfc2fde496b3d003c46321450aac3003c5e30934c1043003c17323452c3be003c6e313848ad45003c42301f4b6e37003c0000000000008847000000000000b146000000000000b449000000000000b1460000000000005147000000000000b146000000000000ef4b000000000000b348
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 

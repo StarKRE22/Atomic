@@ -1,0 +1,83 @@
+----------------------------------------
+RTS FX (Real-time Strategy FX)
+----------------------------------------
+
+1. Introduction
+2. Spawning effects
+3. Scaling effects
+4. Recoloring effects
+5. Upgrading to LWRP / Universal
+6. Contact
+
+----------------------------------------
+1. INTRODUCTION
+----------------------------------------
+
+RTS FX is a visual effects starter kit designed for real-time strategy games.
+
+Included you'll find effects for clicking, selecting, waypoints, area targets,status effects for units/buildings.
+
+Effects can be found in the 'RTS Effects/Prefabs' folder, as well as cursors in 'RTS Effects/Textures/Cursor'.
+
+----------------------------------------
+2. SPAWNING EFFECTS
+----------------------------------------
+
+In most cases you can just drag&drop the effect into the scene, otherwise you can spawn them via scripting.
+
+Small example on spawning a click effect via script:
+
+public Vector3 effectNormal;
+
+spawnEffect = Instantiate(spawnEffect, transform.position, Quaternion.FromToRotation(Vector3.up, effectNormal)) as GameObject;
+
+----------------------------------------
+3. SCALING EFFECTS
+----------------------------------------
+
+To scale an effect in the scene, you can simply use the default Scaling tool (Hotkey 'R'). You can also select the effect and set the Scale in the Hierarchy.
+
+Please remember that some parts of the effects such as Point Lights, Line Renderers, Trail Renderers and Audio Sources may have to be manually adjusted afterwards.
+
+----------------------------------------
+4. RECOLORING EFFECTS
+----------------------------------------
+
+To change the color of an effect, make sure you select the parent object as well as all the child objects. Depending on the version of Unity, you may need to open the Prefab to access the child objects.
+
+Once you have them all selected, change the Start Color near the top of the Particle System. Here you can set the color and change the alpha value to make it more or less transparent.
+
+Note that several effects use some transparency already in the Color over Lifetime portion of the Particle System.
+
+----------------------------------------
+5. Upgrading to LWRP / Universal
+----------------------------------------
+
+Make sure your project is correctly set up to use LWRP or Universal Pipeline.
+
+Locate the 'RTS Effects\Upgrade' folder, then open and Import the bundled 'RTS FX LWRP' unitypackage to your project. This should overwrite the Standard Shaders, custom shaders and Materials.
+
+You can also revert to Standard materials by opening and Importing the 'RTS FX Standard Materials' unitypackage.
+
+- - - - - - - -
+TEXTURE PROBLEMS
+- - - - - - - -
+
+If you have problems with textures rendering as bright colored squares in LWRP / URP, try this fix:
+
+1. Open Package Manager and upgrade to v7.2.0 (or later) of Universal Render Pipeline
+
+2. Select every Material in the Materials folder one by one and you might notice the graphics will 'pop' in and look normal. If there's no change, select all materials and change Blending Mode to Multiply and back to Additive.
+
+----------------------------------------
+6. CONTACT
+----------------------------------------
+
+Need help with anything, or simply want to give some feedback?
+
+E-Mail : archanor.work@gmail.com
+Website: archanor.com
+
+Follow me on Twitter for regular updates and news
+
+Twitter: @Archanor

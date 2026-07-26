@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MAT_SkyDayAllIn13DShader
+  m_Shader: {fileID: 4800000, guid: a7ddfe7ba2a3b7e40b00cea3ed9584ba, type: 3}
+  m_ValidKeywords:
+  - _ENABLECLOUDS_ON
+  - _ENABLEGRADIENT_ON
+  - _ENABLESUN_ON
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _GradientRamp:
+        m_Texture: {fileID: 2800000, guid: 9a2d90a8cb2a1f447bdd197dc662fa2f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AtmosphericFalloff: 1.2
+    - _BottomExponent: 0.4
+    - _CloudBrightness: 1.14
+    - _CloudContrast: 6.68
+    - _CloudDensity: 0.59
+    - _CloudErosion: 0.335
+    - _CloudHeight: 0
+    - _CloudOpacity: 0.857
+    - _CloudScale1: 2.2
+    - _CloudScale2: 2.5
+    - _CloudSoftness: 0.79
+    - _CloudSpeed: 0.7
+    - _CloudThickness: 0.278
+    - _CloudThreshold: 0.634
+    - _EnableClouds: 1
+    - _EnableGradient: 1
+    - _EnableSun: 1
+    - _Exposure: 1
+    - _GlowPower: 3
+    - _GlowSize: 4
+    - _HorizonOffset: 0.112
+    - _RampTiling: 1
+    - _StarBrightness: 1
+    - _StarCutoff: 0.1
+    - _StarDensity: 50
+    - _StarFalloff: 4
+    - _StarSize: 0.001
+    - _SunSize: 0.05
+    - _TopExponent: 0.6
+    - _WarpStrength: 0.758
+    - _WindStretch: 0.5
+    m_Colors:
+    - _BottomColor: {r: 0.45, g: 0.43999997, b: 0.49, a: 1}
+    - _CloudColor: {r: 1, g: 1, b: 1, a: 1}
+    - _CloudMovement: {r: 0.1, g: 0.05, b: 0.5, a: 0.3}
+    - _CloudParams: {r: 0.5, g: 2, b: 0.5, a: 1}
+    - _CloudScales: {r: 8, g: 12, b: 0.3, a: 0.1}
+    - _CloudSpeed: {r: 0.15, g: 0, b: 0.07, a: 0}
+    - _GlowColor: {r: 1, g: 0.95, b: 0.8, a: 1}
+    - _MiddleColor: {r: 0.76, g: 0.85, b: 0.95, a: 1}
+    - _SkyColor: {r: 0.5, g: 0.7, b: 1, a: 1}
+    - _SunColor: {r: 1, g: 0.53999996, b: 0.16999996, a: 1}
+    - _SunParams: {r: 0.05, g: 4, b: 3, a: 0}
+    - _TopColor: {r: 0.33999997, g: 0.52, b: 0.87, a: 1}
+  m_BuildTextureStacks: []

@@ -1,0 +1,62 @@
+fileFormatVersion: 2
+guid: 823f6b206953b674a9a64f9e3ec57752
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: fb104378e2fbf2942ae8b66abb7a1d57, type: 3}
+  template: {instanceID: 0}
+  settings:
+    shaderName: Standard
+    hidden: 0
+    type: 0
+    autoIntegration: 1
+    fogIntegration: 1
+    lightCookies: 0
+    additionalLightCaustics: 1
+    additionalLightTranslucency: 1
+    customIncludeDirectives:
+    - enabled: 1
+      type: 0
+      value: float _MyParameter;
+    - enabled: 0
+      type: 3
+      value: QUAD_NORMAL_SAMPLES
+    - enabled: 0
+      type: 3
+      value: PIXELIZE_UV
+    - enabled: 0
+      type: 3
+      value: INTERSECTION_REFRACTION
+    - enabled: 1
+      type: 3
+      value: DISPLACEMENT_BUFFER_PER_VERTEX
+    additionalPasses:
+    - {fileID: 10900000, guid: 1568d394910f427499ec893ef4723b27, type: 3}
+  dependencies:
+  - Assets/Stylized Water 3/Shaders/Underwater/UnderwaterPass.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/URP.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Input.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Common.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Fog.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Terrain.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Waves.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Gerstner.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Lighting.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Reflections.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Refraction.hlsl
+  - Assets/Stylized Water 3/Shaders/Underwater/UnderwaterFog.hlsl
+  - Assets/Stylized Water 3/Shaders/Underwater/UnderwaterShading.hlsl
+  - Assets/Stylized Water 3/Shaders/Underwater/UnderwaterMask.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Normals.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Foam.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Caustics.hlsl
+  - Assets/Stylized Water 3/Shaders/DynamicEffects/DynamicEffects.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Vertex.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Tesselation.hlsl
+  - Assets/Stylized Water 3/Shaders/Passes/ForwardPass.hlsl
+  - Assets/Stylized Water 3/Shaders/Passes/HeightPrePass.hlsl
+  - Assets/Stylized Water 3/Shaders/Underwater/UnderwaterEffects.hlsl

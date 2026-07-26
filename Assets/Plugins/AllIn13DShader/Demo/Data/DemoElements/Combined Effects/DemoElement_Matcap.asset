@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ddca8ef013926408780e6e292bad16, type: 3}
+  m_Name: DemoElement_Matcap
+  m_EditorClassIdentifier: 
+  demoName: Matcap
+  prefab: {fileID: 2481555142680936367, guid: af12711a923355d4d9c32c7544f4c751, type: 3}
+  environment: {fileID: 11400000, guid: 39c75c777f0ef4e458bf7aa3de6314ff, type: 2}
+  info: Add realism by mapping a Sphere like texture to any object. The shader will
+    remap the Sphere texture to the object giving the object a more realistic look
+    by transfering the details from the texture onto the object.
+  directionalLightEnabled: 1
+  mainLightIntensity: 1
+  skyboxEnabled: 1
+  postProcessEnabled: 1

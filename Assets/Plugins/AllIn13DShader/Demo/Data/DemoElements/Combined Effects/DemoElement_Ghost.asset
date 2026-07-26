@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ddca8ef013926408780e6e292bad16, type: 3}
+  m_Name: DemoElement_Ghost
+  m_EditorClassIdentifier: 
+  demoName: Ghost
+  prefab: {fileID: 2481555142680936367, guid: bb7cb895f20c18940b5b79941bad45e2, type: 3}
+  environment: {fileID: 11400000, guid: aca14662271bdc748ad059880a6d05e8, type: 2}
+  info: The asset shader supports Transparency and can interact with the Depth of
+    the scene in cool ways. Here we are fading and adding color to the part where
+    the object intersects the ground.
+  directionalLightEnabled: 1
+  mainLightIntensity: 1
+  skyboxEnabled: 1
+  postProcessEnabled: 1

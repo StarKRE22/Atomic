@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32438765f2955064bae29bed18ec5263, type: 3}
+  m_Name: EffectsExtraData
+  m_EditorClassIdentifier: 
+  effectsExtraData:
+  - effectID: CUSTOM_SHADOW_COLOR
+    docURL: https://seasidestudios.gitbook.io/seaside-studios/3d-shader/shadow-color
+    customMessages:
+    - message: "*You need to use ShadowsConfigurator.cs component\n in order to use
+        this effect."
+      keywords: []
+  - effectID: DEPTH_COLORING
+    docURL: https://seasidestudios.gitbook.io/seaside-studios/3d-shader/depth-coloring-stylized-fog
+    customMessages:
+    - message: "*You need to add DepthColoringCamera.cs component \nto the main camera
+        in order to use this effect."
+      keywords: []
+  - effectID: LIGHTMODEL
+    docURL: https://seasidestudios.gitbook.io/seaside-studios/3d-shader/fast-lighting
+    customMessages:
+    - message: "*You need to use FakeLightConfigurator.cs component\n in order to
+        use this effect."
+      keywords:
+      - _LIGHTMODEL_FASTLIGHTING
+  - effectID: SHADINGMODEL
+    docURL: 
+    customMessages:
+    - message: '*Usually looks best paired with a Specular Model'
+      keywords:
+      - _SHADINGMODEL_PBR
+  - effectID: RECALCULATE_NORMALS
+    docURL: 
+    customMessages:
+    - message: '*Dynamically reconstructs surface normals from vertex positions,
+        ignoring mesh baked normals'
+      keywords:
+      - _SHADINGMODEL_PBR
+  - effectID: INTERSECTION_GLOW
+    docURL: 
+    customMessages:
+    - message: '*You need to set the material to Transparent mode in order to use
+        this effect correctly'
+      keywords: []
+  - effectID: INTERSECTION_FADE
+    docURL: 
+    customMessages:
+    - message: '*You need to set the material to Transparent mode in order to use
+        this effect correctly'
+      keywords: []
+  - effectID: OUTLINETYPE
+    docURL: 
+    customMessages:
+    - message: '*If the material is transparent, you need to set the outline in Clean
+        mode. Otherwise, the mesh will look completely black'
+      keywords:
+      - _OUTLINETYPE_SIMPLE
+      - _OUTLINETYPE_CONSTANT
+      - _OUTLINETYPE_FADEWITHDISTANCE

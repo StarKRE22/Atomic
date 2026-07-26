@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 32
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: StylizedWater3_River Demo
+  m_Shader: {fileID: -6465566751694194690, guid: 823f6b206953b674a9a64f9e3ec57752, type: 3}
+  m_Parent: {fileID: 2100000, guid: 37de31e0cff7a6143936661d85112042, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _ADVANCED_SHADING
+  - _CAUSTICS
+  - _DISTANCE_NORMALS
+  - _NORMALMAP
+  - _REFRACTION
+  - _RIVER
+  - _SURFACE_FOAM
+  - _TRANSLUCENCY
+  - _WAVES
+  m_InvalidKeywords:
+  - ADVANCED_LIGHTING
+  - _DEPTHEXP_ON
+  - _DEPTH_TEX
+  - _FOAM
+  - _INTERSECTIONSHARP_ON
+  - _RECEIVEDYNAMICEFFECTS_ON
+  - _SMOOTH_INTERSECTION
+  - _VERTEXCOLORDEPTH_ON
+  - _VERTEXCOLORFOAM_ON
+  - _VERTEXCOLORWAVEFLATTENING_ON
+  - _WORLDSPACEUV_ON
+  - _ZCLIP_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: _VertexColorDepth
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorAbsorption: 0
+    - _DepthExp: 1
+    - _DepthHorizontal: 0.01
+    - _DepthVertical: 10.58
+    - _EdgeFade: 4
+    - _IntersectionFoamOn: 0
+    - _VertexColorDepth: 1
+    - _VertexColorFoam: 1
+    - _WaveHeight: 0.25
+    - _WaveNormalStr: 32
+    m_Colors:
+    - _Direction: {r: 0, g: -1, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &4759453835961029274
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2

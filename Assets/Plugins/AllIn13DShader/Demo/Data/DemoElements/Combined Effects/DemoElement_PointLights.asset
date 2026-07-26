@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ddca8ef013926408780e6e292bad16, type: 3}
+  m_Name: DemoElement_PointLights
+  m_EditorClassIdentifier: 
+  demoName: Point Lights
+  prefab: {fileID: 2481555142680936367, guid: 652fe95b32c65044eac665c93e5908f3, type: 3}
+  environment: {fileID: 11400000, guid: aca14662271bdc748ad059880a6d05e8, type: 2}
+  info: The asset supports all light types. This demo is also helpful to check that
+    the point lights and point light shadows work with your current project configuration.
+  directionalLightEnabled: 1
+  mainLightIntensity: 1
+  skyboxEnabled: 1
+  postProcessEnabled: 1

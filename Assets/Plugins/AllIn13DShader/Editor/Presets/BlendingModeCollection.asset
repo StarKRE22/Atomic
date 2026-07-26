@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4629d07b23a824a409376d81eaa9733c, type: 3}
+  m_Name: BlendingModeCollection
+  m_EditorClassIdentifier: 
+  presets:
+  - {fileID: 11400000, guid: 943e2fa1925ddb449a82703de72fe5d6, type: 2}
+  - {fileID: 11400000, guid: 97fbadbf86e6b1e429fd63e24df2f76b, type: 2}
+  - {fileID: 11400000, guid: 9262e4149365ae345b36846643e83a1a, type: 2}
