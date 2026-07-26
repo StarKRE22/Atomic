@@ -1,4 +1,4 @@
-# 🧩 SceneActionDefault&lt;T1, T2&gt;
+# 🧩 MonoActionConfigurable&lt;T1, T2&gt;
 
 Represents a scene-based composite action with <b>two parameters</b>. Attach to a `GameObject`, assign a list of
 [IAction\<T1, T2>](IAction%602.md) implementations in the Unity Inspector, and they will be
@@ -31,11 +31,11 @@ invoked sequentially. Supports Odin Inspector
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneActionDefault<T1, T2> : SceneActionAbstract<T1, T2>
+public abstract class MonoActionConfigurable<T1, T2> : MonoAction<T1, T2>
 ```
 
 - **Description:** Represents a scene-based composite action with <b>two parameters</b>.
-- **Inheritance:** [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md)
+- **Inheritance:** [MonoAction&lt;T1, T2&gt;](MonoAction%602.md)
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument

@@ -1,7 +1,7 @@
-# 🧩 SceneActionReference&lt;T1, T2&gt;
+# 🧩 MonoActionReference&lt;T1, T2&gt;
 
-A reference wrapper for a [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md) with <b>two parameters</b>.
-Assign a `SceneActionAbstract<T1, T2>` component in the Inspector and invoke it using `Invoke()`.
+A reference wrapper for a [MonoAction&lt;T1, T2&gt;](MonoAction%602.md) with <b>two parameters</b>.
+Assign a `MonoAction<T1, T2>` component in the Inspector and invoke it using `Invoke()`.
 
 ---
 
@@ -11,8 +11,8 @@ Assign a `SceneActionAbstract<T1, T2>` component in the Inspector and invoke it 
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
-        - [Constructor()](#sceneactionreference)
-        - [Constructor(SceneActionAbstract\<T1, T2>)](#sceneactionreferencesceneactionabstractt1-t2)
+        - [Constructor()](#monoactionreference)
+        - [Constructor(MonoAction\<T1, T2>)](#monoactionreferencemonoactionabstractt1-t2)
     - [Fields](#-fields)
         - [Action](#action)
     - [Methods](#-methods)
@@ -34,10 +34,10 @@ Assign a `SceneActionAbstract<T1, T2>` component in the Inspector and invoke it 
 
 ```csharp
 [Serializable]
-public sealed class SceneActionReference<T1, T2> : IAction<T1, T2>
+public sealed class MonoActionReference<T1, T2> : IAction<T1, T2>
 ```
 
-- **Description:** A reference wrapper for a [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md) with <b>two
+- **Description:** A reference wrapper for a [MonoAction&lt;T1, T2&gt;](MonoAction%602.md) with <b>two
   parameters</b>.
 - **Inheritance:** [IAction&lt;T1, T2&gt;](IAction%602.md)
 - **Type parameters:**
@@ -50,23 +50,23 @@ public sealed class SceneActionReference<T1, T2> : IAction<T1, T2>
 
 ### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `SceneActionReference()`
+#### `MonoActionReference()`
 
 ```csharp
-public SceneActionReference();
+public MonoActionReference();
 ```
 
 - **Description:** Default constructor, intended **only for use by the Unity Inspector**.
 - **Usage:** Required for Unity to serialize the reference in the Inspector.
 
-#### `SceneActionReference(SceneActionAbstract<T1, T2>)`
+#### `MonoActionReference(MonoAction<T1, T2>)`
 
 ```csharp
-public SceneActionReference(SceneActionAbstract<T1, T2> action);
+public MonoActionReference(MonoAction<T1, T2> action);
 ```
 
-- **Description:** Creates a new reference wrapping the specified `SceneActionAbstract<T1, T2>`.
-- **Parameter:** `action` — The `SceneActionAbstract<T1, T2>` to reference.
+- **Description:** Creates a new reference wrapping the specified `MonoAction<T1, T2>`.
+- **Parameter:** `action` — The `MonoAction<T1, T2>` to reference.
 
 ---
 
@@ -75,7 +75,7 @@ public SceneActionReference(SceneActionAbstract<T1, T2> action);
 #### `Action`
 
 ```csharp
-public SceneActionAbstract<T1, T2> action;
+public MonoAction<T1, T2> action;
 ```
 
 - **Description:** Reference to the scene action to invoke.

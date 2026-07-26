@@ -1,4 +1,4 @@
-# 🧩 SceneActionAbstract&lt;T&gt;
+# 🧩 MonoAction&lt;T&gt;
 
 Represents a scene action with <b>one parameter</b> that can be invoked.
 
@@ -16,7 +16,7 @@ Represents a scene action with <b>one parameter</b> that can be invoked.
 
 ## 🚀 Quick Start
 
-This example shows how to use `SceneActionAbstract<T>` to create an action that destroys objects when they enter a
+This example shows how to use `MonoAction<T>` to create an action that destroys objects when they enter a
 trigger.
 
 #### 1. Create `DestroyGameObjectAction`
@@ -24,7 +24,7 @@ trigger.
 
 ```csharp
 // This action takes a `GameObject` and destroys it:
-public sealed class DestroyGameObjectAction : SceneActionAbstract<GameObject>
+public sealed class DestroyGameObjectAction : MonoAction<GameObject>
 {
     public override void Invoke(GameObject go) => GameObject.Destroy(go);
 }
@@ -37,7 +37,7 @@ public sealed class DestroyGameObjectAction : SceneActionAbstract<GameObject>
 public sealed class ActionTrigger : MonoBehaviour
 {
     [SerializeField]
-    private SceneActionAbstract<GameObject> _action;
+    private MonoAction<GameObject> _action;
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -57,7 +57,7 @@ public sealed class ActionTrigger : MonoBehaviour
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneActionAbstract<T> : MonoBehaviour, IAction<T>
+public abstract class MonoAction<T> : MonoBehaviour, IAction<T>
 ```
 
 - **Description:** Represents a scene action with <b>one parameter</b> that can be invoked.

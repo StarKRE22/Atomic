@@ -1,4 +1,4 @@
-# 🧩 SceneActions Abstract
+# 🧩 MonoActions Abstract
 
 Define **scene-based actions** in Unity that implement the corresponding [IAction](IActions.md) interfaces.
 These abstract classes inherit from `MonoBehaviour`, allowing actions to be attached to GameObjects in a scene.
@@ -24,7 +24,7 @@ They serve as a base for **custom scene logic** and are designed to be subclasse
 ### 1️⃣ Non-generic action <div id="non-generic-action"></div>
 
 ```csharp
-public sealed class HelloWorldAction : SceneActionAbstract
+public sealed class HelloWorldAction : MonoAction
 {
     public override void Invoke() 
     {
@@ -38,7 +38,7 @@ public sealed class HelloWorldAction : SceneActionAbstract
 ### 2️⃣ Action with one parameter <div id="action-with-one-parameter"></div>
 
 ```csharp
-public sealed class DestroyGameObjectAction : SceneActionAbstract<GameObject>
+public sealed class DestroyGameObjectAction : MonoAction<GameObject>
 {
     public override void Invoke(GameObject go) 
     {
@@ -52,7 +52,7 @@ public sealed class DestroyGameObjectAction : SceneActionAbstract<GameObject>
 ### 3️⃣ Action with two parameters <div id="action-with-two-parameters"></div>
 
 ```csharp
-public sealed class DealDamageAction : SceneActionAbstract<Character, int>
+public sealed class DealDamageAction : MonoAction<Character, int>
 {
     public override void Invoke(Character character, int damage) 
     {
@@ -67,8 +67,8 @@ public sealed class DealDamageAction : SceneActionAbstract<Character, int>
 
 There are several classes of abstract scene actions, depending on the number of arguments the actions take:
 
-- [SceneActionAbstract](SceneActionAbstract.md) — Non-generic version; works without parameters.
-- [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md) — Action that takes one argument.
-- [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md) — Action that takes two arguments.
-- [SceneActionAbstract&lt;T1, T2, T3&gt;](SceneActionAbstract%603.md) — Action that takes three arguments.
-- [SceneActionAbstract&lt;T1, T2, T3, T4&gt;](SceneActionAbstract%604.md) — Action that takes four arguments.
+- [MonoAction](MonoAction.md) — Non-generic version; works without parameters.
+- [MonoAction&lt;T&gt;](MonoAction%601.md) — Action that takes one argument.
+- [MonoAction&lt;T1, T2&gt;](MonoAction%602.md) — Action that takes two arguments.
+- [MonoAction&lt;T1, T2, T3&gt;](MonoAction%603.md) — Action that takes three arguments.
+- [MonoAction&lt;T1, T2, T3, T4&gt;](MonoAction%604.md) — Action that takes four arguments.

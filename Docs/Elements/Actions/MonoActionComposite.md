@@ -1,4 +1,4 @@
-# 🧩 SceneActionComposite
+# 🧩 MonoActionComposite
 
 Represents a <b>parameterless</b> composite scene action that can be invoked.
 
@@ -19,17 +19,17 @@ Represents a <b>parameterless</b> composite scene action that can be invoked.
 
 ## 🗂 Example of Usage
 
-**SceneActionComposite** can be used similarly to [SceneActionDefault](SceneActionDefault.md) but is **strictly a
-composite container for `SceneActionAbstract`**.
+**MonoActionComposite** can be used similarly to [MonoActionConfigurable](MonoActionConfigurable.md) but is **strictly a
+composite container for `MonoAction`**.
 
 #### 1. Add the `Atomic/Elements/Action Composite` component to a `GameObject`.
 
-<img src="../../Images/SceneActionComposite.png" alt="SceneActionComposite example" width="" height="100">
+<img src="../../Images/SceneActionComposite.png" alt="MonoActionComposite example" width="" height="100">
 
 #### 2. Assign `HelloWorldSceneAction` component to the **Actions** array in the Inspector.
 
 ```csharp
-public sealed class HelloWorldSceneAction : SceneActionAbstract
+public sealed class HelloWorldSceneAction : MonoAction
 {
     public override void Invoke() => Debug.Log("Hello world");
 }
@@ -43,14 +43,14 @@ public sealed class HelloWorldSceneAction : SceneActionAbstract
 
 ```csharp
 [AddComponentMenu("Atomic/Elements/Action Composite")]
-public class SceneActionComposite : SceneActionAbstract
+public class MonoActionComposite : MonoAction
 ```
 
 - **Description:** Represents a <b>parameterless</b> composite scene action that can be invoked.
-- **Inheritance:** [SceneActionAbstract](SceneActionAbstract.md)
+- **Inheritance:** [MonoAction](MonoAction.md)
 - **Notes:**
     - Supports Odin Inspector
-    - Attach to a `GameObject`, assign a list of `SceneActionAbstract` implementations in the Inspector, and they
+    - Attach to a `GameObject`, assign a list of `MonoAction` implementations in the Inspector, and they
       will be invoked sequentially.
 
 ---
@@ -68,7 +68,7 @@ public class SceneActionComposite : SceneActionAbstract
 #### `Actions`
 
 ```csharp
-public SceneActionAbstract[] actions;
+public MonoAction[] actions;
 ```
 
 - **Description:** The array of scene actions to invoke in order.

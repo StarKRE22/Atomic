@@ -1,4 +1,4 @@
-# 🧩 SceneActionAbstract&lt;T1, T2, T3&gt;
+# 🧩 MonoAction&lt;T1, T2, T3&gt;
 
 Represents a scene action with **three parameters**.
 
@@ -18,7 +18,7 @@ Represents a scene action with **three parameters**.
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneActionAbstract<T1, T2, T3> : MonoBehaviour, IAction<T1, T2, T3>
+public abstract class MonoAction<T1, T2, T3> : MonoBehaviour, IAction<T1, T2, T3>
 ```
 - **Description:** Represents a scene action with **three parameters**.
 - **Inheritance:** `MonoBehaviour`, [IAction&lt;T1, T2, T3&gt;](IAction%603.md)

@@ -1,4 +1,4 @@
-# 🧩 SceneActionAbstract
+# 🧩 MonoAction
 
 Represents a <b>parameterless</b> scene action that can be invoked.
 
@@ -16,7 +16,7 @@ Represents a <b>parameterless</b> scene action that can be invoked.
 
 ## 🚀 Quick Start
 
-This example demonstrates how to create a simple action based on `SceneActionAbstract` and run it from a `GameStartup`
+This example demonstrates how to create a simple action based on `MonoAction` and run it from a `GameStartup`
 script in Unity.
 
 #### 1. Create `HelloWorldAction`
@@ -24,7 +24,7 @@ script in Unity.
 
 ```csharp
 // Here we implement a simple action that prints `Hello World!` when invoked:
-public sealed class HelloWorldAction : SceneActionAbstract
+public sealed class HelloWorldAction : MonoAction
 {
     public override void Invoke() => Debug.Log("Hello World!");
 }
@@ -38,7 +38,7 @@ public sealed class HelloWorldAction : SceneActionAbstract
 public sealed class GameStartup : MonoBehaviour
 {
     [SerializeField]
-    private SceneActionAbstract _action;
+    private MonoAction _action;
 
     private void Start()
     {
@@ -64,7 +64,7 @@ public sealed class GameStartup : MonoBehaviour
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneActionAbstract : MonoBehaviour, IAction
+public abstract class MonoAction : MonoBehaviour, IAction
 ```
 
 - **Description:** Represents a <b>parameterless</b> scene action that can be invoked.

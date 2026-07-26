@@ -1,4 +1,4 @@
-# 🧩 SceneActionAbstract&lt;T1, T2&gt;
+# 🧩 MonoAction&lt;T1, T2&gt;
 
 Represents a scene action with <b>two parameters</b> that can be invoked.
 
@@ -16,10 +16,10 @@ Represents a scene action with <b>two parameters</b> that can be invoked.
 
 ## 🗂 Example of Usage
 
-This example shows how to use `SceneActionAbstract<T1, T2>` to apply damage to a character.
+This example shows how to use `MonoAction<T1, T2>` to apply damage to a character.
 
 ```csharp
-public sealed class DealDamageAction : SceneActionAbstract<Character, int>
+public sealed class DealDamageAction : MonoAction<Character, int>
 {
     public override void Invoke(Character character, int damage)
     {
@@ -35,7 +35,7 @@ public sealed class DealDamageAction : SceneActionAbstract<Character, int>
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneActionAbstract<T1, T2> : MonoBehaviour, IAction<T1, T2>
+public abstract class MonoAction<T1, T2> : MonoBehaviour, IAction<T1, T2>
 ```
 
 - **Description:** Represents a scene action with <b>two parameters</b> that can be invoked.

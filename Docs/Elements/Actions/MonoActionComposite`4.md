@@ -1,4 +1,4 @@
-# 🧩 SceneActionComposite&lt;T1, T2, T3, T4&gt;
+# 🧩 MonoActionComposite&lt;T1, T2, T3, T4&gt;
 
 Composite scene action with **four parameters**.
 
@@ -21,11 +21,11 @@ Composite scene action with **four parameters**.
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, T3, T4>
+public class MonoActionComposite<T1, T2, T3, T4> : MonoAction<T1, T2, T3, T4>
 ```
 
 - **Description:** Composite scene action with **four parameters**.
-- **Inheritance:** [SceneActionAbstract&lt;T1, T2, T3, T4&gt;](SceneActionAbstract%604.md)
+- **Inheritance:** [MonoAction&lt;T1, T2, T3, T4&gt;](MonoAction%604.md)
 - **Type parameters:**
     - `T1` — first argument
     - `T2` — second argument
@@ -33,7 +33,7 @@ public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, 
     - `T4` — fourth argument
 - **Notes:**
   - Supports Odin Inspector
-  - Attach to a `GameObject`, assign a list of `SceneActionAbstract<T1, T2, T3, T4>` implementations in the Inspector, and
+  - Attach to a `GameObject`, assign a list of `MonoAction<T1, T2, T3, T4>` implementations in the Inspector, and
     they will be invoked sequentially.
 ---
 
@@ -50,7 +50,7 @@ public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, 
 #### `Actions`
 
 ```csharp
-public SceneActionComposite<T1, T2, T3, T4>[] actions;
+public MonoActionComposite<T1, T2, T3, T4>[] actions;
 ```
 
 - **Description:** The array of scene actions to invoke in order.

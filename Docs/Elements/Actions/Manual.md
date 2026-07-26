@@ -13,7 +13,7 @@ logic in a clean, reusable way.
     - [IAction](#iaction)
     - [InlineAction](#inlineaction)
     - [CompositeAction](#compositeaction)
-    - [SceneActionAbstract](#sceneactionabstractt)
+    - [MonoAction](#monoactiont)
 - [API Reference](#-api-reference)
 - [Best Practices](#-best-practices)
 
@@ -57,10 +57,10 @@ composite.Invoke();
 // Action 2
 ```
 
-#### `SceneActionAbstract<T>`
+#### `MonoAction<T>`
 
 ```csharp
-public sealed class DestroyGameObjectAction : SceneActionAbstract<GameObject>
+public sealed class DestroyGameObjectAction : MonoAction<GameObject>
 {
     public override void Invoke(GameObject go) 
     {
@@ -116,39 +116,39 @@ There are several abstractions of actions, depending on the number of arguments 
 
 <li>
 <details>
-  <summary><a href="SceneActionsAbstract.md">SceneActionsAbstract</a></summary>
+  <summary><a href="MonoActions.md">MonoActions</a></summary>
   <ul>
-    <li><a href="SceneActionAbstract.md">SceneActionAbstract</a></li>
-    <li><a href="SceneActionAbstract%601.md">SceneActionAbstract&lt;T&gt;</a></li>
-    <li><a href="SceneActionAbstract%602.md">SceneActionAbstract&lt;T1, T2&gt;</a></li>
-    <li><a href="SceneActionAbstract%603.md">SceneActionAbstract&lt;T1, T2, T3&gt;</a></li>
-    <li><a href="SceneActionAbstract%604.md">SceneActionAbstract&lt;T1, T2, T3, T4&gt;</a></li>
+    <li><a href="MonoAction.md">MonoAction</a></li>
+    <li><a href="MonoAction%601.md">MonoAction&lt;T&gt;</a></li>
+    <li><a href="MonoAction%602.md">MonoAction&lt;T1, T2&gt;</a></li>
+    <li><a href="MonoAction%603.md">MonoAction&lt;T1, T2, T3&gt;</a></li>
+    <li><a href="MonoAction%604.md">MonoAction&lt;T1, T2, T3, T4&gt;</a></li>
   </ul>
 </details>
 </li>
 
 <li>
 <details>
-  <summary><a href="SceneActionsDefault.md">SceneActionsDefault</a></summary>
+  <summary><a href="MonoActionsConfigurable.md">MonoActionsConfigurable</a></summary>
   <ul>
-    <li><a href="SceneActionDefault.md">SceneActionDefault</a></li>
-    <li><a href="SceneActionDefault%601.md">SceneActionDefault&lt;T&gt;</a></li>
-    <li><a href="SceneActionDefault%602.md">SceneActionDefault&lt;T1, T2&gt;</a></li>
-    <li><a href="SceneActionDefault%603.md">SceneActionDefault&lt;T1, T2, T3&gt;</a></li>
-    <li><a href="SceneActionDefault%604.md">SceneActionDefault&lt;T1, T2, T3, T4&gt;</a></li>
+    <li><a href="MonoActionConfigurable.md">MonoActionConfigurable</a></li>
+    <li><a href="MonoActionConfigurable%601.md">MonoActionConfigurable&lt;T&gt;</a></li>
+    <li><a href="MonoActionConfigurable%602.md">MonoActionConfigurable&lt;T1, T2&gt;</a></li>
+    <li><a href="MonoActionConfigurable%603.md">MonoActionConfigurable&lt;T1, T2, T3&gt;</a></li>
+    <li><a href="MonoActionConfigurable%604.md">MonoActionConfigurable&lt;T1, T2, T3, T4&gt;</a></li>
   </ul>
 </details>
 </li>
 
 <li>
 <details>
-  <summary><a href="SceneActionsComposite.md">SceneActionsComposite</a></summary>
+  <summary><a href="MonoActionsComposite.md">MonoActionsComposite</a></summary>
   <ul>
-    <li><a href="SceneActionComposite.md">SceneActionComposite</a></li>
-    <li><a href="SceneActionComposite%601.md">SceneActionComposite&lt;T&gt;</a></li>
-    <li><a href="SceneActionComposite%602.md">SceneActionComposite&lt;T1, T2&gt;</a></li>
-    <li><a href="SceneActionComposite%603.md">SceneActionComposite&lt;T1, T2, T3&gt;</a></li>
-    <li><a href="SceneActionComposite%604.md">SceneActionComposite&lt;T1, T2, T3, T4&gt;</a></li>
+    <li><a href="MonoActionComposite.md">MonoActionComposite</a></li>
+    <li><a href="MonoActionComposite%601.md">MonoActionComposite&lt;T&gt;</a></li>
+    <li><a href="MonoActionComposite%602.md">MonoActionComposite&lt;T1, T2&gt;</a></li>
+    <li><a href="MonoActionComposite%603.md">MonoActionComposite&lt;T1, T2, T3&gt;</a></li>
+    <li><a href="MonoActionComposite%604.md">MonoActionComposite&lt;T1, T2, T3, T4&gt;</a></li>
   </ul>
 </details>
 </li>
@@ -156,13 +156,13 @@ There are several abstractions of actions, depending on the number of arguments 
 <li>
 
 <details>
-  <summary><a href="SceneActionsReference.md">SceneActionsReference</a></summary>
+  <summary><a href="MonoActionsReference.md">MonoActionsReference</a></summary>
   <ul>
-    <li><a href="SceneActionReference.md">SceneActionReference</a></li>
-    <li><a href="SceneActionReference%601.md">SceneActionReference&lt;T&gt;</a></li>
-    <li><a href="SceneActionReference%602.md">SceneActionReference&lt;T1, T2&gt;</a></li>
-    <li><a href="SceneActionReference%603.md">SceneActionReference&lt;T1, T2, T3&gt;</a></li>
-    <li><a href="SceneActionReference%604.md">SceneActionReference&lt;T1, T2, T3, T4&gt;</a></li>
+    <li><a href="MonoActionReference.md">MonoActionReference</a></li>
+    <li><a href="MonoActionReference%601.md">MonoActionReference&lt;T&gt;</a></li>
+    <li><a href="MonoActionReference%602.md">MonoActionReference&lt;T1, T2&gt;</a></li>
+    <li><a href="MonoActionReference%603.md">MonoActionReference&lt;T1, T2, T3&gt;</a></li>
+    <li><a href="MonoActionReference%604.md">MonoActionReference&lt;T1, T2, T3, T4&gt;</a></li>
   </ul>
 </details> 
 </li>

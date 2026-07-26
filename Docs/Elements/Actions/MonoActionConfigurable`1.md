@@ -1,4 +1,4 @@
-# 🧩 SceneActionDefault&lt;T&gt;
+# 🧩 MonoActionConfigurable&lt;T&gt;
 
 Represents a scene-based composite action with <b>one parameter</b>.
 Attach to a `GameObject`, assign a list of [IAction\<T>](IAction%601.md) implementations in the Unity Inspector, 
@@ -21,15 +21,15 @@ and they will be invoked sequentially. Supports Odin Inspector.
 
 ## 🚀 Quick Start
 
-#### 1. Create a `GameObjectSceneActionDefault` component
+#### 1. Create a `GameObjectMonoActionConfigurable` component
 
 ```csharp
-public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject>
+public sealed class GameObjectMonoActionConfigurable : MonoActionConfigurable<GameObject>
 {
 }
 ```
 
-#### 2. Add the `GameObjectSceneActionDefault` component to a `GameObject`
+#### 2. Add the `GameObjectMonoActionConfigurable` component to a `GameObject`
 
 <img src="../../Images/GameObjectSceneActionDefault.png" alt="GameObjectSceneActionDefault component" width="380" height="74">
 
@@ -43,7 +43,7 @@ public sealed class DestroyGameObjectAction : IAction<GameObject>
 }
 ```
 
-#### 4. Assign `DestroyGameObjectAction` to the **Actions** parameter of the `GameObjectSceneActionDefault` component
+#### 4. Assign `DestroyGameObjectAction` to the **Actions** parameter of the `GameObjectMonoActionConfigurable` component
 
 <img src="../../Images/GameObjectSceneActionDefault_WithAction.png" alt="GameObjectSceneActionDefault with Destroy action" height="95">
 
@@ -62,11 +62,11 @@ public sealed class DestroyGameObjectAction : IAction<GameObject>
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneActionDefault<T> : SceneActionAbstract<T>
+public abstract class MonoActionConfigurable<T> : MonoAction<T>
 ```
 
 - **Description:** Represents a scene-based composite action with <b>one parameter</b>.
-- **Inheritance:** [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md)
+- **Inheritance:** [MonoAction&lt;T&gt;](MonoAction%601.md)
 - **Type parameter:** `T` — the input argument type.
 
 

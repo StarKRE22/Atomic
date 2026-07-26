@@ -1,7 +1,7 @@
-# 🧩 SceneActions Default
+# 🧩 MonoActions Configurable
 
 Implement the [IAction](IActions.md) interfaces and inherit
-from [SceneActionAbstract](SceneActionsAbstract.md). It allows game designers to build **composite actions directly in
+from [MonoAction](MonoActions.md). It allows game designers to build **composite actions directly in
 the Unity scene** — chaining multiple action instances, including generic variants, without writing
 additional code.
 
@@ -20,28 +20,28 @@ additional code.
 ## 🗂 Examples of Usage
 
 For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene,
-`SceneAction` combined with `[SerializeReference]` is very convenient.
+`MonoAction` combined with `[SerializeReference]` is very convenient.
 
 ---
 
 ### 1️⃣ Non-generic action <div id="non-generic-action"></div>
 
-Below is an example of using [SceneActionDefault](SceneActionDefault.md)
+Below is an example of using [MonoActionConfigurable](MonoActionConfigurable.md)
 
 #### 1. Add the `Atomic/Elements/Action` component.
 
-<img src="../../Images/SceneAction.png" alt="SceneAction example" width="384" height="137">
+<img src="../../Images/SceneAction.png" alt="MonoAction example" width="384" height="137">
 
 #### 2. In the **Inspector**, assign the [PrintAction](PrintAction.md) value to the `Action` parameter.
 
-#### 3. Use [SceneActionDefault](SceneActionDefault.md) as [SceneActionAbstract](SceneActionAbstract.md) in your components.
+#### 3. Use [MonoActionConfigurable](MonoActionConfigurable.md) as [MonoAction](MonoAction.md) in your components.
 
 ```csharp
-// Example of usage "SceneActionDefault"
+// Example of usage "MonoActionConfigurable"
 public sealed class GameStartup : MonoBehaviour
 {
     [SerializeField] 
-    private SceneActionAbstract _startup;
+    private MonoAction _startup;
 
     private void Start() => _startup.Invoke();
 }
@@ -51,20 +51,20 @@ public sealed class GameStartup : MonoBehaviour
 
 ### 2️⃣ Generic action <div id="generic-action"></div>
 
-Below is an example of using `SceneActionDefault<T>` with a `GameObject`.
+Below is an example of using `MonoActionConfigurable<T>` with a `GameObject`.
 
-#### 1. Create a `GameObjectSceneActionDefault` component
+#### 1. Create a `GameObjectMonoActionConfigurable` component
 
 ```csharp
 using Atomic.Elements;
 using UnityEngine;
 
-public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject>
+public sealed class GameObjectMonoActionConfigurable : MonoActionConfigurable<GameObject>
 {
 }
 ```
 
-#### 2. Add the `GameObjectSceneActionDefault` component to a `GameObject`
+#### 2. Add the `GameObjectMonoActionConfigurable` component to a `GameObject`
 
 <img src="../../Images/GameObjectSceneActionDefault.png" alt="GameObjectSceneActionDefault component" width="380" height="74">
 
@@ -78,7 +78,7 @@ public sealed class DestroyGameObjectAction : IAction<GameObject>
 }
 ```
 
-#### 4. Assign `DestroyGameObjectAction` to the **Actions** parameter of the `GameObjectSceneActionDefault` component
+#### 4. Assign `DestroyGameObjectAction` to the **Actions** parameter of the `GameObjectMonoActionConfigurable` component
 
 <img src="../../Images/GameObjectSceneActionDefault_WithAction.png" alt="GameObjectSceneActionDefault with Destroy action" height="95">
 
@@ -88,11 +88,11 @@ public sealed class DestroyGameObjectAction : IAction<GameObject>
 
 There are several implementations of default scene actions, depending on the number of arguments the actions take:
 
-- [SceneActionDefault](SceneActionDefault.md) — Non-generic version; works without parameters.
-- [SceneActionDefault&lt;T&gt;](SceneActionDefault%601.md) — Action that takes one argument.
-- [SceneActionDefault&lt;T1, T2&gt;](SceneActionDefault%602.md) — Action that takes two arguments.
-- [SceneActionDefault&lt;T1, T2, T3&gt;](SceneActionDefault%603.md) — Action that takes three arguments.
-- [SceneActionDefault&lt;T1, T2, T3, T4&gt;](SceneActionDefault%604.md) — Action that takes four arguments.
+- [MonoActionConfigurable](MonoActionConfigurable.md) — Non-generic version; works without parameters.
+- [MonoActionConfigurable&lt;T&gt;](MonoActionConfigurable%601.md) — Action that takes one argument.
+- [MonoActionConfigurable&lt;T1, T2&gt;](MonoActionConfigurable%602.md) — Action that takes two arguments.
+- [MonoActionConfigurable&lt;T1, T2, T3&gt;](MonoActionConfigurable%603.md) — Action that takes three arguments.
+- [MonoActionConfigurable&lt;T1, T2, T3, T4&gt;](MonoActionConfigurable%604.md) — Action that takes four arguments.
 
 ---
 
@@ -103,7 +103,7 @@ There are several implementations of default scene actions, depending on the num
 > Null references are automatically skipped, making partially configured lists safe to use.
 
 > [!TIP]
-> In essence, **SceneActionDefault** acts as a **container of actions**, executing them sequentially as configured in
+> In essence, **MonoActionConfigurable** acts as a **container of actions**, executing them sequentially as configured in
 > the **Inspector** through `[SerializeReference]`.
 
 > [!WARNING]

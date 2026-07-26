@@ -1,4 +1,4 @@
-# 🧩 SceneActionDefault
+# 🧩 MonoActionConfigurable
 
 Represents a <b>parameterless</b> composite scene action that can be invoked. Attach to a `GameObject`, assign a list of
 [IAction](IAction.md) implementations in the Unity Inspector, and they will be invoked sequentially. Supports Odin Inspector.
@@ -22,18 +22,18 @@ Represents a <b>parameterless</b> composite scene action that can be invoked. At
 
 #### 1. Add the `Atomic/Elements/Action` component.
 
-<img src="../../Images/SceneAction.png" alt="SceneAction example" width="384" height="137">
+<img src="../../Images/SceneAction.png" alt="MonoAction example" width="384" height="137">
 
 #### 2. In the **Inspector**, assign the `PrintAction` value to the `Action` parameter.
 
-#### 3. Use `SceneActionDefault` as `SceneActionAbstract` in your components.
+#### 3. Use `MonoActionConfigurable` as `MonoAction` in your components.
 
 ```csharp
-// Example of usage "SceneActionDefault"
+// Example of usage "MonoActionConfigurable"
 public sealed class GameStartup : MonoBehaviour
 {
     [SerializeField] 
-    private SceneActionAbstract _startup;
+    private MonoAction _startup;
 
     private void Start() => _startup.Invoke();
 }
@@ -55,11 +55,11 @@ public sealed class GameStartup : MonoBehaviour
 
 ```csharp
 [AddComponentMenu("Atomic/Elements/Action")]
-public class SceneActionDefault : SceneActionAbstract
+public class MonoActionConfigurable : MonoAction
 ```
 
 - **Description:** Represents a <b>parameterless</b> composite scene action that can be invoked.
-- **Inheritance:** [SceneActionAbstract](SceneActionAbstract.md)
+- **Inheritance:** [MonoAction](MonoAction.md)
 
 ---
 
