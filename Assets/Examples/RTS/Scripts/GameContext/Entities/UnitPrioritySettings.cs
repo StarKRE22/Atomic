@@ -5,7 +5,7 @@ using UnityEngine;
 namespace RTSGame
 {
     [Serializable]
-    public sealed class UnitPrioritySettings : GameEntitySystemSettings
+    public sealed class UnitPrioritySettings : EntitySystemBase<IGameEntity>.Settings
     {
         [Header("Distance")]
         public float highDistance = 200f;

@@ -38,7 +38,7 @@ namespace Atomic.Entities
             _entities = new E[Math.Max(4, initialCapacity)];
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             Array.Clear(_entities, 0, _entityCount);
             _lookup.Clear();

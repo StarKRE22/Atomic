@@ -4,7 +4,7 @@ using Atomic.Entities;
 namespace RTSGame
 {
     [Serializable]
-    public sealed class AttackTargetSystem : FixedTickPriorityGameEntitySystem
+    public sealed class AttackTargetSystem : PriorityGameEntitySystem
     {
         public AttackTargetSystem(
             IGameContext context,

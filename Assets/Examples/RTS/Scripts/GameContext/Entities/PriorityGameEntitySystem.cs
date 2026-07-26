@@ -5,9 +5,9 @@ using UnityEngine;
 namespace RTSGame
 {
     [Serializable]
-    public abstract class FixedTickPriorityGameEntitySystem : PriorityEntitySystem<IGameEntity>
+    public abstract class PriorityGameEntitySystem : PriorityEntitySystem<IGameEntity>
     {
-        protected FixedTickPriorityGameEntitySystem(
+        protected PriorityGameEntitySystem(
             IReadOnlyEntityCollection<IGameEntity> source,
             GamePriorityEntitySystemSettings settings)
             : base(source, settings)

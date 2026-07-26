@@ -51,29 +51,13 @@ namespace RTSGame
             context.AddEntityWorld(entityWorld);
             context.AddEntitySpace(new SpatialGrid2D<IGameEntity>(sizeX, sizeY, cellSize));
 
-            UnitPrioritySystem unitPrioritySystem = new(context, _unitPrioritySettings);
-            AttackTargetSystem attackTargetSystem = new(context, _attackTargetSettings);
-            DetectTargetSystem detectTargetSystem = new(context, _detectTargetSettings);
-            MoveUnitSystem moveUnitSystem = new(context, _moveUnitSettings);
-            FireUnitsSystem fireUnitsSystem = new(context, _fireUnitsSettings);
-            ProjectileMoveSystem projectileMoveSystem = new(context, _projectileMoveSettings);
-            ProjectileLifetimeSystem projectileLifetimeSystem = new(context, _projectileLifetimeSettings);
-
-            context.AddFixedSystem(unitPrioritySystem);
-            context.AddFixedSystem(attackTargetSystem);
-            context.AddFixedSystem(detectTargetSystem);
-            context.AddFixedSystem(moveUnitSystem);
-            context.AddFixedSystem(fireUnitsSystem);
-            context.AddFixedSystem(projectileMoveSystem);
-            context.AddFixedSystem(projectileLifetimeSystem);
-
-            context.WhenDispose(unitPrioritySystem.Dispose);
-            context.WhenDispose(attackTargetSystem.Dispose);
-            context.WhenDispose(detectTargetSystem.Dispose);
-            context.WhenDispose(moveUnitSystem.Dispose);
-            context.WhenDispose(fireUnitsSystem.Dispose);
-            context.WhenDispose(projectileMoveSystem.Dispose);
-            context.WhenDispose(projectileLifetimeSystem.Dispose);
+            context.AddFixedSystem(new UnitPrioritySystem(context, _unitPrioritySettings));
+            context.AddFixedSystem(new AttackTargetSystem(context, _attackTargetSettings));
+            context.AddFixedSystem(new DetectTargetSystem(context, _detectTargetSettings));
+            context.AddFixedSystem(new MoveUnitSystem(context, _moveUnitSettings));
+            context.AddFixedSystem(new FireUnitsSystem(context, _fireUnitsSettings));
+            context.AddFixedSystem(new ProjectileMoveSystem(context, _projectileMoveSettings));
+            context.AddFixedSystem(new ProjectileLifetimeSystem(context, _projectileLifetimeSettings));
 
             entityWorld.BindTo(context);
         }

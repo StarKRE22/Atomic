@@ -5,7 +5,7 @@ using UnityEngine;
 namespace RTSGame
 {
     [Serializable]
-    public sealed class MoveUnitSystem : FixedTickPriorityGameEntitySystem
+    public sealed class MoveUnitSystem : PriorityGameEntitySystem
     {
         public MoveUnitSystem(
             IGameContext context,

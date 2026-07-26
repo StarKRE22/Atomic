@@ -574,7 +574,7 @@ namespace Atomic.Entities
 
         #endregion
 
-        public void Dispose()
+        public override void Dispose()
         {
             Array.Clear(_lowEntities, 0, _lowEntityCount);
             Array.Clear(_midEntities, 0, _midEntityCount);

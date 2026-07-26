@@ -10,7 +10,8 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public abstract class EntitySystemBase<E> where E : IEntity
+    public abstract class EntitySystemBase<E> : IDisposable
+        where E : IEntity
     {
         [Serializable]
         public class Settings
@@ -132,5 +133,7 @@ namespace Atomic.Entities
         protected virtual void OnRemoveEntity(E entity)
         {
         }
+
+        public abstract void Dispose();
     }
 }
