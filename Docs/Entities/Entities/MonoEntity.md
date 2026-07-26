@@ -1,4 +1,4 @@
-# 🧩️ SceneEntity
+# 🧩️ MonoEntity
 
 Represents Unity implementation of the entity. It allows installation from the Unity
 Scene and composition through the Inspector or installers. Supports Unity serialization and Odin Inspector.
@@ -60,7 +60,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 
  ```csharp
 //Populates entity with tags, values and behaviours
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private Transform _transform;
     [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
@@ -103,7 +103,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 [AddComponentMenu("Atomic/Entities/Entity")]
 [DisallowMultipleComponent]
 [DefaultExecutionOrder(-1000)]
-public partial class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
+public partial class MonoEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
 ```
 
 - **Inheritance:** [IEntity](IEntity.md), `MonoBehaviour`, `ISerializationCallbackReceiver`
@@ -112,20 +112,20 @@ public partial class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbac
 
 ## 🧩 Modules
 
-Each module represents a logical subset of the `SceneEntity` class. Click the links to dive deeper into each section:
+Each module represents a logical subset of the `MonoEntity` class. Click the links to dive deeper into each section:
 
-- [Core](SceneEntityCore.md) — Represents the fundamental identity and state of the entity
-- [Tags](SceneEntityTags.md) — Manage lightweight categorization and filtering of entities
-- [Values](SceneEntityValues.md) — Manage dynamic key-value storage for the entity
-- [Behaviours](SceneEntityBehaviours.md) — Manage modular logic attached to the entity
-- [Lifecycle](SceneEntityLifecycle.md) — Manages the entity's state transitions and update phases
-- [Installing](SceneEntityInstalling.md) — Provides entity configuration with tags, values and behaviours
-- [Gizmos](SceneEntityGizmos.md) — Provides gizmo drawing functionality
-- [Debug](SceneEntityDebug.md) — Represents debug properties
-- [Editor](SceneEntityEditor.md) — Provides editor-time lifecycle support
-- [Creation](SceneEntityCreation.md) — Allows you to create entities at runtime
-- [Destruction](SceneEntityDestruction.md) — Destroys the game objects with entities
-- [Casting](SceneEntityCasting.md) — Provides safe casting between `IEntity` to `SceneEntity`
+- [Core](MonoEntityCore.md) — Represents the fundamental identity and state of the entity
+- [Tags](MonoEntityTags.md) — Manage lightweight categorization and filtering of entities
+- [Values](MonoEntityValues.md) — Manage dynamic key-value storage for the entity
+- [Behaviours](MonoEntityBehaviours.md) — Manage modular logic attached to the entity
+- [Lifecycle](MonoEntityLifecycle.md) — Manages the entity's state transitions and update phases
+- [Installing](MonoEntityInstalling.md) — Provides entity configuration with tags, values and behaviours
+- [Gizmos](MonoEntityGizmos.md) — Provides gizmo drawing functionality
+- [Debug](MonoEntityDebug.md) — Represents debug properties
+- [Editor](MonoEntityEditor.md) — Provides editor-time lifecycle support
+- [Creation](MonoEntityCreation.md) — Allows you to create entities at runtime
+- [Destruction](MonoEntityDestruction.md) — Destroys the game objects with entities
+- [Casting](MonoEntityCasting.md) — Provides safe casting between `IEntity` to `MonoEntity`
 
 ---
 
@@ -144,12 +144,12 @@ Each module represents a logical subset of the `SceneEntity` class. Click the li
 - **Unity Lifecycle Integration** – Hooks into Awake, Start, OnEnable, OnDisable, and OnDestroy.
 - **Gizmos Support** – Conditional drawing in Scene view.
 - **Prefab & Factory Support** – Creation, instantiation, and destruction of entities.
-- **Casting & Proxies** – Safe conversion between [IEntity](IEntity.md), `SceneEntity`
-  and [SceneEntityProxy](SceneEntityProxies.md).
+- **Casting & Proxies** – Safe conversion between [IEntity](IEntity.md), `MonoEntity`
+  and [MonoEntityProxy](MonoEntityProxies.md).
 - **Scene-Wide Installation** – Can install all SceneEntities in a scene.
 - **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
 - **Not Thread Safe** — All operations should be performed on the main Unity thread.
-- `SceneEntity` is Unity-specific
+- `MonoEntity` is Unity-specific
 - Default execution order is `-1000` (runs early)
 - `[DisallowMultipleComponent]` prevents multiple entities per `GameObject`
 

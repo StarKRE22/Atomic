@@ -75,7 +75,7 @@ public IEnumerable<IEntityBehaviour> behaviours;
 #### `SceneInstallers`
 
 ```csharp
-public List<SceneEntityInstaller> sceneInstallers;
+public List<MonoEntityInstaller> sceneInstallers;
 ```
 
 - **Description:** Optional **MonoBehaviour installers** to run in the scene.
@@ -91,7 +91,7 @@ public List<ScriptableEntityInstaller> scriptableInstallers;
 #### `Children`
 
 ```csharp
-public List<SceneEntity> children;
+public List<MonoEntity> children;
 ```
 
 - **Description:** Optional child entities attached to this entity.

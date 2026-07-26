@@ -1,4 +1,4 @@
-# 🧩 SceneEntity Lifecycle
+# 🧩 MonoEntity Lifecycle
 
 Manage the entity's state transitions and update phases. It covers initialization, enabling,
 per-frame updates, disabling, and disposal.
@@ -52,7 +52,7 @@ per-frame updates, disabling, and disposal.
 
 ```csharp
 // Assume we have an instance of entity
-SceneEntity entity = ...
+MonoEntity entity = ...
 
 // Subscribe to lifecycle events
 entity.OnInitialized += () => Console.WriteLine("Entity initialized");
@@ -76,7 +76,7 @@ if (entity.Enabled)
 }
 ```
 
-Control the `SceneEntity` manually if `useUnityLifecycle` toggle is disabled
+Control the `MonoEntity` manually if `useUnityLifecycle` toggle is disabled
 
 ```csharp
 // Initialize and enable the entity 
@@ -112,7 +112,7 @@ entity.Dispose();
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial class SceneEntity
+public partial class MonoEntity
 ```
 
 ---
@@ -314,6 +314,6 @@ public void Dispose()
 protected virtual void OnDispose()  
 ```
 
-- **Description:**  Called during the disposal process of a `SceneEntity`. Provides a hook for derived classes to
+- **Description:**  Called during the disposal process of a `MonoEntity`. Provides a hook for derived classes to
   execute custom cleanup logic when the entity is being disposed.
 - **Notes:** This method is invoked by `Dispose()`

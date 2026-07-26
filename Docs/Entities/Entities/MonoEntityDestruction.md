@@ -1,4 +1,4 @@
-# 🧩 SceneEntity Destruction
+# 🧩 MonoEntity Destruction
 
 Provides methods of how to destroy entities at runtime.
 
@@ -11,7 +11,7 @@ Provides methods of how to destroy entities at runtime.
     - [Type](#-type)
     - [Static Methods](#-static-methods)
         - [Destroy(IEntity, float)](#destroyientity-float)
-        - [Destroy(SceneEntity, float)](#destroysceneentity-float)
+        - [Destroy(MonoEntity, float)](#destroyMonoEntity-float)
 
 ---
 
@@ -19,7 +19,7 @@ Provides methods of how to destroy entities at runtime.
 
 ```csharp
 // Destroys entity after 3 seconds
-SceneEntity.Destroy(sceneEntity, 3f);
+MonoEntity.Destroy(MonoEntity, 3f);
 ```
 
 ---
@@ -29,7 +29,7 @@ SceneEntity.Destroy(sceneEntity, 3f);
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial class SceneEntity
+public partial class MonoEntity
 ```
 
 ---
@@ -42,20 +42,20 @@ public partial class SceneEntity
 public static void Destroy(IEntity entity, float t = 0)  
 ```
 
-- **Description:** Destroys the associated `GameObject` of the specified `IEntity` if it can be cast to a `SceneEntity`.
+- **Description:** Destroys the associated `GameObject` of the specified `IEntity` if it can be cast to a `MonoEntity`.
 - **Parameters:**
     - `entity` – The entity whose `GameObject` should be destroyed.
     - `t` – Optional delay in seconds before destruction. Defaults to `0`.
-- **Note:** Internally casts the `IEntity` to `SceneEntity` before destroying.
+- **Note:** Internally casts the `IEntity` to `MonoEntity` before destroying.
 
-#### `Destroy(SceneEntity, float)`
+#### `Destroy(MonoEntity, float)`
 
 ```csharp
-public static void Destroy(SceneEntity entity, float t = 0)  
+public static void Destroy(MonoEntity entity, float t = 0)  
 ```
 
-- **Description:** Destroys the specified `SceneEntity`'s `GameObject` after an optional delay.
+- **Description:** Destroys the specified `MonoEntity`'s `GameObject` after an optional delay.
 - **Parameters:**
-    - `entity` – The `SceneEntity` to destroy.
+    - `entity` – The `MonoEntity` to destroy.
     - `t` – Optional delay in seconds before destruction. Defaults to `0`.
 - **Note:** If `entity` is `null`, no action is taken.

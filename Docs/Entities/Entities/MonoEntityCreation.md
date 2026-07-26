@@ -1,4 +1,4 @@
-# 🧩 SceneEntity Creation
+# 🧩 MonoEntity Creation
 
 The following methods allow you to create entities at runtime, for example from prefabs or entirely new GameObjects.
 
@@ -15,9 +15,9 @@ The following methods allow you to create entities at runtime, for example from 
     - [Create(in CreateArgs)](#createin-createargs)
     - [Create<E>(in CreateArgs)](#createe-in-createargs)
     - [Create<E>(...)](#createe)
-    - [Create(SceneEntity, Transform)](#createsceneentity-transform)
+    - [Create(MonoEntity, Transform)](#createMonoEntity-transform)
     - [Create<E>(E, Transform)](#createe-e-transform)
-    - [Create(SceneEntity, Vector3, Quaternion, Transform)](#createsceneentity-vector3-quaternion-transform)
+    - [Create(MonoEntity, Vector3, Quaternion, Transform)](#createMonoEntity-vector3-quaternion-transform)
     - [Create<E>(E, Vector3, Quaternion, Transform)](#createe-e-vector3-quaternion-transform)
     - [Create<E>(E, Transform, Transform)](#createe-e-transform-transform)
 
@@ -33,7 +33,7 @@ There are two ways of entity creation:
 ### 1️⃣ Using Create Args
 
 The first way to create entities is through `CreateArgs`, which allows a developer to specify settings for creating a
-new GameObject with a `SceneEntity` component.
+new GameObject with a `MonoEntity` component.
 
 ```csharp
 //Non-generic version
@@ -45,12 +45,12 @@ var args = new CreateArgs
     BehaviourCapacity = 2
 };
 
-SceneEntity enemy = SceneEntity.Create(args);
+MonoEntity enemy = MonoEntity.Create(args);
 ```
 
 ```csharp
 //Generic version
-WeaponEntity enemy = SceneEntity.Create<WeaponEntity>(
+WeaponEntity enemy = MonoEntity.Create<WeaponEntity>(
     new CreateArgs
     {
         Name = "MachineGun",
@@ -70,15 +70,15 @@ Another approach is creating game entities from prefabs.
 
 ```csharp
 // Instantiating a prefab at the origin
-SceneEntity enemyPrefab = Resources.Load<SceneEntity>("Prefabs/Enemy");
-SceneEntity instance = SceneEntity.Create(enemyPrefab);
+MonoEntity enemyPrefab = Resources.Load<MonoEntity>("Prefabs/Enemy");
+MonoEntity instance = MonoEntity.Create(enemyPrefab);
 ```
 
 ```csharp
 // Instantiating a prefab at a specific position and rotation
 Vector3 spawnPos = new Vector3(0, 0, 0);
 Quaternion rotation = Quaternion.Euler(0, 180, 0);
-SceneEntity bossInstance = SceneEntity.Create(enemyPrefab, spawnPos, rotation);
+MonoEntity bossInstance = MonoEntity.Create(enemyPrefab, spawnPos, rotation);
 ```
 
 
@@ -89,7 +89,7 @@ SceneEntity bossInstance = SceneEntity.Create(enemyPrefab, spawnPos, rotation);
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial class SceneEntity
+public partial class MonoEntity
 ```
 
 ---
@@ -99,26 +99,26 @@ public partial class SceneEntity
 #### `Create(in CreateArgs)`
 
 ```csharp
-public static SceneEntity Create(in CreateArgs args)  
+public static MonoEntity Create(in CreateArgs args)  
 ```
 
-- **Description:** Creates a new `SceneEntity` GameObject and configures it with optional tags, values, behaviours,
+- **Description:** Creates a new `MonoEntity` GameObject and configures it with optional tags, values, behaviours,
   installers, and children.
 - **Parameter:** `args` – Configuration options in a `CreateArgs` structure.
-- **Returns:** The newly created `SceneEntity` instance.
+- **Returns:** The newly created `MonoEntity` instance.
 - **Exception:** Throws if `args` contains invalid references.
 - **Note:** Skips null installers or children.
 
 #### `Create<E>(in CreateArgs)`
 
 ```csharp
-public static E Create<E>(in CreateArgs args) where E : SceneEntity  
+public static E Create<E>(in CreateArgs args) where E : MonoEntity  
 ```
 
-- **Description:** Generic version of `Create` that returns a `SceneEntity` of type `<E>`.
-- **Type Parameter:** `E` – The type of SceneEntity to create.
+- **Description:** Generic version of `Create` that returns a `MonoEntity` of type `<E>`.
+- **Type Parameter:** `E` – The type of MonoEntity to create.
 - **Parameter:** `args` – Configuration options in a `CreateArgs` structure.
-- **Returns:** A newly created `SceneEntity` of type `E`.
+- **Returns:** A newly created `MonoEntity` of type `E`.
 - **Exception:** Throws if `args` contains invalid references.
 - **Note:** Skips null installers or children.
 
@@ -136,7 +136,7 @@ public static E Create<E>(
     int initialTagCount = 1,  
     int initialValueCount = 1,  
     int initialBehaviourCount = 1  
-) where E : SceneEntity  
+) where E : MonoEntity  
 ```
 
 - **Description:** Convenience overload that constructs a `CreateArgs` internally and calls
@@ -154,14 +154,14 @@ public static E Create<E>(
     - `initialValueCount` – initial value capacity.
     - `initialBehaviourCount` – initial behaviour capacity.
 
-- **Returns:** A newly created `SceneEntity` of type `<E>`.
+- **Returns:** A newly created `MonoEntity` of type `<E>`.
 - **Exception:** Throws if provided values are invalid.
 - **Notes:** Null references are skipped.
 
-#### `Create(SceneEntity, Transform)`
+#### `Create(MonoEntity, Transform)`
 
 ```csharp
-public static SceneEntity Create(SceneEntity prefab, Transform parent = null)  
+public static MonoEntity Create(MonoEntity prefab, Transform parent = null)  
 ```
 
 - **Description:** Instantiates a prefab and installs the resulting entity under an optional parent.
@@ -169,12 +169,12 @@ public static SceneEntity Create(SceneEntity prefab, Transform parent = null)
     - `prefab` – The prefab to instantiate.
     - `parent` – Optional parent transform.
 
-- **Returns:** The newly instantiated `SceneEntity`.
+- **Returns:** The newly instantiated `MonoEntity`.
 
 #### `Create<E>(E, Transform)`
 
 ```csharp
-public static E Create<E>(E prefab, Transform parent = null) where E : SceneEntity  
+public static E Create<E>(E prefab, Transform parent = null) where E : MonoEntity  
 ```
 
 - **Description:** Generic version of prefab instantiation. Defaults position to `Vector3.zero` and rotation to
@@ -183,13 +183,13 @@ public static E Create<E>(E prefab, Transform parent = null) where E : SceneEnti
     - `prefab` – Prefab to instantiate.
     - `parent` – Optional parent transform.
 
-- **Returns:** The newly instantiated SceneEntity of type `E`.
+- **Returns:** The newly instantiated MonoEntity of type `E`.
 
-#### `Create(SceneEntity, Vector3, Quaternion, Transform)`
+#### `Create(MonoEntity, Vector3, Quaternion, Transform)`
 
 ```csharp
-public static SceneEntity Create(
-    SceneEntity prefab,
+public static MonoEntity Create(
+    MonoEntity prefab,
     Vector3 position,
     Quaternion rotation,
     Transform parent = null
@@ -202,7 +202,7 @@ public static SceneEntity Create(
     - `position` – Position for the new entity.
     - `rotation` – Rotation for the new entity.
     - `parent` – Optional parent transform.
-- **Returns:** The newly instantiated `SceneEntity`.
+- **Returns:** The newly instantiated `MonoEntity`.
 
 #### `Create<E>(E, Vector3, Quaternion, Transform)`
 
@@ -212,7 +212,7 @@ public static E Create<E>(
     Vector3 position,
     Quaternion rotation,
     Transform parent = null
-) where E : SceneEntity  
+) where E : MonoEntity  
 ```
 
 - **Description:** Generic version of prefab instantiation at a specific position and rotation.
@@ -223,13 +223,13 @@ public static E Create<E>(
     - `rotation` – Rotation for the new entity.
     - `parent` – Optional parent transform.
 
-- **Returns:** The newly instantiated SceneEntity of type `E`.
+- **Returns:** The newly instantiated MonoEntity of type `E`.
 - **Notes:** Automatically calls `Install()` on the created entity.
 
 #### `Create<E>(E, Transform, Transform)`
 
 ```csharp
-public static E Create<E>(E prefab, Transform point, Transform parent) where E : SceneEntity  
+public static E Create<E>(E prefab, Transform point, Transform parent) where E : MonoEntity  
 ```
 
 - **Description:** Instantiates the prefab at the position and rotation of a reference transform (`point`) with an
@@ -239,5 +239,5 @@ public static E Create<E>(E prefab, Transform point, Transform parent) where E :
     - `point` – Reference transform for position and rotation.
     - `parent` – Optional parent transform.
 
-- **Returns:** The newly instantiated SceneEntity of type `E`.
+- **Returns:** The newly instantiated MonoEntity of type `E`.
 - **Note:** Automatically calls `Install()` on the created entity.

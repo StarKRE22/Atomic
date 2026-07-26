@@ -1,6 +1,6 @@
-# 🧩 SceneEntity Installing
+# 🧩 MonoEntity Installing
 
-Provides configuration for `SceneEntity` with <b>tags</b>, <b>values</b>, and <b>behaviours</b> at
+Provides configuration for `MonoEntity` with <b>tags</b>, <b>values</b>, and <b>behaviours</b> at
 runtime or in the editor. It also manages child entities through installers, ensuring that all dependencies are properly configured and applied.
 
 ---
@@ -29,12 +29,12 @@ runtime or in the editor. It also manages child entities through installers, ens
 
 ## 🗂 Example of Usage
 
-Below is an example how to install `SceneEntity` and populate it wit **tags** and **values**:
+Below is an example how to install `MonoEntity` and populate it wit **tags** and **values**:
 
 #### 1. Create a script that populates the entity with tags, values and behaviours
 
  ```csharp
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private Transform _transform;
     [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
@@ -62,7 +62,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 <img width="450" height="" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
-#### 4. Now your `SceneEntity` has tags and properties.
+#### 4. Now your `MonoEntity` has tags and properties.
 
 ---
 
@@ -84,7 +84,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial class SceneEntity
+public partial class MonoEntity
 ```
 
 ---
@@ -109,7 +109,7 @@ public bool Installed { get; }
 public void Install()  
 ```
 
-- **Description:** Installs all configured installers and child entities into this `SceneEntity`. Ensures that tags,
+- **Description:** Installs all configured installers and child entities into this `MonoEntity`. Ensures that tags,
   values, and behaviours are properly set up at runtime or in the editor.
 - **Warnings:** Logs warnings when null references are found.
 - **Notes:** Skips null installers and null children.
@@ -120,7 +120,7 @@ public void Install()
 public void Uninstall()  
 ```
 
-- **Description:** Uninstalls all configured installers and child entities from this `SceneEntity`. Marks the entity as
+- **Description:** Uninstalls all configured installers and child entities from this `MonoEntity`. Marks the entity as
   not installed, allowing it to be reinstalled.
 - **Warnings:** Warnings are logged for null references to help debugging.
 - **Notes:** Null installers and null children are safely skipped.
@@ -135,7 +135,7 @@ public void Uninstall()
 protected virtual void OnInstall()  
 ```
 
-- **Description:** Called during the installation process of a `SceneEntity`. Provides a hook for derived classes to
+- **Description:** Called during the installation process of a `MonoEntity`. Provides a hook for derived classes to
   execute custom logic when the entity is being installed.
 - **Notes:** This method is invoked by `Install()` before processing installers and child entities.
 
@@ -146,7 +146,7 @@ protected virtual void OnInstall()
 protected virtual void OnUninstall()  
 ```
 
-- **Description:** Called during the uninstallation process of a `SceneEntity`. Provides a hook for derived classes to
+- **Description:** Called during the uninstallation process of a `MonoEntity`. Provides a hook for derived classes to
   execute custom logic when the entity is being uninstalled.
 - **Notes:** This method is invoked by `Uninstall()` before processing installers and child entities.
 
@@ -162,9 +162,9 @@ There are also static methods that allow installing entities globally in a scene
 public static void InstallAll(Scene scene)  
 ```
 
-- **Description:** Installs all `SceneEntity` instances found in the given `Scene` that are not yet installed. This is a
-  convenience method that calls the generic version `InstallAll<SceneEntity>(scene)`.
-- **Parameter:** `scene` – The `Scene` in which to search for `SceneEntity` instances.
+- **Description:** Installs all `MonoEntity` instances found in the given `Scene` that are not yet installed. This is a
+  convenience method that calls the generic version `InstallAll<MonoEntity>(scene)`.
+- **Parameter:** `scene` – The `Scene` in which to search for `MonoEntity` instances.
 - **Exception:** Throws if `scene` is not valid or not loaded.
 - **Note:**
     - Skips entities that are already installed.
@@ -174,12 +174,12 @@ public static void InstallAll(Scene scene)
 #### `InstallAll<E>(Scene)`
 
 ```csharp
-public static void InstallAll<E>(Scene scene) where E : SceneEntity  
+public static void InstallAll<E>(Scene scene) where E : MonoEntity  
 ```
 
-- **Description:** Installs all `SceneEntity` instances of type `<E>` found in the specified `Scene` that are not yet
+- **Description:** Installs all `MonoEntity` instances of type `<E>` found in the specified `Scene` that are not yet
   installed. Iterates through all root GameObjects and all child objects to find entities of type `<E>`.
-- **Type Parameters:** `E` – The type of `SceneEntity` to search for and install.
+- **Type Parameters:** `E` – The type of `MonoEntity` to search for and install.
 - **Parameter:** `scene` – The `Scene` in which to search for `<E>` instances.
 - **Exception:** Throws if `scene` is not valid or not loaded.
 - **Note:**

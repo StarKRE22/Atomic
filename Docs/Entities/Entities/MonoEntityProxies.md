@@ -1,7 +1,7 @@
-# 🧩 SceneEntityProxies
+# 🧩 MonoEntityProxies
 
 **Scene Entity Proxies** represent a family of Unity components that act as a **proxy** or **reference** to an
-existing [SceneEntity](SceneEntity.md). They allow multiple `GameObjects` to share and reference the same entity
+existing [MonoEntity](MonoEntity.md). They allow multiple `GameObjects` to share and reference the same entity
 instance, enabling flexible entity
 architectures and simplifying component-based setups in Unity scenes.
 
@@ -25,8 +25,8 @@ architectures and simplifying component-based setups in Unity scenes.
 In some cases, a GameObject hierarchy may include **child colliders** that interact with other colliders. However, you
 often cannot directly access the **parent entity** from the child collider.
 
-To solve this, attach a [SceneEntityProxy](SceneEntityProxy.md) component next to the child collider. The
-`SceneEntityProxy` serves as a bridge, allowing you to reference the **parent entity**
+To solve this, attach a [MonoEntityProxy](MonoEntityProxy.md) component next to the child collider. The
+`MonoEntityProxy` serves as a bridge, allowing you to reference the **parent entity**
 (or any other relevant [IEntity](IEntity.md) source) directly.
 
 ---
@@ -41,11 +41,11 @@ To solve this, attach a [SceneEntityProxy](SceneEntityProxy.md) component next t
    <img width="150" height="" alt="Child Collider" src="../../Images/ChildCollider.png" />
 
 
-2. Attach a **SceneEntityProxy** component to the same GameObject.  
+2. Attach a **MonoEntityProxy** component to the same GameObject.  
    <img width="400" height="" alt="Entity Proxy" src="../../Images/EntityProxy.png" />
 
 
-3. In the `SceneEntityProxy`, assign the parent entity reference to the **Source** field.
+3. In the `MonoEntityProxy`, assign the parent entity reference to the **Source** field.
 
 
 4. Now, whenever another collider interacts with this child collider, you can easily retrieve the parent entity.
@@ -76,25 +76,25 @@ public class SomeTrigger : MonoBehaviour
 
 There are both generic and non-generic versions of proxies.
 
-- [SceneEntityProxy](SceneEntityProxy.md)
-- [SceneEntityProxy&lt;E&gt;](SceneEntityProxy%601.md)
+- [MonoEntityProxy](MonoEntityProxy.md)
+- [MonoEntityProxy&lt;E&gt;](MonoEntityProxy%601.md)
 
 ---
 
 ## 📝 Notes
 
-- **Entity Reference** – Points to an existing [SceneEntity](SceneEntity.md)
+- **Entity Reference** – Points to an existing [MonoEntity](MonoEntity.md)
 - **Delegation** – Forwards [IEntity](IEntity.md) interface calls to target
 - **Proxy Pattern** – Multiple proxies can reference one entity
 - **Inspector Configuration** – Set entity reference in Unity Editor
-  Generic Version – Use [SceneEntityProxy\<E>](SceneEntityProxy%601.md) for type-safe entity references and compile-time
+  Generic Version – Use [MonoEntityProxy\<E>](MonoEntityProxy%601.md) for type-safe entity references and compile-time
   validation.
 
 <!-- 
 
-# 🧩 SceneEntity Proxies
+# 🧩 MonoEntity Proxies
 
-Represent family of Unity components those act as a proxy or reference to an existing [SceneEntity](SceneEntity.md).
+Represent family of Unity components those act as a proxy or reference to an existing [MonoEntity](MonoEntity.md).
 It allows multiple `GameObjects` to share and reference the same entity instance, enabling flexible entity
 architectures.
 
@@ -102,13 +102,13 @@ architectures.
 
 
 
-## 📖 Handling child colliders with SceneEntityProxy
+## 📖 Handling child colliders with MonoEntityProxy
 
 In some cases, a GameObject hierarchy may include **child colliders** that interact with other colliders. However, a
 common problem arises — you often cannot directly access the **parent entity** from the child collider.
 
 
-To solve this, you can attach a `SceneEntityProxy` component next to the child collider. The `SceneEntityProxy` serves
+To solve this, you can attach a `MonoEntityProxy` component next to the child collider. The `MonoEntityProxy` serves
 as a bridge, allowing you to reference the **parent entity** (or any other relevant
 [IEntity](IEntity.md) source) directly.
 
@@ -118,11 +118,11 @@ as a bridge, allowing you to reference the **parent entity** (or any other relev
 
 <img width="150" height="" alt="GameObject creation" src="../../Images/ChildCollider.png" />
 
-2. Attach a **SceneEntityProxy** component to the same GameObject.
+2. Attach a **MonoEntityProxy** component to the same GameObject.
 
 <img width="400" height="" alt="GameObject creation" src="../../Images/EntityProxy.png" />
 
-3. In the `SceneEntityProxy`, assign the parent entity reference to the `Source` field.
+3. In the `MonoEntityProxy`, assign the parent entity reference to the `Source` field.
 
 4. This way, whenever another collider interacts with the child collider, you can easily retrieve the parent entity from it.
 

@@ -1,4 +1,4 @@
-# 🧩 SceneEntity Behaviours
+# 🧩 MonoEntity Behaviours
 
 Manage modular logic attached to the entity. Behaviours can be added, removed, queried, or enumerated at runtime. This
 allows flexible composition of entity
@@ -67,7 +67,7 @@ Below is an example of working with behaviours in the entity.
 
 ```csharp
 // Assume we have a player entity:
-SceneEntity player = ...
+MonoEntity player = ...
 
 // Subscribe to events
 player.OnBehaviourAdded += (e, b) => 
@@ -118,7 +118,7 @@ The framework also provides [extension methods](ExtensionsBehaviours.md) for con
 
 ```csharp
 // Assume we have a player entity:
-SceneEntity player = ...
+MonoEntity player = ...
 
 // Add behaviour by type (using new T())
 enemy.AddBehaviour<MoveBehaviour>();
@@ -152,7 +152,7 @@ enemy.DelBehaviours(new IEntityBehaviour[] {
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial class SceneEntity
+public partial class MonoEntity
 ```
 
 ---

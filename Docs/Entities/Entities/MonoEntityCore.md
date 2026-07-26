@@ -1,4 +1,4 @@
-# 🧩 SceneEntity Core
+# 🧩 MonoEntity Core
 
 Represents the core identity and state of the entity. It includes unique identifiers, optional names for
 debugging or tooling, and the main event for reactive state changes.
@@ -21,8 +21,8 @@ debugging or tooling, and the main event for reactive state changes.
 ## 🗂 Example of Usage
 
 ```csharp
-// Assume we have an instance of SceneEntity
-SceneEntity entity = ...
+// Assume we have an instance of MonoEntity
+MonoEntity entity = ...
 
 // Subscribe to the OnStateChanged event
 entity.OnStateChanged += (IEntity e) =>
@@ -45,7 +45,7 @@ Debug.Log($"Created entity '{entity.Name}' with ID: {id}");
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial class SceneEntity
+public partial class MonoEntity
 ```
 
 ---

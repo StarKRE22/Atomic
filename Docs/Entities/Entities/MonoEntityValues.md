@@ -1,4 +1,4 @@
-# 🧩 SceneEntity Values
+# 🧩 MonoEntity Values
 
 Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
 identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
@@ -80,7 +80,7 @@ const int Speed = 2;
 const int Inventory = 3;
 
 // Assume we have an instance of entity
-SceneEntity entity = ...
+MonoEntity entity = ...
 
 // Subscribe to value events
 entity.OnValueChanged += (e, key) => Console.WriteLine($"Value {key} changed");
@@ -114,7 +114,7 @@ more user-friendly but slightly slower than using numeric keys.
 
 ```csharp
 // Assume we have an instance of entity
-SceneEntity entity = ...
+MonoEntity entity = ...
 
 // Add values by string key
 entity.AddValue("Health", 100);
@@ -144,7 +144,7 @@ the [Entity API](../EntityAPI/Manual.md) section.
 
 ```csharp
 // Assume we have an instance of entity
-SceneEntity entity = ...
+MonoEntity entity = ...
 
 // Add values
 entity.AddHealth(100);
@@ -177,7 +177,7 @@ entity.DelInventory();
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial class SceneEntity
+public partial class MonoEntity
 ```
 
 ---

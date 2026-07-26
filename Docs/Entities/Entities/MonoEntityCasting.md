@@ -1,14 +1,14 @@
-# 🧩 SceneEntity Casting
+# 🧩 MonoEntity Casting
 
-Provides methods for safe casting between [IEntity](IEntity.md) and [SceneEntity](SceneEntity.md).
+Provides methods for safe casting between [IEntity](IEntity.md) and [MonoEntity](MonoEntity.md).
 
 ---
 
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
-  - [Simple cast to SceneEntity](#ex1)
-  - [Generic cast to a specific SceneEntity type](#ex2)
+  - [Simple cast to MonoEntity](#ex1)
+  - [Generic cast to a specific MonoEntity type](#ex2)
   - [Safe cast using TryCast](#ex3)
   - [Safe generic cast using TryCast\<E>](#ex4)
 - [API Reference](#-api-reference)
@@ -16,7 +16,7 @@ Provides methods for safe casting between [IEntity](IEntity.md) and [SceneEntity
   - [Static Methods](#-static-methods)
     - [Cast(IEntity)](#castientity)
     - [Cast<E>(IEntity)](#casteientity)
-    - [TryCast(IEntity, out SceneEntity)](#trycastientity-out-sceneentity)
+    - [TryCast(IEntity, out MonoEntity)](#trycastientity-out-MonoEntity)
     - [TryCast<E>(IEntity, out E)](#trycasteientity-out-e)
 
 
@@ -26,24 +26,24 @@ Provides methods for safe casting between [IEntity](IEntity.md) and [SceneEntity
 
 <div id="ex1"></div>
 
-### 1️⃣ Simple cast to SceneEntity
+### 1️⃣ Simple cast to MonoEntity
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
-SceneEntity sceneEntity = SceneEntity.Cast(entity);
+MonoEntity MonoEntity = MonoEntity.Cast(entity);
 ```
 
-> Throws an exception if `entity` is not a `SceneEntity`.
+> Throws an exception if `entity` is not a `MonoEntity`.
 
 ---
 
 <div id="ex2"></div>
 
-### 2️⃣ Generic cast to a specific SceneEntity type
+### 2️⃣ Generic cast to a specific MonoEntity type
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
-EnemyEntity enemy = SceneEntity.Cast<EnemyEntity>(entity);
+EnemyEntity enemy = MonoEntity.Cast<EnemyEntity>(entity);
 ```
 
 > Throws an exception if entity is not of type `EnemyEntity` or a proxy of it.
@@ -56,10 +56,10 @@ EnemyEntity enemy = SceneEntity.Cast<EnemyEntity>(entity);
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
-if (SceneEntity.TryCast(entity, out SceneEntity sceneEntity))
-    Debug.Log($"Successfully casted to SceneEntity: {sceneEntity.Name}");
+if (MonoEntity.TryCast(entity, out MonoEntity MonoEntity))
+    Debug.Log($"Successfully casted to MonoEntity: {MonoEntity.Name}");
 else
-    Debug.LogWarning("Entity is not a SceneEntity");
+    Debug.LogWarning("Entity is not a MonoEntity");
 ```
 
 ---
@@ -70,7 +70,7 @@ else
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
-if (SceneEntity.TryCast<EnemyEntity>(entity, out EnemyEntity enemy))
+if (MonoEntity.TryCast<EnemyEntity>(entity, out EnemyEntity enemy))
     Debug.Log($"Successfully casted to EnemyEntity: {enemy.Name}");
 else
     Debug.LogWarning("Entity is not of type EnemyEntity");
@@ -84,7 +84,7 @@ else
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial class SceneEntity
+public partial class MonoEntity
 ```
 
 ---
@@ -94,35 +94,35 @@ public partial class SceneEntity
 #### `Cast(IEntity)`
 
 ```csharp
-public static SceneEntity Cast(IEntity entity)  
+public static MonoEntity Cast(IEntity entity)  
 ```
 
-- **Description:** Casts the specified `IEntity` to a `SceneEntity` if possible.
+- **Description:** Casts the specified `IEntity` to a `MonoEntity` if possible.
 - **Parameter:** `entity` – The entity to cast.
-- **Returns:** The entity cast to `SceneEntity`, or `null` if the input is `null`.
-- **Exceptions:** Throws `InvalidCastException` if the entity cannot be cast to `SceneEntity`.
+- **Returns:** The entity cast to `MonoEntity`, or `null` if the input is `null`.
+- **Exceptions:** Throws `InvalidCastException` if the entity cannot be cast to `MonoEntity`.
 - **Note:** Uses `AggressiveInlining` for performance.
 
 #### `Cast<E>(IEntity)`
 
 ```csharp
-public static E Cast<E>(IEntity entity) where E : SceneEntity  
+public static E Cast<E>(IEntity entity) where E : MonoEntity  
 ```
 
-- **Description:** Casts the specified `IEntity` to the target type `E`. Supports direct `SceneEntity` instances and
-  `SceneEntityProxy<E>` wrappers.
-- **Type Parameter:** `E` – The type of `SceneEntity` to cast to.
+- **Description:** Casts the specified `IEntity` to the target type `E`. Supports direct `MonoEntity` instances and
+  `MonoEntityProxy<E>` wrappers.
+- **Type Parameter:** `E` – The type of `MonoEntity` to cast to.
 - **Parameter:** `entity` – The entity to cast.
 - **Returns:** The entity cast to type `E`, or `null` if the input is `null`.
 - **Exceptions:** Throws `InvalidCastException` if the entity cannot be cast to the target type `E`.
 
-#### `TryCast(IEntity, out SceneEntity)`
+#### `TryCast(IEntity, out MonoEntity)`
 
 ```csharp
-public static bool TryCast(IEntity entity, out SceneEntity result)  
+public static bool TryCast(IEntity entity, out MonoEntity result)  
 ```
 
-- **Description:** Attempts to cast the specified `IEntity` to a `SceneEntity`.
+- **Description:** Attempts to cast the specified `IEntity` to a `MonoEntity`.
 - **Parameters:**
     - `entity` – The entity to cast.
     - `result` – The cast result if successful; otherwise, `null`.
@@ -131,12 +131,12 @@ public static bool TryCast(IEntity entity, out SceneEntity result)
 #### `TryCast<E>(IEntity, out E)`
 
 ```csharp
-public static bool TryCast<E>(IEntity entity, out E result) where E : SceneEntity  
+public static bool TryCast<E>(IEntity entity, out E result) where E : MonoEntity  
 ```
 
-- **Description:** Attempts to cast the specified `IEntity` to the target type `E`. Supports direct `SceneEntity`
-  instances and `SceneEntityProxy<E>` wrappers.
-- **Type Parameter:** `E` – The type of `SceneEntity` to cast to.
+- **Description:** Attempts to cast the specified `IEntity` to the target type `E`. Supports direct `MonoEntity`
+  instances and `MonoEntityProxy<E>` wrappers.
+- **Type Parameter:** `E` – The type of `MonoEntity` to cast to.
 - **Parameters:**
     - `entity` – The entity to cast.
     - `result` – The cast result if successful; otherwise, `null`.

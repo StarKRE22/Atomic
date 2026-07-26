@@ -1,6 +1,6 @@
-# 🧩 SceneEntitySingleton&lt;E&gt;
+# 🧩 MonoEntitySingleton&lt;E&gt;
 
-Represents a specialized [SceneEntity](SceneEntity.md) that ensures only one instance exists per scene or globally.
+Represents a specialized [MonoEntity](MonoEntity.md) that ensures only one instance exists per scene or globally.
 It provides easy access via a static [Instance](#instance) property and optional persistence across scenes.
 Combines two patterns — **Entity-State-Behaviour** and [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern).
 Supports Odin Inspector
@@ -28,14 +28,14 @@ Supports Odin Inspector
 
 ## 🗂 Examples of Usage
 
-The following examples demonstrate how to access the `SceneEntitySingleton` and resolve it for each scene
+The following examples demonstrate how to access the `MonoEntitySingleton` and resolve it for each scene
 
 <div id="ex1"></div>
 
 ### 1️⃣ Using Global Singleton
 
 ```csharp
-public class GameContext : SceneEntitySingleton<GameContext>
+public class GameContext : MonoEntitySingleton<GameContext>
 {
 }
 ```
@@ -84,13 +84,13 @@ GameContext context = GameContext.Resolve(myScene);
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneEntitySingleton<E> : SceneEntity 
-    where E : SceneEntitySingleton<E>
+public abstract class MonoEntitySingleton<E> : MonoEntity 
+    where E : MonoEntitySingleton<E>
 ```
 
 - **Type Parameter:** `E` — The concrete entity singleton type.
-- **Inheritance:** [SceneEntity](SceneEntity.md)
-- **Note:** Subclass must inherit from `SceneEntitySingleton<E>`
+- **Inheritance:** [MonoEntity](MonoEntity.md)
+- **Note:** Subclass must inherit from `MonoEntitySingleton<E>`
 
 ---
 
@@ -157,7 +157,7 @@ public static E Resolve(Scene scene)
 ## 📝 Notes
 
 - **Singleton Pattern** – Guarantees only one instance of the entity type per scene or globally.
-- **Entity Integration** – Inherits all [SceneEntity](SceneEntity.md) features: lifecycle, behaviours, tags, values, and
+- **Entity Integration** – Inherits all [MonoEntity](MonoEntity.md) features: lifecycle, behaviours, tags, values, and
   events.
 - **Lazy Lookup** – Singleton instance is assigned automatically on first access.
 - **Global Access** – Use `isGlobal = true` if you want the singleton to be accessible via `Instance` from anywhere.

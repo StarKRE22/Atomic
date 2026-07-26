@@ -1,4 +1,4 @@
-# 🧩 SceneEntity Editor
+# 🧩 MonoEntity Editor
 
 Provides editor-time lifecycle support, including optimization, auto-refresh, edit-mode installation, and simulated
 lifecycle events. Provides a simple workflow for <b>precomputing entity capacities</b> in the Unity Editor.
@@ -29,7 +29,7 @@ You can optimize your entity’s size by precomputing the capacity of <b>tags</b
 
 ## 🗂 Examples of Usage
 
-Below are screenshoots of `Compile` and `Reset` options in the Unity inspector of `SceneEntity`:
+Below are screenshoots of `Compile` and `Reset` options in the Unity inspector of `MonoEntity`:
 
 <img width="144" height="" alt="изображение" src="../../Images/Scene%20Entity%20Reset%20and%20Compile.png" />
 <img width="320" height="" alt="изображение" src="../../Images/SceneEntity%20Optimization.png" />
@@ -50,14 +50,14 @@ Below are screenshoots of `Compile` and `Reset` options in the Unity inspector o
 | Option    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 |-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Compile` | Fully compiles the entity state.<br><br>**Steps:**<br>1. Disables and disposes the entity in Edit mode if the GameObject is not a prefab. *(Applies only to behaviours with [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md))*<br>2. Uninstalls the previous entity state.<br>3. Installs the new entity state.<br>4. Precomputes **capacity**, **tags**, **values**, and **behaviours** of the entity.<br>5. Initializes and enables the entity in Edit mode if the GameObject is not a prefab. *(Applies only to behaviours with [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md))* |
-| `Reset`   | Fully resets the entity state.<br><br>**Steps:**<br>1. Disables and disposes the entity in Edit mode if the GameObject is not a prefab. *(Applies only to behaviours with [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md))*<br>2. Uninstalls the previous entity state.<br>3. Resets all parameters to default.<br>4. Gathers all `SceneEntityInstallers` and child entities.                                                                                                                                                                                                                         |
+| `Reset`   | Fully resets the entity state.<br><br>**Steps:**<br>1. Disables and disposes the entity in Edit mode if the GameObject is not a prefab. *(Applies only to behaviours with [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md))*<br>2. Uninstalls the previous entity state.<br>3. Resets all parameters to default.<br>4. Gathers all `MonoEntityInstallers` and child entities.                                                                                                                                                                                                                         |
 
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial class SceneEntity
+public partial class MonoEntity
 ```
 
 ---
@@ -76,4 +76,4 @@ private void Reset();
        with [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
     2. Uninstall previous entity state
     3. Resets all parameters to default
-    4. Gathers all SceneEntityInstallers and child Entities
+    4. Gathers all MonoEntityInstallers and child Entities

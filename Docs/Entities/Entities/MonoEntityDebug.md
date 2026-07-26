@@ -1,4 +1,4 @@
-# 🧩 SceneEntity Debug
+# 🧩 MonoEntity Debug
 
 Represents debug properties are available only in <b>Unity Editor</b> when using <b>Odin Inspector</b>.
 
@@ -17,7 +17,7 @@ Represents debug properties are available only in <b>Unity Editor</b> when using
 
 ## 🗂 Examples of Usage
 
-Below are debug inspector examples for the [SceneEntity](SceneEntity.md):
+Below are debug inspector examples for the [MonoEntity](MonoEntity.md):
 
 <div id="ex1"></div>
 

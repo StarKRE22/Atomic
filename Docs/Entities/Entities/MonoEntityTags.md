@@ -1,4 +1,4 @@
-# 🧩 SceneEntity Tags
+# 🧩 MonoEntity Tags
 
 Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
 enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
@@ -66,7 +66,7 @@ const int Ally ally = 3;
 const int Merchant ally = 4;
 
 // Assume we have instance of entity
-SceneEntity entity = ...
+MonoEntity entity = ...
 
 // Subscribe to tag events
 entity.OnTagAdded += (e, tagId) => 
@@ -103,7 +103,7 @@ user-friendly but slightly slower than using numeric keys.
 
 ```csharp
 // Assume we have instance of entity
-SceneEntity entity = ...
+MonoEntity entity = ...
 
 // Add tags by string name
 entity.AddTag("Player");
@@ -138,7 +138,7 @@ the [Entity API](../EntityAPI/Manual.md) feature.
 
 ```csharp
 // Assume we have instance of entity
-SceneEntity entity = ...
+MonoEntity entity = ...
 
 // Add tags
 entity.AddPlayerTag();
@@ -167,7 +167,7 @@ entity.DelNPCTag();
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial class SceneEntity
+public partial class MonoEntity
 ```
 
 ---

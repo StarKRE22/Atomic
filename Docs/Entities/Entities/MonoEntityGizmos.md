@@ -1,4 +1,4 @@
-# 🧩 SceneEntity Gizmos
+# 🧩 MonoEntity Gizmos
 
 Provides visual debugging support through Unity Gizmos in the Scene view.
 
@@ -35,7 +35,7 @@ public sealed class TransformGizmos : IEntityGizmos<IGameEntity>
 
 ```csharp
 [Serializable]
-public sealed class TransformEntityInstaller : SceneEntityInstaller<IGameEntity>
+public sealed class TransformEntityInstaller : MonoEntityInstaller<IGameEntity>
 {
     [SerializeField]
     private Const<float> _scale = 1;
@@ -68,5 +68,5 @@ public sealed class TransformEntityInstaller : SceneEntityInstaller<IGameEntity>
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial class SceneEntity
+public partial class MonoEntity
 ```

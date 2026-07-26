@@ -1,7 +1,7 @@
-# 🧩 SceneEntityProxy
+# 🧩 MonoEntityProxy
 
 Represents non-generic proxy component for exposing and interacting with
-a [SceneEntity](SceneEntity.md) in the Unity scene. Supports Odin Inspector
+a [MonoEntity](MonoEntity.md) in the Unity scene. Supports Odin Inspector
 
 ---
 
@@ -22,11 +22,11 @@ a [SceneEntity](SceneEntity.md) in the Unity scene. Supports Odin Inspector
 
 <img width="150" height="" alt="GameObject creation" src="../../Images/ChildCollider.png" />
 
-2. Attach a **SceneEntityProxy** component to the same GameObject.
+2. Attach a **MonoEntityProxy** component to the same GameObject.
 
 <img width="400" height="" alt="GameObject creation" src="../../Images/EntityProxy.png" />
 
-3. In the `SceneEntityProxy`, assign the parent entity reference to the `Source` field.
+3. In the `MonoEntityProxy`, assign the parent entity reference to the `Source` field.
 
 4. This way, whenever another collider interacts with the child collider, you can easily retrieve the parent entity from it.
 
@@ -50,7 +50,7 @@ public class SomeTrigger : MonoBehaviour
 
 | Parameter | Description                                                        |
 |-----------|--------------------------------------------------------------------|
-| `source`  | Reference to the actual `SceneEntity` object that this proxy wraps |
+| `source`  | Reference to the actual `MonoEntity` object that this proxy wraps |
 
 ---
 
@@ -61,10 +61,10 @@ public class SomeTrigger : MonoBehaviour
 ```csharp
 [AddComponentMenu("Atomic/Entities/Entity Proxy")]
 [DisallowMultipleComponent]
-public class SceneEntityProxy : SceneEntityProxy<SceneEntity>
+public class MonoEntityProxy : MonoEntityProxy<MonoEntity>
 ```
 
-- **Inheritance:** [SceneEntityProxy&lt;E&gt;](SceneEntityProxy%601.md)
+- **Inheritance:** [MonoEntityProxy&lt;E&gt;](MonoEntityProxy%601.md)
 
 ---
 
@@ -73,7 +73,7 @@ public class SceneEntityProxy : SceneEntityProxy<SceneEntity>
 #### `Source`
 
 ```csharp
-public SceneEntity Source { get; }
+public MonoEntity Source { get; }
 ```
 
 - **Description:** The source entity that this proxy forwards calls to.

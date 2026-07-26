@@ -7,7 +7,7 @@ logic, enabling dynamic functionality without changing the core entity structure
 > [!IMPORTANT]
 > For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have
 > **List-like time complexity**.
-> Additionally, the entity **can store multiple references to the same behaviour instance**,
+> Additionally, the entity **can store multiple references to the sam[MonoEntityCreation.md](MonoEntityCreation.md)e behaviour instance**,
 > so duplicate entries are allowed.
 
 ---
