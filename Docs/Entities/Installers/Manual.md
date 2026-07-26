@@ -23,7 +23,7 @@ Below is an example how to install [SceneEntity](../Entities/SceneEntity.md) and
 
  ```csharp
 //Populates entity with tags, values and behaviours
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private Transform _transform;
     [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
@@ -63,8 +63,8 @@ Below are the different types of installers depending on the usage scenario:
     - [IEntityInstaller](IEntityInstaller.md) <!-- + -->
     - [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md) <!-- + -->
 - **MonoBehaviours**
-    - [SceneEntityInstaller](SceneEntityInstaller.md) <!-- + -->
-    - [SceneEntityInstaller&lt;E&gt;](SceneEntityInstaller%601.md) <!-- + -->
+    - [MonoEntityInstaller](MonoEntityInstaller.md) <!-- + -->
+    - [MonoEntityInstaller&lt;E&gt;](MonoEntityInstaller%601.md) <!-- + -->
 - **ScriptableObjects**
     - [ScriptableEntityInstaller](ScriptableEntityInstaller.md) <!-- + -->
     - [ScriptableEntityInstaller&lt;E&gt;](ScriptableEntityInstaller%601.md) <!-- + -->
@@ -74,7 +74,7 @@ Below are the different types of installers depending on the usage scenario:
 ## 📝 Notes
 
 - **Installer** — declarative way of configuring entities.
-- **SceneEntityInstaller** — configuration via `MonoBehaviour`, bound to the scene.
+- **MonoEntityInstaller** — configuration via `MonoBehaviour`, bound to the scene.
 - **ScriptableEntityInstaller** — configuration via `ScriptableObject`, reusable logic.
 - **Generic Installers** — strongly typed variant for improved safety and readability.
 - Keep installers focused on **entity configuration only**; avoid embedding business logic.

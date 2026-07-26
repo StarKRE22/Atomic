@@ -1,8 +1,8 @@
-# 🧩️ SceneEntityInstaller
+# 🧩️ MonoEntityInstaller
 
 Represents a Unity `MonoBehaviour` that can be attached to a GameObject to
 perform **installation logic** on an [IEntity](../Entities/IEntity.md) during runtime or initialization. It allows
-declarative configuration of entities placed in a scene. Use `SceneEntityInstaller` only if there are scene dependencies
+declarative configuration of entities placed in a scene. Use `MonoEntityInstaller` only if there are scene dependencies
 or if entity instances in the scene need to differ. In other cases, use
 [ScriptableEntityInstaller](ScriptableEntityInstaller.md) as a shared installer.
 
@@ -29,7 +29,7 @@ Below is an example how to install [SceneEntity](../Entities/SceneEntity.md) and
 
  ```csharp
 //Populates entity with tags, values and behaviours
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private Transform _transform;
     [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
@@ -66,13 +66,13 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneEntityInstaller : MonoBehaviour, IEntityInstaller
+public abstract class MonoEntityInstaller : MonoBehaviour, IEntityInstaller
 ```
 
 - **Inheritance:** `MonoBehaviour`, [IEntityInstaller](IEntityInstaller.md)
 - **Note:**
 - **See also:**
-  [SceneEntityInstaller&lt;E&gt;](SceneEntityInstaller%601.md), [ScriptableEntityInstaller](ScriptableEntityInstaller.md)
+  [MonoEntityInstaller&lt;E&gt;](MonoEntityInstaller%601.md), [ScriptableEntityInstaller](ScriptableEntityInstaller.md)
 
 ---
 

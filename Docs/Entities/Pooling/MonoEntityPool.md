@@ -1,7 +1,7 @@
-# 🧩 SceneEntityPool
+# 🧩 MonoEntityPool
 
-A non-generic version of [SceneEntityPool\<E>](SceneEntityPool%601.md) that operates on
-base [SceneEntity](../Entities/SceneEntity.md) types. They are designed to **pre-instantiate entities**, **reuse them
+A non-generic version of [MonoEntityPool\<E>](MonoEntityPool%601.md) that operates on
+base [MonoEntity](../Entities/MonoEntity.md) types. They are designed to **pre-instantiate entities**, **reuse them
 efficiently**, and handle **activation / deactivation** automatically. Useful when you want a simple scene-bound entity
 pool without specifying a generic type.
 
@@ -20,14 +20,14 @@ pool without specifying a generic type.
         - [Return(IEntity)](#returnientity)
         - [Init(int)](#initint)
         - [Dispose()](#dispose)
-        - [OnCreate(SceneEntity)](#oncreatesceneentity)
-        - [OnDispose(SceneEntity)](#ondisposesceneentity)
-        - [OnRent(SceneEntity)](#onrentsceneentity)
-        - [OnReturn(SceneEntity)](#onreturnsceneentity)
+        - [OnCreate(MonoEntity)](#oncreateMonoEntity)
+        - [OnDispose(MonoEntity)](#ondisposeMonoEntity)
+        - [OnRent(MonoEntity)](#onrentMonoEntity)
+        - [OnReturn(MonoEntity)](#onreturnMonoEntity)
         - [Awake()](#awake)
         - [Reset()](#reset)
         - [Create(CreateArgs)](#createcreateargs)
-        - [Destroy(SceneEntityPool, float)](#destroysceneentitypool-float)
+        - [Destroy(MonoEntityPool, float)](#destroyMonoEntitypool-float)
     - [Nested Types](#-nested-types)
         - [CreateArgs](#createargs)
 
@@ -35,7 +35,7 @@ pool without specifying a generic type.
 
 ## 🗂 Examples of Usage
 
-Below are examples of using the non-generic `SceneEntityPool` for scene entities:
+Below are examples of using the non-generic `MonoEntityPool` for scene entities:
 
 <div id="ex1"></div>
 
@@ -48,11 +48,11 @@ Below are examples of using the non-generic `SceneEntityPool` for scene entities
 #### 2. Usage in a project
 
 ```csharp
-SceneEntity enemyPool = ...;
+MonoEntity enemyPool = ...;
 
  // Rent entities
-SceneEntity enemy1 = enemyPool.Rent();
-SceneEntity enemy2 = enemyPool.Rent();
+MonoEntity enemy1 = enemyPool.Rent();
+MonoEntity enemy2 = enemyPool.Rent();
 
 // Return entities to the pool
 enemyPool.Return(enemy1);
@@ -66,7 +66,7 @@ enemyPool.Return(enemy2);
 ### 2️⃣ Runtime Creation
 
 ```csharp
-var poolArgs = new SceneEntityPool.CreateArgs
+var poolArgs = new MonoEntityPool.CreateArgs
 {
     name = "EnemyPool",
     prefab = enemyPrefab,
@@ -76,10 +76,10 @@ var poolArgs = new SceneEntityPool.CreateArgs
 };
 
 // Create a new pool
-var enemyPool = SceneEntityPool.Create(in poolArgs);
+var enemyPool = MonoEntityPool.Create(in poolArgs);
 
 // Destroy pool
-SceneEntityPool.Destroy(enemyPool);
+MonoEntityPool.Destroy(enemyPool);
 ```
 
 ---
@@ -102,11 +102,11 @@ SceneEntityPool.Destroy(enemyPool);
 ```csharp
 [AddComponentMenu("Atomic/Entities/Entity Pool")]
 [DisallowMultipleComponent]
-public class SceneEntityPool : SceneEntityPool<SceneEntity>, IEntityPool
+public class MonoEntityPool : MonoEntityPool<MonoEntity>, IEntityPool
 ```
 
-- **Inheritance:** [SceneEntityPool\<E>](SceneEntityPool%601.md), [IEntityPool](IEntityPool.md)
-- **See also:** [SceneEntityPool\<E>](SceneEntityPool%601.md), [SceneEntity](../Entities/SceneEntity.md)
+- **Inheritance:** [MonoEntityPool\<E>](MonoEntityPool%601.md), [IEntityPool](IEntityPool.md)
+- **See also:** [MonoEntityPool\<E>](MonoEntityPool%601.md), [MonoEntity](../Entities/MonoEntity.md)
 
 ---
 
@@ -128,8 +128,8 @@ public void Return(IEntity entity);
 ```
 
 - **Description:** Returns a previously rented entity to the pool.
-- **Parameter:** `entity` — Must be castable to `SceneEntity`.
-- **Note:** Wraps the generic `Return(SceneEntity)` method.
+- **Parameter:** `entity` — Must be castable to `MonoEntity`.
+- **Note:** Wraps the generic `Return(MonoEntity)` method.
 
 #### `Init(int)`
 
@@ -150,37 +150,37 @@ public virtual void Dispose();
 - **Description:** Disposes all pooled and rented entities, destroying their GameObjects and clearing internal
   collections.
 
-#### `OnCreate(SceneEntity)`
+#### `OnCreate(MonoEntity)`
 
 ```csharp
-protected virtual void OnCreate(SceneEntity entity);
+protected virtual void OnCreate(MonoEntity entity);
 ```
 
 - **Description:** Called when a new entity instance is created.
 - **Default Behavior:** Deactivates the entity GameObject.
 
-#### `OnDispose(SceneEntity)`
+#### `OnDispose(MonoEntity)`
 
 ```csharp
-protected virtual void OnDispose(SceneEntity entity);
+protected virtual void OnDispose(MonoEntity entity);
 ```
 
 - **Description:** Called when an entity is permanently destroyed during disposal.
 - **Default Behavior:** Empty; override for cleanup.
 
-#### `OnRent(SceneEntity)`
+#### `OnRent(MonoEntity)`
 
 ```csharp
-protected virtual void OnRent(SceneEntity entity);
+protected virtual void OnRent(MonoEntity entity);
 ```
 
 - **Description:** Called when an entity is rented from the pool.
 - **Default Behavior:** Activates the entity GameObject.
 
-#### `OnReturn(SceneEntity)`
+#### `OnReturn(MonoEntity)`
 
 ```csharp
-protected virtual void OnReturn(SceneEntity entity);
+protected virtual void OnReturn(MonoEntity entity);
 ```
 
 - **Description:** Called when an entity is returned to the pool.
@@ -206,17 +206,17 @@ protected virtual void Reset();
 #### `Create(CreateArgs)`
 
 ```csharp
-public static SceneEntityPool Create(in CreateArgs args) => Create<SceneEntityPool>(in args);
+public static MonoEntityPool Create(in CreateArgs args) => Create<MonoEntityPool>(in args);
 ```
 
-- **Description:** Creates a new non-generic `SceneEntityPool` instance in the scene.
+- **Description:** Creates a new non-generic `MonoEntityPool` instance in the scene.
 - **Parameter:** `args` — Initialization parameters encapsulated in `CreateArgs`.
-- **Returns:** A newly created `SceneEntityPool` attached to a new GameObject.
+- **Returns:** A newly created `MonoEntityPool` attached to a new GameObject.
 
-#### `Destroy(SceneEntityPool, float)`
+#### `Destroy(MonoEntityPool, float)`
 
 ```csharp
-public static void Destroy(SceneEntityPool pool, float t = 0);
+public static void Destroy(MonoEntityPool pool, float t = 0);
 ```
 
 - **Description:** Disposes the pool and destroys its GameObject after an optional delay.
@@ -234,7 +234,7 @@ public static void Destroy(SceneEntityPool pool, float t = 0);
 public struct CreateArgs
 ```
 
-- **Description:** Arguments for creating a new `SceneEntityPool<E>`.
+- **Description:** Arguments for creating a new `MonoEntityPool<E>`.
 - **Fields:**
     - `name` — Name of the GameObject hosting the pool.
     - `prefab` — Prefab used to instantiate entities.

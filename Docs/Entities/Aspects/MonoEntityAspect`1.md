@@ -1,4 +1,4 @@
-# 🧩 SceneEntityAspect&lt;E&gt;
+# 🧩 MonoEntityAspect&lt;E&gt;
 
 Represents a generic `MonoBehaviour` that applies or discards reusable behavior on a strongly-typed
 entity.
@@ -27,7 +27,7 @@ public interface IGameEntity : IEntity
 ```
 
 ```csharp
-public sealed class JumpAspect : SceneEntityAspect<IGameEntity>
+public sealed class JumpAspect : MonoEntityAspect<IGameEntity>
 {
     [SerializeField]
     private float _jumpForce = 3f;
@@ -48,7 +48,7 @@ public sealed class JumpAspect : SceneEntityAspect<IGameEntity>
 }
 ```
 
-> Note: Using the generic `SceneEntityAspect<IGameEntity>` allows type-safe access to entity-specific properties without
+> Note: Using the generic `MonoEntityAspect<IGameEntity>` allows type-safe access to entity-specific properties without
 > casting.
 
 ---
@@ -58,7 +58,7 @@ public sealed class JumpAspect : SceneEntityAspect<IGameEntity>
 ### 🏛️ Type
 
 ```csharp
-public abstract class SceneEntityAspect<E> : MonoBehaviour, IEntityAspect<E> where E : IEntity
+public abstract class MonoEntityAspect<E> : MonoBehaviour, IEntityAspect<E> where E : IEntity
 ```
 
 - **Description:** Represents a generic `MonoBehaviour` that applies or discards reusable behavior on a strongly-typed
@@ -66,7 +66,7 @@ public abstract class SceneEntityAspect<E> : MonoBehaviour, IEntityAspect<E> whe
 - **Type Parameter:** `E` – The specific entity type this aspect operates on.
 - **Inheritance:** [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
 - **Note:** Provides type-safe application and discard for a specific entity type.
-- **See also:** [SceneEntityAspect](SceneEntityAspect.md)
+- **See also:** [MonoEntityAspect](MonoEntityAspect.md)
 
 ---
 

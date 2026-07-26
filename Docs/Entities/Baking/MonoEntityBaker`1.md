@@ -1,4 +1,4 @@
-# 🧩 SceneEntityBaker\<E>
+# 🧩 MonoEntityBaker\<E>
 
 Abstract base class for MonoBehaviour-based *bakers* that convert a scene **GameObject** into a native
 C# [IEntity](../Entities/IEntity.md) instance. Designed for runtime conversion workflows where scene-authored objects
@@ -45,7 +45,7 @@ are transformed into entities.
 Below is an example of a MonoBehaviour-based baker that converts a `GameObject` into an `EnemyEntity`:
 
 ```csharp
-public class EnemyBaker : SceneEntityBaker<EnemyEntity>
+public class EnemyBaker : MonoEntityBaker<EnemyEntity>
 {
     protected override EnemyEntity Create()
     {
@@ -136,7 +136,7 @@ automatically during edit mode preview.
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract partial class SceneEntityBaker<E> : MonoBehaviour where E : IEntity
+public abstract partial class MonoEntityBaker<E> : MonoBehaviour where E : IEntity
 ```
 
 - **Generic Parameter:** `E` — Type of entity produced by the baker. Must implement [IEntity](../Entities/IEntity.md).
@@ -230,7 +230,7 @@ protected virtual void Reset();
 public static E[] BakeAll(bool includeInactive = true);
 ```
 
-- **Description:** Finds all `SceneEntityBaker<E>` components in the scene and bakes them into entities.
+- **Description:** Finds all `MonoEntityBaker<E>` components in the scene and bakes them into entities.
 - **Parameter:** `includeInactive` — Whether to include inactive objects in the search.
 - **Returns:** An array of baked entities.
 - **Notes:** All corresponding `GameObject`s will be destroyed after baking.
@@ -241,7 +241,7 @@ public static E[] BakeAll(bool includeInactive = true);
 public static void BakeAll(ICollection<E> destination, bool includeInactive = true);
 ```
 
-- **Description:** Collects entities from all `SceneEntityBaker<E>` components in the scene and adds them to the
+- **Description:** Collects entities from all `MonoEntityBaker<E>` components in the scene and adds them to the
   provided collection.
 - **Type Parameter:** `E` — The type of entity created by the bakers.
 - **Parameters:**
@@ -255,7 +255,7 @@ public static void BakeAll(ICollection<E> destination, bool includeInactive = tr
 public static List<E> Bake(Scene scene, bool includeInactive = true);
 ```
 
-- **Description:** Bakes all `SceneEntityBaker<E>`s in the specified scene and returns them as a list.
+- **Description:** Bakes all `MonoEntityBaker<E>`s in the specified scene and returns them as a list.
 - **Parameters:**
     - `scene` — The scene whose root objects should be searched.
     - `includeInactive` — Whether to include inactive objects in the search.
@@ -267,7 +267,7 @@ public static List<E> Bake(Scene scene, bool includeInactive = true);
 public static void Bake(Scene scene, ICollection<E> results, bool includeInactive = true);
 ```
 
-- **Description:** Bakes all `SceneEntityBaker<E>`s in the specified scene and adds them to the provided collection.
+- **Description:** Bakes all `MonoEntityBaker<E>`s in the specified scene and adds them to the provided collection.
 - **Parameters:**
     - `scene` — The scene whose root objects should be searched.
     - `results` — The collection where baked entities will be added. Must not be `null`.
@@ -280,7 +280,7 @@ public static void Bake(Scene scene, ICollection<E> results, bool includeInactiv
 public static E[] Bake(GameObject gameObject, bool includeInactive = true);
 ```
 
-- **Description:** Bakes all `SceneEntityBaker<E>` components attached to or under the specified GameObject.
+- **Description:** Bakes all `MonoEntityBaker<E>` components attached to or under the specified GameObject.
 - **Parameters:**
     - `gameObject` — The GameObject to search.
     - `includeInactive` — Whether to include inactive objects in the search.
@@ -292,7 +292,7 @@ public static E[] Bake(GameObject gameObject, bool includeInactive = true);
 public static void Bake(GameObject gameObject, ICollection<E> results, bool includeInactive = true);
 ```
 
-- **Description:** Bakes all `SceneEntityBaker<E>` components attached to or under the specified GameObject and adds
+- **Description:** Bakes all `MonoEntityBaker<E>` components attached to or under the specified GameObject and adds
   them to the provided collection.
 - **Parameters:**
     - `gameObject` — The GameObject to search.
@@ -302,10 +302,10 @@ public static void Bake(GameObject gameObject, ICollection<E> results, bool incl
 
 <!--
 
-# 🧩 SceneEntityBaker<E>
+# 🧩 MonoEntityBaker<E>
 
 ```csharp
-public abstract partial class SceneEntityBaker<E> : MonoBehaviour, IEntityFactory<E>
+public abstract partial class MonoEntityBaker<E> : MonoBehaviour, IEntityFactory<E>
     where E : IEntity
 ```
 
@@ -364,7 +364,7 @@ E IEntityFactory<E>.Create();
 ## 🗂 Example of Usage
 
 ```
-public class EnemyBaker : SceneEntityBaker<EnemyEntity>
+public class EnemyBaker : MonoEntityBaker<EnemyEntity>
 {
 protected override void Install(EnemyEntity entity)
 {

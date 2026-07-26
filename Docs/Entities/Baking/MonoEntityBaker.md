@@ -1,4 +1,4 @@
-# 🧩 SceneEntityBaker
+# 🧩 MonoEntityBaker
 
 Abstract base class for Unity scene bakers that convert GameObjects into native [IEntity](../Entities/IEntity.md)
 instances. Provides a workflow to convert authored GameObjects into runtime entity representations.
@@ -40,7 +40,7 @@ instances. Provides a workflow to convert authored GameObjects into runtime enti
 ### 1️⃣ Baker Implementation
 
 ```csharp
-public class EnemyBaker : SceneEntityBaker
+public class EnemyBaker : MonoEntityBaker
 {
     protected override void Install(IEntity entity)
     {
@@ -106,10 +106,10 @@ world.AddRange(enemies);
 ### 🏛️ Type
 
 ```csharp
-public abstract class SceneEntityBaker : SceneEntityBaker<IEntity>
+public abstract class MonoEntityBaker : MonoEntityBaker<IEntity>
 ```
 
-- **Inheritance:** [SceneEntityBaker<E>](SceneEntityBaker%601.md)
+- **Inheritance:** [MonoEntityBaker<E>](MonoEntityBaker%601.md)
 - **Description:** Non-generic base class for scene bakers producing [IEntity](../Entities/IEntity.md).
 
 ---
@@ -206,7 +206,7 @@ protected virtual void Reset();
 
 
 
-# 🧩️ SceneEntityBaker
+# 🧩️ MonoEntityBaker
 
 Represents an abstract Unity component that converts **GameObject** into [IEntity](../Entities/IEntity.md) instance. It
 supports batch baking for entire scenes, GameObjects, or all objects in the scene.
@@ -218,7 +218,7 @@ supports batch baking for entire scenes, GameObjects, or all objects in the scen
 #### 1. Create a baker for a character entity
 
 ```csharp
-public class CharacterBaker : SceneEntityBaker
+public class CharacterBaker : MonoEntityBaker
 {
     protected override void Install(IEntity entity)
     {
@@ -236,8 +236,8 @@ public class CharacterBaker : SceneEntityBaker
 #### 3. Usage in a project
 
 ```csharp
-// Create all entities associated with SceneEntityBaker including character
-IEntity[] entities = SceneEntityBaker.BakeAll();
+// Create all entities associated with MonoEntityBaker including character
+IEntity[] entities = MonoEntityBaker.BakeAll();
 
 // Assume we have the entity world
 EntityWorld world = new EntityWorld();
@@ -281,10 +281,10 @@ world.AddRange(enemies);
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneEntityBaker : SceneEntityBaker<IEntity>, IEntityFactory
+public abstract class MonoEntityBaker : MonoEntityBaker<IEntity>, IEntityFactory
 ```
 
-- **Inheritance:** [SceneEntityBaker\<E>](SceneEntityBaker%601.md), [IEntityFactory](IEntityFactory.md)
+- **Inheritance:** [MonoEntityBaker\<E>](MonoEntityBaker%601.md), [IEntityFactory](IEntityFactory.md)
 - **Notes:** Provides the `Install(IEntity)` method to inject custom configuration logic after entity creation.
 
 ---
@@ -364,7 +364,7 @@ protected virtual void Reset();
 - **Remarks:** Only affects editor workflows.
 
 
-# 🧩️ SceneEntityBaker
+# 🧩️ MonoEntityBaker
 
 
 ---
@@ -373,17 +373,17 @@ protected virtual void Reset();
 
 ## Classes
 
-### Class SceneEntityBaker&lt;E&gt;
+### Class MonoEntityBaker&lt;E&gt;
 
 ```csharp
-public abstract class SceneEntityBaker<E> : MonoBehaviour where E : IEntity {...}
+public abstract class MonoEntityBaker<E> : MonoBehaviour where E : IEntity {...}
 ```
 
-### Class SceneEntityBaker
+### Class MonoEntityBaker
 A shortcut version bound to the base `IEntity` type.
 
 ```csharp
-public abstract class SceneEntityBaker : SceneEntityBaker<IEntity> {...}
+public abstract class MonoEntityBaker : MonoEntityBaker<IEntity> {...}
 ```
 
 ---
@@ -449,7 +449,7 @@ public sealed class UnitFactory : ScriptableEntityFactory<UnitEntity>
 
 Now implement a baker:
 ```csharp
-public class UnitBaker : SceneEntityBaker<UnitEntity>
+public class UnitBaker : MonoEntityBaker<UnitEntity>
 {
     [SerializeField] private Optional<int> _health = 100;
     [SerializeField] private Optional<int> _damage = 25;
@@ -467,18 +467,18 @@ public class UnitBaker : SceneEntityBaker<UnitEntity>
 
 Bake everything in the current scene:
 ```csharp
-UnitEntity[] units = SceneEntityBaker<UnitEntity>.BakeAll();
+UnitEntity[] units = MonoEntityBaker<UnitEntity>.BakeAll();
 ```
 
 Bake only under a given parent GameObject:
 ```csharp
-UnitEntity[] squad = SceneEntityBaker<UnitEntity>.Bake(mySquadGameObject);
+UnitEntity[] squad = MonoEntityBaker<UnitEntity>.Bake(mySquadGameObject);
 ```
 
 Bake into an existing collection:
 ```csharp
 List<UnitEntity> buffer = new List<UnitEntity>();
-SceneEntityBaker<UnitEntity>.BakeAll(buffer);
+MonoEntityBaker<UnitEntity>.BakeAll(buffer);
 ```
 
 -->

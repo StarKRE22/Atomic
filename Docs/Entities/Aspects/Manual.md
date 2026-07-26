@@ -74,8 +74,8 @@ Below are the different types of aspects depending on the usage scenario:
     - [IEntityAspect](IEntityAspect.md) <!-- + -->
     - [IEntityAspect&lt;E&gt;](IEntityAspect%601.md) <!-- + -->
 - **MonoBehaviours**
-    - [SceneEntityAspect](SceneEntityAspect.md) <!-- + -->
-    - [SceneEntityAspect&lt;E&gt;](SceneEntityAspect%601.md) <!-- + -->
+    - [MonoEntityAspect](MonoEntityAspect.md) <!-- + -->
+    - [MonoEntityAspect&lt;E&gt;](MonoEntityAspect%601.md) <!-- + -->
 - **ScriptableObjects**
     - [ScriptableEntityAspect](ScriptableEntityAspect.md) <!-- + -->
     - [ScriptableEntityAspect&lt;E&gt;](ScriptableEntityAspect%601.md) <!-- + -->
@@ -86,10 +86,10 @@ Below are the different types of aspects depending on the usage scenario:
 ## 📝 Notes
 
 - **Aspect** — declarative way of extending entity behavior dynamically.
-- [SceneEntityAspect](SceneEntityAspect.md) — implemented as `MonoBehaviour`, bound to the Unity scene.
+- [MonoEntityAspect](MonoEntityAspect.md) — implemented as `MonoBehaviour`, bound to the Unity scene.
 - [ScriptableEntityAspect](ScriptableEntityAspect.md) — implemented as `ScriptableObject`, reusable and lightweight
   logic (buffs, debuffs, etc.).
-- **Generic Aspects:** [IEntityAspect\<E>](IEntityAspect%601.md), [SceneEntityAspect\<E>](SceneEntityAspect%601.md),
+- **Generic Aspects:** [IEntityAspect\<E>](IEntityAspect%601.md), [MonoEntityAspect\<E>](MonoEntityAspect%601.md),
   [ScriptableEntityAspect\<E>](ScriptableEntityAspect%601.md) — strongly typed variant
   for type safety and readability.
 - Keep aspects focused on **behavior configuration only**; avoid embedding business logic.

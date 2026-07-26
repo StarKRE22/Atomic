@@ -113,8 +113,8 @@ There are interfaces and implementations of pool depending on scenario:
     - [IEntityPool&lt;E&gt;](IEntityPool%601.md) <!-- + -->
     - [EntityPool](EntityPool.md) <!-- + -->
     - [EntityPool&lt;E&gt;](EntityPool%601.md) <!-- + -->
-    - [SceneEntityPool](SceneEntityPool.md) <!-- + -->
-    - [SceneEntityPool&lt;E&gt;](SceneEntityPool%601.md) <!-- + -->
+    - [MonoEntityPool](MonoEntityPool.md) <!-- + -->
+    - [MonoEntityPool&lt;E&gt;](MonoEntityPool%601.md) <!-- + -->
 - **MultiPools**
     - [IMultiEntityPool](IMultiEntityPool.md) <!-- + -->
     - [IMultiEntityPool&lt;K, E&gt;](IMultiEntityPool%601.md) <!-- + -->

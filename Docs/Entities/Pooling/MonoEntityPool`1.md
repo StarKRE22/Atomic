@@ -1,4 +1,4 @@
-# 🧩 SceneEntityPool\<E>
+# 🧩 MonoEntityPool\<E>
 
 A Unity **MonoBehaviour-based entity pool** for scene-bound entities of type `E`. Uses a prefab to
 instantiate entities and manages their reuse via a stack. Entities are activated / deactivated on rent / return.
@@ -24,7 +24,7 @@ instantiate entities and manages their reuse via a stack. Entities are activated
     - [OnRent(E)](#onrente)
     - [OnReturn(E)](#onreturne)
     - [Create<T>(in CreateArgs)](#createtcreateargs)
-    - [Destroy(SceneEntityPool<E>, float)](#destroysceneentitypoole-float)
+    - [Destroy(MonoEntityPool<E>, float)](#destroyMonoEntitypoole-float)
   - [Nested Types](#-nested-types)
     - [CreateArgs](#createargs)
 
@@ -33,12 +33,12 @@ instantiate entities and manages their reuse via a stack. Entities are activated
 
 ## 🗂 Example of Usage
 
-Below is an example of using `SceneEntityPool<E>` for enemy entities:
+Below is an example of using `MonoEntityPool<E>` for enemy entities:
 
 #### 1. Create `EnemyPool` for enemy entities
 
 ```csharp
-public class EnemyPool : SceneEntityPool<EnemyEntity>
+public class EnemyPool : MonoEntityPool<EnemyEntity>
 {
 }
 ```
@@ -69,14 +69,14 @@ enemyPool.Return(enemy2);
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneEntityPool<E> : MonoBehaviour, IEntityPool<E>
-    where E : SceneEntity
+public abstract class MonoEntityPool<E> : MonoBehaviour, IEntityPool<E>
+    where E : MonoEntity
 ```
 
 - **Type Parameter:** `E` — The type of entity managed by this pool. Must inherit
-  from [SceneEntity](../Entities/SceneEntity.md).
+  from [MonoEntity](../Entities/MonoEntity.md).
 - **Inheritance:** `MonoBehaviour`, [IEntityPool\<E>](IEntityPool%601.md)
-- **See also:** [SceneEntityPool](SceneEntityPool.md), [SceneEntity](../Entities/SceneEntity.md)
+- **See also:** [MonoEntityPool](MonoEntityPool.md), [MonoEntity](../Entities/MonoEntity.md)
 
 ---
 
@@ -196,17 +196,17 @@ protected virtual void OnReturn(E entity);
 #### `Create<T>(CreateArgs)`
 
 ```csharp
-public static T Create<T>(in CreateArgs args) where T : SceneEntityPool<E>;
+public static T Create<T>(in CreateArgs args) where T : MonoEntityPool<E>;
 ```
 
 - **Description:** Creates a new instance of a scene entity pool in the scene.
 - **Parameter:** `args` — Initialization parameters encapsulated in `CreateArgs`.
 - **Returns:** A new instance of the pool attached to a new GameObject.
 
-#### `Destroy(SceneEntityPool<E>, float)`
+#### `Destroy(MonoEntityPool<E>, float)`
 
 ```csharp
-public static void Destroy(SceneEntityPool<E> pool, float t = 0);
+public static void Destroy(MonoEntityPool<E> pool, float t = 0);
 ```
 
 - **Description:** Disposes the pool and destroys its GameObject after an optional delay.
@@ -224,7 +224,7 @@ public static void Destroy(SceneEntityPool<E> pool, float t = 0);
 public struct CreateArgs
 ```
 
-- **Description:** Arguments for creating a new `SceneEntityPool<E>`.
+- **Description:** Arguments for creating a new `MonoEntityPool<E>`.
 - **Fields:**
     - `name` — Name of the GameObject hosting the pool.
     - `prefab` — Prefab used to instantiate entities.

@@ -1,4 +1,4 @@
-# 🧩 SceneEntityAspect
+# 🧩 MonoEntityAspect
 
 Represents a non-generic `MonoBehaviour` that applies or discards reusable behavior on
 any entity within a Unity scene.
@@ -20,10 +20,10 @@ any entity within a Unity scene.
 
 Below is an example of aspect that temporarily multiplies an entity's speed and restores it when discarded:
 
-#### 1. Create a `SpeedBoost` script deriving from `SceneEntityAspect`
+#### 1. Create a `SpeedBoost` script deriving from `MonoEntityAspect`
 
 ```csharp
-public sealed class SpeedBoost : SceneEntityAspect
+public sealed class SpeedBoost : MonoEntityAspect
 {
     [SerializeField]
     private float _multiplier = 1.5f;
@@ -46,7 +46,7 @@ public sealed class SpeedBoost : SceneEntityAspect
 public class EntityAspectTrigger : MonoBehaviour
 {
     [SerializeField]
-    private SceneEntityAspect _aspect; //Assign Speed boost in the Unity Inspector
+    private MonoEntityAspect _aspect; //Assign Speed boost in the Unity Inspector
     
     private void OnTriggerEnter(Collider collider)
     {
@@ -69,12 +69,12 @@ public class EntityAspectTrigger : MonoBehaviour
 ### 🏛️ Type
 
 ```csharp
-public abstract class SceneEntityAspect : SceneEntityAspect<IEntity>, IEntityAspect
+public abstract class MonoEntityAspect : MonoEntityAspect<IEntity>, IEntityAspect
 ```
 
 - **Description:** Represents a non-generic `MonoBehaviour` that applies or discards reusable behavior on
   any entity within a Unity scene.
-- **Inheritance:** [SceneEntityAspect&lt;E&gt;](SceneEntityAspect%601.md)
+- **Inheritance:** [MonoEntityAspect&lt;E&gt;](MonoEntityAspect%601.md)
 - **Note:** Ideal for modular behaviors that can be dynamically applied or removed at runtime.
 
 ---

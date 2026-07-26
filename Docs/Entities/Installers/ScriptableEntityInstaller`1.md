@@ -58,7 +58,7 @@ public abstract class ScriptableEntityInstaller<E> : ScriptableEntityInstaller, 
 
 - **Type Parameter:** `E` – The specific entity type this installer supports.
 - **Inheritance:**
-  [ScriptableEntityInstaller](SceneEntityInstaller.md), [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md).
+  [MonoEntityInstaller](MonoEntityInstaller.md), [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md).
 
 ---
 

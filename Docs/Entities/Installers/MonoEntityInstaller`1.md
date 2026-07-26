@@ -1,6 +1,6 @@
-# 🧩 SceneEntityInstaller&lt;E&gt;
+# 🧩 MonoEntityInstaller&lt;E&gt;
 
-Strongly-typed variant of [SceneEntityInstaller](SceneEntityInstaller.md). Eliminates the need for manual casting in
+Strongly-typed variant of [MonoEntityInstaller](MonoEntityInstaller.md). Eliminates the need for manual casting in
 derived installer classes.
 
 ---
@@ -30,7 +30,7 @@ public sealed class UnitEntity : SceneEntity
 Create a `MonoBehaviour` installer for `UnitEntity`
 
 ```csharp
-public sealed class CharacterInstaller : SceneEntityInstaller<UnitEntity>
+public sealed class CharacterInstaller : MonoEntityInstaller<UnitEntity>
 {
     [SerializeField] private Transform _transform;
     [SerializeField] private float _moveSpeed = 5.0f;
@@ -56,13 +56,13 @@ public sealed class CharacterInstaller : SceneEntityInstaller<UnitEntity>
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class SceneEntityInstaller<E> : SceneEntityInstaller, IEntityInstaller<E> 
+public abstract class MonoEntityInstaller<E> : MonoEntityInstaller, IEntityInstaller<E> 
     where E : class, IEntity
 ```
 
 - **Type Parameter:** `E` – The specific type of [IEntity](../Entities/IEntity.md) this installer operates on.
 - **Inheritance:
-  ** [SceneEntityInstaller](SceneEntityInstaller.md), [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md).
+  ** [MonoEntityInstaller](MonoEntityInstaller.md), [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md).
 - **See also:** [ScriptableEntityInstaller&lt;E&gt;](ScriptableEntityInstaller%601.md)
 
 ---
