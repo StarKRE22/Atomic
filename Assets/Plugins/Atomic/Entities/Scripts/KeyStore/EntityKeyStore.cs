@@ -27,7 +27,8 @@ namespace Atomic.Entities
         public static void SetAlgorithm(IEntityKeyAlgorithm algorithm)
         {
             _algorithm = algorithm ?? throw new ArgumentNullException(nameof(algorithm));
-            Reset();
+            _nameToId.Clear();
+            _idToName.Clear();
         }
 
         /// <summary>

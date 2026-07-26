@@ -580,6 +580,10 @@ namespace Atomic.Entities
             Array.Clear(_midEntities, 0, _midEntityCount);
             Array.Clear(_highEntities, 0, _highEntityCount);
 
+            _highEntityCount = 0;
+            _midEntityCount = 0;
+            _lowEntityCount = 0;
+
             _commands.Clear();
             _lookup.Clear();
         }
