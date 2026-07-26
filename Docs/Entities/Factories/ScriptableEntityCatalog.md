@@ -1,4 +1,4 @@
-# 🧩 ScriptableMultiEntityFactory
+# 🧩 ScriptableEntityCatalog
 
 A Unity `ScriptableObject`-based concrete implementation of specialized for `string`
 keys, [IEntity](../Entities/IEntity.md) entities and factories of
@@ -23,7 +23,7 @@ type [ScriptableEntityFactory](ScriptableEntityFactory.md).
 
 ## 🗂 Example of Usage
 
-Below is an example of using `ScriptableMultiEntityFactory`
+Below is an example of using `ScriptableEntityCatalog`
 
 #### 1. Create the multi-factory asset
 
@@ -70,7 +70,7 @@ public class GnomeEntityFactory : ScriptableEntityFactory
 
 ```csharp
 // Load the multi-entity factory asset from Resources, for example:
-ScriptableMultiEntityFactory factory = Resources.Load<ScriptableMultiEntityFactory>("MultiEntityFactory");
+ScriptableEntityCatalog factory = Resources.Load<ScriptableEntityCatalog>("MultiEntityFactory");
 
 if (factory.Contains("Orc"))
     IEntity orc = factory.Create("Orc");
@@ -98,11 +98,11 @@ if (factory.TryCreate("Goblin", out IEntity goblin))
     fileName = "MultiEntityFactory",
     menuName = "Atomic/Entities/MultiEntityFactory"
 )]
-public class ScriptableMultiEntityFactory : ScriptableMultiEntityFactory<string, IEntity, ScriptableEntityFactory>,
+public class ScriptableEntityCatalog : ScriptableEntityCatalog<string, IEntity, ScriptableEntityFactory>,
     IMultiEntityFactory
 ```
 
-- **Inheritance:** [ScriptableMultiEntityFactory<K, E, F>](ScriptableMultiEntityFactory%601.md),
+- **Inheritance:** [ScriptableEntityCatalog<K, E, F>](ScriptableEntityCatalog%601.md),
   [IMultiEntityFactory](IMultiEntityFactory.md)
 - **See also:** [ScriptableEntityFactory](ScriptableEntityFactory.md)
 - **Note:** Can be created as an asset via **Unity Create Menu**: `Atomic/Entities/New EntityFactoryCatalog`.

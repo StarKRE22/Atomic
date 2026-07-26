@@ -52,7 +52,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">Type of the input parameter.</typeparam>
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoActionConfigurable%601.md")]
-    public abstract class ConfigurableMonoAction<T> : MonoAction<T>
+    public abstract class MonoActionConfigurable<T> : MonoAction<T>
     {
         /// <summary>
         /// Actions to invoke sequentially. Can be assigned in the Inspector via [SerializeReference].
@@ -85,7 +85,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">Type of the first argument.</typeparam>
     /// <typeparam name="T2">Type of the second argument.</typeparam>
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoActionConfigurable%602.md")]
-    public abstract class ConfigurableMonoAction<T1, T2> : MonoAction<T1, T2>
+    public abstract class MonoActionConfigurable<T1, T2> : MonoAction<T1, T2>
     {
         [SerializeReference]
         public IAction<T1, T2>[] actions;
@@ -117,7 +117,7 @@ namespace Atomic.Elements
     /// <typeparam name="T2">Type of the second argument.</typeparam>
     /// <typeparam name="T3">Type of the third argument.</typeparam>
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoActionConfigurable%603.md")]
-    public abstract class ConfigurableMonoAction<T1, T2, T3> : MonoAction<T1, T2, T3>
+    public abstract class MonoActionConfigurable<T1, T2, T3> : MonoAction<T1, T2, T3>
     {
         [SerializeReference]
         public IAction<T1, T2, T3>[] actions;
@@ -151,7 +151,7 @@ namespace Atomic.Elements
     /// <typeparam name="T3">Type of the third argument.</typeparam>
     /// <typeparam name="T4">Type of the fourth argument.</typeparam>
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoActionConfigurable%604.md")]
-    public abstract class ConfigurableMonoAction<T1, T2, T3, T4> : MonoAction<T1, T2, T3, T4>
+    public abstract class MonoActionConfigurable<T1, T2, T3, T4> : MonoAction<T1, T2, T3, T4>
     {
         [SerializeReference]
         public IAction<T1, T2, T3, T4>[] actions;

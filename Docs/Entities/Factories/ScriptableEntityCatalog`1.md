@@ -1,4 +1,4 @@
-# 🧩 ScriptableMultiEntityFactory<K, E, F>
+# 🧩 ScriptableEntityCatalog<K, E, F>
 
 A Unity ScriptableObject-based abstract multi-entity factory that allows creating and managing entities by key.
 
@@ -104,7 +104,7 @@ public class GnomeEntityFactory : ScriptableEntityFactory<EnemyEntity>
 
 ```csharp
 // Multi Enemy Factory
-public class EnemyMultiFactory : ScriptableMultiEntityFactory<EnemyType, EnemyEntity, EnemyFactoryBase>
+public class EnemyMultiFactory : ScriptableEntityCatalog<EnemyType, EnemyEntity, EnemyFactoryBase>
 {
     protected override EnemyType GetKey(EnemyFactory factory) => factory.Type;
 }
@@ -143,7 +143,7 @@ if (factory.TryCreate(EnemyType.Goblin, out IEntity goblin))
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class ScriptableMultiEntityFactory<K, E, F> : ScriptableObject, IMultiEntityFactory<K, E>
+public abstract class ScriptableEntityCatalog<K, E, F> : ScriptableObject, IMultiEntityFactory<K, E>
     where E : IEntity
     where F : ScriptableEntityFactory<E>
 ```
@@ -154,7 +154,7 @@ public abstract class ScriptableMultiEntityFactory<K, E, F> : ScriptableObject, 
     - `F` — The type of scriptable entity factory, which must inherit
       from [ScriptableEntityFactory\<E>](ScriptableEntityFactory%601.md).
 - **Inheritance:** `ScriptableObject`, [IMultiEntityFactory<K, E>](IMultiEntityFactory%601.md)
-- **See also:** [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md),
+- **See also:** [ScriptableEntityCatalog](ScriptableEntityCatalog.md),
   [MultiEntityFactory<K, E>](MultiEntityFactory%601.md),
 
 ---

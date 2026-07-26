@@ -47,7 +47,7 @@ public interface IMultiEntityFactory : IMultiEntityFactory<string, IEntity>
 
 - **Inheritance:** [IMultiEntityFactory\<K, E>](IMultiEntityFactory%601.md)
 - **See also:** [MultiEntityFactory](MultiEntityFactory.md),
-  [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md)
+  [ScriptableEntityCatalog](ScriptableEntityCatalog.md)
 
 ---
 

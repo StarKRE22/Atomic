@@ -10,8 +10,8 @@ Factories can be **generic** or **non-generic**, **scene-based**, **scriptable**
 
 - [Examples of Usage](#-examples-of-usage)
     - [InlineEntityFactory](#ex1)
-    - [SceneEntityFactory\<E>](#ex2)
-    - [ScriptableEntityFactory\<E>](#ex3)
+    - [ScriptableEntityFactory\<E>](#ex2)
+    - [ScriptableEntityCatalog](#ex3)
     - [MultiEntityFactory](#ex4)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
@@ -46,30 +46,7 @@ IEntity myEntity = factory.Create();
 
 <div id="ex2"></div>
 
-### 2️⃣ SceneEntityFactory\<E>
-
-```csharp
-public class EnemyFactory : SceneEntityFactory<EnemyEntity>
-{
-    public override EnemyEntity Create()
-    {
-        var enemy = new EnemyEntity();
-        enemy.AddValue<int>("Health", 150);
-        enemy.AddValue<int>("Damage", 25);
-        return enemy;
-    }
-}
-```
-
-- **Description:** Scene-based factory using Unity `MonoBehaviour`.
-- **Use Case:** Used for creating entities directly from scene objects, with the option to run additional setup or
-  installation logic after creation.
-
----
-
-<div id="ex3"></div>
-
-### 3️⃣ ScriptableEntityFactory\<E>
+### 2️⃣ ScriptableEntityFactory\<E>
 
 ```csharp
 public class EnemyFactory : ScriptableEntityFactory<EnemyEntity>
@@ -89,9 +66,9 @@ public class EnemyFactory : ScriptableEntityFactory<EnemyEntity>
 
 ---
 
-<div id="ex4"></div>
+<div id="ex3"></div>
 
-### 4️⃣ Multi-Entity Factory
+### 3️⃣ ScriptableEntityCatalog
 
 ```csharp
 IMultiEntityFactory multiFactory = new MultiEntityFactory();
@@ -115,8 +92,6 @@ Below is a list of available factory types:
     - [IEntityFactory&lt;E&gt;](IEntityFactory%601.md) <!-- + -->
     - [ScriptableEntityFactory](ScriptableEntityFactory.md) <!-- + -->
     - [ScriptableEntityFactory&lt;E&gt;](ScriptableEntityFactory%601.md) <!-- + -->
-    - [SceneEntityFactory](SceneEntityFactory.md) <!-- + -->
-    - [SceneEntityFactory&lt;E&gt;](SceneEntityFactory%601.md) <!-- + -->
     - [InlineEntityFactory](InlineEntityFactory.md) <!-- + -->
     - [InlineEntityFactory&lt;E&gt;](InlineEntityFactory%601.md) <!-- + -->
 - **MultiEntityFactories**
@@ -124,8 +99,8 @@ Below is a list of available factory types:
     - [IMultiEntityFactory&lt;E&gt;](IMultiEntityFactory%601.md) <!-- + -->
     - [MultiEntityFactory](MultiEntityFactory.md) <!-- + -->
     - [MultiEntityFactory&lt;E&gt;](MultiEntityFactory%601.md) <!-- + -->
-    - [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md) <!-- + -->
-    - [ScriptableMultiEntityFactory&lt;E&gt;](ScriptableMultiEntityFactory%601.md) <!-- + -->
+    - [ScriptableEntityCatalog](ScriptableEntityCatalog.md) <!-- + -->
+    - [ScriptableEntityCatalog&lt;E&gt;](ScriptableEntityCatalog%601.md) <!-- + -->
 
 
 ---
