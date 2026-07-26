@@ -10,7 +10,10 @@ namespace Atomic.Entities
         /// Initializes a new instance of the <see cref="MultiEntityPool"/> class.
         /// </summary>
         /// <param name="factory">The factory registry used to create and manage entity instances.</param>
-        public MultiEntityPool(IMultiEntityFactory<string, IEntity, TArgs> factory, TArgs args) : base(factory, args)
+        /// <param name="args">The arguments passed to the factory when creating entities.</param>
+        /// <param name="expandMode">Determines how the pool expands when empty. Defaults to <see cref="ExpandMode.ExpandByOne"/>.</param>
+        public MultiEntityPool(IMultiEntityFactory<string, IEntity, TArgs> factory, TArgs args, ExpandMode expandMode = ExpandMode.ExpandByOne)
+            : base(factory, args, expandMode)
         {
         }
     }

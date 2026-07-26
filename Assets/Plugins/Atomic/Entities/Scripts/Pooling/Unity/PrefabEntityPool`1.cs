@@ -1,4 +1,5 @@
 #if UNITY_5_3_OR_NEWER
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
@@ -37,6 +38,7 @@ namespace Atomic.Entities
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
         private readonly Dictionary<string, Pool> _pools = new();
+        private readonly Dictionary<string, int> _rentedCounts = new();
 
         /// <summary>
         /// If not assigned, defaults to the GameObject this script is attached to.
@@ -49,6 +51,14 @@ namespace Atomic.Entities
         [Tooltip("Should don't destroy if scene changed?")]
         [SerializeField]
         private bool _dontDestroyOnLoad;
+
+        [Space]
+        [Tooltip("Determines how the pool expands when empty.\n" +
+                 "ExpandByOne: Creates one new entity per request.\n" +
+                 "ExpandByDoubling: Doubles the current pooled count (e.g. 10 → 20).\n" +
+                 "NoExpand: Throws an exception when the pool is empty.")]
+        [SerializeField]
+        private ExpandMode _expandMode = ExpandMode.ExpandByOne;
 
         protected virtual void Awake()
         {
@@ -124,13 +134,50 @@ namespace Atomic.Entities
             }
             else
             {
-                entity = this.CreateEntity(prefab, parent);
+                entity = this.Expand(prefab, pool);
                 entity.name = name;
                 entity.transform.SetPositionAndRotation(position, rotation);
             }
 
             this.OnRent(entity);
+
+            if (!_rentedCounts.TryAdd(name, 1))
+                _rentedCounts[name]++;
+
             return entity;
+        }
+
+        private P Expand(P prefab, Pool pool)
+        {
+            string name = GetEntityName(prefab);
+            switch (_expandMode)
+            {
+                case ExpandMode.NoExpand:
+                    throw new InvalidOperationException(
+                        $"[EntityPool] Pool '{name}' for prefab '{prefab.name}' is empty " +
+                        $"and ExpandMode is NoExpand. Pre-instantiate more entities via Init() " +
+                        $"or switch to ExpandByOne/ExpandByDoubling.");
+
+                case ExpandMode.ExpandByDoubling:
+                    int count = _rentedCounts.TryGetValue(name, out int rented) && rented > 0 ? rented : 1;
+                    this.CreateEntities(prefab, pool, count);
+                    pool.stack.TryPop(out P doubled);
+                    return doubled;
+
+                case ExpandMode.ExpandByOne:
+                default:
+                    return this.CreateEntity(prefab, pool.container);
+            }
+        }
+
+        private void CreateEntities(P prefab, Pool pool, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                P entity = this.CreateEntity(prefab, pool.container);
+                entity.name = GetEntityName(prefab);
+                pool.stack.Push(entity);
+            }
         }
 
         /// <inheritdoc />
@@ -152,6 +199,9 @@ namespace Atomic.Entities
 
             sceneEntity.transform.SetParent(pool.container, false);
             pool.stack.Push(sceneEntity);
+
+            if (_rentedCounts.TryGetValue(name, out int rented) && rented > 0)
+                _rentedCounts[name] = rented - 1;
         }
 
         /// <summary>
@@ -171,6 +221,7 @@ namespace Atomic.Entities
                 MonoEntity.Destroy(entity);
             }
 
+            _rentedCounts.Remove(objName);
             Destroy(pool.go);
         }
 
@@ -192,6 +243,7 @@ namespace Atomic.Entities
             }
 
             _pools.Clear();
+            _rentedCounts.Clear();
         }
 
         /// <summary>

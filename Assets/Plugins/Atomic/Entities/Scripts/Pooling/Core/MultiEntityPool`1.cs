@@ -38,16 +38,21 @@ namespace Atomic.Entities
         /// </summary>
         private readonly IMultiEntityFactory<TKey, TEntity, TArgs> _factory;
         private readonly TArgs _args;
+        private readonly ExpandMode _expandMode;
+        private readonly Dictionary<TKey, int> _rentedCounts = new();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiEntityPool{TKey,E}"/> class.
         /// </summary>
         /// <param name="factory">The factory registry used to create entities for each key.</param>
+        /// <param name="args">The arguments passed to the factory when creating entities.</param>
+        /// <param name="expandMode">Determines how the pool expands when empty. Defaults to <see cref="ExpandMode.ExpandByOne"/>.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> is null.</exception>
-        public MultiEntityPool(IMultiEntityFactory<TKey, TEntity, TArgs> factory, TArgs args)
+        public MultiEntityPool(IMultiEntityFactory<TKey, TEntity, TArgs> factory, TArgs args, ExpandMode expandMode = ExpandMode.ExpandByOne)
         {
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
             _args = args ?? throw new ArgumentNullException(nameof(args));
+            _expandMode = expandMode;
         }
 
         /// <inheritdoc />
@@ -77,14 +82,47 @@ namespace Atomic.Entities
             }
 
             if (!pool.TryPop(out TEntity entity))
-            {
-                entity = _factory.Create(key, _args);
-                this.OnCreate(entity);
-            }
+                entity = this.Expand(key, pool);
 
             _rentEntities.Add(entity, key);
+
+            if (!_rentedCounts.TryAdd(key, 1))
+                _rentedCounts[key]++;
+
             this.OnRent(entity);
             return entity;
+        }
+
+        private TEntity Expand(TKey key, Stack<TEntity> pool)
+        {
+            switch (_expandMode)
+            {
+                case ExpandMode.NoExpand:
+                    throw new InvalidOperationException(
+                        $"[MultiEntityPool] Pool for key '{key}' is empty and ExpandMode is NoExpand. " +
+                        $"Pre-instantiate more entities via Init() or switch to ExpandByOne/ExpandByDoubling.");
+
+                case ExpandMode.ExpandByDoubling:
+                    int count = _rentedCounts.TryGetValue(key, out int rented) && rented > 0 ? rented : 1;
+                    this.CreateEntities(key, pool, count);
+                    pool.TryPop(out TEntity doubled);
+                    return doubled;
+
+                default:
+                    TEntity entity = _factory.Create(key, _args);
+                    this.OnCreate(entity);
+                    return entity;
+            }
+        }
+
+        private void CreateEntities(TKey key, Stack<TEntity> pool, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                TEntity entity = _factory.Create(key, _args);
+                this.OnCreate(entity);
+                pool.Push(entity);
+            }
         }
 
         /// <inheritdoc />
@@ -102,6 +140,9 @@ namespace Atomic.Entities
             if (pool.Contains(entity))
                 return;
 
+            if (_rentedCounts.TryGetValue(key, out int count) && count > 0)
+                _rentedCounts[key] = count - 1;
+
             this.OnReturn(entity);
             pool.Push(entity);
         }
@@ -118,6 +159,7 @@ namespace Atomic.Entities
 
             _pooledEntities.Clear();
             _rentEntities.Clear();
+            _rentedCounts.Clear();
         }
 
         /// <summary>

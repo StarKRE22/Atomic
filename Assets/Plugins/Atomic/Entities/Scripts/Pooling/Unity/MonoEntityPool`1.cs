@@ -20,7 +20,7 @@ namespace Atomic.Entities
     /// This pool uses a prefab to instantiate entities and manages their reuse via a stack.
     /// Entities are activated/deactivated on rent/return, and can be preloaded using <see cref="Init(int)"/>.
     /// </remarks>
-    //TODO: Add Strategies FixedPool, Resisable Pool
+    //TODO: Add Strategies FixedPool
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Pooling/SceneEntityPool%601.md")]
     public abstract class MonoEntityPool<E, P> : MonoBehaviour, IEntityPool<E>
         where E : IEntity
@@ -59,6 +59,14 @@ namespace Atomic.Entities
         [Tooltip("Should don't destroy if scene changed?")]
         [SerializeField]
         private bool _dontDestroyOnLoad;
+
+        [Space]
+        [Tooltip("Determines how the pool expands when empty.\n" +
+                 "ExpandByOne: Creates one new entity per request.\n" +
+                 "ExpandByDoubling: Doubles the current pooled count (e.g. 10 → 20).\n" +
+                 "NoExpand: Throws an exception when the pool is empty.")]
+        [SerializeField]
+        private ExpandMode _expandMode = ExpandMode.ExpandByOne;
 
 #if ODIN_INSPECTOR
         [FoldoutGroup("Debug")]
@@ -122,17 +130,49 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Rents (activates) an entity from the pool. If the pool is empty, a new instance is created.
+        /// Rents (activates) an entity from the pool. If the pool is empty, expansion behavior
+        /// depends on <see cref="_expandMode"/>.
         /// </summary>
         /// <returns>The rented entity.</returns>
+        /// <exception cref="InvalidOperationException">Thrown when <see cref="ExpandMode.NoExpand"/> is set and the pool is empty.</exception>
         public E Rent()
         {
             if (!_pooledEntities.TryPop(out P entity))
-                entity = this.CreateEntity();
+                entity = this.Expand();
 
             _rentEntities.Add(entity);
             this.OnRent(entity);
             return entity;
+        }
+
+        private P Expand()
+        {
+            switch (_expandMode)
+            {
+                case ExpandMode.NoExpand:
+                    throw new InvalidOperationException(
+                        $"[EntityPool] Pool '{name}' is empty and ExpandMode is NoExpand. " +
+                        $"Pre-instantiate more entities via Init() or switch to ExpandByOne/ExpandByDoubling.");
+
+                case ExpandMode.ExpandByDoubling:
+                    int count = _rentEntities.Count > 0 ? _rentEntities.Count : 1;
+                    this.CreateEntities(count);
+                    _pooledEntities.TryPop(out P doubled);
+                    return doubled;
+
+                case ExpandMode.ExpandByOne:
+                default:
+                    return this.CreateEntity();
+            }
+        }
+
+        private void CreateEntities(int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                P entity = this.CreateEntity();
+                _pooledEntities.Push(entity);
+            }
         }
 
         /// <summary>

@@ -37,16 +37,20 @@ namespace Atomic.Entities
 
         private readonly IEntityFactory<TEntity, TArgs> _factory;
         private readonly TArgs _args;
+        private readonly ExpandMode _expandMode;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityPool{E}"/> class using the specified factory.
         /// </summary>
         /// <param name="factory">The factory used to create new entity instances when needed.</param>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> is null.</exception>
-        public EntityPool(IEntityFactory<TEntity, TArgs> factory, TArgs args)
+        /// <param name="args">The arguments passed to the factory when creating entities.</param>
+        /// <param name="expandMode">Determines how the pool expands when empty. Defaults to <see cref="ExpandMode.ExpandByOne"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> or <paramref name="args"/> is null.</exception>
+        public EntityPool(IEntityFactory<TEntity, TArgs> factory, TArgs args, ExpandMode expandMode = ExpandMode.ExpandByOne)
         {
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
             _args = args ?? throw new ArgumentNullException(nameof(args));
+            _expandMode = expandMode;
         }
 
         /// <summary>
@@ -80,19 +84,51 @@ namespace Atomic.Entities
 
         /// <summary>
         /// Retrieves an entity from the pool or creates a new one if the pool is empty.
+        /// Behavior when empty depends on <see cref="ExpandMode"/>.
         /// </summary>
         /// <returns>An available entity instance.</returns>
+        /// <exception cref="InvalidOperationException">Thrown when <see cref="ExpandMode.NoExpand"/> is set and the pool is empty.</exception>
         public TEntity Rent()
         {
             if (!_pooledEntities.TryPop(out TEntity entity))
-            {
-                entity = _factory.Create(_args);
-                this.OnCreate(entity);
-            }
+                entity = this.Expand();
 
             _rentEntities.Add(entity);
             this.OnRent(entity);
             return entity;
+        }
+
+        private TEntity Expand()
+        {
+            switch (_expandMode)
+            {
+                case ExpandMode.NoExpand:
+                    throw new InvalidOperationException(
+                        $"[EntityPool] Pool is empty and ExpandMode is NoExpand. " +
+                        $"Pre-instantiate more entities via Init() or switch to ExpandByOne/ExpandByDoubling.");
+
+                case ExpandMode.ExpandByDoubling:
+                    int count = _rentEntities.Count > 0 ? _rentEntities.Count : 1;
+                    this.CreateEntities(count);
+                    _pooledEntities.TryPop(out TEntity doubled);
+                    return doubled;
+
+                case ExpandMode.ExpandByOne:
+                default:
+                    TEntity entity = _factory.Create(_args);
+                    this.OnCreate(entity);
+                    return entity;
+            }
+        }
+
+        private void CreateEntities(int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                TEntity entity = _factory.Create(_args);
+                this.OnCreate(entity);
+                _pooledEntities.Push(entity);
+            }
         }
 
         /// <summary>
