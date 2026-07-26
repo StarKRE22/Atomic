@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Modules.SpatialStructures
