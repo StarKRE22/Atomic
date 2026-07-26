@@ -131,7 +131,7 @@ collection.InitEntities();
 collection.DisposeEntities();
 
 // Unity-specific usage
-var prefab = ...; // Some SceneEntity prefab
+var prefab = ...; // Some MonoEntity prefab
 var entity = collection.CreateEntity(prefab, Vector3.zero, Quaternion.identity);
 collection.DestroyEntity(entity, 1.0f); // destroys after 1 second
 ```

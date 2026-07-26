@@ -109,7 +109,7 @@ Below is a list of available factory types:
 
 - Use **`IEntityFactory`** for standard creation interfaces.
 - Use **`IMultiEntityFactory`** / **`MultiEntityFactory`** for registry-like scenarios.
-- Use **`SceneEntityBaker`** or **`ScriptableEntityFactory`** when integrating with Unity workflows.
+- Use **`MonoEntityBaker`** or **`ScriptableEntityFactory`** when integrating with Unity workflows.
 - Use **`InlineEntityFactory`** for lightweight, temporary, or lambda-based entity creation.
 - **Generic versions** provide type-safety and avoid unnecessary casting.
 

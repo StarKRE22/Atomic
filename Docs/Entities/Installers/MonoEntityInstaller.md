@@ -22,7 +22,7 @@ or if entity instances in the scene need to differ. In other cases, use
 
 ## 🗂 Example of Usage
 
-Below is an example how to install [SceneEntity](../Entities/SceneEntity.md) and populate it wit **tags** and
+Below is an example how to install [MonoEntity](../Entities/MonoEntity.md) and populate it wit **tags** and
 **values**:
 
 #### 1. Create `CharacterInstaller` script

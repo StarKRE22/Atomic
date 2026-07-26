@@ -113,7 +113,7 @@ elements and behaviour into it.
 
  ```csharp
 // Populates entity with tags, values and behaviours
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private Transform _transform;
     [SerializeField] private Const<float> _moveSpeed = 5.0f;
@@ -186,7 +186,7 @@ public class InputBehaviour : IEntityInit, IEntityTick
 Next, let’s register the `InputBehaviour` inside the `CharacterInstaller`:
 
 ```csharp
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private Transform _transform;
     [SerializeField] private Const<float> _moveSpeed = 5.0f;

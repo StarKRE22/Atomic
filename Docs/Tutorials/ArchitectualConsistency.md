@@ -2,13 +2,13 @@
 
 Entities are not limited to game objects — they can also serve as game systems, user interface elements, or even the
 global application context. To define an entity’s domain in Unity, you simply inherit from the base
-class [SceneEntity](../Entities/Entities/SceneEntity.md)
+class [MonoEntity](../Entities/Entities/MonoEntity.md)
 and fill it with the necessary data and logic.
 
 It looks like this:
 
 ```csharp
-public class GameContext : SceneEntity
+public class GameContext : MonoEntity
 {  
 }
 ```
@@ -31,7 +31,7 @@ examples:
 
 ```csharp
 // Game Context
-public sealed class GameContextInstaller : SceneEntityInstaller<GameContext>
+public sealed class GameContextInstaller : MonoEntityInstaller<GameContext>
 {
     [SerializeField] private Transform _worldTransform;
     [SerializeField] private TeamCatalog _teamCatalog;
@@ -70,7 +70,7 @@ public sealed class GameUIInstaller : EntityInstaller<GameUI>
 
 ```csharp
 // Application Context
-public sealed class AppContextInstaller : SceneEntityInstaller<AppContext>
+public sealed class AppContextInstaller : MonoEntityInstaller<AppContext>
 {
     [Header("Quit")]
     [SerializeField] private KeyCode _exitKey = KeyCode.Escape;

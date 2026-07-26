@@ -20,7 +20,7 @@ that visually represent entity data.
 - Context menu option to assign GameObject name to `customName`
 
 ### Install Handling
-- Automatically installs and uninstalls `SceneEntityInstaller<E>` components
+- Automatically installs and uninstalls `MonoEntityInstaller<E>` components
 - Ensures entity-specific behaviors are applied when visible and cleaned up when hidden
 
 ### Editor Gizmos

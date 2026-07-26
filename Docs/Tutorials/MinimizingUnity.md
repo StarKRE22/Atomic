@@ -230,7 +230,7 @@ To add components, the same installers used for game mechanics are applied. Letâ
 representation:
 
 ```csharp
-public sealed class CharacterViewInstaller : SceneEntityInstaller<GameEntity>
+public sealed class CharacterViewInstaller : MonoEntityInstaller<GameEntity>
 {
     [SerializeField] private TakeDamageViewBehaviour _takeDamageBehaviour;
     [SerializeField] private PositionViewBehaviour _positionBehaviour;

@@ -22,7 +22,7 @@ derived installer classes.
 Assume we have a concrete type of entity
 
 ```csharp
-public sealed class UnitEntity : SceneEntity
+public sealed class UnitEntity : MonoEntity
 {
 }
 ```

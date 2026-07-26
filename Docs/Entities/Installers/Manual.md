@@ -16,7 +16,7 @@
 
 ## 🗂 Example of Usage
 
-Below is an example how to install [SceneEntity](../Entities/SceneEntity.md) and populate it wit **tags** and 
+Below is an example how to install [MonoEntity](../Entities/MonoEntity.md) and populate it wit **tags** and 
 **values**:
 
 #### 1. Create `CharacterInstaller` script
@@ -49,9 +49,9 @@ public sealed class CharacterInstaller : MonoEntityInstaller
 
 #### 3. Drag & drop `CharacterInstaller` into `installers` field of the entity
 
-<img width="464" height="" alt="изображение" src="../../Images/SceneEntity%20Attach%20Installer.png" />
+<img width="464" height="" alt="изображение" src="../../Images/MonoEntity%20Attach%20Installer.png" />
 
-#### 4. Now your `SceneEntity` has tags and properties.
+#### 4. Now your `MonoEntity` has tags and properties.
 
 ---
 
