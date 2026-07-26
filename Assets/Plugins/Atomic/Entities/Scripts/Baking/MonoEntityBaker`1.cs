@@ -10,12 +10,13 @@ namespace Atomic.Entities
     /// Base class for MonoBehaviour-based "bakers" that convert a scene GameObject into a native C# <see cref="IEntity"/> instance.
     /// </summary>
     /// <typeparam name="TEntity">The type of entity produced by this baker. Must implement <see cref="IEntity"/>.</typeparam>
+    /// <typeparam name="TArgs">The type of construction arguments passed to the entity factory.</typeparam>
     /// <remarks>
     /// This class is intended to be attached to a GameObject in the Unity scene. 
     /// When <see cref="Bake"/> is called, it creates a new entity and destroys the GameObject.
     /// Derived classes must implement <see cref="Create"/> to construct the entity.
     /// </remarks>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Baking/SceneEntityBaker%601.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Baking/MonoEntityBaker%601.md")]
     public abstract partial class MonoEntityBaker<TEntity, TArgs> : MonoBehaviour
         where TEntity : IEntity
         where TArgs : IArgs

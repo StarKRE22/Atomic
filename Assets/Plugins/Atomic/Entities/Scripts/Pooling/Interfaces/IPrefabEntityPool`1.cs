@@ -10,6 +10,7 @@ namespace Atomic.Entities
     /// Provides centralized methods for renting and returning entities across those pools.
     /// </summary>
     /// <typeparam name="E">The type of scene entity being pooled. Must inherit from <see cref="MonoEntity"/>.</typeparam>
+    /// <typeparam name="P">The concrete prefab type used to instantiate entities. Must inherit from <see cref="MonoEntity"/> and implement <typeparamref name="E"/>.</typeparam>
     public interface IPrefabEntityPool<E, in P> : IDisposable
         where E : IEntity
         where P : MonoEntity, E

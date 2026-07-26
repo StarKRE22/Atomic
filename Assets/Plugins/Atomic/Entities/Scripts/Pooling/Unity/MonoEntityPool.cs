@@ -13,13 +13,13 @@ namespace Atomic.Entities
     /// <example>
     /// Attach this component to a GameObject to preallocate and reuse pooled entities at runtime:
     /// <code>
-    /// var pooledEntity = sceneEntityPool.Rent();
-    /// sceneEntityPool.Return(pooledEntity);
+    /// var pooledEntity = monoEntityPool.Rent();
+    /// monoEntityPool.Return(pooledEntity);
     /// </code>
     /// </example>
     [AddComponentMenu("Atomic/Entities/Entity Pool")]
     [DisallowMultipleComponent]
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Pooling/SceneEntityPool.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Pooling/MonoEntityPool.md")]
     public class MonoEntityPool : MonoEntityPool<IEntity, MonoEntity>, IEntityPool
     {
         /// <summary>

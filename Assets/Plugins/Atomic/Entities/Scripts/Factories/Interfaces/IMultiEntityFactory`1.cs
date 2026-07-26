@@ -9,6 +9,9 @@ namespace Atomic.Entities
     /// <typeparam name="TEntity">
     /// The type of entity to be created, which must implement the <see cref="IEntity"/> interface.
     /// </typeparam>
+    /// <typeparam name="TArgs">
+    /// The type of construction arguments passed to the factory. Must implement <see cref="IArgs"/>.
+    /// </typeparam>
     public interface IMultiEntityFactory<in TKey, TEntity, in TArgs>
         where TArgs : IArgs
         where TEntity : IEntity

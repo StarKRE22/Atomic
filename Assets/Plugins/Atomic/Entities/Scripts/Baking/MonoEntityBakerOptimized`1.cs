@@ -7,6 +7,8 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="TEntity">The type of entity produced by this baker. Must implement <see cref="IEntity"/>.</typeparam>
     /// <typeparam name="TView">The type of <see cref="EntityView{E}"/> associated with this baker. Used for efficient pooling and binding.</typeparam>
+    /// <typeparam name="TKey">The key type used to identify entities in the view pool.</typeparam>
+    /// <typeparam name="TArgs">The type of construction arguments passed to the entity factory.</typeparam>
     /// <remarks>
     /// This baker provides a higher-performance workflow for scene-based entities by coupling each baked entity
     /// with its specific <see cref="EntityView{E}"/>. The view acts as a lightweight bridge between Unity components
@@ -22,7 +24,7 @@ namespace Atomic.Entities
     /// When the entity is released (e.g., destroyed or recycled), the view is returned to the
     /// assigned <see cref="EntityViewPool{E, V}"/> for reuse.
     /// </remarks>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Baking/SceneEntityBakerOptimized%602.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Baking/MonoEntityBakerOptimized%602.md")]
     public abstract class MonoEntityBakerOptimized<TKey, TEntity, TView, TArgs> : MonoEntityBaker<TEntity, TArgs>
         where TEntity : class, IEntity
         where TView : EntityView<TEntity>

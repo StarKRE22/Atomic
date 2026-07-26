@@ -16,7 +16,7 @@ namespace Atomic.Entities
     /// Used to declaratively configure entities placed in a scene.  
     /// In the Editor, it supports automatic refresh via <c>OnValidate</c>.
     /// </remarks>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Installers/SceneEntityInstaller.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Installers/MonoEntityInstaller.md")]
     public abstract class MonoEntityInstaller : MonoBehaviour, IEntityInstaller
     {
 #if UNITY_EDITOR

@@ -9,7 +9,7 @@ namespace Atomic.Entities
     /// and <see cref="EntityFactory"/> factories.
     /// Implements <see cref="IMultiEntityFactory"/>.
     /// </summary>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Factories/ScriptableMultiEntityFactory.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Factories/ScriptableEntityCatalog.md")]
     [CreateAssetMenu(
         fileName = "MultiEntityFactory",
         menuName = "Atomic/Entities/MultiEntityFactory"

@@ -13,6 +13,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="TKey">The key type used to identify each pool.</typeparam>
     /// <typeparam name="TEntity">The entity type managed by the pools. Must implement <see cref="IEntity"/>.</typeparam>
+    /// <typeparam name="TArgs">The type of construction arguments passed to the entity factory.</typeparam>
     public class MultiEntityPool<TKey, TEntity, TArgs> : IMultiEntityPool<TKey, TEntity>
         where TEntity : IEntity
         where TArgs : IArgs

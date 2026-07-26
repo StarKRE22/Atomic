@@ -7,7 +7,7 @@ namespace Atomic.Entities
     /// <para>
     /// This interface represents the core of an entity naming system where string names are converted to numeric IDs.
     /// It is intentionally stateless: the algorithm itself does not store mappings or caching. 
-    /// Caching and reverse lookup are typically handled externally, for example in a manager class like <c>EntityNames</c>.
+    /// Caching and reverse lookup are typically handled externally, for example in a manager class like <c>EntityKeyStore</c>.
     /// </para>
     /// <para>
     /// Implementations can range from simple sequential counters to hash-based algorithms

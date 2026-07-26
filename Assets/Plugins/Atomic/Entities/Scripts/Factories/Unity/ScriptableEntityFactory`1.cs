@@ -17,6 +17,7 @@ namespace Atomic.Entities
     /// Stores initial parameters used during entity creation and allows previewing entity properties in the Editor.
     /// </summary>
     /// <typeparam name="TEntity">The type of entity to create. Must implement <see cref="IEntity"/>.</typeparam>
+    /// <typeparam name="TArgs">The type of construction arguments passed to the factory.</typeparam>
     /// <remarks>
     /// This factory can be extended to define custom entity creation logic. The <see cref="Compile"/> method
     /// extracts entity metadata (like name, tag count, etc.) and stores it for optimization or display purposes.

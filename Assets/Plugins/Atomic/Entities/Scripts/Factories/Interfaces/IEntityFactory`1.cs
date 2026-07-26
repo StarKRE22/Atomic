@@ -7,6 +7,7 @@ namespace Atomic.Entities
     /// that are responsible for instantiating and configuring entities at runtime.
     /// </summary>
     /// <typeparam name="TEntity">The type of <see cref="IEntity"/> this factory creates.</typeparam>
+    /// <typeparam name="TArgs">The type of construction arguments passed to the factory. Must implement <see cref="IArgs"/>.</typeparam>
     public interface IEntityFactory<out TEntity, in TArgs>
         where TEntity : IEntity
         where TArgs : IArgs

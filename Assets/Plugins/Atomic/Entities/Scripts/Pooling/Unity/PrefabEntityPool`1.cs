@@ -16,6 +16,7 @@ namespace Atomic.Entities
     /// A multi-prefab object pool for scene-based entities of type <typeparamref name="E"/>.
     /// </summary>
     /// <typeparam name="E">The type of <see cref="MonoEntity"/> managed by the pool.</typeparam>
+    /// <typeparam name="P">The concrete prefab type used to instantiate entities. Must inherit from <see cref="MonoEntity"/> and implement <typeparamref name="E"/>.</typeparam>
     /// <remarks>
     /// This pool allows renting and returning multiple different entity prefabs, each tracked by its own internal pool.
     /// Pools are created lazily and managed by prefab name. Supports pre-warming via <see cref="Init"/>.

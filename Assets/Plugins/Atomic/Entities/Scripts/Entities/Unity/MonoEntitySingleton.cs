@@ -12,6 +12,8 @@ namespace Atomic.Entities
     /// A base class for singleton scene entities.
     /// Ensures that only one instance exists per scene or globally.
     /// </summary>
+    /// <typeparam name="E">The concrete singleton type. Must inherit from <see cref="MonoEntitySingleton{E}"/>.</typeparam>
+    /// </summary>
     public abstract class MonoEntitySingleton<E> : MonoEntity where E : MonoEntitySingleton<E>
     {
 #if ODIN_INSPECTOR

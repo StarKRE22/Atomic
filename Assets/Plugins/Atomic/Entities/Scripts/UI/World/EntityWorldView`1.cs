@@ -9,6 +9,7 @@ namespace Atomic.Entities
     /// Provides functionality to show, hide, add, remove, and clear entity views,
     /// backed by a pool of reusable instances.
     /// </summary>
+    /// <typeparam name="K">The key type used to identify entities in the collection.</typeparam>
     /// <typeparam name="E">The type of entity (<see cref="IEntity"/>) managed by this collection.</typeparam>
     /// <typeparam name="V">The type of entity view (<see cref="EntityView{E}"/>) associated with entities.</typeparam>
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityCollectionView%601.md")]

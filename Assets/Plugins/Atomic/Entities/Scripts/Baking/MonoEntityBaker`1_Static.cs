@@ -10,7 +10,7 @@ namespace Atomic.Entities
     public partial class MonoEntityBaker<TEntity, TArgs>
     {
         /// <summary>
-        /// Finds all <see cref="MonoEntityBaker{TArgs}"/> components in the scene and bakes them into entities.
+        /// Finds all <see cref="MonoEntityBaker{TEntity, TArgs}"/> components in the scene and bakes them into entities.
         /// All corresponding GameObjects will be destroyed after baking.
         /// </summary>
         /// <param name="includeInactive">Whether to include inactive objects in the search.</param>
@@ -40,7 +40,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Collects entities from all <see cref="MonoEntityBaker{TArgs}"/> components in the scene
+        /// Collects entities from all <see cref="MonoEntityBaker{TEntity, TArgs}"/> components in the scene
         /// and adds them to the specified <paramref name="destination"/> collection.
         /// </summary>
         /// <typeparam name="TEntity">The type of entity created by the bakers.</typeparam>
@@ -56,7 +56,7 @@ namespace Atomic.Entities
         /// Thrown if <paramref name="destination"/> is <c>null</c>.
         /// </exception>
         /// <remarks>
-        /// This method finds all <see cref="MonoEntityBaker{TArgs}"/> instances in the scene and
+        /// This method finds all <see cref="MonoEntityBaker{TEntity, TArgs}"/> instances in the scene and
         /// invokes their <c>Create</c> method to generate entities.  
         /// The resulting entities are then added to <paramref name="destination"/>.
         /// </remarks>
@@ -85,7 +85,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Bakes all <see cref="MonoEntityBaker{TArgs}"/>s in a specific <see cref="Scene"/>.
+        /// Bakes all <see cref="MonoEntityBaker{TEntity, TArgs}"/>s in a specific <see cref="Scene"/>.
         /// </summary>
         /// <param name="scene">The scene whose root objects should be searched.</param>
         /// <returns>List of baked entities.</returns>
@@ -113,7 +113,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Bakes all <see cref="MonoEntityBaker{TArgs}"/>s in a specific <see cref="Scene"/> and adds them to the provided collection.
+        /// Bakes all <see cref="MonoEntityBaker{TEntity, TArgs}"/>s in a specific <see cref="Scene"/> and adds them to the provided collection.
         /// </summary>
         /// <param name="scene">The scene whose root objects should be searched.</param>
         /// <param name="results">The collection where baked entities will be added.</param>
@@ -143,7 +143,7 @@ namespace Atomic.Entities
 
 
         /// <summary>
-        /// Bakes all <see cref="MonoEntityBaker{TArgs}"/> components attached to or under the specified GameObject.
+        /// Bakes all <see cref="MonoEntityBaker{TEntity, TArgs}"/> components attached to or under the specified GameObject.
         /// </summary>
         /// <param name="gameObject">The GameObject to search.</param>
         /// <returns>Array of baked entities.</returns>
@@ -167,7 +167,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Bakes all <see cref="MonoEntityBaker{TArgs}"/> components attached to or under the specified GameObject
+        /// Bakes all <see cref="MonoEntityBaker{TEntity, TArgs}"/> components attached to or under the specified GameObject
         /// and adds them to the provided collection.
         /// </summary>
         /// <param name="gameObject">The GameObject to search.</param>

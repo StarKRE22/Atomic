@@ -7,7 +7,7 @@ namespace Atomic.Elements
     /// An abstract class for scene-based actions that implement the <see cref="IAction"/> interface.
     /// Inherit from this class to define custom actions as MonoBehaviours.
     /// </summary>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionAbstract.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoAction.md")]
     public abstract class MonoAction : MonoBehaviour, IAction
     {
         /// <inheritdoc cref="IAction.Invoke"/>
@@ -18,7 +18,7 @@ namespace Atomic.Elements
     /// Scene-based action with one parameter.
     /// </summary>
     /// <typeparam name="T">Type of the input parameter.</typeparam>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionAbstract%601.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoAction%601.md")]
     public abstract class MonoAction<T> : MonoBehaviour, IAction<T>
     {
         /// <inheritdoc cref="IAction{T}.Invoke"/>
@@ -30,7 +30,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T1">Type of the first parameter.</typeparam>
     /// <typeparam name="T2">Type of the second parameter.</typeparam>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionAbstract%602.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoAction%602.md")]
     public abstract class MonoAction<T1, T2> : MonoBehaviour, IAction<T1, T2>
     {
         /// <inheritdoc cref="IAction{T1, T2}.Invoke"/>
@@ -43,7 +43,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">Type of the first parameter.</typeparam>
     /// <typeparam name="T2">Type of the second parameter.</typeparam>
     /// <typeparam name="T3">Type of the third parameter.</typeparam>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionAbstract%603.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoAction%603.md")]
     public abstract class MonoAction<T1, T2, T3> : MonoBehaviour, IAction<T1, T2, T3>
     {
         /// <inheritdoc cref="IAction{T1, T2, T3}.Invoke"/>
@@ -57,7 +57,7 @@ namespace Atomic.Elements
     /// <typeparam name="T2">Type of the second parameter.</typeparam>
     /// <typeparam name="T3">Type of the third parameter.</typeparam>
     /// <typeparam name="T4">Type of the fourth parameter.</typeparam>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionAbstract%604.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoAction%604.md")]
     public abstract class MonoAction<T1, T2, T3, T4> : MonoBehaviour, IAction<T1, T2, T3, T4>
     {
         /// <inheritdoc cref="IAction{T1, T2, T3, T4}.Invoke"/>

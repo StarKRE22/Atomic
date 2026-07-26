@@ -16,7 +16,8 @@ namespace Atomic.Entities
     /// <typeparam name="K">Key used to identify factories (enum, string, etc).</typeparam>
     /// <typeparam name="E">Entity type (must implement <see cref="IEntity"/>).</typeparam>
     /// <typeparam name="F">Factory type (inherits <see cref="ScriptableEntityFactory{TArgs}"/>).</typeparam>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Factories/ScriptableMultiEntityFactory%601.md")]
+    /// <typeparam name="TArgs">The type of construction arguments passed to each factory.</typeparam>
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Factories/ScriptableEntityCatalog%601.md")]
     public abstract class ScriptableEntityCatalog<K, E, F, TArgs> : ScriptableObject,
         IMultiEntityFactory<K, E, TArgs>,
         IReadOnlyDictionary<K, F>

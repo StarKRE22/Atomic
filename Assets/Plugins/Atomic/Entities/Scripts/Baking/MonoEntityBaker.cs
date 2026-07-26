@@ -17,7 +17,7 @@ namespace Atomic.Entities
     /// Derived classes must implement <see cref="Install"/> to define how the entity is configured 
     /// (e.g., adding tags, values, or behaviors).
     /// </remarks>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Baking/SceneEntityBaker.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Baking/MonoEntityBaker.md")]
     public abstract class MonoEntityBaker<TArgs> : MonoEntityBaker<IEntity, TArgs> where TArgs : IArgs
     {
         // <summary>

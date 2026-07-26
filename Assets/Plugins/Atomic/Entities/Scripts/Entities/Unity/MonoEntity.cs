@@ -15,7 +15,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Entities/SceneEntity.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Entities/MonoEntity.md")]
     public partial class MonoEntity : MonoBehaviour, IEntity
     {
         private const int UNDEFINED_INDEX = -1;

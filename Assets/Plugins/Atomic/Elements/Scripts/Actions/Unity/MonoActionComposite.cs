@@ -15,7 +15,7 @@ namespace Atomic.Elements
     /// while internally invoking all contained scene actions in order.
     /// </summary>
     [AddComponentMenu("Atomic/Elements/Action Composite")]
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionComposite.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoActionComposite.md")]
     public class MonoActionComposite : MonoAction
     {
 #if ODIN_INSPECTOR
@@ -49,7 +49,7 @@ namespace Atomic.Elements
     /// Composite scene action with one generic parameter.
     /// </summary>
     /// <typeparam name="T">The type of the argument.</typeparam>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionComposite%601.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoActionComposite%601.md")]
     public class MonoActionComposite<T> : MonoAction<T>
     {
 #if ODIN_INSPECTOR
@@ -82,7 +82,7 @@ namespace Atomic.Elements
     /// <summary>
     /// Composite scene action with two generic parameters.
     /// </summary>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionComposite%602.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoActionComposite%602.md")]
     public class MonoActionComposite<T1, T2> : MonoAction<T1, T2>
     {
 #if ODIN_INSPECTOR
@@ -115,7 +115,7 @@ namespace Atomic.Elements
     /// <summary>
     /// Composite scene action with three generic parameters.
     /// </summary>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionComposite%603.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoActionComposite%603.md")]
     public class MonoActionComposite<T1, T2, T3> : MonoAction<T1, T2, T3>
     {
 #if ODIN_INSPECTOR
@@ -148,7 +148,7 @@ namespace Atomic.Elements
     /// <summary>
     /// Composite scene action with four generic parameters.
     /// </summary>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/SceneActionComposite%604.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Actions/MonoActionComposite%604.md")]
     public class MonoActionComposite<T1, T2, T3, T4> : MonoAction<T1, T2, T3, T4>
     {
 #if ODIN_INSPECTOR

@@ -16,12 +16,13 @@ namespace Atomic.Entities
     /// A Unity MonoBehaviour-based entity pool for scene-bound entities of type <typeparamref name="E"/>.
     /// </summary>
     /// <typeparam name="E">The type of entity managed by this pool. Must inherit from <see cref="MonoEntity"/>.</typeparam>
+    /// <typeparam name="P">The concrete prefab type used to instantiate entities. Must inherit from <see cref="MonoEntity"/> and implement <typeparamref name="E"/>.</typeparam>
     /// <remarks>
     /// This pool uses a prefab to instantiate entities and manages their reuse via a stack.
     /// Entities are activated/deactivated on rent/return, and can be preloaded using <see cref="Init(int)"/>.
     /// </remarks>
     //TODO: Add Strategies FixedPool
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Pooling/SceneEntityPool%601.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Pooling/MonoEntityPool%601.md")]
     public abstract class MonoEntityPool<E, P> : MonoBehaviour, IEntityPool<E>
         where E : IEntity
         where P : MonoEntity, E

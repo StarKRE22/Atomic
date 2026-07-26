@@ -16,6 +16,7 @@ namespace Atomic.Entities
     /// A simple object pool for entities of type <typeparamref name="TEntity"/>.
     /// </summary>
     /// <typeparam name="TEntity">The entity type managed by the pool. Must implement <see cref="IEntity"/>.</typeparam>
+    /// <typeparam name="TArgs">The type of construction arguments passed to the entity factory.</typeparam>
     /// <remarks>
     /// This pool creates entities using an <see cref="IEntityFactory{E}"/> and supports reuse through
     /// <see cref="Rent"/> and <see cref="Return(TEntity)"/> methods.

@@ -12,6 +12,7 @@ namespace Atomic.Entities
     /// A singleton-based implementation of <see cref="EntityWorldView{E, V}"/>.
     /// Ensures that only one instance exists in the scene (or globally if marked as persistent).
     /// </summary>
+    /// <typeparam name="K">The key type used to identify entities in the collection.</typeparam>
     /// <typeparam name="E">Entity type.</typeparam>
     /// <typeparam name="V">View type.</typeparam>
     public abstract class EntityWorldViewSingleton<K, E, V> : EntityWorldView<K, E, V>

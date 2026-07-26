@@ -11,7 +11,7 @@ namespace Atomic.Entities
     /// <remarks>
     /// This variant enforces type safety and eliminates the need for manual casting in derived classes.
     /// </remarks>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Installers/SceneEntityInstaller%601.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Installers/MonoEntityInstaller%601.md")]
     public abstract class MonoEntityInstaller<E> : MonoEntityInstaller, IEntityInstaller<E> where E : class, IEntity
     {
         /// <inheritdoc cref="MonoEntityInstaller.Install" />
