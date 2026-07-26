@@ -22,7 +22,7 @@ several approaches.
 **This approach organizes installation by logical sections within a single installer.**
 
 ```csharp
-public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
+public sealed class CharacterInstaller : MonoEntityInstaller<IGameEntity>
 {
     [SerializeField] private Const<float> _moveSpeed = 3;
     [SerializeField] private Const<float> _rotationSpeed = 360 * 4;
@@ -61,7 +61,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
 **You can split installation into multiple methods for clarity:**
 
 ```csharp
-public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
+public sealed class CharacterInstaller : MonoEntityInstaller<IGameEntity>
 {
     [SerializeField] private Const<float> _moveSpeed = 3;
     [SerializeField] private Const<float> _rotationSpeed = 360 * 4;
@@ -170,7 +170,7 @@ Below are examples of using modular installers
 ### 🗂 Example #1: Character Installation
 
 ```csharp
-public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
+public sealed class CharacterInstaller : MonoEntityInstaller<IGameEntity>
 {
     [SerializeField] private TransformEntityInstaller _transformInstaller;
     [SerializeField] private MovementEntityInstaller _movementInstaller;
@@ -194,7 +194,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
 ### 🗂 Example #2: Enemy Installation
 
 ```csharp
-public sealed class EnemyInstaller : SceneEntityInstaller<IGameEntity>
+public sealed class EnemyInstaller : MonoEntityInstaller<IGameEntity>
 {
     [SerializeField] private TransformEntityInstaller _transformInstaller;
     [SerializeField] private MovementEntityInstaller _movementInstaller;

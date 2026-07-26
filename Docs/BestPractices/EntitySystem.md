@@ -397,10 +397,10 @@ To visualize the entity, create a prefab and attach the `UnitView` component:
 #### 🛠 Example: Tank View Installer
 
 To modularly attach visual behaviors to the tank entity, use
-a [SceneEntityInstaller\<E>](../Entities/Installers/SceneEntityInstaller%601.md):
+a [MonoEntityInstaller\<E>](../Entities/Installers/MonoEntityInstaller%601.md):
 
 ```csharp
-public sealed class TankViewInstaller : SceneEntityInstaller
+public sealed class TankViewInstaller : MonoEntityInstaller
 {
     [SerializeField] private TakeDamageViewBehaviour _takeDamageBehaviour;
     [SerializeField] private PositionViewBehaviour _positionBehaviour;

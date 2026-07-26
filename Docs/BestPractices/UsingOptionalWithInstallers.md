@@ -23,7 +23,7 @@ This approach makes it easy to **enable or disable features dynamically** withou
 For weapons with optional components, you can connect them using [Optional\<T>](../Elements/Utils/Optional.md) fields:
 
 ```csharp
-public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
+public sealed class WeaponInstaller : MonoEntityInstaller<IWeaponEntity>
 {
     [SerializeField] private Optional<ReactiveInt> _ammo;
     [SerializeField] private Optional<Cooldown> _cooldown;
@@ -55,7 +55,7 @@ public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
 Optional fields can also be used for **visual and audio components**:
 
 ```csharp
-public sealed class WeaponViewInstaller : SceneEntityInstaller
+public sealed class WeaponViewInstaller : MonoEntityInstaller
 {
     [SerializeField] private Optional<ParticleSystem> fireVFX;
     [SerializeField] private Optional<AudioSource> fireSFX;
@@ -108,7 +108,7 @@ public sealed class EnemyInstaller : ScriptableEntityInstaller<IEnemyEntity>
 
 ```csharp
 // MonoBehaviour Installer for a specific enemy
-public sealed class OverrideEnemyInstaller : SceneEntityInstaller<IEnemyEntity>
+public sealed class OverrideEnemyInstaller : MonoEntityInstaller<IEnemyEntity>
 {
     [SerializeField] private Optional<ReactiveInt> _health;
     [SerializeField] private Optional<ReactiveInt> _damage;

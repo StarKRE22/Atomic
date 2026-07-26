@@ -26,7 +26,7 @@ Below is an example of how to use `OrExpression` to define **healing conditions*
 
 ```csharp
 // Setting up a character with an OR expression for healing
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private ReactiveVariable<int> _medkitCount = 3;
     [SerializeField] private ReactiveVariable<IEntity> _targetMedkit = new();
@@ -56,7 +56,7 @@ Another example demonstrates `AndExpression` — for defining a **firing conditi
 
 ```csharp
 // Setting up a character with an AND expression for firing
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private ReactiveVariable<int> _health = 3;
     [SerializeField] private ReactiveVariable<int> _ammo = 10;
@@ -130,7 +130,7 @@ Below are examples of using `OrExpression` to configure an entity using `Atomic.
 
 ```csharp
 // Setting up a character with an OR expression for healing
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private ReactiveVariable<int> _medkitCount = 3;
     [SerializeField] private ReactiveVariable<IEntity> _targetMedkit = new();
@@ -160,7 +160,7 @@ Below are examples of using `AndExpression` to configure an entity using `Atomic
 
 ```csharp
 // Setting up a character with an AND expression for firing
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private ReactiveVariable<int> _health = 3;
     [SerializeField] private ReactiveVariable<int> _ammo = 10;

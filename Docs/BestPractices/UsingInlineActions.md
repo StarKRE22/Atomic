@@ -25,7 +25,7 @@ Below is an example of creating a weapon that shoots bullets, manages ammo, and 
 action:
 
 ```csharp
-public sealed class WeaponInstaller : SceneEntityInstaller<IWeapon>
+public sealed class WeaponInstaller : MonoEntityInstaller<IWeapon>
 {
     [SerializeField] private GameEntity _owner;
     [SerializeField] private Transform _firePoint;
@@ -103,7 +103,7 @@ Below is an example of creating a weapon that shoots bullets, manages ammo, and 
 inline action:
 
 ```csharp
-public sealed class WeaponInstaller : SceneEntityInstaller<IWeapon>
+public sealed class WeaponInstaller : MonoEntityInstaller<IWeapon>
 {
     [SerializeField] private GameEntity _owner;
     [SerializeField] private Transform _firePoint;

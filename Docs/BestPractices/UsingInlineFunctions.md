@@ -22,7 +22,7 @@ positions, rotations, calculations, reactive systems, and tests.
 ### 1. Setting Position & Rotation via Rigidbody
 
 ```csharp
-public class PhysicsTransformInstaller : SceneEntityInstaller
+public class PhysicsTransformInstaller : MonoEntityInstaller
 {
     [SerializeField]
     private Rigidbody _rigidbody;
@@ -40,7 +40,7 @@ public class PhysicsTransformInstaller : SceneEntityInstaller
 ### 2. Setting Position & Rotation via Transform
 
 ```csharp
-public class KinematicTransformInstaller : SceneEntityInstaller
+public class KinematicTransformInstaller : MonoEntityInstaller
 {
     [SerializeField]
     private Transform _transform;
@@ -103,7 +103,7 @@ Below is a demonstration of how to dynamically provide values for different type
 ### Setting transform via `Rigidbody`
 
 ```csharp
-public class PhysicsTransformInstaller : SceneEntityInstaller
+public class PhysicsTransformInstaller : MonoEntityInstaller
 {
     [SerializeField]
     private Rigidbody _rigidbody;
@@ -119,7 +119,7 @@ public class PhysicsTransformInstaller : SceneEntityInstaller
 ### Setting transform via `Transform`
 
 ```csharp
-public class KinematicTransformInstaller : SceneEntityInstaller
+public class KinematicTransformInstaller : MonoEntityInstaller
 {
     [SerializeField]
     private Transform _transform;
