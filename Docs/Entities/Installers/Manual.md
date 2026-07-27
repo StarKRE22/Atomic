@@ -65,6 +65,7 @@ Below are the different types of installers depending on the usage scenario:
 - **MonoBehaviours**
     - [MonoEntityInstaller](MonoEntityInstaller.md) <!-- + -->
     - [MonoEntityInstaller&lt;E&gt;](MonoEntityInstaller%601.md) <!-- + -->
+    - [MonoEntityInstallerConfigurable](MonoEntityInstallerConfigurable.md) <!-- + -->
 - **ScriptableObjects**
     - [ScriptableEntityInstaller](ScriptableEntityInstaller.md) <!-- + -->
     - [ScriptableEntityInstaller&lt;E&gt;](ScriptableEntityInstaller%601.md) <!-- + -->

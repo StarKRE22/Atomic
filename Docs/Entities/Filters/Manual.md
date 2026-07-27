@@ -217,6 +217,7 @@ Below is a list of available filter types:
 
 - [EntityFilter](EntityFilter.md) <!-- + -->
 - [EntityFilter\<E>](EntityFilter%601.md) <!-- + -->
+- [DerivedEntityFilter](DerivedEntityFilter.md) <!-- + -->
 
 ---
 

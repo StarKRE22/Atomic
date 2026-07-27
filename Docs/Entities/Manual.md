@@ -53,6 +53,7 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 - [Aspects](Aspects/Manual.md) <!-- + -->
 - [Factories](Factories/Manual.md) <!-- + -->
 - [Baking](Baking/Manual.md) <!-- + -->
+- [Bootstrap](Bootstrap/Manual.md) <!-- + -->
 - [Pooling](Pooling/Manual.md) <!-- + -->
 - [Collections](Collections/Manual.md) <!-- + -->
 - [Worlds](Worlds/Manual.md) <!-- + -->

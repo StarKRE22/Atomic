@@ -175,6 +175,7 @@ framework.
     - [IInitSource](Sources/IInitSource.md) <!-- + -->
     - [IEnableSource](Sources/IEnableSource.md) <!-- + -->
     - [ITickSource](Sources/ITickSource.md) <!-- + -->
+    - [IGizmosSource](Sources/IGizmosSource.md) <!-- + -->
 - **Subscriptions**
     - [InitSubscription](Subscriptions/InitSubscription.md) <!-- + -->
     - [EnableSubscription](Subscriptions/EnableSubscription.md) <!-- + -->
