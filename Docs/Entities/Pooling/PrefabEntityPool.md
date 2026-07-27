@@ -72,6 +72,7 @@ pool.Dispose();
 |---------------------|------------------------------------------------------------------------------------------------------|
 | `container`         | Root container transform for pooled entities. Defaults to the GameObject this script is attached to. |
 | `dontDestroyOnLoad` | If true, the pool GameObject persists across scene loads.                                            |
+| `expandMode`        | Determines how each prefab pool expands when empty. See [ExpandMode](ExpandMode.md).                |
 
 ---
 

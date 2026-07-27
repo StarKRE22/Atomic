@@ -88,6 +88,7 @@ public abstract class MonoEntityPool<E> : MonoBehaviour, IEntityPool<E>
 | `initialCount` | Initial number of entities to pre-instantiate.                                   |
 | `prefab`       | Prefab used to create pooled entity instances.                                   |
 | `container`    | Optional parent transform for pooled entities (defaults to the pool GameObject). |
+| `expandMode`   | Determines how the pool expands when empty. See [ExpandMode](ExpandMode.md).    |
 
 ---
 

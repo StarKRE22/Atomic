@@ -67,16 +67,18 @@ public class EntityPool<E> : IEntityPool<E> where E : IEntity
 
 ### 🏗️ Constructor
 
-#### `EntityPool(IEntityFactory<E>)`
+#### `EntityPool(IEntityFactory<E>, TArgs, ExpandMode)`
 
 ```csharp
-public EntityPool(IEntityFactory<E> factory);
+public EntityPool(IEntityFactory<TEntity, TArgs> factory, TArgs args, ExpandMode expandMode = ExpandMode.ExpandByOne);
 ```
 
 - **Description:** Initializes a new instance of this pool class using the specified
-  factory.
+  factory, construction arguments, and expansion mode.
 - **Parameter:** `factory` — The factory used to create new entity instances when needed.
-- **Exception:** Throws `ArgumentNullException` if `factory` is null.
+- **Parameter:** `args` — The arguments passed to the factory when creating entities.
+- **Parameter:** `expandMode` — Determines how the pool expands when empty. Defaults to `ExpandByOne`. See [ExpandMode](ExpandMode.md).
+- **Exception:** Throws `ArgumentNullException` if `factory` or `args` is null.
 - **Note:** Ensures that the pool has a valid factory for creating entities, preventing null reference issues during
   runtime.
 
