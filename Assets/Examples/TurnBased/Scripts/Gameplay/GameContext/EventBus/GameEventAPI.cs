@@ -1,5 +1,4 @@
 using Atomic.Events;
-using Atomic.Events.Atomic.Events;
 using UnityEngine;
 
 namespace Game.Gameplay

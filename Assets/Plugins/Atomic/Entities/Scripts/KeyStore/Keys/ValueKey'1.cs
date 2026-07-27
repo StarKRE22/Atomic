@@ -16,7 +16,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Internal identifier of the key.
         /// </summary>
-        internal readonly int Id;
+        public readonly int Id;
 
         /// <summary>
         /// Creates a value key from a string name.

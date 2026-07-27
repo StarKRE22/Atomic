@@ -1,5 +1,4 @@
 using System;
-using Atomic.Events.Atomic.Events;
 using static Atomic.Events.EventKeyStore;
 
 namespace Atomic.Events

@@ -15,7 +15,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Unique identifier of the tag.
         /// </summary>
-        internal readonly int Id;
+        public readonly int Id;
 
         /// <summary>
         /// Creates a tag key from a string name.

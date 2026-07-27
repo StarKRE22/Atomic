@@ -5,7 +5,7 @@ namespace Atomic.Events
     public readonly struct EventKey<TBus, TArg1, TArg2> : IEquatable<EventKey<TBus, TArg1, TArg2>>
         where TBus : IEventBus
     {
-        internal readonly int Id;
+        public readonly int Id;
 
         public EventKey(string name) => Id = EventKeyStore.NameToId(name);
 
