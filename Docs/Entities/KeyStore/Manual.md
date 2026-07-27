@@ -8,34 +8,19 @@ tags and values without runtime string lookups.
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
 - [Examples of Usage](#-examples-of-usage)
-  - [Sequential Algorithm](#sequential-usage)
-  - [Using ValueKey and TagKey](#using-valuekey-and-tagkey)
+  - [Sequential Algorithm](#sequential-algorithm)
+  - [Using TagKey and ValueKey](#using-tagkey-and-valuekey)
 - [API Reference](#-api-reference)
 - [Best Practices](#-best-practices)
 
 ---
 
-## 🧩 Overview
-
-All entity tags and values are stored internally as integer IDs. The `EntityKeyStore` converts string names to IDs and
-back, caching results for performance:
-
-- `NameToId(name)` — converts a string to an integer ID
-- `IdToName(id)` — converts an integer ID back to a string name
-- `SetAlgorithm(algorithm)` — changes the ID generation strategy
-- `Reset()` — clears the cache and resets the algorithm
-
-The default algorithm is [SequentialEntityKeyAlgorithm](SequentialEntityKeyAlgorithm.md), which assigns IDs in order.
-
----
-
 ## 🗂 Examples of Usage
 
-<div id="sequential-usage"></div>
+### Sequential Algorithm
 
-### 1️⃣ Sequential Algorithm
+The default algorithm assigns IDs in order. This is the simplest strategy and is sufficient for most projects.
 
 ```csharp
 EntityKeyStore.SetAlgorithm(new SequentialEntityKeyAlgorithm());
@@ -44,90 +29,53 @@ EntityKeyStore.SetAlgorithm(new SequentialEntityKeyAlgorithm());
 int playerId = EntityKeyStore.NameToId("Player"); // 1
 int enemyId  = EntityKeyStore.NameToId("Enemy");  // 2
 
-// Retrieve original name by ID
+// Retrieve the original name by ID
 string name = EntityKeyStore.IdToName(playerId); // "Player"
 ```
 
-<div id="valuekey-tagkey-usage"></div>
-
-### 2️⃣ Using ValueKey and TagKey
+### Using TagKey and ValueKey
 
 The preferred way to access entity values and tags is through strongly-typed keys. Keys are typically defined once in a
 static API class and reused throughout the project.
 
-#### Define value keys
+#### Define keys
 
 ```csharp
-public static partial class GameContextAPI
-{
-    public static readonly ValueKey<IGameContext, IMultiEntityPool<GameEntityType, IGameEntity>> EntityPool =
-        new(nameof(EntityPool));
-
-    public static readonly ValueKey<IGameContext, IEntityWorld<IGameEntity>> EntityWorld =
-        new(nameof(EntityWorld));
-
-    public static readonly ValueKey<IGameContext, EntitySpawnInfo[]> InitialEntities =
-        new(nameof(InitialEntities));
-}
-```
-
-#### Access values via extension methods
-
-```csharp
-public static class EntityUseCase
-{
-    public static void SpawnInitialUnits(this IGameContext gameContext)
-    {
-        EntitySpawnInfo[] spawnDataSet = gameContext.GetValue(GameContextAPI.InitialEntities);
-        foreach (EntitySpawnInfo spawnInfo in spawnDataSet)
-        {
-            GameEntityType entityType = spawnInfo.entityType;
-            foreach (Vector2Int point in spawnInfo.points)
-                gameContext.Spawn(entityType, point, out _, notify: false);
-        }
-    }
-}
-```
-
-#### Define tag keys
-
-Tag keys work the same way:
-
-```csharp
+[EntityAPI]
 public static partial class GameEntityAPI
 {
     public static readonly TagKey IsEnemy = new(nameof(IsEnemy));
     public static readonly TagKey<IGameEntity> IsSelectable = new(nameof(IsSelectable));
+    public static readonly ValueKey<IGameEntity, int> Health = new(nameof(Health));
+    public static readonly ValueKey<IGameEntity, float> MoveSpeed = new(nameof(MoveSpeed));
 }
 ```
 
-#### Access tags via extension methods
+#### Access via extension methods
 
 ```csharp
-public static void MarkAsEnemy(this IGameEntity entity) =>
-    entity.AddTag(GameEntityAPI.IsEnemy);
+entity.AddTag(GameEntityAPI.IsEnemy);
+entity.AddValue(GameEntityAPI.Health, 100);
 
-public static bool IsEnemy(this IGameEntity entity) =>
-    entity.HasTag(GameEntityAPI.IsEnemy);
+int health = entity.GetValue(GameEntityAPI.Health);
+float moveSpeed = entity.GetMoveSpeed();
+bool selectable = entity.HasTag(GameEntityAPI.IsSelectable);
 ```
 
-These extension methods (`AddTag`, `HasTag`, `GetValue`, `SetValue`, etc.) are provided by
-`Extensions_Tags.cs` and `Extensions_Values.cs`. They accept either `string`, `int`, or strongly-typed keys.
+These extension methods are generated automatically when the class is marked with `[EntityAPI]`.
 
 ---
 
 ## 🔍 API Reference
 
-### EntityKeyStore
+### Store
 
 - [EntityKeyStore](EntityKeyStore.md)
 
 ### Keys
 
 - [TagKey](TagKey.md)
-- [TagKey\<E\>](TagKey%601.md)
-- [ValueKey\<T\>](ValueKey%601.md)
-- [ValueKey\<E, T\>](ValueKey%602.md)
+- [ValueKey](ValueKey.md)
 
 ### Algorithms
 
@@ -140,6 +88,6 @@ These extension methods (`AddTag`, `HasTag`, `GetValue`, `SetValue`, etc.) are p
 
 - Define keys once in a static API class and reuse them everywhere.
 - Use `ValueKey<E, T>` or `TagKey<E>` for type safety when multiple entity types share the same project.
-- Do **not** rely on specific numeric IDs across sessions — they are generated at runtime.
+- Do **not** rely on specific numeric IDs across sessions unless a deterministic algorithm is used.
 - Call `EntityKeyStore.Reset()` in tests to ensure isolation between test runs.
 - Keep key names stable; changing a name changes the generated ID unless a deterministic algorithm is used.

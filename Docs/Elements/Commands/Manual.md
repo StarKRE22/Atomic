@@ -11,6 +11,7 @@ abilities, UI interactions, and state-gated behaviors.
 - [Examples of Usage](#-examples-of-usage)
   - [Parameterless Command](#parameterless-command)
   - [Parameterized Command](#parameterized-command)
+  - [Listening to OnEvent](#listening-to-onevent)
 - [API Reference](#-api-reference)
 - [Best Practices](#-best-practices)
 
@@ -44,6 +45,20 @@ healCommand
     .AddAction(amount => player.Health += amount);
 
 bool healed = healCommand.TryInvoke(25);
+```
+
+### Listening to OnEvent
+
+Commands raise an `OnEvent` signal after the action is executed. This is useful for driving UI, effects, or other
+reactive logic without coupling the command to its observers.
+
+```csharp
+attackCommand.OnEvent += () => Debug.Log("Attack executed!");
+
+if (attackCommand.TryInvoke())
+{
+    // Attack executed, observers notified.
+}
 ```
 
 ---

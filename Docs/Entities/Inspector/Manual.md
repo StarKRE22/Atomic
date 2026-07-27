@@ -3,41 +3,30 @@
 **Inspector attributes** provide enhanced editing workflows in the Unity Editor when using Odin Inspector. They allow
 tag and value names defined in API classes to appear as dropdowns, reducing typos and improving discoverability.
 
+The framework works without Odin, but these attributes are editor-only conveniences for teams that use it.
+
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Attributes](#-attributes)
 - [Examples of Usage](#-examples-of-usage)
+  - [Mark an API Class](#mark-an-api-class)
+  - [Use Dropdowns in Behaviours](#use-dropdowns-in-behaviours)
+- [API Reference](#-api-reference)
 - [Best Practices](#-best-practices)
-
----
-
-## 🧩 Overview
-
-The framework supports strongly-typed [TagKey](../KeyStore/TagKey.md) and [ValueKey](../KeyStore/ValueKey.md) objects, but
-sometimes behaviours or installers need to reference a tag or value by its string name (for example, when a value type is
-chosen at runtime). Inspector attributes bridge this gap by scanning API classes and offering the known names as dropdowns
-in the Inspector.
-
----
-
-## 🔍 Attributes
-
-| Attribute | Purpose |
-|-----------|---------|
-| [EntityInspectorAPIAttribute](EntityInspectorAPIAttribute.md) | Marks a static class as an API definition to be scanned for tag and value keys. |
-| [EntityInspectorTagAttribute](EntityInspectorTagAttribute.md) | Draws a dropdown of available tag names for a `string` field. |
-| [EntityInspectorValueAttribute](EntityInspectorValueAttribute.md) | Draws a dropdown of available value names for a `string` field, filtered by value type. |
 
 ---
 
 ## 🗂 Examples of Usage
 
-### Define API Keys
+### Mark an API Class
+
+Add `[EntityInspectorAPI]` to any static class that contains `TagKey` or `ValueKey` definitions. Odin will scan the
+class and offer known names as dropdowns.
 
 ```csharp
+using Atomic.Entities;
+
 [EntityInspectorAPI]
 public static partial class GameEntityAPI
 {
@@ -47,9 +36,12 @@ public static partial class GameEntityAPI
 }
 ```
 
-### Use Inspector Dropdowns
+### Use Dropdowns in Behaviours
 
 ```csharp
+using Atomic.Entities;
+using UnityEngine;
+
 public class DamageBehaviour : MonoBehaviour
 {
     [EntityInspectorTag]
@@ -70,6 +62,22 @@ public class DamageBehaviour : MonoBehaviour
     }
 }
 ```
+
+To filter dropdowns for a specific entity type, pass the entity type to the attribute:
+
+```csharp
+[EntityInspectorTag(typeof(IGameEntity))]
+[SerializeField]
+private string gameEntityTag;
+```
+
+---
+
+## 🔍 API Reference
+
+- [EntityInspectorAPIAttribute](EntityInspectorAPIAttribute.md) — marks a static class as an API definition to be scanned
+- [EntityInspectorTagAttribute](EntityInspectorTagAttribute.md) — draws a dropdown of available tag names
+- [EntityInspectorValueAttribute](EntityInspectorValueAttribute.md) — draws a dropdown of available value names
 
 ---
 

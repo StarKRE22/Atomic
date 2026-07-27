@@ -3,93 +3,104 @@
 **Atomic.Events** provides a lightweight, strongly-typed event bus system for Unity and C#. It supports parameterless
 and parameterized events, subscriptions, thread-safe dispatch, and Unity scene-bound buses.
 
+The event system decouples publishers from subscribers using integer event keys wrapped in strongly-typed
+`EventKey<TBus>` structs.
+
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Bus Implementations](#-bus-implementations)
-- [Event Keys](#-event-keys)
 - [Examples of Usage](#-examples-of-usage)
+  - [Define Events with Source Generation](#define-events-with-source-generation)
+  - [Subscribe and Invoke](#subscribe-and-invoke)
+  - [Thread-Safe Dispatch](#thread-safe-dispatch)
+- [API Reference](#-api-reference)
+  - [Bus Implementations](#bus-implementations)
+  - [Event Keys](#event-keys)
+  - [Subscriptions](#subscriptions)
+  - [Extensions](#extensions)
 - [Best Practices](#-best-practices)
-
----
-
-## 🧩 Overview
-
-The event system decouples publishers from subscribers using integer event keys. The framework provides:
-
-- [IEventBus](Bus/IEventBus.md) — core interface
-- [EventBus](Bus/EventBus.md) — default implementation
-- [ThreadSafeEventBus](Bus/ThreadSafeEventBus.md) — thread-safe wrapper with main-thread flushing
-- [MonoEventBus](Bus/MonoEventBus.md) — Unity `MonoBehaviour` bus
-- [MonoEventBusSingleton](Bus/MonoEventBusSingleton.md) — singleton scene/global bus
-- [EventKey](Keys/EventKey.md) — strongly-typed event identifiers
-- [EventKeyStore](Keys/EventKeyStore.md) — name-to-ID mapping
-
----
-
-## 🔍 Bus Implementations
-
-- [IEventBus](Bus/IEventBus.md)
-- [EventBus](Bus/EventBus.md)
-- [ThreadSafeEventBus](Bus/ThreadSafeEventBus.md)
-- [MonoEventBus](Bus/MonoEventBus.md)
-- [MonoEventBusSingleton](Bus/MonoEventBusSingleton.md)
-
-## 🔍 Event Keys
-
-- [EventKey](Keys/EventKey.md)
-- [EventKeyStore](Keys/EventKeyStore.md)
-- [IEventKeyAlgorithm](Keys/IEventKeyAlgorithm.md)
-- [SequentialEventKeyAlgorithm](Keys/SequentialEventKeyAlgorithm.md)
-- [Fnv1AEventKeyAlgorithm](Keys/Fnv1AEventKeyAlgorithm.md)
-- [SHA256EventKeyAlgorithm](Keys/SHA256EventKeyAlgorithm.md)
-
-## 🔍 Subscriptions
-
-- [Subscription](Subscriptions/Subscription.md)
-
-## 🔍 Extensions
-
-- [EventBus Extensions](Extensions.md)
 
 ---
 
 ## 🗂 Examples of Usage
 
-### Define Events
+### Define Events with Source Generation
 
 ```csharp
-public static class GameEventAPI
+using Atomic.Events;
+
+[EventAPI]
+public static partial class GameEventAPI
 {
-    public static readonly EventKey<IGameEventBus> PlayerTurnStarted = new(nameof(PlayerTurnStarted));
-    public static readonly EventKey<IGameEventBus, SpawnEventArgs> EntitySpawned = new(nameof(EntitySpawned));
-    public static readonly EventKey<IGameEventBus, IGameEntity> EntityDied = new(nameof(EntityDied));
+    public static readonly EventKey<IEventBus> PlayerTurnStarted = new(nameof(PlayerTurnStarted));
+    public static readonly EventKey<IEventBus, int> DamageDealt = new(nameof(DamageDealt));
+    public static readonly EventKey<IEventBus, IGameEntity> EntityDied = new(nameof(EntityDied));
 }
 ```
 
 ### Subscribe and Invoke
 
 ```csharp
-IGameEventBus eventBus = context.GetValue(GameContextAPI.EventBus);
+IEventBus eventBus = new EventBus();
 
-using var subscription = eventBus.Subscribe(GameEventAPI.EntityDied, (IGameEntity entity) =>
+using var subscription = eventBus.SubscribeEntityDied(entity =>
 {
     Debug.Log($"Entity died: {entity}");
 });
 
-eventBus.Invoke(GameEventAPI.EntityDied, enemyEntity);
-eventBus.Flush(); // for ThreadSafeEventBus
+eventBus.InvokePlayerTurnStarted();
+eventBus.InvokeDamageDealt(10);
+eventBus.InvokeEntityDied(enemyEntity);
 ```
+
+### Thread-Safe Dispatch
+
+```csharp
+var threadSafeBus = new ThreadSafeEventBus();
+
+// Safe to call from a background thread
+threadSafeBus.InvokeDamageDealt(5);
+
+// Call once per frame on the main thread
+threadSafeBus.Flush();
+```
+
+---
+
+## 🔍 API Reference
+
+### Bus Implementations
+
+- [IEventBus](Bus/IEventBus.md) — core interface
+- [EventBus](Bus/EventBus.md) — default implementation
+- [ThreadSafeEventBus](Bus/ThreadSafeEventBus.md) — thread-safe wrapper with main-thread flushing
+- [MonoEventBus](Bus/MonoEventBus.md) — Unity `MonoBehaviour` bus
+- [MonoEventBusSingleton](Bus/MonoEventBusSingleton.md) — singleton scene/global bus
+- [Bus Manual](Bus/Manual.md)
+
+### Event Keys
+
+- [EventKey](Keys/EventKey.md) — strongly-typed event identifier
+- [EventKeyStore](Keys/EventKeyStore.md) — name-to-ID mapping
+- [Keys Manual](Keys/Manual.md)
+
+### Subscriptions
+
+- [Subscription](Subscriptions/Subscription.md) — disposable subscription handle
+- [Subscriptions Manual](Subscriptions/Manual.md)
+
+### Extensions
+
+- [EventBus Extensions](Extensions.md)
 
 ---
 
 ## 📌 Best Practices
 
-- Define event keys in a single static API class.
-- Use `EventKey<TBus>` for compile-time bus type safety.
-- Dispose subscriptions to avoid leaks.
+- Define event keys in a single `[EventAPI]` class.
+- Use generated extension methods for compile-time type safety.
+- Dispose subscriptions to avoid leaks; prefer `using` declarations.
 - Use `ThreadSafeEventBus` for background thread event dispatch.
 - Call `Flush()` once per frame on the main thread for `ThreadSafeEventBus`.
 - Keep event callbacks fast and side-effect free where possible.
