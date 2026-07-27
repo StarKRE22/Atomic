@@ -1,17 +1,16 @@
 # 🧩 EntitySystemBase
 
-**EntitySystemBase\<E\>** is the abstract base class for all entity systems in the Atomic framework. It manages
-subscription to an entity collection, tracks enabled/disabled state, measures frame time, and provides adaptive batch
-sizing.
+Abstract base class for all entity systems. It manages subscription to an entity collection, tracks enabled/disabled state, measures frame time, and provides adaptive batch sizing.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
   - [Type](#-type)
-  - [Settings](#settings)
+  - [Constructors](#-constructors)
+    - [EntitySystemBase(IReadOnlyEntityCollection&lt;E&gt;, Settings)](#entitysystembaseireadonlyentitycollectione-settings)
   - [Methods](#-methods)
     - [Enable()](#enable)
     - [Disable()](#disable)
@@ -22,79 +21,87 @@ sizing.
     - [OnRemoveEntity(E)](#onremoveentitye)
     - [OnUpdate(int, float)](#onupdateint-float)
     - [Dispose()](#dispose)
-- [Examples of Usage](#-examples-of-usage)
-- [Best Practices](#-best-practices)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-Entity systems process a collection of entities every frame. `EntitySystemBase<E>` provides the shared infrastructure:
+```csharp
+public sealed class MySystem : EntitySystemBase<IGameEntity>
+{
+    public MySystem(
+        IReadOnlyEntityCollection<IGameEntity> source,
+        Settings settings
+    ) : base(source, settings) { }
 
-- Subscribes to `OnAdded` / `OnRemoved` events of an [IReadOnlyEntityCollection\<E\>](../Collections/IReadOnlyEntityCollection%601.md)
-- Tracks whether the system is enabled
-- Measures update time and adjusts the batch size to stay within a frame budget
-- Calls virtual lifecycle hooks that derived classes can override
+    protected override void OnEnable() => Debug.Log("System enabled");
+    protected override void OnDisable() => Debug.Log("System disabled");
+    protected override void OnUpdate(int batchSize, float deltaTime) { }
+    public override void Dispose() { }
+}
 
-Derived classes implement the actual update logic:
+// Wire to a context entity
+IEntityWorld<IGameEntity> world = ...;
+var system = new MySystem(world, new EntitySystemBase<IGameEntity>.Settings
+{
+    frameBudget = 0.02f
+});
 
-- [EntitySystem\<E\>](EntitySystem.md) — processes entities in a round-robin fashion
-- [PriorityEntitySystem\<E\>](PriorityEntitySystem.md) — processes entities by priority level
+contextEntity.AddTickSystem(system);
+```
 
 ---
 
 ## 🔍 API Reference
 
-### 🏛️ Type <div id="-type"></div>
+### 🏛️ Type
 
 ```csharp
 public abstract class EntitySystemBase<E> : IDisposable where E : IEntity
 ```
 
-- **Type Parameter:** `E` — The entity type managed by the system. Must implement [IEntity](../Entities/IEntity.md).
+- **Description:** Abstract base class for all entity systems. Manages subscription to an entity collection, tracks enabled/disabled state, measures frame time, and provides adaptive batch sizing.
 - **Inheritance:** `IDisposable`
+- **Type Parameters:** `E` — The entity type managed by the system. Must implement [IEntity](../Entities/IEntity.md).
+- **Notes:**
+  - The nested `Settings` class controls the per-frame budget and adaptive batching.
+  - The nested `AdaptiveBatching` class defines how the batch size shrinks or grows based on measured frame time.
+  - `Update` measures the time spent in `OnUpdate` and adjusts `_batchSize` every frame.
 
----
+  | `Settings` field | Default | Description |
+  |------------------|---------|-------------|
+  | `frameBudget` | `0.03f` | Maximum time in seconds the system should spend per update. |
+  | `batching` | `new AdaptiveBatching()` | Adaptive batching parameters. |
 
-### 🛠️ Settings
+  | `AdaptiveBatching` field | Default | Description |
+  |--------------------------|---------|-------------|
+  | `minSize` | `1024` | Minimum batch size. |
+  | `maxSize` | `2048` | Maximum batch size. |
+  | `scaleDown` | `2` | Factor by which the batch size is reduced when over budget. |
+  | `stepUp` | `256` | Amount by which the batch size is increased when under budget. |
+
+- **See also:** [EntitySystem<E>](EntitySystem.md), [PriorityEntitySystem<E>](PriorityEntitySystem.md), [IReadOnlyEntityCollection<E>](../Collections/IReadOnlyEntityCollection%601.md)
+
+### 🏗️ Constructors
+
+#### `EntitySystemBase(IReadOnlyEntityCollection<E>, Settings)`
 
 ```csharp
-[Serializable]
-public class Settings
+protected EntitySystemBase(IReadOnlyEntityCollection<E> source, Settings settings)
 ```
 
-| Field | Description |
-|-------|-------------|
-| `frameBudget` | Maximum time in seconds the system should spend per update. Default `0.03f`. |
-| `batching` | Adaptive batching parameters. |
-
-#### AdaptiveBatching
-
-```csharp
-[Serializable]
-public sealed class AdaptiveBatching
-```
-
-| Field | Description |
-|-------|-------------|
-| `minSize` | Minimum batch size. Default `1024`. |
-| `maxSize` | Maximum batch size. Default `2048`. |
-| `scaleDown` | Factor by which the batch size is reduced when over budget. Default `2`. |
-| `stepUp` | Amount by which the batch size is increased when under budget. Default `256`. |
-
-The system adjusts `_batchSize` every frame:
-
-- If the frame time exceeds `frameBudget`, batch size is divided by `scaleDown` (but not below `minSize`).
-- If the frame time is under budget, batch size is increased by `stepUp` (but not above `maxSize`).
-
----
+- **Description:** Initializes the system with the specified entity collection and settings.
+- **Parameters:**
+  - `source` — The collection of entities to process.
+  - `settings` — System settings including frame budget and adaptive batching.
+- **Throws:** `ArgumentNullException` if `source` or `settings` is `null`.
 
 ### 🏹 Methods
 
 #### `Enable()`
 
 ```csharp
-public void Enable();
+public void Enable()
 ```
 
 - **Description:** Enables the system and subscribes to entity collection changes.
@@ -106,7 +113,7 @@ public void Enable();
 #### `Disable()`
 
 ```csharp
-public void Disable();
+public void Disable()
 ```
 
 - **Description:** Disables the system and unsubscribes from entity collection changes.
@@ -118,10 +125,10 @@ public void Disable();
 #### `Update(float)`
 
 ```csharp
-public void Update(float deltaTime);
+public void Update(float deltaTime)
 ```
 
-- **Description:** Updates the system if enabled.
+- **Description:** Updates the system if it is enabled.
 - **Parameter:** `deltaTime` — Time elapsed since the last update.
 - **Behavior:**
   - Measures the time spent in `OnUpdate`.
@@ -130,25 +137,25 @@ public void Update(float deltaTime);
 #### `OnEnable()`
 
 ```csharp
-protected virtual void OnEnable();
+protected virtual void OnEnable()
 ```
 
 - **Description:** Virtual hook called when the system is enabled.
-- **Note:** Override to perform custom initialization.
+- **Remarks:** Override to perform custom initialization.
 
 #### `OnDisable()`
 
 ```csharp
-protected virtual void OnDisable();
+protected virtual void OnDisable()
 ```
 
 - **Description:** Virtual hook called when the system is disabled.
-- **Note:** Override to perform custom cleanup.
+- **Remarks:** Override to perform custom cleanup.
 
 #### `OnAddEntity(E)`
 
 ```csharp
-protected virtual void OnAddEntity(E entity);
+protected virtual void OnAddEntity(E entity)
 ```
 
 - **Description:** Virtual hook called when an entity is added to the source collection.
@@ -157,7 +164,7 @@ protected virtual void OnAddEntity(E entity);
 #### `OnRemoveEntity(E)`
 
 ```csharp
-protected virtual void OnRemoveEntity(E entity);
+protected virtual void OnRemoveEntity(E entity)
 ```
 
 - **Description:** Virtual hook called when an entity is removed from the source collection.
@@ -166,66 +173,19 @@ protected virtual void OnRemoveEntity(E entity);
 #### `OnUpdate(int, float)`
 
 ```csharp
-protected abstract void OnUpdate(int batchSize, float deltaTime);
+protected abstract void OnUpdate(int batchSize, float deltaTime)
 ```
 
 - **Description:** Abstract method that performs the actual update logic.
-- **Parameter:** `batchSize` — Maximum number of entities to process this frame.
-- **Parameter:** `deltaTime` — Time elapsed since the last update.
+- **Parameters:**
+  - `batchSize` — Maximum number of entities to process this frame.
+  - `deltaTime` — Time elapsed since the last update.
 
 #### `Dispose()`
 
 ```csharp
-public abstract void Dispose();
+public abstract void Dispose()
 ```
 
 - **Description:** Releases resources held by the system.
-
----
-
-## 🗂 Examples of Usage
-
-### Hooking a System to an Entity Context
-
-```csharp
-IEntityWorld<IGameEntity> world = ...;
-MyEntitySystem system = new MyEntitySystem(world, settings);
-
-// Wire lifecycle to a context entity
-contextEntity.AddTickSystem(contextEntity, system);
-
-// Now system.Enable() is called on enable, system.Update() on tick, etc.
-```
-
-### Custom System Base
-
-```csharp
-public abstract class MyEntitySystemBase : EntitySystemBase<IGameEntity>
-{
-    protected MyEntitySystemBase(IReadOnlyEntityCollection<IGameEntity> source, Settings settings)
-        : base(source, settings)
-    {
-    }
-
-    protected override void OnEnable()
-    {
-        Debug.Log("System enabled");
-    }
-
-    protected override void OnDisable()
-    {
-        Debug.Log("System disabled");
-    }
-}
-```
-
----
-
-## 📌 Best Practices
-
-- Enable systems only when the owning context is active.
-- Disable systems before disposing to ensure proper cleanup.
-- Tune `frameBudget` and `batching` settings to match your target platform.
-- Keep `OnUpdate` implementations fast to avoid starving the adaptive batching.
-- For priority-based processing, use [PriorityEntitySystem\<E\>](PriorityEntitySystem.md).
-- For simple round-robin processing, use [EntitySystem\<E\>](EntitySystem.md).
+- **Remarks:** Must be implemented by derived classes.

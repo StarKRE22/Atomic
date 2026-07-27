@@ -1,34 +1,22 @@
 # 🧩 MonoEntityInstallerConfigurable
 
-**MonoEntityInstallerConfigurable** is a scene-bound installer that delegates installation to a configurable list of
-nested [IEntityInstaller](IEntityInstaller.md) instances. It is useful when you want to compose entity setup from
-multiple reusable installer assets or behaviours in the Unity Inspector.
+A scene-bound installer that delegates installation to a configurable list of nested [IEntityInstaller](IEntityInstaller.md) instances.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-- [Best Practices](#-best-practices)
+  - [Type](#-type)
+  - [Methods](#-methods)
+    - [Install(IEntity)](#installientity)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-Unlike a single-purpose [MonoEntityInstaller](MonoEntityInstaller.md), `MonoEntityInstallerConfigurable` stores an array
-of `IEntityInstaller` references via `[SerializeReference]`. During installation, it iterates over the array and calls
-`Install` on each one.
-
-This makes it easy to build modular entity configurations directly in the Inspector without writing custom installer
-classes for every entity variant.
-
----
-
-## 🗂 Examples of Usage
-
-### Compose Multiple Installers
+Create small, focused installers and compose them in the Inspector:
 
 ```csharp
 public sealed class HealthInstaller : IEntityInstaller
@@ -50,15 +38,7 @@ public sealed class TeamInstaller : IEntityInstaller
 }
 ```
 
-### Configure in Inspector
-
-Attach `MonoEntityInstallerConfigurable` to a GameObject and populate its `_installers` array with `HealthInstaller`,
-`TeamInstaller`, or any other `IEntityInstaller` implementations.
-
-```csharp
-// The component is assigned to a MonoEntity's installers list.
-// When the entity is installed, all nested installers run in order.
-```
+Attach `MonoEntityInstallerConfigurable` to a GameObject and populate its installers array with `HealthInstaller`, `TeamInstaller`, or any other [IEntityInstaller](IEntityInstaller.md) implementations. When the entity is installed, all nested installers run in order.
 
 ---
 
@@ -70,7 +50,12 @@ Attach `MonoEntityInstallerConfigurable` to a GameObject and populate its `_inst
 public sealed class MonoEntityInstallerConfigurable : MonoEntityInstaller
 ```
 
+- **Description:** A scene-bound installer that delegates installation to a configurable list of nested [IEntityInstaller](IEntityInstaller.md) instances.
 - **Inheritance:** [MonoEntityInstaller](MonoEntityInstaller.md)
+- **Notes:** Stores installers in a `[SerializeReference]` array, allowing mixed implementations in the Inspector.
+- **See also:** [MonoEntityInstaller](MonoEntityInstaller.md), [IEntityInstaller](IEntityInstaller.md), [ScriptableEntityInstaller](ScriptableEntityInstaller.md)
+
+---
 
 ### 🏹 Methods
 
@@ -81,15 +66,5 @@ public override void Install(IEntity entity)
 ```
 
 - **Description:** Installs all configured nested installers into the entity.
-- **Parameter:** `entity` — The entity being configured.
-- **Note:** Skips null entries in the installer array.
-
----
-
-## 📌 Best Practices
-
-- Use `MonoEntityInstallerConfigurable` when an entity's setup is composed of multiple independent concerns.
-- Keep individual installers focused on a single responsibility.
-- Order installers carefully if later installers depend on values added by earlier ones.
-- Avoid circular dependencies between installers.
-- Consider using [ScriptableEntityInstaller](ScriptableEntityInstaller.md) for reusable cross-scene installers.
+- **Parameter:** `entity` – The entity being configured.
+- **Remarks:** Skips null entries in the installer array.

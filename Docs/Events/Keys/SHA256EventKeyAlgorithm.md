@@ -1,20 +1,28 @@
 # 🧩 SHA256EventKeyAlgorithm
 
-**SHA256EventKeyAlgorithm** generates deterministic integer IDs from event names using the SHA-256 hash algorithm.
+Generates deterministic integer IDs from event names using the SHA-256 hash algorithm.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Methods](#-methods)
+    - [NameToId(string)](#nametoidstring)
+    - [Reset()](#reset)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-SHA-256 provides strong hash distribution and collision resistance. This algorithm is slower than FNV-1a but produces
-more robust hashes. It is suitable when deterministic, stable IDs are required.
+Use SHA-256 for robust deterministic IDs:
+
+```csharp
+EventKeyStore.SetAlgorithm(new SHA256EventKeyAlgorithm());
+int id = EventKeyStore.NameToId("PlayerTurnStarted");
+```
 
 ---
 
@@ -26,6 +34,15 @@ more robust hashes. It is suitable when deterministic, stable IDs are required.
 public sealed class SHA256EventKeyAlgorithm : IEventKeyAlgorithm
 ```
 
+- **Description:** Provides a stateless algorithm that derives 32-bit integer IDs from SHA-256 hashes.
+- **Inheritance:** [IEventKeyAlgorithm](IEventKeyAlgorithm.md)
+- **Notes:**
+  - Slower than [Fnv1AEventKeyAlgorithm](Fnv1AEventKeyAlgorithm.md) but provides stronger hash distribution.
+  - The same event name always produces the same ID.
+- **See also:** [EventKeyStore](EventKeyStore.md), [Fnv1AEventKeyAlgorithm](Fnv1AEventKeyAlgorithm.md)
+
+---
+
 ### 🏹 Methods
 
 #### `NameToId(string)`
@@ -35,7 +52,9 @@ public int NameToId(string name)
 ```
 
 - **Description:** Computes a 32-bit integer from the SHA-256 hash of the event name.
-- **Parameter:** `name` — The event name. Must not be `null`.
+- **Parameter:** `name` – The event name. Must not be `null`.
+- **Returns:** A 32-bit integer derived from the first four bytes of the SHA-256 hash.
+- **Throws:** `ArgumentNullException` if `name` is `null`.
 
 #### `Reset()`
 

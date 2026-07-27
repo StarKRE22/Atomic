@@ -1,77 +1,86 @@
 # 🧩 EntityUpdatePriority
 
-**EntityUpdatePriority** is an enum that defines update priority levels for entities processed by
-[PriorityEntitySystem](PriorityEntitySystem.md). It allows systems to spend more update budget on important entities
-and less on background ones.
+Enum that defines update priority levels for entities processed by [PriorityEntitySystem](PriorityEntitySystem.md).
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Enum Values](#-enum-values)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Fields](#-fields)
+    - [Low](#low)
+    - [Medium](#medium)
+    - [High](#high)
 - [See Also](#-see-also)
 
 ---
 
-## 🧩 Overview
-
-Priority-based systems divide their per-frame budget among entities based on importance. `EntityUpdatePriority`
-classifies each entity as **Low**, **Medium**, or **High**. The system then processes them according to configurable
-percentage quotas.
-
----
-
-## 🔍 Enum Values
+## 🗂 Example of Usage
 
 ```csharp
-public enum EntityUpdatePriority : byte
-{
-    Low = 0,
-    Medium = 1,
-    High = 2
-}
-```
-
-| Value | Description |
-|-------|-------------|
-| `Low` | Background or far-away entities. Updated least frequently. |
-| `Medium` | Standard entities. Updated with moderate budget. |
-| `High` | Critical or near-camera entities. Updated most frequently. |
-
----
-
-## 🗂 Examples of Usage
-
-### Evaluating Priority in a PriorityEntitySystem
-
-```csharp
-public class DistancePrioritySystem : PriorityEntitySystem<IGameEntity>
+public sealed class DistancePrioritySystem : PriorityEntitySystem<IGameEntity>
 {
     protected override EntityUpdatePriority EvaluatePriority(IGameEntity entity)
     {
         float distance = entity.GetDistanceToPlayer();
-        
+
         if (distance < 10f)
             return EntityUpdatePriority.High;
-        if (distance < 30f)
+        if (distance < 40f)
             return EntityUpdatePriority.Medium;
-        
-        return EntityUpdatePriority.Low;
-    }
 
-    protected override void Update(IGameEntity entity, float deltaTime)
-    {
-        entity.UpdateLogic(deltaTime);
+        return EntityUpdatePriority.Low;
     }
 }
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type
+
+```csharp
+public enum EntityUpdatePriority : byte
+```
+
+- **Description:** Defines update priority levels for entities processed by [PriorityEntitySystem](PriorityEntitySystem.md).
+- **Inheritance:** `Enum`, `byte`
+- **Notes:** Higher priority entities receive a larger share of the per-frame update budget.
+- **See also:** [PriorityEntitySystem<E>](PriorityEntitySystem.md)
+
+### 🏹 Fields
+
+#### `Low`
+
+```csharp
+Low = 0
+```
+
+- **Description:** Background or far-away entities. Updated least frequently.
+
+#### `Medium`
+
+```csharp
+Medium = 1
+```
+
+- **Description:** Standard entities. Updated with a moderate share of the budget.
+
+#### `High`
+
+```csharp
+High = 2
+```
+
+- **Description:** Critical or near-camera entities. Updated most frequently.
 
 ---
 
 ## 🔗 See Also
 
-- [PriorityEntitySystem](PriorityEntitySystem.md)
-- [EntitySystemBase](EntitySystemBase.md)
-- [EntitySystem](EntitySystem.md)
+- [PriorityEntitySystem<E>](PriorityEntitySystem.md)
+- [EntitySystemBase<E>](EntitySystemBase.md)
+- [EntitySystem<E>](EntitySystem.md)

@@ -1,38 +1,20 @@
 # 🧩 EntityInspectorAPIAttribute
 
-**EntityInspectorAPIAttribute** marks a static class as an entity API definition so that the Unity Editor inspector
-cache can discover its [TagKey](../KeyStore/TagKey.md) and [ValueKey](../KeyStore/ValueKey.md) fields. This enables
-populated dropdowns for [EntityInspectorTagAttribute](EntityInspectorTagAttribute.md) and
-[EntityInspectorValueAttribute](EntityInspectorValueAttribute.md).
+Marks a static class as an entity API definition so that the Unity Editor inspector cache can discover its [TagKey](../KeyStore/TagKey.md) and [ValueKey](../KeyStore/ValueKey.md) fields.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-- [Best Practices](#-best-practices)
+  - [Type](#-type)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-When a static class is marked with `[EntityInspectorAPI]`, the editor scans its public static fields looking for:
-
-- `TagKey` and `TagKey<E>` fields → registered as available tags
-- `ValueKey<T>` and `ValueKey<E, T>` fields → registered as available values
-
-These names are then offered as options in inspector popups drawn by `EntityInspectorTagAttribute` and
-`EntityInspectorValueAttribute`.
-
-> **Note:** This attribute and its drawers are available only in the Unity Editor and require **Odin Inspector**.
-
----
-
-## 🗂 Examples of Usage
-
-### Mark an API Class
+Mark a static API class to expose its tag and value keys in inspector dropdowns:
 
 ```csharp
 [EntityInspectorAPI]
@@ -46,7 +28,7 @@ public static partial class GameEntityAPI
 }
 ```
 
-After marking the class, the fields appear in inspector dropdowns for matching entity and value types.
+The fields are then offered as options by [EntityInspectorTagAttribute](EntityInspectorTagAttribute.md) and [EntityInspectorValueAttribute](EntityInspectorValueAttribute.md).
 
 ---
 
@@ -59,13 +41,8 @@ After marking the class, the fields appear in inspector dropdowns for matching e
 public sealed class EntityInspectorAPIAttribute : Attribute
 ```
 
+- **Description:** Marks a static class as an entity API definition so that the Unity Editor inspector cache can discover its [TagKey](../KeyStore/TagKey.md) and [ValueKey](../KeyStore/ValueKey.md) fields.
+- **Inheritance:** `Attribute`
 - **Targets:** Classes
-- **Note:** Has no effect at runtime; used only by the editor inspector cache.
-
----
-
-## 📌 Best Practices
-
-- Apply `[EntityInspectorAPI]` to all static API classes that define `TagKey` or `ValueKey` fields you want exposed in the inspector.
-- Keep API classes organized by entity type or feature area.
-- Use partial classes to split generated and hand-written API definitions.
+- **Notes:** Has no effect at runtime; used only by the editor inspector cache. Requires Odin Inspector.
+- **See also:** [EntityInspectorTagAttribute](EntityInspectorTagAttribute.md), [EntityInspectorValueAttribute](EntityInspectorValueAttribute.md), [TagKey](../KeyStore/TagKey.md), [ValueKey](../KeyStore/ValueKey.md)

@@ -1,32 +1,22 @@
 # 🧩 IGizmosSource
 
-**IGizmosSource** is a lifecycle contract that exposes the `OnGizmosDraw` event. It is used by entity or world
-implementations that support drawing gizmos in the Unity Editor.
+A lifecycle contract that exposes the `OnGizmosDraw` event. Used by entity or world implementations that support drawing gizmos in the Unity Editor.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-- [See Also](#-see-also)
+  - [Type](#-type)
+  - [Methods](#-methods)
+    - [OnGizmosDraw](#ongizmosdraw)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-Gizmos are visual debugging aids drawn in the Unity Scene view. `IGizmosSource` defines a minimal interface for objects
-that want to expose gizmo drawing through an event-based API. Subscribers can attach drawing logic without inheriting
-from `MonoBehaviour` or overriding `OnDrawGizmos` directly.
-
-> **Note:** This interface is available only in the Unity Editor (`UNITY_EDITOR`).
-
----
-
-## 🗂 Examples of Usage
-
-### Subscribe to Gizmo Drawing
+Subscribe drawing logic without inheriting from `MonoBehaviour`:
 
 ```csharp
 IGizmosSource gizmosSource = ...; // e.g. an entity or world that implements IGizmosSource
@@ -38,7 +28,7 @@ gizmosSource.OnGizmosDraw += () =>
 };
 ```
 
-### Implementation in a Behaviour
+Use in a per-entity behaviour:
 
 ```csharp
 public sealed class SelectionGizmoBehaviour : IEntityBehaviour, IEntityGizmos
@@ -70,7 +60,14 @@ public interface IGizmosSource
 #endif
 ```
 
-### 🏹 Events
+- **Description:** A lifecycle contract that exposes the `OnGizmosDraw` event.
+- **Inheritance:** None
+- **Notes:** Available only in the Unity Editor (`UNITY_EDITOR`).
+- **See also:** [IEntityGizmos](../../Behaviours/IEntityGizmos.md)
+
+---
+
+### 🏹 Methods
 
 #### `OnGizmosDraw`
 
@@ -79,10 +76,4 @@ event Action OnGizmosDraw;
 ```
 
 - **Description:** Raised when gizmos should be drawn in the Unity Editor.
-
----
-
-## 🔗 See Also
-
-- [IEntityGizmos](../Behaviours/IEntityGizmos.md) — behaviour interface for per-entity gizmo drawing.
-- [MonoEntityGizmos](../Entities/MonoEntityGizmos.md) — Unity integration for entity gizmos.
+- **Remarks:** Subscribers attach drawing logic that runs during Unity's gizmo drawing phase.

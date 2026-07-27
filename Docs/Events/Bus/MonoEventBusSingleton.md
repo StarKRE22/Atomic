@@ -1,31 +1,24 @@
-# 🧩 MonoEventBusSingleton
+# 🧩 MonoEventBusSingleton&lt;T&gt;
 
-**MonoEventBusSingleton\<T\>** is a singleton version of [MonoEventBus](MonoEventBus.md). It ensures that only one
-instance of a specific event bus type exists per scene or globally.
+Singleton version of [MonoEventBus](MonoEventBus.md). Ensures that only one instance of a specific event bus type exists per scene or globally.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-- [Best Practices](#-best-practices)
+  - [Type](#-type)
+  - [Properties](#-properties)
+    - [Instance](#instance)
+  - [Methods](#-methods)
+    - [Resolve (Component)](#resolve-component)
+    - [Resolve (GameObject)](#resolve-gameobject)
+    - [Resolve (Scene)](#resolve-scene)
 
 ---
 
-## 🧩 Overview
-
-`MonoEventBusSingleton<T>` inherits from `MonoEventBus` and adds singleton access patterns:
-
-- `Instance` — returns the single instance found in the scene.
-- `Resolve(scene)` / `Resolve(gameObject)` / `Resolve(component)` — finds the singleton for a specific scene.
-
-Use it for globally or per-scene accessible event buses such as `GameEventBus`.
-
----
-
-## 🗂 Examples of Usage
+## 🗂 Example of Usage
 
 ### Define a Singleton Event Bus
 
@@ -41,7 +34,6 @@ public sealed class GameEventBus : MonoEventBusSingleton<GameEventBus>, IGameEve
 GameEventBus eventBus = GameEventBus.Instance;
 
 eventBus.Invoke(GameEventAPI.PlayerTurnStarted);
-eventBus.Flush();
 ```
 
 ### Resolve for a Scene
@@ -61,10 +53,15 @@ GameEventBus eventBus = GameEventBus.Resolve(scene);
 public abstract class MonoEventBusSingleton<T> : MonoEventBus where T : MonoEventBus
 ```
 
-- **Type Parameter:** `T` — The concrete singleton type.
+- **Description:** Singleton version of [MonoEventBus](MonoEventBus.md).
 - **Inheritance:** [MonoEventBus](MonoEventBus.md)
+- **Type Parameter:** `T` – The concrete singleton type.
+- **Notes:** Set `_dontDestroyOnLoad` to `true` in the Inspector to persist the singleton across scene loads.
+- **See also:** [MonoEventBus](MonoEventBus.md)
 
-### 🏹 Properties
+---
+
+### 🔑 Properties
 
 #### `Instance`
 
@@ -73,46 +70,42 @@ public static T Instance { get; }
 ```
 
 - **Description:** Returns the singleton instance from the active scene.
-- **Exception:** Throws `NullReferenceException` if no instance is found.
-
-### 🏹 Methods
-
-#### `Resolve(Component)`
-
-```csharp
-public static T Resolve(in Component component)
-```
-
-- **Description:** Resolves the singleton from the component's scene.
-
-#### `Resolve(GameObject)`
-
-```csharp
-public static T Resolve(in GameObject gameObject)
-```
-
-- **Description:** Resolves the singleton from the GameObject's scene.
-
-#### `Resolve(Scene)`
-
-```csharp
-public static T Resolve(Scene scene)
-```
-
-- **Description:** Resolves the singleton for the specified scene.
-- **Exception:** Throws if no instance is found.
-
-### 🏷️ Fields
-
-| Field | Description |
-|-------|-------------|
-| `_dontDestroyOnLoad` | If `true`, the singleton persists across scene loads. |
+- **Access:** Read-only
+- **Throws:** `NullReferenceException` if no instance is found.
 
 ---
 
-## 📌 Best Practices
+### 🏹 Methods
 
-- Use `MonoEventBusSingleton<T>` for global or per-scene event buses.
-- Place the singleton on a root GameObject in each scene that needs it.
-- Enable `_dontDestroyOnLoad` only for truly global buses.
-- Use `Resolve(scene)` when the active scene may not be the one containing the bus.
+#### `Resolve` (Component)
+
+```csharp
+public static T Resolve(in Component component);
+```
+
+- **Description:** Resolves the singleton from the component's scene.
+- **Parameter:** `component` – The component whose scene is searched.
+- **Returns:** The singleton instance for that scene.
+- **Throws:** `Exception` if no instance is found.
+
+#### `Resolve` (GameObject)
+
+```csharp
+public static T Resolve(in GameObject gameObject);
+```
+
+- **Description:** Resolves the singleton from the GameObject's scene.
+- **Parameter:** `gameObject` – The GameObject whose scene is searched.
+- **Returns:** The singleton instance for that scene.
+- **Throws:** `Exception` if no instance is found.
+
+#### `Resolve` (Scene)
+
+```csharp
+public static T Resolve(Scene scene);
+```
+
+- **Description:** Resolves the singleton for the specified scene.
+- **Parameter:** `scene` – The scene to search.
+- **Returns:** The singleton instance for that scene.
+- **Throws:** `Exception` if no instance is found.

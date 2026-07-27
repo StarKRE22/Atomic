@@ -1,38 +1,23 @@
 # 🧩 Subscription
 
-**Subscription** is a disposable handle returned when subscribing to an event on an [IEventBus](../Bus/IEventBus.md).
-Disposing the subscription unsubscribes the callback.
+A disposable handle returned when subscribing to an event on an [IEventBus](../Bus/IEventBus.md). Disposing the
+subscription unsubscribes the callback.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Variants](#-variants)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Methods](#-methods)
+    - [Dispose()](#dispose)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-Subscriptions provide a safe, explicit way to manage event listener lifetime. Instead of calling `Unsubscribe` manually,
-you can dispose the subscription struct.
-
----
-
-## 🔍 Variants
-
-| Struct | Description |
-|--------|-------------|
-| `Subscription` | Parameterless event subscription. |
-| `Subscription<T>` | Single-argument event subscription. |
-| `Subscription<T1, T2>` | Two-argument event subscription. |
-| `Subscription<T1, T2, T3>` | Three-argument event subscription. |
-
----
-
-## 🗂 Examples of Usage
+Subscribe and let the subscription unsubscribe automatically when disposed:
 
 ```csharp
 IEventBus eventBus = new EventBus();
@@ -50,11 +35,23 @@ using (var subscription = eventBus.Subscribe(GameEventAPI.PlayerTurnStarted.Id, 
 
 ## 🔍 API Reference
 
-### Subscription
+### 🏛️ Type
 
 ```csharp
 public readonly struct Subscription : IDisposable
 ```
+
+- **Description:** A parameterless event subscription handle.
+- **Inheritance:** `IDisposable`
+- **Notes:**
+  - Instances are created internally by [IEventBus](../Bus/IEventBus.md) subscribe methods.
+  - Generic variants exist for events with one, two, and three arguments:
+    `Subscription<T>`, `Subscription<T1, T2>`, and `Subscription<T1, T2, T3>`.
+- **See also:** [IEventBus](../Bus/IEventBus.md), [EventKey](../Keys/EventKey.md)
+
+---
+
+### 🏹 Methods
 
 #### `Dispose()`
 
@@ -63,11 +60,4 @@ public void Dispose()
 ```
 
 - **Description:** Unsubscribes the callback from the event bus.
-
-### Subscription\<T\>
-
-```csharp
-public readonly struct Subscription<T> : IDisposable
-```
-
-Same API as `Subscription`, but stores a single-argument callback.
+- **Remarks:** Calling `Dispose` more than once is safe because the underlying bus ignores duplicate unsubscriptions.

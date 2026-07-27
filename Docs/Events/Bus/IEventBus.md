@@ -1,33 +1,26 @@
 # 🧩 IEventBus
 
-**IEventBus** is the core interface for publish-subscribe event messaging in the Atomic.Events module. It supports
-parameterless and parameterized events, subscriptions, unsubscriptions, and event disposal.
+Core interface for publish-subscribe event messaging in the Atomic.Events module. Supports parameterless and parameterized events, subscriptions, unsubscriptions, and event disposal.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
+  - [Type](#-type)
   - [Methods](#-methods)
-- [See Also](#-see-also)
+    - [Subscribe](#subscribe)
+    - [Unsubscribe](#unsubscribe)
+    - [Invoke](#invoke)
+    - [IsSubscribed](#issubscribed)
+    - [Dispose](#dispose)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-An event bus decouples event publishers from subscribers. Subscribers register callbacks for integer event keys;
-publishers invoke those keys. The bus supports up to three event arguments.
-
-The framework also provides strongly-typed [EventKey](EventKey.md) wrappers and extension methods for working with string
-names instead of raw IDs.
-
----
-
-## 🗂 Examples of Usage
-
-### Basic Parameterless Event
+### Parameterless Event
 
 ```csharp
 IEventBus eventBus = new EventBus();
@@ -61,11 +54,16 @@ eventBus.Invoke(GameEventAPI.EntityDamaged.Id, new TakeDamageEventArgs(entity, 2
 public interface IEventBus : IDisposable
 ```
 
+- **Description:** Core interface for publish-subscribe event messaging.
+- **Inheritance:** `IDisposable`
+- **Notes:** Implementations store callbacks by integer event ID. The framework also provides strongly-typed [EventKey](../Keys/EventKey.md) wrappers and [Extensions](../Extensions.md) for string names.
+- **See also:** [EventBus](EventBus.md), [ThreadSafeEventBus](ThreadSafeEventBus.md), [MonoEventBus](MonoEventBus.md), [EventKey](../Keys/EventKey.md)
+
 ---
 
 ### 🏹 Methods
 
-#### Subscribe
+#### `Subscribe`
 
 ```csharp
 Subscription Subscribe(int key, Action action);
@@ -75,9 +73,12 @@ Subscription<T1, T2, T3> Subscribe<T1, T2, T3>(int key, Action<T1, T2, T3> actio
 ```
 
 - **Description:** Registers a callback for the specified event key.
-- **Returns:** A disposable `Subscription` that unsubscribes when disposed.
+- **Parameter:** `key` – The integer event identifier.
+- **Parameter:** `action` – The callback to invoke.
+- **Returns:** A disposable subscription that unsubscribes when disposed.
+- **See also:** [Subscription](../Subscriptions/Subscription.md)
 
-#### Unsubscribe
+#### `Unsubscribe`
 
 ```csharp
 void Unsubscribe(int key, Action action);
@@ -86,9 +87,9 @@ void Unsubscribe<T1, T2>(int key, Action<T1, T2> action);
 void Unsubscribe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
 ```
 
-- **Description:** Removes a previously registered callback.
+- **Description:** Removes a previously registered callback from the event.
 
-#### Invoke
+#### `Invoke`
 
 ```csharp
 void Invoke(int key);
@@ -99,15 +100,16 @@ void Invoke<T1, T2, T3>(int key, T1 arg1, T2 arg2, T3 arg3);
 
 - **Description:** Invokes all callbacks registered for the specified event key.
 
-#### IsSubscribed
+#### `IsSubscribed`
 
 ```csharp
 bool IsSubscribed(int key);
 ```
 
 - **Description:** Returns whether any callback is registered for the key.
+- **Returns:** `true` if the key has subscribers; otherwise `false`.
 
-#### Dispose(int)
+#### `Dispose`
 
 ```csharp
 bool Dispose(int key);
@@ -115,22 +117,4 @@ bool Dispose(int key);
 
 - **Description:** Removes all callbacks for the specified key.
 - **Returns:** `true` if the key existed and was removed.
-
-#### Dispose()
-
-```csharp
-void Dispose();
-```
-
-- **Description:** Clears all events from the bus.
-
----
-
-## 🔗 See Also
-
-- [EventBus](EventBus.md)
-- [ThreadSafeEventBus](ThreadSafeEventBus.md)
-- [MonoEventBus](MonoEventBus.md)
-- [EventKey](EventKey.md)
-- [EventKeyStore](EventKeyStore.md)
-- [EventBus Extensions](Extensions.md)
+- **Notes:** `IDisposable.Dispose()` clears all events from the bus.

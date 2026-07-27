@@ -1,169 +1,39 @@
 # 🧩 Command
 
-**Command** is a sealed implementation of [ICommand](ICommand.md). It provides a lightweight, composable way to
-define invocable logic guarded by conditions. Multiple generic variants are available for commands that accept up to
-four arguments.
+A family of **sealed command implementations** that guard invocation with configurable conditions. Each variant stores conditions, an action delegate, and an `OnEvent` signal, supporting fluent chaining for gameplay logic.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Variants](#-variants)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-  - [Command](#command)
-  - [Command\<T\>](#commandt)
-  - [Command\<T1, T2\>](#commandt1-t2)
-  - [Command\<T1, T2, T3\>](#commandt1-t2-t3)
-  - [Command\<T1, T2, T3, T4\>](#commandt1-t2-t3-t4)
-- [Examples of Usage](#-examples-of-usage)
-- [Best Practices](#-best-practices)
+  - [Command](#-command)
+    - [Type](#type)
+    - [Events](#events)
+    - [Methods](#methods)
+  - [Command&lt;T&gt;](#-commandt)
+    - [Type](#type-1)
+    - [Events](#events-1)
+    - [Methods](#methods-1)
+  - [Command&lt;T1, T2&gt;](#-commandt1-t2)
+    - [Type](#type-2)
+    - [Events](#events-2)
+    - [Methods](#methods-2)
+  - [Command&lt;T1, T2, T3&gt;](#-commandt1-t2-t3)
+    - [Type](#type-3)
+    - [Events](#events-3)
+    - [Methods](#methods-3)
+  - [Command&lt;T1, T2, T3, T4&gt;](#-commandt1-t2-t3-t4)
+    - [Type](#type-4)
+    - [Events](#events-4)
+    - [Methods](#methods-4)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-`Command` is the concrete implementation of the command pattern in the Atomic Elements framework.
-Each command stores:
-
-- A list of **conditions** that must all pass before execution
-- A single **action** delegate invoked when conditions pass
-- An **OnEvent** signal raised after successful execution
-
-The command is **fluent**: `AddCondition`, `RemoveCondition`, `AddAction`, and `RemoveAction` all return the command
-instance, allowing chaining.
-
----
-
-## 🔍 Variants
-
-| Class | Interface | Arguments |
-|-------|-----------|-----------|
-| `Command` | `ICommand` | 0 |
-| `Command<T>` | `ICommand<T>` | 1 |
-| `Command<T1, T2>` | `ICommand<T1, T2>` | 2 |
-| `Command<T1, T2, T3>` | `ICommand<T1, T2, T3>` | 3 |
-| `Command<T1, T2, T3, T4>` | `ICommand<T1, T2, T3, T4>` | 4 |
-
----
-
-## 🔍 API Reference
-
-### Command
-
-```csharp
-public sealed class Command : ICommand
-```
-
-#### `CanInvoke()`
-
-```csharp
-public bool CanInvoke();
-```
-
-- **Description:** Returns `true` if all registered conditions pass.
-
-#### `TryInvoke()`
-
-```csharp
-public bool TryInvoke();
-```
-
-- **Description:** Invokes the action and raises `OnEvent` if all conditions pass.
-- **Returns:** `true` if the command executed, `false` otherwise.
-
-#### `Invoke()`
-
-```csharp
-public void Invoke();
-```
-
-- **Description:** Invokes the action if all conditions pass. Does not return a value.
-
-#### `AddCondition(Func<bool>)`
-
-```csharp
-public ICommand AddCondition(Func<bool> condition);
-```
-
-- **Description:** Adds a parameterless condition.
-- **Parameter:** `condition` — Predicate that must return `true` for the command to execute.
-- **Returns:** The command instance for chaining.
-
-#### `RemoveCondition(Func<bool>)`
-
-```csharp
-public ICommand RemoveCondition(Func<bool> condition);
-```
-
-- **Description:** Removes a previously added condition.
-- **Returns:** The command instance for chaining.
-
-#### `AddAction(Action)`
-
-```csharp
-public ICommand AddAction(Action action);
-```
-
-- **Description:** Adds an action to invoke when conditions pass.
-- **Returns:** The command instance for chaining.
-
-#### `RemoveAction(Action)`
-
-```csharp
-public ICommand RemoveAction(Action action);
-```
-
-- **Description:** Removes a previously added action.
-- **Returns:** The command instance for chaining.
-
-### Command\<T\>
-
-```csharp
-public sealed class Command<T> : ICommand<T>
-```
-
-Same API as `Command`, but methods accept one argument:
-
-- `bool CanInvoke(T arg)`
-- `bool TryInvoke(T arg)`
-- `void Invoke(T arg)`
-- `ICommand<T> AddCondition(Func<T, bool> condition)`
-- `ICommand<T> AddAction(Action<T> action)`
-
-### Command\<T1, T2\>
-
-```csharp
-public sealed class Command<T1, T2> : ICommand<T1, T2>
-```
-
-Accepts two arguments. Methods:
-
-- `bool CanInvoke(T1 arg1, T2 arg2)`
-- `bool TryInvoke(T1 arg1, T2 arg2)`
-- `void Invoke(T1 arg1, T2 arg2)`
-
-### Command\<T1, T2, T3\>
-
-```csharp
-public sealed class Command<T1, T2, T3> : ICommand<T1, T2, T3>
-```
-
-Accepts three arguments.
-
-### Command\<T1, T2, T3, T4\>
-
-```csharp
-public sealed class Command<T1, T2, T3, T4> : ICommand<T1, T2, T3, T4>
-```
-
-Accepts four arguments.
-
----
-
-## 🗂 Examples of Usage
-
-### Chained Command Setup
+### Parameterless command
 
 ```csharp
 ICommand jumpCommand = new Command()
@@ -178,7 +48,7 @@ ICommand jumpCommand = new Command()
 bool jumped = jumpCommand.TryInvoke();
 ```
 
-### Command with Argument
+### Parameterized command
 
 ```csharp
 ICommand<Vector3> moveCommand = new Command<Vector3>()
@@ -190,10 +60,568 @@ bool moved = moveCommand.TryInvoke(new Vector3(10, 0, 0));
 
 ---
 
-## 📌 Best Practices
+## 🔍 API Reference
 
-- Prefer `TryInvoke()` over `Invoke()` when the result matters.
-- Use `CanInvoke()` for UI state updates (e.g., graying out a button).
-- Avoid side effects in conditions.
-- Remove conditions and actions when the owning object is disposed to prevent leaks.
-- For thread-safe scenarios, use [ThreadSafeCommand](ThreadSafeCommand.md).
+### 🏛️ Command
+
+#### Type
+
+```csharp
+public sealed class Command : ICommand
+```
+
+- **Description:** A parameterless command guarded by conditions.
+- **Inheritance:** [ICommand](ICommand.md)
+- **Type Parameters:** None
+- **Notes:** All mutating methods return the command instance for fluent chaining.
+- **See also:** [ICommand](ICommand.md), [ThreadSafeCommand](ThreadSafeCommand.md)
+
+#### Events
+
+##### `OnEvent`
+
+```csharp
+public event Action OnEvent;
+```
+
+- **Description:** Raised after the action is successfully invoked.
+- **See also:** [ISignal](../Events/ISignal.md)
+
+#### Methods
+
+##### `CanInvoke()`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public bool CanInvoke();
+```
+
+- **Description:** Returns `true` only if all registered conditions pass.
+- **Returns:** `true` when the command can be invoked; otherwise `false`.
+
+##### `TryInvoke()`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public bool TryInvoke();
+```
+
+- **Description:** Invokes the action and raises `OnEvent` if all conditions pass.
+- **Returns:** `true` if the command executed; otherwise `false`.
+
+##### `Invoke()`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public void Invoke();
+```
+
+- **Description:** Invokes the action if all conditions pass.
+- **Notes:** Prefer `TryInvoke()` when the result is needed.
+
+##### `AddCondition(Func<bool>)`
+
+```csharp
+public ICommand AddCondition(Func<bool> condition);
+```
+
+- **Description:** Adds a parameterless condition.
+- **Parameter:** `condition` — Predicate that must return `true` for execution.
+- **Returns:** The command instance for chaining.
+
+##### `RemoveCondition(Func<bool>)`
+
+```csharp
+public ICommand RemoveCondition(Func<bool> condition);
+```
+
+- **Description:** Removes a previously added condition.
+- **Parameter:** `condition` — The condition delegate to remove.
+- **Returns:** The command instance for chaining.
+
+##### `AddAction(Action)`
+
+```csharp
+public ICommand AddAction(Action action);
+```
+
+- **Description:** Adds an action to invoke when conditions pass.
+- **Parameter:** `action` — The action delegate to add.
+- **Returns:** The command instance for chaining.
+
+##### `RemoveAction(Action)`
+
+```csharp
+public ICommand RemoveAction(Action action);
+```
+
+- **Description:** Removes a previously added action.
+- **Parameter:** `action` — The action delegate to remove.
+- **Returns:** The command instance for chaining.
+
+---
+
+### 🏛️ Command&lt;T&gt;
+
+#### Type
+
+```csharp
+public sealed class Command<T> : ICommand<T>
+```
+
+- **Description:** A command that accepts one argument.
+- **Inheritance:** [ICommand&lt;T&gt;](ICommand.md)
+- **Type Parameters:** `T` — The argument type.
+- **Notes:** All mutating methods return the command instance for fluent chaining.
+- **See also:** [ICommand&lt;T&gt;](ICommand.md)
+
+#### Events
+
+##### `OnEvent`
+
+```csharp
+public event Action<T> OnEvent;
+```
+
+- **Description:** Raised after the action is successfully invoked, passing the argument.
+- **See also:** [ISignal&lt;T&gt;](../Events/ISignal%601.md)
+
+#### Methods
+
+##### `CanInvoke(T)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public bool CanInvoke(T arg);
+```
+
+- **Description:** Returns `true` only if all registered conditions pass for `arg`.
+- **Parameter:** `arg` — The argument to evaluate.
+- **Returns:** `true` when the command can be invoked; otherwise `false`.
+
+##### `TryInvoke(T)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public bool TryInvoke(T arg);
+```
+
+- **Description:** Invokes the action and raises `OnEvent` if all conditions pass.
+- **Parameter:** `arg` — The argument to pass.
+- **Returns:** `true` if the command executed; otherwise `false`.
+
+##### `Invoke(T)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public void Invoke(T arg);
+```
+
+- **Description:** Invokes the action if all conditions pass.
+- **Parameter:** `arg` — The argument to pass.
+
+##### `AddCondition(Func<T, bool>)`
+
+```csharp
+public ICommand<T> AddCondition(Func<T, bool> condition);
+```
+
+- **Description:** Adds a single-argument condition.
+- **Parameter:** `condition` — Predicate that receives the argument and returns `true` for execution.
+- **Returns:** The command instance for chaining.
+
+##### `RemoveCondition(Func<T, bool>)`
+
+```csharp
+public ICommand<T> RemoveCondition(Func<T, bool> condition);
+```
+
+- **Description:** Removes a previously added condition.
+- **Parameter:** `condition` — The condition delegate to remove.
+- **Returns:** The command instance for chaining.
+
+##### `AddAction(Action<T>)`
+
+```csharp
+public ICommand<T> AddAction(Action<T> action);
+```
+
+- **Description:** Adds an action to invoke when conditions pass.
+- **Parameter:** `action` — The action delegate to add.
+- **Returns:** The command instance for chaining.
+
+##### `RemoveAction(Action<T>)`
+
+```csharp
+public ICommand<T> RemoveAction(Action<T> action);
+```
+
+- **Description:** Removes a previously added action.
+- **Parameter:** `action` — The action delegate to remove.
+- **Returns:** The command instance for chaining.
+
+---
+
+### 🏛️ Command&lt;T1, T2&gt;
+
+#### Type
+
+```csharp
+public sealed class Command<T1, T2> : ICommand<T1, T2>
+```
+
+- **Description:** A command that accepts two arguments.
+- **Inheritance:** [ICommand&lt;T1, T2&gt;](ICommand.md)
+- **Type Parameters:**
+  - `T1` — The first argument type.
+  - `T2` — The second argument type.
+- **Notes:** All mutating methods return the command instance for fluent chaining.
+- **See also:** [ICommand&lt;T1, T2&gt;](ICommand.md)
+
+#### Events
+
+##### `OnEvent`
+
+```csharp
+public event Action<T1, T2> OnEvent;
+```
+
+- **Description:** Raised after the action is successfully invoked, passing both arguments.
+
+#### Methods
+
+##### `CanInvoke(T1, T2)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public bool CanInvoke(T1 arg1, T2 arg2);
+```
+
+- **Description:** Returns `true` only if all registered conditions pass.
+- **Parameters:**
+  - `arg1` — The first argument.
+  - `arg2` — The second argument.
+- **Returns:** `true` when the command can be invoked; otherwise `false`.
+
+##### `TryInvoke(T1, T2)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public bool TryInvoke(T1 arg1, T2 arg2);
+```
+
+- **Description:** Invokes the action and raises `OnEvent` if all conditions pass.
+- **Parameters:**
+  - `arg1` — The first argument.
+  - `arg2` — The second argument.
+- **Returns:** `true` if the command executed; otherwise `false`.
+
+##### `Invoke(T1, T2)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public void Invoke(T1 arg1, T2 arg2);
+```
+
+- **Description:** Invokes the action if all conditions pass.
+- **Parameters:**
+  - `arg1` — The first argument.
+  - `arg2` — The second argument.
+
+##### `AddCondition(Func<T1, T2, bool>)`
+
+```csharp
+public ICommand<T1, T2> AddCondition(Func<T1, T2, bool> condition);
+```
+
+- **Description:** Adds a two-argument condition.
+- **Parameter:** `condition` — Predicate that returns `true` for execution.
+- **Returns:** The command instance for chaining.
+
+##### `RemoveCondition(Func<T1, T2, bool>)`
+
+```csharp
+public ICommand<T1, T2> RemoveCondition(Func<T1, T2, bool> condition);
+```
+
+- **Description:** Removes a previously added condition.
+- **Parameter:** `condition` — The condition delegate to remove.
+- **Returns:** The command instance for chaining.
+
+##### `AddAction(Action<T1, T2>)`
+
+```csharp
+public ICommand<T1, T2> AddAction(Action<T1, T2> action);
+```
+
+- **Description:** Adds an action to invoke when conditions pass.
+- **Parameter:** `action` — The action delegate to add.
+- **Returns:** The command instance for chaining.
+
+##### `RemoveAction(Action<T1, T2>)`
+
+```csharp
+public ICommand<T1, T2> RemoveAction(Action<T1, T2> action);
+```
+
+- **Description:** Removes a previously added action.
+- **Parameter:** `action` — The action delegate to remove.
+- **Returns:** The command instance for chaining.
+
+---
+
+### 🏛️ Command&lt;T1, T2, T3&gt;
+
+#### Type
+
+```csharp
+public sealed class Command<T1, T2, T3> : ICommand<T1, T2, T3>
+```
+
+- **Description:** A command that accepts three arguments.
+- **Inheritance:** [ICommand&lt;T1, T2, T3&gt;](ICommand.md)
+- **Type Parameters:**
+  - `T1` — The first argument type.
+  - `T2` — The second argument type.
+  - `T3` — The third argument type.
+- **Notes:** All mutating methods return the command instance for fluent chaining.
+- **See also:** [ICommand&lt;T1, T2, T3&gt;](ICommand.md)
+
+#### Events
+
+##### `OnEvent`
+
+```csharp
+public event Action<T1, T2, T3> OnEvent;
+```
+
+- **Description:** Raised after the action is successfully invoked, passing all arguments.
+
+#### Methods
+
+##### `CanInvoke(T1, T2, T3)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3);
+```
+
+- **Description:** Returns `true` only if all registered conditions pass.
+- **Parameters:**
+  - `arg1` — The first argument.
+  - `arg2` — The second argument.
+  - `arg3` — The third argument.
+- **Returns:** `true` when the command can be invoked; otherwise `false`.
+
+##### `TryInvoke(T1, T2, T3)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3);
+```
+
+- **Description:** Invokes the action and raises `OnEvent` if all conditions pass.
+- **Parameters:**
+  - `arg1` — The first argument.
+  - `arg2` — The second argument.
+  - `arg3` — The third argument.
+- **Returns:** `true` if the command executed; otherwise `false`.
+
+##### `Invoke(T1, T2, T3)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public void Invoke(T1 arg1, T2 arg2, T3 arg3);
+```
+
+- **Description:** Invokes the action if all conditions pass.
+- **Parameters:**
+  - `arg1` — The first argument.
+  - `arg2` — The second argument.
+  - `arg3` — The third argument.
+
+##### `AddCondition(Func<T1, T2, T3, bool>)`
+
+```csharp
+public ICommand<T1, T2, T3> AddCondition(Func<T1, T2, T3, bool> condition);
+```
+
+- **Description:** Adds a three-argument condition.
+- **Parameter:** `condition` — Predicate that returns `true` for execution.
+- **Returns:** The command instance for chaining.
+
+##### `RemoveCondition(Func<T1, T2, T3, bool>)`
+
+```csharp
+public ICommand<T1, T2, T3> RemoveCondition(Func<T1, T2, T3, bool> condition);
+```
+
+- **Description:** Removes a previously added condition.
+- **Parameter:** `condition` — The condition delegate to remove.
+- **Returns:** The command instance for chaining.
+
+##### `AddAction(Action<T1, T2, T3>)`
+
+```csharp
+public ICommand<T1, T2, T3> AddAction(Action<T1, T2, T3> action);
+```
+
+- **Description:** Adds an action to invoke when conditions pass.
+- **Parameter:** `action` — The action delegate to add.
+- **Returns:** The command instance for chaining.
+
+##### `RemoveAction(Action<T1, T2, T3>)`
+
+```csharp
+public ICommand<T1, T2, T3> RemoveAction(Action<T1, T2, T3> action);
+```
+
+- **Description:** Removes a previously added action.
+- **Parameter:** `action` — The action delegate to remove.
+- **Returns:** The command instance for chaining.
+
+---
+
+### 🏛️ Command&lt;T1, T2, T3, T4&gt;
+
+#### Type
+
+```csharp
+public sealed class Command<T1, T2, T3, T4> : ICommand<T1, T2, T3, T4>
+```
+
+- **Description:** A command that accepts four arguments.
+- **Inheritance:** [ICommand&lt;T1, T2, T3, T4&gt;](ICommand.md)
+- **Type Parameters:**
+  - `T1` — The first argument type.
+  - `T2` — The second argument type.
+  - `T3` — The third argument type.
+  - `T4` — The fourth argument type.
+- **Notes:** All mutating methods return the command instance for fluent chaining.
+- **See also:** [ICommand&lt;T1, T2, T3, T4&gt;](ICommand.md)
+
+#### Events
+
+##### `OnEvent`
+
+```csharp
+public event Action<T1, T2, T3, T4> OnEvent;
+```
+
+- **Description:** Raised after the action is successfully invoked, passing all arguments.
+
+#### Methods
+
+##### `CanInvoke(T1, T2, T3, T4)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+```
+
+- **Description:** Returns `true` only if all registered conditions pass.
+- **Parameters:**
+  - `arg1` — The first argument.
+  - `arg2` — The second argument.
+  - `arg3` — The third argument.
+  - `arg4` — The fourth argument.
+- **Returns:** `true` when the command can be invoked; otherwise `false`.
+
+##### `TryInvoke(T1, T2, T3, T4)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+```
+
+- **Description:** Invokes the action and raises `OnEvent` if all conditions pass.
+- **Parameters:**
+  - `arg1` — The first argument.
+  - `arg2` — The second argument.
+  - `arg3` — The third argument.
+  - `arg4` — The fourth argument.
+- **Returns:** `true` if the command executed; otherwise `false`.
+
+##### `Invoke(T1, T2, T3, T4)`
+
+```csharp
+#if ODIN_INSPECTOR
+[Button]
+#endif
+public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+```
+
+- **Description:** Invokes the action if all conditions pass.
+- **Parameters:**
+  - `arg1` — The first argument.
+  - `arg2` — The second argument.
+  - `arg3` — The third argument.
+  - `arg4` — The fourth argument.
+
+##### `AddCondition(Func<T1, T2, T3, T4, bool>)`
+
+```csharp
+public ICommand<T1, T2, T3, T4> AddCondition(Func<T1, T2, T3, T4, bool> condition);
+```
+
+- **Description:** Adds a four-argument condition.
+- **Parameter:** `condition` — Predicate that returns `true` for execution.
+- **Returns:** The command instance for chaining.
+
+##### `RemoveCondition(Func<T1, T2, T3, T4, bool>)`
+
+```csharp
+public ICommand<T1, T2, T3, T4> RemoveCondition(Func<T1, T2, T3, T4, bool> condition);
+```
+
+- **Description:** Removes a previously added condition.
+- **Parameter:** `condition` — The condition delegate to remove.
+- **Returns:** The command instance for chaining.
+
+##### `AddAction(Action<T1, T2, T3, T4>)`
+
+```csharp
+public ICommand<T1, T2, T3, T4> AddAction(Action<T1, T2, T3, T4> action);
+```
+
+- **Description:** Adds an action to invoke when conditions pass.
+- **Parameter:** `action` — The action delegate to add.
+- **Returns:** The command instance for chaining.
+
+##### `RemoveAction(Action<T1, T2, T3, T4>)`
+
+```csharp
+public ICommand<T1, T2, T3, T4> RemoveAction(Action<T1, T2, T3, T4> action);
+```
+
+- **Description:** Removes a previously added action.
+- **Parameter:** `action` — The action delegate to remove.
+- **Returns:** The command instance for chaining.

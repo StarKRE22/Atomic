@@ -1,12 +1,15 @@
 # ⚙️ Source Generators Setup
 
-This guide explains how to add the **Atomic source generators** and **analyzers** to a Unity project. The same steps apply to
-all four assemblies:
+This guide explains how to add the **Atomic source generators** and **analyzers** to a Unity project.
+The same steps apply to all four assemblies:
 
 - `EntityAPIGenerator.dll`
 - `EntityAPIAnalyzer.dll`
 - `EventAPIGenerator.dll`
 - `EventAPIAnalyzer.dll`
+
+For usage examples, see the [Code Generation Walkthrough](../Tutorials/Codegeneration.md).  
+For generator options and advanced configuration, see the [Code Generation Manual](Manual.md).
 
 ---
 
@@ -19,7 +22,11 @@ all four assemblies:
 - [Unity Import Settings](#-unity-import-settings)
   - [1. Add the RoslynAnalyzer label](#1-add-the-roslynanalyzer-label)
   - [2. Disable runtime platforms](#2-disable-runtime-platforms)
+- [Verification](#-verification)
 - [Troubleshooting](#-troubleshooting)
+  - [Generated methods do not appear in IntelliSense](#generated-methods-do-not-appear-in-intellisense)
+  - [Build errors after adding the DLLs](#build-errors-after-adding-the-dlls)
+  - [Inspect generated source](#inspect-generated-source)
 - [Source Repository](#-source-repository)
 
 ---
@@ -51,7 +58,7 @@ dotnet build Atomic.SourceGenerators.sln -c Release \
   -p:AtomicUnityPluginDir="C:\YourProject\Assets\Plugins\Atomic\SourceGenerators"
 ```
 
-Only the `.dll` files are needed; PDBs can be left behind.
+> 💡 **Tip:** Only the `.dll` files are needed; PDBs can be left behind.
 
 ### Option B: Copy prebuilt DLLs
 
@@ -83,7 +90,7 @@ Select each DLL in the Unity Project window and add the **Asset Label**:
 RoslynAnalyzer
 ```
 
-This label is what tells Unity's Roslyn compiler to load the assembly as a source generator or analyzer.
+This label tells Unity's Roslyn compiler to load the assembly as a source generator or analyzer.
 
 ### 2. Disable runtime platforms
 
@@ -105,6 +112,42 @@ After changing the settings, click **Apply** and rebuild the project (`Assets �
 
 ---
 
+## ✅ Verification
+
+Create a test API class and confirm the generated methods appear in IntelliSense after compilation.
+
+For entities:
+
+```csharp
+using Atomic.Entities;
+
+[EntityAPI]
+public static partial class VerifyEntityAPI
+{
+    public static readonly ValueKey<IEntity, int> Health = new(nameof(Health));
+}
+```
+
+You should now see `entity.AddHealth(...)`, `entity.GetHealth()`, and `entity.SetHealth(...)` in IntelliSense.
+
+For events:
+
+```csharp
+using Atomic.Events;
+
+[EventAPI]
+public static partial class VerifyEventAPI
+{
+    public static readonly EventKey<IEventBus> PlayerScored = new(nameof(PlayerScored));
+}
+```
+
+You should now see `_eventBus.SubscribePlayerScored(...)` and `_eventBus.InvokePlayerScored()`.
+
+If the methods do not appear, run `Assets → Reimport All` or restart the Unity Editor.
+
+---
+
 ## 🔧 Troubleshooting
 
 ### Generated methods do not appear in IntelliSense
@@ -117,7 +160,22 @@ After changing the settings, click **Apply** and rebuild the project (`Assets �
 ### Build errors after adding the DLLs
 
 - Make sure the DLLs are **not** included in any runtime platform.
-- Make sure every `[EntityAPI]` / `[EventAPI]` field is initialized with a non-default constructor, e.g. `new(nameof(FieldName))`. The analyzers report missing or invalid initializers.
+- Make sure every `[EntityAPI]` / `[EventAPI]` field is initialized with a non-default constructor, e.g. `new(nameof(FieldName))`. The analyzers report missing or invalid initializers:
+
+```csharp
+[EntityAPI]
+public static partial class CharacterAPI
+{
+    // EAPI0001: field has no initializer
+    public static readonly ValueKey<IEntity, int> Health;
+}
+```
+
+Fix it by adding the initializer:
+
+```csharp
+public static readonly ValueKey<IEntity, int> Health = new(nameof(Health));
+```
 
 ### Inspect generated source
 

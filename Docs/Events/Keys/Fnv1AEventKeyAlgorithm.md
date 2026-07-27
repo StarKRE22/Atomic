@@ -1,20 +1,28 @@
 # 🧩 Fnv1AEventKeyAlgorithm
 
-**Fnv1AEventKeyAlgorithm** generates deterministic 32-bit integer IDs from event names using the FNV-1a hash algorithm.
+Generates deterministic 32-bit integer IDs from event names using the FNV-1a hash algorithm.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Methods](#-methods)
+    - [NameToId(string)](#nametoidstring)
+    - [Reset()](#reset)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-FNV-1a is a fast, non-cryptographic hash function. This algorithm produces the same ID for the same event name across
-runs, making it useful when stable IDs are required.
+Use FNV-1a for stable IDs across runs:
+
+```csharp
+EventKeyStore.SetAlgorithm(new Fnv1AEventKeyAlgorithm());
+int id = EventKeyStore.NameToId("PlayerTurnStarted");
+```
 
 ---
 
@@ -26,6 +34,13 @@ runs, making it useful when stable IDs are required.
 public sealed class Fnv1AEventKeyAlgorithm : IEventKeyAlgorithm
 ```
 
+- **Description:** Provides a stateless algorithm that computes 32-bit FNV-1a hash IDs.
+- **Inheritance:** [IEventKeyAlgorithm](IEventKeyAlgorithm.md)
+- **Notes:** The same event name always produces the same ID, making it suitable for deterministic key generation.
+- **See also:** [EventKeyStore](EventKeyStore.md), [SHA256EventKeyAlgorithm](SHA256EventKeyAlgorithm.md)
+
+---
+
 ### 🏹 Methods
 
 #### `NameToId(string)`
@@ -35,7 +50,9 @@ public int NameToId(string name)
 ```
 
 - **Description:** Computes a 32-bit FNV-1a hash for the event name.
-- **Parameter:** `name` — The event name. Must not be `null`.
+- **Parameter:** `name` – The event name. Must not be `null`.
+- **Returns:** A 32-bit integer corresponding to the FNV-1a hash of the name.
+- **Throws:** `ArgumentNullException` if `name` is `null`.
 
 #### `Reset()`
 

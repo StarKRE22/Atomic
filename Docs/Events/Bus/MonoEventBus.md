@@ -1,29 +1,25 @@
 # 🧩 MonoEventBus
 
-**MonoEventBus** is a Unity `MonoBehaviour` implementation of [IEventBus](IEventBus.md). It can be attached to a
-GameObject in the scene, making it easy to wire event handling to scene lifecycle.
+Unity `MonoBehaviour` implementation of [IEventBus](IEventBus.md). Can be attached to a GameObject in the scene so event handling follows scene lifecycle.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-- [Best Practices](#-best-practices)
+  - [Type](#-type)
+  - [Methods](#-methods)
+    - [Subscribe](#subscribe)
+    - [Unsubscribe](#unsubscribe)
+    - [Invoke](#invoke)
+    - [IsSubscribed](#issubscribed)
+    - [Dispose](#dispose)
+    - [OnDestroy](#ondestroy)
 
 ---
 
-## 🧩 Overview
-
-`MonoEventBus` wraps a private [EventBus](EventBus.md) and exposes all `IEventBus` methods. It is automatically disposed
-when the GameObject is destroyed.
-
-Use it when you want an event bus tied to a specific scene or GameObject context.
-
----
-
-## 🗂 Examples of Usage
+## 🗂 Example of Usage
 
 ### Add to Scene
 
@@ -60,17 +56,76 @@ eventBus.Invoke(GameEventAPI.PlayerTurnStarted.Id);
 public partial class MonoEventBus : MonoBehaviour, IEventBus
 ```
 
+- **Description:** Unity `MonoBehaviour` implementation of [IEventBus](IEventBus.md).
 - **Inheritance:** `MonoBehaviour`, [IEventBus](IEventBus.md)
-
-### 🏹 Methods
-
-Implements all methods from [IEventBus](IEventBus.md). The internal bus is disposed in `OnDestroy()`.
+- **Notes:** The internal bus is automatically disposed when the GameObject is destroyed.
+- **See also:** [MonoEventBusSingleton](MonoEventBusSingleton.md), [EventBus](EventBus.md)
 
 ---
 
-## 📌 Best Practices
+### 🏹 Methods
 
-- Place the event bus on a root GameObject in the scene.
-- Use `MonoEventBusSingleton<E>` if you need a globally accessible bus instance.
-- Dispose subscriptions manually when the listening object is destroyed.
-- Keep callbacks lightweight to avoid frame spikes.
+#### `Subscribe`
+
+```csharp
+public Subscription Subscribe(int key, Action action);
+public Subscription<T> Subscribe<T>(int key, Action<T> action);
+public Subscription<T1, T2> Subscribe<T1, T2>(int key, Action<T1, T2> action);
+public Subscription<T1, T2, T3> Subscribe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Registers a callback on the underlying event bus.
+- **Parameter:** `key` – The integer event identifier.
+- **Parameter:** `action` – The callback to invoke.
+- **Returns:** A disposable subscription.
+- **See also:** [Subscription](../Subscriptions/Subscription.md)
+
+#### `Unsubscribe`
+
+```csharp
+public void Unsubscribe(int key, Action action);
+public void Unsubscribe<T>(int key, Action<T> action);
+public void Unsubscribe<T1, T2>(int key, Action<T1, T2> action);
+public void Unsubscribe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Removes a previously registered callback from the underlying event bus.
+
+#### `Invoke`
+
+```csharp
+public void Invoke(int key);
+public void Invoke<T>(int key, T arg);
+public void Invoke<T1, T2>(int key, T1 arg1, T2 arg2);
+public void Invoke<T1, T2, T3>(int key, T1 arg1, T2 arg2, T3 arg3);
+```
+
+- **Description:** Raises the event on the underlying event bus.
+
+#### `IsSubscribed`
+
+```csharp
+public bool IsSubscribed(int key);
+```
+
+- **Description:** Returns whether any callback is registered for the key.
+- **Returns:** `true` if the key has subscribers; otherwise `false`.
+
+#### `Dispose`
+
+```csharp
+public bool Dispose(int key);
+public void Dispose();
+```
+
+- **Description:** Removes callbacks from the underlying event bus.
+- **Returns:** `true` from `Dispose(int)` if the key existed and was removed.
+
+#### `OnDestroy`
+
+```csharp
+protected virtual void OnDestroy();
+```
+
+- **Description:** Disposes the internal event bus when the GameObject is destroyed.
+- **Notes:** Called by Unity when the component is destroyed.

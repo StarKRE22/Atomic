@@ -1,53 +1,34 @@
 # 🧩 EventBus
 
-**EventBus** is the default implementation of [IEventBus](IEventBus.md). It stores event delegates in a dictionary keyed
-by integer event IDs and supports parameterless, single-argument, two-argument, and three-argument events.
+Default implementation of [IEventBus](IEventBus.md). Stores event delegates in a dictionary keyed by integer event IDs and supports parameterless, single-argument, two-argument, and three-argument events.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-- [Best Practices](#-best-practices)
+  - [Type](#-type)
+  - [Methods](#-methods)
+    - [Subscribe](#subscribe)
+    - [Unsubscribe](#unsubscribe)
+    - [Invoke](#invoke)
+    - [IsSubscribed](#issubscribed)
+    - [Dispose](#dispose)
 
 ---
 
-## 🧩 Overview
-
-`EventBus` is a simple, non-thread-safe event bus. It is suitable for single-threaded scenarios such as game logic running
-on the main thread.
-
-For multi-threaded scenarios, use [ThreadSafeEventBus](ThreadSafeEventBus.md).
-
-For scene-bound Unity buses, use [MonoEventBus](MonoEventBus.md).
-
----
-
-## 🗂 Examples of Usage
-
-### Define Event Keys
-
-```csharp
-public static class GameEventAPI
-{
-    public static readonly EventKey<IGameEventBus> PlayerTurnStarted = new(nameof(PlayerTurnStarted));
-    public static readonly EventKey<IGameEventBus, IGameEntity> EntityDied = new(nameof(EntityDied));
-}
-```
-
-### Subscribe and Invoke
+## 🗂 Example of Usage
 
 ```csharp
 IEventBus eventBus = new EventBus();
 
-using var subscription = eventBus.Subscribe(GameEventAPI.EntityDied.Id, (IGameEntity entity) =>
+using var subscription = eventBus.Subscribe(GameEventAPI.EntityDamaged.Id, (TakeDamageEventArgs args) =>
 {
-    Debug.Log($"Entity died: {entity}");
+    Debug.Log($"Entity took {args.Damage} damage");
 });
 
-eventBus.Invoke(GameEventAPI.EntityDied.Id, enemyEntity);
+eventBus.Invoke(GameEventAPI.EntityDamaged.Id, new TakeDamageEventArgs(entity, 25));
 ```
 
 ---
@@ -60,21 +41,72 @@ eventBus.Invoke(GameEventAPI.EntityDied.Id, enemyEntity);
 public class EventBus : IEventBus
 ```
 
-### 🏹 Methods
-
-Implements all methods from [IEventBus](IEventBus.md):
-
-- `Subscribe(...)` / `Subscribe<T>(...)` / `Subscribe<T1, T2>(...)` / `Subscribe<T1, T2, T3>(...)`
-- `Unsubscribe(...)` / `Unsubscribe<T>(...)` / `Unsubscribe<T1, T2>(...)` / `Unsubscribe<T1, T2, T3>(...)`
-- `Invoke(...)` / `Invoke<T>(...)` / `Invoke<T1, T2>(...)` / `Invoke<T1, T2, T3>(...)`
-- `IsSubscribed(int)`
-- `Dispose()` / `Dispose(int)`
+- **Description:** Default implementation of [IEventBus](IEventBus.md).
+- **Inheritance:** [IEventBus](IEventBus.md)
+- **Notes:** Not thread-safe. Use [ThreadSafeEventBus](ThreadSafeEventBus.md) for multi-threaded scenarios.
+- **See also:** [MonoEventBus](MonoEventBus.md), [ThreadSafeEventBus](ThreadSafeEventBus.md), [Extensions](../Extensions.md)
 
 ---
 
-## 📌 Best Practices
+### 🏹 Methods
 
-- Use `EventBus` for main-thread-only scenarios.
-- Store subscriptions in `using` statements or dispose them manually to prevent leaks.
-- Use [EventKey](EventKey.md) instead of raw integer IDs for type safety.
-- Use [ThreadSafeEventBus](ThreadSafeEventBus.md) for multi-threaded event dispatch.
+#### `Subscribe`
+
+```csharp
+public Subscription Subscribe(int key, Action action);
+public Subscription<T> Subscribe<T>(int key, Action<T> action);
+public Subscription<T1, T2> Subscribe<T1, T2>(int key, Action<T1, T2> action);
+public Subscription<T1, T2, T3> Subscribe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Registers a callback for the specified event key.
+- **Parameter:** `key` – The integer event identifier.
+- **Parameter:** `action` – The callback to invoke.
+- **Returns:** A disposable subscription that removes the callback when disposed.
+- **See also:** [Subscription](../Subscriptions/Subscription.md)
+
+#### `Unsubscribe`
+
+```csharp
+public void Unsubscribe(int key, Action action);
+public void Unsubscribe<T>(int key, Action<T> action);
+public void Unsubscribe<T1, T2>(int key, Action<T1, T2> action);
+public void Unsubscribe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Removes a previously registered callback from the event.
+- **Parameter:** `key` – The integer event identifier.
+- **Parameter:** `action` – The callback to remove.
+
+#### `Invoke`
+
+```csharp
+public void Invoke(int key);
+public void Invoke<T>(int key, T arg);
+public void Invoke<T1, T2>(int key, T1 arg1, T2 arg2);
+public void Invoke<T1, T2, T3>(int key, T1 arg1, T2 arg2, T3 arg3);
+```
+
+- **Description:** Invokes all callbacks registered for the specified event key.
+- **Parameter:** `key` – The integer event identifier.
+
+#### `IsSubscribed`
+
+```csharp
+public bool IsSubscribed(int key);
+```
+
+- **Description:** Returns whether any callback is registered for the key.
+- **Parameter:** `key` – The integer event identifier.
+- **Returns:** `true` if the key has subscribers; otherwise `false`.
+
+#### `Dispose`
+
+```csharp
+public void Dispose();
+public bool Dispose(int key);
+```
+
+- **Description:** Removes callbacks from the bus.
+- **Returns:** `true` from `Dispose(int)` if the key existed and was removed.
+- **Notes:** `Dispose()` clears all events. `Dispose(int)` removes only the specified event.

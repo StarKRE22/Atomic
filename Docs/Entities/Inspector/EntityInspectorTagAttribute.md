@@ -1,32 +1,25 @@
 # 🧩 EntityInspectorTagAttribute
 
-**EntityInspectorTagAttribute** is an Odin Inspector drawer attribute for `string` fields and parameters. It renders a
-popup listing all available tag names discovered from classes marked with
-[EntityInspectorAPIAttribute](EntityInspectorAPIAttribute.md).
+Odin Inspector drawer attribute for `string` fields and parameters that renders a popup listing available tag names.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-- [Best Practices](#-best-practices)
+  - [Type](#-type)
+  - [Constructors](#-constructors)
+    - [EntityInspectorTagAttribute()](#entityinspectortagattribute)
+    - [EntityInspectorTagAttribute(Type)](#entityinspectortagattributetype)
+  - [Properties](#-properties)
+    - [entityType](#entitytype)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-Instead of typing tag names manually in the Inspector, this attribute draws a dropdown with all registered tags for the
-specified entity type. The list is built automatically from `TagKey` and `TagKey<E>` fields found in API classes.
-
-> **Note:** This attribute and its drawer are available only in the Unity Editor and require **Odin Inspector**.
-
----
-
-## 🗂 Examples of Usage
-
-### Field with Tag Dropdown
+Use on a serialized field to select a tag from a dropdown:
 
 ```csharp
 public class DamageOnTagBehaviour : MonoBehaviour
@@ -38,14 +31,12 @@ public class DamageOnTagBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetEntity(out IEntity entity) && entity.HasTag(targetTag))
-        {
             entity.TakeDamage(10);
-        }
     }
 }
 ```
 
-### Typed Tag Dropdown
+Filter the dropdown to a specific entity type:
 
 ```csharp
 public class GameEntityFilter : MonoBehaviour
@@ -67,6 +58,14 @@ public class GameEntityFilter : MonoBehaviour
 public sealed class EntityInspectorTagAttribute : Attribute
 ```
 
+- **Description:** Odin Inspector drawer attribute for `string` fields and parameters that renders a popup listing available tag names.
+- **Inheritance:** `Attribute`
+- **Targets:** Fields, Parameters
+- **Notes:** Available only in the Unity Editor and requires Odin Inspector.
+- **See also:** [EntityInspectorAPIAttribute](EntityInspectorAPIAttribute.md), [EntityInspectorValueAttribute](EntityInspectorValueAttribute.md)
+
+---
+
 ### 🏗️ Constructors
 
 #### `EntityInspectorTagAttribute()`
@@ -84,18 +83,17 @@ public EntityInspectorTagAttribute(Type entityType)
 ```
 
 - **Description:** Specifies the entity type used to filter available tags.
-- **Parameter:** `entityType` — The entity type whose registered tags should appear in the dropdown.
-
-### 🏷️ Fields
-
-| Field | Description |
-|-------|-------------|
-| `entityType` | The entity type used to filter tags. Defaults to `typeof(IEntity)`. |
+- **Parameter:** `entityType` – The entity type whose registered tags should appear in the dropdown.
 
 ---
 
-## 📌 Best Practices
+### 🔑 Properties
 
-- Use `[EntityInspectorTag]` instead of plain `string` fields to avoid typos and improve discoverability.
-- Specify a concrete entity type when the tag is only valid for that type.
-- Ensure the tag is defined in a class marked with `[EntityInspectorAPI]` so it appears in the dropdown.
+#### `entityType`
+
+```csharp
+public readonly Type entityType;
+```
+
+- **Description:** The entity type used to filter tags. Defaults to `typeof(IEntity)`.
+- **Access:** Read-only

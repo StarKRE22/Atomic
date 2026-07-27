@@ -1,53 +1,29 @@
 # 🧩 ScriptableEntityBootstrapper
 
-**ScriptableEntityBootstrapper** is a `ScriptableObject` that automatically spawns [MonoEntity](../Entities/MonoEntity.md)
-prefabs when a matching scene is loaded. It is useful for spawning global managers, camera rigs, player contexts, or other
-scene-critical entities without placing them manually in every scene.
+A `ScriptableObject` that automatically spawns [MonoEntity](../Entities/MonoEntity.md) prefabs when a matching scene is loaded.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Inspector Settings](#-inspector-settings)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-- [Best Practices](#-best-practices)
+  - [Type](#-type)
+  - [Nested Types](#-nested-types)
+    - [Mode](#mode)
+  - [Methods](#-methods)
+    - [IsAvailable(Scene)](#isavailablescene)
+    - [BootstrapEntities(Scene)](#bootstrapentitiesscene)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-At runtime, before the first scene loads, the bootstrapper automatically:
+Create a bootstrapper asset and configure it in the Inspector:
 
-1. Finds all `ScriptableEntityBootstrapper` assets in Resources.
-2. Checks whether the active scene matches the configured regular expression.
-3. Spawns the configured `MonoEntity` prefabs either before or after the scene finishes loading.
-
-This is a convenient way to guarantee that essential entities exist in specific scenes.
-
----
-
-## 🛠 Inspector Settings
-
-| Field | Description |
-|-------|-------------|
-| `isEnabled` | If `true`, the bootstrapper runs automatically. |
-| `_sceneRegex` | Regular expression used to match scene names. Empty string matches all scenes. |
-| `_mode` | When to spawn entities: `BeforeSceneLoad` or `AfterSceneLoad`. |
-| `_entityPrefabs` | Array of `MonoEntity` prefabs to spawn. |
-
----
-
-## 🗂 Examples of Usage
-
-### Create a Bootstrapper Asset
-
-1. Right-click in the Project window.
-2. Select **Create → Atomic → Entities → EntityBootstrapper**.
-3. Configure the scene regex, mode, and prefabs.
-
-### Example Configuration
+```csharp
+// Create via Project window: Right-click -> Create -> Atomic -> Entities -> EntityBootstrapper
+```
 
 | Setting | Value |
 |---------|-------|
@@ -56,13 +32,11 @@ This is a convenient way to guarantee that essential entities exist in specific 
 | `_mode` | `AfterSceneLoad` |
 | `_entityPrefabs` | `[GameContextPrefab, CameraRigPrefab]` |
 
-This spawns `GameContextPrefab` and `CameraRigPrefab` in every scene whose name starts with `Level_`.
-
-### Runtime Behaviour
+This spawns the configured prefabs in every scene whose name starts with `Level_`:
 
 ```csharp
-// No manual code is required — the bootstrapper runs automatically via
-// [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)].
+// Runs automatically via [RuntimeInitializeOnLoadMethod] before the first scene loads.
+// No manual code is required.
 ```
 
 ---
@@ -72,11 +46,21 @@ This spawns `GameContextPrefab` and `CameraRigPrefab` in every scene whose name 
 ### 🏛️ Type
 
 ```csharp
-[CreateAssetMenu(fileName = "EntityBootstrapper", menuName = "Atomic/Entities/EntityBootstrapper")]
+[CreateAssetMenu(
+    fileName = "EntityBootstrapper",
+    menuName = "Atomic/Entities/EntityBootstrapper"
+)]
 public class ScriptableEntityBootstrapper : ScriptableObject
 ```
 
-### 🛠 Nested Types
+- **Description:** A `ScriptableObject` that automatically spawns [MonoEntity](../Entities/MonoEntity.md) prefabs when a matching scene is loaded.
+- **Inheritance:** `ScriptableObject`
+- **Notes:** Assets must be in a Resources folder to be discovered by `Resources.LoadAll`.
+- **See also:** [MonoEntity](../Entities/MonoEntity.md)
+
+---
+
+### 🗂️ Nested Types
 
 #### `Mode`
 
@@ -88,10 +72,14 @@ public enum Mode
 }
 ```
 
+- **Description:** Defines when entity spawning should occur.
+
 | Value | Description |
 |-------|-------------|
 | `BeforeSceneLoad` | Spawn entities before the scene is fully loaded. |
 | `AfterSceneLoad` | Spawn entities after the scene has finished loading. |
+
+---
 
 ### 🏹 Methods
 
@@ -102,8 +90,8 @@ protected virtual bool IsAvailable(Scene scene)
 ```
 
 - **Description:** Determines whether the bootstrapper applies to the given scene.
-- **Parameter:** `scene` — The scene to evaluate.
-- **Returns:** `true` if the regex is empty or the scene name matches it.
+- **Parameter:** `scene` – The scene to evaluate.
+- **Returns:** `true` if the regex is empty or the scene name matches it; otherwise, `false`.
 
 #### `BootstrapEntities(Scene)`
 
@@ -112,16 +100,7 @@ protected virtual async void BootstrapEntities(Scene scene)
 ```
 
 - **Description:** Spawns all configured prefabs into the scene.
-- **Parameter:** `scene` — The scene in which to spawn entities.
-- **Note:** Waits for scene load if `_mode` is `AfterSceneLoad`.
+- **Parameter:** `scene` – The scene in which to spawn entities.
+- **Remarks:** If `_mode` is `AfterSceneLoad`, waits for the scene to finish loading before spawning.
 
----
 
-## 📌 Best Practices
-
-- Use bootstrappers for global or scene-critical entities only.
-- Keep regex patterns simple and explicit to avoid unintended matches.
-- Use `AfterSceneLoad` when spawned entities need fully initialized scene objects.
-- Place bootstrapper assets in a Resources folder so `Resources.LoadAll` can find them.
-- Avoid duplicating bootstrapped entities that are already placed in the scene.
-- Override `IsAvailable` in a derived class for custom matching logic.

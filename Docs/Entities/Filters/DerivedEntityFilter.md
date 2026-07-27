@@ -1,53 +1,38 @@
 # 🧩 DerivedEntityFilter
 
-**DerivedEntityFilter** is a dynamic, type-safe filter that selects entities of a specific derived type from a source
-collection. It implements [IReadOnlyEntityCollection\<T\>](../Collections/IReadOnlyEntityCollection%601.md) and stays
-synchronized as entities are added, removed, or changed.
+A dynamic, type-safe filter that selects entities of a specific derived type from a source collection.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Variants](#-variants)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-- [Best Practices](#-best-practices)
+  - [Type](#-type)
+    - [DerivedEntityFilter&lt;T, E&gt;](#derivedentityfiltert-e)
+    - [DerivedEntityFilter&lt;T&gt;](#derivedentityfiltert)
+  - [Constructors](#-constructors)
+    - [DerivedEntityFilter(IReadOnlyEntityCollection&lt;E&gt;, Predicate&lt;T&gt;, IEntityTrigger&lt;T&gt;[])](#derivedentityfilter)
+  - [Properties](#-properties)
+    - [Count](#count)
+  - [Methods](#-methods)
+    - [Contains(T)](#containst)
+    - [CopyTo(ICollection&lt;T&gt;)](#copytoicollectiont)
+    - [CopyTo(T[], int)](#copytot-int)
+    - [GetEnumerator()](#getenumerator)
+    - [Dispose()](#dispose)
 
 ---
 
-## 🧩 Overview
+## 🗂 Example of Usage
 
-`DerivedEntityFilter<T, E>` observes a source collection of base type `E` and maintains a live subset of entities that:
-
-1. Can be cast to derived type `T`
-2. Satisfy the provided predicate
-
-It raises `OnAdded`, `OnRemoved`, and `OnStateChanged` events whenever the filtered set changes. Optional triggers can be
-used to re-evaluate entities when their state changes.
-
-`DerivedEntityFilter<T>` is a convenience specialization where the source type is `IEntity`.
-
----
-
-## 🔍 Variants
-
-| Class | Description |
-|-------|-------------|
-| `DerivedEntityFilter<T, E>` | Filters entities of type `T` from a collection of base type `E`. |
-| `DerivedEntityFilter<T>` | Shorthand for `DerivedEntityFilter<T, IEntity>`. |
-
----
-
-## 🗂 Examples of Usage
-
-### Basic Type Filter
+Filter alive players from a heterogeneous world:
 
 ```csharp
-IEntityWorld<IGameEntity> world = ...;
+IEntityWorld world = ...;
 
 var playerFilter = new DerivedEntityFilter<IPlayerEntity>(
-    world,
+    world.Entities,
     player => player.IsAlive
 );
 
@@ -55,11 +40,11 @@ foreach (IPlayerEntity player in playerFilter)
     player.UpdateLogic();
 ```
 
-### Filter with Triggers
+Use triggers to re-evaluate when state changes:
 
 ```csharp
 var aliveFilter = new DerivedEntityFilter<IUnitEntity, IGameEntity>(
-    world,
+    world.Entities,
     unit => unit.GetValue<int>("Health") > 0,
     new ValueEntityTrigger<IUnitEntity>("Health")
 );
@@ -67,12 +52,11 @@ var aliveFilter = new DerivedEntityFilter<IUnitEntity, IGameEntity>(
 aliveFilter.OnRemoved += unit => Debug.Log($"Unit died: {unit}");
 ```
 
-### Dispose When Done
+Dispose when no longer needed:
 
 ```csharp
-var filter = new DerivedEntityFilter<IPlayerEntity>(world, player => true);
-
-// Later
+var filter = new DerivedEntityFilter<IPlayerEntity>(world.Entities, player => true);
+// ...
 filter.Dispose();
 ```
 
@@ -80,7 +64,9 @@ filter.Dispose();
 
 ## 🔍 API Reference
 
-### DerivedEntityFilter\<T, E\>
+### 🏛️ Type
+
+#### `DerivedEntityFilter<T, E>`
 
 ```csharp
 public class DerivedEntityFilter<T, E> : IReadOnlyEntityCollection<T>, IDisposable
@@ -88,12 +74,31 @@ public class DerivedEntityFilter<T, E> : IReadOnlyEntityCollection<T>, IDisposab
     where T : E
 ```
 
+- **Description:** A dynamic, type-safe view over an existing entity collection, selecting entities of type `T` from a source of type `E`.
+- **Inheritance:** [IReadOnlyEntityCollection&lt;T&gt;](../Collections/IReadOnlyEntityCollection%601.md), `IDisposable`
 - **Type Parameters:**
-  - `T` — The derived entity type included in the filter.
-  - `E` — The base entity type exposed by the source collection.
-- **Inheritance:** [IReadOnlyEntityCollection\<T\>](../Collections/IReadOnlyEntityCollection%601.md), `IDisposable`
+  - `T` – The derived entity type included in the filter.
+  - `E` – The base entity type exposed by the source collection.
+- **Notes:** Automatically synchronizes when entities are added, removed, or trigger state changes.
+- **See also:** [DerivedEntityFilter&lt;T&gt;](#derivedentityfiltert), [IEntityTrigger&lt;T&gt;](../Filters/IEntityTrigger%601.md)
 
-#### Constructor
+#### `DerivedEntityFilter<T>`
+
+```csharp
+public class DerivedEntityFilter<T> : DerivedEntityFilter<T, IEntity>
+    where T : IEntity
+```
+
+- **Description:** Convenience specialization of [DerivedEntityFilter&lt;T, E&gt;](#derivedentityfiltert-e) where the base type is fixed to [IEntity](../Entities/IEntity.md).
+- **Inheritance:** [DerivedEntityFilter&lt;T, IEntity&gt;](#derivedentityfiltert-e)
+- **Type Parameter:** `T` – The derived entity type included in the filter.
+- **Notes:** Use this when filtering from a heterogeneous [IReadOnlyEntityCollection&lt;IEntity&gt;](../Collections/IReadOnlyEntityCollection%601.md).
+
+---
+
+### 🏗️ Constructors
+
+#### `DerivedEntityFilter(IReadOnlyEntityCollection<E>, Predicate<T>, IEntityTrigger<T>[])`
 
 ```csharp
 public DerivedEntityFilter(
@@ -103,42 +108,74 @@ public DerivedEntityFilter(
 )
 ```
 
-- **Parameter:** `source` — The source entity collection to observe.
-- **Parameter:** `predicate` — The predicate used to determine filter inclusion.
-- **Parameter:** `triggers` — Optional triggers that signal when an entity should be re-evaluated.
-
-#### Events
-
-| Event | Description |
-|-------|-------------|
-| `OnAdded` | Raised when an entity enters the filter. |
-| `OnRemoved` | Raised when an entity leaves the filter. |
-| `OnStateChanged` | Raised when the filter set changes in any way. |
-
-#### Methods
-
-| Method | Description |
-|--------|-------------|
-| `Contains(T)` | Returns whether the entity is in the filtered set. |
-| `CopyTo(...)` | Copies filtered entities to a collection or array. |
-| `GetEnumerator()` | Returns an enumerator over the filtered entities. |
-| `Dispose()` | Unsubscribes from the source and clears state. |
-
-### DerivedEntityFilter\<T\>
-
-```csharp
-public class DerivedEntityFilter<T> : DerivedEntityFilter<T, IEntity>
-    where T : IEntity
-```
-
-Convenience specialization for filtering from `IReadOnlyEntityCollection<IEntity>`.
+- **Description:** Initializes a new instance that observes `source` and maintains a live filtered subset.
+- **Parameters:**
+  - `source` – The source entity collection to observe.
+  - `predicate` – The predicate used to determine filter inclusion.
+  - `triggers` – Optional triggers that signal when an entity should be re-evaluated.
+- **Throws:** `ArgumentNullException` if `source` or `predicate` is null.
 
 ---
 
-## 📌 Best Practices
+### 🔑 Properties
 
-- Dispose filters when they are no longer needed to avoid memory leaks.
-- Use triggers only when entity state affects the predicate.
-- Keep predicates fast — they run on every source add/remove and every trigger firing.
-- Prefer `DerivedEntityFilter<T>` when filtering from a heterogeneous world collection.
-- Use `DerivedEntityFilter<T, E>` when the source collection already has a typed base type.
+#### `Count`
+
+```csharp
+public int Count { get; }
+```
+
+- **Description:** Gets the number of entities currently in the filtered set.
+- **Access:** Read-only
+
+---
+
+### 🏹 Methods
+
+#### `Contains(T)`
+
+```csharp
+public bool Contains(T entity)
+```
+
+- **Description:** Returns whether the specified entity is in the filtered set.
+- **Parameter:** `entity` – The entity to check.
+- **Returns:** `true` if the entity is in the filtered set; otherwise, `false`.
+
+#### `CopyTo(ICollection<T>)`
+
+```csharp
+public void CopyTo(ICollection<T> results)
+```
+
+- **Description:** Copies the filtered entities into the specified collection.
+- **Parameter:** `results` – The collection to receive the entities.
+
+#### `CopyTo(T[], int)`
+
+```csharp
+public void CopyTo(T[] array, int arrayIndex)
+```
+
+- **Description:** Copies the filtered entities into the specified array starting at `arrayIndex`.
+- **Parameters:**
+  - `array` – The destination array.
+  - `arrayIndex` – The zero-based index at which copying begins.
+
+#### `GetEnumerator()`
+
+```csharp
+public EntityCollection<T>.Enumerator GetEnumerator()
+```
+
+- **Description:** Returns an enumerator over the filtered entities.
+- **Returns:** An enumerator for the filtered set.
+
+#### `Dispose()`
+
+```csharp
+public void Dispose()
+```
+
+- **Description:** Releases all subscriptions and clears internal state.
+- **Remarks:** Call this when the filter is no longer needed to avoid memory leaks.

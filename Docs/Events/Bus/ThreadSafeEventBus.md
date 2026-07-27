@@ -1,31 +1,28 @@
 # 🧩 ThreadSafeEventBus
 
-**ThreadSafeEventBus** is a thread-safe wrapper around an [IEventBus](IEventBus.md). Subscribe and unsubscribe operations
-are delegated directly to the inner bus, while `Invoke` calls are queued and executed later on the main thread via `Flush()`.
+Thread-safe wrapper around an [IEventBus](IEventBus.md). Subscribe and unsubscribe operations are delegated directly to the inner bus, while `Invoke` calls are queued and executed later on the main thread via `Flush()`.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Examples of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-- [Best Practices](#-best-practices)
+  - [Type](#-type)
+  - [Constructors](#-constructors)
+    - [ThreadSafeEventBus()](#threadsafeeventbus)
+    - [ThreadSafeEventBus(IEventBus)](#threadsafeeventbusieventbus)
+  - [Methods](#-methods)
+    - [Subscribe](#subscribe)
+    - [Unsubscribe](#unsubscribe)
+    - [Invoke](#invoke)
+    - [IsSubscribed](#issubscribed)
+    - [Dispose](#dispose)
+    - [Flush](#flush)
 
 ---
 
-## 🧩 Overview
-
-`ThreadSafeEventBus` is useful when events are raised from background threads (e.g., async tasks, networking, or physics
-jobs) but must be handled on the main thread.
-
-- Subscribe / Unsubscribe: safe to call from any thread, delegated to the inner bus.
-- Invoke: enqueues an action to be invoked on the inner bus when `Flush()` is called.
-- Flush: dequeues and executes all pending invokes. Should be called on the main thread.
-
----
-
-## 🗂 Examples of Usage
+## 🗂 Example of Usage
 
 ### Background Thread to Main Thread
 
@@ -49,19 +46,6 @@ Task.Run(() =>
 eventBus.Flush();
 ```
 
-### Flush with IGameEventBus
-
-```csharp
-public static bool StartPlayerTurn(this IGameContext context)
-{
-    // ... logic ...
-    IGameEventBus eventBus = context.GetValue(GameContextAPI.EventBus);
-    eventBus.Invoke(GameEventAPI.PlayerTurnStarted);
-    eventBus.Flush();
-    return true;
-}
-```
-
 ---
 
 ## 🔍 API Reference
@@ -72,6 +56,13 @@ public static bool StartPlayerTurn(this IGameContext context)
 public class ThreadSafeEventBus : IEventBus
 ```
 
+- **Description:** Thread-safe wrapper around an [IEventBus](IEventBus.md).
+- **Inheritance:** [IEventBus](IEventBus.md)
+- **Notes:** Invocations are queued on a `ConcurrentQueue<Action>` and must be flushed on the main thread.
+- **See also:** [EventBus](EventBus.md), [MonoEventBus](MonoEventBus.md)
+
+---
+
 ### 🏗️ Constructors
 
 #### `ThreadSafeEventBus()`
@@ -80,7 +71,7 @@ public class ThreadSafeEventBus : IEventBus
 public ThreadSafeEventBus()
 ```
 
-- **Description:** Creates a thread-safe bus wrapping a new `EventBus`.
+- **Description:** Creates a thread-safe bus wrapping a new [EventBus](EventBus.md).
 
 #### `ThreadSafeEventBus(IEventBus)`
 
@@ -89,26 +80,69 @@ public ThreadSafeEventBus(IEventBus inner)
 ```
 
 - **Description:** Wraps an existing event bus.
-- **Parameter:** `inner` — The inner bus to which subscriptions are delegated.
+- **Parameter:** `inner` – The inner bus to delegate subscriptions and queued invokes to.
+
+---
 
 ### 🏹 Methods
 
-Implements all methods from [IEventBus](IEventBus.md), plus:
+#### `Subscribe`
 
-#### `Flush()`
+```csharp
+public Subscription Subscribe(int key, Action action);
+public Subscription<T> Subscribe<T>(int key, Action<T> action);
+public Subscription<T1, T2> Subscribe<T1, T2>(int key, Action<T1, T2> action);
+public Subscription<T1, T2, T3> Subscribe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Registers a callback on the inner bus.
+- **See also:** [Subscription](../Subscriptions/Subscription.md)
+
+#### `Unsubscribe`
+
+```csharp
+public void Unsubscribe(int key, Action action);
+public void Unsubscribe<T>(int key, Action<T> action);
+public void Unsubscribe<T1, T2>(int key, Action<T1, T2> action);
+public void Unsubscribe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Removes a callback from the inner bus.
+
+#### `Invoke`
+
+```csharp
+public void Invoke(int key);
+public void Invoke<T>(int key, T arg);
+public void Invoke<T1, T2>(int key, T1 arg1, T2 arg2);
+public void Invoke<T1, T2, T3>(int key, T1 arg1, T2 arg2, T3 arg3);
+```
+
+- **Description:** Enqueues an action that invokes the event on the inner bus.
+- **Notes:** The event is not raised immediately; call `Flush()` on the main thread to execute queued actions.
+
+#### `IsSubscribed`
+
+```csharp
+public bool IsSubscribed(int key);
+```
+
+- **Description:** Returns whether any callback is registered for the key on the inner bus.
+
+#### `Dispose`
+
+```csharp
+public bool Dispose(int key);
+public void Dispose();
+```
+
+- **Description:** Removes callbacks from the inner bus and clears the invoke queue.
+
+#### `Flush`
 
 ```csharp
 public void Flush()
 ```
 
-- **Description:** Executes all queued invokes on the inner bus.
-- **Note:** Should be called on the main thread.
-
----
-
-## 📌 Best Practices
-
-- Call `Flush()` once per frame on the main thread.
-- Handle exceptions inside subscribers; `Flush()` catches and logs them but continues processing.
-- Dispose the bus when the owning context is destroyed to clear the queue.
-- Do not rely on immediate delivery when invoking from background threads.
+- **Description:** Dequeues and executes all pending invokes on the main thread.
+- **Notes:** Should be called on the main thread. Exceptions thrown by subscribers are caught and logged, and processing continues.
