@@ -319,13 +319,13 @@ Get hands-on with the Atomic Framework through practical guides and examples. Ea
 concept — from the fundamental Atomic approach to advanced topics such as entity
 interaction and simulation without Unity.
 
-1. [What is Atomic Approach](Docs/Tutorials/WhatIsAtomicApproach.md)
-2. [Entity API Generation](Docs/Tutorials/Codegeneration.md)
-3. [Creating the Entity in Unity](Docs/Tutorials/EntityCreation.md)
-4. [Architectural Consistency](Docs/Tutorials/ArchitectualConsistency.md)
-5. [Interaction Between Entities](Docs/Tutorials/InteractionsBetweenEntities.md)
-6. [Minimizing Unity](Docs/Tutorials/MinimizingUnity.md)
-7. [Summary](Docs/Tutorials/Summary.md)
+1. [What is Atomic Approach](Docs/Tutorials/1.%20What%20is%20Atomic%20Approach.md)
+2. [Entity API Generation](Docs/Tutorials/2.%20Entity%20API%20Generation.md)
+3. [Creating the Entity in Unity](Docs/Tutorials/3.%20Creating%20the%20Entity%20in%20Unity.md)
+4. [Architectural Consistency](Docs/Tutorials/4.%20Architectural%20Consistency.md)
+5. [Interaction Between Entities](Docs/Tutorials/5.%20Interaction%20Between%20Entities.md)
+6. [Minimizing Unity](Docs/Tutorials/6.%20Minimizing%20Unity.md)
+7. [Summary](Docs/Tutorials/7.%20Summary.md)
 
 <!-- 
 

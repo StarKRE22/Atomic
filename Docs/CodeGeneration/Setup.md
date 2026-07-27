@@ -8,7 +8,7 @@ The same steps apply to all four assemblies:
 - `EventAPIGenerator.dll`
 - `EventAPIAnalyzer.dll`
 
-For usage examples, see the [Code Generation Walkthrough](../Tutorials/Codegeneration.md).  
+For usage examples, see the [Code Generation Walkthrough](../Tutorials/2.%20Entity%20API%20Generation.md).  
 For generator options and advanced configuration, see the [Code Generation Manual](Manual.md).
 
 ---
