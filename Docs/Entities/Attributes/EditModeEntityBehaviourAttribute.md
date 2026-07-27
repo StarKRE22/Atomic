@@ -1,4 +1,4 @@
-# 🧩️ RunInEditModeAttribute
+# 🧩️ EditModeEntityBehaviourAttribute
 
 Represents a marker attribute for entity behaviour classes that instructs the system to **invoke entity lifecycle
 callbacks** (`Init`, `Enable`, `Disable`, `Dispose`) even when running in the **Unity Editor mode**. It is intended for
@@ -14,10 +14,10 @@ use only on types implementing [IEntityBehaviour](../Behaviours/IEntityBehaviour
 
 ## 🗂 Example of Usage
 
-Mark your entity behaviour class with `[RunInEditMode]`:
+Mark your entity behaviour class with `[EditModeEntityBehaviour]`:
 
 ```csharp
-[RunInEditMode]
+[EditModeEntityBehaviour]
 public class InitColorBehaviour : IEntityInit
 {
     public void Init(IEntity entity)
@@ -30,6 +30,7 @@ public class InitColorBehaviour : IEntityInit
 ```
 
 > Note: This allows `Init` (and other lifecycle callbacks) to run in the Unity Editor without entering Play Mode.
+> Do not confuse with Unity's built-in `[RunInEditMode]` attribute — this is the Atomic framework marker for entity behaviours.
 
 ---
 
@@ -39,7 +40,7 @@ public class InitColorBehaviour : IEntityInit
 
 ```csharp
 [AttributeUsage(AttributeTargets.Class)]
-public sealed class RunInEditModeAttribute : Attribute
+public sealed class EditModeEntityBehaviourAttribute : Attribute
 ```
 - **Note:** Allows mark only classes that implements [IEntityBehaviour](../Behaviours/IEntityBehaviour.md) interface
 

@@ -93,7 +93,7 @@ There are separate interfaces that handle the corresponding lifecycle events of 
 
 - **Common**
     - [IEntityBehaviour](IEntityBehaviour.md)
-    - [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
+    - [EditModeEntityBehaviourAttribute](../Attributes/EditModeEntityBehaviourAttribute.md)
 - **Init**
     - [IEntityInit](IEntityInit.md)
     - [IEntityInit\<E>](IEntityInit%601.md)
@@ -125,7 +125,7 @@ There are separate interfaces that handle the corresponding lifecycle events of 
   <summary><b>Common</b></summary>
   <ul>
     <li><a href="IEntityBehaviour.md">IEntityBehaviour</a></li>
-    <li><a href="../Attributes/RunInEditModeAttribute.md">RunInEditModeAttribute</a></li>
+    <li><a href="../Attributes/EditModeEntityBehaviourAttribute.md">EditModeEntityBehaviourAttribute</a></li>
   </ul>
 </details>
 
