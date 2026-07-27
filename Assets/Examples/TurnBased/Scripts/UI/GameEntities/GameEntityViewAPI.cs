@@ -4,11 +4,12 @@ using UnityEngine;
 
 namespace Game.UI
 {
-    public static class GameEntityViewAPI
+    [EntityAPI]
+    public static partial class GameEntityViewAPI
     {
-        public static ValueKey<IGameEntity, Transform> Transform = new(nameof(Transform));
-        public static ValueKey<IGameEntity, Animator> Animator = new(nameof(Animator));
-        public static ValueKey<IGameEntity, ProgressBarPro> HealthBar = new(nameof(HealthBar));
-        public static ValueKey<IGameEntity, CharacterRenderer> CharacterRenderer = new(nameof(CharacterRenderer));
+        public static readonly ValueKey<IGameEntity, Transform> Transform = new(nameof(Transform));
+        public static readonly ValueKey<IGameEntity, Animator> Animator = new(nameof(Animator));
+        public static readonly ValueKey<IGameEntity, ProgressBarPro> HealthBar = new(nameof(HealthBar));
+        public static readonly ValueKey<IGameEntity, CharacterRenderer> CharacterRenderer = new(nameof(CharacterRenderer));
     }
 }
