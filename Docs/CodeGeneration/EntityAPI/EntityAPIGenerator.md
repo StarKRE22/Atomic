@@ -1,4 +1,4 @@
-# 🧬 EntityAPIAttribute
+# 🧬 GenerateEntityExtensionsAPIAttribute
 
 Marks a static class as an **Entity API definition** for the Entity API Generator. The generator reads `TagKey<>` and
 `ValueKey<>` fields and emits strongly-typed extension methods for entity tags and values.
@@ -11,7 +11,7 @@ Marks a static class as an **Entity API definition** for the Entity API Generato
 - [API Reference](#-api-reference)
   - [Type](#-type)
   - [Constructors](#-constructors)
-    - [EntityAPIAttribute()](#entityapiattribute)
+    - [GenerateEntityExtensionsAPIAttribute()](#GenerateEntityExtensionsAPIAttribute)
   - [Properties](#-properties)
     - [Unsafe](#unsafe)
     - [AggressiveInlining](#aggressiveinlining)
@@ -26,7 +26,7 @@ Define keys in a `public static partial` class:
 using Atomic.Entities;
 using UnityEngine;
 
-[EntityAPI]
+[GenerateEntityExtensionsAPI]
 public static partial class PlayerAPI
 {
     public static readonly TagKey<IEntity> Alive = new(nameof(Alive));
@@ -58,7 +58,7 @@ bool isAlive = entity.HasAliveTag();
 
 ```csharp
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-public sealed class EntityAPIAttribute : Attribute
+public sealed class GenerateEntityExtensionsAPIAttribute : Attribute
 ```
 
 - **Description:** Marks a static class as an Entity API definition for source generation.
@@ -76,10 +76,10 @@ public sealed class EntityAPIAttribute : Attribute
 
 ### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `EntityAPIAttribute()`
+#### `GenerateEntityExtensionsAPIAttribute()`
 
 ```csharp
-public EntityAPIAttribute()
+public GenerateEntityExtensionsAPIAttribute()
 ```
 
 - **Description:** Initializes a new instance of the attribute with default settings.

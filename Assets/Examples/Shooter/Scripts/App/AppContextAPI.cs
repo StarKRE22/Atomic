@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ShooterGame.App
 {
-    [EntityAPI]
+    [GenerateEntityExtensionsAPI]
     public static partial class AppContextAPI
     {
         public static readonly ValueKey<IAppContext, IValue<KeyCode>> ExitKeyCode = new(nameof(ExitKeyCode));

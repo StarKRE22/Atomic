@@ -64,7 +64,7 @@ Create a static partial class for the character API:
 using Atomic.Entities;
 using UnityEngine;
 
-[EntityAPI]
+[GenerateEntityExtensionsAPI]
 public static partial class CharacterAPI
 {
     // Tags
@@ -121,7 +121,7 @@ Create another static partial class for gameplay events:
 ```csharp
 using Atomic.Events;
 
-[EventAPI]
+[GenerateEventExtensionsAPI]
 public static partial class GameEventAPI
 {
     public static readonly EventKey<IEventBus> PlayerTurnStarted = new(nameof(PlayerTurnStarted));
@@ -182,7 +182,7 @@ public sealed class DealDamageUseCase
 If you forget to initialize a key field, the analyzer reports a build error:
 
 ```csharp
-[EntityAPI]
+[GenerateEntityExtensionsAPI]
 public static partial class CharacterAPI
 {
     // EAPI0001: field has no initializer
@@ -204,8 +204,8 @@ The same applies to event keys and parameterless constructors (`EAPI0002`).
 
 You now have:
 
-- Type-safe entity tag/value extension methods via `[EntityAPI]`
-- Type-safe event-bus extension methods via `[EventAPI]`
+- Type-safe entity tag/value extension methods via `[GenerateEntityExtensionsAPI]`
+- Type-safe event-bus extension methods via `[GenerateEventExtensionsAPI]`
 - Build-time validation of key initializers via analyzers
 
 For more advanced options such as unsafe mode, aggressive inlining, and detailed setup, see the

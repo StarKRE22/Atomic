@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    [EntityAPI]
+    [GenerateEntityExtensionsAPI]
     public static partial class PlayerContextAPI
     {
         public static readonly ValueKey<IPlayerContext, IGameEntity> Character = new(nameof(Character));

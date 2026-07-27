@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    [EntityAPI(Unsafe = true)]
+    [GenerateEntityExtensionsAPI(Unsafe = true)]
     public static partial class GameContextAPI
     {
         public static readonly ValueKey<IGameContext, EntityWorld<IGameEntity>> EntityWorld = new(nameof(EntityWorld));

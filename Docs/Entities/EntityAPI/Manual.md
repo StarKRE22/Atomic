@@ -38,12 +38,12 @@ This is error-prone, hard to refactor, and difficult to validate at compile time
 
 ## How It Works
 
-Add the `[EntityAPI]` attribute to a static partial class and declare key fields:
+Add the `[GenerateEntityExtensionsAPI]` attribute to a static partial class and declare key fields:
 
 ```csharp
 using Atomic.Entities;
 
-[EntityAPI]
+[GenerateEntityExtensionsAPI]
 public static partial class PlayerAPI
 {
     public static readonly TagKey<IEntity> Alive = new(nameof(Alive));
@@ -112,7 +112,7 @@ public sealed class PlayerDeathSystem : IEntityTick
 
 ## Configuration
 
-The `[EntityAPI]` attribute supports two properties:
+The `[GenerateEntityExtensionsAPI]` attribute supports two properties:
 
 | Property | Default | Description |
 |----------|---------|-------------|

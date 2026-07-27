@@ -10,9 +10,9 @@ namespace Atomic.Events
     /// for the event bus type declared in each key's first generic argument.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public sealed class EventAPIAttribute : Attribute
+    public sealed class GenerateEventExtensionsAPIAttribute : Attribute
     {
-        public EventAPIAttribute()
+        public GenerateEventExtensionsAPIAttribute()
         {
         }
     }

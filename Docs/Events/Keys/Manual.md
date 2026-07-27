@@ -31,11 +31,11 @@ The keys above resolve string names to integer IDs through `EventKeyStore`.
 
 ### Use with Source Generation
 
-The recommended approach is to define keys once in an `[EventAPI]` class and let the generator create extension
+The recommended approach is to define keys once in an `[GenerateEventExtensionsAPI]` class and let the generator create extension
 methods:
 
 ```csharp
-[EventAPI]
+[GenerateEventExtensionsAPI]
 public static partial class GameEventAPI
 {
     public static readonly EventKey<IEventBus> GameStarted = new(nameof(GameStarted));
@@ -86,7 +86,7 @@ EventKeyStore.SetAlgorithm(new SHA256EventKeyAlgorithm());
 
 ## 📌 Best Practices
 
-- Use `[EventAPI]` source generation for type-safe invoke/subscribe methods.
+- Use `[GenerateEventExtensionsAPI]` source generation for type-safe invoke/subscribe methods.
 - Use `EventKey<TBus>` and generic variants instead of raw string or integer IDs.
 - Use a deterministic algorithm if you need stable IDs across application restarts.
 - Call `EventKeyStore.Reset()` in tests to avoid state leaking between test runs.

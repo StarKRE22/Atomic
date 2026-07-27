@@ -26,12 +26,12 @@ All generators are **compile-time only**. They do not add runtime overhead and d
 
 ### Entity API
 
-Declare a static partial class, mark it with `[EntityAPI]`, and add `TagKey<>` and `ValueKey<,>` fields:
+Declare a static partial class, mark it with `[GenerateEntityExtensionsAPI]`, and add `TagKey<>` and `ValueKey<,>` fields:
 
 ```csharp
 using Atomic.Entities;
 
-[EntityAPI]
+[GenerateEntityExtensionsAPI]
 public static partial class PlayerAPI
 {
     public static readonly TagKey<IEntity> Alive = new(nameof(Alive));
@@ -51,12 +51,12 @@ int health = entity.GetHealth();
 
 ### Event API
 
-Declare a static partial class, mark it with `[EventAPI]`, and add `EventKey<>` fields:
+Declare a static partial class, mark it with `[GenerateEventExtensionsAPI]`, and add `EventKey<>` fields:
 
 ```csharp
 using Atomic.Events;
 
-[EventAPI]
+[GenerateEventExtensionsAPI]
 public static partial class GameEventAPI
 {
     public static readonly EventKey<IEventBus> PlayerTurnStarted = new(nameof(PlayerTurnStarted));
@@ -83,8 +83,8 @@ using var subscription = bus.SubscribeDamageDealt(amount => Debug.Log($"Damage: 
 
 | Generator | Purpose | Marker Attribute |
 |-----------|---------|------------------|
-| [Entity API Generator](EntityAPI/EntityAPIGenerator.md) | Generate entity tag/value extension methods | `[EntityAPI]` |
-| [Event API Generator](EventAPI/EventAPIGenerator.md) | Generate event-bus extension methods | `[EventAPI]` |
+| [Entity API Generator](EntityAPI/EntityAPIGenerator.md) | Generate entity tag/value extension methods | `[GenerateEntityExtensionsAPI]` |
+| [Event API Generator](EventAPI/EventAPIGenerator.md) | Generate event-bus extension methods | `[GenerateEventExtensionsAPI]` |
 
 ### Analyzers
 
@@ -93,8 +93,8 @@ Analyzers ship with code fixes and report build errors when a key field is missi
 
 | Analyzer | Description |
 |----------|-------------|
-| [Entity API Analyzer](EntityAPI/EntityAPIAnalyzer.md) | Validates `[EntityAPI]` key initializers. |
-| [Event API Analyzer](EventAPI/EventAPIAnalyzer.md) | Validates `[EventAPI]` key initializers. |
+| [Entity API Analyzer](EntityAPI/EntityAPIAnalyzer.md) | Validates `[GenerateEntityExtensionsAPI]` key initializers. |
+| [Event API Analyzer](EventAPI/EventAPIAnalyzer.md) | Validates `[GenerateEventExtensionsAPI]` key initializers. |
 
 ### Setup
 
@@ -104,11 +104,11 @@ Analyzers ship with code fixes and report build errors when a key field is missi
 
 ## 📌 Best Practices
 
-- Keep API classes `static`, `partial`, and marked with `[EntityAPI]` or `[EventAPI]`.
+- Keep API classes `static`, `partial`, and marked with `[GenerateEntityExtensionsAPI]` or `[GenerateEventExtensionsAPI]`.
 - Initialize every key field; analyzers report uninitialized keys as build errors.
 - Define keys once and reuse them across behaviours, systems, UI, and installers.
 - Prefer source-generated extension methods over hand-written ones.
-- Use `[EntityAPI(Unsafe = true)]` only when unsafe direct value access is required.
+- Use `[GenerateEntityExtensionsAPI(Unsafe = true)]` only when unsafe direct value access is required.
 
 ---
 

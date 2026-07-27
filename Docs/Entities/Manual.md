@@ -39,8 +39,8 @@ static partial class and the compiler generates extension methods automatically.
 
 - [Code Generation Manual](../CodeGeneration/Manual.md) — overview of all generators and analyzers
 - [Code Generation Setup](../CodeGeneration/Setup.md) — how to add the DLLs to a Unity project
-- [Entity API Generator](../CodeGeneration/EntityAPI/EntityAPIGenerator.md) — `[EntityAPI]` usage
-- [Event API Generator](../CodeGeneration/EventAPI/EventAPIGenerator.md) — `[EventAPI]` usage
+- [Entity API Generator](../CodeGeneration/EntityAPI/EntityAPIGenerator.md) — `[GenerateEntityExtensionsAPI]` usage
+- [Event API Generator](../CodeGeneration/EventAPI/EventAPIGenerator.md) — `[GenerateEventExtensionsAPI]` usage
 
 The generator source code is available at https://github.com/dre0dru/Atomic.SourceGenerators.
 

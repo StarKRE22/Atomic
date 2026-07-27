@@ -115,7 +115,7 @@ After applying the settings, restart Unity or choose `Assets → Reimport All`.
 
 #### Step 3. Declare an Entity API
 
-Create a `public static partial` class and decorate it with `[EntityAPI]`. Declare the character data as `ValueKey<>`
+Create a `public static partial` class and decorate it with `[GenerateEntityExtensionsAPI]`. Declare the character data as `ValueKey<>`
 fields:
 
 ```csharp
@@ -124,7 +124,7 @@ using UnityEngine;
 
 namespace SampleGame
 {
-    [EntityAPI]
+    [GenerateEntityExtensionsAPI]
     public static partial class CharacterAPI
     {
         public static readonly ValueKey<IEntity, Transform> Transform = new(nameof(Transform));
@@ -416,9 +416,9 @@ Lightweight, strongly-typed event bus system for decoupled communication between
 Roslyn source generators and analyzers that turn declarative API classes into strongly-typed extension methods.
 
 - [Setup](Docs/CodeGeneration/Setup.md) — adding generators/analyzers to a Unity project
-- [Entity API Generator](Docs/CodeGeneration/EntityAPI/EntityAPIGenerator.md) — `[EntityAPI]` usage
+- [Entity API Generator](Docs/CodeGeneration/EntityAPI/EntityAPIGenerator.md) — `[GenerateEntityExtensionsAPI]` usage
 - [Entity API Analyzer](Docs/CodeGeneration/EntityAPI/EntityAPIAnalyzer.md) — key initializer validation
-- [Event API Generator](Docs/CodeGeneration/EventAPI/EventAPIGenerator.md) — `[EventAPI]` usage
+- [Event API Generator](Docs/CodeGeneration/EventAPI/EventAPIGenerator.md) — `[GenerateEventExtensionsAPI]` usage
 - [Event API Analyzer](Docs/CodeGeneration/EventAPI/EventAPIAnalyzer.md) — event key initializer validation
 
 ---
@@ -584,7 +584,7 @@ turns, combat, movement, and UI presenters wired to entity state. [Link to the s
 
 #### 💡 This Sample Demonstrates
 
-1. Driving gameplay through an event bus with `[EventAPI]` source-generated extension methods.
+1. Driving gameplay through an event bus with `[GenerateEventExtensionsAPI]` source-generated extension methods.
 2. Separating game logic (use cases), presentation (presenters), and view (UI components).
 3. Using entity systems and filters to update characters and resolve turns.
 4. Implementing movement, damage, push, spawn, and death mechanics with atomic behaviours.

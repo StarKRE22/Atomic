@@ -1,4 +1,4 @@
-# 🧬 EventAPIAttribute
+# 🧬 GenerateEventExtensionsAPIAttribute
 
 Marks a static class as an **Event API definition** for the Event API Generator. The generator reads `EventKey<>` fields
 and emits strongly-typed extension methods for subscribing, invoking, and unsubscribing from events.
@@ -11,7 +11,7 @@ and emits strongly-typed extension methods for subscribing, invoking, and unsubs
 - [API Reference](#-api-reference)
   - [Type](#-type)
   - [Constructors](#-constructors)
-    - [EventAPIAttribute()](#eventapiattribute)
+    - [GenerateEventExtensionsAPIAttribute()](#GenerateEventExtensionsAPIAttribute)
 
 ---
 
@@ -22,7 +22,7 @@ Define event keys in a `public static partial` class:
 ```csharp
 using Atomic.Events;
 
-[EventAPI]
+[GenerateEventExtensionsAPI]
 public static partial class GameEventAPI
 {
     public static readonly EventKey<IEventBus> PlayerTurnStarted = new(nameof(PlayerTurnStarted));
@@ -51,7 +51,7 @@ using var subscription = bus.SubscribeDamageDealt(amount => Debug.Log($"Damage: 
 
 ```csharp
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-public sealed class EventAPIAttribute : Attribute
+public sealed class GenerateEventExtensionsAPIAttribute : Attribute
 ```
 
 - **Description:** Marks a static class as an Event API definition for source generation.
@@ -69,10 +69,10 @@ public sealed class EventAPIAttribute : Attribute
 
 ### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `EventAPIAttribute()`
+#### `GenerateEventExtensionsAPIAttribute()`
 
 ```csharp
-public EventAPIAttribute()
+public GenerateEventExtensionsAPIAttribute()
 ```
 
 - **Description:** Initializes a new instance of the attribute.

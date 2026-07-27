@@ -121,7 +121,7 @@ For entities:
 ```csharp
 using Atomic.Entities;
 
-[EntityAPI]
+[GenerateEntityExtensionsAPI]
 public static partial class VerifyEntityAPI
 {
     public static readonly ValueKey<IEntity, int> Health = new(nameof(Health));
@@ -135,7 +135,7 @@ For events:
 ```csharp
 using Atomic.Events;
 
-[EventAPI]
+[GenerateEventExtensionsAPI]
 public static partial class VerifyEventAPI
 {
     public static readonly EventKey<IEventBus> PlayerScored = new(nameof(PlayerScored));
@@ -160,10 +160,10 @@ If the methods do not appear, run `Assets → Reimport All` or restart the Unity
 ### Build errors after adding the DLLs
 
 - Make sure the DLLs are **not** included in any runtime platform.
-- Make sure every `[EntityAPI]` / `[EventAPI]` field is initialized with a non-default constructor, e.g. `new(nameof(FieldName))`. The analyzers report missing or invalid initializers:
+- Make sure every `[GenerateEntityExtensionsAPI]` / `[GenerateEventExtensionsAPI]` field is initialized with a non-default constructor, e.g. `new(nameof(FieldName))`. The analyzers report missing or invalid initializers:
 
 ```csharp
-[EntityAPI]
+[GenerateEntityExtensionsAPI]
 public static partial class CharacterAPI
 {
     // EAPI0001: field has no initializer

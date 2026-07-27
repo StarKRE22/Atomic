@@ -3,7 +3,7 @@ using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    [EntityAPI]
+    [GenerateEntityExtensionsAPI]
     public static partial class WeaponAPI
     {
         public static readonly ValueKey<IWeapon, IAction> FireAction = new(nameof(FireAction));

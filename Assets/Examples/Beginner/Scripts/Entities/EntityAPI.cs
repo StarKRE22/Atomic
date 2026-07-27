@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    [EntityAPI]
+    [GenerateEntityExtensionsAPI]
     public static partial class EntityAPI
     {
         public static readonly TagKey Character = new(nameof(Character));

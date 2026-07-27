@@ -30,7 +30,7 @@ The event system decouples publishers from subscribers using integer event keys 
 ```csharp
 using Atomic.Events;
 
-[EventAPI]
+[GenerateEventExtensionsAPI]
 public static partial class GameEventAPI
 {
     public static readonly EventKey<IEventBus> PlayerTurnStarted = new(nameof(PlayerTurnStarted));
@@ -98,7 +98,7 @@ threadSafeBus.Flush();
 
 ## 📌 Best Practices
 
-- Define event keys in a single `[EventAPI]` class.
+- Define event keys in a single `[GenerateEventExtensionsAPI]` class.
 - Use generated extension methods for compile-time type safety.
 - Dispose subscriptions to avoid leaks; prefer `using` declarations.
 - Use `ThreadSafeEventBus` for background thread event dispatch.

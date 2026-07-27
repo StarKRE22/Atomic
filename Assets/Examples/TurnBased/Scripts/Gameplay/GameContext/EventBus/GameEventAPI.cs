@@ -2,7 +2,7 @@ using Atomic.Events;
 
 namespace Game.Gameplay
 {
-    [EventAPI]
+    [GenerateEventExtensionsAPI]
     public static partial class GameEventAPI
     {
         public static readonly EventKey<IGameEventBus> PlayerTurnStarted = new(nameof(PlayerTurnStarted));

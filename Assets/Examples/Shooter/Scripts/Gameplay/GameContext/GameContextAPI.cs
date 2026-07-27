@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    [EntityAPI]
+    [GenerateEntityExtensionsAPI]
     public static partial class GameContextAPI
     {
         public static readonly ValueKey<IGameContext, IDictionary<TeamType, IPlayerContext>> Players = new(nameof(Players));

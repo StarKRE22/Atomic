@@ -1,6 +1,6 @@
 # 🔬 EntityAPIAnalyzer
 
-A Roslyn diagnostic analyzer that validates `[EntityAPI]` class declarations for the Entity API Generator. It reports
+A Roslyn diagnostic analyzer that validates `[GenerateEntityExtensionsAPI]` class declarations for the Entity API Generator. It reports
 build errors when key fields are missing an initializer or are initialized with `new()` / `default`.
 
 ---
@@ -20,7 +20,7 @@ The analyzer flags invalid initializers:
 ```csharp
 using Atomic.Entities;
 
-[EntityAPI]
+[GenerateEntityExtensionsAPI]
 public static partial class PlayerAPI
 {
     // EAPI0001: field is not initialized
@@ -34,7 +34,7 @@ public static partial class PlayerAPI
 After applying the code fix:
 
 ```csharp
-[EntityAPI]
+[GenerateEntityExtensionsAPI]
 public static partial class PlayerAPI
 {
     public static readonly ValueKey<IEntity, int> Health = new(nameof(Health));
@@ -53,7 +53,7 @@ public static partial class PlayerAPI
 public class EntityAPIAnalyzer : DiagnosticAnalyzer
 ```
 
-- **Description:** Roslyn diagnostic analyzer that validates `[EntityAPI]` key initializers.
+- **Description:** Roslyn diagnostic analyzer that validates `[GenerateEntityExtensionsAPI]` key initializers.
 - **Inheritance:** `DiagnosticAnalyzer`
 - **Notes:**
   - Only static fields of type `ValueKey<>` or `TagKey<>` from the `Atomic.Entities` namespace are checked.

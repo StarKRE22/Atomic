@@ -37,13 +37,13 @@ Make sure the following checkboxes are enabled:
 
 #### Step 3. Declare the Entity API
 
-Create a static partial class and mark it with `[EntityAPI]`. Declare the character data as `ValueKey<>` fields:
+Create a static partial class and mark it with `[GenerateEntityExtensionsAPI]`. Declare the character data as `ValueKey<>` fields:
 
 ```csharp
 using Atomic.Entities;
 using UnityEngine;
 
-[EntityAPI]
+[GenerateEntityExtensionsAPI]
 public static partial class CharacterAPI
 {
     public static readonly ValueKey<IEntity, Transform> Transform = new(nameof(Transform));
@@ -217,7 +217,7 @@ Now the character can be controlled with the keyboard.
 
 You now have a character entity that:
 
-- Declares type-safe keys with `[EntityAPI]`
+- Declares type-safe keys with `[GenerateEntityExtensionsAPI]`
 - Uses generated extension methods to add and access data
 - Reuses behaviours for movement and input
 

@@ -41,7 +41,7 @@ static API class and reused throughout the project.
 #### Define keys
 
 ```csharp
-[EntityAPI]
+[GenerateEntityExtensionsAPI]
 public static partial class GameEntityAPI
 {
     public static readonly TagKey IsEnemy = new(nameof(IsEnemy));
@@ -62,7 +62,7 @@ float moveSpeed = entity.GetMoveSpeed();
 bool selectable = entity.HasTag(GameEntityAPI.IsSelectable);
 ```
 
-These extension methods are generated automatically when the class is marked with `[EntityAPI]`.
+These extension methods are generated automatically when the class is marked with `[GenerateEntityExtensionsAPI]`.
 
 ---
 

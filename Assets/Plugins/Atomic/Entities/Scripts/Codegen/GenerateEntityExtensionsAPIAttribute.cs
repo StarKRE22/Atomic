@@ -9,7 +9,7 @@ namespace Atomic.Entities
     /// declared in each key's first generic argument.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public sealed class EntityAPIAttribute : Attribute
+    public sealed class GenerateEntityExtensionsAPIAttribute : Attribute
     {
         /// <summary>
         /// When <c>true</c>, all value fields generate
@@ -26,7 +26,7 @@ namespace Atomic.Entities
         /// </summary>
         public bool AggressiveInlining { get; set; } = true;
 
-        public EntityAPIAttribute()
+        public GenerateEntityExtensionsAPIAttribute()
         {
         }
     }
