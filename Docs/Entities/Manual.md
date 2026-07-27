@@ -62,7 +62,7 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 - [Systems](Systems/Manual.md) <!-- + -->
 - [Lifecycle](Lifecycle/Manual.md) <!-- + -->
 - [Views](UI/Manual.md) <!-- + -->
-- [Names](Names/Manual.md) <!-- + -->
+- [KeyStore](KeyStore/Manual.md) <!-- + -->
 - [API Generation](EntityAPI/Manual.md) <!-- + -->
 
 ---

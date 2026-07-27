@@ -1,4 +1,4 @@
-# 🧩 SequentialEntityNameAlgorithm
+# 🧩 SequentialEntityKeyAlgorithm
 
 A **stateful, sequential algorithm** for generating unique integer IDs from string-based entity names. This algorithm
 maintains an internal counter and returns IDs in increasing order.
@@ -27,13 +27,13 @@ maintains an internal counter and returns IDs in increasing order.
 
 ## 🗂 Example of Usage
 
-Set this algorithm to the [EntityNames](EntityNames.md) when your application starts:
+Set this algorithm to the [EntityKeyStore](EntityKeyStore.md) when your application starts:
 
 ```csharp
 public static void Main(string[] args)
 {
     // Use sequential ID generation for entity names
-    EntityNames.SetAlgorithm(new SequentialEntityNameAlgorithm());
+    EntityKeyStore.SetAlgorithm(new SequentialEntityKeyAlgorithm());
 }
 ```
 
@@ -41,11 +41,11 @@ Usage:
 
 ```csharp
 // Generate IDs for some example entity names
-int playerId = EntityNames.NameToId("Player"); // 1
-int enemyId  = EntityNames.NameToId("Enemy");  // 2
+int playerId = EntityKeyStore.NameToId("Player"); // 1
+int enemyId  = EntityKeyStore.NameToId("Enemy");  // 2
 
 // Retrieve original name by ID
-string name = EntityNames.IdToName(playerId);  // "Player"
+string name = EntityKeyStore.IdToName(playerId);  // "Player"
 ```
 
 ---
@@ -55,7 +55,7 @@ string name = EntityNames.IdToName(playerId);  // "Player"
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public sealed class SequentialEntityNameAlgorithm : IEntityNameAlgorithm
+public sealed class SequentialEntityKeyAlgorithm : IEntityKeyAlgorithm
 ```
 
 - **Description:** Provides a sequential mapping from entity names to integer IDs.

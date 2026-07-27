@@ -1,4 +1,4 @@
-# 🧩 IEntityNameAlgorithm
+# 🧩 IEntityKeyAlgorithm
 
 A **deterministic, stateless interface** for converting string-based entity names into integer identifiers. This
 interface defines the core contract for algorithms that generate numeric IDs from entity names.
@@ -30,13 +30,13 @@ interface defines the core contract for algorithms that generate numeric IDs fro
 Below is an example of implementation that generates sequential IDs starting from a configurable initial value.
 
 ```csharp
-public sealed class SequentialEntityNameAlgorithm : IEntityNameAlgorithm
+public sealed class SequentialEntityKeyAlgorithm : IEntityKeyAlgorithm
 {
     private const int INITIAL_ID = 1;
 
     private int _nextId;
 
-    public SequentialEntityNameAlgorithm(int nextId = INITIAL_ID) 
+    public SequentialEntityKeyAlgorithm(int nextId = INITIAL_ID) 
     { 
         _nextId = nextId;  
     } 
@@ -53,13 +53,13 @@ public sealed class SequentialEntityNameAlgorithm : IEntityNameAlgorithm
 }
 ```
 
-Set this algorithm to the [EntityNames](EntityNames.md) when your application starts:
+Set this algorithm to the [EntityKeyStore](EntityKeyStore.md) when your application starts:
 
 ```csharp
 public static void Main(string[] args)
 {
     // Use sequential ID generation for entity names
-    EntityNames.SetAlgorithm(new SequentialEntityNameAlgorithm());
+    EntityKeyStore.SetAlgorithm(new SequentialEntityKeyAlgorithm());
 }
 ```
 
@@ -67,11 +67,11 @@ Usage:
 
 ```csharp
 // Generate IDs for some example entity names
-int playerId = EntityNames.NameToId("Player"); // 1
-int enemyId  = EntityNames.NameToId("Enemy");  // 2
+int playerId = EntityKeyStore.NameToId("Player"); // 1
+int enemyId  = EntityKeyStore.NameToId("Enemy");  // 2
 
 // Retrieve original name by ID
-string name = EntityNames.IdToName(playerId);  // "Player"
+string name = EntityKeyStore.IdToName(playerId);  // "Player"
 ```
 
 ---
@@ -81,7 +81,7 @@ string name = EntityNames.IdToName(playerId);  // "Player"
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public interface IEntityNameAlgorithm
+public interface IEntityKeyAlgorithm
 ```
 
 - **Description:** Defines a deterministic method for converting entity names into integer IDs.
@@ -125,6 +125,6 @@ public void Reset()
 - Ensures consistency across the system when generating IDs for entity names.
 - This interface is designed to support **stateless algorithms**.
 - It does **not store any mappings or caches**. Caching and reverse lookups are handled externally, e.g., in
-  [EntityNames](EntityNames.md).
+  [EntityKeyStore](EntityKeyStore.md).
 - Some implementations, like sequential ID generators, may maintain internal state.
 - The `Reset()` method allows such algorithms to be reset to their initial state.
