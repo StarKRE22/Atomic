@@ -24,10 +24,10 @@ namespace Game.UI
 
         public void Init(IUIContext ui)
         {
-            _camera = ui.GetValue(UIContextAPI.Camera);
-            _selectedCharacter = ui.GetValue(UIContextAPI.SelectedCharacter);
-            _inputCondition = ui.GetValue(UIContextAPI.InputCondition);
-            _commandQueue = ui.GetValue(UIContextAPI.CommandQueue);
+            _camera = ui.GetCamera();
+            _selectedCharacter = ui.GetSelectedCharacter();
+            _inputCondition = ui.GetInputCondition();
+            _commandQueue = ui.GetCommandQueue();
         }
 
         public void Tick(IUIContext entity, float deltaTime)

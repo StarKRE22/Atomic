@@ -21,22 +21,22 @@ namespace Game.UI
 
         public void Enable(IUIContext entity)
         {
-            _eventBus = _gameContext.GetValue(GameContextAPI.EventBus);
+            _eventBus = _gameContext.GetEventBus();
 
-            _eventBus.Subscribe(GameEventAPI.PlayerTurnStarted, this.OnPlayerTurnStarted).AddTo(_disposables);
-            _eventBus.Subscribe(GameEventAPI.PlayerTurnEnded, this.OnPlayerTurnEnded).AddTo(_disposables); //Main Thread
-            _eventBus.Subscribe(GameEventAPI.EnemyTurnEnded, this.OnEnemyTurnEnded).AddTo(_disposables);
-            _eventBus.Subscribe(GameEventAPI.EntityDamaged, this.OnDamaged).AddTo(_disposables);
-            _eventBus.Subscribe(GameEventAPI.EntityAttackStarted, this.OnAttackStarted).AddTo(_disposables);
-            _eventBus.Subscribe(GameEventAPI.EntityAttackEnded, this.OnAttackEnded).AddTo(_disposables);
-            _eventBus.Subscribe(GameEventAPI.EntityMoved, this.OnMoved).AddTo(_disposables);
+            _eventBus.SubscribePlayerTurnStarted( this.OnPlayerTurnStarted).AddTo(_disposables);
+            _eventBus.SubscribePlayerTurnEnded( this.OnPlayerTurnEnded).AddTo(_disposables); //Main Thread
+            _eventBus.SubscribeEnemyTurnEnded( this.OnEnemyTurnEnded).AddTo(_disposables);
+            _eventBus.SubscribeEntityDamaged( this.OnDamaged).AddTo(_disposables);
+            _eventBus.SubscribeEntityAttackStarted( this.OnAttackStarted).AddTo(_disposables);
+            _eventBus.SubscribeEntityAttackEnded( this.OnAttackEnded).AddTo(_disposables);
+            _eventBus.SubscribeEntityMoved( this.OnMoved).AddTo(_disposables);
 
-            _eventBus.Subscribe(GameEventAPI.EntityPushedOut, this.OnPushedOut).AddTo(_disposables);
-            _eventBus.Subscribe(GameEventAPI.EntityPushedTarget, this.OnPushedInTarget).AddTo(_disposables);
-            _eventBus.Subscribe(GameEventAPI.EntityPushed, this.OnPushed).AddTo(_disposables);
+            _eventBus.SubscribeEntityPushedOut( this.OnPushedOut).AddTo(_disposables);
+            _eventBus.SubscribeEntityPushedTarget( this.OnPushedInTarget).AddTo(_disposables);
+            _eventBus.SubscribeEntityPushed( this.OnPushed).AddTo(_disposables);
 
-            _eventBus.Subscribe(GameEventAPI.EntityDied, this.OnDied);
-            _eventBus.Subscribe(GameEventAPI.EntitySpawned, this.OnSpawned);
+            _eventBus.SubscribeEntityDied( this.OnDied);
+            _eventBus.SubscribeEntitySpawned( this.OnSpawned);
         }
         
         public void Disable(IUIContext entity) => 

@@ -30,12 +30,12 @@ namespace Game.Gameplay
                 .Install(_attackInstaller)
                 .Install(_pushInstaller);
 
-            entity.AddValue(GameEntityAPI.ResetTurnAction, new CompositeAction(
+            entity.AddResetTurnAction( new CompositeAction(
                 entity.ResetMovesInTurn,
                 entity.ResetAttacksInTurn
             ));
 
-            entity.AddValue(GameEntityAPI.RespawnAction, new InlineAction(
+            entity.AddRespawnAction( new InlineAction(
                 entity.AssignMaxHealth
             ));
         }

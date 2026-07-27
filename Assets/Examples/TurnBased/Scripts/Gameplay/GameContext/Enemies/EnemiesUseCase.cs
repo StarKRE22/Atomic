@@ -15,12 +15,12 @@ namespace Game.Gameplay
 
             foreach (IGameEntity enemy in enemies)
             {
-                IFunction<IGameContext, UniTask> function = enemy.GetValue(GameEntityAPI.MakeTurnAction);
+                IFunction<IGameContext, UniTask> function = enemy.GetMakeTurnAction();
                 await function.Invoke(context);
             }
 
-            IGameEventBus eventBus = context.GetValue(GameContextAPI.EventBus);
-            eventBus.Invoke(GameEventAPI.EnemyTurnEnded);
+            IGameEventBus eventBus = context.GetEventBus();
+            eventBus.InvokeEnemyTurnEnded();
             
             context.UpdateGameState();
             eventBus.Flush();
@@ -31,9 +31,9 @@ namespace Game.Gameplay
 
         public static IGameEntity[] GetEnemies(this IGameContext context)
         {
-            GameEntityBoard entityBoard = context.GetValue(GameContextAPI.GameBoard);
+            GameEntityBoard entityBoard = context.GetGameBoard();
             return entityBoard.Entities.Keys
-                .Where(e => e.GetValue(GameEntityAPI.EntityType).Value == GameEntityType.Enemy)
+                .Where(e => e.GetEntityType().Value == GameEntityType.Enemy)
                 .ToArray();
         }
     }

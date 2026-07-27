@@ -20,11 +20,11 @@ namespace Game.UI
 
         public void Enable(IUIContext ui)
         {
-            _commandQueue = ui.GetValue(UIContextAPI.CommandQueue);
-            _turnView = ui.GetValue(UIContextAPI.TurnView);
+            _commandQueue = ui.GetCommandQueue();
+            _turnView = ui.GetTurnView();
             _subscription = _gameContext
-                .GetValue(GameContextAPI.EventBus)
-                .Subscribe(GameEventAPI.PlayerTurnEnded, () => this.OnEnemyTurnStarted().Forget());
+                .GetEventBus()
+                .SubscribePlayerTurnEnded( () => this.OnEnemyTurnStarted().Forget());
         }
 
         public void Disable(IUIContext entity)

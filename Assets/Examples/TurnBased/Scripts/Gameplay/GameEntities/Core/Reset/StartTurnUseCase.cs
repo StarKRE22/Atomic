@@ -8,7 +8,7 @@ namespace Game.Gameplay
         public static void ResetTurn(this IEnumerable<IGameEntity> entities)
         {
             foreach (IGameEntity entity in entities) 
-                entity.GetValue(GameEntityAPI.ResetTurnAction).Invoke();
+                entity.GetResetTurnAction().Invoke();
         }
     }
 }

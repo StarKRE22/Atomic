@@ -21,8 +21,8 @@ namespace Game.UI
 
         public void Init(IUIContext ui)
         {
-            _gameBoardView = ui.GetValue(UIContextAPI.GameBoardView);
-            _selectedCharacter = ui.GetValue(UIContextAPI.SelectedCharacter);
+            _gameBoardView = ui.GetGameBoardView();
+            _selectedCharacter = ui.GetSelectedCharacter();
         }
         
         public void Enable(IUIContext entity)

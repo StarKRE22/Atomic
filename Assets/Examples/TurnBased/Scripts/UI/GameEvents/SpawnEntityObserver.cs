@@ -37,7 +37,7 @@ namespace Game.UI
         
         public void Init(IUIContext ui)
         {
-            GameEntityBoard gameBoard = _gameContext.GetValue(GameContextAPI.GameBoard);
+            GameEntityBoard gameBoard = _gameContext.GetGameBoard();
             foreach (KeyValuePair<IGameEntity, Vector2Int> pair in gameBoard.Entities) 
                 ui.SpawnEntityView(pair.Key, pair.Value).Forget();
         }
@@ -46,8 +46,8 @@ namespace Game.UI
         {
             _ui = ui;
             _subscription = _gameContext
-                .GetValue(GameContextAPI.EventBus)
-                .Subscribe(GameEventAPI.EntitySpawned, this.OnSpawned);
+                .GetEventBus()
+                .SubscribeEntitySpawned( this.OnSpawned);
         }
 
         public void Disable(IUIContext entity)

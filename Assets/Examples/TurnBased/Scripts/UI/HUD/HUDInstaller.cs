@@ -19,8 +19,8 @@ namespace Game.UI
         
         public void Install(IUIContext ui, IGameContext gameContext)
         {
-            ui.AddValue(UIContextAPI.TurnView, _turnView);
-            ui.AddValue(UIContextAPI.EndTurnButton, _endTurnButton);
+            ui.AddTurnView( _turnView);
+            ui.AddEndTurnButton( _endTurnButton);
             
             ui.AddBehaviour(new TurnEventsPresenter(_turnEventsText, gameContext));
             ui.AddBehaviour(new SelectedCharacterStatsPresenter(_selectedCharacterInfoText));

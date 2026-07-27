@@ -13,8 +13,8 @@ namespace Game.Gameplay
         
         public void Install(IGameEntity entity)
         {
-            entity.AddValue(GameEntityAPI.Health, new ReactiveInt(_health));
-            entity.AddValue(GameEntityAPI.MaxHealth, _health);
+            entity.AddHealth( new ReactiveInt(_health));
+            entity.AddMaxHealth( _health);
         }
     }
 }

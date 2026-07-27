@@ -38,12 +38,12 @@ namespace Game.UI
         {
             IGameContext gameContext = GameRunner.Instance.GameContext;
 
-            ui.AddValue(UIContextAPI.Camera, _camera);
-            ui.AddValue(UIContextAPI.GameObjectPrefabPool, new GameObjectPool(_poolContainer));
-            ui.AddValue(UIContextAPI.WaterSplashEffect, _waterSplash);
-            ui.AddValue(UIContextAPI.DeathEffect, _deathEffect);
+            ui.AddCamera( _camera);
+            ui.AddGameObjectPrefabPool( new GameObjectPool(_poolContainer));
+            ui.AddWaterSplashEffect( _waterSplash);
+            ui.AddDeathEffect( _deathEffect);
             
-            ui.AddValue(UIContextAPI.EntityCollectionView, _gameEntityViews);
+            ui.AddEntityCollectionView( _gameEntityViews);
             
             _gameBoardInstaller.Install(ui, gameContext);
             _uiInstaller.Install(ui, gameContext);
@@ -54,7 +54,7 @@ namespace Game.UI
 
         private void InstallSelection(IUIContext ui, IGameContext gameContext)
         {
-            ui.AddValue(UIContextAPI.SelectedCharacter, new ReactiveVariable<IGameEntity>());
+            ui.AddSelectedCharacter( new ReactiveVariable<IGameEntity>());
             ui.AddBehaviour(new SelectedMarkerPresenter(_markerView));
             ui.AddBehaviour(new SelectionDropController(gameContext));
             ui.AddBehaviour(new SelectionCellsPresenter(gameContext));
@@ -62,7 +62,7 @@ namespace Game.UI
 
         private void InstallGameEvents(IUIContext ui, IGameContext gameContext)
         {
-            ui.AddValue(UIContextAPI.CommandQueue, new UICommandQueue());
+            ui.AddCommandQueue( new UICommandQueue());
             
             ui.AddBehaviour(new TakeDamageEntityObserver(gameContext));
             ui.AddBehaviour(new MoveEntityObserver(gameContext));

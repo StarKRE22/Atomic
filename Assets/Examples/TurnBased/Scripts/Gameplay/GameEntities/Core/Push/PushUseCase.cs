@@ -17,11 +17,11 @@ namespace Game.Gameplay
                 Mathf.Clamp(direction.y, -1, 1)
             );
 
-            GameEntityBoard board = gameContext.GetValue(GameContextAPI.GameBoard);
+            GameEntityBoard board = gameContext.GetGameBoard();
             if (!board.TryGetCellPosition(target, out var position))
                 return;
 
-            var eventBus = gameContext.GetValue(GameContextAPI.EventBus);
+            var eventBus = gameContext.GetEventBus();
             var nextPosition = position + direction;
 
             // 1. Вылетел за границы
@@ -30,7 +30,7 @@ namespace Game.Gameplay
                 target.AssignZeroHealth();
                 board.RemoveEntity(target);
 
-                eventBus.Invoke(GameEventAPI.EntityPushedOut,
+                eventBus.InvokeEntityPushedOut(
                     new PushOutEventArgs(target, position, direction));
 
                 return;
@@ -39,8 +39,8 @@ namespace Game.Gameplay
             // 2. Если кто-то стоит — пушим его
             if (board.TryGetEntity(nextPosition, out var blocker))
             {
-                int pushDamage = target.GetValue(GameEntityAPI.PushDamage).Value;
-                eventBus.Invoke(GameEventAPI.EntityPushedTarget,
+                int pushDamage = target.GetPushDamage().Value;
+                eventBus.InvokeEntityPushedTarget(
                     new PushTargetEventArgs(target, blocker, position, nextPosition, direction));
 
                 target.DealDamage(blocker, pushDamage, gameContext);
@@ -53,7 +53,7 @@ namespace Game.Gameplay
             // 3. Двигаем target
             if (board.PlaceEntity(target, nextPosition))
             {
-                eventBus.Invoke(GameEventAPI.EntityPushed,
+                eventBus.InvokeEntityPushed(
                     new PushedEventArgs(target, position, nextPosition, direction));
             }
         }

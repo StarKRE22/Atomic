@@ -18,16 +18,16 @@ namespace Game.UI
 
         public void Init(IUIContext ui)
         {
-            _eventBus = _gameContext.GetValue(GameContextAPI.EventBus);
+            _eventBus = _gameContext.GetEventBus();
             
-            GameEntityBoard gameBoard = _gameContext.GetValue(GameContextAPI.GameBoard);
-            _gameBoardView = ui.GetValue(UIContextAPI.GameBoardView);
+            GameEntityBoard gameBoard = _gameContext.GetGameBoard();
+            _gameBoardView = ui.GetGameBoardView();
             _gameBoardView.Initialize(gameBoard.Width, gameBoard.Height);
         }
 
         public void Enable(IUIContext entity)
         {
-            _subscription = _eventBus.Subscribe(GameEventAPI.PlayerTurnStarted, this.OnTurnStarted);
+            _subscription = _eventBus.SubscribePlayerTurnStarted( this.OnTurnStarted);
         }
 
         public void Disable(IUIContext entity)

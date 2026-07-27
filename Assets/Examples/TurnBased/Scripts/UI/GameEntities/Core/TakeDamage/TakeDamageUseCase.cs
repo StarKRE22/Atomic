@@ -16,7 +16,7 @@ namespace Game.UI
             entityView.UpdateHealthBar(args.health);
             entityView.HighlightHit();
 
-            Transform transform = entityView.GetValue(GameEntityViewAPI.Transform);
+            Transform transform = entityView.Entity.GetTransform();
             transform.DOKill();
             transform.localScale = Vector3.one;
             await transform
@@ -26,13 +26,13 @@ namespace Game.UI
 
         public static void HighlightHit(this GameEntityView entityView)
         {
-            CharacterRenderer characterView = entityView.GetValue(GameEntityViewAPI.CharacterRenderer);
+            CharacterRenderer characterView = entityView.Entity.GetCharacterRenderer();
             characterView.PlayHit();
         }
 
         public static void AnimatorHit(this GameEntityView entityView)
         {
-            Animator animator = entityView.GetValue(GameEntityViewAPI.Animator);
+            Animator animator = entityView.Entity.GetAnimator();
             animator.SetTrigger(Hit);
         }
     }

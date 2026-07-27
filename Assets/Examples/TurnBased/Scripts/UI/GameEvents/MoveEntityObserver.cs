@@ -46,8 +46,8 @@ namespace Game.UI
             _ui = ui;
             
             _subscription = _gameContext
-                .GetValue(GameContextAPI.EventBus)
-                .Subscribe(GameEventAPI.EntityMoved, this.OnMoved);
+                .GetEventBus()
+                .SubscribeEntityMoved( this.OnMoved);
         }
 
         public void Disable(IUIContext context)

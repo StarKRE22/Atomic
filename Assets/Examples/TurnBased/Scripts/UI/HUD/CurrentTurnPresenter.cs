@@ -21,7 +21,7 @@ namespace Game.UI
 
         public void Enable(IUIContext entity)
         {
-            _turn = _gameContext.GetValue(GameContextAPI.CurrentTurn);
+            _turn = _gameContext.GetCurrentTurn();
             _subscription = _turn.Observe(this.OnTurnChanged);
         }
 

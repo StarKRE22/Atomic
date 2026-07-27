@@ -11,14 +11,14 @@ namespace Game.UI
 
         private static void AttackAnimator(this GameEntityView source)
         {
-            Animator animator = source.GetValue(GameEntityViewAPI.Animator);
+            Animator animator = source.Entity.GetAnimator();
             animator.SetTrigger(Attack);
         }
 
         public static async UniTask StartAttack(this GameEntityView attacker, GameEntityView target)
         {
-            Vector3 attackerPosition = attacker.GetValue(GameEntityViewAPI.Transform).position;
-            Vector3 targetPosition = target.GetValue(GameEntityViewAPI.Transform).position;
+            Vector3 attackerPosition = attacker.Entity.GetTransform().position;
+            Vector3 targetPosition = target.Entity.GetTransform().position;
             Vector3 movePosition = Vector3.Lerp(attackerPosition, targetPosition, 0.4f);
 
             target.RotateAt(attackerPosition).Forget();

@@ -9,7 +9,7 @@ namespace Game.UI
 
         private void Start()
         {
-            Camera camera = UIContext.Instance.GetValue(UIContextAPI.Camera);
+            Camera camera = UIContext.Instance.GetCamera();
             _camera = camera.transform;
         }
 

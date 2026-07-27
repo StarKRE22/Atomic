@@ -15,9 +15,9 @@ namespace Game.UI
 
         public void Init(IUIContext ui)
         {
-            _selectedCharacter = ui.GetValue(UIContextAPI.SelectedCharacter);
-            _camera = ui.GetValue(UIContextAPI.Camera);
-            _inputCondition = ui.GetValue(UIContextAPI.InputCondition);
+            _selectedCharacter = ui.GetSelectedCharacter();
+            _camera = ui.GetCamera();
+            _inputCondition = ui.GetInputCondition();
         }
 
         public void Tick(IUIContext entity, float deltaTime)
@@ -27,7 +27,7 @@ namespace Game.UI
                 return;
 
             IGameEntity target = targetView.Entity;
-            if (target.GetValue(GameEntityAPI.EntityType).Value != GameEntityType.Character)
+            if (target.GetEntityType().Value != GameEntityType.Character)
                 return;
 
             _selectedCharacter.Value = _selectedCharacter.Value == target ? null : target;

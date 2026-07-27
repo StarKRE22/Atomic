@@ -12,7 +12,7 @@ namespace Game.Gameplay
                 throw new ArgumentNullException(nameof(action));
 
             await UniTask.RunOnThreadPool(action);
-            IGameEventBus eventBus = gameContext.GetValue(GameContextAPI.EventBus);
+            IGameEventBus eventBus = gameContext.GetEventBus();
             eventBus.Flush();
         }
         
@@ -22,7 +22,7 @@ namespace Game.Gameplay
                 throw new ArgumentNullException(nameof(func));
             
             await UniTask.RunOnThreadPool(func);
-            IGameEventBus eventBus = gameContext.GetValue(GameContextAPI.EventBus);
+            IGameEventBus eventBus = gameContext.GetEventBus();
             eventBus.Flush();
         }
 
@@ -32,7 +32,7 @@ namespace Game.Gameplay
                 throw new ArgumentNullException(nameof(action));
 
             action.Invoke();
-            IGameEventBus eventBus = gameContext.GetValue(GameContextAPI.EventBus);
+            IGameEventBus eventBus = gameContext.GetEventBus();
             eventBus.Flush();
         }
         
@@ -42,7 +42,7 @@ namespace Game.Gameplay
                 throw new ArgumentNullException(nameof(func));
 
             var result = await UniTask.RunOnThreadPool(func);
-            IGameEventBus eventBus = gameContext.GetValue(GameContextAPI.EventBus);
+            IGameEventBus eventBus = gameContext.GetEventBus();
             eventBus.Flush();
             return result;
         }
@@ -53,7 +53,7 @@ namespace Game.Gameplay
                 throw new ArgumentNullException(nameof(func));
 
             T result = func.Invoke();
-            IGameEventBus eventBus = gameContext.GetValue(GameContextAPI.EventBus);
+            IGameEventBus eventBus = gameContext.GetEventBus();
             eventBus.Flush();
             return result;
         }

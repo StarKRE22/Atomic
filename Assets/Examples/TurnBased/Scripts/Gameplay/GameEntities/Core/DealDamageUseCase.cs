@@ -16,8 +16,8 @@ namespace Game.Gameplay
             if (!source.ReduceHealth(damage))
                 return false;
 
-            IGameEventBus eventBus = gameContext.GetValue(GameContextAPI.EventBus);
-            eventBus.Invoke(GameEventAPI.EntityDamaged, new TakeDamageEventArgs(source, instigator, damage));
+            IGameEventBus eventBus = gameContext.GetEventBus();
+            eventBus.InvokeEntityDamaged( new TakeDamageEventArgs(source, instigator, damage));
             return true;
         }
     }

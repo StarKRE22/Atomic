@@ -9,8 +9,8 @@ namespace Game.Gameplay
     {
         public static async UniTask ExecuteTurn(this IGameEntity enemy, IGameContext context)
         {
-            var board = context.GetValue(GameContextAPI.GameBoard);
-            var pathFinder = context.GetValue(GameContextAPI.PathFinder);
+            var board = context.GetGameBoard();
+            var pathFinder = context.GetPathFinder();
             var characters = context.GetCharacters();
 
             int safety = 16;
@@ -24,7 +24,7 @@ namespace Game.Gameplay
                 var enemyPos = board.GetPosition(enemy);
                 var targetPos = board.GetPosition(target);
 
-                int range = enemy.GetValue(GameEntityAPI.AttackDistance).Value;
+                int range = enemy.GetAttackDistance().Value;
                 int attackDistance = GetChebyshevDistance(enemyPos, targetPos);
 
                 // 1. Атака
@@ -60,16 +60,16 @@ namespace Game.Gameplay
             // Heavy calculations
             Thread.Sleep(1000);
             
-            var board = context.GetValue(GameContextAPI.GameBoard);
-            var pathFinder = context.GetValue(GameContextAPI.PathFinder);
+            var board = context.GetGameBoard();
+            var pathFinder = context.GetPathFinder();
 
             IGameEntity bestTarget = null;
             int bestScore = int.MinValue;
 
             Vector2Int enemyPos = board.GetPosition(enemy);
 
-            int damage = enemy.GetValue(GameEntityAPI.AttackDamage).Value;
-            int attackRange = enemy.GetValue(GameEntityAPI.AttackDistance).Value;
+            int damage = enemy.GetAttackDamage().Value;
+            int attackRange = enemy.GetAttackDistance().Value;
 
             foreach (var target in targets)
             {
@@ -96,7 +96,7 @@ namespace Game.Gameplay
                     score += 10000;
                 }
 
-                int hp = target.GetValue(GameEntityAPI.Health).Value;
+                int hp = target.GetHealth().Value;
 
                 // 🔥 2. Добивание
                 if (distance <= attackRange && hp <= damage)

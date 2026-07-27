@@ -38,8 +38,8 @@ namespace Game.UI
         {
             _ui = ui;
             _subscription = _gameContext
-                .GetValue(GameContextAPI.EventBus)
-                .Subscribe(GameEventAPI.EntityDamaged, this.OnDamaged);
+                .GetEventBus()
+                .SubscribeEntityDamaged( this.OnDamaged);
         }
 
         public void Disable(IUIContext ui)

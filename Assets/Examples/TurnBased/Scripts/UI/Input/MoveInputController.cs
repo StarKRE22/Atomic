@@ -26,11 +26,11 @@ namespace Game.UI
 
         public void Init(IUIContext ui)
         {
-            _selectedCharacter = ui.GetValue(UIContextAPI.SelectedCharacter);
-            _gameBoardView = ui.GetValue(UIContextAPI.GameBoardView);
-            _camera = ui.GetValue(UIContextAPI.Camera);
-            _inputCondition = ui.GetValue(UIContextAPI.InputCondition);
-            _commandQueue = ui.GetValue(UIContextAPI.CommandQueue);
+            _selectedCharacter = ui.GetSelectedCharacter();
+            _gameBoardView = ui.GetGameBoardView();
+            _camera = ui.GetCamera();
+            _inputCondition = ui.GetInputCondition();
+            _commandQueue = ui.GetCommandQueue();
         }
 
         public void Tick(IUIContext ui, float deltaTime)

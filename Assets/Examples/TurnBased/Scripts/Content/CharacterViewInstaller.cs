@@ -13,20 +13,20 @@ namespace Game.UI
 
         public override void Install(IGameEntity entity)
         {
-            entity.AddValue(GameEntityViewAPI.Transform, this.transform);
-            entity.AddValue(GameEntityViewAPI.Animator, _animator);
-            entity.AddValue(GameEntityViewAPI.CharacterRenderer, _characterRenderer);
-            entity.AddValue(GameEntityViewAPI.HealthBar, _healthBar);
+            entity.AddTransform( this.transform);
+            entity.AddAnimator( _animator);
+            entity.AddCharacterRenderer( _characterRenderer);
+            entity.AddHealthBar( _healthBar);
             entity.AddBehaviour(_healthPresenter);
         }
 
         public override void Uninstall(IGameEntity entity)
         {
             entity.DelBehaviour(_healthPresenter);
-            entity.DelValue(GameEntityViewAPI.Animator);
-            entity.DelValue(GameEntityViewAPI.CharacterRenderer);
-            entity.DelValue(GameEntityViewAPI.HealthBar);
-            entity.DelValue(GameEntityViewAPI.Transform);
+            entity.DelAnimator();
+            entity.DelCharacterRenderer();
+            entity.DelHealthBar();
+            entity.DelTransform();
         }
     }
 }

@@ -9,25 +9,25 @@ namespace Game.Gameplay
     {
         public static bool StartPlayerTurn(this IGameContext context)
         {
-            if (context.GetValue(GameContextAPI.GameState).Value != GameState.Playing)
+            if (context.GetGameState().Value != GameState.Playing)
                 return false;
 
-            context.GetValue(GameContextAPI.CurrentTurn).Value++;
+            context.GetCurrentTurn().Value++;
             context.GetCharacters().ResetTurn();
 
-            IGameEventBus eventBus = context.GetValue(GameContextAPI.EventBus);
-            eventBus.Invoke(GameEventAPI.PlayerTurnStarted);
+            IGameEventBus eventBus = context.GetEventBus();
+            eventBus.InvokePlayerTurnStarted();
             eventBus.Flush();
             return true;
         }
 
         public static void EndPlayerTurn(this IGameContext context)
         {
-            if (context.GetValue(GameContextAPI.GameState).Value != GameState.Playing)
+            if (context.GetGameState().Value != GameState.Playing)
                 return;
 
-            IGameEventBus eventBus = context.GetValue(GameContextAPI.EventBus);
-            eventBus.Invoke(GameEventAPI.PlayerTurnEnded);
+            IGameEventBus eventBus = context.GetEventBus();
+            eventBus.InvokePlayerTurnEnded();
             eventBus.Flush();
         }
 
@@ -39,7 +39,7 @@ namespace Game.Gameplay
         {
             bool success = await UniTask.RunOnThreadPool(() => character.MoveAsCharacter(position, gameContext));
             if (success)
-                gameContext.GetValue(GameContextAPI.EventBus).Flush();
+                gameContext.GetEventBus().Flush();
 
             return success;
         }
@@ -50,14 +50,14 @@ namespace Game.Gameplay
             IGameContext gameContext
         )
         {
-            if (target.GetValue(GameEntityAPI.EntityType).Value != GameEntityType.Enemy)
+            if (target.GetEntityType().Value != GameEntityType.Enemy)
                 return false;
 
             bool success = await UniTask.RunOnThreadPool(() => character.AttackAsCharacter(target, gameContext));
             if (success)
             {
                 gameContext.UpdateGameState();
-                gameContext.GetValue(GameContextAPI.EventBus).Flush();
+                gameContext.GetEventBus().Flush();
             }
 
             return success;

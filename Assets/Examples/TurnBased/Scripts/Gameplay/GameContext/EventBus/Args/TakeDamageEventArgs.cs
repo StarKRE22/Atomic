@@ -12,7 +12,7 @@ namespace Game.Gameplay
         public TakeDamageEventArgs(IGameEntity victim, object instigator, int damage)
         {
             this.victim = victim;
-            this.health = victim.GetValue(GameEntityAPI.Health).Value;
+            this.health = victim.GetHealth().Value;
             this.instigator = instigator;
             this.damage = damage;
         }

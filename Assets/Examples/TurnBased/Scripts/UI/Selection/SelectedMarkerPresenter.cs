@@ -19,8 +19,8 @@ namespace Game.UI
 
         public void Enable(IUIContext context)
         {
-            _entityViews = context.GetValue(UIContextAPI.EntityCollectionView);
-            _selectedCharacter = context.GetValue(UIContextAPI.SelectedCharacter);
+            _entityViews = context.GetEntityCollectionView();
+            _selectedCharacter = context.GetSelectedCharacter();
             _subscription = _selectedCharacter.Observe(this.OnSelectedCharacterChanged);
         }
 

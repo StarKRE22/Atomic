@@ -13,8 +13,8 @@ namespace Game.Gameplay
         public void Install(IGameContext context)
         {
             GameEntityBoard entityBoard = new GameEntityBoard(_gameBoardSize.x, _gameBoardSize.y);
-            context.AddValue(GameContextAPI.GameBoard, entityBoard);
-            context.AddValue(GameContextAPI.PathFinder, new GameBoardPathFinder(entityBoard));
+            context.AddGameBoard( entityBoard);
+            context.AddPathFinder( new GameBoardPathFinder(entityBoard));
         }
     }
 }

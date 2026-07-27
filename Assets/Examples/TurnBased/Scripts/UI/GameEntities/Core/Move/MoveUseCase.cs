@@ -11,13 +11,13 @@ namespace Game.UI
 
         public static void SetAnimatorMoving(this GameEntityView entity, bool isMoving)
         {
-            Animator animator = entity.GetValue(GameEntityViewAPI.Animator);
+            Animator animator = entity.Entity.GetAnimator();
             animator.SetBool(IsMoving, isMoving);
         }
 
         public static async UniTask MoveAt(this GameEntityView entity, Vector3 position)
         {
-            Transform transform = entity.GetValue(GameEntityViewAPI.Transform);
+            Transform transform = entity.Entity.GetTransform();
             transform.DOKill();
             await transform
                 .DOMove(position, .5f)

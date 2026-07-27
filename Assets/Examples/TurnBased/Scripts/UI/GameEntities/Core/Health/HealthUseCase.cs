@@ -7,8 +7,8 @@ namespace Game.UI
     {
         public static void UpdateHealthBar(this GameEntityView entityView, int health)
         {
-            ProgressBarPro healthBar = entityView.GetValue(GameEntityViewAPI.HealthBar);
-            healthBar.Value = (float) health / entityView.GetValue(GameEntityAPI.MaxHealth).Value;
+            ProgressBarPro healthBar = entityView.Entity.GetHealthBar();
+            healthBar.Value = (float) health / entityView.Entity.GetMaxHealth().Value;
         }
     }
 }

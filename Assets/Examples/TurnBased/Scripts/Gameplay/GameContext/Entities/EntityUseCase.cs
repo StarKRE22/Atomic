@@ -9,7 +9,7 @@ namespace Game.Gameplay
     {
         public static void SpawnInitialUnits(this IGameContext gameContext)
         {
-            EntitySpawnInfo[] spawnDataSet = gameContext.GetValue(GameContextAPI.InitialEntities);
+            EntitySpawnInfo[] spawnDataSet = gameContext.GetInitialEntities();
             foreach (EntitySpawnInfo spawnInfo in spawnDataSet)
             {
                 GameEntityType entityType = spawnInfo.entityType;
@@ -28,23 +28,23 @@ namespace Game.Gameplay
         {
             entity = null;
 
-            GameEntityBoard entityBoard = context.GetValue(GameContextAPI.GameBoard);
+            GameEntityBoard entityBoard = context.GetGameBoard();
             if (!entityBoard.IsFreePosition(position))
                 return false;
 
-            IMultiEntityPool<GameEntityType, IGameEntity> pool = context.GetValue(GameContextAPI.EntityPool);
+            IMultiEntityPool<GameEntityType, IGameEntity> pool = context.GetEntityPool();
             entity = pool.Rent(type);
             entityBoard.PlaceEntity(entity, position);
 
-            IEntityWorld<IGameEntity> entityWorld = context.GetValue(GameContextAPI.EntityWorld);
+            IEntityWorld<IGameEntity> entityWorld = context.GetEntityWorld();
             entityWorld.Add(entity);
 
-            entity.GetValue(GameEntityAPI.RespawnAction).Invoke();
+            entity.GetRespawnAction().Invoke();
 
             if (notify)
             {
-                IGameEventBus eventBus = context.GetValue(GameContextAPI.EventBus);
-                eventBus.Invoke(GameEventAPI.EntitySpawned, new SpawnEventArgs(entity, position));
+                IGameEventBus eventBus = context.GetEventBus();
+                eventBus.InvokeEntitySpawned( new SpawnEventArgs(entity, position));
             }
 
             return true;
@@ -52,30 +52,30 @@ namespace Game.Gameplay
 
         public static bool Despawn(this IGameContext context, IGameEntity entity)
         {
-            GameEntityBoard entityBoard = context.GetValue(GameContextAPI.GameBoard);
-            IEntityWorld<IGameEntity> entityWorld = context.GetValue(GameContextAPI.EntityWorld);
+            GameEntityBoard entityBoard = context.GetGameBoard();
+            IEntityWorld<IGameEntity> entityWorld = context.GetEntityWorld();
             if (!entityWorld.Remove(entity))
                 return false;
 
             entityBoard.RemoveEntity(entity);
-            IMultiEntityPool<GameEntityType, IGameEntity> pool = context.GetValue(GameContextAPI.EntityPool);
+            IMultiEntityPool<GameEntityType, IGameEntity> pool = context.GetEntityPool();
             pool.Return(entity);
 
-            IGameEventBus eventBus = context.GetValue(GameContextAPI.EventBus);
-            eventBus.Invoke(GameEventAPI.EntityDespawned, entity);
+            IGameEventBus eventBus = context.GetEventBus();
+            eventBus.InvokeEntityDespawned( entity);
             return true;
         }
 
         public static void DespawnDeadEntities(this IGameContext context)
         {
-            GameEntityBoard gameBoard = context.GetValue(GameContextAPI.GameBoard);
-            IGameEventBus eventBus = context.GetValue(GameContextAPI.EventBus);
+            GameEntityBoard gameBoard = context.GetGameBoard();
+            IGameEventBus eventBus = context.GetEventBus();
 
             foreach (IGameEntity entity in gameBoard.Entities.Keys.ToArray())
             {
                 if (!entity.HealthExists())
                 {
-                    eventBus.Invoke(GameEventAPI.EntityDied, entity);
+                    eventBus.InvokeEntityDied( entity);
                     context.Despawn(entity);
                 }
             }
@@ -86,8 +86,8 @@ namespace Game.Gameplay
             if (entity.HealthExists())
                 return false;
 
-            IGameEventBus eventBus = context.GetValue(GameContextAPI.EventBus);
-            eventBus.Invoke(GameEventAPI.EntityDied, entity);
+            IGameEventBus eventBus = context.GetEventBus();
+            eventBus.InvokeEntityDied( entity);
             return context.Despawn(entity);
         }
     }

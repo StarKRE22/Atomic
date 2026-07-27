@@ -19,7 +19,7 @@ namespace Game.UI
 
         public void Enable(IUIContext context)
         {
-            _selectedCharacter = context.GetValue(UIContextAPI.SelectedCharacter);
+            _selectedCharacter = context.GetSelectedCharacter();
             _selectedCharacter.Observe(this.OnCharacterChanged);
         }
         
@@ -32,16 +32,16 @@ namespace Game.UI
         {
             if (_currentCharacter != null)
             {
-               _currentCharacter.GetValue(GameEntityAPI.CurrentMovesCount).Unsubscribe(this.OnMovesChanged);
-               _currentCharacter.GetValue(GameEntityAPI.CurrentAttacksCount).Unsubscribe(this.OnAttacksChanged);
+               _currentCharacter.GetCurrentMovesCount().Unsubscribe(this.OnMovesChanged);
+               _currentCharacter.GetCurrentAttacksCount().Unsubscribe(this.OnAttacksChanged);
             }
             
             _currentCharacter = selectedCharacter;
             
             if (_currentCharacter != null)
             {
-                _currentCharacter.GetValue(GameEntityAPI.CurrentMovesCount).Subscribe(this.OnMovesChanged);
-                _currentCharacter.GetValue(GameEntityAPI.CurrentAttacksCount).Subscribe(this.OnAttacksChanged);
+                _currentCharacter.GetCurrentMovesCount().Subscribe(this.OnMovesChanged);
+                _currentCharacter.GetCurrentAttacksCount().Subscribe(this.OnAttacksChanged);
             }
 
             _view.gameObject.SetActive(_currentCharacter != null);
@@ -52,8 +52,8 @@ namespace Game.UI
         {
             if (_currentCharacter != null)
             {
-                int remainMoves = _currentCharacter.GetValue(GameEntityAPI.CurrentMovesCount).Value;
-                int remainAttacks = _currentCharacter.GetValue(GameEntityAPI.CurrentAttacksCount).Value;
+                int remainMoves = _currentCharacter.GetCurrentMovesCount().Value;
+                int remainAttacks = _currentCharacter.GetCurrentAttacksCount().Value;
                 _view.text = $"Moves: {remainMoves}\nAttacks: {remainAttacks}";
             }
         }

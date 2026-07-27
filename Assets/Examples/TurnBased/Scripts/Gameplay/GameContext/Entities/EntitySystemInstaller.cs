@@ -16,9 +16,9 @@ namespace Game.Gameplay
         public void Install(IGameContext context)
         {
             EntityWorld<IGameEntity> entityWorld = new EntityWorld<IGameEntity>();
-            context.AddValue(GameContextAPI.InitialEntities, _initialEntities);
-            context.AddValue(GameContextAPI.EntityWorld, entityWorld);
-            context.AddValue(GameContextAPI.EntityPool,
+            context.AddInitialEntities( _initialEntities);
+            context.AddEntityWorld( entityWorld);
+            context.AddEntityPool(
                 new MultiEntityPool<GameEntityType, IGameEntity, Args<IGameContext>>(_entityCatalog,
                     new Args<IGameContext>(context)
                 ));

@@ -9,11 +9,11 @@ namespace Game.Gameplay
     public static class AttackUseCase
     {
         public static bool HasAttacksInTurn(this IGameEntity entity) =>
-            entity.GetValue(GameEntityAPI.CurrentAttacksCount).Value > 0;
+            entity.GetCurrentAttacksCount().Value > 0;
 
         public static void ResetAttacksInTurn(this IGameEntity entity) =>
-            entity.GetValue(GameEntityAPI.CurrentAttacksCount).Value =
-                entity.GetValue(GameEntityAPI.MaxAttacksPerTurn).Value;
+            entity.GetCurrentAttacksCount().Value =
+                entity.GetMaxAttacksPerTurn().Value;
 
         public static bool AttackAsCharacter(
             this IGameEntity attacker,
@@ -24,7 +24,7 @@ namespace Game.Gameplay
             if (attacker == null || target == null)
                 return false;
 
-            IReactiveVariable<int> currentAttacksCount = attacker.GetValue(GameEntityAPI.CurrentAttacksCount);
+            IReactiveVariable<int> currentAttacksCount = attacker.GetCurrentAttacksCount();
             int currentAttacks = currentAttacksCount.Value;
             if (currentAttacks <= 0)
                 return false;
@@ -32,7 +32,7 @@ namespace Game.Gameplay
             if (!target.HealthExists())
                 return false;
 
-            GameEntityBoard board = context.GetValue(GameContextAPI.GameBoard);
+            GameEntityBoard board = context.GetGameBoard();
 
             if (!board.TryGetCellPosition(attacker, out var attackerPos) ||
                 !board.TryGetCellPosition(target, out var targetPos))
@@ -45,19 +45,19 @@ namespace Game.Gameplay
             Vector2Int delta = targetPos - attackerPos;
             int distance = Mathf.Max(Mathf.Abs(delta.x), Mathf.Abs(delta.y));
 
-            int range = attacker.GetValue(GameEntityAPI.AttackDistance).Value;
+            int range = attacker.GetAttackDistance().Value;
             if (distance > range)
                 return false;
 
             if (!attacker.CanAttackTarget(target))
                 return false;
 
-            IGameEventBus eventBus = context.GetValue(GameContextAPI.EventBus);
+            IGameEventBus eventBus = context.GetEventBus();
 
-            eventBus.Invoke(GameEventAPI.EntityAttackStarted,
+            eventBus.InvokeEntityAttackStarted(
                 new AttackEventArgs(attacker, target, attackerPos, targetPos));
 
-            int damage = attacker.GetValue(GameEntityAPI.AttackDamage).Value;
+            int damage = attacker.GetAttackDamage().Value;
             attacker.DealDamage(target, damage, context);
             
             Vector2Int direction = targetPos - attackerPos;
@@ -65,7 +65,7 @@ namespace Game.Gameplay
             
             context.DespawnDeadEntities();
 
-            eventBus.Invoke(GameEventAPI.EntityAttackEnded,
+            eventBus.InvokeEntityAttackEnded(
                 new AttackEventArgs(attacker, target, attackerPos, targetPos));
 
             currentAttacksCount.Value--;
@@ -77,11 +77,11 @@ namespace Game.Gameplay
             this IGameEntity entity,
             IGameContext context)
         {
-            GameEntityBoard board = context.GetValue(GameContextAPI.GameBoard);
+            GameEntityBoard board = context.GetGameBoard();
             if (!board.TryGetCellPosition(entity, out var origin))
                 yield break;
 
-            int range = entity.GetValue(GameEntityAPI.AttackDistance).Value;
+            int range = entity.GetAttackDistance().Value;
 
             foreach (var position in board)
             {
@@ -116,8 +116,8 @@ namespace Game.Gameplay
             if (attacker == target)
                 return false;
 
-            var attackerType = attacker.GetValue(GameEntityAPI.EntityType).Value;
-            var targetType = target.GetValue(GameEntityAPI.EntityType).Value;
+            var attackerType = attacker.GetEntityType().Value;
+            var targetType = target.GetEntityType().Value;
 
             // нельзя атаковать своих
             if (attackerType == targetType)

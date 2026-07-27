@@ -14,14 +14,14 @@ namespace Game.UI
         {
             entity.UpdateHealthBar(0);
 
-            Animator animator = entity.GetValue(GameEntityViewAPI.Animator);
+            Animator animator = entity.Entity.GetAnimator();
             animator.SetTrigger(Death);
             await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
 
-            GameObjectPool prefabPool = ui.GetValue(UIContextAPI.GameObjectPrefabPool);
-            GameObject deathEffect = ui.GetValue(UIContextAPI.DeathEffect);
+            GameObjectPool prefabPool = ui.GetGameObjectPrefabPool();
+            GameObject deathEffect = ui.GetDeathEffect();
 
-            Transform transform = entity.GetValue(GameEntityViewAPI.Transform);
+            Transform transform = entity.Entity.GetTransform();
             Vector3 effectPosition = transform.position;
             effectPosition.y = 1.5f;
             prefabPool.Rent(deathEffect, effectPosition, deathEffect.transform.rotation);
@@ -38,13 +38,13 @@ namespace Game.UI
             view.AnimatorHit();
             view.HighlightHit();
 
-            GameObjectPool prefabPool = ui.GetValue(UIContextAPI.GameObjectPrefabPool);
-            GameObject waterSplashEffect = ui.GetValue(UIContextAPI.WaterSplashEffect);
+            GameObjectPool prefabPool = ui.GetGameObjectPrefabPool();
+            GameObject waterSplashEffect = ui.GetWaterSplashEffect();
 
             var waterSplashPosition = to;
             waterSplashPosition.y = 0f;
 
-            Transform target = view.GetValue(GameEntityViewAPI.Transform);
+            Transform target = view.Entity.GetTransform();
             target.DOKill();
             target.position = from;
 

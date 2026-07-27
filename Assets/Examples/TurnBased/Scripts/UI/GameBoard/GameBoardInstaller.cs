@@ -12,7 +12,7 @@ namespace Game.UI
 
         public void Install(IUIContext ui, IGameContext gameContext)
         {
-            ui.AddValue(UIContextAPI.GameBoardView, _gameBoardView);
+            ui.AddGameBoardView( _gameBoardView);
             ui.AddBehaviour(new GameBoardPresenter(gameContext));
         }
     }

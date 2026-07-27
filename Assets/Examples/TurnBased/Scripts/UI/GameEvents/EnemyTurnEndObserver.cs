@@ -16,10 +16,10 @@ namespace Game.UI
         
         public void Enable(IUIContext ui)
         {
-            _commandQueue = ui.GetValue(UIContextAPI.CommandQueue);
+            _commandQueue = ui.GetCommandQueue();
             _subscription = _gameContext
-                .GetValue(GameContextAPI.EventBus)
-                .Subscribe(GameEventAPI.EnemyTurnEnded, () => this.OnTurnEnded().Forget());
+                .GetEventBus()
+                .SubscribeEnemyTurnEnded( () => this.OnTurnEnded().Forget());
         }
 
         public void Disable(IUIContext ui) => 
@@ -29,7 +29,7 @@ namespace Game.UI
         {
             await _commandQueue.Execute();
             _gameContext.StartPlayerTurn();
-            _gameContext.GetValue(GameContextAPI.EventBus).Flush();
+            _gameContext.GetEventBus().Flush();
         }
     }
 }

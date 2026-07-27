@@ -7,13 +7,13 @@ namespace Game.Gameplay
     {
         public static void StartGame(this IGameContext context)
         {
-            context.GetValue(GameContextAPI.GameState).Value = GameState.Playing;
+            context.GetGameState().Value = GameState.Playing;
             context.StartPlayerTurn();
         }
 
         public static void UpdateGameState(this IGameContext context)
         {
-            IReactiveVariable<GameState> currentState = context.GetValue(GameContextAPI.GameState);
+            IReactiveVariable<GameState> currentState = context.GetGameState();
             if (context.IsLose())
             {
                 currentState.Value = GameState.Finished;
@@ -21,7 +21,7 @@ namespace Game.Gameplay
             else if (context.IsWin())
             {
                 currentState.Value = GameState.Finished;
-                context.GetValue(GameContextAPI.IsWin).Value = true;
+                context.GetIsWin().Value = true;
             }
             else
             {

@@ -13,7 +13,7 @@ namespace Game.Gameplay
 
         public void Install(IGameEntity entity)
         {
-            entity.AddValue(GameEntityAPI.PushDamage, _pushDamage);
+            entity.AddPushDamage( _pushDamage);
         }
     }
 }

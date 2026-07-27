@@ -9,7 +9,7 @@ namespace Game.UI
 
         public static void AnimatorJump(this GameEntityView source)
         {
-            Animator animator = source.GetValue(GameEntityViewAPI.Animator);
+            Animator animator = source.Entity.GetAnimator();
             animator.SetTrigger(Jump);
         }
     }

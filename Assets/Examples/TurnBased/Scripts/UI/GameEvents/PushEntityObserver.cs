@@ -83,10 +83,10 @@ namespace Game.UI
         {
             _ui = ui;
 
-            IGameEventBus eventBus = _gameContext.GetValue(GameContextAPI.EventBus);
-            eventBus.Subscribe(GameEventAPI.EntityPushedOut, this.OnPushedOut).AddTo(_disposables);
-            eventBus.Subscribe(GameEventAPI.EntityPushedTarget, this.OnPushedInTarget).AddTo(_disposables);
-            eventBus.Subscribe(GameEventAPI.EntityPushed, this.OnPushed).AddTo(_disposables);
+            IGameEventBus eventBus = _gameContext.GetEventBus();
+            eventBus.SubscribeEntityPushedOut( this.OnPushedOut).AddTo(_disposables);
+            eventBus.SubscribeEntityPushedTarget( this.OnPushedInTarget).AddTo(_disposables);
+            eventBus.SubscribeEntityPushed( this.OnPushed).AddTo(_disposables);
         }
 
         public void Disable(IUIContext ui)

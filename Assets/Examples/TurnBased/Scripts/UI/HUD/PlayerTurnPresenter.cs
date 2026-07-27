@@ -16,9 +16,9 @@ namespace Game.UI
 
         public void Enable(IUIContext ui)
         {
-            _turnView = ui.GetValue(UIContextAPI.TurnView);
-            _subscription = _gameContext.GetValue(GameContextAPI.EventBus)
-                .Subscribe(GameEventAPI.PlayerTurnStarted, this.OnTurnStarted);
+            _turnView = ui.GetTurnView();
+            _subscription = _gameContext.GetEventBus()
+                .SubscribePlayerTurnStarted( this.OnTurnStarted);
         }
 
         private void OnTurnStarted() => _turnView.AnimatePlayerTurn().Forget();

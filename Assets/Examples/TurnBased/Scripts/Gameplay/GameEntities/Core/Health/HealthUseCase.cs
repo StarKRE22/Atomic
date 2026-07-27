@@ -9,7 +9,7 @@ namespace Game.Gameplay
     {
         public static bool HealthExists(this IGameEntity entity)
         {
-            return entity.GetValue(GameEntityAPI.Health).Value > 0;
+            return entity.GetHealth().Value > 0;
         }
 
         public static bool AnyAlive(this IEnumerable<IGameEntity> entities)
@@ -26,14 +26,14 @@ namespace Game.Gameplay
             if (!entity.HealthExists())
                 return false;
 
-            IReactiveVariable<int> health = entity.GetValue(GameEntityAPI.Health);
+            IReactiveVariable<int> health = entity.GetHealth();
             health.Value = Mathf.Max(0, health.Value - damage);
             return true;
         }
 
         public static void AssignMaxHealth(this IGameEntity entity)
         {
-            entity.GetValue(GameEntityAPI.Health).Value = entity.GetValue(GameEntityAPI.MaxHealth).Value;
+            entity.GetHealth().Value = entity.GetMaxHealth().Value;
         }
 
         public static bool AssignZeroHealth(this IGameEntity entity)
@@ -41,11 +41,11 @@ namespace Game.Gameplay
             if (!entity.HealthExists())
                 return false;
 
-            entity.GetValue(GameEntityAPI.Health).Value = 0;
+            entity.GetHealth().Value = 0;
             return true;
         }
 
         public static float GetHealthPercent(this IGameEntity entity) => 
-            (float) entity.GetValue(GameEntityAPI.Health).Value / entity.GetValue(GameEntityAPI.MaxHealth).Value;
+            (float) entity.GetHealth().Value / entity.GetMaxHealth().Value;
     }
 }

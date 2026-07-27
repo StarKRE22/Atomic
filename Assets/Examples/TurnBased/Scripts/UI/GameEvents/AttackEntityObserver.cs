@@ -59,9 +59,9 @@ namespace Game.UI
         public void Enable(IUIContext ui)
         {
             _ui = ui;
-            IGameEventBus eventBus = _gameContext.GetValue(GameContextAPI.EventBus);
-            eventBus.Subscribe(GameEventAPI.EntityAttackStarted, this.OnAttackStarted).AddTo(_disposables);
-            eventBus.Subscribe(GameEventAPI.EntityAttackEnded, this.OnAttackEnded).AddTo(_disposables);
+            IGameEventBus eventBus = _gameContext.GetEventBus();
+            eventBus.SubscribeEntityAttackStarted( this.OnAttackStarted).AddTo(_disposables);
+            eventBus.SubscribeEntityAttackEnded( this.OnAttackEnded).AddTo(_disposables);
         }
 
         public void Disable(IUIContext ui)

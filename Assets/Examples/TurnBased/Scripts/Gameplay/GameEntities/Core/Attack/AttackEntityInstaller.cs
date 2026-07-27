@@ -19,10 +19,10 @@ namespace Game.Gameplay
 
         public void Install(IGameEntity entity)
         {
-            entity.AddValue(GameEntityAPI.AttackDamage, _attackDamage);
-            entity.AddValue(GameEntityAPI.AttackDistance, _attackDistance);
-            entity.AddValue(GameEntityAPI.MaxAttacksPerTurn, _attacksPerTurn);
-            entity.AddValue(GameEntityAPI.CurrentAttacksCount, new ThreadSafeReactiveVariable<int>());
+            entity.AddAttackDamage( _attackDamage);
+            entity.AddAttackDistance( _attackDistance);
+            entity.AddMaxAttacksPerTurn( _attacksPerTurn);
+            entity.AddCurrentAttacksCount( new ThreadSafeReactiveVariable<int>());
         }
     }
 }

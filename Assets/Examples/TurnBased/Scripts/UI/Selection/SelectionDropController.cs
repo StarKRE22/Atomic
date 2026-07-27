@@ -18,14 +18,14 @@ namespace Game.UI
 
         public void Enable(IUIContext ui)
         {
-            _selectedCharacter = ui.GetValue(UIContextAPI.SelectedCharacter);
-            IGameEventBus eventBus = _gameContext.GetValue(GameContextAPI.EventBus);
+            _selectedCharacter = ui.GetSelectedCharacter();
+            IGameEventBus eventBus = _gameContext.GetEventBus();
             eventBus
-                .Subscribe(GameEventAPI.PlayerTurnStarted, () => _selectedCharacter.Value = null)
+                .SubscribePlayerTurnStarted( () => _selectedCharacter.Value = null)
                 .AddTo(_disposables);
             
             eventBus
-                .Subscribe(GameEventAPI.PlayerTurnEnded, () => _selectedCharacter.Value = null)
+                .SubscribePlayerTurnEnded( () => _selectedCharacter.Value = null)
                 .AddTo(_disposables);
         }
 

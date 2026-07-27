@@ -13,8 +13,8 @@ namespace Game.Gameplay
 
         public void Install(IGameEntity entity)
         {
-            entity.AddValue(GameEntityAPI.CurrentMovesCount, new ThreadSafeReactiveVariable<int>());
-            entity.AddValue(GameEntityAPI.MaxMovesPerTurn, _movesPerTurn);
+            entity.AddCurrentMovesCount( new ThreadSafeReactiveVariable<int>());
+            entity.AddMaxMovesPerTurn( _movesPerTurn);
         }
     }
 }

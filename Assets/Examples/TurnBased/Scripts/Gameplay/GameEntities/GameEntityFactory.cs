@@ -24,7 +24,7 @@ namespace Game.Gameplay
                 valueCapacity,
                 behaviourCapacity
             );
-            entity.AddValue(GameEntityAPI.EntityType, _type);
+            entity.AddEntityType( _type);
             this.Install(entity, args);
             return entity;
         }

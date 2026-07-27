@@ -21,7 +21,7 @@ namespace Game.UI
 
         public void Enable(IUIContext entity)
         {
-            _currentState = _gameContext.GetValue(GameContextAPI.GameState);
+            _currentState = _gameContext.GetGameState();
             _subscription = _currentState.Observe(OnStateChanged);
         }
 

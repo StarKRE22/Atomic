@@ -10,10 +10,10 @@ namespace Game.UI
     {
         public void Install(IUIContext ui, IGameContext gameContext)
         {
-            ui.AddValue(UIContextAPI.InputCondition, new InlineFunction<bool>(() =>
+            ui.AddInputCondition( new InlineFunction<bool>(() =>
             {
-                UICommandQueue commandQueue = ui.GetValue(UIContextAPI.CommandQueue);
-                IReactiveVariable<GameState> gameState = gameContext.GetValue(GameContextAPI.GameState);
+                UICommandQueue commandQueue = ui.GetCommandQueue();
+                IReactiveVariable<GameState> gameState = gameContext.GetGameState();
                 return !commandQueue.IsActive && gameState.Value == GameState.Playing;
             }));
             ui.AddBehaviour(new AttackInputController(gameContext));

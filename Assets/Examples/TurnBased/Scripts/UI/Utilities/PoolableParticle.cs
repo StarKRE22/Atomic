@@ -15,7 +15,7 @@ namespace Game.UI
 
         private void OnParticleSystemStopped()
         {
-            uiContext.GetValue(UIContextAPI.GameObjectPrefabPool).Return(this.gameObject);
+            uiContext.GetGameObjectPrefabPool().Return(this.gameObject);
         }
     }
 }

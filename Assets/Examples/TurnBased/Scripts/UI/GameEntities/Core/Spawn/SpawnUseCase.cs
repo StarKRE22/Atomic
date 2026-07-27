@@ -10,10 +10,10 @@ namespace Game.UI
     {
         public static async UniTask SpawnEntityView(this IUIContext context, IGameEntity entity, Vector2Int position)
         {
-            GameEntityCollectionView collectionView = context.GetValue(UIContextAPI.EntityCollectionView);
+            GameEntityCollectionView collectionView = context.GetEntityCollectionView();
             GameEntityView view = collectionView.Add(entity);
             
-            Transform transform = view.GetValue(GameEntityViewAPI.Transform);
+            Transform transform = view.Entity.GetTransform();
             transform.position = context.GetWorldPosition(position);
             
             await transform

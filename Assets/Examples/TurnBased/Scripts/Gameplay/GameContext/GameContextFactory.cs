@@ -29,12 +29,12 @@ namespace Game.Gameplay
             GameContext context = new GameContext(this.name, tagCapacity, valueCapacity, behaviourCapacity, settings);
 
             GameEventBus eventBus = new GameEventBus();
-            context.AddValue(GameContextAPI.EventBus, eventBus);
-            context.AddValue(GameContextAPI.CurrentTurn, new ThreadSafeReactiveVariable<int>());
-            context.AddValue(GameContextAPI.EnemyWaves, new List<EntitySpawnInfo>(_waves));
-            context.AddValue(GameContextAPI.GameState, new ThreadSafeReactiveVariable<GameState>(GameState.Playing));
-            context.AddValue(GameContextAPI.IsWin, new ThreadSafeReactiveVariable<bool>());
-            context.AddValue(GameContextAPI.SpawnDamage, _spawnDamage);
+            context.AddEventBus( eventBus);
+            context.AddCurrentTurn( new ThreadSafeReactiveVariable<int>());
+            context.AddEnemyWaves( new List<EntitySpawnInfo>(_waves));
+            context.AddGameState( new ThreadSafeReactiveVariable<GameState>(GameState.Playing));
+            context.AddIsWin( new ThreadSafeReactiveVariable<bool>());
+            context.AddSpawnDamage( _spawnDamage);
 
             // context.WhenTick(_ => eventBus.Flush());
             

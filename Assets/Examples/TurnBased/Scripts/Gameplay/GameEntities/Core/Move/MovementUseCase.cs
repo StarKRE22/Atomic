@@ -9,19 +9,19 @@ namespace Game.Gameplay
     public static class MovementUseCase
     {
         public static bool HasMovesInTurn(this IGameEntity entity) =>
-            entity.GetValue(GameEntityAPI.CurrentMovesCount).Value > 0;
+            entity.GetCurrentMovesCount().Value > 0;
 
         public static void ResetMovesInTurn(this IGameEntity entity) =>
-            entity.GetValue(GameEntityAPI.CurrentMovesCount).Value =
-                entity.GetValue(GameEntityAPI.MaxMovesPerTurn).Value;
+            entity.GetCurrentMovesCount().Value =
+                entity.GetMaxMovesPerTurn().Value;
         
         public static bool MoveAsCharacter(this IGameEntity entity, Vector2Int targetPosition, IGameContext context)
         {
-            int currentMoves = entity.GetValue(GameEntityAPI.CurrentMovesCount).Value;
+            int currentMoves = entity.GetCurrentMovesCount().Value;
             if (currentMoves <= 0)
                 return false;
 
-            GameEntityBoard board = context.GetValue(GameContextAPI.GameBoard);
+            GameEntityBoard board = context.GetGameBoard();
             if (!board.TryGetCellPosition(entity, out Vector2Int currentPosition))
                 return false;
 
@@ -36,10 +36,10 @@ namespace Game.Gameplay
                 return false;
 
             // списываем ровно столько, сколько прошли
-            entity.GetValue(GameEntityAPI.CurrentMovesCount).Value -= distance;
+            entity.GetCurrentMovesCount().Value -= distance;
 
-            IGameEventBus eventBus = context.GetValue(GameContextAPI.EventBus);
-            eventBus.Invoke(GameEventAPI.EntityMoved, new MoveEventArgs(entity, currentPosition, targetPosition));
+            IGameEventBus eventBus = context.GetEventBus();
+            eventBus.InvokeEntityMoved( new MoveEventArgs(entity, currentPosition, targetPosition));
             return true;
         }
         
@@ -48,11 +48,11 @@ namespace Game.Gameplay
             IGameContext context
         )
         {
-            GameEntityBoard board = context.GetValue(GameContextAPI.GameBoard);
+            GameEntityBoard board = context.GetGameBoard();
             if (!board.TryGetCellPosition(entity, out var currentPosition))
                 yield break;
 
-            int currentMoves = entity.GetValue(GameEntityAPI.CurrentMovesCount).Value;
+            int currentMoves = entity.GetCurrentMovesCount().Value;
             if (currentMoves <= 0)
                 yield break;
 

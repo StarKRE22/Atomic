@@ -18,10 +18,10 @@ namespace Game.UI
         public void Enable(IUIContext ui)
         {
             _ui = ui;
-            _commandQueue = ui.GetValue(UIContextAPI.CommandQueue);
+            _commandQueue = ui.GetCommandQueue();
             _subscription = _gameContext
-                .GetValue(GameContextAPI.EventBus)
-                .Subscribe(GameEventAPI.EntityDied, this.OnDied);
+                .GetEventBus()
+                .SubscribeEntityDied( this.OnDied);
         }
 
         public void Disable(IUIContext ui) => 

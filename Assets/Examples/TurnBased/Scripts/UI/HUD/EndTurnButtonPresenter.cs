@@ -23,8 +23,8 @@ namespace Game.UI
         {
             _button.onClick.AddListener(this.OnClicked);
             _subscription = _gameContext
-                .GetValue(GameContextAPI.EventBus)
-                .Subscribe(GameEventAPI.PlayerTurnStarted, this.OnTurnStarted);
+                .GetEventBus()
+                .SubscribePlayerTurnStarted( this.OnTurnStarted);
         }
 
         public void Disable(IUIContext context)

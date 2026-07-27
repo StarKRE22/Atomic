@@ -9,7 +9,7 @@ namespace Game.UI
     {
         public void Init(IGameEntity entity)
         {
-            ProgressBarPro healthBar = entity.GetValue(GameEntityViewAPI.HealthBar);
+            ProgressBarPro healthBar = entity.GetHealthBar();
             healthBar.Value = entity.GetHealthPercent();
         }
     }

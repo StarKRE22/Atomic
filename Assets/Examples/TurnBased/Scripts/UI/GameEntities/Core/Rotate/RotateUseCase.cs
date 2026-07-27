@@ -9,7 +9,7 @@ namespace Game.UI
     {
         public static async UniTask RotateAt(this GameEntityView entity, Vector3 position)
         {
-            Transform transform = entity.GetValue(GameEntityViewAPI.Transform);
+            Transform transform = entity.Entity.GetTransform();
 
             transform.DOKill();
             Vector3 direction = position - transform.position;

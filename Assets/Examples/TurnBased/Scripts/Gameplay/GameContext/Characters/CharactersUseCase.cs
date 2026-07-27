@@ -10,9 +10,9 @@ namespace Game.Gameplay
 
         public static IGameEntity[] GetCharacters(this IGameContext context)
         {
-            GameEntityBoard entityBoard = context.GetValue(GameContextAPI.GameBoard);
+            GameEntityBoard entityBoard = context.GetGameBoard();
             return entityBoard.Entities.Keys
-                .Where(e => e.GetValue(GameEntityAPI.EntityType).Value == GameEntityType.Character)
+                .Where(e => e.GetEntityType().Value == GameEntityType.Character)
                 .ToArray();
         }
     }
