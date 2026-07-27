@@ -61,6 +61,7 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 - [Triggers](Filters/EntityTriggers.md) <!-- + -->
 - [Systems](Systems/Manual.md) <!-- + -->
 - [Lifecycle](Lifecycle/Manual.md) <!-- + -->
+- [Inspector](Inspector/Manual.md) <!-- + -->
 - [Views](UI/Manual.md) <!-- + -->
 - [KeyStore](KeyStore/Manual.md) <!-- + -->
 - [API Generation](EntityAPI/Manual.md) <!-- + -->
