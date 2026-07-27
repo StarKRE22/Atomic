@@ -414,8 +414,8 @@ To be added...
 
 ## 🔍 API Reference
 
-Explore the full Atomic API documentation. The framework is divided into two main modules — Elements and Entities, each
-responsible for a different level of abstraction.
+Explore the full Atomic API documentation. The framework is divided into three main modules — Elements, Entities and Events,
+each responsible for a different level of abstraction.
 
 ### [⚛️ Atomic.Elements](Docs/Elements/Manual.md)
 
@@ -425,6 +425,7 @@ Use them to define data, state, logic, and interaction between systems.
 - [Values](Docs/Elements/Values/Manual.md)  — immutable constants and parameters
 - [Variables](Docs/Elements/Variables/Manual.md) — reactive mutable data containers
 - [Actions](Docs/Elements/Actions/Manual.md) — callable commands and procedures
+- [Commands](Docs/Elements/Commands/Manual.md) — request-like objects that encapsulate an action with optional undo
 - [Functions](Docs/Elements/Functions/Manual.md) — encapsulated logic returning results
 - [Setters](Docs/Elements/Setters/Manual.md) — controlled state mutation interfaces
 - [Requests](Docs/Elements/Requests/Manual.md) — deferred actions that can be executed at a later time
@@ -453,8 +454,20 @@ systems, UI elements, and application contexts can be represented as entities, e
 - [Triggers](Docs/Entities/Filters/EntityTriggers.md) — reactive filtering events
 - [Lifecycle](Docs/Entities/Lifecycle/Manual.md) — initialization and update stages
 - [Views](Docs/Entities/UI/Manual.md) — UI integration and visualization
-- [Names](Docs/Entities/Names/Manual.md) — converting string-based names into unique integer identifiers
+- [KeyStore](Docs/Entities/KeyStore/Manual.md) — converting string-based names into unique integer identifiers
+- [Systems](Docs/Entities/Systems/Manual.md) — entity update and processing systems
+- [Inspector](Docs/Entities/Inspector/Manual.md) — editor-only attributes for visualizing entity data
+- [Bootstrap](Docs/Entities/Bootstrap/Manual.md) — scene and scriptable bootstrap setup
 - [API Generation](Docs/Entities/EntityAPI/Manual.md) — automatic code generation via Atomic plugin and Unity Editor
+
+### [📣 Atomic.Events](Docs/Events/Manual.md)
+
+Lightweight, strongly-typed event bus system for decoupled communication between systems.
+
+- [Bus](Docs/Events/Bus/Manual.md) — event bus implementations
+- [Keys](Docs/Events/Keys/Manual.md) — strongly-typed event identifiers
+- [Subscriptions](Docs/Events/Subscriptions/Manual.md) — disposable event subscriptions
+- [Extensions](Docs/Events/Extensions.md) — bus extension methods
 
 ---
 
