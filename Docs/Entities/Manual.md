@@ -59,6 +59,7 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 - [Registry](Registry/EntityRegistry.md) <!-- + -->
 - [Filters](Filters/Manual.md) <!-- + -->
 - [Triggers](Filters/EntityTriggers.md) <!-- + -->
+- [Systems](Systems/Manual.md) <!-- + -->
 - [Lifecycle](Lifecycle/Manual.md) <!-- + -->
 - [Views](UI/Manual.md) <!-- + -->
 - [Names](Names/Manual.md) <!-- + -->
