@@ -1,11 +1,11 @@
 # 📖 Creating the Entity in Unity
 
-In this section, we’ll walk through the complete process of creating a character entity in Unity using Rider IDE and the
-Atomic plugin. Step by step, we’ll set up an entity, generate its data through the Atomic configuration file, and
-implement a simple movement mechanic.
+In this section, we’ll walk through the complete process of creating a character entity in Unity using the Atomic source
+generators. Step by step, we’ll declare a type-safe Entity API, add the data to the entity, and implement a simple
+movement mechanic.
 
-By the end of this section, you’ll have a working character that moves in the specified direction
-demonstrating how Atomic’s code generation and entity-based architecture streamline gameplay logic creation.
+For full details on the source generators, see the [Code Generation Walkthrough](Codegeneration.md) and the
+[Code Generation Manual](../CodeGeneration/Manual.md).
 
 ---
 
@@ -35,34 +35,37 @@ Make sure the following checkboxes are enabled:
 - `useUnityLifecycle` — the entity updates along with the **MonoBehaviour** lifecycle.
 - `installOnAwake` — the entity is constructed during the **Awake** phase.
 
-#### Step 3. Generate Data
+#### Step 3. Declare the Entity API
 
-Add the following properties to the configuration file `EntityAPI.atomic`:
+Create a static partial class and mark it with `[EntityAPI]`. Declare the character data as `ValueKey<>` fields:
 
-- `Transform` : Transform
-- `MoveDirection`: IVariable\<Vector3>
-- `MoveSpeed`: IValue<float>
+```csharp
+using Atomic.Entities;
+using UnityEngine;
 
-```yaml
-namespace: SampleGame
-className: EntityAPI
-directory: Assets/Scripts/
-aggressiveInlining: true
-unsafe: false
-entityType: IEntity
-
-imports:
-  - Atomic.Entities
-  - Atomic.Elements
-
-tags:
-
-# Add properties
-values:
-  Transform: Transform
-  MoveSpeed: IValue<float>
-  MoveDirection: IVariable<Vector3>
+[EntityAPI]
+public static partial class CharacterAPI
+{
+    public static readonly ValueKey<IEntity, Transform> Transform = new(nameof(Transform));
+    public static readonly ValueKey<IEntity, IValue<float>> MoveSpeed = new(nameof(MoveSpeed));
+    public static readonly ValueKey<IEntity, IVariable<Vector3>> MoveDirection = new(nameof(MoveDirection));
+}
 ```
+
+After the first compilation, the generator creates extension methods such as:
+
+```csharp
+entity.AddTransform(transform);
+entity.AddMoveSpeed(moveSpeed);
+entity.AddMoveDirection(moveDirection);
+
+Transform t = entity.GetTransform();
+IValue<float> speed = entity.GetMoveSpeed();
+IVariable<Vector3> direction = entity.GetMoveDirection();
+```
+
+See the [Entity API Generator](../CodeGeneration/EntityAPI/EntityAPIGenerator.md) for all supported key types and
+configuration options.
 
 #### Step 4. Creating the Movement Mechanic
 
@@ -90,7 +93,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
     public void FixedTick(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
-        if (direction != Vector3.zero) 
+        if (direction != Vector3.zero)
             _transform.position += _moveSpeed.Value * deltaTime * direction;
     }
 }
@@ -125,7 +128,7 @@ public sealed class CharacterInstaller : MonoEntityInstaller
         entity.AddTransform(_transform);
         entity.AddMoveSpeed(_moveSpeed);
         entity.AddMoveDirection(_moveDirection);
-        
+
         // Add behaviours to a character
         entity.AddBehaviour<MoveBehaviour>();
     }
@@ -140,7 +143,7 @@ Next, add the `CharacterInstaller` component to your entity through the Inspecto
 
 #### Step 7. Connecting the Installer to the Entity
 
-To link the `CharacterInstaller` to the `Entity` component, drag and drop it into the `Scene Installers` field.
+To link the `CharacterInstaller` to the `Entity` component, drag and drop it into the **Mono Installers** field.
 
 <img width="400" height="" alt="изображение" src="../Images/EntityInstalling.png" />
 
@@ -160,9 +163,9 @@ public class InputBehaviour : IEntityInit, IEntityTick
 {
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
-    
+
     private ISetter<Vector3> _moveDirection;
-    
+
     public void Init(IEntity entity)
     {
         _moveDirection = entity.GetMoveDirection();
@@ -179,7 +182,7 @@ public class InputBehaviour : IEntityInit, IEntityTick
 
 > [!IMPORTANT]
 > Here, it’s important to note that to change the entity’s data, we simply modify the value through its reference.
-> No `SetMoveDirection` to the `IEntity` is required.
+> No `SetMoveDirection` on the `IEntity` is required.
 
 #### Step 2. Add the InputBehaviour
 
@@ -198,22 +201,24 @@ public sealed class CharacterInstaller : MonoEntityInstaller
         entity.AddTransform(_transform);
         entity.AddMoveSpeed(_moveSpeed);
         entity.AddMoveDirection(_moveDirection);
-        
+
         // Add behaviours to a character
         entity.AddBehaviour<MoveBehaviour>();
-        entity.AddBehaviour<InputBehaviour>(); // (+)
+        entity.AddBehaviour<InputBehaviour>();
     }
 }
 ```
 
-#### Step 3. Running the Character
-
-In the Unity Editor, press Play to verify that the character moves when pressing the WASD or arrow keys.
+Now the character can be controlled with the keyboard.
 
 ---
 
-<p align="center">
-<a href="ArchitectualConsistency.md">Move Next</a> •
-<a href="https://github.com/StarKRE22/Atomic/issues">Report Issue</a> •
-<a href="https://github.com/StarKRE22/Atomic/discussions">Join Discussion</a>
-</p>
+## ✅ Result
+
+You now have a character entity that:
+
+- Declares type-safe keys with `[EntityAPI]`
+- Uses generated extension methods to add and access data
+- Reuses behaviours for movement and input
+
+For more advanced scenarios, see the [Code Generation Walkthrough](Codegeneration.md).

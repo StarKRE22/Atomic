@@ -68,8 +68,9 @@ For character movement we need data in the form of position, speed, and movement
 - `MoveDirection` — a variable that defines the movement direction.
 - `MoveSpeed` — a variable that sets the magnitude of the speed.
 
-After defining the specific data types, we can generate them using a dedicated plugin developed for Rider IDE.
-We’ll discuss how to configure code generation in detail in the [Entity API Generation](Codegeneration.md) page.
+After defining the specific data types, we can generate type-safe extension methods using the
+[Entity API Generator](../CodeGeneration/EntityAPI/EntityAPIGenerator.md). We’ll discuss how to configure code
+generation in detail in the [Code Generation Walkthrough](Codegeneration.md).
 
 #### Step 2. Define the logic
 

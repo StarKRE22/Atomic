@@ -414,8 +414,8 @@ To be added...
 
 ## 🔍 API Reference
 
-Explore the full Atomic API documentation. The framework is divided into three main modules — Elements, Entities and Events,
-each responsible for a different level of abstraction.
+Explore the full Atomic API documentation. The framework is divided into four main modules — Elements, Entities, Events
+and Code Generation, each responsible for a different level of abstraction.
 
 ### [⚛️ Atomic.Elements](Docs/Elements/Manual.md)
 
@@ -458,7 +458,7 @@ systems, UI elements, and application contexts can be represented as entities, e
 - [Systems](Docs/Entities/Systems/Manual.md) — entity update and processing systems
 - [Inspector](Docs/Entities/Inspector/Manual.md) — editor-only attributes for visualizing entity data
 - [Bootstrap](Docs/Entities/Bootstrap/Manual.md) — scene and scriptable bootstrap setup
-- [API Generation](Docs/Entities/EntityAPI/Manual.md) — automatic code generation via Atomic plugin and Unity Editor
+- [API Generation](Docs/Entities/EntityAPI/Manual.md) — type-safe extension methods via source generators
 
 ### [📣 Atomic.Events](Docs/Events/Manual.md)
 
@@ -468,6 +468,16 @@ Lightweight, strongly-typed event bus system for decoupled communication between
 - [Keys](Docs/Events/Keys/Manual.md) — strongly-typed event identifiers
 - [Subscriptions](Docs/Events/Subscriptions/Manual.md) — disposable event subscriptions
 - [Extensions](Docs/Events/Extensions.md) — bus extension methods
+
+### [🧬 Code Generation](Docs/CodeGeneration/Manual.md)
+
+Roslyn source generators and analyzers that turn declarative API classes into strongly-typed extension methods.
+
+- [Setup](Docs/CodeGeneration/Setup.md) — adding generators/analyzers to a Unity project
+- [Entity API Generator](Docs/CodeGeneration/EntityAPI/EntityAPIGenerator.md) — `[EntityAPI]` usage
+- [Entity API Analyzer](Docs/CodeGeneration/EntityAPI/EntityAPIAnalyzer.md) — key initializer validation
+- [Event API Generator](Docs/CodeGeneration/EventAPI/EventAPIGenerator.md) — `[EventAPI]` usage
+- [Event API Analyzer](Docs/CodeGeneration/EventAPI/EventAPIAnalyzer.md) — event key initializer validation
 
 ---
 
