@@ -4,20 +4,13 @@ namespace Atomic.Entities
 {
     /// <summary>
     /// Marks a static class as an Entity API definition for source generation.
-    /// The source generator reads public static fields and produces extension
-    /// methods for the specified entity type. <c>Tag</c> fields become tag
-    /// methods (Has/Del/AddTag); all other types become value methods
-    /// (Get/TryGet/Add/Has/Del/Set/Ref).
+    /// The source generator reads static fields of type <c>ValueKey&lt;,&gt;</c>
+    /// or <c>TagKey&lt;&gt;</c> and produces extension methods for the entity type
+    /// declared in each key's first generic argument.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public sealed class EntityAPIAttribute : Attribute
     {
-        /// <summary>
-        /// The entity interface type (e.g., <c>IPlayerContext</c>, <c>IGameEntity</c>)
-        /// that generated extension methods will extend.
-        /// </summary>
-        public Type EntityType { get; }
-
         /// <summary>
         /// When <c>true</c>, all value fields generate
         /// <c>GetValueUnsafe&lt;T&gt;</c> and <c>RefXxx()</c> methods
@@ -33,9 +26,8 @@ namespace Atomic.Entities
         /// </summary>
         public bool AggressiveInlining { get; set; } = true;
 
-        public EntityAPIAttribute(Type entityType)
+        public EntityAPIAttribute()
         {
-            EntityType = entityType ?? throw new ArgumentNullException(nameof(entityType));
         }
     }
 }
