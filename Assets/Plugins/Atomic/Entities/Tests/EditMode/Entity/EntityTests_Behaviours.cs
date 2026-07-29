@@ -12,7 +12,7 @@ namespace Atomic.Entities
         public void OnBehaviourAdded_IsInvoked_WhenBehaviourIsAdded()
         {
             var entity = new Entity();
-            var behaviour = new EntityBehaviourStub();
+            var behaviour = new EntityBehaviourSpy();
 
             IEntity calledEntity = null;
             IEntityBehaviour calledBehaviour = null;
@@ -33,7 +33,7 @@ namespace Atomic.Entities
         public void OnBehaviourAdded_WhenBehaviourAlreadyExists_IsInvoked()
         {
             var entity = new Entity();
-            var behaviour = new EntityBehaviourStub();
+            var behaviour = new EntityBehaviourSpy();
             entity.AddBehaviour(behaviour);
 
             bool wasCalled = false;
@@ -66,7 +66,7 @@ namespace Atomic.Entities
         public void OnBehaviourDeleted_IsInvoked_WhenBehaviourIsDeleted()
         {
             var entity = new Entity();
-            var behaviour = new EntityBehaviourStub();
+            var behaviour = new EntityBehaviourSpy();
             entity.AddBehaviour(behaviour);
 
             IEntity calledEntity = null;
@@ -88,7 +88,7 @@ namespace Atomic.Entities
         public void OnBehaviourDeleted_IsNotInvoked_WhenBehaviourDoesNotExist()
         {
             var entity = new Entity();
-            var behaviour = new EntityBehaviourStub();
+            var behaviour = new EntityBehaviourSpy();
 
             bool wasCalled = false;
             entity.OnBehaviourDeleted += (_, _) => wasCalled = true;
@@ -102,8 +102,8 @@ namespace Atomic.Entities
         [Test]
         public void OnBehaviourDeleted_IsInvoked_ForEach_WhenClearBehavioursCalled()
         {
-            var a = new EntityBehaviourStub();
-            var b = new EntityBehaviourStub();
+            var a = new EntityBehaviourSpy();
+            var b = new EntityBehaviourSpy();
 
             var deleted = new List<IEntityBehaviour>();
             var entity = new Entity();
@@ -132,8 +132,8 @@ namespace Atomic.Entities
         public void BehaviourCount_Increases_WhenBehavioursAdded()
         {
             var entity = new Entity();
-            entity.AddBehaviour(new EntityBehaviourStub());
-            entity.AddBehaviour(new EntityBehaviourStub());
+            entity.AddBehaviour(new EntityBehaviourSpy());
+            entity.AddBehaviour(new EntityBehaviourSpy());
 
             Assert.AreEqual(2, entity.BehaviourCount);
         }
@@ -141,8 +141,8 @@ namespace Atomic.Entities
         [Test]
         public void BehaviourCount_Decreases_WhenBehaviourRemoved()
         {
-            var a = new EntityBehaviourStub();
-            var b = new EntityBehaviourStub();
+            var a = new EntityBehaviourSpy();
+            var b = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {a, b});
@@ -156,7 +156,7 @@ namespace Atomic.Entities
         public void BehaviourCount_Zero_AfterClear()
         {
             var entity = new Entity();
-            entity.AddBehaviour(new EntityBehaviourStub());
+            entity.AddBehaviour(new EntityBehaviourSpy());
 
             entity.ClearBehaviours();
 
@@ -171,9 +171,9 @@ namespace Atomic.Entities
         public void GetAllBehaviours_ReturnsAllAttachedBehaviours()
         {
             // Arrange
-            var updateStub = new EntityTickStub();
-            var initStub = new EntityInitStub();
-            var behaviourStub = new EntityBehaviourStub();
+            var updateStub = new EntityTickSpy();
+            var initStub = new EntityInitSpy();
+            var behaviourStub = new EntityBehaviourSpy();
 
             var expectedBehaviours = new IEntityBehaviour[]
             {
@@ -194,8 +194,8 @@ namespace Atomic.Entities
         [Test]
         public void GetBehaviours_ReturnsAllAddedBehaviours_InOrder()
         {
-            var a = new EntityBehaviourStub();
-            var b = new EntityBehaviourStub();
+            var a = new EntityBehaviourSpy();
+            var b = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {a, b});
@@ -221,7 +221,7 @@ namespace Atomic.Entities
         [Test]
         public void GetBehaviours_ReturnedArrayIsIndependentCopy()
         {
-            var behaviour = new EntityBehaviourStub();
+            var behaviour = new EntityBehaviourSpy();
             var entity = new Entity();
             entity.AddBehaviour(behaviour);
 
@@ -243,9 +243,9 @@ namespace Atomic.Entities
         public void HasBehaviour()
         {
             //Arrange:
-            var updateStub = new EntityTickStub();
-            var initStub = new EntityInitStub();
-            var behaviourStub = new EntityBehaviourStub();
+            var updateStub = new EntityTickSpy();
+            var initStub = new EntityInitSpy();
+            var behaviourStub = new EntityBehaviourSpy();
 
             var entity = new Entity(null, Array.Empty<string>(), null, new IEntityBehaviour[]
             {
@@ -255,7 +255,7 @@ namespace Atomic.Entities
 
             //Assert & Act:
             Assert.IsTrue(entity.HasBehaviour(updateStub));
-            Assert.IsTrue(entity.HasBehaviour<EntityInitStub>());
+            Assert.IsTrue(entity.HasBehaviour<EntityInitSpy>());
             Assert.IsFalse(entity.HasBehaviour(behaviourStub));
         }
 
@@ -263,9 +263,9 @@ namespace Atomic.Entities
         public void HasBehaviour_ReturnsTrue_WhenBehaviourOfTypeExists()
         {
             var entity = new Entity();
-            entity.AddBehaviour(new EntityBehaviourStub());
+            entity.AddBehaviour(new EntityBehaviourSpy());
 
-            bool result = entity.HasBehaviour<EntityBehaviourStub>();
+            bool result = entity.HasBehaviour<EntityBehaviourSpy>();
 
             Assert.IsTrue(result);
         }
@@ -275,7 +275,7 @@ namespace Atomic.Entities
         {
             var entity = new Entity();
 
-            bool result = entity.HasBehaviour<EntityBehaviourStub>();
+            bool result = entity.HasBehaviour<EntityBehaviourSpy>();
 
             Assert.IsFalse(result);
         }
@@ -286,11 +286,11 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[]
             {
-                new EntityBehaviourStub(),
-                new EntityBehaviourStub()
+                new EntityBehaviourSpy(),
+                new EntityBehaviourSpy()
             });
 
-            bool result = entity.HasBehaviour<EntityBehaviourStub>();
+            bool result = entity.HasBehaviour<EntityBehaviourSpy>();
 
             Assert.IsTrue(result);
         }
@@ -299,7 +299,7 @@ namespace Atomic.Entities
         public void HasBehaviour_ReturnsFalse_WhenTypeDoesNotMatch()
         {
             var entity = new Entity();
-            entity.AddBehaviour(new EntityTickStub());
+            entity.AddBehaviour(new EntityTickSpy());
 
             bool result = entity.HasBehaviour<IEntityInit>();
 
@@ -314,7 +314,7 @@ namespace Atomic.Entities
         public void AddBehaviour_WhenAlreadyPresent_RaiseEvent()
         {
             // Arrange
-            var updateStub = new EntityTickStub();
+            var updateStub = new EntityTickSpy();
             IEntityBehaviour addedBehaviour = null;
 
             var entity = new Entity(
@@ -336,8 +336,8 @@ namespace Atomic.Entities
         public void AddBehaviour_WhenNew_RaisesEvent()
         {
             // Arrange
-            var updateStub = new EntityTickStub();
-            var initStub = new EntityInitStub();
+            var updateStub = new EntityTickSpy();
+            var initStub = new EntityInitSpy();
             IEntityBehaviour addedBehaviour = null;
 
             var entity = new Entity(null, Array.Empty<string>(), null, new IEntityBehaviour[] {updateStub});
@@ -360,19 +360,19 @@ namespace Atomic.Entities
             entity.OnBehaviourAdded += (_, b) => addedBehaviour = b;
 
             // Act
-            entity.AddBehaviour<EntityBehaviourStub>();
+            entity.AddBehaviour<EntityBehaviourSpy>();
 
             // Assert
             Assert.IsNotNull(addedBehaviour);
-            Assert.IsInstanceOf<EntityBehaviourStub>(addedBehaviour);
-            Assert.IsTrue(entity.HasBehaviour<EntityBehaviourStub>());
+            Assert.IsInstanceOf<EntityBehaviourSpy>(addedBehaviour);
+            Assert.IsTrue(entity.HasBehaviour<EntityBehaviourSpy>());
         }
 
         [Test]
         public void AddBehaviour_AfterInit_BehaviourInitialized()
         {
             //Arrange:
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.Init();
@@ -382,14 +382,14 @@ namespace Atomic.Entities
 
             Assert.IsTrue(behaviourStub.Initialized);
             Assert.IsFalse(behaviourStub.Enabled);
-            Assert.AreEqual(nameof(EntityBehaviourStub.Init), behaviourStub.InvocationList[0]);
+            Assert.AreEqual(nameof(EntityBehaviourSpy.Init), behaviourStub.InvocationList[0]);
         }
 
         [Test]
         public void AddBehaviour_AfterEnable_BehaviourInitializedAndEnabled()
         {
             //Arrange:
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.Init();
@@ -400,8 +400,8 @@ namespace Atomic.Entities
 
             Assert.IsTrue(behaviourStub.Initialized);
             Assert.IsTrue(behaviourStub.Enabled);
-            Assert.AreEqual(nameof(EntityBehaviourStub.Init), behaviourStub.InvocationList[0]);
-            Assert.AreEqual(nameof(EntityBehaviourStub.Enable), behaviourStub.InvocationList[1]);
+            Assert.AreEqual(nameof(EntityBehaviourSpy.Init), behaviourStub.InvocationList[0]);
+            Assert.AreEqual(nameof(EntityBehaviourSpy.Enable), behaviourStub.InvocationList[1]);
         }
 
         #endregion
@@ -414,9 +414,9 @@ namespace Atomic.Entities
             //Arrange:
             IEntityBehaviour removedBehaviour = null;
 
-            var updateStub = new EntityTickStub();
-            var initStub = new EntityInitStub();
-            var behaviourStub = new EntityBehaviourStub();
+            var updateStub = new EntityTickSpy();
+            var initStub = new EntityInitSpy();
+            var behaviourStub = new EntityBehaviourSpy();
 
             var entity = new Entity(null, Array.Empty<string>(), null, new IEntityBehaviour[]
             {
@@ -430,18 +430,18 @@ namespace Atomic.Entities
             Assert.IsTrue(entity.DelBehaviour(updateStub));
             Assert.AreEqual(updateStub, removedBehaviour);
 
-            Assert.IsTrue(entity.DelBehaviour<EntityInitStub>());
+            Assert.IsTrue(entity.DelBehaviour<EntityInitSpy>());
             Assert.IsFalse(entity.HasBehaviour(initStub));
 
             Assert.IsFalse(entity.DelBehaviour(behaviourStub));
-            Assert.IsFalse(entity.DelBehaviour<EntityInitStub>());
+            Assert.IsFalse(entity.DelBehaviour<EntityInitSpy>());
         }
 
         [Test]
         public void DelBehaviour_BeforeInit_NotDisabledAndDespawned()
         {
             //Arrange:
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
             var entity = new Entity();
             entity.AddBehaviour(behaviourStub);
 
@@ -456,7 +456,7 @@ namespace Atomic.Entities
         public void DelBehaviour_AfterEnable_BehaviourDisabledAndDespawned()
         {
             //Arrange:
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.AddBehaviour(behaviourStub);
@@ -468,20 +468,20 @@ namespace Atomic.Entities
 
             Assert.IsTrue(behaviourStub.Disabled);
             Assert.IsTrue(behaviourStub.Disposed);
-            Assert.AreEqual(nameof(EntityBehaviourStub.Disable), behaviourStub.InvocationList[^2]);
-            Assert.AreEqual(nameof(EntityBehaviourStub.Dispose), behaviourStub.InvocationList[^1]);
+            Assert.AreEqual(nameof(EntityBehaviourSpy.Disable), behaviourStub.InvocationList[^2]);
+            Assert.AreEqual(nameof(EntityBehaviourSpy.Dispose), behaviourStub.InvocationList[^1]);
         }
 
         [Test]
         public void DelBehaviour_RemovesFirstMatch_ReturnsTrue()
         {
-            var behaviour1 = new EntityBehaviourStub();
-            var behaviour2 = new EntityBehaviourStub();
+            var behaviour1 = new EntityBehaviourSpy();
+            var behaviour2 = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {behaviour1, behaviour2});
 
-            var result = entity.DelBehaviour<EntityBehaviourStub>();
+            var result = entity.DelBehaviour<EntityBehaviourSpy>();
 
             Assert.IsTrue(result);
             Assert.AreEqual(1, entity.BehaviourCount);
@@ -494,7 +494,7 @@ namespace Atomic.Entities
         {
             var entity = new Entity(); // пусто
 
-            var result = entity.DelBehaviour<EntityBehaviourStub>();
+            var result = entity.DelBehaviour<EntityBehaviourSpy>();
 
             Assert.IsFalse(result);
             Assert.AreEqual(0, entity.BehaviourCount);
@@ -503,14 +503,14 @@ namespace Atomic.Entities
         [Test]
         public void DelBehaviour_OnlyRemovesFirstMatchingInstance()
         {
-            var a = new EntityBehaviourStub();
-            var b = new EntityBehaviourStub();
-            var c = new EntityBehaviourStub();
+            var a = new EntityBehaviourSpy();
+            var b = new EntityBehaviourSpy();
+            var c = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {a, b, c});
 
-            entity.DelBehaviour<EntityBehaviourStub>();
+            entity.DelBehaviour<EntityBehaviourSpy>();
 
             Assert.AreEqual(2, entity.BehaviourCount);
             Assert.IsFalse(entity.HasBehaviour(a));
@@ -525,8 +525,8 @@ namespace Atomic.Entities
         [Test]
         public void ClearBehaviours_BehaviourCountIsZero()
         {
-            var updateStub = new EntityTickStub();
-            var initStub = new EntityInitStub();
+            var updateStub = new EntityTickSpy();
+            var initStub = new EntityInitSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[]
@@ -545,8 +545,8 @@ namespace Atomic.Entities
         [Test]
         public void ClearBehaviours_OnBehaviourDeleted_IsRaisedForEach()
         {
-            var updateStub = new EntityTickStub();
-            var initStub = new EntityInitStub();
+            var updateStub = new EntityTickSpy();
+            var initStub = new EntityInitSpy();
 
             var entity = new Entity();
             var deleted = new List<IEntityBehaviour>();
@@ -569,7 +569,7 @@ namespace Atomic.Entities
         [Test]
         public void ClearBehaviours_OnStateChanged_IsRaised()
         {
-            var stub = new EntityTickStub();
+            var stub = new EntityTickSpy();
             var stateChanged = false;
 
             var entity = new Entity();
@@ -610,8 +610,8 @@ namespace Atomic.Entities
         [Test]
         public void GetBehaviourEnumerator_ManualMoveNext_AndCurrent_Works()
         {
-            var a = new EntityBehaviourStub();
-            var b = new EntityBehaviourStub();
+            var a = new EntityBehaviourSpy();
+            var b = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {a, b});
@@ -630,8 +630,8 @@ namespace Atomic.Entities
         [Test]
         public void GetBehaviourEnumerator_Reset_ResetsState()
         {
-            var a = new EntityBehaviourStub();
-            var b = new EntityBehaviourStub();
+            var a = new EntityBehaviourSpy();
+            var b = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {a, b});
@@ -650,8 +650,8 @@ namespace Atomic.Entities
         [Test]
         public void GetBehaviourEnumerator_YieldsSameValues()
         {
-            var a = new EntityBehaviourStub();
-            var b = new EntityBehaviourStub();
+            var a = new EntityBehaviourSpy();
+            var b = new EntityBehaviourSpy();
 
             IEntity entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {a, b});
@@ -671,8 +671,8 @@ namespace Atomic.Entities
         [Test]
         public void CopyBehaviours_CopiesAllBehavioursInOrder()
         {
-            var a = new EntityBehaviourStub();
-            var b = new EntityBehaviourStub();
+            var a = new EntityBehaviourSpy();
+            var b = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {a, b});
@@ -701,7 +701,7 @@ namespace Atomic.Entities
         public void CopyBehaviours_ThrowsArgumentNullException_WhenArrayIsNull()
         {
             var entity = new Entity();
-            entity.AddBehaviour(new EntityBehaviourStub());
+            entity.AddBehaviour(new EntityBehaviourSpy());
 
             Assert.Throws<ArgumentNullException>(() => { entity.CopyBehaviours(null); });
         }
@@ -712,8 +712,8 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[]
             {
-                new EntityBehaviourStub(),
-                new EntityBehaviourStub()
+                new EntityBehaviourSpy(),
+                new EntityBehaviourSpy()
             });
 
             var tooSmall = new IEntityBehaviour[1]; // < 2
@@ -728,8 +728,8 @@ namespace Atomic.Entities
         [Test]
         public void GetBehaviourAt_ReturnsCorrectBehaviour()
         {
-            var behaviour1 = new EntityBehaviourStub();
-            var behaviour2 = new EntityBehaviourStub();
+            var behaviour1 = new EntityBehaviourSpy();
+            var behaviour2 = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {behaviour1, behaviour2});
@@ -745,7 +745,7 @@ namespace Atomic.Entities
         public void GetBehaviourAt_Throws_WhenIndexIsNegative()
         {
             var entity = new Entity();
-            entity.AddBehaviour(new EntityBehaviourStub());
+            entity.AddBehaviour(new EntityBehaviourSpy());
 
             Assert.Throws<IndexOutOfRangeException>(() =>
             {
@@ -758,7 +758,7 @@ namespace Atomic.Entities
         public void GetBehaviourAt_Throws_WhenIndexIsTooLarge()
         {
             var entity = new Entity();
-            entity.AddBehaviour(new EntityBehaviourStub());
+            entity.AddBehaviour(new EntityBehaviourSpy());
 
             Assert.Throws<IndexOutOfRangeException>(() =>
             {
@@ -786,11 +786,11 @@ namespace Atomic.Entities
         [Test]
         public void TryGetBehaviour_ReturnsTrue_WhenBehaviourExists()
         {
-            var behaviour = new EntityBehaviourStub();
+            var behaviour = new EntityBehaviourSpy();
             var entity = new Entity();
             entity.AddBehaviour(behaviour);
 
-            var result = entity.TryGetBehaviour<EntityBehaviourStub>(out var found);
+            var result = entity.TryGetBehaviour<EntityBehaviourSpy>(out var found);
 
             Assert.IsTrue(result);
             Assert.AreSame(behaviour, found);
@@ -801,7 +801,7 @@ namespace Atomic.Entities
         {
             var entity = new Entity();
 
-            var result = entity.TryGetBehaviour<EntityBehaviourStub>(out var found);
+            var result = entity.TryGetBehaviour<EntityBehaviourSpy>(out var found);
 
             Assert.IsFalse(result);
             Assert.IsNull(found);
@@ -810,13 +810,13 @@ namespace Atomic.Entities
         [Test]
         public void TryGetBehaviour_ReturnsFirstMatch_WhenMultipleExist()
         {
-            var first = new EntityBehaviourStub();
-            var second = new EntityBehaviourStub();
+            var first = new EntityBehaviourSpy();
+            var second = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {first, second});
 
-            var result = entity.TryGetBehaviour<EntityBehaviourStub>(out var found);
+            var result = entity.TryGetBehaviour<EntityBehaviourSpy>(out var found);
 
             Assert.IsTrue(result);
             Assert.AreSame(first, found);
@@ -829,11 +829,11 @@ namespace Atomic.Entities
         [Test]
         public void GetBehaviour_ReturnsInstance_WhenExists()
         {
-            var behaviour = new EntityBehaviourStub();
+            var behaviour = new EntityBehaviourSpy();
             var entity = new Entity();
             entity.AddBehaviour(behaviour);
 
-            var result = entity.GetBehaviour<EntityBehaviourStub>();
+            var result = entity.GetBehaviour<EntityBehaviourSpy>();
 
             Assert.AreSame(behaviour, result);
         }
@@ -841,13 +841,13 @@ namespace Atomic.Entities
         [Test]
         public void GetBehaviour_ReturnsFirstMatch_WhenMultipleExist()
         {
-            var first = new EntityBehaviourStub();
-            var second = new EntityBehaviourStub();
+            var first = new EntityBehaviourSpy();
+            var second = new EntityBehaviourSpy();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {first, second});
 
-            var result = entity.GetBehaviour<EntityBehaviourStub>();
+            var result = entity.GetBehaviour<EntityBehaviourSpy>();
 
             Assert.AreSame(first, result);
         }
@@ -857,9 +857,9 @@ namespace Atomic.Entities
         {
             var entity = new Entity();
 
-            var ex = Assert.Throws<Exception>(() => entity.GetBehaviour<EntityBehaviourStub>());
+            var ex = Assert.Throws<Exception>(() => entity.GetBehaviour<EntityBehaviourSpy>());
 
-            Assert.That(ex.Message, Does.Contain("EntityBehaviourStub"));
+            Assert.That(ex.Message, Does.Contain(nameof(EntityBehaviourSpy)));
         }
 
         #endregion

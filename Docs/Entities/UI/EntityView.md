@@ -51,7 +51,7 @@ Below is an example of setting up `EntityView<` that represents a tank entity.
 #### 2. Create an entity installer for the view
 
 ```csharp
-public sealed class TankViewInstaller : SceneEntityInstaller
+public sealed class TankViewInstaller : MonoEntityInstaller
 {
     [SerializeField] private TakeDamageViewBehaviour _takeDamageBehaviour;
     [SerializeField] private PositionViewBehaviour _positionBehaviour;
@@ -131,7 +131,7 @@ CreateArgs args = new EntityView.CreateArgs
 {
     name = "PlayerView",
     controlGameObject = true,
-    installers = new List<SceneEntityInstaller> { jumpInstaller, speedInstaller },
+    installers = new List<MonoEntityInstaller> { jumpInstaller, speedInstaller },
 };
 
 EntityView playerView = EntityView.Create(args);
@@ -166,11 +166,11 @@ public sealed class TransformGizmos : IEntityGizmos
 }
 ```
 
-#### 2. Attach the gizmo to a `SceneEntityInstaller`
+#### 2. Attach the gizmo to a `MonoEntityInstaller`
 
 ```csharp
 
-public sealed class CharacterViewInstaller : SceneEntityInstaller
+public sealed class CharacterViewInstaller : MonoEntityInstaller
 {
     private readonly TransformGizmos _transformGizmos = new();
     
@@ -283,7 +283,7 @@ public void Show(IEntity entity);
 - **Details:**
     - Activates the `GameObject` if `controlGameObject == true`.
     - Calls `OnShow(entity)` for custom logic.
-    - Executes `Install()` on each `SceneEntityInstaller` in the list.
+    - Executes `Install()` on each `MonoEntityInstaller` in the list.
 
 #### `Hide()`
 

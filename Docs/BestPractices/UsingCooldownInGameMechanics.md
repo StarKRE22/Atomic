@@ -28,7 +28,7 @@ A basic weapon setup that limits firing rate using [Cooldown](../Elements/Time/C
 Implemented with [Atomic.Entities](../Entities/Manual.md) for event-driven logic.
 
 ```csharp
-public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
+public sealed class WeaponInstaller : MonoEntityInstaller<IWeaponEntity>
 {
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Cooldown _cooldown = 0.5f;
@@ -141,7 +141,7 @@ public sealed class GameCountdownController : IEntityInit<IGameContext>, IEntity
 Registers the countdown and connects it with the controller.
 
 ```csharp
-public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
+public sealed class GameContextInstaller : MonoEntityInstaller<IGameContext>
 {
     [SerializeField] 
     private Cooldown _gameCountdown = 60.0f; // 60-second session
@@ -229,7 +229,7 @@ public sealed class CoinSpawnController : IEntityInit<IGameContext>, IEntityFixe
 Attach the cooldown and register the controller to the game context.
 
 ```csharp
-public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
+public sealed class GameContextInstaller : MonoEntityInstaller<IGameContext>
 {
     [SerializeField]
     private Cooldown _coinSpawnCooldown = new Cooldown(2); // spawn every 2 seconds
@@ -276,7 +276,7 @@ Below are real-world examples of using the `Cooldown` class in different gamepla
 Cooldown for a weapon that shoots bullets. Implemented with `Atomic.Entities` to handle the firing logic.
 
 ```csharp
-public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
+public sealed class WeaponInstaller : MonoEntityInstaller<IWeaponEntity>
 {
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Cooldown _cooldown = 0.5f;
@@ -383,7 +383,7 @@ The `Cooldown` is initialized with `60` seconds.
 The countdown and `GameOverEvent` are registered in the game context, and the controller is attached.
 
 ```csharp
-public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
+public sealed class GameContextInstaller : MonoEntityInstaller<IGameContext>
 {
     [SerializeField] private Cooldown _gameCountdown = 60.0f; // 60 seconds game session
 
@@ -469,7 +469,7 @@ public sealed class CoinSpawnController : IEntityInit<IGameContext>, IEntityFixe
 Below we bind the `Cooldown` implementation and attach the coin spawn controller.
 
 ```csharp
-public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
+public sealed class GameContextInstaller : MonoEntityInstaller<IGameContext>
 {
     // Using Cooldown as implementation
     [SerializeField] 

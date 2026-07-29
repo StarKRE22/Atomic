@@ -24,6 +24,10 @@ namespace Atomic.Entities
         /// Occurs when an entity is removed from the collection.
         /// </summary>
         event Action<E> OnRemoved;
+        
+        E this[int index] { get; }
+
+        bool TryGetAt(int index, out E entity);
 
         /// <summary>
         /// Determines whether the specified entity is currently present in the collection.

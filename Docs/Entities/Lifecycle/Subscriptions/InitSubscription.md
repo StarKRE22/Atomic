@@ -1,6 +1,6 @@
 # 🧩 InitSubscription
 
-Represents a disposable subscription handle for an [IInitLifecycle's](../Sources/IInitLifecycle.md)
+Represents a disposable subscription handle for an [IInitSource's](../Sources/IInitSource.md)
 **OnInitialized** event. Automatically unsubscribes the callback when disposed, preventing memory leaks and repeated
 invocations.
 
@@ -17,7 +17,7 @@ invocations.
       <li>
         <a href="#ctor">Constructors</a>
         <ul>
-          <li><a href="#initsubscriptioniinitlifecycle-action">InitSubscription(IInitLifecycle, Action)</a></li>
+          <li><a href="#initsubscriptionIInitSource-action">InitSubscription(IInitSource, Action)</a></li>
         </ul>
       </li>
       <li>
@@ -35,8 +35,8 @@ invocations.
 ## 🗂 Example of Usage
 
 ```csharp
-// Assume we have an instance of IInitLifecycle
-IInitLifecycle initSource = ...;
+// Assume we have an instance of IInitSource
+IInitSource initSource = ...;
 
 // Subscribe to the initialization event
 var subscription = new InitSubscription(initSource, () => 
@@ -67,10 +67,10 @@ public readonly struct InitSubscription : IDisposable
 
 ### 🏗️ Constructors
 
-#### `InitSubscription(IInitLifecycle, Action)`
+#### `InitSubscription(IInitSource, Action)`
 
 ```csharp
-public InitSubscription(IInitLifecycle source, Action callback)
+public InitSubscription(IInitSource source, Action callback)
 ```
 
 - **Description:** Subscribes the provided callback to the `OnInitialized` event of the given source.

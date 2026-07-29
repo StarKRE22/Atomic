@@ -1,12 +1,25 @@
 #if UNITY_5_3_OR_NEWER
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Atomic.Elements
 {
     /// <summary>
-    /// A MonoBehaviour that listens for 2D trigger events on this GameObject.
-    /// Exposes those events through C# delegates for external subscriptions.
+    /// Provides safe and consistent 2D trigger notifications by wrapping Unity's
+    /// <see cref="OnTriggerEnter2D"/>, <see cref="OnTriggerExit2D"/> and
+    /// <see cref="OnTriggerStay2D"/> callbacks into managed C# events.
+    ///
+    /// This component:
+    /// <list type="bullet">
+    /// <item><description>Tracks currently entered colliders using a <see cref="HashSet{T}"/>.</description></item>
+    /// <item><description>Avoids duplicate <c>Enter</c> and <c>Exit</c> events.</description></item>
+    /// <item><description>Automatically clears all tracked colliders on <see cref="OnDisable"/> and fires proper exit events.</description></item>
+    /// <item><description>Prevents stale (destroyed or disabled) collider references from remaining in the collection.</description></item>
+    /// </list>
+    /// 
+    /// Ideal for gameplay systems that must reliably know what is inside
+    /// an area at any moment: buffs, debuffs, trigger-based interactions, hazard zones, etc.
     /// </summary>
     [AddComponentMenu("Atomic/Elements/Trigger Events 2D")]
     [DisallowMultipleComponent]
@@ -14,41 +27,89 @@ namespace Atomic.Elements
     public sealed class TriggerEvents2D : MonoBehaviour
     {
         /// <summary>
-        /// Invoked when a 2D collider enters the trigger area of this GameObject.
+        /// Occurs when a 2D collider enters the trigger area.
+        /// Fired only once per collider until it exits.
         /// </summary>
         public event Action<Collider2D> OnEntered;
 
         /// <summary>
-        /// Invoked when a 2D collider exits the trigger area of this GameObject.
+        /// Occurs when a 2D collider exits the trigger area.
+        /// Fired only if the collider was previously registered as entered.
         /// </summary>
         public event Action<Collider2D> OnExited;
 
         /// <summary>
-        /// Event triggered every frame while another collider remains within this 2D trigger collider.
-        /// This corresponds to Unity's <see cref="MonoBehaviour.OnTriggerStay(UnityEngine.Collider2D)"/> callback.
+        /// Occurs every frame while a 2D collider remains inside the trigger area.
+        /// This event is invoked only if listeners are subscribed.
         /// </summary>
-        public event Action<Collider2D> OnStay; 
+        public event Action<Collider2D> OnStay;
 
         /// <summary>
-        /// Unity callback invoked when another 2D collider enters this trigger.
-        /// Calls the <see cref="OnEntered"/> event.
+        /// Gets a read-only collection of 2D colliders currently inside the trigger area.
+        /// The collection is automatically cleared when the component is disabled
+        /// or when the colliders are destroyed.
         /// </summary>
-        /// <param name="other">The 2D collider that entered the trigger area.</param>
-        private void OnTriggerEnter2D(Collider2D other) => this.OnEntered?.Invoke(other);
+        public IReadOnlyCollection<Collider2D> CurrentColliders => _currentColliders;
+
+        private readonly HashSet<Collider2D> _currentColliders = new();
 
         /// <summary>
-        /// Unity callback invoked when another 2D collider exits this trigger.
-        /// Calls the <see cref="OnExited"/> event.
+        /// Unity callback invoked when another 2D collider enters the trigger.
+        /// Registers the collider and raises the <see cref="OnEntered"/> event
+        /// only if the collider was not already tracked.
         /// </summary>
-        /// <param name="other">The 2D collider that exited the trigger area.</param>
-        private void OnTriggerExit2D(Collider2D other) => this.OnExited?.Invoke(other);
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (_currentColliders.Add(other))
+                OnEntered?.Invoke(other);
+        }
 
         /// <summary>
-        /// Unity callback invoked every frame while another 2D collider remains within this trigger collider.
-        /// Triggers the <see cref="OnStay"/> event if any listeners are registered.
+        /// Unity callback invoked when another 2D collider exits the trigger.
+        /// Removes the collider and raises the <see cref="OnExited"/> event
+        /// only if the collider was previously tracked.
         /// </summary>
-        /// <param name="other">The <see cref="Collider2D"/> currently staying inside the trigger.</param>
-        private void OnTriggerStay2D(Collider2D other) => this.OnStay?.Invoke(other);
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (_currentColliders.Remove(other))
+                OnExited?.Invoke(other);
+        }
+
+        /// <summary>
+        /// Unity callback invoked each frame while another 2D collider stays within this trigger.
+        /// Raises <see cref="OnStay"/> only if listeners are attached.
+        /// </summary>
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (OnStay != null)
+                OnStay(other);
+        }
+
+        /// <summary>
+        /// Ensures cleanup when this component or GameObject becomes disabled.
+        /// 
+        /// Unity does not guarantee that <see cref="OnTriggerExit2D"/> will be called for colliders
+        /// when:
+        /// <list type="bullet">
+        /// <item><description>The collider is disabled.</description></item>
+        /// <item><description>The collider is destroyed.</description></item>
+        /// <item><description>The trigger is disabled.</description></item>
+        /// <item><description>The scene is unloaded.</description></item>
+        /// </list>
+        /// 
+        /// To maintain consistency, this method manually fires <see cref="OnExited"/> for all tracked colliders
+        /// and clears the internal set.
+        /// </summary>
+        private void OnDisable()
+        {
+            if (_currentColliders.Count == 0)
+                return;
+
+            foreach (Collider2D col in _currentColliders)
+                OnExited?.Invoke(col);
+
+            _currentColliders.Clear();
+        }
     }
 }
 #endif

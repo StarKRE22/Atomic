@@ -1,0 +1,270 @@
+#if UNITY_5_3_OR_NEWER
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
+
+namespace Atomic.Entities
+{
+    public partial class MonoEntity
+    {
+        [Serializable]
+        public struct CreateArgs
+        {
+            public string name;
+            public IEnumerable<int> tags;
+            public IReadOnlyDictionary<int, object> values;
+            public IEnumerable<IEntityBehaviour> behaviours;
+            public List<MonoEntityInstaller> sceneInstallers;
+            public List<ScriptableEntityInstaller> scriptableInstallers;
+
+            public int initialTagCapacity;
+            public int initialValueCapacity;
+            public int initialBehaviourCapacity;
+
+            public bool installOnAwake;
+            public bool uninstallOnDestroy;
+            public bool disposeValues;
+            public bool useUnityLifecycle;
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="MonoEntity"/> GameObject and configures it with optional tags, values, and behaviours.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static MonoEntity Create(in CreateArgs args) => Create<MonoEntity>(in args);
+
+        /// <summary>
+        /// Creates a new MonoEntity of type <typeparamref name="E"/> and configures it with optional tags, values, behaviours, and other initialization options.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="MonoEntity"/> to create.</typeparam>
+        /// <param name="args">A <see cref="CreateArgs"/> structure containing configuration options for the MonoEntity.</param>
+        /// <returns>The newly created MonoEntity of type <typeparamref name="E"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static E Create<E>(in CreateArgs args) where E : MonoEntity
+        {
+            GameObject gameObject = new GameObject();
+            gameObject.SetActive(false);
+
+            E entity = gameObject.AddComponent<E>();
+            entity.name = args.name;
+
+            entity.sceneInstallers = args.sceneInstallers;
+            entity.scriptableInstallers = args.scriptableInstallers;
+
+            entity.installOnAwake = args.installOnAwake;
+            entity.uninstallOnDestroy = args.uninstallOnDestroy;
+            entity.disposeValues = args.disposeValues;
+            entity.useUnityLifecycle = args.useUnityLifecycle;
+
+            entity.initialBehaviourCapacity = Mathf.Max(1, args.initialBehaviourCapacity);
+            entity.initialTagCapacity = Mathf.Max(1, args.initialTagCapacity);
+            entity.initialValueCapacity = Mathf.Max(1, args.initialValueCapacity);
+
+            entity.Construct();
+
+            entity.AddTags(args.tags);
+            entity.AddValues(args.values);
+            entity.AddBehaviours(args.behaviours);
+
+            entity.Register();
+
+            gameObject.SetActive(true);
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates a new MonoEntity of type <typeparamref name="E"/> with optional configuration parameters.
+        /// This overload constructs a <see cref="CreateArgs"/> object internally.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="MonoEntity"/> to create.</typeparam>
+        /// <param name="name">Optional name for the GameObject.</param>
+        /// <param name="tags">Optional collection of integer tags to assign to the entity.</param>
+        /// <param name="values">Optional dictionary of key-value pairs to assign to the entity.</param>
+        /// <param name="behaviours">Optional collection of behaviours to attach to the entity.</param>
+        /// <param name="installOnAwake">If true, installers will be run on Awake.</param>
+        /// <param name="disposeValues">If true, values will be disposed when the entity is destroyed.</param>
+        /// <param name="useUnityLifecycle">If true, the entity will use Unity's lifecycle methods.</param>
+        /// <param name="initialTagCount">Initial capacity for tags.</param>
+        /// <param name="initialValueCount">Initial capacity for values.</param>
+        /// <param name="initialBehaviourCount">Initial capacity for behaviours.</param>
+        /// <returns>The newly created MonoEntity of type <typeparamref name="E"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static E Create<E>(
+            string name = null,
+            IEnumerable<int> tags = null,
+            IReadOnlyDictionary<int, object> values = null,
+            IEnumerable<IEntityBehaviour> behaviours = null,
+            bool installOnAwake = true,
+            bool uninstallOnDestroy = true,
+            bool disposeValues = true,
+            bool useUnityLifecycle = true,
+            int initialTagCount = 1,
+            int initialValueCount = 1,
+            int initialBehaviourCount = 1
+        ) where E : MonoEntity => Create<E>(new CreateArgs
+        {
+            name = name,
+            tags = tags,
+            values = values,
+            behaviours = behaviours,
+            installOnAwake = installOnAwake,
+            uninstallOnDestroy = uninstallOnDestroy,
+            disposeValues = disposeValues,
+            useUnityLifecycle = useUnityLifecycle,
+            initialTagCapacity = initialTagCount,
+            initialValueCapacity = initialValueCount,
+            initialBehaviourCapacity = initialBehaviourCount
+        });
+
+        /// <summary>
+        /// Creates a new <see cref="MonoEntity"/> with optional configuration parameters.
+        /// This overload constructs a <see cref="CreateArgs"/> object internally and returns a non-generic MonoEntity.
+        /// </summary>
+        /// <param name="name">Optional name for the GameObject.</param>
+        /// <param name="tags">Optional collection of integer tags to assign to the entity.</param>
+        /// <param name="values">Optional dictionary of key-value pairs to assign to the entity.</param>
+        /// <param name="behaviours">Optional collection of behaviours to attach to the entity.</param>
+        /// <param name="installOnAwake">If true, installers will be run on Awake.</param>
+        /// <param name="uninstallOnDestroy">If true, installers will be run on Awake.</param>
+        /// <param name="disposeValues">If true, values will be disposed when the entity is destroyed.</param>
+        /// <param name="useUnityLifecycle">If true, the entity will use Unity's lifecycle methods.</param>
+        /// <param name="initialTagCount">Initial capacity for tags.</param>
+        /// <param name="initialValueCount">Initial capacity for values.</param>
+        /// <param name="initialBehaviourCount">Initial capacity for behaviours.</param>
+        /// <returns>The newly created <see cref="MonoEntity"/> instance.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static MonoEntity Create(
+            string name = null,
+            IEnumerable<int> tags = null,
+            IReadOnlyDictionary<int, object> values = null,
+            IEnumerable<IEntityBehaviour> behaviours = null,
+            bool installOnAwake = true,
+            bool uninstallOnDestroy = true,
+            bool disposeValues = true,
+            bool useUnityLifecycle = true,
+            int initialTagCount = 1,
+            int initialValueCount = 1,
+            int initialBehaviourCount = 1
+        ) => Create(new CreateArgs
+        {
+            name = name,
+            tags = tags,
+            values = values,
+            behaviours = behaviours,
+            installOnAwake = installOnAwake,
+            uninstallOnDestroy = uninstallOnDestroy,
+            disposeValues = disposeValues,
+            useUnityLifecycle = useUnityLifecycle,
+            initialTagCapacity = initialTagCount,
+            initialValueCapacity = initialValueCount,
+            initialBehaviourCapacity = initialBehaviourCount
+        });
+
+        /// <summary>
+        /// Instantiates a prefab and installs the resulting <see cref="MonoEntity"/> under the specified parent.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static MonoEntity Create(MonoEntity prefab, Transform parent = null) =>
+            Create(prefab, Vector3.zero, Quaternion.identity, parent);
+
+        /// <summary>
+        /// Instantiates a new MonoEntity of type <typeparamref name="E"/> from the given prefab, optionally setting its parent transform.
+        /// The entity is positioned at <see cref="Vector3.zero"/> and rotated with <see cref="Quaternion.identity"/> by default.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="MonoEntity"/> to create.</typeparam>
+        /// <param name="prefab">The prefab instance of <typeparamref name="E"/> to instantiate.</param>
+        /// <param name="parent">Optional parent <see cref="Transform"/> under which the new entity will be placed. Defaults to <c>null</c>.</param>
+        /// <returns>The newly instantiated MonoEntity of type <typeparamref name="E"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static E Create<E>(E prefab, Transform parent = null) where E : MonoEntity =>
+            Create(prefab, Vector3.zero, Quaternion.identity, parent);
+
+        /// <summary>
+        /// Instantiates a prefab at the given position and rotation with optional parent, then installs it.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static MonoEntity Create(
+            MonoEntity prefab,
+            Vector3 position,
+            Quaternion rotation,
+            Transform parent = null
+        ) => Create<MonoEntity>(prefab, position, rotation, parent);
+
+        /// <summary>
+        /// Instantiates a new MonoEntity of type <typeparamref name="E"/> from the given prefab at the position and rotation of a reference transform,
+        /// optionally assigning a parent transform.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="MonoEntity"/> to create.</typeparam>
+        /// <param name="prefab">The prefab instance of <typeparamref name="E"/> to instantiate.</param>
+        /// <param name="point">The reference <see cref="Transform"/> from which the position and rotation are copied.</param>
+        /// <param name="parent">Optional parent <see cref="Transform"/> under which the new entity will be placed. Defaults to <c>null</c>.</param>
+        /// <returns>The newly instantiated MonoEntity of type <typeparamref name="E"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static E Create<E>(E prefab, Transform point, Transform parent) where E : MonoEntity
+        {
+            E entity = Instantiate(prefab, point.position, point.rotation, parent);
+            SetupAfterCreation(prefab, entity);
+            return entity;
+        }
+
+        /// <summary>
+        /// Instantiates a new MonoEntity of type <typeparamref name="E"/> from the given prefab at a specific position and rotation,
+        /// optionally assigning a parent transform.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="MonoEntity"/> to create.</typeparam>
+        /// <param name="prefab">The prefab instance of <typeparamref name="E"/> to instantiate.</param>
+        /// <param name="position">The position at which to place the new entity.</param>
+        /// <param name="rotation">The rotation to apply to the new entity.</param>
+        /// <param name="parent">Optional parent <see cref="Transform"/> under which the new entity will be placed. Defaults to <c>null</c>.</param>
+        /// <returns>The newly instantiated MonoEntity of type <typeparamref name="E"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static E Create<E>(
+            E prefab,
+            Vector3 position,
+            Quaternion rotation,
+            Transform parent = null
+        ) where E : MonoEntity
+        {
+            E entity = Instantiate(prefab, position, rotation, parent);
+            SetupAfterCreation(prefab, entity);
+            return entity;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static E Create<E>(E prefab, Scene scene) where E : MonoEntity
+        {
+            E entity = (E) Instantiate(prefab, scene);
+            SetupAfterCreation(prefab, entity);
+            return entity;
+        }
+        
+        private static void SetupAfterCreation<E>(E prefab, E entity) where E : MonoEntity
+        {
+            entity.Register();
+            entity.Install();
+            entity.name = prefab.name;
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static async ValueTask<E[]> CreateAsync<E>(
+            E prefab,
+            int count,
+            Transform parent = null
+        ) where E : MonoEntity
+        {
+            AsyncInstantiateOperation<E> operation = InstantiateAsync(prefab, count, parent);
+            E[] entities = await operation;
+
+            foreach (E t in entities) 
+                SetupAfterCreation(prefab, t);
+
+            return entities;
+        }
+        
+    }
+}
+#endif

@@ -21,7 +21,7 @@ lingering event handlers.
 This example demonstrates using `DisposableComposite` in a weapon visual configuration via `WeaponViewInstaller`:
 
 ```csharp
-public sealed class WeaponViewInstaller : SceneEntityInstaller
+public sealed class WeaponViewInstaller : MonoEntityInstaller
 {
     [SerializeField] private ParticleSystem _fireVFX;
     [SerializeField] private AudioSource _fireSFX;

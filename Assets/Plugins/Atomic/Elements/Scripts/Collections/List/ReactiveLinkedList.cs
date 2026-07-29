@@ -379,6 +379,9 @@ namespace Atomic.Elements
         /// </summary>
         public void Clear()
         {
+            if (_nodes == null)
+                return;
+            
             int current = _head;
             while (current != UNDEFINED_INDEX)
             {

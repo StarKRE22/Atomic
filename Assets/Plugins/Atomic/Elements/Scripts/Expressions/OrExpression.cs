@@ -21,7 +21,7 @@ namespace Atomic.Elements
         /// Initializes the expression with a collection of function members.
         /// </summary>
         /// <param name="members">A collection of functions that return <c>true</c> or <c>false</c>.</param>
-        public OrExpression(IEnumerable<Func<bool>> members) : base(members)
+        public OrExpression(IEnumerable<ExpressionMember<bool>> members) : base(members)
         {
         }
 
@@ -29,7 +29,7 @@ namespace Atomic.Elements
         /// Initializes the expression with an array of function members.
         /// </summary>
         /// <param name="members">An array of functions that return <c>true</c> or <c>false</c>.</param>
-        public OrExpression(params Func<bool>[] members) : base(members)
+        public OrExpression(params ExpressionMember<bool>[] members) : base(members)
         {
         }
 
@@ -62,7 +62,7 @@ namespace Atomic.Elements
         /// Initializes the expression with an array of predicate functions.
         /// </summary>
         /// <param name="members">An array of functions that take <typeparamref name="T"/> and return a boolean.</param>
-        public OrExpression(params Func<T, bool>[] members) : base(members)
+        public OrExpression(params ExpressionMember<T, bool>[] members) : base(members)
         {
         }
 
@@ -70,7 +70,7 @@ namespace Atomic.Elements
         /// Initializes the expression with a collection of predicate functions.
         /// </summary>
         /// <param name="members">A collection of functions that take <typeparamref name="T"/> and return a boolean.</param>
-        public OrExpression(IEnumerable<Func<T, bool>> members) : base(members)
+        public OrExpression(IEnumerable<ExpressionMember<T, bool>> members) : base(members)
         {
         }
 
@@ -103,7 +103,7 @@ namespace Atomic.Elements
         /// Initializes the expression with an array of binary predicate functions.
         /// </summary>
         /// <param name="members">An array of functions that take <typeparamref name="T1"/> and <typeparamref name="T2"/> and return a boolean.</param>
-        public OrExpression(params Func<T1, T2, bool>[] members) : base(members)
+        public OrExpression(params ExpressionMember<T1, T2, bool>[] members) : base(members)
         {
         }
 
@@ -111,7 +111,7 @@ namespace Atomic.Elements
         /// Initializes the expression with a collection of binary predicate functions.
         /// </summary>
         /// <param name="members">A collection of functions that take <typeparamref name="T1"/> and <typeparamref name="T2"/> and return a boolean.</param>
-        public OrExpression(IEnumerable<Func<T1, T2, bool>> members) : base(members)
+        public OrExpression(IEnumerable<ExpressionMember<T1, T2, bool>> members) : base(members)
         {
         }
 

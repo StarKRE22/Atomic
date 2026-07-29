@@ -1,8 +1,8 @@
 # 🧩 PrefabEntityPool
 
 Default implementation of [PrefabEntityPool\<E>](PrefabEntityPool%601.md) for
-base [SceneEntity](../Entities/SceneEntity.md) types. Provides a convenient non-generic entry point for working with
-pooled [SceneEntity](../Entities/SceneEntity.md) instances across multiple Unity scenes. Use this when generic type
+base [MonoEntity](../Entities/MonoEntity.md) types. Provides a convenient non-generic entry point for working with
+pooled [MonoEntity](../Entities/MonoEntity.md) instances across multiple Unity scenes. Use this when generic type
 inference is not needed.
 
 ---
@@ -15,18 +15,18 @@ inference is not needed.
     - [Type](#-type)
     - [Methods](#-methods)
         - [Awake()](#awake)
-        - [Init(SceneEntity, int)](#initsceneentity-int)
-        - [Rent(SceneEntity)](#rentsceneentity)
-        - [Rent(SceneEntity, Transform)](#rentsceneentity-transform)
-        - [Rent(SceneEntity, Vector3, Quaternion, Transform)](#rentsceneentity-vector3-quaternion-transform)
-        - [Return(SceneEntity)](#returnsceneentity)
-        - [Dispose(SceneEntity)](#disposesceneentity)
+        - [Init(MonoEntity, int)](#initMonoEntity-int)
+        - [Rent(MonoEntity)](#rentMonoEntity)
+        - [Rent(MonoEntity, Transform)](#rentMonoEntity-transform)
+        - [Rent(MonoEntity, Vector3, Quaternion, Transform)](#rentMonoEntity-vector3-quaternion-transform)
+        - [Return(MonoEntity)](#returnMonoEntity)
+        - [Dispose(MonoEntity)](#disposeMonoEntity)
         - [Dispose()](#dispose)
-        - [OnCreate(SceneEntity)](#oncreatesceneentity)
-        - [OnRent(SceneEntity)](#onrentsceneentity)
-        - [OnReturn(SceneEntity)](#onreturnsceneentity)
-        - [OnDispose(SceneEntity)](#ondisposesceneentity)
-        - [GetEntityName(SceneEntity)](#getentitynamesceneentity)
+        - [OnCreate(MonoEntity)](#oncreateMonoEntity)
+        - [OnRent(MonoEntity)](#onrentMonoEntity)
+        - [OnReturn(MonoEntity)](#onreturnMonoEntity)
+        - [OnDispose(MonoEntity)](#ondisposeMonoEntity)
+        - [GetEntityName(MonoEntity)](#getentitynameMonoEntity)
 - [Notes](#-notes)
 
 ---
@@ -48,9 +48,9 @@ pool.Init(orcPrefab, 5);
 pool.Init(goblinPrefab, 3);
 
 // Rent entities
-SceneEntity orc = pool.Rent(orcPrefab);
-SceneEntity goblin = pool.Rent(goblinPrefab, parentTransform);
-SceneEntity troll = pool.Rent(trollPrefab, new Vector3(0,0,0), Quaternion.identity, parentTransform);
+MonoEntity orc = pool.Rent(orcPrefab);
+MonoEntity goblin = pool.Rent(goblinPrefab, parentTransform);
+MonoEntity troll = pool.Rent(trollPrefab, new Vector3(0,0,0), Quaternion.identity, parentTransform);
 
 // Return entities to the pool
 pool.Return(orc);
@@ -72,6 +72,7 @@ pool.Dispose();
 |---------------------|------------------------------------------------------------------------------------------------------|
 | `container`         | Root container transform for pooled entities. Defaults to the GameObject this script is attached to. |
 | `dontDestroyOnLoad` | If true, the pool GameObject persists across scene loads.                                            |
+| `expandMode`        | Determines how each prefab pool expands when empty. See [ExpandMode](ExpandMode.md).                |
 
 ---
 
@@ -82,7 +83,7 @@ pool.Dispose();
 ```csharp
 [AddComponentMenu("Atomic/Entities/Prefab Entity Pool")]
 [DisallowMultipleComponent]
-public class PrefabEntityPool : PrefabEntityPool<SceneEntity>, IPrefabEntityPool
+public class PrefabEntityPool : PrefabEntityPool<MonoEntity>, IPrefabEntityPool
 ```
 
 - **Inheritance:** [PrefabEntityPool\<E>](PrefabEntityPool%601.md), [IPrefabEntityPool](IPrefabEntityPool.md)
@@ -103,10 +104,10 @@ protected virtual void Awake();
     - Calls `DontDestroyOnLoad` on the GameObject if `_dontDestroyOnLoad` is `true`.
 - **Usage:** Ensures that the pool is properly initialized before any entities are rented.
 
-#### `Init(SceneEntity, int)`
+#### `Init(MonoEntity, int)`
 
 ```csharp
-public void Init(SceneEntity prefab, int count);
+public void Init(MonoEntity prefab, int count);
 ```
 
 - **Description:** Pre-initializes a pool for a specific prefab.
@@ -116,21 +117,21 @@ public void Init(SceneEntity prefab, int count);
 - **Behavior:** Creates the internal pool if it does not exist and populates it with `count` entities.
 - **Note:** Each instance is deactivated and stored under a container specific to the prefab.
 
-#### `Rent(SceneEntity)`
+#### `Rent(MonoEntity)`
 
 ```csharp
-public SceneEntity Rent(SceneEntity prefab);
+public MonoEntity Rent(MonoEntity prefab);
 ```
 
 - **Description:** Rents an entity from the pool associated with the given prefab.
 - **Behavior:** Uses default position `(0,0,0)` and rotation `Quaternion.identity`.
-- **Returns:** A `SceneEntity` instance from the pool or a newly created one if the pool is empty.
+- **Returns:** A `MonoEntity` instance from the pool or a newly created one if the pool is empty.
 - **Note:** Calls `OnRent` to activate the entity before returning.
 
-#### `Rent(SceneEntity, Transform)`
+#### `Rent(MonoEntity, Transform)`
 
 ```csharp
-public SceneEntity Rent(SceneEntity prefab, Transform parent);
+public MonoEntity Rent(MonoEntity prefab, Transform parent);
 ```
 
 - **Description:** Rents an entity and parents it to the specified transform.
@@ -138,12 +139,12 @@ public SceneEntity Rent(SceneEntity prefab, Transform parent);
     - `prefab` — The prefab to rent.
     - `parent` — The transform under which the entity should be parented.
 - **Behavior:** Uses the parent's position and rotation for the entity.
-- **Returns:** A rented `SceneEntity` instance.
+- **Returns:** A rented `MonoEntity` instance.
 
-#### `Rent(SceneEntity, Vector3, Quaternion, Transform)`
+#### `Rent(MonoEntity, Vector3, Quaternion, Transform)`
 
 ```csharp
-public SceneEntity Rent(SceneEntity prefab, Vector3 position, Quaternion rotation, Transform parent = null);
+public MonoEntity Rent(MonoEntity prefab, Vector3 position, Quaternion rotation, Transform parent = null);
 ```
 
 - **Description:** Rents an entity instance with a specific position, rotation, and optional parent.
@@ -152,13 +153,13 @@ public SceneEntity Rent(SceneEntity prefab, Vector3 position, Quaternion rotatio
     - `position` — The world position for the rented entity.
     - `rotation` — The rotation for the entity.
     - `parent` — Optional transform to parent the entity under.
-- **Returns:** A rented `SceneEntity` instance, positioned and rotated as specified.
+- **Returns:** A rented `MonoEntity` instance, positioned and rotated as specified.
 - **Behavior:** Creates the pool if it does not exist and instantiates a new entity if the pool is empty.
 
-#### `Return(SceneEntity)`
+#### `Return(MonoEntity)`
 
 ```csharp
-public void Return(SceneEntity entity);
+public void Return(MonoEntity entity);
 ```
 
 - **Description:** Returns a rented entity to its pool.
@@ -168,10 +169,10 @@ public void Return(SceneEntity entity);
     - Reparents the entity under its prefab-specific container.
     - Ignores the entity if it is already in the pool.
 
-#### `Dispose(SceneEntity)`
+#### `Dispose(MonoEntity)`
 
 ```csharp
-public void Dispose(SceneEntity prefab);
+public void Dispose(MonoEntity prefab);
 ```
 
 - **Description:** Clears the pool for a specific prefab and destroys all associated entities and container.
@@ -187,47 +188,47 @@ public void Dispose();
 - **Description:** Clears all prefab pools and destroys all pooled entities and containers.
 - **Behavior:** Iterates over all internal pools and calls `OnDispose` on each entity before destroying it.
 
-#### `OnCreate(SceneEntity)`
+#### `OnCreate(MonoEntity)`
 
 ```csharp
-protected virtual void OnCreate(SceneEntity entity);
+protected virtual void OnCreate(MonoEntity entity);
 ```
 
 - **Description:** Called whenever a new entity instance is created for pooling.
 - **Default Behavior:** Deactivates the entity GameObject.
 - **Override Use:** Set default state, initialize components, or perform setup on newly created entities.
 
-#### `OnRent(SceneEntity)`
+#### `OnRent(MonoEntity)`
 
 ```csharp
-protected virtual void OnRent(SceneEntity entity);
+protected virtual void OnRent(MonoEntity entity);
 ```
 
 - **Description:** Called when an entity is rented from the pool.
 - **Default Behavior:** Activates the entity GameObject.
 
-#### `OnReturn(SceneEntity)`
+#### `OnReturn(MonoEntity)`
 
 ```csharp
-protected virtual void OnReturn(SceneEntity entity);
+protected virtual void OnReturn(MonoEntity entity);
 ```
 
 - **Description:** Called when an entity is returned to the pool.
 - **Default Behavior:** Deactivates the entity GameObject.
 
-#### `OnDispose(SceneEntity)`
+#### `OnDispose(MonoEntity)`
 
 ```csharp
-protected virtual void OnDispose(SceneEntity entity);
+protected virtual void OnDispose(MonoEntity entity);
 ```
 
 - **Description:** Called when a pooled entity is destroyed (e.g., during pool cleanup).
 - **Default Behavior:** Empty. Override to release resources, unregister events, or perform additional cleanup.
 
-#### `GetEntityName(SceneEntity)`
+#### `GetEntityName(MonoEntity)`
 
 ```csharp
-protected virtual string GetEntityName(SceneEntity entity);
+protected virtual string GetEntityName(MonoEntity entity);
 ```
 
 - **Description:** Extracts a clean base name from a prefab or entity instance.

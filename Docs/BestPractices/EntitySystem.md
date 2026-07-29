@@ -222,7 +222,7 @@ a key (e.g., unit name). It combines multiple factories into a single interface 
 
 ```csharp
 [CreateAssetMenu(fileName = "UnitCatalog", menuName = "Example/New UnitCatalog")]
-public sealed class UnitMultiFactory : ScriptableMultiEntityFactory<string, IUnitEntity, UnitFactory>
+public sealed class UnitMultiFactory : ScriptableEntityCatalog<string, IUnitEntity, UnitFactory>
 {
     protected override string GetKey(UnitFactory factory) => factory.Name;
 }
@@ -230,7 +230,7 @@ public sealed class UnitMultiFactory : ScriptableMultiEntityFactory<string, IUni
 
 **Explanation:**
 
-- Inherits from [ScriptableMultiEntityFactory\<K, E, F>](../Entities/Factories/ScriptableMultiEntityFactory%601.md) —
+- Inherits from [ScriptableEntityCatalog\<K, E, F>](../Entities/Factories/ScriptableEntityCatalog%601.md) —
   this allows storing **multiple factories in a
   single ScriptableObject**.
 - `GetKey` returns a unique identifier for each factory (e.g., `Name`), which is used when retrieving entities from the
@@ -397,10 +397,10 @@ To visualize the entity, create a prefab and attach the `UnitView` component:
 #### 🛠 Example: Tank View Installer
 
 To modularly attach visual behaviors to the tank entity, use
-a [SceneEntityInstaller\<E>](../Entities/Installers/SceneEntityInstaller%601.md):
+a [MonoEntityInstaller\<E>](../Entities/Installers/MonoEntityInstaller%601.md):
 
 ```csharp
-public sealed class TankViewInstaller : SceneEntityInstaller
+public sealed class TankViewInstaller : MonoEntityInstaller
 {
     [SerializeField] private TakeDamageViewBehaviour _takeDamageBehaviour;
     [SerializeField] private PositionViewBehaviour _positionBehaviour;

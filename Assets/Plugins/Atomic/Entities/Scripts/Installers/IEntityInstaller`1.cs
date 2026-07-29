@@ -1,3 +1,5 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -17,6 +19,17 @@ namespace Atomic.Entities
         void Install(E entity);
 
         /// <inheritdoc />
-        void IEntityInstaller.Install(IEntity entity) => this.Install((E) entity);
+        void IEntityInstaller.Install(IEntity entity)
+        {
+            if (entity is not E e)
+                throw new InvalidCastException(
+                    $"[IEntityInstaller<{typeof(E).Name}>] Invalid entity type for {this.GetType().Name}.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    "Please make sure the correct IEntityInstaller is used for this entity type."
+                );
+            
+            this.Install(e);
+        }
     }
 }

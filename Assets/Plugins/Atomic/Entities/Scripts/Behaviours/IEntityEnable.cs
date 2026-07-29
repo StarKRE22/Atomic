@@ -1,3 +1,5 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -33,6 +35,17 @@ namespace Atomic.Entities
         /// <param name="entity">The entity instance of type <typeparamref name="E"/>.</param>
         void Enable(E entity);
 
-        void IEntityEnable.Enable(IEntity entity) => this.Enable((E) entity);
+        void IEntityEnable.Enable(IEntity entity)
+        {
+            if (entity is not E e)
+                throw new InvalidCastException(
+                    $"[IEntityEnable<{typeof(E).Name}>] Invalid entity type for {this.GetType().Name}.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    "Please make sure the correct IEntityEnable is used for this entity type."
+                );
+
+            this.Enable(e);
+        }
     }
 }

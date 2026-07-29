@@ -10,11 +10,9 @@
 
 # ⚛️ What is Atomic?
 
-**Atomic** is an architectural framework for game development in **Unity** and **C#**,
-built around the idea of constructing game systems from **atomic elements** — modular units represented as constants,
-variables, events, actions, and functions.
+**Atomic** is a framework for building core gameplay features in **Unity** and **C#**.
 
-The framework reduces coupling and simplifies dependency management by separating data and logic. This allows developers to focus on implementing gameplay mechanics instead of maintaining architecture.
+It provides modular building blocks — constants, variables, events, actions, and functions — that help you create clean, maintainable game systems with less boilerplate code.
 
 ---
 
@@ -29,9 +27,6 @@ The framework reduces coupling and simplifies dependency management by separatin
 - [Tutorials](#-tutorials)
 - [API Reference](#-api-reference)
 - [Sample Projects](#-sample-projects)
-    - [Beginner Sample](#ex1)
-    - [Top-Down Shooter Sample](#ex2)
-    - [RTS Sample](#ex3)
 - [Best Practices](#-best-practices)
 - [Performance](#-performance)
 - [Useful Links](#-useful-links)
@@ -47,25 +42,18 @@ Make sure your development environment meets these requirements before using the
 
 ### Recommended Tools
 
-Although not required, the following tools significantly improve the development experience with Atomic:
+Although not required, the following tool significantly improves the development experience with Atomic:
 
 #### • [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041)
 
 For better **debugging**, **configuration**, and **visualization** of your game state in the Unity Editor.  
 Atomic works perfectly **without Odin**, but using it makes data inspection and live tweaking much easier.
 
-#### • [Atomic Rider Plugin](https://plugins.jetbrains.com/plugin/28321-atomic)
-
-For enhanced **code generation** and **workflow integration** with **Rider IDE**.
-While Unity itself provides basic support, the Atomic Rider Plugin makes development smoother and more powerful.
-Available on [JetBrains](https://plugins.jetbrains.com/plugin/28321-atomic)
-or [GitHub](https://github.com/Prylor/atomic-rider-plugin).
-
-#### • [Rider IDE](https://www.jetbrains.com/ru-ru/rider/)
-
-It is strongly recommended to use **Rider 2025** instead of **Visual Studio**, since **Visual Studio does not support
-the Atomic Plugin**. For code generation directly through **Unity**, refer to the separate article in
-the [documentation](https://github.com/StarKRE22/Atomic/blob/experimental/Docs/Entities/EntityAPI/Manual.md#generating-api-via-unity-editor).
+> [!TIP]
+> The source generators (`EntityAPIGenerator`, `EventAPIGenerator`, and the corresponding analyzers) are included as
+> precompiled DLLs in `Assets/Plugins/Atomic/SourceGenerators/`. They are ready to use after importing the package.
+> For advanced scenarios or to build them yourself, see the source repository at
+> https://github.com/dre0dru/Atomic.SourceGenerators.
 
 
 ---
@@ -85,99 +73,83 @@ the [documentation](https://github.com/StarKRE22/Atomic/blob/experimental/Docs/E
 ## 🚀 Unity Quick Start
 
 This section provides a hands-on introduction to using the Atomic Framework inside Unity.
-You’ll learn how to set up code generation, create your first entity, and implement a simple movement mechanic —
-all directly from Rider IDE using the Atomic plugin.
+You’ll learn how to set up the source generators, create your first entity, and implement a simple
+movement mechanic — no IDE plugin required.
 
 ### I. Code Generation Setup
 
-Before you start creating gameplay mechanics, you need to configure the data generation process.
-The Atomic Framework supports automatic generation of extension methods for entities, which helps eliminate hard-coded
-values and “magic constants”, while ensuring type safety when working with data.
+Before you start creating gameplay mechanics, configure the source generators. They turn declarative API classes into
+strongly-typed extension methods and catch missing key initializers at compile time.
 
-#### Step 1. Setup Atomic Plugin
+#### Step 1. Verify the Generator DLLs
 
-In **Rider IDE**, go to `Preferences → Plugins → Marketplace` and search for **Atomic** or install directly
-via [reference](https://plugins.jetbrains.com/plugin/28321-atomic)
+Make sure the following assemblies are present:
 
-<img width="600" alt="Marketplace Plugin" src="Docs/Images/MarketplacePlugin.png" />
-
-#### Step 2. Create a Configuration File
-
-1. Right-click on the desired scripts directory in Rider.
-2. Select New → **Atomic File** from the context menu.
-
-<img width="150" alt="Manual Install Plugin" src="Docs/Images/NewAtomicFile.png" />
-
-Once clicked, a configuration window will open. Fill it out and click **Create**.
-
-<img width="400" alt="Manual Install Plugin" src="Docs/Images/CreateAtomicFile.png" />
-
-This creates an `.atomic` configuration file for **Entity API generation**:
-
-```yaml
-namespace: SampleGame
-className: EntityAPI
-directory: Assets/Scripts/
-aggressiveInlining: true
-unsafe: false
-entityType: IEntity
-
-imports:
-
-tags:
-# Add your tags here
-# - Player
-# - Enemy
-
-values:
-# Add your values here
-# - health: float
-# - position: Vector3
+```
+Assets/Plugins/Atomic/SourceGenerators/
+├── EntityAPIGenerator.dll
+├── EntityAPIAnalyzer.dll
+├── EventAPIGenerator.dll
+└── EventAPIAnalyzer.dll
 ```
 
-> [!TIP]
-> You can create multiple .atomic files to make your project easier to maintain and extend.
+#### Step 2. Configure Import Settings
 
-#### Step 3. Configure your entity API by editing parameters as needed.
+Select each DLL in the Unity Project window and:
 
-| Option                 | Description                                                                                 | Default   |
-|------------------------|---------------------------------------------------------------------------------------------|-----------|
-| **directory**          | Output path for the generated file                                                          | –         |
-| **className**          | Name of the generated class and file                                                        | –         |
-| **namespace**          | Namespace of the generated class                                                            | –         |
-| **entityType**         | Entity type (can be `IEntity` or a custom type inheriting from it)                          | `IEntity` |
-| **aggressiveInlining** | Adds `[MethodImpl(MethodImplOptions.AggressiveInlining)]` to extension methods (true/false) | `false`   |
-| **unsafe**             | Uses `GetValueUnsafe` instead of `GetValue` (faster but uses unsafe cast)                   | `false`   |
-| **imports**            | List of namespaces (`using`) required for code generation                                   | –         |
-| **tags**               | List of tags to generate                                                                    | –         |
-| **values**             | List of values to generate, in the format `Name: Type`                                      | –         |
-
-#### Step 4. Generate extension methods
-
-Press `Ctrl + Shift + G` while in the `.atomic` file
-
-- Required for **first-time generation**
-- Can be used anytime to **force regeneration**
-
-The plugin automatically updates existing C# files when saving `.atomic` changes
-
-- Only works for **existing files**
-- Can be enabled / disabled in plugin settings
+1. Add the asset label `RoslynAnalyzer`.
+2. Under **Select platforms for plugin**, uncheck **Any Platform** and every individual platform.
+3. Click **Apply**.
 
 > [!IMPORTANT]
-> To generate the file, you need to add at least one property in the `values` section or a tag in the `tags` section.
-> **Without adding a property, the code generator will not produce any output!**
+> Leaving all platforms unchecked is correct — generators and analyzers run only at compile time and must not ship in
+> player builds.
+
+After applying the settings, restart Unity or choose `Assets → Reimport All`.
+
+#### Step 3. Declare an Entity API
+
+Create a `public static partial` class and decorate it with `[GenerateEntityExtensionsAPI]`. Declare the character data as `ValueKey<>`
+fields:
+
+```csharp
+using Atomic.Entities;
+using UnityEngine;
+
+namespace SampleGame
+{
+    [GenerateEntityExtensionsAPI]
+    public static partial class CharacterAPI
+    {
+        public static readonly ValueKey<IEntity, Transform> Transform = new(nameof(Transform));
+        public static readonly ValueKey<IEntity, IValue<float>> MoveSpeed = new(nameof(MoveSpeed));
+        public static readonly ValueKey<IEntity, IVariable<Vector3>> MoveDirection = new(nameof(MoveDirection));
+    }
+}
+```
+
+After the first compilation, the generator creates extension methods such as:
+
+```csharp
+entity.AddTransform(transform);
+entity.AddMoveSpeed(moveSpeed);
+entity.AddMoveDirection(moveDirection);
+
+Transform t = entity.GetTransform();
+IValue<float> speed = entity.GetMoveSpeed();
+IVariable<Vector3> direction = entity.GetMoveDirection();
+```
+
+For more details, see the [Entity API Generator](Docs/CodeGeneration/EntityAPI/EntityAPIGenerator.md) documentation.
 
 ### II. Creating a Character
 
-In this section, we’ll walk through the complete process of creating a character entity in Unity using Rider IDE and the
-Atomic plugin. Step by step, we’ll set up an entity, generate its data through the Atomic configuration file, and
-implement a simple movement mechanic.
+In this section, we’ll create a character entity in Unity, declare its data with the source generator, and implement a
+simple movement mechanic.
 
-By the end of this section, you’ll have a working character that moves in the specified direction
-demonstrating how Atomic’s code generation and entity-based architecture streamline gameplay logic creation.
+By the end of this section, you’ll have a working character that moves in the specified direction.
 
-#### Step 1. Creating a game object
+#### Step 1. Creating a Game Object
 
 In the Scene Hierarchy, right-click and choose `3D Object → Capsule` to create a new game object.
 
@@ -194,40 +166,14 @@ Make sure the following checkboxes are enabled:
 - `useUnityLifecycle` — the entity updates along with the **MonoBehaviour** lifecycle.
 - `installOnAwake` — the entity is constructed during the **Awake** phase.
 
-#### Step 3. Generate Data
+#### Step 3. Declaring the Character API
 
-Add the following properties to the configuration file `EntityAPI.atomic`:
-
-- `Transform` : Transform
-- `MoveDirection`: IVariable\<Vector3>
-- `MoveSpeed`: IValue<float>
-
-```yaml
-namespace: SampleGame
-className: EntityAPI
-directory: Assets/Scripts/
-aggressiveInlining: true
-unsafe: false
-entityType: IEntity
-
-imports:
-  - Atomic.Entities
-  - Atomic.Elements
-
-tags:
-
-# Add properties
-values:
-  Transform: Transform
-  MoveSpeed: IValue<float>
-  MoveDirection: IVariable<Vector3>
-```
+Create the `CharacterAPI` class from the [Code Generation Setup](#i-code-generation-setup) section.
+The generator will produce `AddTransform`, `GetTransform`, `AddMoveSpeed`, `GetMoveSpeed`, etc.
 
 #### Step 4. Creating the Movement Mechanic
 
-Let’s write a behaviour that will move our entity in the direction of its movement:
-
-<!-- <img width="600" height="" alt="Entity component" src="Docs/Images/MovementMechanics.png"/> -->
+Let’s write a behaviour that moves the entity in the direction of its movement:
 
 ```csharp
 // Controller that moves entity by its direction
@@ -237,7 +183,6 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
     private IValue<float> _moveSpeed;
     private IVariable<Vector3> _moveDirection;
 
-    // Called when Start() is invoked
     public void Init(IEntity entity)
     {
         _transform = entity.GetTransform();
@@ -245,19 +190,17 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
         _moveDirection = entity.GetMoveDirection();
     }
 
-    // Called when FixedUpdate() is invoked
     public void FixedTick(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
-        if (direction != Vector3.zero) 
+        if (direction != Vector3.zero)
             _transform.position += _moveSpeed.Value * deltaTime * direction;
     }
 }
 ```
 
 > [!IMPORTANT]
-> It’s important to note that in the Atomic approach, the developer **always works with data abstractions represented
-> as reference-type wrappers.**
+> In the Atomic approach, the developer **always works with data abstractions represented as reference-type wrappers.**
 >
 > This design greatly simplifies project maintenance, testing, and multiplayer development, as it removes the tight
 > coupling to data storage methods that is typical for component-based ECS architectures.
@@ -267,12 +210,11 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 
 #### Step 5. Creating the Installer
 
-To add the data and movement logic to the entity, let’s create a script that will inject the corresponding atomic
-elements and behaviour into it.
+Create an installer that injects the data and the movement logic into the entity:
 
- ```csharp
+```csharp
 // Populates entity with tags, values and behaviours
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private Transform _transform;
     [SerializeField] private Const<float> _moveSpeed = 5.0f;
@@ -280,12 +222,10 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
     public override void Install(IEntity entity)
     {
-        // Add properties to a character
         entity.AddTransform(_transform);
         entity.AddMoveSpeed(_moveSpeed);
         entity.AddMoveDirection(_moveDirection);
-        
-        // Add behaviours to a character
+
         entity.AddBehaviour<MoveBehaviour>();
     }
 }
@@ -293,13 +233,13 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 #### Step 6. Configuring the Game Object
 
-Next, add the `CharacterInstaller` component to your entity through the Inspector and configure its settings.
+Add the `CharacterInstaller` component to your entity through the Inspector and configure its settings.
 
 <img width="400" height="" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
 #### Step 7. Connecting the Installer to the Entity
 
-To link the `CharacterInstaller` to the `Entity` component, drag and drop it into the `Scene Installers` field.
+To link the `CharacterInstaller` to the `Entity` component, drag and drop it into the **Scene Installers** field.
 
 <img width="400" height="" alt="изображение" src="Docs/Images/EntityInstalling.png" />
 
@@ -309,8 +249,7 @@ In the Unity Editor, press Play to verify that the character starts moving forwa
 
 ### III. Adding Keyboard Input
 
-Next, we’ll look at how to implement movement control using the WASD or arrow keys and show how to modify entity
-structure through code.
+Next, we’ll add movement control with the WASD or arrow keys.
 
 #### Step 1. Create an Input Controller
 
@@ -319,9 +258,9 @@ public class InputBehaviour : IEntityInit, IEntityTick
 {
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
-    
+
     private ISetter<Vector3> _moveDirection;
-    
+
     public void Init(IEntity entity)
     {
         _moveDirection = entity.GetMoveDirection();
@@ -337,15 +276,14 @@ public class InputBehaviour : IEntityInit, IEntityTick
 ```
 
 > [!IMPORTANT]
-> Here, it’s important to note that to change the entity’s data, we simply modify the value through its reference.
-> No `SetMoveDirection` to the `IEntity` is required.
+> To change the entity’s data, modify the value through its reference. No `SetMoveDirection` on the `IEntity` is required.
 
 #### Step 2. Add the InputBehaviour
 
-Next, let’s register the `InputBehaviour` inside the `CharacterInstaller`:
+Register the `InputBehaviour` inside the `CharacterInstaller`:
 
 ```csharp
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private Transform _transform;
     [SerializeField] private Const<float> _moveSpeed = 5.0f;
@@ -353,14 +291,12 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
     public override void Install(IEntity entity)
     {
-        // Add properties to a character
         entity.AddTransform(_transform);
         entity.AddMoveSpeed(_moveSpeed);
         entity.AddMoveDirection(_moveDirection);
-        
-        // Add behaviours to a character
+
         entity.AddBehaviour<MoveBehaviour>();
-        entity.AddBehaviour<InputBehaviour>(); // (+)
+        entity.AddBehaviour<InputBehaviour>();
     }
 }
 ```
@@ -377,13 +313,13 @@ Get hands-on with the Atomic Framework through practical guides and examples. Ea
 concept — from the fundamental Atomic approach to advanced topics such as entity
 interaction and simulation without Unity.
 
-1. [What is Atomic Approach](Docs/Tutorials/WhatIsAtomicApproach.md)
-2. [Entity API Generation](Docs/Tutorials/Codegeneration.md)
-3. [Creating the Entity in Unity](Docs/Tutorials/EntityCreation.md)
-4. [Architectural Consistency](Docs/Tutorials/ArchitectualConsistency.md)
-5. [Interaction Between Entities](Docs/Tutorials/InteractionsBetweenEntities.md)
-6. [Minimizing Unity](Docs/Tutorials/MinimizingUnity.md)
-7. [Summary](Docs/Tutorials/Summary.md)
+1. [What is Atomic Approach](Docs/Tutorials/1.%20What%20is%20Atomic%20Approach.md)
+2. [Entity API Generation](Docs/Tutorials/2.%20Entity%20API%20Generation.md)
+3. [Creating the Entity in Unity](Docs/Tutorials/3.%20Creating%20the%20Entity%20in%20Unity.md)
+4. [Architectural Consistency](Docs/Tutorials/4.%20Architectural%20Consistency.md)
+5. [Interaction Between Entities](Docs/Tutorials/5.%20Interaction%20Between%20Entities.md)
+6. [Minimizing Unity](Docs/Tutorials/6.%20Minimizing%20Unity.md)
+7. [Summary](Docs/Tutorials/7.%20Summary.md)
 
 <!-- 
 
@@ -414,8 +350,8 @@ To be added...
 
 ## 🔍 API Reference
 
-Explore the full Atomic API documentation. The framework is divided into two main modules — Elements and Entities, each
-responsible for a different level of abstraction.
+Explore the full Atomic API documentation. The framework is divided into four main modules — Elements, Entities, Events
+and Code Generation, each responsible for a different level of abstraction.
 
 ### [⚛️ Atomic.Elements](Docs/Elements/Manual.md)
 
@@ -425,6 +361,7 @@ Use them to define data, state, logic, and interaction between systems.
 - [Values](Docs/Elements/Values/Manual.md)  — immutable constants and parameters
 - [Variables](Docs/Elements/Variables/Manual.md) — reactive mutable data containers
 - [Actions](Docs/Elements/Actions/Manual.md) — callable commands and procedures
+- [Commands](Docs/Elements/Commands/Manual.md) — request-like objects that encapsulate an action with optional undo
 - [Functions](Docs/Elements/Functions/Manual.md) — encapsulated logic returning results
 - [Setters](Docs/Elements/Setters/Manual.md) — controlled state mutation interfaces
 - [Requests](Docs/Elements/Requests/Manual.md) — deferred actions that can be executed at a later time
@@ -453,147 +390,44 @@ systems, UI elements, and application contexts can be represented as entities, e
 - [Triggers](Docs/Entities/Filters/EntityTriggers.md) — reactive filtering events
 - [Lifecycle](Docs/Entities/Lifecycle/Manual.md) — initialization and update stages
 - [Views](Docs/Entities/UI/Manual.md) — UI integration and visualization
-- [Names](Docs/Entities/Names/Manual.md) — converting string-based names into unique integer identifiers
-- [API Generation](Docs/Entities/EntityAPI/Manual.md) — automatic code generation via Atomic plugin and Unity Editor
+- [KeyStore](Docs/Entities/KeyStore/Manual.md) — converting string-based names into unique integer identifiers
+- [Systems](Docs/Entities/Systems/Manual.md) — entity update and processing systems
+- [Inspector](Docs/Entities/Inspector/Manual.md) — editor-only attributes for visualizing entity data
+- [Bootstrap](Docs/Entities/Bootstrap/Manual.md) — scene and scriptable bootstrap setup
+- [API Generation](Docs/Entities/EntityAPI/Manual.md) — type-safe extension methods via source generators
+
+### [📣 Atomic.Events](Docs/Events/Manual.md)
+
+Lightweight, strongly-typed event bus system for decoupled communication between systems.
+
+- [Bus](Docs/Events/Bus/Manual.md) — event bus implementations
+- [Keys](Docs/Events/Keys/Manual.md) — strongly-typed event identifiers
+- [Subscriptions](Docs/Events/Subscriptions/Manual.md) — disposable event subscriptions
+- [Extensions](Docs/Events/Extensions.md) — bus extension methods
+
+### [🧬 Code Generation](Docs/CodeGeneration/Manual.md)
+
+Roslyn source generators and analyzers that turn declarative API classes into strongly-typed extension methods.
+
+- [Setup](Docs/CodeGeneration/Setup.md) — adding generators/analyzers to a Unity project
+- [Entity API Generator](Docs/CodeGeneration/EntityAPI/EntityAPIGenerator.md) — `[GenerateEntityExtensionsAPI]` usage
+- [Entity API Analyzer](Docs/CodeGeneration/EntityAPI/EntityAPIAnalyzer.md) — key initializer validation
+- [Event API Generator](Docs/CodeGeneration/EventAPI/EventAPIGenerator.md) — `[GenerateEventExtensionsAPI]` usage
+- [Event API Analyzer](Docs/CodeGeneration/EventAPI/EventAPIAnalyzer.md) — event key initializer validation
 
 ---
 
 ## 🗂 Sample Projects
 
-This section presents **three sample projects**, each demonstrating a different level of complexity and use case of the
-framework. All examples are available inside **[Assets/Examples](Assets/Examples)**.
+The framework includes **four sample projects** in a [separate repository](https://github.com/StarKRE22/Atomic.Samples),
+each demonstrating a different level of complexity:
 
-- **[Beginner Sample](Assets/Examples/Beginner)** — a simple 2-player mini-game showcasing the core principles of the
-  framework.
-- **[Top-Down Shooter Sample](Assets/Examples/Shooter)** — a more advanced, modular game architecture suitable for
-  mid-sized projects.
-- **[RTS Sample](Assets/Examples/RTS)** — a large-scale simulation demonstrating high-performance entity management with
-  thousands of units.
+- **[Beginner Sample](https://github.com/StarKRE22/Atomic.Samples)** — a simple 2-player mini-game showcasing the core principles.
+- **[Top-Down Shooter Sample](https://github.com/StarKRE22/Atomic.Samples)** — a modular game architecture for mid-sized projects.
+- **[RTS Sample](https://github.com/StarKRE22/Atomic.Samples)** — a large-scale simulation with thousands of entities.
+- **[Turn-Based Sample](https://github.com/StarKRE22/Atomic.Samples)** — an event-driven turn-based tactics game.
 
----
-
-<div id="ex1"></div>
-
-### 1️⃣ Beginner Sample
-
-A **simple 2-player mini-game** designed to introduce the fundamental ideas behind the Atomic
-framework. [Link to the sample](Assets/Examples/Beginner).
-
-<img width="400" alt="Beginner sample preview" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
-
-This sample represents the **most basic foundation** of the Atomic framework with Unity. It demonstrates how to build
-gameplay using a **universal `SceneEntity`**, showing three minimal entities:
-
-- `GameContext`
-- `Character`
-- `Coin`
-
-Everything here is intentionally kept **as simple and transparent as possible**, focusing on the **core idea of the
-atomic approach** — how logic can emerge from the composition of small, modular elements.
-
-The project uses **code generation in Unity** and serves as a minimal example for **rapid prototyping** within the
-Atomic ecosystem.
-
-#### 🕹 Gameplay Overview
-
-- **Players:** Two players share a single arena.
-- **Goal:** Collect more coins than your opponent within a **limited time**.
-- **Controls:**
-    - Player (Blue): Arrow keys
-    - Player (Red): `W`, `A`, `S`, `D`
-
-#### 💡 This Sample Demonstrates
-
-1. Creating and configuring **Entity** objects in Unity.
-2. Structuring a project using the **Entity–State–Behaviour** pattern.
-3. Using **atomic elements** to drive logic and interaction.
-4. Applying **code generation** for fast and clean iteration.
-
----
-
-<div id="ex2"></div>
-
-### 2️⃣ Top-Down Shooter Sample
-
-The **Top-Down Shooter** demonstrates a more sophisticated and scalable game architecture, suitable for **mid-size
-projects**. [Link to the sample](Assets/Examples/Shooter).
-
-<img width="400" height="" alt="Shooter sample preview" src="https://github.com/user-attachments/assets/30ce41ab-2958-4979-b7cb-7d124cb1b791" />
-
-#### 🕹 Gameplay Overview
-
-- **Players:** Two players in a shared arena.
-- **Objective:** Eliminate your opponent more times than they eliminate you, within a **time limit**.
-- **Controls:**
-    - Player (Blue): Arrow keys to move, `Space` to shoot
-    - Player (Red): `W`, `A`, `S`, `D` to move, `Q` to shoot
-- **Mechanics:**
-    - **Movement:** Kinematic character movement with `Rigidbody.SweepTest` collision handling.
-    - **Combat:** Independent weapon entities firing physical projectiles.
-    - **Projectile:** Kinematic object with trigger collisions and limited lifetime.
-    - **Respawn:** Units reappear at random points after death.
-    - **Time Limit:** The match ends when the timer expires.
-- **Visualization:**
-    - Animated characters with sound and VFX.
-    - UI displays kills and time remaining.
-
-#### 🧩 Application Structure
-
-- **Scenes:**
-    - `Bootstrap` — initializes and loads the game.
-    - `Menu` — the main navigation scene.
-    - **Levels:** three stages featuring player and enemy spawning.
-- **Save System:** Remembers the last completed level.
-- **Loading Tree:** Hierarchical scene-loading sequence for structured bootstrapping.
-
-#### 💡 This Sample Demonstrates
-
-1. Designing a complete, **scalable game architecture**.
-2. Implementing an **application context** using the Entity–State–Behaviour pattern.
-3. Building procedural **menu systems**.
-4. Managing complex loading flows with a **Loading Tree**.
-5. Saving and restoring **persistent game data**.
-6. Turning entities into fully featured **game objects** with animation, VFX, and audio.
-7. Managing **projectile pools** efficiently.
-8. Structuring a **modular project file system**.
-
----
-
-<div id="ex3"></div>
-
-### 3️⃣ RTS Sample
-
-<img width="400" height="" alt="RTS sample preview" src="https://github.com/user-attachments/assets/92d471ac-374a-4fc2-9bb6-86603107f16e" />
-
-The **RTS Sample** showcases **high-performance entity management** — running thousands of active units in real time
-with minimal overhead. [Link to the sample](Assets/Examples/RTS).
-
-#### 🕹 Gameplay Overview
-
-- **Armies:** Two large armies automatically engage in battle — each consisting of infantry, tanks, and buildings.
-- **Buildings:** Have health points and serve as static defense or production units.
-- **Infantry:** Possesses health, performs melee attacks, and seeks the nearest enemy.
-- **Tanks:** Fire projectiles and detect enemies within range.
-- **Projectiles:** Travel toward targets with limited lifetime and cause impact damage.
-- **CameraControls:**
-    - Movement: WASD
-    - Zoom: Mouse Scroll
-
-#### 🧩 Scenes
-
-- **5000 Units Scene** — 5,000 visualized GameObjects for real-time simulation.
-- **10000 Units Scene** — 10,000 entities simulated **without visualization** for performance benchmarking.
-- **Entity Baking Scene** — demonstrates converting Unity scene objects into pure C# entities for simulation.
-
-#### 💡 This Sample Demonstrates
-
-1. Running complete **game logic in pure C#**, using Unity solely for visualization.
-2. Employing `EntityWorld`, `EntityFactory`, `EntityPool`, `EntityFilter`, and `EntityTriggers`.
-3. Using `EntityView`, `EntityViewPool`, and `EntityCollectionView` for rendering and synchronization.
-4. Managing **5,000–10,000 active objects** efficiently on a single thread.
-5. Baking Unity objects into a **pure data-driven simulation** architecture.
-
----
+[→ Go to Atomic.Samples](https://github.com/StarKRE22/Atomic.Samples)
 
 ## 📌 Best Practices
 

@@ -11,7 +11,7 @@ namespace Atomic.Entities
         private Scene _scene;
 
         [AddComponentMenu("")]
-        private class TestEntity : SceneEntity
+        private class TestEntity : MonoEntity
         {
             public int InstallCallCount;
 
@@ -51,7 +51,7 @@ namespace Atomic.Entities
             Assert.IsFalse(entity1.Installed);
             Assert.IsFalse(entity1.Installed);
 
-            SceneEntity.InstallAll<TestEntity>(_scene);
+            MonoEntity.InstallAll<TestEntity>(_scene);
 
             Assert.IsTrue(entity1.Installed);
             Assert.IsTrue(entity2.Installed);
@@ -71,7 +71,7 @@ namespace Atomic.Entities
             var entity = go.AddComponent<TestEntity>();
             entity.Install(); // вручную
 
-            SceneEntity.InstallAll<TestEntity>(_scene);
+            MonoEntity.InstallAll<TestEntity>(_scene);
 
             Assert.AreEqual(1, entity.InstallCallCount); // только один вызов
             yield return null;
@@ -90,7 +90,7 @@ namespace Atomic.Entities
             Assert.IsFalse(entity.Installed);
             
             //Act
-            SceneEntity.InstallAll<TestEntity>(_scene); // вызываем не на той сцене
+            MonoEntity.InstallAll<TestEntity>(_scene); // вызываем не на той сцене
 
             //Assert
             Assert.IsFalse(entity.Installed);
@@ -106,7 +106,7 @@ namespace Atomic.Entities
 
             var derived = go.AddComponent<TestEntity>();
 
-            SceneEntity.InstallAll<SceneEntity>(_scene);
+            MonoEntity.InstallAll<MonoEntity>(_scene);
 
             Assert.IsTrue(derived.Installed);
             Assert.AreEqual(1, derived.InstallCallCount);
@@ -120,7 +120,7 @@ namespace Atomic.Entities
             SceneManager.MoveGameObjectToScene(go, _scene);
 
             LogAssert.NoUnexpectedReceived();
-            SceneEntity.InstallAll<TestEntity>(_scene); // нет сущностей — всё ок
+            MonoEntity.InstallAll<TestEntity>(_scene); // нет сущностей — всё ок
 
             yield return null;
         }

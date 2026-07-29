@@ -14,12 +14,19 @@ namespace Atomic.Entities
             var entity = new Entity(valueCapacity: 4);
 
             int? calledKey = null;
-            entity.OnValueAdded += (_, key) => calledKey = key;
+            int? calledValue = null;
+
+            entity.OnValueAdded += (_, key, value) =>
+            {
+                calledKey = key;
+                calledValue = (int) value;
+            };
 
             const int testKey = 42;
             entity.AddValue(testKey, 123);
 
             Assert.AreEqual(testKey, calledKey);
+            Assert.AreEqual(123, calledValue);
         }
 
         [Test]
@@ -28,13 +35,20 @@ namespace Atomic.Entities
             var entity = new Entity(valueCapacity: 4);
 
             int? calledKey = null;
-            entity.OnValueAdded += (_, key) => calledKey = key;
+            object calledValue = null;
+
+            entity.OnValueAdded += (_, key, value) =>
+            {
+                calledKey = key;
+                calledValue = value;
+            };
 
             const int testKey = 100;
             object testValue = "hello";
             entity.AddValue(testKey, testValue);
 
             Assert.AreEqual(testKey, calledKey);
+            Assert.AreEqual(testValue, calledValue);
         }
 
         [Test]
@@ -81,15 +95,24 @@ namespace Atomic.Entities
             var entity = new Entity(valueCapacity: 4);
 
             int key = 101;
-            entity.AddValue(key, 42);
+            int value = 42;
+
+            entity.AddValue(key, value);
 
             int? deletedKey = null;
-            entity.OnValueDeleted += (e, k) => deletedKey = k;
+            int? deletedValue = null;
+
+            entity.OnValueDeleted += (e, k, v) =>
+            {
+                deletedKey = k;
+                deletedValue = (int) v;
+            };
 
             bool result = entity.DelValue(key);
 
             Assert.IsTrue(result);
             Assert.AreEqual(key, deletedKey);
+            Assert.AreEqual(value, deletedValue);
         }
 
         [Test]
@@ -98,9 +121,9 @@ namespace Atomic.Entities
             var entity = new Entity(valueCapacity: 4);
 
             bool eventCalled = false;
-            entity.OnValueDeleted += (_, _) => eventCalled = true;
+            entity.OnValueDeleted += (_, _, _) => eventCalled = true;
 
-            bool result = entity.DelValue(999); // не существует
+            bool result = entity.DelValue(999);
 
             Assert.IsFalse(result);
             Assert.IsFalse(eventCalled);
@@ -111,15 +134,24 @@ namespace Atomic.Entities
         {
             var entity = new Entity(valueCapacity: 4);
             int key = 10;
-            entity.AddValue(key, 123);
+            int value = 123;
+
+            entity.AddValue(key, value);
 
             int? deletedKey = null;
-            entity.OnValueDeleted += (e, k) => deletedKey = k;
+            int? deletedValue = null;
+
+            entity.OnValueDeleted += (e, k, v) =>
+            {
+                deletedKey = k;
+                deletedValue = (int) v;
+            };
 
             bool result = entity.DelValue(key);
 
             Assert.IsTrue(result);
             Assert.AreEqual(key, deletedKey);
+            Assert.AreEqual(value, deletedValue);
         }
 
         [Test]
@@ -128,7 +160,7 @@ namespace Atomic.Entities
             var entity = new Entity(valueCapacity: 4);
             bool wasCalled = false;
 
-            entity.OnValueDeleted += (_, _) => wasCalled = true;
+            entity.OnValueDeleted += (_, _, _) => wasCalled = true;
 
             bool result = entity.DelValue(999);
 
@@ -146,7 +178,7 @@ namespace Atomic.Entities
             entity.AddValue(2, "b");
             entity.AddValue(3, "c");
 
-            entity.OnValueDeleted += (_, k) => deletedKeys.Add(k);
+            entity.OnValueDeleted += (_, k, _) => deletedKeys.Add(k);
 
             entity.DelValue(2);
             entity.DelValue(3);
@@ -170,10 +202,10 @@ namespace Atomic.Entities
             int callCount = 0;
 
             entity.AddValue(77, 77);
-            entity.OnValueDeleted += (_, _) => callCount++;
+            entity.OnValueDeleted += (_, _, _) => callCount++;
 
             entity.DelValue(77);
-            entity.DelValue(77); // второй раз — не должно вызвать
+            entity.DelValue(77);
 
             Assert.AreEqual(1, callCount);
         }
@@ -190,11 +222,18 @@ namespace Atomic.Entities
             entity.AddValue(key, 10);
 
             int? changedKey = null;
-            entity.OnValueChanged += (e, k) => changedKey = k;
+            int? newValue = null;
+
+            entity.OnValueChanged += (e, k, v) =>
+            {
+                changedKey = k;
+                newValue = (int) v;
+            };
 
             entity.SetValue(key, 20);
 
             Assert.AreEqual(key, changedKey);
+            Assert.AreEqual(20, newValue);
         }
 
         [Test]
@@ -205,11 +244,18 @@ namespace Atomic.Entities
             entity.AddValue(key, "hello");
 
             int? changedKey = null;
-            entity.OnValueChanged += (e, k) => changedKey = k;
+            object newValue = null;
+
+            entity.OnValueChanged += (e, k, v) =>
+            {
+                changedKey = k;
+                newValue = v;
+            };
 
             entity.SetValue(key, "world");
 
             Assert.AreEqual(key, changedKey);
+            Assert.AreEqual("world", newValue);
         }
 
         [Test]
@@ -220,12 +266,18 @@ namespace Atomic.Entities
             entity.AddValue(key, 123);
 
             int callCount = 0;
-            entity.OnValueChanged += (_, _) => callCount++;
+            object newValue = null;
 
-            // Меняем тип, должно вызвать событие
+            entity.OnValueChanged += (_, _, v) =>
+            {
+                callCount++;
+                newValue = v;
+            };
+
             entity.SetValue(key, 3.14f);
 
             Assert.AreEqual(1, callCount);
+            Assert.AreEqual(3.14f, newValue);
         }
 
         [Test]
@@ -237,25 +289,25 @@ namespace Atomic.Entities
             entity.AddValue(key, value);
 
             bool wasCalled = false;
-            entity.OnValueChanged += (_, _) => wasCalled = true;
+            entity.OnValueChanged += (_, _, _) => wasCalled = true;
 
-            entity.SetValue(key, value); // То же самое значение
+            entity.SetValue(key, value);
 
             Assert.IsFalse(wasCalled);
         }
 
         [Test]
-        public void OnValueChanged_IsInvoked_WhenNewKeyIsAddedViaSetValue()
+        public void OnValueChanged_IsNotInvoked_WhenNewKeyIsAddedViaSetValue()
         {
             var entity = new Entity(valueCapacity: 4);
             int key = 5;
 
             int? changedKey = null;
-            entity.OnValueChanged += (e, k) => changedKey = k;
+            entity.OnValueChanged += (e, k, v) => changedKey = k;
 
-            entity.SetValue(key, 999); // Ключ ещё не существует — добавится
+            entity.SetValue(key, 999);
 
-            Assert.AreEqual(key, changedKey);
+            Assert.AreNotEqual(key, changedKey);
         }
 
         #endregion
@@ -455,13 +507,13 @@ namespace Atomic.Entities
         public void GetValue_ReturnsCorrectObject_ForCustomStruct()
         {
             var entity = new Entity(valueCapacity: 4);
-            var data = new SamplePoint {X = 1, Y = 2};
+            var data = new TestPoint {X = 1, Y = 2};
             entity.AddValue(77, data);
 
             object result = entity.GetValue(77);
 
-            Assert.IsInstanceOf<SamplePoint>(result);
-            Assert.AreEqual(data, (SamplePoint) result);
+            Assert.IsInstanceOf<TestPoint>(result);
+            Assert.AreEqual(data, (TestPoint) result);
         }
 
         #endregion
@@ -616,14 +668,14 @@ namespace Atomic.Entities
         public void TryGetValue_ReturnsStruct_AsBoxedObject()
         {
             var entity = new Entity();
-            var expected = new SampleStruct {A = 1, B = 2};
+            var expected = new TestStruct {A = 1, B = 2};
             entity.AddValue(5, expected);
 
             bool found = entity.TryGetValue(5, out var result);
 
             Assert.IsTrue(found);
-            Assert.IsInstanceOf<SampleStruct>(result);
-            Assert.AreEqual(expected, (SampleStruct) result);
+            Assert.IsInstanceOf<TestStruct>(result);
+            Assert.AreEqual(expected, (TestStruct) result);
         }
 
         #endregion
@@ -631,58 +683,30 @@ namespace Atomic.Entities
         #region GetValueUnsafe<T>
 
         [Test]
-        public void GetValueUnsafe_ReturnsRef_ToStructValue()
-        {
-            var entity = new Entity();
-            entity.AddValue(1, 42);
-
-            ref int valueRef = ref entity.GetValueUnsafe<int>(1);
-            Assert.AreEqual(42, valueRef);
-        }
-
-        [Test]
         public void GetValueUnsafe_ReturnsRef_ToReferenceType()
         {
             var entity = new Entity();
-            var obj = new SampleText("initial");
+            var obj = new TestString("initial");
             entity.AddValue(2, obj);
 
-            ref SampleText refValue = ref entity.GetValueUnsafe<SampleText>(2);
+            TestString refValue = entity.GetValueUnsafe<TestString>(2);
             Assert.AreSame(obj, refValue);
-            Assert.AreEqual("initial", refValue.Text);
-        }
-
-        [Test]
-        public void GetValueUnsafe_ModifiesStructValue()
-        {
-            var entity = new Entity();
-            entity.AddValue(3, 100);
-
-            ref int valueRef = ref entity.GetValueUnsafe<int>(3);
-            valueRef = 999;
-
-            Assert.AreEqual(999, entity.GetValue<int>(3));
+            Assert.AreEqual("initial", refValue.Value);
         }
 
         [Test]
         public void GetValueUnsafe_Throws_WhenEmpty()
         {
             var entity = new Entity();
-            Assert.Throws<KeyNotFoundException>(() =>
-            {
-                ref var _ = ref entity.GetValueUnsafe<int>(100);
-            });
+            Assert.Throws<KeyNotFoundException>(() => { _ = entity.GetValueUnsafe<string>(100); });
         }
 
         [Test]
         public void GetValueUnsafe_Throws_WhenKeyNotFound()
         {
             var entity = new Entity();
-            entity.AddValue(5, 777);
-            Assert.Throws<KeyNotFoundException>(() =>
-            {
-                ref var _ = ref entity.GetValueUnsafe<int>(6);
-            });
+            entity.AddValue(5, "777");
+            Assert.Throws<KeyNotFoundException>(() => { _ = entity.GetValueUnsafe<string>(6); });
         }
 
         #endregion
@@ -690,38 +714,24 @@ namespace Atomic.Entities
         #region GetValueUnsafe
 
         [Test]
-        public void TryGetValueUnsafe_ReturnsTrue_AndStruct()
+        public void TryGetValueUnsafe_ReturnsTrue()
         {
             var entity = new Entity();
-            entity.AddValue(1, 999);
+            entity.AddValue(1, "999");
 
-            bool result = entity.TryGetValueUnsafe<int>(1, out int value);
-
-            Assert.IsTrue(result);
-            Assert.AreEqual(999, value);
-        }
-
-        [Test]
-        public void TryGetValueUnsafe_ReturnsTrue_WhenStructStoredAsBoxed()
-        {
-            var entity = new Entity();
-            entity.SetValue(2, 123); // SetValue also accepts struct
-
-            bool result = entity.TryGetValueUnsafe<int>(2, out int value);
+            bool result = entity.TryGetValueUnsafe(1, out string value);
 
             Assert.IsTrue(result);
-            Assert.AreEqual(123, value);
+            Assert.AreEqual("999", value);
         }
 
         [Test]
         public void TryGetValueUnsafe_ReturnsFalse_WhenEmpty()
         {
             var entity = new Entity();
-
-            bool result = entity.TryGetValueUnsafe(10, out int value);
-
+            bool result = entity.TryGetValueUnsafe(10, out string value);
             Assert.IsFalse(result);
-            Assert.AreEqual(0, value);
+            Assert.IsNull(value);
         }
 
         [Test]
@@ -730,23 +740,10 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddValue(5, 500);
 
-            bool result = entity.TryGetValueUnsafe(99, out int value);
+            bool result = entity.TryGetValueUnsafe(99, out string value);
 
             Assert.IsFalse(result);
-            Assert.AreEqual(0, value);
-        }
-
-        [Test]
-        public void TryGetValueUnsafe_ReturnsCustomStructCorrectly()
-        {
-            var entity = new Entity();
-            var expected = new SampleStruct {A = 1, B = 2};
-            entity.AddValue(3, expected);
-
-            bool result = entity.TryGetValueUnsafe<SampleStruct>(3, out var value);
-
-            Assert.IsTrue(result);
-            Assert.AreEqual(expected, value);
+            Assert.IsNull(value);
         }
 
         #endregion
@@ -807,29 +804,27 @@ namespace Atomic.Entities
         [Test]
         public void AddValue()
         {
-            //Arrange:
             const int key = 1;
             string foo = new string("Foo");
 
             bool wasAddEvent = false;
             int addedKey = -1;
+            object addedValue = null;
 
             Entity e = new Entity("123");
 
-            e.OnValueAdded += (_, k) =>
+            e.OnValueAdded += (_, k, v) =>
             {
                 wasAddEvent = true;
                 addedKey = k;
+                addedValue = v;
             };
-
-            //Act:
 
             e.AddValue(key, foo);
 
-            //Assert:
-
             Assert.IsTrue(wasAddEvent);
-            Assert.AreEqual(addedKey, key);
+            Assert.AreEqual(key, addedKey);
+            Assert.AreEqual(foo, addedValue);
             Assert.IsTrue(e.HasValue(key));
         }
 
@@ -882,11 +877,18 @@ namespace Atomic.Entities
             var entity = new Entity();
 
             int? capturedKey = null;
-            entity.OnValueAdded += (e, key) => capturedKey = key;
+            int? capturedValue = null;
+
+            entity.OnValueAdded += (e, key, value) =>
+            {
+                capturedKey = key;
+                capturedValue = (int) value;
+            };
 
             entity.AddValue(5, 999);
 
             Assert.AreEqual(5, capturedKey);
+            Assert.AreEqual(999, capturedValue);
         }
 
         [Test]
@@ -954,11 +956,18 @@ namespace Atomic.Entities
             entity.AddValue(5, 777);
 
             int? deletedKey = null;
-            entity.OnValueDeleted += (e, key) => deletedKey = key;
+            int? deletedValue = null;
+
+            entity.OnValueDeleted += (e, key, value) =>
+            {
+                deletedKey = key;
+                deletedValue = (int) value;
+            };
 
             entity.DelValue(5);
 
             Assert.AreEqual(5, deletedKey);
+            Assert.AreEqual(777, deletedValue);
         }
 
         [Test]
@@ -1048,7 +1057,7 @@ namespace Atomic.Entities
             entity.SetValue(1, "Same");
 
             bool called = false;
-            entity.OnValueChanged += (_, _) => called = true;
+            entity.OnValueChanged += (_, _, _) => called = true;
 
             entity.SetValue(1, "Same");
 
@@ -1062,11 +1071,18 @@ namespace Atomic.Entities
             entity.SetValue(1, "A");
 
             int? changedKey = null;
-            entity.OnValueChanged += (_, key) => changedKey = key;
+            object newValue = null;
+
+            entity.OnValueChanged += (_, key, value) =>
+            {
+                changedKey = key;
+                newValue = value;
+            };
 
             entity.SetValue(1, "B");
 
             Assert.AreEqual(1, changedKey);
+            Assert.AreEqual("B", newValue);
         }
 
         [Test]
@@ -1125,33 +1141,49 @@ namespace Atomic.Entities
         public void SetValue_InvokesOnValueChanged()
         {
             var entity = new Entity();
-            int? changedKey = null;
+            entity.AddValue(777, 33);
 
-            entity.OnValueChanged += (_, key) => changedKey = key;
+            int? changedKey = null;
+            object changedValue = null;
+
+
+            entity.OnValueChanged += (_, key, value) =>
+            {
+                changedKey = key;
+                changedValue = value;
+            };
+
+            // Act
             entity.SetValue(777, 456);
 
+            // Assert
             Assert.AreEqual(777, changedKey);
+            Assert.AreEqual(456, changedValue);
         }
 
         [Test]
         public void SetValue_PreviousValueIsNotExists_ValueAdded()
         {
-            //Arrange:
             const int key = 1;
             string foo = new string("Foo");
             var e = new Entity("123");
 
             var wasChangeEvent = false;
             int addedKey = -1;
+            object addedValue = null;
 
-            //Act:
-            e.OnValueAdded += (_, k) => { addedKey = k; };
-            e.OnValueChanged += (_, _) => { wasChangeEvent = false; };
+            e.OnValueAdded += (_, k, v) =>
+            {
+                addedKey = k;
+                addedValue = v;
+            };
+
+            e.OnValueChanged += (_, _, _) => { wasChangeEvent = true; };
 
             e.SetValue(key, foo);
 
-            //Assert:
-            Assert.AreEqual(addedKey, key);
+            Assert.AreEqual(key, addedKey);
+            Assert.AreEqual(foo, addedValue);
             Assert.IsTrue(e.HasValue(key));
             Assert.IsFalse(wasChangeEvent);
             Assert.AreEqual(foo, e.GetValue<string>(key));
@@ -1161,26 +1193,28 @@ namespace Atomic.Entities
         [Test]
         public void SetValue_OverridesAddedValue()
         {
-            //Arrange:
             const int key = 1;
             string foo = new string("Foo");
             string foo2 = new string("Foo2");
 
             var wasAddEvent = false;
             var changedKey = -1;
+            object changedValue = null;
 
             Entity e = new Entity("123");
             e.AddValue(key, foo);
 
-            e.OnValueAdded += (_, _) => { wasAddEvent = false; };
-            e.OnValueChanged += (_, k) => { changedKey = k; };
-
-            //Act:
+            e.OnValueAdded += (_, _, _) => { wasAddEvent = true; };
+            e.OnValueChanged += (_, k, v) =>
+            {
+                changedKey = k;
+                changedValue = v;
+            };
 
             e.SetValue(key, foo2);
 
-            //Assert:
-            Assert.AreEqual(changedKey, key);
+            Assert.AreEqual(key, changedKey);
+            Assert.AreEqual(foo2, changedValue);
             Assert.IsTrue(e.HasValue(key));
             Assert.IsFalse(wasAddEvent);
             Assert.AreEqual(foo2, e.GetValue<string>(key));
@@ -1209,7 +1243,8 @@ namespace Atomic.Entities
         {
             var entity = new Entity();
             var deleted = new List<int>();
-            entity.OnValueDeleted += (_, key) => deleted.Add(key);
+
+            entity.OnValueDeleted += (_, key, _) => deleted.Add(key);
 
             entity.SetValue(10, "a");
             entity.SetValue(20, "b");
@@ -1255,7 +1290,6 @@ namespace Atomic.Entities
         [Test]
         public void ClearValues()
         {
-            //Arrange:
             const int key1 = 1;
             const int key2 = 2;
 
@@ -1269,13 +1303,11 @@ namespace Atomic.Entities
                 {key2, foo2}
             });
 
-            var removedItems = new HashSet<object>();
-            e.OnValueDeleted += (_, k) => removedItems.Add(k);
+            var removedItems = new HashSet<int>();
+            e.OnValueDeleted += (_, k, _) => removedItems.Add(k);
 
-            //Act:
             e.ClearValues();
 
-            //Assert:
             Assert.IsFalse(e.HasValue(key1));
             Assert.IsFalse(e.HasValue(key2));
             Assert.Throws<KeyNotFoundException>(() => e.GetValue<object>(key1));
@@ -1351,7 +1383,7 @@ namespace Atomic.Entities
         public void GetValues_ReturnsStructValueAddedByAddValue()
         {
             var entity = new Entity();
-            var value = new SampleStruct {A = 1, B = 2};
+            var value = new TestStruct {A = 1, B = 2};
 
             entity.AddValue(1, value);
 
@@ -1365,7 +1397,7 @@ namespace Atomic.Entities
         public void GetValues_ReturnsStructValueAddedBySetValue()
         {
             var entity = new Entity();
-            var value = new SampleStruct {A = 3, B = 1};
+            var value = new TestStruct {A = 3, B = 1};
 
             entity.SetValue(5, value);
 
@@ -1379,27 +1411,27 @@ namespace Atomic.Entities
         public void GetValues_StructValueIsBoxedCorrectly()
         {
             var entity = new Entity();
-            var value = new SampleStruct {A = 10, B = 3};
+            var value = new TestStruct {A = 10, B = 3};
 
             entity.AddValue(2, value);
 
             object boxed = entity.GetValue(2);
 
-            Assert.IsInstanceOf<SampleStruct>(boxed);
-            Assert.AreEqual(value, (SampleStruct) boxed);
+            Assert.IsInstanceOf<TestStruct>(boxed);
+            Assert.AreEqual(value, (TestStruct) boxed);
         }
 
         [Test]
         public void GetValues_StructValueCanBeUnboxedSafely()
         {
             var entity = new Entity();
-            var value = new SampleStruct {A = 7, B = 8};
+            var value = new TestStruct {A = 7, B = 8};
 
             entity.AddValue(4, value);
 
             var allValues = entity.GetValues();
 
-            var unboxed = (SampleStruct) allValues[0].Value;
+            var unboxed = (TestStruct) allValues[0].Value;
 
             Assert.AreEqual(value, unboxed);
         }
@@ -1495,9 +1527,9 @@ namespace Atomic.Entities
             entity.AddValue(3, true);
 
             var results = new List<KeyValuePair<int, object>>();
-            
+
             Entity.ValueEnumerator valueEnumerator = entity.GetValueEnumerator();
-            while (valueEnumerator.MoveNext()) 
+            while (valueEnumerator.MoveNext())
                 results.Add(valueEnumerator.Current);
 
             CollectionAssert.AreEquivalent(new[]
@@ -1518,9 +1550,9 @@ namespace Atomic.Entities
 
             var results = new List<KeyValuePair<int, object>>();
             Entity.ValueEnumerator valueEnumerator = entity.GetValueEnumerator();
-            while (valueEnumerator.MoveNext()) 
+            while (valueEnumerator.MoveNext())
                 results.Add(valueEnumerator.Current);
-            
+
             Assert.AreEqual(1, results.Count);
             Assert.AreEqual(1, results[0].Key);
             Assert.AreEqual("alive", results[0].Value);

@@ -2,16 +2,16 @@
 
 **Scene Entity Bakers** are responsible for converting Unity GameObjects into [IEntity](../Entities/IEntity.md)
 instances. They provide a structured way to bake scene objects into runtime entities, pre-configuring tags, values, and
-behaviours. Bakers can be generic ([SceneEntityBaker\<E>](SceneEntityBaker%601.md)) or non-generic
-([SceneEntityBaker](SceneEntityBaker.md)), depending on whether you want type-safe entity creation.
+behaviours. Bakers can be generic ([MonoEntityBaker\<E>](MonoEntityBaker%601.md)) or non-generic
+([MonoEntityBaker](MonoEntityBaker.md)), depending on whether you want type-safe entity creation.
 
 ---
 
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
-    - [SceneEntityBaker](#ex1)
-    - [SceneEntityBaker\<E>](#ex2)
+    - [MonoEntityBaker](#ex1)
+    - [MonoEntityBaker\<E>](#ex2)
     - [Bake All](#ex3)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
@@ -23,10 +23,10 @@ behaviours. Bakers can be generic ([SceneEntityBaker\<E>](SceneEntityBaker%601.m
 
 <div id="ex1"></div>
 
-### 1️⃣ SceneEntityBaker
+### 1️⃣ MonoEntityBaker
 
 ```csharp
-public class EnemyBaker : SceneEntityBaker
+public class EnemyBaker : MonoEntityBaker
 {
     protected override void Install(IEntity entity)
     {
@@ -40,10 +40,10 @@ public class EnemyBaker : SceneEntityBaker
 
 <div id="ex2"></div>
 
-### 2️⃣ SceneEntityBaker<E>
+### 2️⃣ MonoEntityBaker<E>
 
 ```csharp
-public class EnemyBaker : SceneEntityBaker<EnemyEntity>
+public class EnemyBaker : MonoEntityBaker<EnemyEntity>
 {
     protected override EnemyEntity Create()
     {
@@ -80,15 +80,15 @@ world.AddRange(enemies);
 
 ## 🔍 API Reference
 
-- [SceneEntityBaker](SceneEntityBaker.md) <!-- + -->
-- [SceneEntityBaker&lt;E&gt;](SceneEntityBaker%601.md) <!-- + -->
+- [MonoEntityBaker](MonoEntityBaker.md) <!-- + -->
+- [MonoEntityBaker&lt;E&gt;](MonoEntityBaker%601.md) <!-- + -->
 
 ---
 
 ## 📝 Notes
 
-- Use [SceneEntityBaker](SceneEntityBaker.md) when you want a non-generic, unified approach for multiple entity types.
-- Use [SceneEntityBaker\<E>](SceneEntityBaker%601.md) for type-safe entity creation and compile-time guarantees.
+- Use [MonoEntityBaker](MonoEntityBaker.md) when you want a non-generic, unified approach for multiple entity types.
+- Use [MonoEntityBaker\<E>](MonoEntityBaker%601.md) for type-safe entity creation and compile-time guarantees.
 - Both types integrate with Unity workflows, allowing pre-configured tags, values, and behaviours to be baked directly
   from scene objects.
 - Generic versions avoid casting and provide clearer API for runtime logic.
@@ -105,9 +105,9 @@ world.AddRange(enemies);
 
 ### What is Baking?
 
-In the context of `SceneEntityBaker`, **Baking** is the process of taking a **GameObject** from a Unity scene and converting it into a fully configured **entity**.
+In the context of `MonoEntityBaker`, **Baking** is the process of taking a **GameObject** from a Unity scene and converting it into a fully configured **entity**.
 
-Baking can be thought of as **overriding factory defaults**. The `ScriptableEntityFactory<E>` provides default properties for an entity (e.g., health, damage, stats). During baking, a `SceneEntityBaker` can:
+Baking can be thought of as **overriding factory defaults**. The `ScriptableEntityFactory<E>` provides default properties for an entity (e.g., health, damage, stats). During baking, a `MonoEntityBaker` can:
 
 - Customize these properties for the specific GameObject.
 - Apply scene-specific values.
@@ -119,7 +119,7 @@ This allows you to reuse factory defaults while still customizing entities direc
 
 ## Key Features
 
-- **Generic and non-generic versions**: Supports both specific entity types (`SceneEntityBaker<E>`) and a shortcut for general `IEntity` (`SceneEntityBaker`).
+- **Generic and non-generic versions**: Supports both specific entity types (`MonoEntityBaker<E>`) and a shortcut for general `IEntity` (`MonoEntityBaker`).
 - **Factory-based entity creation**: Uses `ScriptableEntityFactory<E>` to instantiate entities, ensuring consistent creation logic.
 - **Baker as a factory**: Can be used as an `IEntityFactory<E>` itself, providing flexible entity creation directly from the Baker.
 - **Customizable entity setup**: Subclasses implement `Install(E entity)` to configure baked entities with scene-specific data.

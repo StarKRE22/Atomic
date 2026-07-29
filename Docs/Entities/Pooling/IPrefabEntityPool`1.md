@@ -26,7 +26,7 @@ Useful when you want prefab-based pooling with automatic instantiation and reuse
 
 ```csharp
 // Assume we have a scene entity prefabs
-public class GameEntity : SceneEntity
+public class GameEntity : MonoEntity
 {
 }
 ```
@@ -59,11 +59,11 @@ enemyPool.Dispose(orc);
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public interface IPrefabEntityPool<E> : IDisposable where E : SceneEntity
+public interface IPrefabEntityPool<E> : IDisposable where E : MonoEntity
 ```
 
 - **Type Parameter:** `E` — The type of scene entity being pooled. Must inherit
-  from [SceneEntity](../Entities/SceneEntity.md).
+  from [MonoEntity](../Entities/MonoEntity.md).
 - **Inheritance:** `IDisposable`
 
 ---

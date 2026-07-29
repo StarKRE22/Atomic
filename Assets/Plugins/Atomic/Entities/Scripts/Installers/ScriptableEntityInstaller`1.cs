@@ -40,7 +40,7 @@ namespace Atomic.Entities
         {
             if (entity is not E e)
                 throw new InvalidCastException(
-                    $"[ScriptableEntityInstaller<{typeof(E).Name}>] Invalid entity type.\n" +
+                    $"[ScriptableEntityInstaller<{typeof(E).Name}>] Invalid entity type for {this.GetType().Name}.\n" +
                     $"Expected: {typeof(E).FullName}\n" +
                     $"Received: {entity?.GetType().FullName ?? "null"}\n" +
                     "Please connect the correct ScriptableEntityInstaller for this entity type."

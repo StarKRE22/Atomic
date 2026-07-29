@@ -25,7 +25,8 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The evaluation logic to be applied to the function enumerator.</param>
         /// <param name="array">An array of function enumerator to add to the expression.</param>
-        public InlineExpression(Func<Enumerator, R> function, params Func<R>[] array) : base(array) =>
+        public InlineExpression(Func<Enumerator, R> function, params ExpressionMember<R>[] array) :
+            base(array) =>
             this.function = function;
 
         /// <summary>
@@ -33,7 +34,8 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The evaluation logic to be applied to the function enumerator.</param>
         /// <param name="enumerable">A collection of function enumerator to add to the expression.</param>
-        public InlineExpression(Func<Enumerator, R> function, IEnumerable<Func<R>> enumerable) : base(enumerable) =>
+        public InlineExpression(Func<Enumerator, R> function, IEnumerable<ExpressionMember<R>> enumerable) :
+            base(enumerable) =>
             this.function = function;
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace Atomic.Elements
     public class InlineExpression<T, R> : ExpressionBase<T, R>
     {
         private readonly Func<Enumerator, T, R> function;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineExpression{T,R}"/> class with a custom evaluation function.
         /// </summary>
@@ -67,7 +69,8 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The custom logic for evaluating the expression.</param>
         /// <param name="array">An array of function enumerator to initialize with.</param>
-        public InlineExpression(Func<Enumerator, T, R> function, params Func<T, R>[] array) : base(array) =>
+        public InlineExpression(Func<Enumerator, T, R> function, params ExpressionMember<T, R>[] array) :
+            base(array) =>
             this.function = function;
 
         /// <summary>
@@ -75,7 +78,8 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The custom logic for evaluating the expression.</param>
         /// <param name="enumerable">A collection of function enumerator to initialize with.</param>
-        public InlineExpression(Func<Enumerator, T, R> function, IEnumerable<Func<T, R>> enumerable) : base(enumerable) =>
+        public InlineExpression(Func<Enumerator, T, R> function,
+            IEnumerable<ExpressionMember<T, R>> enumerable) : base(enumerable) =>
             this.function = function;
 
         /// <summary>
@@ -112,7 +116,8 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the expression.</param>
         /// <param name="array">An array of binary functions to initialize with.</param>
-        public InlineExpression(Func<Enumerator, T1, T2, R> function, params Func<T1, T2, R>[] array) : base(array) =>
+        public InlineExpression(Func<Enumerator, T1, T2, R> function,
+            params ExpressionMember<T1, T2, R>[] array) : base(array) =>
             this.function = function;
 
         /// <summary>
@@ -120,7 +125,8 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the expression.</param>
         /// <param name="enumerable">A collection of binary functions to initialize with.</param>
-        public InlineExpression(Func<Enumerator, T1, T2, R> function, IEnumerable<Func<T1, T2, R>> enumerable) : base(enumerable) =>
+        public InlineExpression(Func<Enumerator, T1, T2, R> function,
+            IEnumerable<ExpressionMember<T1, T2, R>> enumerable) : base(enumerable) =>
             this.function = function;
 
         /// <summary>

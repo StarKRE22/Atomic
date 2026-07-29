@@ -169,10 +169,10 @@ public static class Extensions
 #### `WhenInit(Action)`
 
 ```csharp
-public static InitSubscription WhenInit(this IInitLifecycle source, Action action)
+public static InitSubscription WhenInit(this IInitSource source, Action action)
 ```
 
-- **Description:** Subscribes to the [IInitLifecycle.OnInitialized](Sources/IInitLifecycle.md#oninitialized) event.
+- **Description:** Subscribes to the [IInitSource.OnInitialized](Sources/IInitSource.md#oninitialized) event.
 - **Parameters:**
     - `source` — The spawnable object to observe.
     - `action` — The callback to invoke on initialization.
@@ -181,10 +181,10 @@ public static InitSubscription WhenInit(this IInitLifecycle source, Action actio
 #### `WhenDispose(Action)`
 
 ```csharp
-public static DisposeSubscription WhenDispose(this IInitLifecycle source, Action action)
+public static DisposeSubscription WhenDispose(this IInitSource source, Action action)
 ```
 
-- **Description:** Subscribes to the [IInitLifecycle.OnDisposed](Sources/IInitLifecycle.md#ondisposed) event.
+- **Description:** Subscribes to the [IInitSource.OnDisposed](Sources/IInitSource.md#ondisposed) event.
 - **Parameters:**
     - `source` — The spawnable object to observe.
     - `action` — The callback to invoke on disposal.
@@ -193,10 +193,10 @@ public static DisposeSubscription WhenDispose(this IInitLifecycle source, Action
 #### `WhenEnable(Action)`
 
 ```csharp
-public static EnableSubscription WhenEnable(this IEnableLifecycle source, Action action)
+public static EnableSubscription WhenEnable(this IEnableSource source, Action action)
 ```
 
-- **Description:** Subscribes to the [IEnableLifecycle.OnEnabled](Sources/IEnableLifecycle.md#onenabled) event.
+- **Description:** Subscribes to the [IEnableSource.OnEnabled](Sources/IEnableSource.md#onenabled) event.
 - **Parameters:**
     - `source` — The activatable object.
     - `action` — The callback to invoke when enabled.
@@ -205,10 +205,10 @@ public static EnableSubscription WhenEnable(this IEnableLifecycle source, Action
 #### `WhenDisable(Action)`
 
 ```csharp
-public static DisableSubscription WhenDisable(this IEnableLifecycle source, Action action)
+public static DisableSubscription WhenDisable(this IEnableSource source, Action action)
 ```
 
-- **Description:** Subscribes to the [IEnableLifecycle.OnDisabled](Sources/IEnableLifecycle.md#ondisabled) event.
+- **Description:** Subscribes to the [IEnableSource.OnDisabled](Sources/IEnableSource.md#ondisabled) event.
 - **Parameters:**
     - `source` — The activatable object.
     - `action` — The callback to invoke when disabled.
@@ -217,10 +217,10 @@ public static DisableSubscription WhenDisable(this IEnableLifecycle source, Acti
 #### `WhenTick(Action<float>)`
 
 ```csharp
-public static TickSubscription WhenTick(this ITickLifecycle source, Action<float> action)
+public static TickSubscription WhenTick(this ITickSource source, Action<float> action)
 ```
 
-- **Description:** Subscribes to the [ITickLifecycle.OnTicked](Sources/ITickLifecycle.md#onticked) event.
+- **Description:** Subscribes to the [ITickSource.OnTicked](Sources/ITickSource.md#onticked) event.
 - **Parameters:**
     - `source` — The updatable object.
     - `action` — The callback to invoke on each frame update.
@@ -229,10 +229,10 @@ public static TickSubscription WhenTick(this ITickLifecycle source, Action<float
 #### `WhenFixedTick(Action<float>)`
 
 ```csharp
-public static FixedTickSubscription WhenFixedTick(this ITickLifecycle source, Action<float> action)
+public static FixedTickSubscription WhenFixedTick(this ITickSource source, Action<float> action)
 ```
 
-- **Description:** Subscribes to the [ITickLifecycle.OnFixedTicked](Sources/ITickLifecycle.md#onfixedticked) event.
+- **Description:** Subscribes to the [ITickSource.OnFixedTicked](Sources/ITickSource.md#onfixedticked) event.
 - **Parameters:**
     - `source` — The updatable object.
     - `action` — The callback to invoke on each fixed update.
@@ -242,10 +242,10 @@ public static FixedTickSubscription WhenFixedTick(this ITickLifecycle source, Ac
 #### `WhenLateTick(Action<float>)`
 
 ```csharp
-public static LateTickSubscription WhenLateTick(this ITickLifecycle source, Action<float> action)
+public static LateTickSubscription WhenLateTick(this ITickSource source, Action<float> action)
 ```
 
-- **Description:** Subscribes to the [ITickLifecycle.OnLateTicked](Sources/ITickLifecycle.md#onlateticked) event.
+- **Description:** Subscribes to the [ITickSource.OnLateTicked](Sources/ITickSource.md#onlateticked) event.
 - **Parameters:**
     - `source` — The updatable object.
     - `action` — The callback to invoke on each late update.

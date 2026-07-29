@@ -44,7 +44,7 @@ public interface IEntityGizmos : IEntityBehaviour
 ```
 
 - **Inheritance:** implements [IEntityBehaviour](IEntityBehaviour.md)
-- **Note:** It is automatically invoked by `SceneEntity.OnDrawGizmos()` or `SceneEntity.OnDrawGizmosSelected()` in the
+- **Note:** It is automatically invoked by `MonoEntity.OnDrawGizmos()` or `MonoEntity.OnDrawGizmosSelected()` in the
   Unity Editor, allowing visualization of entity data in the scene view.
 - **See also:** [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md)
 
@@ -60,5 +60,5 @@ public void DrawGizmos(IEntity entity);
 
 - **Description:** Draws editor or debug gizmos for the entity.
 - **Parameter:** `entity` – The entity to visualize.
-- **Remarks:** Automatically called by `SceneEntity.OnDrawGizmos()` or `SceneEntity.OnDrawGizmosSelected()` in the Unity
+- **Remarks:** Automatically called by `MonoEntity.OnDrawGizmos()` or `MonoEntity.OnDrawGizmosSelected()` in the Unity
   Editor.

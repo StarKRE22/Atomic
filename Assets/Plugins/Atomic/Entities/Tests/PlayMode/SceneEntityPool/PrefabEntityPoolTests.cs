@@ -10,7 +10,7 @@ namespace Atomic.Entities
     {
         private GameObject _root;
         private TestPrefabEntityPool _pool;
-        private SceneEntity _prefab;
+        private MonoEntity _prefab;
 
         [SetUp]
         public void SetUp()
@@ -18,7 +18,7 @@ namespace Atomic.Entities
             _root = new GameObject("PoolRoot");
             _pool = _root.AddComponent<TestPrefabEntityPool>();
 
-            _prefab = SceneEntity.Create<SceneEntity>();
+            _prefab = MonoEntity.Create<MonoEntity>();
             _prefab.name = "TestEntity";
             _prefab.gameObject.SetActive(false);
         }
@@ -48,7 +48,7 @@ namespace Atomic.Entities
             _pool.Init(_prefab, 1);
             yield return null;
 
-            var entity = _pool.Rent(_prefab);
+            var entity = MonoEntity.Cast(_pool.Rent(_prefab));
             Assert.IsNotNull(entity);
             Assert.IsTrue(entity.gameObject.activeSelf);
         }
@@ -59,7 +59,7 @@ namespace Atomic.Entities
             var position = new Vector3(1, 2, 3);
             var rotation = Quaternion.Euler(0, 90, 0);
 
-            var entity = _pool.Rent(_prefab, position, rotation);
+            var entity = MonoEntity.Cast(_pool.Rent(_prefab, position, rotation));
             yield return null;
 
             Assert.AreEqual(position, entity.transform.position);
@@ -69,7 +69,7 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator Return_DeactivatesAndReparents()
         {
-            var entity = _pool.Rent(_prefab);
+            MonoEntity entity = MonoEntity.Cast(_pool.Rent(_prefab));
             _pool.Return(entity);
             yield return null;
 
@@ -103,7 +103,7 @@ namespace Atomic.Entities
         public IEnumerator Dispose_All_RemovesEverything()
         {
             _pool.Init(_prefab, 2);
-            var otherPrefab = SceneEntity.Create<SceneEntity>();
+            var otherPrefab = MonoEntity.Create<MonoEntity>();
             otherPrefab.name = "Other";
             _pool.Init(otherPrefab, 1);
 
@@ -117,19 +117,19 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator Rent_WithoutInit_CreatesNewPool()
         {
-            var entity = _pool.Rent(_prefab);
+            IEntity entity = _pool.Rent(_prefab);
             yield return null;
 
             Assert.IsNotNull(entity);
-            Assert.AreEqual("TestEntity", entity.name);
+            Assert.AreEqual("TestEntity", MonoEntity.Cast(entity).name);
             Assert.IsTrue(_pool.HasPool("TestEntity"));
         }
 
-        public class TestPrefabEntityPool : PrefabEntityPool<SceneEntity>
+        public class TestPrefabEntityPool : PrefabEntityPool<IEntity, MonoEntity>
         {
-            public Stack<SceneEntity> GetStack(string name)
+            public Stack<MonoEntity> GetStack(string name)
             {
-                var field = typeof(PrefabEntityPool<SceneEntity>)
+                var field = typeof(PrefabEntityPool<IEntity, MonoEntity>)
                     .GetField("_pools",
                         System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                 Dictionary<string, Pool> pools = (Dictionary<string, Pool>) field!.GetValue(this);
@@ -142,7 +142,7 @@ namespace Atomic.Entities
 
             public Transform GetContainer(string name)
             {
-                var field = typeof(PrefabEntityPool<SceneEntity>)
+                var field = typeof(PrefabEntityPool<IEntity, MonoEntity>)
                     .GetField("_pools",
                         System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                 var pools = (Dictionary<string, Pool>) field!.GetValue(this);
@@ -153,7 +153,7 @@ namespace Atomic.Entities
 
             public List<string> GetAllPoolNames()
             {
-                var field = typeof(PrefabEntityPool<SceneEntity>)
+                var field = typeof(PrefabEntityPool<IEntity, MonoEntity>)
                     .GetField("_pools",
                         System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                 var pools = (Dictionary<string, Pool>) field!.GetValue(this);
@@ -162,7 +162,7 @@ namespace Atomic.Entities
 
             public bool HasPool(string name)
             {
-                var field = typeof(PrefabEntityPool<SceneEntity>)
+                var field = typeof(PrefabEntityPool<IEntity, MonoEntity>)
                     .GetField("_pools",
                         System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                 var pools = (Dictionary<string, Pool>) field!.GetValue(this);

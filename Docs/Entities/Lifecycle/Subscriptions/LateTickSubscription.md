@@ -1,6 +1,6 @@
 # 🧩 LateTickSubscription
 
-Represents a disposable subscription handle for an [ITickLifecycle's](../Sources/ITickLifecycle.md)
+Represents a disposable subscription handle for an [ITickSource's](../Sources/ITickSource.md)
 **OnLateTicked** event. Automatically unsubscribes the callback when disposed, ensuring safe handling of late update
 logic.
 
@@ -17,7 +17,7 @@ logic.
       <li>
         <a href="#ctor">Constructors</a>
         <ul>
-          <li><a href="#lateticksubscriptioniticklifecycle-actionfloat">LateTickSubscription(ITickLifecycle, Action&lt;float&gt;)</a></li>
+          <li><a href="#lateticksubscriptionITickSource-actionfloat">LateTickSubscription(ITickSource, Action&lt;float&gt;)</a></li>
         </ul>
       </li>
       <li>
@@ -35,8 +35,8 @@ logic.
 ## 🗂 Example of Usage
 
 ```csharp
-// Assume we have an instance of ITickLifecycle
-ITickLifecycle tickSource = ...;
+// Assume we have an instance of ITickSource
+ITickSource tickSource = ...;
 
 // Subscribe to the LateUpdate event
 var subscription = new LateTickSubscription(tickSource, deltaTime => 
@@ -67,10 +67,10 @@ public readonly struct LateTickSubscription : IDisposable
 
 ### 🏗️ Constructors
 
-#### `LateTickSubscription(ITickLifecycle, Action<float>)`
+#### `LateTickSubscription(ITickSource, Action<float>)`
 
 ```csharp
-public LateTickSubscription(ITickLifecycle source, Action<float> callback)
+public LateTickSubscription(ITickSource source, Action<float> callback)
 ```
 
 - **Description:** Subscribes the provided callback to the `OnLateTicked` event of the given source.

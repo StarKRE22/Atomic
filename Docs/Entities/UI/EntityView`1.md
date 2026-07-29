@@ -66,7 +66,7 @@ public class GameEntityView : EntityView<IGameEntity>
 #### 4. Create an entity installer for `GameEntityView`
 
 ```csharp
-public sealed class TankViewInstaller : SceneEntityInstaller<IGameEntity>
+public sealed class TankViewInstaller : MonoEntityInstaller<IGameEntity>
 {
     [SerializeField] private TakeDamageViewBehaviour _takeDamageBehaviour;
     [SerializeField] private PositionViewBehaviour _positionBehaviour;
@@ -146,7 +146,7 @@ CreateArgs args = new GameEntityView.CreateArgs
 {
     name = "PlayerView",
     controlGameObject = true,
-    installers = new List<SceneEntityInstaller> { jumpInstaller, speedInstaller },
+    installers = new List<MonoEntityInstaller> { jumpInstaller, speedInstaller },
 };
 
 GameEntityView playerView = GameEntityView.Create(args);
@@ -181,11 +181,11 @@ public sealed class TransformGizmos : IEntityGizmos<IGameEntity>
 }
 ```
 
-#### 2. Attach the gizmo to a `SceneEntityInstaller`
+#### 2. Attach the gizmo to a `MonoEntityInstaller`
 
 ```csharp
 
-public sealed class CharacterViewInstaller : SceneEntityInstaller<IGameEntity>
+public sealed class CharacterViewInstaller : MonoEntityInstaller<IGameEntity>
 {
     private readonly TransformGizmos _transformGizmos = new();
     
@@ -296,7 +296,7 @@ public void Show(E entity);
 - **Details:**
     - Activates the `GameObject` if `controlGameObject == true`.
     - Calls `OnShow(entity)` for custom logic.
-    - Executes `Install()` on each `SceneEntityInstaller` in the list.
+    - Executes `Install()` on each `MonoEntityInstaller` in the list.
 
 #### `Hide()`
 

@@ -29,10 +29,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="value">The function delegate.</param>
         public static implicit operator InlineFunction<R>(Func<R> value) => new(value);
-
-#if ODIN_INSPECTOR
-        [ShowInInspector]
-#endif
+        
         public R Value => this.func.Invoke();
         
 #if ODIN_INSPECTOR

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Atomic.Elements
 {
@@ -20,7 +21,7 @@ namespace Atomic.Elements
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of functions that return an integer value.</param>
-        public IntSumExpression(params Func<int>[] members) : base(members)
+        public IntSumExpression(params ExpressionMember<int>[] members) : base(members)
         {
         }
 
@@ -28,7 +29,7 @@ namespace Atomic.Elements
         /// Initializes the expression with a collection of function members.
         /// </summary>
         /// <param name="members">A collection of functions that return an integer value.</param>
-        public IntSumExpression(IEnumerable<Func<int>> members) : base(members)
+        public IntSumExpression(IEnumerable<ExpressionMember<int>> members) : base(members)
         {
         }
 
@@ -60,7 +61,7 @@ namespace Atomic.Elements
         /// Initializes the expression with a collection of function members.
         /// </summary>
         /// <param name="members">A collection of functions that take <typeparamref name="T"/> and return an integer value.</param>
-        public IntSumExpression(IEnumerable<Func<T, int>> members) : base(members)
+        public IntSumExpression(IEnumerable<ExpressionMember<T, int>> members) : base(members)
         {
         }
 
@@ -68,7 +69,7 @@ namespace Atomic.Elements
         /// Initializes the expression with an array of function members.
         /// </summary>
         /// <param name="members">An array of functions that take <typeparamref name="T"/> and return an integer value.</param>
-        public IntSumExpression(params Func<T, int>[] members) : base(members)
+        public IntSumExpression(params ExpressionMember<T, int>[] members) : base(members)
         {
         }
 
@@ -101,7 +102,7 @@ namespace Atomic.Elements
         /// Initializes the expression with a collection of function members.
         /// </summary>
         /// <param name="members">A collection of functions that take <typeparamref name="T1"/> and <typeparamref name="T2"/> and return an integer.</param>
-        public IntSumExpression(IEnumerable<Func<T1, T2, int>> members) : base(members)
+        public IntSumExpression(IEnumerable<ExpressionMember<T1, T2, int>> members) : base(members)
         {
         }
 
@@ -109,7 +110,7 @@ namespace Atomic.Elements
         /// Initializes the expression with an array of function members.
         /// </summary>
         /// <param name="members">An array of functions that take <typeparamref name="T1"/> and <typeparamref name="T2"/> and return an integer.</param>
-        public IntSumExpression(params Func<T1, T2, int>[] members) : base(members)
+        public IntSumExpression(params ExpressionMember<T1, T2, int>[] members) : base(members)
         {
         }
 

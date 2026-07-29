@@ -10,5 +10,7 @@ namespace Atomic.Elements
     /// <typeparam name="T">The type of elements in the list.</typeparam>
     public interface IReactiveList<T> : IList<T>, IReadOnlyReactiveList<T>, IReactiveCollection<T>
     {
+        /// <inheritdoc cref="IList{T}"/>
+        new bool Contains(T item);
     }
 }

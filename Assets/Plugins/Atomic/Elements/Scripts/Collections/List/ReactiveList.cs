@@ -46,7 +46,6 @@ namespace Atomic.Elements
         }
 
         private event Action<T> onItemAdded;
-
         private event Action<T> onItemRemoved;
 
         /// <inheritdoc/>

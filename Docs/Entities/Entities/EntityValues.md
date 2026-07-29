@@ -138,10 +138,10 @@ entity.DelValue("Inventory");
 ### 3️⃣ Using Entity API
 
 Managing values by raw `int` keys or `string` names can be error-prone, especially in larger projects. To make the
-process easier and **type-safe**, the Atomic Framework supports **code generation**. You describe all your tags and
-values once in a small config file, and the framework automatically generates
-strongly-typed C# helpers. More details are in the Manual under
-the [Entity API](../EntityAPI/Manual.md) section.
+process easier and **type-safe**, the Atomic Framework provides the
+[Entity API Generator](../../CodeGeneration/EntityAPI/EntityAPIGenerator.md). You declare tags and values as static
+fields in a `[GenerateEntityExtensionsAPI]` class, and the generator creates extension methods automatically. Learn more in the
+[Entity API](../EntityAPI/Manual.md) manual.
 
 ```csharp
 // Create a new instance of entity

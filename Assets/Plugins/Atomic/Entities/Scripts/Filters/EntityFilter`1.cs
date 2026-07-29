@@ -81,6 +81,10 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public void CopyTo(E[] array, int arrayIndex) => this.state.CopyTo(array, arrayIndex);
 
+        public E this[int index] => state[index];
+
+        public bool TryGetAt(int index, out E entity) => state.TryGetAt(index, out entity);
+
         /// <inheritdoc/>
         public bool Contains(E entity) => this.state.Contains(entity);
 
@@ -129,6 +133,75 @@ namespace Atomic.Entities
             {
                 this.OnStateChanged?.Invoke();
                 this.OnAdded?.Invoke(entity);
+            }
+        }
+        
+        public static Builder StartBuild() => new();
+
+        /// <summary>
+        /// Fluent builder for creating <see cref="EntityFilter{E}"/> instances.
+        /// </summary>
+        public struct Builder
+        {
+            private IReadOnlyEntityCollection<E> _source;
+            private Predicate<E> _predicate;
+            private List<IEntityTrigger<E>> _triggers;
+
+            /// <summary>
+            /// Assigns a source collection.
+            /// </summary>
+            public Builder WithSource(IReadOnlyEntityCollection<E> source)
+            {
+                _source = source ?? throw new ArgumentNullException(nameof(source));
+                return this;
+            }
+
+            /// <summary>
+            /// Assigns a filter predicate.
+            /// </summary>
+            public Builder WithPredicate(Predicate<E> predicate)
+            {
+                _predicate = predicate ?? throw new ArgumentNullException(nameof(predicate));
+                return this;
+            }
+
+            /// <summary>
+            /// Adds a trigger.
+            /// </summary>
+            public Builder WithTrigger(IEntityTrigger<E> trigger)
+            {
+                if (trigger == null) throw new ArgumentNullException(nameof(trigger));
+
+                _triggers ??= new List<IEntityTrigger<E>>();
+                _triggers.Add(trigger);
+                return this;
+            }
+
+            /// <summary>
+            /// Adds multiple triggers.
+            /// </summary>
+            public Builder WithTriggers(params IEntityTrigger<E>[] triggers)
+            {
+                if (triggers == null) throw new ArgumentNullException(nameof(triggers));
+
+                _triggers ??= new List<IEntityTrigger<E>>();
+                _triggers.AddRange(triggers);
+                return this;
+            }
+
+            /// <summary>
+            /// Builds and returns the configured <see cref="EntityFilter{E}"/>.
+            /// </summary>
+            public EntityFilter<E> Build()
+            {
+                if (_source == null) throw new InvalidOperationException("Source must be provided.");
+                if (_predicate == null) throw new InvalidOperationException("Predicate must be provided.");
+
+                return new EntityFilter<E>(
+                    _source,
+                    _predicate,
+                    _triggers != null ? _triggers.ToArray() : Array.Empty<IEntityTrigger<E>>()
+                );
             }
         }
     }

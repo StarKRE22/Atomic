@@ -9,7 +9,7 @@ namespace Atomic.Entities
         public void Dispose_Not_Should_DisposeEntity()
         {
             // Arrange
-            var entity = new EntityDummy();
+            var entity = new EntitySpy();
             var world = new EntityWorld<Entity>(entity);
             world.Enable();
 
@@ -25,7 +25,7 @@ namespace Atomic.Entities
         public void Dispose_Should_ClearEntities()
         {
             // Arrange
-            var world = new EntityWorld<Entity>(new EntityDummy(), new EntityDummy());
+            var world = new EntityWorld<Entity>(new EntitySpy(), new EntitySpy());
 
             // Act
             world.Dispose();
@@ -38,7 +38,7 @@ namespace Atomic.Entities
         public void Dispose_Should_DisableEntity()
         {
             // Arrange
-            var entity = new EntityDummy();
+            var entity = new EntitySpy();
             var world = new EntityWorld<Entity>(entity);
             world.Enable();
 

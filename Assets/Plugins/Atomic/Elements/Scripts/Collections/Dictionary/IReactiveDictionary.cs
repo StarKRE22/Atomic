@@ -32,5 +32,7 @@ namespace Atomic.Elements
         /// <param name="key">The key to locate in the dictionary.</param>
         /// <returns><c>true</c> if the dictionary contains an element with the specified key; otherwise, <c>false</c>.</returns>
         new bool ContainsKey(K key);
+        
+        new bool TryGetValue(K key, out V value);
     }
 }

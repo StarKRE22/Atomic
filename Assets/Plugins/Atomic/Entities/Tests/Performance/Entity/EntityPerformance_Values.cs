@@ -90,26 +90,6 @@ namespace Atomic.Entities
                 .Run();
         }
 
-        [Test, Performance]
-        public void GetValueUnsafe_AsPrimitive()
-        {
-            var entity = new Entity();
-            for (int i = 0; i < N; i++)
-                entity.AddValue(i, 777);
-
-            Measure.Method(() =>
-                {
-                    for (int i = 0; i < N; i++)
-                    {
-                        int unused = entity.GetValueUnsafe<int>(i);
-                    }
-                })
-                .WarmupCount(10)
-                .MeasurementCount(30)
-                .SampleGroup(new SampleGroup("Time", SampleUnit.Microsecond))
-                .Run();
-        }
-
         #endregion
 
         #region TryGetValue
@@ -191,26 +171,6 @@ namespace Atomic.Entities
                 .WarmupCount(10)
                 .MeasurementCount(30)
                 .SampleGroup(new SampleGroup("TryGetValueUnsafe<T> (string)", SampleUnit.Microsecond))
-                .Run();
-        }
-
-        [Test, Performance]
-        public void TryGetValueUnsafe_AsPrimitive()
-        {
-            var entity = new Entity();
-            for (int i = 0; i < N; i++)
-                entity.AddValue(i, 777);
-
-            Measure.Method(() =>
-                {
-                    for (int i = 0; i < N; i++)
-                    {
-                        bool success = entity.TryGetValueUnsafe(i, out int unused);
-                    }
-                })
-                .WarmupCount(10)
-                .MeasurementCount(30)
-                .SampleGroup(new SampleGroup("TryGetValueUnsafe<T> (int)", SampleUnit.Microsecond))
                 .Run();
         }
 

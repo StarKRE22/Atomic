@@ -9,17 +9,17 @@ namespace Atomic.Entities
         /// <summary>
         /// Event triggered when a value is added.
         /// </summary>
-        event Action<IEntity, int> OnValueAdded;
+        event Action<IEntity, int, object> OnValueAdded;
 
         /// <summary>
         /// Event triggered when a value is deleted.
         /// </summary>
-        event Action<IEntity, int> OnValueDeleted;
+        event Action<IEntity, int, object> OnValueDeleted;
 
         /// <summary>
         /// Event triggered when a value is changed.
         /// </summary>
-        event Action<IEntity, int> OnValueChanged;
+        event Action<IEntity, int, object> OnValueChanged;
 
         /// <summary>
         /// Number of values stored in this entity.
@@ -34,7 +34,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Gets a value by key with a reference (unsafe, no boxing).
         /// </summary>
-        ref T GetValueUnsafe<T>(int key);
+        ref T GetValueUnsafe<T>(int key) where T : class;
 
         /// <summary>
         /// Gets a value by key as an object.
@@ -49,7 +49,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Tries to get a reference to a value (unsafe).
         /// </summary>
-        bool TryGetValueUnsafe<T>(int key, out T value);
+        bool TryGetValueUnsafe<T>(int key, out T value) where T : class;
 
         /// <summary>
         /// Tries to get a value as an object.
@@ -62,11 +62,6 @@ namespace Atomic.Entities
         void SetValue(int key, object value);
 
         /// <summary>
-        /// Sets or updates a value of specified struct type.
-        /// </summary>
-        void SetValue<T>(int key, T value) where T : struct;
-
-        /// <summary>
         /// Checks whether a value with the given key exists.
         /// </summary>
         bool HasValue(int key);
@@ -75,11 +70,6 @@ namespace Atomic.Entities
         /// Adds a value with the given key.
         /// </summary>
         void AddValue(int key, object value);
-
-        /// <summary>
-        /// Adds a struct value with the given key.
-        /// </summary>
-        void AddValue<T>(int key, T value) where T : struct;
 
         /// <summary>
         /// Deletes a value by key.

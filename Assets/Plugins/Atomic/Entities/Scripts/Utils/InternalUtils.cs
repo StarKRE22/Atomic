@@ -11,6 +11,11 @@ namespace Atomic.Entities
     /// </summary>
     internal static class InternalUtils
     {
+        internal static readonly float DeltaTick = 1f / System.Diagnostics.Stopwatch.Frequency;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static long GetTimestamp() => System.Diagnostics.Stopwatch.GetTimestamp();
+
         /// <summary>
         /// Predefined table of prime numbers used for sizing collections or other internal computations.
         /// </summary>
@@ -33,6 +38,7 @@ namespace Atomic.Entities
         /// <exception cref="InvalidOperationException">
         /// Thrown if the requested prime would exceed the range of the <see cref="PrimeTable"/>.
         /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static int CeilToPrime(int value, out int index)
         {
             index = Array.BinarySearch(PrimeTable, value);
@@ -48,8 +54,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Checks whether an object is marked to support edit mode lifecycle.
         /// </summary>
-        internal static bool IsRunInEditModeDefined(object obj) =>
-            obj.GetType().IsDefined(typeof(RunInEditModeAttribute));
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static bool IsEditModeBehaviourDefined(object obj) =>
+            obj.GetType().IsDefined(typeof(EditModeEntityBehaviourAttribute));
 
         /// <summary>
         /// Adds an item to a dynamically managed array, expanding it if needed.

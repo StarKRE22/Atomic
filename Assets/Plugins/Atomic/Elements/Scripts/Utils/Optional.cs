@@ -21,7 +21,8 @@ namespace Atomic.Elements
     public struct Optional<T>
     {
 #if ODIN_INSPECTOR
-        [HorizontalGroup]
+        [FoldoutGroup("")]
+        [HideLabel]
 #endif
 #if UNITY_5_3_OR_NEWER
         [SerializeField]
@@ -29,8 +30,10 @@ namespace Atomic.Elements
         private bool active;
 
 #if ODIN_INSPECTOR
-        [HorizontalGroup]
-        [EnableIf(nameof(active))]
+        // [HorizontalGroup]
+        [FoldoutGroup("")]
+        [ShowIf(nameof(active))]
+        [HideLabel]
 #endif
 #if UNITY_5_3_OR_NEWER
         [SerializeField]

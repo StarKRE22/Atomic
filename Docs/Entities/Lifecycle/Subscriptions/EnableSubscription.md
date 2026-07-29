@@ -1,7 +1,7 @@
 # 🧩 EnableSubscription
 
 Represents a disposable subscription handle for
-an [IEnableLifecycle's](../Sources/IEnableLifecycle.md) **OnEnabled** event. Automatically unsubscribes the callback
+an [IEnableSource's](../Sources/IEnableSource.md) **OnEnabled** event. Automatically unsubscribes the callback
 when disposed, ensuring safe event management and preventing repeated invocations.
 
 ---
@@ -17,7 +17,7 @@ when disposed, ensuring safe event management and preventing repeated invocation
       <li>
         <a href="#ctor">Constructors</a>
         <ul>
-          <li><a href="#enablesubscriptionienablelifecycle-action">EnableSubscription(IEnableLifecycle, Action)</a></li>
+          <li><a href="#enablesubscriptionIEnableSource-action">EnableSubscription(IEnableSource, Action)</a></li>
         </ul>
       </li>
       <li>
@@ -35,8 +35,8 @@ when disposed, ensuring safe event management and preventing repeated invocation
 ## 🗂 Example of Usage
 
 ```csharp
-// Assume we have an instance of IEnableLifecycle
-IEnableLifecycle enableSource = ...;
+// Assume we have an instance of IEnableSource
+IEnableSource enableSource = ...;
 
 // Subscribe to the enable event
 var subscription = new EnableSubscription(enableSource, () => 
@@ -67,10 +67,10 @@ public readonly struct EnableSubscription : IDisposable
 
 ### 🏗️ Constructors
 
-#### `EnableSubscription(IEnableLifecycle, Action)`
+#### `EnableSubscription(IEnableSource, Action)`
 
 ```csharp
-public EnableSubscription(IEnableLifecycle source, Action callback)
+public EnableSubscription(IEnableSource source, Action callback)
 ```
 
 - **Description:** Subscribes the provided callback to the `OnEnabled` event of the given source.

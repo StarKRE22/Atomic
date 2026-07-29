@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+
+// ReSharper disable  PossibleInterfaceMemberAmbiguity
 
 namespace Atomic.Elements
 {
@@ -7,7 +10,9 @@ namespace Atomic.Elements
     /// Provides list semantics for storing delegates of type <see cref="Func{R}"/>.
     /// </summary>
     /// <typeparam name="R">The return type of the expression.</typeparam>
-    public interface IExpression<R> : IReactiveList<Func<R>>, IValue<R>
+    public interface IExpression<R> :
+        IReactiveList<ExpressionMember<R>>,
+        IValue<R>
     {
     }
 
@@ -18,7 +23,9 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The input type of the expression.</typeparam>
     /// <typeparam name="R">The return type of the expression.</typeparam>
-    public interface IExpression<T, R> : IReactiveList<Func<T, R>>, IFunction<T, R>
+    public interface IExpression<T, R> : 
+        IReactiveList<ExpressionMember<T, R>>, 
+        IFunction<T, R>
     {
     }
 
@@ -30,7 +37,9 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The type of the first input argument.</typeparam>
     /// <typeparam name="T2">The type of the second input argument.</typeparam>
     /// <typeparam name="R">The return type of the expression.</typeparam>
-    public interface IExpression<T1, T2, R> : IReactiveList<Func<T1, T2, R>>, IFunction<T1, T2, R>
+    public interface IExpression<T1, T2, R> :
+        IReactiveList<ExpressionMember<T1, T2, R>>, 
+        IFunction<T1, T2, R>
     {
     }
 }

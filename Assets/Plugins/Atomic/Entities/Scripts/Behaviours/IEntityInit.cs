@@ -1,3 +1,5 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -25,7 +27,7 @@ namespace Atomic.Entities
     /// The concrete entity type this behavior is associated with.
     /// </typeparam>
     /// <remarks>
-    /// This method is automatically invoked by <see cref="IInitLifecycle.Init"/> 
+    /// This method is automatically invoked by <see cref="IInitSource.Init"/> 
     /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
     public interface IEntityInit<in E> : IEntityInit where E : IEntity
@@ -38,6 +40,17 @@ namespace Atomic.Entities
         /// </param>
         void Init(E entity);
 
-        void IEntityInit.Init(IEntity entity) => this.Init((E) entity);
+        void IEntityInit.Init(IEntity entity)
+        {
+            if (entity is not E e)
+                throw new InvalidCastException(
+                    $"[IEntityInit<{typeof(E).Name}>] Invalid entity type for {this.GetType().Name}.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    "Please make sure the correct IEntityInit is used for this entity type."
+                );
+
+            this.Init(e);
+        }
     }
 }

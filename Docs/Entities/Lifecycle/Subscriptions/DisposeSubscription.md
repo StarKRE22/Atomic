@@ -1,6 +1,6 @@
 # 🧩 DisposeSubscription
 
-Represents a disposable subscription handle for an [IInitLifecycle's](../Sources/IInitLifecycle.md)
+Represents a disposable subscription handle for an [IInitSource's](../Sources/IInitSource.md)
 **OnDisposed** event. Automatically unsubscribes the callback when disposed, ensuring safe cleanup and preventing memory
 leaks.
 
@@ -17,7 +17,7 @@ leaks.
       <li>
         <a href="#ctor">Constructors</a>
         <ul>
-          <li><a href="#disposesubscriptioniinitlifecycle-action">DisposeSubscription(IInitLifecycle, Action)</a></li>
+          <li><a href="#disposesubscriptionIInitSource-action">DisposeSubscription(IInitSource, Action)</a></li>
         </ul>
       </li>
       <li>
@@ -35,8 +35,8 @@ leaks.
 ## 🗂 Example of Usage
 
 ```csharp
-// Assume we have an instance of IInitLifecycle
-IInitLifecycle initSource = ...;
+// Assume we have an instance of IInitSource
+IInitSource initSource = ...;
 
 // Subscribe to the dispose event
 var subscription = new DisposeSubscription(initSource, () => 
@@ -67,10 +67,10 @@ public readonly struct DisposeSubscription : IDisposable
 
 ### 🏗️ Constructors
 
-#### `DisposeSubscription(IInitLifecycle, Action)`
+#### `DisposeSubscription(IInitSource, Action)`
 
 ```csharp
-public DisposeSubscription(IInitLifecycle source, Action callback)
+public DisposeSubscription(IInitSource source, Action callback)
 ```
 
 - **Description:** Subscribes the provided callback to the `OnDisposed` event of the given source.

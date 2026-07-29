@@ -10,7 +10,7 @@ framework, all game objects, systems, UI elements, and application contexts can 
 
 - [Requirements](#-requirements)
 - [Using Odin Inspector](#-using-odin-inspector)
-- [Using Rider Plugin](#-using-atomic-plugin-for-rider)
+- [Code Generation](#-code-generation)
 - [API Reference](#-api-reference)
 - [Performance](#-performance)
 - [Best Practices](#-best-practices)
@@ -32,13 +32,17 @@ framework **works without Odin**, but Odin makes inspection and tweaking much ea
 
 ---
 
-## 🔌 Using Plugin for Rider
+## 🧬 Code Generation
 
-For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
-the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
-or  [GitHub](https://github.com/Prylor/atomic-rider-plugin). By default, the code generation works with Unity,
-but with the plugin, development experience in `Rider IDE` become
-smoother and more powerful than in Unity.
+The framework provides Roslyn source generators and analyzers for type-safe entity and event APIs. Declare keys in a
+static partial class and the compiler generates extension methods automatically.
+
+- [Code Generation Manual](../CodeGeneration/Manual.md) — overview of all generators and analyzers
+- [Code Generation Setup](../CodeGeneration/Setup.md) — how to add the DLLs to a Unity project
+- [Entity API Generator](../CodeGeneration/EntityAPI/EntityAPIGenerator.md) — `[GenerateEntityExtensionsAPI]` usage
+- [Event API Generator](../CodeGeneration/EventAPI/EventAPIGenerator.md) — `[GenerateEventExtensionsAPI]` usage
+
+The generator source code is available at https://github.com/dre0dru/Atomic.SourceGenerators.
 
 ---
 
@@ -53,15 +57,18 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 - [Aspects](Aspects/Manual.md) <!-- + -->
 - [Factories](Factories/Manual.md) <!-- + -->
 - [Baking](Baking/Manual.md) <!-- + -->
+- [Bootstrap](Bootstrap/Manual.md) <!-- + -->
 - [Pooling](Pooling/Manual.md) <!-- + -->
 - [Collections](Collections/Manual.md) <!-- + -->
 - [Worlds](Worlds/Manual.md) <!-- + -->
 - [Registry](Registry/EntityRegistry.md) <!-- + -->
 - [Filters](Filters/Manual.md) <!-- + -->
 - [Triggers](Filters/EntityTriggers.md) <!-- + -->
+- [Systems](Systems/Manual.md) <!-- + -->
 - [Lifecycle](Lifecycle/Manual.md) <!-- + -->
+- [Inspector](Inspector/Manual.md) <!-- + -->
 - [Views](UI/Manual.md) <!-- + -->
-- [Names](Names/Manual.md) <!-- + -->
+- [KeyStore](KeyStore/Manual.md) <!-- + -->
 - [API Generation](EntityAPI/Manual.md) <!-- + -->
 
 ---

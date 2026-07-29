@@ -20,7 +20,7 @@ from events** or **cleaning up resources** when an entity is destroyed or remove
 This example demonstrates subscribing to multiple events and cleaning them up automatically using `Uninstall`:
 
 ```csharp
-public sealed class WeaponViewInstaller : SceneEntityInstaller
+public sealed class WeaponViewInstaller : MonoEntityInstaller
 {
     [SerializeField] private ParticleSystem _fireVFX;
     [SerializeField] private AudioSource _fireSFX;

@@ -70,14 +70,15 @@ public class MultiEntityPool : MultiEntityPool<string, IEntity>, IMultiEntityPoo
 
 ### 🏗️ Constructors
 
-#### `MultiEntityPool(IMultiEntityFactory<string, IEntity>)`
+#### `MultiEntityPool(IMultiEntityFactory<string, IEntity>, ExpandMode)`
 
 ```csharp
-public MultiEntityPool(IMultiEntityFactory<string, IEntity> factory);
+public MultiEntityPool(IMultiEntityFactory<string, IEntity> factory, ExpandMode expandMode = ExpandMode.ExpandByOne);
 ```
 
 - **Description:** Initializes a new instance of the `MultiEntityPool` class.
 - **Parameter:** `factory` — The factory registry used to create and manage entity instances.
+- **Parameter:** `expandMode` — Determines how each key-based pool expands when empty. Defaults to `ExpandByOne`. See [ExpandMode](ExpandMode.md).
 - **Note:** The factory is required to generate new entities for each string key.
 
 ---

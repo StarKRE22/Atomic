@@ -72,7 +72,7 @@ public class Example : MonoBehaviour
 
 Attach the script to a GameObject and assign the `AnimationEvents` component to it.
 
-- <img src="../../Images/AnimationEvents_Example.png" alt="SceneActionComposite example" width="" height="80">
+- <img src="../../Images/AnimationEvents_Example.png" alt="MonoActionComposite example" width="" height="80">
 
 #### Step 6. Play and Test
 

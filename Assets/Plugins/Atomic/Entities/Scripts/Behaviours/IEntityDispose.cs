@@ -1,3 +1,5 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -41,6 +43,17 @@ namespace Atomic.Entities
         /// </param>
         void Dispose(E entity);
 
-        void IEntityDispose.Dispose(IEntity entity) => this.Dispose((E) entity);
+        void IEntityDispose.Dispose(IEntity entity)
+        {
+            if (entity is not E e)
+                throw new InvalidCastException(
+                    $"[IEntityDispose<{typeof(E).Name}>] Invalid entity type for {this.GetType().Name}.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    "Please make sure the correct IEntityDispose is used for this entity type."
+                );
+
+            this.Dispose(e);
+        }
     }
 }

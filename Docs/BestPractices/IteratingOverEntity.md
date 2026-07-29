@@ -1,7 +1,7 @@
 # 📌 Iterating over Entity Tags, Values and Behaviours
 
 When using entities such
-as [Entity](../Entities/Entities/Entity.md), [SceneEntity](../Entities/Entities/SceneEntity.md),
+as [Entity](../Entities/Entities/Entity.md), [MonoEntity](../Entities/Entities/MonoEntity.md),
 or [IEntity](../Entities/Entities/IEntity.md), it is important to understand that **each iteration over tags, values and
 behaviours introduces a small overhead**. Knowing how to **optimize performance** becomes crucial when working with a
 large number of elements.
@@ -50,16 +50,16 @@ Entity.BehaviourEnumerator behaviours = entity.GetBehaviourEnumerator();
 
 ---
 
-### ✅ No Boxing (SceneEntity)
+### ✅ No Boxing (MonoEntity)
 
 ```csharp
-// Assume we have an instance of SceneEntity
-SceneEntity entity = ...;
+// Assume we have an instance of MonoEntity
+MonoEntity entity = ...;
 
 // Struct enumerators
-SceneEntity.TagEnumerator tags = entity.GetTagEnumerator();
-SceneEntity.ValueEnumerator values = entity.GetValueEnumerator();
-SceneEntity.BehaviourEnumerator behaviours = entity.GetBehaviourEnumerator();
+MonoEntity.TagEnumerator tags = entity.GetTagEnumerator();
+MonoEntity.ValueEnumerator values = entity.GetValueEnumerator();
+MonoEntity.BehaviourEnumerator behaviours = entity.GetBehaviourEnumerator();
 ```
 
 ---
@@ -69,19 +69,19 @@ SceneEntity.BehaviourEnumerator behaviours = entity.GetBehaviourEnumerator();
 | Use Case                                         | Recommendation                      |
 |--------------------------------------------------|-------------------------------------|
 | Iterating via `IEntity` interface                | ⚠️ Causes boxing and GC allocations |
-| Iterating via `Entity` or `SceneEntity` directly | ✅ No boxing, zero allocations       |
+| Iterating via `Entity` or `MonoEntity` directly | ✅ No boxing, zero allocations       |
 | Working with many entities per frame             | 🚀 Always prefer concrete types     |
 
 ---
 
 **In short:**
-> Use the concrete type (`Entity`, `SceneEntity`) instead of `IEntity` whenever performance matters.
+> Use the concrete type (`Entity`, `MonoEntity`) instead of `IEntity` whenever performance matters.
 
 
 <!--
 
 When using [entities](../Entities/Entities/Manual.md) such
-as [Entity](../Entities/Entities/Entity.md), [SceneEntity](../Entities/Entities/SceneEntity.md)
+as [Entity](../Entities/Entities/Entity.md), [MonoEntity](../Entities/Entities/MonoEntity.md)
 or [IEntity](../Entities/Entities/IEntity.md), it is important to understand that **each
 iteration over tags, values and behaviours introduces a small overhead**. Knowing how to **optimize performance**
 becomes crucial when working
@@ -120,12 +120,12 @@ Entity.BehaviourEnumerator behaviours = entity.GetBehaviourEnumerator();
 
 ```csharp
 // Assume we have an instance of Entity
-SceneEntity entity = ...;
+MonoEntity entity = ...;
 
 // Struct enumerators
-SceneEntity.TagEnumerator tags = entity.GetTagEnumerator();
-SceneEntity.ValueEnumerator values = entity.GetValueEnumerator();
-SceneEntity.BehaviourEnumerator behaviours = entity.GetBehaviourEnumerator();
+MonoEntity.TagEnumerator tags = entity.GetTagEnumerator();
+MonoEntity.ValueEnumerator values = entity.GetValueEnumerator();
+MonoEntity.BehaviourEnumerator behaviours = entity.GetBehaviourEnumerator();
 ```
 
 -->

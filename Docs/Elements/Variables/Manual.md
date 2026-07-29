@@ -17,6 +17,7 @@ intermediaries or proxies, which can observe, modify, or synchronize underlying 
     - [Base Variables](#-base-variables)
     - [Reactive Variables](#-reactive-variables)
     - [Proxy Variables](#-proxy-variables)
+    - [Thread-Safe Variables](#-thread-safe-variables)
 
 ---
 
@@ -164,3 +165,13 @@ For convenience, several specialized proxy variable implementations are provided
     - `TransformPositionVariable` — Stores a Vector3 position
     - `TransformRotationVariable` — Stores a Quaternion rotation
     - `TransformScaleVariable` — Stores a Vector3 scale
+
+---
+
+### 🧩 Thread-Safe Variables
+
+For multi-threaded scenarios, thread-safe variable implementations are provided that protect their internal state with locking and dispatch events on the main thread.
+
+- **Thread-Safe Variables**
+    - [ThreadSafeVariable&lt;T&gt;](ThreadSafeVariable.md) — Thread-safe value container without change notifications
+    - [ThreadSafeReactiveVariable&lt;T&gt;](ThreadSafeReactiveVariable.md) — Thread-safe reactive variable with main-thread event dispatch

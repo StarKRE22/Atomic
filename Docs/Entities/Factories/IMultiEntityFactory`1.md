@@ -67,7 +67,7 @@ public interface IMultiEntityFactory<in K, E> where E : IEntity
     - `K` — The type of key used to identify an entity.
     - `E` — The type of entity to create, which must implement [IEntity](../Entities/IEntity.md)
 - **See also:** [IMultiEntityFactory](IMultiEntityFactory.md),
-  [MultiEntityFactory<K, E>](MultiEntityFactory%601.md), [ScriptableMultiEntityFactory<K, E, F>](ScriptableMultiEntityFactory%601.md)
+  [MultiEntityFactory<K, E>](MultiEntityFactory%601.md), [ScriptableEntityCatalog<K, E, F>](ScriptableEntityCatalog%601.md)
 
 ---
 

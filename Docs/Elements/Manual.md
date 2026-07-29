@@ -41,6 +41,7 @@ patterns, composable structures, and modular design**.
 - [Values](Values/Manual.md)  <!-- + -->
 - [Variables](Variables/Manual.md) <!-- + -->
 - [Actions](Actions/Manual.md) <!-- + -->
+- [Commands](Commands/Manual.md) <!-- + -->
 - [Functions](Functions/Manual.md) <!-- + -->
 - [Setters](Setters/Manual.md) <!-- + -->
 - [Requests](Requests/Manual.md) <!-- + -->

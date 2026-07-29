@@ -11,9 +11,9 @@ system is a **composition**.
 
 - [Examples of Usage](#-examples-of-usage)
     - [Entity](#ex1)
-    - [SceneEntity](#ex2)
-    - [SceneEntityProxy](#ex3)
-    - [SceneEntitySingleton](#ex4)
+    - [MonoEntity](#ex2)
+    - [MonoEntityProxy](#ex3)
+    - [MonoEntitySingleton](#ex4)
 - [API Reference](#-api-reference)
 - [Performance](#-performance)
     - [Tags](#-tags)
@@ -108,7 +108,7 @@ entity.Dispose();
 
 ---
 
-### 2️⃣ SceneEntity
+### 2️⃣ MonoEntity
 
 Below is the process for quickly creating a character entity in Unity
 
@@ -152,7 +152,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 
  ```csharp
 //Populates entity with tags, values and behaviours
-public sealed class CharacterInstaller : SceneEntityInstaller
+public sealed class CharacterInstaller : MonoEntityInstaller
 {
     [SerializeField] private Transform _transform;
     [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
@@ -189,17 +189,17 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 ---
 
-### 3️⃣ SceneEntityProxy
+### 3️⃣ MonoEntityProxy
 
 1. Add a **Collider** component to the **child GameObject**.  
    <img width="150" height="" alt="Child Collider" src="../../Images/ChildCollider.png" />
 
 
-2. Attach a **SceneEntityProxy** component to the same GameObject.  
+2. Attach a **MonoEntityProxy** component to the same GameObject.  
    <img width="400" height="" alt="Entity Proxy" src="../../Images/EntityProxy.png" />
 
 
-3. In the `SceneEntityProxy`, assign the parent entity reference to the **Source** field.
+3. In the `MonoEntityProxy`, assign the parent entity reference to the **Source** field.
 
 
 4. Now, whenever another collider interacts with this child collider, you can easily retrieve the parent entity.
@@ -208,10 +208,10 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 <div id="ex4"></div>
 
-### 4️⃣ SceneEntitySingleton
+### 4️⃣ MonoEntitySingleton
 
 ```csharp
-public class GameContext : SceneEntitySingleton<GameContext>
+public class GameContext : MonoEntitySingleton<GameContext>
 {
 }
 ```
@@ -268,25 +268,25 @@ Below are the interfaces and classes for working with entities.
 <li>
 
 <details>
-<summary><a href="SceneEntity.md"><strong>SceneEntity</strong></a></summary>
+<summary><a href="MonoEntity.md"><strong>MonoEntity</strong></a></summary>
 
 <ul>
-  <li><a href="SceneEntityCore.md">Core</a></li>
-  <li><a href="SceneEntityTags.md">Tags</a></li>
-  <li><a href="SceneEntityValues.md">Values</a></li>
-  <li><a href="SceneEntityBehaviours.md">Behaviours</a></li>
-  <li><a href="SceneEntityLifecycle.md">Lifecycle</a></li>
-  <li><a href="SceneEntityInstalling.md">Installing</a></li>
-  <li><a href="SceneEntityGizmos.md">Gizmos</a></li>
-  <li><a href="SceneEntityDebug.md">Debug</a></li>
-  <li><a href="SceneEntityEditor.md">Editor</a></li>
-  <li><details><summary><a href="SceneEntityCreation.md">Creation</a></summary>
+  <li><a href="MonoEntityCore.md">Core</a></li>
+  <li><a href="MonoEntityTags.md">Tags</a></li>
+  <li><a href="MonoEntityValues.md">Values</a></li>
+  <li><a href="MonoEntityBehaviours.md">Behaviours</a></li>
+  <li><a href="MonoEntityLifecycle.md">Lifecycle</a></li>
+  <li><a href="MonoEntityInstalling.md">Installing</a></li>
+  <li><a href="MonoEntityGizmos.md">Gizmos</a></li>
+  <li><a href="MonoEntityDebug.md">Debug</a></li>
+  <li><a href="MonoEntityEditor.md">Editor</a></li>
+  <li><details><summary><a href="MonoEntityCreation.md">Creation</a></summary>
     <ul>
-        <li><a href="SceneEntityCreateArgs.md">CreateArgs</a></li>
+        <li><a href="MonoEntityCreateArgs.md">CreateArgs</a></li>
     </ul></details>
   </li>
-  <li><a href="SceneEntityDestruction.md">Destruction</a></li>
-  <li><a href="SceneEntityCasting.md">Casting</a></li>
+  <li><a href="MonoEntityDestruction.md">Destruction</a></li>
+  <li><a href="MonoEntityCasting.md">Casting</a></li>
 </ul>
 
 </details>
@@ -297,10 +297,10 @@ Below are the interfaces and classes for working with entities.
 <li>
 
 <details>
-<summary><a href="SceneEntityProxies.md"><strong>SceneEntityProxies</strong></a></summary>
+<summary><a href="MonoEntityProxies.md"><strong>MonoEntityProxies</strong></a></summary>
     <ul>
-      <li><a href="SceneEntityProxy.md">SceneEntityProxy</a></li>
-      <li><a href="SceneEntityProxy.md">SceneEntityProxy&lt;E&gt;</a></li>
+      <li><a href="MonoEntityProxy.md">MonoEntityProxy</a></li>
+      <li><a href="MonoEntityProxy.md">MonoEntityProxy&lt;E&gt;</a></li>
     </ul>
 </details>
 
@@ -313,7 +313,7 @@ Below are the interfaces and classes for working with entities.
 <summary><strong>Singletons</strong></summary>
     <ul>
       <li><a href="EntitySingleton.md">EntitySingleton&lt;E&gt;</a></li>
-      <li><a href="SceneEntitySingleton.md">SceneEntitySingleton&lt;E&gt;</a></li>
+      <li><a href="MonoEntitySingleton.md">MonoEntitySingleton&lt;E&gt;</a></li>
     </ul>
 </details>
 

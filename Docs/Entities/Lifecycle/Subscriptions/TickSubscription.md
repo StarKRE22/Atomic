@@ -1,6 +1,6 @@
 # 🧩 TickSubscription
 
-Represents a disposable subscription handle for an [ITickLifecycle's](../Sources/ITickLifecycle.md)
+Represents a disposable subscription handle for an [ITickSource's](../Sources/ITickSource.md)
 **OnTicked** event. Automatically unsubscribes the callback when disposed, preventing memory leaks and repeated frame
 updates.
 
@@ -17,7 +17,7 @@ updates.
       <li>
         <a href="#ctor">Constructors</a>
         <ul>
-          <li><a href="#ticksubscriptioniticklifecycle-actionfloat">TickSubscription(ITickLifecycle, Action&lt;float&gt;)</a></li>
+          <li><a href="#ticksubscriptionITickSource-actionfloat">TickSubscription(ITickSource, Action&lt;float&gt;)</a></li>
         </ul>
       </li>
       <li>
@@ -35,8 +35,8 @@ updates.
 ## 🗂 Example of Usage
 
 ```csharp
-// Assume we have an instance of ITickLifecycle
-ITickLifecycle tickSource = ...;
+// Assume we have an instance of ITickSource
+ITickSource tickSource = ...;
 
 // Subscribe to the regular Update event
 var subscription = new TickSubscription(tickSource, deltaTime => 
@@ -66,10 +66,10 @@ public readonly struct TickSubscription : IDisposable
 
 ### 🏗️ Constructors
 
-#### `TickSubscription(ITickLifecycle, Action<float>)`
+#### `TickSubscription(ITickSource, Action<float>)`
 
 ```csharp
-public TickSubscription(ITickLifecycle source, Action<float> callback)
+public TickSubscription(ITickSource source, Action<float> callback)
 ```
 
 - **Description:** Subscribes the provided callback to the `OnTicked` event of the given source.

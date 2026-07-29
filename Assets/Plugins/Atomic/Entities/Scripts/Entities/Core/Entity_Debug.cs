@@ -17,6 +17,13 @@ namespace Atomic.Entities
             get => this.Name;
             set => this.Name = value;
         }
+        
+        [ShowInInspector]
+        [LabelText("InstanceID")]
+        private int DebugInstanceID
+        {
+            get => this.InstanceID;
+        }
 
         /// <summary>
         /// Debug-only: Indicates whether the entity has been initialized.
@@ -72,7 +79,7 @@ namespace Atomic.Entities
                 
                 foreach (int tag in this.GetTags())
                 {
-                    string name = EntityNames.IdToName(tag);
+                    string name = EntityKeyStore.IdToName(tag);
                     result.Add(new DebugTag(name, tag));
                 }
 
@@ -136,7 +143,7 @@ namespace Atomic.Entities
 
                 foreach ((int id, object value) in values)
                 {
-                    string name = EntityNames.IdToName(id);
+                    string name = EntityKeyStore.IdToName(id);
                     result.Add(new DebugValue(name, value, id));
                 }
 
@@ -207,7 +214,6 @@ namespace Atomic.Entities
                     _debugBehavioursCache.Add(new DebugBehaviour(name, behaviour));
                 }
 
-                _debugBehavioursCache.Sort();
                 return _debugBehavioursCache;
             }
             set

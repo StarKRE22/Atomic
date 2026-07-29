@@ -1,10 +1,12 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
     /// Defines a behavior that executes logic during the fixed update cycle of an <see cref="IEntity"/>.
     /// </summary>
     /// <remarks>
-    /// This method is automatically called by <see cref="ITickLifecycle.FixedTick"/> at a consistent time interval,
+    /// This method is automatically called by <see cref="ITickSource.FixedTick"/> at a consistent time interval,
     /// typically aligned with the physics simulation step.
     /// </remarks>
     public interface IEntityFixedTick : IEntityBehaviour
@@ -23,7 +25,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="E">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
-    /// This method is automatically invoked by <see cref="ITickLifecycle.FixedTick"/> 
+    /// This method is automatically invoked by <see cref="ITickSource.FixedTick"/> 
     /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
     public interface IEntityFixedTick<in E> : IEntityFixedTick where E : IEntity
@@ -35,7 +37,17 @@ namespace Atomic.Entities
         /// <param name="deltaTime">The fixed time step since the last update.</param>
         void FixedTick(E entity, float deltaTime);
 
-        void IEntityFixedTick.FixedTick(IEntity entity, float deltaTime) =>
-            this.FixedTick((E) entity, deltaTime);
+        void IEntityFixedTick.FixedTick(IEntity entity, float deltaTime)
+        {
+            if (entity is not E e)
+                throw new InvalidCastException(
+                    $"[IEntityFixedTick<{typeof(E).Name}>] Invalid entity type for {this.GetType().Name}.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    "Please make sure the correct IEntityFixedTick is used for this entity type."
+                );
+
+            this.FixedTick(e, deltaTime);
+        }
     }
 }

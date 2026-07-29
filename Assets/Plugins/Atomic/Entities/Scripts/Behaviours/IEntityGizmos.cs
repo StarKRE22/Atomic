@@ -1,3 +1,5 @@
+using System;
+
 #if UNITY_5_3_OR_NEWER
 namespace Atomic.Entities
 {
@@ -5,7 +7,7 @@ namespace Atomic.Entities
     /// Defines a behavior that allows drawing gizmos for an <see cref="IEntity"/> during the editor or debug rendering phase.
     /// </summary>
     /// <remarks>
-    /// This method is automatically called by <c>SceneEntity.OnDrawGizmos()</c> or <c>SceneEntity.OnDrawGizmosSelected()</c>
+    /// This method is automatically called by <c>MonoEntity.OnDrawGizmos()</c> or <c>MonoEntity.OnDrawGizmosSelected()</c>
     /// in the Unity Editor, allowing you to visualize entity data in the scene view.
     /// </remarks>
     public interface IEntityGizmos : IEntityBehaviour
@@ -23,7 +25,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="E">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
-    /// This method is automatically invoked by <c>SceneEntity.OnDrawGizmos()</c> or <c>SceneEntity.OnDrawGizmosSelected()</c>
+    /// This method is automatically invoked by <c>MonoEntity.OnDrawGizmos()</c> or <c>MonoEntity.OnDrawGizmosSelected()</c>
     /// if the entity implements this behavior and is currently visible in the editor.
     /// </remarks>
     public interface IEntityGizmos<in E> : IEntityGizmos where E : IEntity
@@ -34,7 +36,18 @@ namespace Atomic.Entities
         /// <param name="entity">The entity instance of type <typeparamref name="E"/>.</param>
         void DrawGizmos(E entity);
 
-        void IEntityGizmos.DrawGizmos(IEntity entity) => this.DrawGizmos((E) entity);
+        void IEntityGizmos.DrawGizmos(IEntity entity)
+        {
+            if (entity is not E e)
+                throw new InvalidCastException(
+                    $"[IEntityGizmos<{typeof(E).Name}>] Invalid entity type for {this.GetType().Name}.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    "Please make sure the correct IEntityGizmos is used for this entity type."
+                );
+
+            this.DrawGizmos(e);
+        }
     }
 }
 #endif

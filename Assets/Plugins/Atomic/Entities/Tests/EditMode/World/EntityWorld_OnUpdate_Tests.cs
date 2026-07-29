@@ -8,7 +8,7 @@ namespace Atomic.Entities
         public void OnUpdate_Should_CallEntityUpdate_WhenActive()
         {
             // Arrange
-            var entity = new EntityDummy();
+            var entity = new EntitySpy();
             var world = new EntityWorld<Entity>(entity);
             world.Enable();
 
@@ -45,7 +45,7 @@ namespace Atomic.Entities
         public void OnUpdate_Should_DoNothing_WhenNotActive()
         {
             // Arrange
-            var entity = new EntityDummy();
+            var entity = new EntitySpy();
             var world = new EntityWorld<Entity>(entity);
 
             // Act

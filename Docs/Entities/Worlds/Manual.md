@@ -56,7 +56,7 @@ world.Add(new Entity("Prop"));
 ### 3️⃣ Unity-Specific EntityWorld
 
 ```csharp
-SceneEntityWorld sceneWorld = SceneEntityWorld.Create("LevelWorld", scanEntities: true);
+MonoEntityWorld sceneWorld = MonoEntityWorld.Create("LevelWorld", scanEntities: true);
 sceneWorld.OnAdded += e => Debug.Log($"Entity added: {e.name}");
 ```
 
@@ -68,7 +68,7 @@ sceneWorld.OnAdded += e => Debug.Log($"Entity added: {e.name}");
 ### 4️⃣ Auto-Scanning Entities
 
 ```csharp
-public class GameEntityWorld : SceneEntityWorld<GameEntity> {}
+public class GameEntityWorld : MonoEntityWorld<GameEntity> {}
 
 GameEntityWorld world = GameEntityWorld.Create("BattleWorld", scanEntities: true);
 // All GameEntity objects in the scene will be automatically discovered and registered
@@ -90,15 +90,15 @@ There are available interfaces and implementations of the entity world:
     - [EntityWorld](EntityWorld.md) <!-- + -->
     - [EntityWorld&lt;E&gt;](EntityWorld%601.md) <!-- + -->
 - **Unity Implementations**
-    - [SceneEntityWorld](SceneEntityWorld.md) <!-- + -->
-    - [SceneEntityWorld&lt;E&gt;](SceneEntityWorld%601.md) <!-- + -->
+    - [MonoEntityWorld](MonoEntityWorld.md) <!-- + -->
+    - [MonoEntityWorld&lt;E&gt;](MonoEntityWorld%601.md) <!-- + -->
 
 ---
 
 ## 📝 Notes
 
 - Use [EntityWorld&lt;E&gt;](EntityWorld%601.md) for type safety and strict entity management.
-- Use [SceneEntityWorld](SceneEntityWorld.md) for Unity integration and automatic scene entity registration.
+- Use [MonoEntityWorld](MonoEntityWorld.md) for Unity integration and automatic scene entity registration.
 - Event system (`OnAdded`, `OnRemoved`, `OnEnabled`, `OnTicked`) supports **reactive architectures**.
 - Worlds support **enable/disable** and a full update cycle (`Tick`, `FixedTick`, `LateTick`).
 - All worlds are compatible with **IEntityCollection** and inherit its base functionality.

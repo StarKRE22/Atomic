@@ -11,9 +11,9 @@ for [IEntity](../Entities/IEntity.md) and [IEntityWorld](../Worlds/IEntityWorld.
 
 - [Examples of Usage](#-example-of-usage)
     - [Contracts](#contracts)
-        - [IInitLifecycle](#iinitlifecycle)
-        - [IEnableLifecycle](#ienablelifecycle)
-        - [ITickLifecycle](#iticklifecycle)
+        - [IInitSource](#IInitSource)
+        - [IEnableSource](#IEnableSource)
+        - [ITickSource](#ITickSource)
     - [Subscription](#subscription)
     - [Extension Methods](#extensions)
         - [WhenInit()](#wheninit)
@@ -32,11 +32,11 @@ for [IEntity](../Entities/IEntity.md) and [IEntityWorld](../Worlds/IEntityWorld.
 Below are examples of all lifecycle contracts serving as parent interfaces for [IEntity](../Entities/IEntity.md):
 and [IEntityWorld](../Worlds/IEntityWorld.md):
 
-#### `IInitLifecycle`
+#### `IInitSource`
 
 ```csharp
-// Assume we have an instance of IInitLifecycle
-IInitLifecycle initSource = ...;
+// Assume we have an instance of IInitSource
+IInitSource initSource = ...;
 
 // Subscribe to events
 initSource.OnInitialized += () => Console.WriteLine("Object initialized");
@@ -52,11 +52,11 @@ initSource.Init();
 initSource.Dispose();
 ```
 
-#### `IEnableLifecycle`
+#### `IEnableSource`
 
 ```csharp
-//Assume we have an instance of IEnableLifecycle
-IEnableLifecycle enableSource = ...;
+//Assume we have an instance of IEnableSource
+IEnableSource enableSource = ...;
 
 // Subscribe to events
 enableSource.OnEnabled += () => Console.WriteLine("Player enabled");
@@ -72,11 +72,11 @@ enableSource.Enable();
 enableSource.Disable();
 ```
 
-#### `ITickLifecycle`
+#### `ITickSource`
 
 ```csharp
-// Assume we have an instance of ITickLifecycle
-ITickLifecycle tickSource = ...;
+// Assume we have an instance of ITickSource
+ITickSource tickSource = ...;
 
 // Subscribe to events
 tickSource.OnTicked += deltaTime => Console.WriteLine($"Update tick: {deltaTime:F3}s");
@@ -101,11 +101,11 @@ tickSource.LateTick(deltaTime);
 <div id="subscription"></div>
 
 This example demonstrates usage of [DisableSubscription](Subscriptions/DisableSubscription.md)
-with [IEnableLifecycle](Sources/IEnableLifecycle.md):
+with [IEnableSource](Sources/IEnableSource.md):
 
 ```csharp
- //Assume we have an instance of IEnableLifecycle
-IEnableLifecycle enableSource = ...;
+ //Assume we have an instance of IEnableSource
+IEnableSource enableSource = ...;
 
 // Subscribe to the disable event
 var subscription = new DisableSubscription(enableSource, () => 
@@ -172,9 +172,10 @@ and supporting extensions used to manage initialization, enable/disable states, 
 framework.
 
 - **Contracts**
-    - [IInitLifecycle](Sources/IInitLifecycle.md) <!-- + -->
-    - [IEnableLifecycle](Sources/IEnableLifecycle.md) <!-- + -->
-    - [ITIckLifecycle](Sources/ITickLifecycle.md) <!-- + -->
+    - [IInitSource](Sources/IInitSource.md) <!-- + -->
+    - [IEnableSource](Sources/IEnableSource.md) <!-- + -->
+    - [ITickSource](Sources/ITickSource.md) <!-- + -->
+    - [IGizmosSource](Sources/IGizmosSource.md) <!-- + -->
 - **Subscriptions**
     - [InitSubscription](Subscriptions/InitSubscription.md) <!-- + -->
     - [EnableSubscription](Subscriptions/EnableSubscription.md) <!-- + -->

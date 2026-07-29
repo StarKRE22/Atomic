@@ -59,13 +59,13 @@ public static void Install(this IEntity entity, IEnumerable<IEntityInstaller> in
 public static void InstallFromScene(this IEntity entity, Scene scene, bool includeInactive = true)
 ```
 
-- **Description:** Installs logic from all `SceneEntityInstaller` components found in the specified scene.
+- **Description:** Installs logic from all `MonoEntityInstaller` components found in the specified scene.
 - **Parameters:**
     - `entity` – The entity to install the logic into.
     - `scene` – The scene in which to search for installers.
     - `includeInactive` – If `true`, installers on inactive GameObjects are included; otherwise only active
       installers are considered.
-- **Remarks:** Iterates over all root GameObjects in the scene and applies each found `SceneEntityInstaller` to the
+- **Remarks:** Iterates over all root GameObjects in the scene and applies each found `MonoEntityInstaller` to the
   entity.
 
 #### `InstallFromScene<T>(Scene, bool)`
@@ -75,7 +75,7 @@ public static void InstallFromScene<T>(this T entity, Scene scene, bool includeI
     where T : class, IEntity
 ```
 
-- **Description:** Installs logic from all `SceneEntityInstaller<T>` components found in the specified scene for a
+- **Description:** Installs logic from all `MonoEntityInstaller<T>` components found in the specified scene for a
   generic entity type.
 - **Type Parameter:** `T` – The entity type that implements `IEntity`.
 - **Parameters:**
@@ -83,5 +83,5 @@ public static void InstallFromScene<T>(this T entity, Scene scene, bool includeI
     - `scene` – The scene in which to search for installers.
     - `includeInactive` – If `true`, installers on inactive GameObjects are included; otherwise only active
       installers are considered.
-- **Remarks:** Iterates over all root GameObjects in the scene and applies each found `SceneEntityInstaller<T>` to the
+- **Remarks:** Iterates over all root GameObjects in the scene and applies each found `MonoEntityInstaller<T>` to the
   entity. Useful for generic entities or strongly-typed scenarios.

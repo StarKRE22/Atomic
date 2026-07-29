@@ -1,7 +1,9 @@
 #if UNITY_5_3_OR_NEWER
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UnityEngine;
 
 #if ODIN_INSPECTOR
@@ -13,19 +15,22 @@ namespace Atomic.Entities
     /// <summary>
     /// A multi-prefab object pool for scene-based entities of type <typeparamref name="E"/>.
     /// </summary>
-    /// <typeparam name="E">The type of <see cref="SceneEntity"/> managed by the pool.</typeparam>
+    /// <typeparam name="E">The type of <see cref="MonoEntity"/> managed by the pool.</typeparam>
+    /// <typeparam name="P">The concrete prefab type used to instantiate entities. Must inherit from <see cref="MonoEntity"/> and implement <typeparamref name="E"/>.</typeparam>
     /// <remarks>
     /// This pool allows renting and returning multiple different entity prefabs, each tracked by its own internal pool.
     /// Pools are created lazily and managed by prefab name. Supports pre-warming via <see cref="Init"/>.
     /// </remarks>
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Pooling/PrefabEntityPool%601.md")]
-    public abstract class PrefabEntityPool<E> : MonoBehaviour, IPrefabEntityPool<E> where E : SceneEntity
+    public abstract class PrefabEntityPool<E, P> : MonoBehaviour, IPrefabEntityPool<E, P>
+        where E : IEntity
+        where P : MonoEntity, E
     {
         private const string NUMBER_PATTERN = @"\s*\(\d+\)$";
 
         internal struct Pool
         {
-            public Stack<E> stack;
+            public Stack<P> stack;
             public Transform container;
             public GameObject go;
         }
@@ -34,6 +39,7 @@ namespace Atomic.Entities
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
         private readonly Dictionary<string, Pool> _pools = new();
+        private readonly Dictionary<string, int> _rentedCounts = new();
 
         /// <summary>
         /// If not assigned, defaults to the GameObject this script is attached to.
@@ -46,13 +52,21 @@ namespace Atomic.Entities
         [Tooltip("Should don't destroy if scene changed?")]
         [SerializeField]
         private bool _dontDestroyOnLoad;
-        
+
+        [Space]
+        [Tooltip("Determines how the pool expands when empty.\n" +
+                 "ExpandByOne: Creates one new entity per request.\n" +
+                 "ExpandByDoubling: Doubles the current pooled count (e.g. 10 → 20).\n" +
+                 "NoExpand: Throws an exception when the pool is empty.")]
+        [SerializeField]
+        private ExpandMode _expandMode = ExpandMode.ExpandByOne;
+
         protected virtual void Awake()
         {
             if (_container == null)
                 _container = this.transform;
 
-            if (_dontDestroyOnLoad) 
+            if (_dontDestroyOnLoad)
                 DontDestroyOnLoad(this.gameObject);
         }
 
@@ -61,32 +75,49 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="prefab">The prefab to pool.</param>
         /// <param name="count">How many instances to pre-instantiate.</param>
-        public void Init(E prefab, int count)
+        public void Init(P prefab, int count)
         {
             string name = this.GetEntityName(prefab);
-
             if (!_pools.TryGetValue(name, out Pool pool))
             {
-                pool = CreatePool(name);
+                pool = this.CreatePool(name);
                 _pools.Add(name, pool);
             }
 
             for (int i = 0; i < count; i++)
             {
-                E entity = CreateEntity(prefab, pool.container);
+                P entity = CreateEntity(prefab, pool.container);
+                entity.name = name;
+                pool.stack.Push(entity);
+            }
+        }
+
+        public async ValueTask InitAsync(P prefab, int initialCount)
+        {
+            string name = this.GetEntityName(prefab);
+            if (!_pools.TryGetValue(name, out Pool pool))
+            {
+                pool = this.CreatePool(name);
+                _pools.Add(name, pool);
+            }
+
+            P[] entities = await MonoEntity.CreateAsync(prefab, initialCount, _container);
+            foreach (P entity in entities)
+            {
+                this.OnCreate(entity);
                 entity.name = name;
                 pool.stack.Push(entity);
             }
         }
 
         /// <inheritdoc />
-        public E Rent(E prefab) => this.Rent(prefab, Vector3.zero, Quaternion.identity);
+        public E Rent(P prefab) => this.Rent(prefab, Vector3.zero, Quaternion.identity);
 
         /// <inheritdoc />
-        public E Rent(E prefab, Transform parent) => this.Rent(prefab, parent.position, parent.rotation);
+        public E Rent(P prefab, Transform parent) => this.Rent(prefab, parent.position, parent.rotation);
 
         /// <inheritdoc />
-        public E Rent(E prefab, Vector3 position, Quaternion rotation, Transform parent = null)
+        public E Rent(P prefab, Vector3 position, Quaternion rotation, Transform parent = null)
         {
             string name = GetEntityName(prefab);
 
@@ -96,7 +127,7 @@ namespace Atomic.Entities
                 _pools.Add(name, pool);
             }
 
-            if (pool.stack.TryPop(out E entity))
+            if (pool.stack.TryPop(out P entity))
             {
                 Transform tf = entity.transform;
                 tf.SetParent(parent, false);
@@ -104,19 +135,57 @@ namespace Atomic.Entities
             }
             else
             {
-                entity = this.CreateEntity(prefab, parent);
+                entity = this.Expand(prefab, pool);
                 entity.name = name;
                 entity.transform.SetPositionAndRotation(position, rotation);
             }
 
             this.OnRent(entity);
+
+            if (!_rentedCounts.TryAdd(name, 1))
+                _rentedCounts[name]++;
+
             return entity;
+        }
+
+        private P Expand(P prefab, Pool pool)
+        {
+            string name = GetEntityName(prefab);
+            switch (_expandMode)
+            {
+                case ExpandMode.NoExpand:
+                    throw new InvalidOperationException(
+                        $"[EntityPool] Pool '{name}' for prefab '{prefab.name}' is empty " +
+                        $"and ExpandMode is NoExpand. Pre-instantiate more entities via Init() " +
+                        $"or switch to ExpandByOne/ExpandByDoubling.");
+
+                case ExpandMode.ExpandByDoubling:
+                    int count = _rentedCounts.TryGetValue(name, out int rented) && rented > 0 ? rented : 1;
+                    this.CreateEntities(prefab, pool, count);
+                    pool.stack.TryPop(out P doubled);
+                    return doubled;
+
+                case ExpandMode.ExpandByOne:
+                default:
+                    return this.CreateEntity(prefab, pool.container);
+            }
+        }
+
+        private void CreateEntities(P prefab, Pool pool, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                P entity = this.CreateEntity(prefab, pool.container);
+                entity.name = GetEntityName(prefab);
+                pool.stack.Push(entity);
+            }
         }
 
         /// <inheritdoc />
         public void Return(E entity)
         {
-            string name = GetEntityName(entity);
+            P sceneEntity = MonoEntity.Cast<P>(entity);
+            string name = GetEntityName(sceneEntity);
 
             if (!_pools.TryGetValue(name, out Pool pool))
             {
@@ -124,32 +193,36 @@ namespace Atomic.Entities
                 _pools.Add(name, pool);
             }
 
-            if (pool.stack.Contains(entity))
+            if (pool.stack.Contains(sceneEntity))
                 return;
 
-            this.OnReturn(entity);
+            this.OnReturn(sceneEntity);
 
-            entity.transform.SetParent(pool.container, false);
-            pool.stack.Push(entity);
+            sceneEntity.transform.SetParent(pool.container, false);
+            pool.stack.Push(sceneEntity);
+
+            if (_rentedCounts.TryGetValue(name, out int rented) && rented > 0)
+                _rentedCounts[name] = rented - 1;
         }
 
         /// <summary>
         /// Clears the pool for a specific prefab and destroys all associated entities and container.
         /// </summary>
         /// <param name="prefab">The prefab whose pool should be cleared.</param>
-        public void Dispose(E prefab)
+        public void Dispose(P prefab)
         {
             string objName = this.GetEntityName(prefab);
 
             if (!_pools.Remove(objName, out Pool pool))
                 return;
 
-            foreach (E entity in pool.stack)
+            foreach (P entity in pool.stack)
             {
                 this.OnDispose(entity);
-                Destroy(entity);
+                MonoEntity.Destroy(entity);
             }
 
+            _rentedCounts.Remove(objName);
             Destroy(pool.go);
         }
 
@@ -161,16 +234,17 @@ namespace Atomic.Entities
             foreach (KeyValuePair<string, Pool> pair in _pools)
             {
                 Pool pool = pair.Value;
-                foreach (E entity in pool.stack)
+                foreach (P entity in pool.stack)
                 {
                     this.OnDispose(entity);
-                    Destroy(entity);
+                    MonoEntity.Destroy(entity);
                 }
 
                 Destroy(pool.go);
             }
 
             _pools.Clear();
+            _rentedCounts.Clear();
         }
 
         /// <summary>
@@ -179,7 +253,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The new pooled entity.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void OnCreate(E entity) => entity.gameObject.SetActive(false);
+        protected virtual void OnCreate(P entity) => entity.gameObject.SetActive(false);
 
         /// <summary>
         /// Called when an entity is rented from the pool.
@@ -187,7 +261,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The rented entity.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void OnRent(E entity) => entity.gameObject.SetActive(true);
+        protected virtual void OnRent(P entity) => entity.gameObject.SetActive(true);
 
         /// <summary>
         /// Called when an entity is returned to the pool.
@@ -195,7 +269,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The returned entity.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void OnReturn(E entity) => entity.gameObject.SetActive(false);
+        protected virtual void OnReturn(P entity) => entity.gameObject.SetActive(false);
 
         /// <summary>
         /// Called when a pooled entity is destroyed (e.g., during pool cleanup).
@@ -203,7 +277,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity being disposed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void OnDispose(E entity)
+        protected virtual void OnDispose(P entity)
         {
         }
 
@@ -214,13 +288,15 @@ namespace Atomic.Entities
         /// <param name="entity">The entity to extract a base name from.</param>
         /// <returns>A clean prefab name for use as a pool key.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual string GetEntityName(E entity) =>
-            Regex.Replace(entity.name, NUMBER_PATTERN, string.Empty).Trim();
+        protected virtual string GetEntityName(P entity)
+        {
+            return Regex.Replace(entity.name, NUMBER_PATTERN, string.Empty).Trim();
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private Pool CreatePool(string name)
         {
-            Stack<E> stack = new Stack<E>();
+            Stack<P> stack = new Stack<P>();
             Transform container = new GameObject($"<{name}s>").transform;
             container.parent = _container;
 
@@ -236,9 +312,9 @@ namespace Atomic.Entities
         /// </summary>
         /// <returns>The newly created entity.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private E CreateEntity(E prefab, Transform container)
+        private P CreateEntity(P prefab, Transform container)
         {
-            E entity = SceneEntity.Create(prefab, container);
+            P entity = MonoEntity.Create(prefab, container);
             this.OnCreate(entity);
             return entity;
         }

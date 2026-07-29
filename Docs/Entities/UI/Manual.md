@@ -34,7 +34,7 @@ Below is an example of setting up `EntityView<` that represents a tank entity.
 #### 2. Create an entity installer for the view
 
 ```csharp
-public sealed class TankViewInstaller : SceneEntityInstaller
+public sealed class TankViewInstaller : MonoEntityInstaller
 {
     [SerializeField] private TakeDamageViewBehaviour _takeDamageBehaviour;
     [SerializeField] private PositionViewBehaviour _positionBehaviour;
@@ -271,7 +271,7 @@ var args = new EntityView.CreateArgs
 {
     name = "GenericEntityView",
     controlGameObject = true,
-    installers = new List<SceneEntityInstaller>()
+    installers = new List<MonoEntityInstaller>()
 };
 
 EntityView view = EntityView.Create(args);

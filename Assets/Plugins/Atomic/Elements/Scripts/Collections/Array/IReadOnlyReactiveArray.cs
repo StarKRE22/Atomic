@@ -54,5 +54,49 @@ namespace Atomic.Elements
         /// <param name="destinationIndex">The zero-based index in the destination array at which storing begins.</param>
         /// <param name="length">The number of elements to copy.</param>
         void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length);
+        
+        #region Subscriptions
+        
+        public readonly struct StateChangedSubscription : IDisposable
+        {
+            private readonly IReadOnlyReactiveArray<T> array;
+            private readonly Action handler;
+
+            public StateChangedSubscription(IReadOnlyReactiveArray<T> array, Action handler)
+            {
+                this.array = array ?? throw new ArgumentNullException(nameof(array));
+                this.handler = handler ?? throw new ArgumentNullException(nameof(handler));
+
+                this.array.OnStateChanged += this.handler;
+            }
+
+            public void Dispose()
+            {
+                if (this.array != null)
+                    this.array.OnStateChanged -= this.handler;
+            }
+        }
+        
+        public readonly struct ItemChangedSubscription : IDisposable
+        {
+            private readonly IReadOnlyReactiveArray<T> array;
+            private readonly Action<int, T> handler;
+
+            public ItemChangedSubscription(IReadOnlyReactiveArray<T> array, Action<int, T> handler)
+            {
+                this.array = array ?? throw new ArgumentNullException(nameof(array));
+                this.handler = handler ?? throw new ArgumentNullException(nameof(handler));
+
+                this.array.OnItemChanged += this.handler;
+            }
+
+            public void Dispose()
+            {
+                if (this.array != null)
+                    this.array.OnItemChanged -= this.handler;
+            }
+        }
+        
+        #endregion
     }
 }

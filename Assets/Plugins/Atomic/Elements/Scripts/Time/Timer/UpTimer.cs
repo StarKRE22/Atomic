@@ -98,7 +98,7 @@ namespace Atomic.Elements
         private float duration;
 
         private float currentTime;
-        
+
         private TimerState currentState;
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Atomic.Elements
         /// </code>
         /// </example>
         public static implicit operator UpTimer(int duration) => new(duration);
-        
+
         /// <summary>
         /// Gets the current state of the timer.
         /// </summary>
@@ -184,7 +184,7 @@ namespace Atomic.Elements
         /// <param name="time">The time to start from.</param>
         /// <returns>True if started successfully; otherwise false.</returns>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void Start(float time)
         {
@@ -202,7 +202,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <returns>True if paused successfully.</returns>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void Pause()
         {
@@ -219,7 +219,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <returns>True if resumed successfully.</returns>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void Resume()
         {
@@ -236,7 +236,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <returns>True if stopped successfully.</returns>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void Stop()
         {
@@ -255,7 +255,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="deltaTime">The time increment in seconds.</param>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void Tick(float deltaTime)
         {
@@ -298,7 +298,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="progress">The new progress value (0–1).</param>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void SetProgress(float progress)
         {
@@ -313,7 +313,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="duration">The new duration value.</param>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void SetDuration(float duration)
         {
@@ -332,7 +332,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="time">The new time to set (clamped to [0, duration]).</param>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void SetTime(float time)
         {
@@ -352,7 +352,7 @@ namespace Atomic.Elements
         /// Resets the timer's current time to zero.
         /// </summary>
 #if ODIN_INSPECTOR
-        [Button]
+        [Button, HideInEditorMode]
 #endif
         public void ResetTime() => this.SetTime(0);
     }

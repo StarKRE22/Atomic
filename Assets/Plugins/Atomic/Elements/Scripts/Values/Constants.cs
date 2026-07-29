@@ -119,13 +119,8 @@ namespace Atomic.Elements
         /// <summary>
         /// Standard gravity on Earth (9.81 m/s²).
         /// </summary>
-        public static readonly Const<float> GravityEarth = 9.81f;
-
-        /// <summary>
-        /// Default mass value, commonly used as 1 kg.
-        /// </summary>
-        public static readonly Const<float> DefaultMass = 1f;
-
+        public static readonly Const<float> Gravity = 9.81f;
+        
         // -------------------- Vectors (Unity Specific) --------------------
 
 #if UNITY_5_3_OR_NEWER

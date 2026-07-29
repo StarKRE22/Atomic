@@ -12,10 +12,10 @@ namespace Atomic.Entities
         public IEnumerator DestroyEntity_RemovesSceneEntity_Immediately_WhenDelayIsZero()
         {
             var go = new GameObject("SceneEntity");
-            var sceneEntity = go.AddComponent<SceneEntity>();
+            var sceneEntity = go.AddComponent<MonoEntity>();
 
             Assert.IsNotNull(go);
-            SceneEntity.Destroy(sceneEntity);
+            MonoEntity.Destroy(sceneEntity);
 
             yield return null; // подождём 1 кадр
             Assert.IsTrue(go == null || go.Equals(null)); // уничтожен
@@ -25,9 +25,9 @@ namespace Atomic.Entities
         public IEnumerator DestroyEntity_RemovesSceneEntity_AfterDelay()
         {
             var go = new GameObject("SceneEntity");
-            var sceneEntity = go.AddComponent<SceneEntity>();
+            var sceneEntity = go.AddComponent<MonoEntity>();
 
-            SceneEntity.Destroy(sceneEntity, 0.2f);
+            MonoEntity.Destroy(sceneEntity, 0.2f);
 
             Assert.IsNotNull(go);
 
@@ -40,7 +40,7 @@ namespace Atomic.Entities
         public void Destroy_DoesNothing_WhenEntityIsNotSceneEntity()
         {
             var dummy = new Entity();
-            Assert.Throws<InvalidCastException>(() => SceneEntity.Destroy(dummy));
+            Assert.Throws<InvalidCastException>(() => MonoEntity.Destroy(dummy));
         }
     }
 }

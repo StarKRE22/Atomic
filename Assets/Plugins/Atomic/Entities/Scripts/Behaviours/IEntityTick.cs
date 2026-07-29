@@ -1,10 +1,12 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
     /// Defines a behavior that executes logic during the regular update cycle of an <see cref="IEntity"/>.
     /// </summary>
     /// <remarks>
-    /// This method is automatically called by <see cref="ITickLifecycle.Tick"/> once per frame during the main game loop.
+    /// This method is automatically called by <see cref="ITickSource.Tick"/> once per frame during the main game loop.
     /// </remarks>
     public interface IEntityTick : IEntityBehaviour
     {
@@ -22,7 +24,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="E">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
-    /// This method is automatically invoked by <see cref="ITickLifecycle.Tick"/> 
+    /// This method is automatically invoked by <see cref="ITickSource.Tick"/> 
     /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
     public interface IEntityTick<in E> : IEntityTick where E : IEntity
@@ -34,6 +36,17 @@ namespace Atomic.Entities
         /// <param name="deltaTime">Elapsed time since the last frame.</param>
         void Tick(E entity, float deltaTime);
 
-        void IEntityTick.Tick(IEntity entity, float deltaTime) => this.Tick((E) entity, deltaTime);
+        void IEntityTick.Tick(IEntity entity, float deltaTime)
+        {
+            if (entity is not E e)
+                throw new InvalidCastException(
+                    $"[IEntityTick<{typeof(E).Name}>] Invalid entity type for {this.GetType().Name}.\n" +
+                    $"Expected: {typeof(E).FullName}\n" +
+                    $"Received: {entity?.GetType().FullName ?? "null"}\n" +
+                    "Please make sure the correct IEntityTick is used for this entity type."
+                );
+
+            this.Tick(e, deltaTime);
+        }
     }
 }

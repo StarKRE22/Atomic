@@ -18,7 +18,7 @@ namespace Atomic.Entities
         public void Register_Should_AssignUniqueId_And_AddToRegistry()
         {
             // Arrange
-            IEntity entity = new EntityStub();
+            IEntity entity = new EntityDummy();
 
             // Act
             EntityRegistry.Instance.Register(entity);
@@ -34,7 +34,7 @@ namespace Atomic.Entities
         public void Unregister_Should_RemoveEntity_And_ResetId()
         {
             // Arrange
-            var entity = new EntityStub();
+            var entity = new EntityDummy();
             EntityRegistry.Instance.Register(entity);
 
             Assert.Greater(entity.InstanceID, 0);
@@ -51,7 +51,7 @@ namespace Atomic.Entities
         public void OnAdded_Should_Fire_WhenEntityRegistered()
         {
             // Arrange
-            var entity = new EntityStub();
+            var entity = new EntityDummy();
             IEntity added = null;
             EntityRegistry.Instance.OnAdded += e => added = e;
 
@@ -66,7 +66,7 @@ namespace Atomic.Entities
         public void OnRemoved_Should_Fire_WhenEntityUnregistered()
         {
             // Arrange
-            var entity = new EntityStub();
+            var entity = new EntityDummy();
             EntityRegistry.Instance.Register(entity);
 
             IEntity removed = null;
@@ -83,7 +83,7 @@ namespace Atomic.Entities
         public void TryGet_Should_ReturnTrue_WhenIdExists()
         {
             // Arrange
-            var entity = new EntityStub();
+            var entity = new EntityDummy();
             EntityRegistry.Instance.Register(entity);
 
             int id = entity.InstanceID;
@@ -107,8 +107,8 @@ namespace Atomic.Entities
         public void CopyTo_Should_PopulateCollection()
         {
             // Arrange
-            var e1 = new EntityStub();
-            var e2 = new EntityStub();
+            var e1 = new EntityDummy();
+            var e2 = new EntityDummy();
             EntityRegistry.Instance.Register(e1);
             EntityRegistry.Instance.Register(e2);
 
@@ -127,8 +127,8 @@ namespace Atomic.Entities
         public void Clear_Should_RemoveAllEntities()
         {
             // Arrange
-            EntityRegistry.Instance.Register(new EntityStub());
-            EntityRegistry.Instance.Register(new EntityStub());
+            EntityRegistry.Instance.Register(new EntityDummy());
+            EntityRegistry.Instance.Register(new EntityDummy());
 
             // Act
             EntityRegistry.Instance.Clear();
@@ -151,8 +151,8 @@ namespace Atomic.Entities
         public void Enumerator_Should_Iterate_Entities()
         {
             // Arrange
-            var e1 = new EntityStub();
-            var e2 = new EntityStub();
+            var e1 = new EntityDummy();
+            var e2 = new EntityDummy();
 
             EntityRegistry registry = EntityRegistry.Instance;
             registry.Register(e1);
@@ -160,14 +160,9 @@ namespace Atomic.Entities
 
             var seen = new HashSet<IEntity>();
 
-            Debug.Log($"REGISTRY COUNT {registry.Count}");
-            
             // Act
-            foreach (var e in registry)
-            {
-                Debug.Log($"Entity: {e}");
+            foreach (var e in registry) 
                 seen.Add(e);
-            }
 
             // Assert
             CollectionAssert.Contains(seen, e1);
@@ -178,8 +173,8 @@ namespace Atomic.Entities
         public void Register_Should_AssignUniqueIncrementingIds()
         {
             // Arrange
-            var e1 = new EntityStub();
-            var e2 = new EntityStub();
+            var e1 = new EntityDummy();
+            var e2 = new EntityDummy();
 
             // Act
             EntityRegistry.Instance.Register(e1);
@@ -196,8 +191,8 @@ namespace Atomic.Entities
         public void CopyTo_Array_Should_CopyEntitiesCorrectly()
         {
             // Arrange
-            var e1 = new EntityStub();
-            var e2 = new EntityStub();
+            var e1 = new EntityDummy();
+            var e2 = new EntityDummy();
             EntityRegistry.Instance.Register(e1);
             EntityRegistry.Instance.Register(e2);
 
@@ -217,7 +212,7 @@ namespace Atomic.Entities
         public void Contains_Should_ReturnFalse_AfterClear()
         {
             // Arrange
-            var entity = new EntityStub();
+            var entity = new EntityDummy();
             EntityRegistry.Instance.Register(entity);
 
             int id = entity.InstanceID;
@@ -234,14 +229,14 @@ namespace Atomic.Entities
         public void Unregister_Should_NotThrow_WhenEntityIsNotRegistered()
         {
             // Act & Assert
-            Assert.DoesNotThrow(() => { EntityRegistry.Instance.Unregister(new EntityStub()); });
+            Assert.DoesNotThrow(() => { EntityRegistry.Instance.Unregister(new EntityDummy()); });
         }
 
         [Test]
         public void ResetAll_Should_ClearSingletonInstance()
         {
             // Arrange
-            var entity = new EntityStub();
+            var entity = new EntityDummy();
             EntityRegistry.Instance.Register(entity);
             
             Assert.IsTrue(EntityRegistry.Instance.Contains(entity.InstanceID));

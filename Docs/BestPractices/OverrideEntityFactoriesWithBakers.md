@@ -23,7 +23,7 @@ Two main tools are used for this:
 
 - [ScriptableEntityFactory](../Entities/Factories/ScriptableEntityFactory.md) — creates new entities in memory based on
   a template.
-- [SceneEntityBaker](../Entities/Baking/Manual.md) — allows “baking” or overriding entity parameters directly in the
+- [MonoEntityBaker](../Entities/Baking/Manual.md) — allows “baking” or overriding entity parameters directly in the
   Unity scene.
 
 ---
@@ -42,7 +42,7 @@ However, designers often need to **modify parameters directly in the scene**:
 - Set color or team
 - Enable/disable specific components
 
-**SceneEntityBakers** allow you to layer overrides on top of factory-created entities.
+**MonoEntityBakers** allow you to layer overrides on top of factory-created entities.
 
 ---
 
@@ -83,7 +83,7 @@ public abstract class UnitFactory : ScriptableEntityFactory<IUnitEntity>
 To override unit configuration in a scene, a specific type of Baker can be defined:
 
 ```csharp
-public abstract class UnitBaker : SceneEntityBaker<IUnitEntity>
+public abstract class UnitBaker : MonoEntityBaker<IUnitEntity>
 {
     [SerializeField]
     private UnitFactory _factory;
@@ -234,14 +234,14 @@ public sealed class MoveEntityBaker : IEntityInstaller<IUnitEntity>
 | Component                   | Where used              | Purpose                                       |
 |-----------------------------|-------------------------|-----------------------------------------------|
 | **ScriptableEntityFactory** | Code / ScriptableObject | Creates entities based on a base template     |
-| **SceneEntityBaker**        | Unity scene             | Overrides entity parameters                   |
+| **MonoEntityBaker**        | Unity scene             | Overrides entity parameters                   |
 | **EntityInstaller**         | Part of Baker           | Sets specific entity parameters and behaviors |
 
 ---
 
 ### Conclusion
 
-Using **SceneEntityBakers** allows you to build a **flexible, scalable entity creation system**:
+Using **MonoEntityBakers** allows you to build a **flexible, scalable entity creation system**:
 
 - Developers write **base factories**
 - Designers can **override parameters in the scene** without touching code

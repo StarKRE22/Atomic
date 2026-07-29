@@ -3,16 +3,28 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 namespace Atomic.Entities
 {
     public partial class EntityView<E>
     {
         [Header("Gizmos")]
+#if ODIN_INSPECTOR
+        [DisableInPlayMode]
+        [PropertyOrder(5)]
+#endif
         [Tooltip("If true, gizmos will be drawn only when the object is selected.")]
         [SerializeField]
         private bool _onlySelectedGizmos;
 
         [Tooltip("If true, gizmos will be drawn only in Edit Mode, even during play mode.")]
+#if ODIN_INSPECTOR
+        [DisableInPlayMode]
+        [PropertyOrder(5)]
+#endif
         [SerializeField]
         private bool _onlyEditModeGizmos;
 

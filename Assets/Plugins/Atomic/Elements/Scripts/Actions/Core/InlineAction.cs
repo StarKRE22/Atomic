@@ -152,7 +152,7 @@ namespace Atomic.Elements
     }
 
 #if ODIN_INSPECTOR
-[InlineProperty]
+    [InlineProperty]
 #endif
     /// <summary>
     /// Represents an action with four parameters that can be invoked.
@@ -177,7 +177,7 @@ namespace Atomic.Elements
         public static implicit operator InlineAction<T1, T2, T3, T4>(Action<T1, T2, T3, T4> value) => new(value);
 
 #if ODIN_INSPECTOR
-    [Button]
+        [Button]
 #endif
         /// <summary>
         /// Invokes the wrapped action with the specified arguments.

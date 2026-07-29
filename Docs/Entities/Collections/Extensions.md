@@ -54,7 +54,7 @@ collection.InitEntities();
 collection.DisposeEntities();
 
 // Unity-specific usage
-var prefab = ...; // Some SceneEntity prefab
+var prefab = ...; // Some MonoEntity prefab
 var entity = collection.CreateEntity(prefab, Vector3.zero, Quaternion.identity);
 collection.DestroyEntity(entity, 1.0f); // destroys after 1 second
 ```
@@ -110,10 +110,10 @@ public static E CreateEntity<E>(
     Vector3 position,
     Quaternion rotation,
     Transform parent = null
-) where E : SceneEntity;
+) where E : MonoEntity;
 ```
 
-- **Description:** Instantiates a new `SceneEntity` based on a prefab and adds it to the collection.
+- **Description:** Instantiates a new `MonoEntity` based on a prefab and adds it to the collection.
 - **Parameters:**
     - `it` — Target collection.
     - `prefab` — Prefab to instantiate.
@@ -121,13 +121,13 @@ public static E CreateEntity<E>(
     - `rotation` — Spawn rotation.
     - `parent` — Optional parent transform.
 - **Returns:** The newly created entity.
-- **Behavior:** Calls `SceneEntity.Create`, adds the entity to the collection, and returns it.
+- **Behavior:** Calls `MonoEntity.Create`, adds the entity to the collection, and returns it.
 
 #### `DestroyEntity()`
 
 ```csharp
 public static void DestroyEntity<E>(this IEntityCollection<E> it, E entity, float delay = 0) 
-    where E : SceneEntity;
+    where E : MonoEntity;
 ```
 
 - **Description:** Removes an entity from the collection and destroys its GameObject.

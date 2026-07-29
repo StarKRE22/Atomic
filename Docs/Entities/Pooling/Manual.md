@@ -113,8 +113,8 @@ There are interfaces and implementations of pool depending on scenario:
     - [IEntityPool&lt;E&gt;](IEntityPool%601.md) <!-- + -->
     - [EntityPool](EntityPool.md) <!-- + -->
     - [EntityPool&lt;E&gt;](EntityPool%601.md) <!-- + -->
-    - [SceneEntityPool](SceneEntityPool.md) <!-- + -->
-    - [SceneEntityPool&lt;E&gt;](SceneEntityPool%601.md) <!-- + -->
+    - [MonoEntityPool](MonoEntityPool.md) <!-- + -->
+    - [MonoEntityPool&lt;E&gt;](MonoEntityPool%601.md) <!-- + -->
 - **MultiPools**
     - [IMultiEntityPool](IMultiEntityPool.md) <!-- + -->
     - [IMultiEntityPool&lt;K, E&gt;](IMultiEntityPool%601.md) <!-- + -->
@@ -135,6 +135,7 @@ There are interfaces and implementations of pool depending on scenario:
 - **Multi-Pools** allow dynamic creation and management of multiple entity types by key.
 - **Prefab Pools** are optimized for Unity scenes where entities are instantiated from prefabs and reused.
 - **All pools** provide `Rent()` and `Return()` methods, reducing GC overhead and improving runtime performance.
+- **All pools** support [ExpandMode](ExpandMode.md) to control growth strategy when the pool runs out of entities.
 - **Prefab and Scene pools** additionally support `Init()` for pre-warming, and `Dispose()` for cleanup.
 - **Generic versions** provide type safety; non-generic versions work with [IEntity](../Entities/IEntity.md) and allow heterogeneous usage.
 

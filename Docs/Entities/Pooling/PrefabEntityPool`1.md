@@ -35,7 +35,7 @@ pre-warming via `Init`.
 #### 1. Assume we have `EnemyEntity` type
 
 ```csharp
-public class EnemyEntity : SceneEntity
+public class EnemyEntity : MonoEntity
 {
 }
 ```
@@ -88,6 +88,7 @@ pool.Dispose();
 |---------------------|------------------------------------------------------------------------------------------------------|
 | `container`         | Root container transform for pooled entities. Defaults to the GameObject this script is attached to. |
 | `dontDestroyOnLoad` | If true, the pool GameObject persists across scene loads.                                            |
+| `expandMode`        | Determines how each prefab pool expands when empty. See [ExpandMode](ExpandMode.md).                |
 
 ---
 
@@ -96,10 +97,10 @@ pool.Dispose();
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class PrefabEntityPool<E> : MonoBehaviour, IPrefabEntityPool<E> where E : SceneEntity
+public abstract class PrefabEntityPool<E> : MonoBehaviour, IPrefabEntityPool<E> where E : MonoEntity
 ```
 
-- **Type Parameter:** `E` — The type of [SceneEntity](../Entities/SceneEntity.md) managed by the pool.
+- **Type Parameter:** `E` — The type of [MonoEntity](../Entities/MonoEntity.md) managed by the pool.
 - **Inheritance:** `MonoBehaviour`, [IPrefabEntityPool\<E>](IPrefabEntityPool%601.md)
 
 ---

@@ -66,12 +66,18 @@ namespace Atomic.Elements
             set => this.SetProgress(value);
         }
         
+#if ODIN_INSPECTOR
+        [HideInPlayMode]
+#endif
 #if UNITY_5_3_OR_NEWER
         [Min(float.Epsilon)]
         [SerializeField]
 #endif
         private float _duration;
 
+#if ODIN_INSPECTOR
+        [HideInPlayMode]
+#endif
 #if UNITY_5_3_OR_NEWER
         [Min(0)]
         [SerializeField]
@@ -168,7 +174,12 @@ namespace Atomic.Elements
             if (_time <= 0)
                 this.OnCompleted?.Invoke();
         }
-        
+
+        public bool IsPlaying()
+        {
+            return _time > 0;
+        }
+
         /// <summary>
         /// Gets the total duration of the cooldown.
         /// </summary>

@@ -12,7 +12,7 @@ namespace Atomic.Entities
         public void CastEntity_NullEntity_ReturnsNull()
         {
             // Act
-            var result = SceneEntity.Cast(null);
+            var result = MonoEntity.Cast(null);
 
             // Assert
             Assert.IsNull(result);
@@ -23,26 +23,26 @@ namespace Atomic.Entities
         {
             // Arrange
             var gameObject = new GameObject();
-            var sceneEntity = gameObject.AddComponent<SceneEntity>();
+            var sceneEntity = gameObject.AddComponent<MonoEntity>();
 
             // Act
-            var result = SceneEntity.Cast(sceneEntity);
+            var result = MonoEntity.Cast(sceneEntity);
 
             // Assert
             Assert.AreSame(sceneEntity, result);
         }
 
         [Test]
-        public void CastEntity_SceneEntityProxy_ReturnsSource()
+        public void CastEntity_MonoEntityProxy_ReturnsSource()
         {
             // Arrange
             var gameObject = new GameObject();
-            var sceneEntity = gameObject.AddComponent<SceneEntity>();
-            var proxy = gameObject.AddComponent<SceneEntityProxy>();
+            var sceneEntity = gameObject.AddComponent<MonoEntity>();
+            var proxy = gameObject.AddComponent<MonoEntityProxy>();
             proxy.Source = sceneEntity;
 
             // Act
-            var result = SceneEntity.Cast(proxy);
+            var result = MonoEntity.Cast(proxy);
 
             // Assert
             Assert.AreSame(sceneEntity, result);
@@ -55,7 +55,7 @@ namespace Atomic.Entities
             var entity = new Entity();
 
             // Act & Assert
-            Assert.Throws<InvalidCastException>(() => SceneEntity.Cast(entity));
+            Assert.Throws<InvalidCastException>(() => MonoEntity.Cast(entity));
         }
         
         [Test]
@@ -63,14 +63,14 @@ namespace Atomic.Entities
         {
             // Arrange
             var gameObject = new GameObject();
-            var sceneEntity = gameObject.AddComponent<SceneEntity>();
+            var sceneEntity = gameObject.AddComponent<MonoEntity>();
             var entity = new Entity();
 
             // Act
-            SceneEntity casted = null;
+            MonoEntity casted = null;
             try
             {
-                casted = SceneEntity.Cast(entity);
+                casted = MonoEntity.Cast(entity);
             }
             catch
             {
@@ -88,7 +88,7 @@ namespace Atomic.Entities
         [Test]
         public void TryCast_ReturnsFalse_IfEntityIsNull()
         {
-            var result = SceneEntity.TryCast(null, out SceneEntity casted);
+            var result = MonoEntity.TryCast(null, out MonoEntity casted);
 
             Assert.IsFalse(result);
             Assert.IsNull(casted);
@@ -97,8 +97,8 @@ namespace Atomic.Entities
         [Test]
         public void TryCast_ReturnsFalse_IfEntityIsNotSceneEntity()
         {
-            var dummy = new EntityDummy();
-            var result = SceneEntity.TryCast(dummy, out SceneEntity casted);
+            var dummy = new EntitySpy();
+            var result = MonoEntity.TryCast(dummy, out MonoEntity casted);
 
             Assert.IsFalse(result);
             Assert.IsNull(casted);
@@ -107,10 +107,10 @@ namespace Atomic.Entities
         [Test]
         public void TryCast_ReturnsTrue_ButCastedIsNull_WhenProxySourceIsNull()
         {
-            var proxy = new GameObject("Proxy").AddComponent<SceneEntityProxy>();
+            var proxy = new GameObject("Proxy").AddComponent<MonoEntityProxy>();
             proxy.Source = null;
 
-            var result = SceneEntity.TryCast(proxy, out SceneEntity casted);
+            var result = MonoEntity.TryCast(proxy, out MonoEntity casted);
             Assert.IsTrue(result);  // TryCast matches the proxy type
             Assert.IsNull(casted);  // But Source was null
         }
@@ -119,9 +119,9 @@ namespace Atomic.Entities
         public void TryCast_Generic_ReturnsFalse_IfSceneEntityIsWrongType()
         {
             var instance = new GameObject("Instance")
-                .AddComponent<SceneEntityDummy_Other>();
+                .AddComponent<OtherMonoEntityDummy>();
 
-            var result = SceneEntity.TryCast(instance, out SceneEntityDummy_Another casted);
+            var result = MonoEntity.TryCast(instance, out AnotherMonoEntityDummy casted);
 
             Assert.IsFalse(result);
             Assert.IsNull(casted);
@@ -131,9 +131,9 @@ namespace Atomic.Entities
         public void TryCast_Generic_ReturnsFalse_IfProxyGenericTypeIsWrong()
         {
             var proxy = new GameObject("Proxy")
-                .AddComponent<SceneEntityProxy<SceneEntityDummy_Other>>();
+                .AddComponent<MonoEntityProxy<OtherMonoEntityDummy>>();
 
-            var result = SceneEntity.TryCast(proxy, out SceneEntityDummy_Another casted);
+            var result = MonoEntity.TryCast(proxy, out AnotherMonoEntityDummy casted);
 
             Assert.IsFalse(result);
             Assert.IsNull(casted);
@@ -143,9 +143,9 @@ namespace Atomic.Entities
         [Test]
         public void TryCast_ReturnsTrue_WhenDirectInstanceOfSceneEntity()
         {
-            IEntity entity = new GameObject("MySceneEntity").AddComponent<SceneEntityDummy>();
+            IEntity entity = new GameObject("MySceneEntity").AddComponent<MonoEntityDummy>();
 
-            bool result = SceneEntity.TryCast(entity, out SceneEntity casted);
+            bool result = MonoEntity.TryCast(entity, out MonoEntity casted);
 
             Assert.IsTrue(result);
             Assert.AreEqual(entity, casted);
@@ -155,9 +155,9 @@ namespace Atomic.Entities
         public void TryCast_Generic_ReturnsTrue_WhenCorrectGenericType()
         {
             IEntity entity = new GameObject("MySceneEntity")
-                .AddComponent<SceneEntityDummy>();
+                .AddComponent<MonoEntityDummy>();
 
-            bool result = SceneEntity.TryCast(entity, out SceneEntityDummy casted);
+            bool result = MonoEntity.TryCast(entity, out MonoEntityDummy casted);
 
             Assert.IsTrue(result);
             Assert.AreEqual(entity, casted);
@@ -166,11 +166,11 @@ namespace Atomic.Entities
         [Test]
         public void TryCast_ReturnsTrue_WhenProxyMatchesGeneric()
         {
-            var real = new GameObject("RealEntity").AddComponent<SceneEntityDummy>();
-            var proxy = new GameObject("Proxy").AddComponent<SceneEntityProxyDummy>();
+            var real = new GameObject("RealEntity").AddComponent<MonoEntityDummy>();
+            var proxy = new GameObject("Proxy").AddComponent<MonoEntityProxyDummy>();
             proxy.Source = real;
 
-            bool result = SceneEntity.TryCast(proxy, out SceneEntityDummy casted);
+            bool result = MonoEntity.TryCast(proxy, out MonoEntityDummy casted);
 
             Assert.IsTrue(result);
             Assert.AreEqual(real, casted);
