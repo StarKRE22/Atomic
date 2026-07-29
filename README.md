@@ -419,9 +419,8 @@ Roslyn source generators and analyzers that turn declarative API classes into st
 
 ## 🗂 Sample Projects
 
-Example projects have moved to a **[separate repository](https://github.com/StarKRE22/Atomic.Samples)**.
-
-The samples repository contains **four projects**, each demonstrating a different level of complexity:
+The framework includes **four sample projects** in a [separate repository](https://github.com/StarKRE22/Atomic.Samples),
+each demonstrating a different level of complexity:
 
 - **[Beginner Sample](https://github.com/StarKRE22/Atomic.Samples)** — a simple 2-player mini-game showcasing the core principles.
 - **[Top-Down Shooter Sample](https://github.com/StarKRE22/Atomic.Samples)** — a modular game architecture for mid-sized projects.
