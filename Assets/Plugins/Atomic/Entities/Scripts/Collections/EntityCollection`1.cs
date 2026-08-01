@@ -125,7 +125,7 @@ namespace Atomic.Entities
                 return false;
 
             int hashCode = item.InstanceID;
-            int bucket = hashCode % _capacity;
+            int bucket = (hashCode & 0x7FFFFFFF) % _capacity;
             int current = _buckets[bucket];
 
             while (current != UNDEFINED_INDEX)
@@ -153,7 +153,7 @@ namespace Atomic.Entities
                 throw new ArgumentNullException(nameof(item));
 
             int hashCode = item.InstanceID;
-            int bucket = hashCode % _capacity;
+            int bucket = (hashCode & 0x7FFFFFFF) % _capacity;
             ref int head = ref _buckets[bucket];
 
             // Check if item already exists
@@ -202,7 +202,7 @@ namespace Atomic.Entities
                     _capacity = newCapacity;
 
                     // Recalculate bucket and head after resize
-                    bucket = hashCode % _capacity;
+                    bucket = (hashCode & 0x7FFFFFFF) % _capacity;
                     head = ref _buckets[bucket];
                 }
 
@@ -246,7 +246,7 @@ namespace Atomic.Entities
             var buckets = _buckets;
 
             int hash = item.InstanceID;
-            int bucket = hash % _capacity;
+            int bucket = (hash & 0x7FFFFFFF) % _capacity;
             ref int cur = ref buckets[bucket];
 
             while (true)
