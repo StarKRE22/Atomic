@@ -128,10 +128,12 @@ namespace SampleGame
 After the first compilation, the generator creates extension methods such as:
 
 ```csharp
+// Register propeties
 entity.AddTransform(transform);
 entity.AddMoveSpeed(moveSpeed);
 entity.AddMoveDirection(moveDirection);
 
+//Usage
 Transform t = entity.GetTransform();
 IValue<float> speed = entity.GetMoveSpeed();
 IVariable<Vector3> direction = entity.GetMoveDirection();
