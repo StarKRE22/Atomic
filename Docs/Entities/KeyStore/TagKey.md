@@ -30,14 +30,13 @@ Lightweight, strongly-typed identifiers for entity tags. `TagKey` wraps an integ
 ```csharp
 public static partial class GameEntityAPI
 {
-    public static readonly TagKey IsEnemy = new(nameof(IsEnemy));
-    public static readonly TagKey IsBoss = new(nameof(IsBoss));
-    public static readonly TagKey<IGameEntity> IsSelectable = new(nameof(IsSelectable));
+    public static readonly TagKey IsEnemy = new(nameof(IsEnemy)); // For IEntity
+    public static readonly TagKey IsBoss = new(nameof(IsBoss)); // For IEntity
+    public static readonly TagKey<IGameEntity> IsSelectable = new(nameof(IsSelectable)); // For specific entity type IGameEntity
 }
 
 // Usage
 IEntity entity = ...;
-
 entity.AddTag(GameEntityAPI.IsEnemy);
 
 if (entity.HasTag(GameEntityAPI.IsEnemy))
