@@ -33,7 +33,8 @@ public sealed class MovementSystem : EntitySystem<IGameEntity>
 
     protected override void Update(IGameEntity entity, float deltaTime)
     {
-        entity.Move(deltaTime);
+        // movement logic
+        MoveUseCase.MoveTowardsDirection(entity, deltaTime);
     }
 }
 ```
@@ -55,14 +56,14 @@ public sealed class AIPrioritySystem : PriorityEntitySystem<IGameEntity>
 
     protected override EntityUpdatePriority EvaluatePriority(IGameEntity entity)
     {
-        return entity.GetDistanceToPlayer() < 20f
+        return CameraUseCase.GetDistance(entity) < 20f
             ? EntityUpdatePriority.High
             : EntityUpdatePriority.Low;
     }
 
     protected override void Update(IGameEntity entity, float deltaTime)
     {
-        entity.UpdateAI(deltaTime);
+        AIUseCase.Update(entity, deltaTime);
     }
 }
 ```
