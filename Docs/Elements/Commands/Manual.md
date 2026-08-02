@@ -21,14 +21,15 @@ before executing and notifies all about invokation. They support dynamic conditi
 ### 1️⃣  Parameterless Command
 
 ```csharp
+IEntity player = ...;
 ICommand attackCommand = new Command();
 
 attackCommand
-    .AddCondition(() => player.Stamina >= 10)
+    .AddCondition(() => player.GetStamina().Vaue >= 10)
     .AddAction(() =>
     {
-        player.Stamina -= 10;
-        enemy.Health -= 20;
+        player.GetStamina().Value -= 10;
+        enemy.GetHealth().Value -= 20;
     });
 
 bool success = attackCommand.TryInvoke();
@@ -37,11 +38,12 @@ bool success = attackCommand.TryInvoke();
 ### 2️⃣  Parameterized Command
 
 ```csharp
+IEntity player = ...;
 ICommand<int> healCommand = new Command<int>();
 
 healCommand
-    .AddCondition(amount => player.IsAlive)
-    .AddAction(amount => player.Health += amount);
+    .AddCondition(amount => player.GetHealth().Value > 0)
+    .AddAction(amount => player.GetHealth().Value += amount);
 
 bool healed = healCommand.TryInvoke(25);
 ```
