@@ -29,21 +29,24 @@ A dynamic, type-safe filter that selects entities of a specific derived type fro
 Filter alive players from a heterogeneous world:
 
 ```csharp
-IEntityWorld world = ...;
+IEntityWorld world = ...; // World with all entities
 
-var playerFilter = new DerivedEntityFilter<IPlayerEntity>(
+// Create a filter with game entities
+var gameEntityFilter = new DerivedEntityFilter<IGameEntity>(
     world,
-    player => player.GetValue<bool>("IsAlive").Value
+    gameEntity =>  gameEntity.GetValue<bool>("IsAlive").Value
 );
 
-foreach (IPlayerEntity player in playerFilter)
-    Debug.Log("Alive player entities {player}");
+foreach (IGameEntity entity in gameEntityFilter)
+    Debug.Log("Alive game entity {entity.Name}");
 ```
 
 Use triggers to re-evaluate when state changes:
 
 ```csharp
-var aliveFilter = new DerivedEntityFilter<IUnitEntity, IGameEntity>(
+IEntityWorld<IGameEntity> world = ...; // World with all game entities
+
+var aliveUnitFilter = new DerivedEntityFilter<IUnitEntity, IGameEntity>(
     world,
     unit => unit.GetValue<int>("Health") > 0,
     new ValueEntityTrigger<IUnitEntity>("Health")
@@ -55,8 +58,7 @@ aliveFilter.OnRemoved += unit => Debug.Log($"Unit died: {unit}");
 Dispose when no longer needed:
 
 ```csharp
-var filter = new DerivedEntityFilter<IPlayerEntity>(world, player => true);
-// ...
+DerivedEntityFilter<IUnitEntity, IGameEntity> filter = ...;
 filter.Dispose();
 ```
 
