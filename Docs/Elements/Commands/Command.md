@@ -36,13 +36,15 @@ A family of **sealed command implementations** that guard invocation with config
 ### Parameterless command
 
 ```csharp
+IEntity player = ...;
+
 ICommand jumpCommand = new Command()
-    .AddCondition(() => player.IsGrounded)
-    .AddCondition(() => player.Stamina >= 5)
+    .AddCondition(() => player.GetIsGrounded().Value)
+    .AddCondition(() => player.GetStamina().Value >= 5)
     .AddAction(() =>
     {
-        player.Stamina -= 5;
-        player.Jump();
+        player.GetStamina().Value -= 5;
+        player.GetRigidbody().AddForce(new Vector(5, 5), ForceMode.Impulse);
     });
 
 bool jumped = jumpCommand.TryInvoke();
@@ -51,9 +53,11 @@ bool jumped = jumpCommand.TryInvoke();
 ### Parameterized command
 
 ```csharp
+IEntity player = ...;
+
 ICommand<Vector3> moveCommand = new Command<Vector3>()
-    .AddCondition(destination => player.CanMove)
-    .AddAction(destination => player.MoveTo(destination));
+    .AddCondition(destination => player.GetHealth().Value > 0)
+    .AddAction(destination => player.GetTranform().position = destination);
 
 bool moved = moveCommand.TryInvoke(new Vector3(10, 0, 0));
 ```
@@ -92,9 +96,6 @@ public event Action OnEvent;
 ##### `CanInvoke()`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool CanInvoke();
 ```
 
@@ -104,9 +105,6 @@ public bool CanInvoke();
 ##### `TryInvoke()`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool TryInvoke();
 ```
 
@@ -116,9 +114,6 @@ public bool TryInvoke();
 ##### `Invoke()`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public void Invoke();
 ```
 
@@ -197,9 +192,6 @@ public event Action<T> OnEvent;
 ##### `CanInvoke(T)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool CanInvoke(T arg);
 ```
 
@@ -210,9 +202,6 @@ public bool CanInvoke(T arg);
 ##### `TryInvoke(T)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool TryInvoke(T arg);
 ```
 
@@ -223,9 +212,6 @@ public bool TryInvoke(T arg);
 ##### `Invoke(T)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public void Invoke(T arg);
 ```
 
@@ -305,9 +291,6 @@ public event Action<T1, T2> OnEvent;
 ##### `CanInvoke(T1, T2)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool CanInvoke(T1 arg1, T2 arg2);
 ```
 
@@ -320,9 +303,6 @@ public bool CanInvoke(T1 arg1, T2 arg2);
 ##### `TryInvoke(T1, T2)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool TryInvoke(T1 arg1, T2 arg2);
 ```
 
@@ -335,9 +315,6 @@ public bool TryInvoke(T1 arg1, T2 arg2);
 ##### `Invoke(T1, T2)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public void Invoke(T1 arg1, T2 arg2);
 ```
 
@@ -420,9 +397,6 @@ public event Action<T1, T2, T3> OnEvent;
 ##### `CanInvoke(T1, T2, T3)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3);
 ```
 
@@ -436,9 +410,6 @@ public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3);
 ##### `TryInvoke(T1, T2, T3)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3);
 ```
 
@@ -452,9 +423,6 @@ public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3);
 ##### `Invoke(T1, T2, T3)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public void Invoke(T1 arg1, T2 arg2, T3 arg3);
 ```
 
@@ -539,9 +507,6 @@ public event Action<T1, T2, T3, T4> OnEvent;
 ##### `CanInvoke(T1, T2, T3, T4)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```
 
@@ -556,9 +521,6 @@ public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ##### `TryInvoke(T1, T2, T3, T4)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```
 
@@ -573,9 +535,6 @@ public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ##### `Invoke(T1, T2, T3, T4)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```
 
