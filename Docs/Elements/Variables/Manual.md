@@ -87,6 +87,9 @@ position.Value += Vector3.forward;
       - [Builder](ProxyVariableBuilder.md)
     - [InlineReactiveVariable&lt;T&gt;](ReactiveProxyVariable.md)  <!-- + -->
       - [Builder](ReactiveProxyVariableBuilder.md)
+- **ThreadSafeVariables**
+    - [ThreadSafeVariable&lt;T&gt;](ThreadSafeVariable.md) 
+    - [ThreadSafeReactiveVariable&lt;T&gt;](ThreadSafeReactiveVariable.md)
 - [Extensions](Extensions.md)
 
 ---
