@@ -104,6 +104,28 @@ Select each DLL in the Unity Project window and:
 
 After applying the settings, restart Unity or choose `Assets → Reimport All`.
 
+### II. Creating a Character
+
+In this section, we’ll create a character entity in Unity, declare its data with the source generator, and implement a
+simple movement mechanic. By the end of this section, you’ll have a working character that moves in the specified direction.
+
+#### Step 1. Creating a Game Object
+
+In the Scene Hierarchy, right-click and choose `3D Object → Capsule` to create a new game object.
+
+<img width="400" height="" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
+
+#### Step 2. Adding the Entity Component
+
+In the Inspector window of the created object, go to `Atomic → Entities → Entity` to add the Entity component.
+
+<img width="400" height="" alt="Entity component" src="Docs/Images/EntityComponent.png" />
+
+Make sure the following checkboxes are enabled:
+
+- `useUnityLifecycle` — the entity updates along with the **MonoBehaviour** lifecycle.
+- `installOnAwake` — the entity is constructed during the **Awake** phase.
+
 #### Step 3. Declare an Entity API
 
 Create a `public static partial` class and decorate it with [`[GenerateEntityExtensionsAPI]`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/EntityAPI/Manual.md). Declare the character data as [`ValueKey<>`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/KeyStore/ValueKey.md)
@@ -133,42 +155,13 @@ entity.AddTransform(transform);
 entity.AddMoveSpeed(moveSpeed);
 entity.AddMoveDirection(moveDirection);
 
-//Usage
+// Usage
 Transform t = entity.GetTransform();
 IValue<float> speed = entity.GetMoveSpeed();
 IVariable<Vector3> direction = entity.GetMoveDirection();
 ```
 
 For more details, see the [Entity API Generator](Docs/CodeGeneration/EntityAPI/EntityAPIGenerator.md) documentation.
-
-### II. Creating a Character
-
-In this section, we’ll create a character entity in Unity, declare its data with the source generator, and implement a
-simple movement mechanic.
-
-By the end of this section, you’ll have a working character that moves in the specified direction.
-
-#### Step 1. Creating a Game Object
-
-In the Scene Hierarchy, right-click and choose `3D Object → Capsule` to create a new game object.
-
-<img width="400" height="" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
-
-#### Step 2. Adding the Entity Component
-
-In the Inspector window of the created object, go to `Atomic → Entities → Entity` to add the Entity component.
-
-<img width="400" height="" alt="Entity component" src="Docs/Images/EntityComponent.png" />
-
-Make sure the following checkboxes are enabled:
-
-- `useUnityLifecycle` — the entity updates along with the **MonoBehaviour** lifecycle.
-- `installOnAwake` — the entity is constructed during the **Awake** phase.
-
-#### Step 3. Declaring the Character API
-
-Create the `CharacterAPI` class from the [Code Generation Setup](#i-code-generation-setup) section.
-The generator will produce `AddTransform`, `GetTransform`, `AddMoveSpeed`, `GetMoveSpeed`, etc.
 
 #### Step 4. Creating the Movement Mechanic
 
