@@ -7,17 +7,20 @@ namespace Atomic.Entities
 
         private void Register()
         {
-            if (_registered) 
+            if (_registered && _instanceId > 0)
                 return;
-            
+
             EntityRegistry.Instance.Register(this);
             _registered = true;
         }
-        
+
         private void Unregister()
         {
-            if (_registered) 
+            if (_registered)
+            {
                 EntityRegistry.Instance.Unregister(this);
+                _registered = false;
+            }
         }
     }
 }
