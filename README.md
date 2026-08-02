@@ -10,8 +10,6 @@
 
 # ⚛️ What is Atomic?
 
-# Atomic
-
 **Atomic** is an object-oriented framework for building core gameplay systems in **Unity** and **C#**. The core idea behind Atomic is to simplify core gameplay development by making game logic **modular**, **explicit**, and **easy to maintain**. Instead of organizing gameplay around components, Atomic separates **state** and **behavior** into independent, reusable building blocks. To achieve this, it provides a set of composable primitives including **constants**, **variables**, **events**, **actions**, and **functions** that can be combined to build flexible gameplay systems with significantly less boilerplate code.
 
 ---
@@ -63,7 +61,6 @@ Atomic works perfectly **without Odin**, but using it makes data inspection and 
 - _Option #1. Download source code with game examples_
 - _Option #2.
   Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/Atomic.v.2.0.unitypackage)
-  or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.1/AtomicNonUnity.v.2.0.zip)
   from [release notes](https://github.com/StarKRE22/Atomic/releases)_
 - _Option #3: Install via Unity Package Manager using the Git
   URL: `https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic`_
