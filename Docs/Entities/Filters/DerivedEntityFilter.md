@@ -32,19 +32,19 @@ Filter alive players from a heterogeneous world:
 IEntityWorld world = ...;
 
 var playerFilter = new DerivedEntityFilter<IPlayerEntity>(
-    world.Entities,
-    player => player.IsAlive
+    world,
+    player => player.GetValue<bool>("IsAlive").Value
 );
 
 foreach (IPlayerEntity player in playerFilter)
-    player.UpdateLogic();
+    Debug.Log("Alive player entities {player}");
 ```
 
 Use triggers to re-evaluate when state changes:
 
 ```csharp
 var aliveFilter = new DerivedEntityFilter<IUnitEntity, IGameEntity>(
-    world.Entities,
+    world,
     unit => unit.GetValue<int>("Health") > 0,
     new ValueEntityTrigger<IUnitEntity>("Health")
 );
@@ -55,7 +55,7 @@ aliveFilter.OnRemoved += unit => Debug.Log($"Unit died: {unit}");
 Dispose when no longer needed:
 
 ```csharp
-var filter = new DerivedEntityFilter<IPlayerEntity>(world.Entities, player => true);
+var filter = new DerivedEntityFilter<IPlayerEntity>(world, player => true);
 // ...
 filter.Dispose();
 ```
