@@ -1,6 +1,6 @@
-# 🧩 Scene Entity Bakers
+# 🧩 Mono Entity Bakers
 
-**Scene Entity Bakers** are responsible for converting Unity GameObjects into [IEntity](../Entities/IEntity.md)
+**Mono Entity Bakers** are responsible for converting Unity GameObjects into [IEntity](../Entities/IEntity.md)
 instances. They provide a structured way to bake scene objects into runtime entities, pre-configuring tags, values, and
 behaviours. Bakers can be generic ([MonoEntityBaker\<E>](MonoEntityBaker%601.md)) or non-generic
 ([MonoEntityBaker](MonoEntityBaker.md)), depending on whether you want type-safe entity creation.
