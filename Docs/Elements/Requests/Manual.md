@@ -27,7 +27,7 @@ active.
 
 ```csharp
 // Assume this request signals a simple UI action
-IRequest shootRequest = new BaseRequest();
+IRequest shootRequest = new Request();
 
 // Somewhere in the UI system we mark it as required
 shootRequest.Invoke();
@@ -51,7 +51,7 @@ if (shoot.Consume())
 
 ```csharp
 // Create a request to damage a specific character
-IRequest<Character> damageRequest = new BaseRequest<Character>();
+IRequest<Character> damageRequest = new Request<Character>();
 
 // Trigger the request from gameplay logic
 damageRequest.Invoke(targetCharacter);
@@ -75,7 +75,7 @@ if (damageRequest.Consume(out target))
 ```csharp
 public class AttackComponent : MonoBehaviour
 {
-    private readonly IRequest<GameObject> _request = new BaseRequest<GameObject>();
+    private readonly IRequest<GameObject> _request = new Request<GameObject>();
     
     public bool IsAttack => _request.Required;
 
@@ -108,12 +108,12 @@ arguments:
     - [IRequest&lt;T1, T2&gt;](IRequest%602.md) <!-- + -->
     - [IRequest&lt;T1, T2, T3&gt;](IRequest%603.md)  <!-- + -->
     - [IRequest&lt;T1, T2, T3, T4&gt;](IRequest%604.md) <!-- + -->
-- [BaseRequests](BaseRequests.md) <!-- + -->
-    - [BaseRequest](BaseRequest.md) <!-- + -->
-    - [BaseRequest&lt;T&gt;](BaseRequest%601.md) <!-- + -->
-    - [BaseRequest&lt;T1, T2&gt;](BaseRequest%602.md) <!-- + -->
-    - [BaseRequest&lt;T1, T2, T3&gt;](BaseRequest%603.md) <!-- + -->
-    - [BaseRequest&lt;T1, T2, T3, T4&gt;](BaseRequest%604.md) <!-- + -->
+- [Requests](Requests.md) <!-- + -->
+    - [Request](Request.md) <!-- + -->
+    - [Request&lt;T&gt;](Request%601.md) <!-- + -->
+    - [Request&lt;T1, T2&gt;](Request%602.md) <!-- + -->
+    - [Request&lt;T1, T2, T3&gt;](Request%603.md) <!-- + -->
+    - [Request&lt;T1, T2, T3, T4&gt;](Request%604.md) <!-- + -->
 
 ---
 
