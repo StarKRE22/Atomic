@@ -10,9 +10,9 @@
 
 # ⚛️ What is Atomic?
 
-**Atomic** is a framework for building core gameplay features in **Unity** and **C#**.
+# Atomic
 
-It provides modular building blocks — constants, variables, events, actions, and functions — that help you create clean, maintainable game systems with less boilerplate code.
+**Atomic** is an object-oriented framework for building core gameplay systems in **Unity** and **C#**. The core idea behind Atomic is to simplify core gameplay development by making game logic **modular**, **explicit**, and **easy to maintain**. Instead of organizing gameplay around components, Atomic separates **state** and **behavior** into independent, reusable building blocks. To achieve this, it provides a set of composable primitives including **constants**, **variables**, **events**, **actions**, and **functions** that can be combined to build flexible gameplay systems with significantly less boilerplate code.
 
 ---
 
