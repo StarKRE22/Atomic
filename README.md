@@ -128,7 +128,7 @@ Make sure the following checkboxes are enabled:
 
 #### Step 3. Declare an Entity API
 
-Create a `public static partial` class and decorate it with [`[GenerateEntityExtensionsAPI]`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/EntityAPI/Manual.md). Declare the character data as [`ValueKey<>`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/KeyStore/ValueKey.md)
+Create a `public static partial` class and decorate it with [`[GenerateEntityExtensionsAPI]`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/EntityAPI/Manual.md). Declare the character data as [`ValueKey<E, T>`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/KeyStore/ValueKey.md)
 fields:
 
 ```csharp
@@ -198,7 +198,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 > coupling to data storage methods that is typical for component-based ECS architectures.
 >
 > A simple example:
-> Under the `IValue<T>` interface, you can substitute either a `Variable<T>` or a `Const<T>` implementation.
+> Under the [`IValue<T>`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Values/Manual.md) interface, you can substitute either a [`Variable<T>`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Variables/Manual.md) or a [`Const<T>`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Elements/Values/Const.md) implementation.
 
 #### Step 5. Creating the Installer
 
