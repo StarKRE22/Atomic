@@ -106,7 +106,7 @@ After applying the settings, restart Unity or choose `Assets → Reimport All`.
 
 #### Step 3. Declare an Entity API
 
-Create a `public static partial` class and decorate it with `[GenerateEntityExtensionsAPI]`. Declare the character data as `ValueKey<>`
+Create a `public static partial` class and decorate it with [`[GenerateEntityExtensionsAPI]`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/EntityAPI/Manual.md). Declare the character data as [`ValueKey<>`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/KeyStore/ValueKey.md)
 fields:
 
 ```csharp
