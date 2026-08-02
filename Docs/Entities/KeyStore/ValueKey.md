@@ -30,8 +30,8 @@ Lightweight, strongly-typed identifiers for entity values. `ValueKey` wraps an i
 ```csharp
 public static partial class GameContextAPI
 {
-    public static readonly ValueKey<int> Score = new(nameof(Score));
-    public static readonly ValueKey<IGameEntity, float> Health = new(nameof(Health));
+    public static readonly ValueKey<int> Score = new(nameof(Score)); // For base IEntity
+    public static readonly ValueKey<IGameEntity, float> Health = new(nameof(Health)); For specific entity type IGameEntity
 }
 
 // Usage with IEntity
