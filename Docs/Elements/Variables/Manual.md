@@ -115,14 +115,6 @@ they compare values without relying on `EqualityComparer`, which makes them slig
     - `Vector4Variable` — Stores a Vector4
     - `Vector2IntVariable` — Stores a Vector2Int
     - `Vector3IntVariable` — Stores a Vector3Int
-- **Unity Mathematics**
-    - `int2_variable` — Stores an int2
-    - `int3_variable` — Stores an int3
-    - `int4_variable` — Stores an int4
-    - `float2_variable` — Stores a float2
-    - `float3_variable` — Stores a float3
-    - `float4_variable` — Stores a float4
-    - `quaternion_variable` — Stores a quaternion
 
 ---
 
@@ -143,14 +135,6 @@ as they compare values without relying on `EqualityComparer`, which makes them s
     - `ReactiveVector4` — Stores a Vector4
     - `ReactiveVector2Int` — Stores a Vector2Int
     - `ReactiveVector3Int` — Stores a Vector3Int
-- **Unity Mathematics**
-    - `reactive_int2` — Stores an int2
-    - `reactive_int3` — Stores an int3
-    - `reactive_int4` — Stores an int4
-    - `reactive_float2` — Stores a float2
-    - `reactive_float3` — Stores a float3
-    - `reactive_float4` — Stores a float4
-    - `reactive_quaternion` — Stores a quaternion
 
 ---
 
