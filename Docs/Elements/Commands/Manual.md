@@ -1,8 +1,7 @@
 # 🧩 Commands
 
-**Commands** provide a conditional action pattern. Unlike plain actions, commands check whether they can be invoked
-before executing. They support dynamic conditions, actions, and signals, making them useful for gameplay logic such as
-abilities, UI interactions, and state-gated behaviors.
+**Commands** provide a conditional action-event pattern. Unlike plain actions, commands check whether they can be invoked
+before executing and notifies all about invokation. They support dynamic conditions, actions, and signals, making them useful for gameplay logic such as abilities, UI interactions, and state-gated behaviors.
 
 ---
 
