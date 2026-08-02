@@ -160,5 +160,5 @@ For convenience, several specialized proxy variable implementations are provided
 For multi-threaded scenarios, thread-safe variable implementations are provided that protect their internal state with locking and dispatch events on the main thread.
 
 - **Thread-Safe Variables**
-    - [ThreadSafeVariable&lt;T&gt;](ThreadSafeVariable.md) — Thread-safe value container without change notifications
-    - [ThreadSafeReactiveVariable&lt;T&gt;](ThreadSafeReactiveVariable.md) — Thread-safe reactive variable with main-thread event dispatch
+    - `ThreadSafeVariable&lt;T&gt` — Thread-safe value container without change notifications
+    - `ThreadSafeReactiveVariable&lt;T&gt;` — Thread-safe reactive variable with main-thread event dispatch
