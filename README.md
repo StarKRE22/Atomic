@@ -37,7 +37,7 @@
 
 ## 📝 Requirements
 
-The Atomic Framework requires **Unity 6+** or **.NET 7+**.  
+The Atomic Framework requires **Unity 6+**.  
 Make sure your development environment meets these requirements before using the framework.
 
 ### Recommended Tools
