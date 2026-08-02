@@ -22,6 +22,8 @@ before executing and notifies all about invokation. They support dynamic conditi
 
 ```csharp
 IEntity player = ...;
+IEntity enemy = ...;
+
 ICommand attackCommand = new Command();
 
 attackCommand
