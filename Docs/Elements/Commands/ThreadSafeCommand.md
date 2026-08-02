@@ -31,26 +31,6 @@ A family of **thread-safe command implementations** that protect their internal 
 
 ---
 
-## 🗂 Example of Usage
-
-Invoke a command from a background thread and raise the event on the main thread:
-
-```csharp
-ThreadSafeCommand<int> onDownloadComplete = new ThreadSafeCommand<int>();
-
-onDownloadComplete
-    .AddCondition(bytes => bytes > 0)
-    .AddAction(bytes => Debug.Log($"Downloaded {bytes} bytes"));
-
-Task.Run(() =>
-{
-    int size = DownloadFileAsync(url).Result;
-    onDownloadComplete.TryInvoke(size); // action runs here; event fires on main thread
-});
-```
-
----
-
 ## 🔍 API Reference
 
 ### 🏛️ ThreadSafeCommand
@@ -83,9 +63,6 @@ public event Action OnEvent;
 ##### `CanInvoke()`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool CanInvoke();
 ```
 
@@ -96,9 +73,6 @@ public bool CanInvoke();
 ##### `TryInvoke()`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool TryInvoke();
 ```
 
@@ -109,23 +83,11 @@ public bool TryInvoke();
 ##### `Invoke()`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public void Invoke();
 ```
 
 - **Description:** Invokes the action if all conditions pass.
 - **Thread Safety:** Reads the action under a lock; the action runs on the calling thread.
-
-##### `Flush()`
-
-```csharp
-void MainThreadDispatcher.IFlushable.Flush();
-```
-
-- **Description:** Explicit interface implementation that raises `OnEvent` on the main thread.
-- **Notes:** Called automatically by `MainThreadDispatcher`; do not invoke directly.
 
 ##### `AddCondition(Func<bool>)`
 
@@ -324,9 +286,6 @@ public event Action<T1, T2> OnEvent;
 ##### `CanInvoke(T1, T2)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool CanInvoke(T1 arg1, T2 arg2);
 ```
 
@@ -340,9 +299,6 @@ public bool CanInvoke(T1 arg1, T2 arg2);
 ##### `TryInvoke(T1, T2)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool TryInvoke(T1 arg1, T2 arg2);
 ```
 
@@ -364,15 +320,6 @@ public void Invoke(T1 arg1, T2 arg2);
   - `arg1` — The first argument.
   - `arg2` — The second argument.
 - **Thread Safety:** Reads the action and conditions under a lock; the action runs on the calling thread.
-
-##### `Flush()`
-
-```csharp
-void MainThreadDispatcher.IFlushable.Flush();
-```
-
-- **Description:** Explicit interface implementation that raises `OnEvent` on the main thread with the captured arguments.
-- **Notes:** Called automatically by `MainThreadDispatcher`; do not invoke directly.
 
 ##### `AddCondition(Func<T1, T2, bool>)`
 
@@ -452,9 +399,6 @@ public event Action<T1, T2, T3> OnEvent;
 ##### `CanInvoke(T1, T2, T3)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3);
 ```
 
@@ -469,9 +413,6 @@ public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3);
 ##### `TryInvoke(T1, T2, T3)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3);
 ```
 
@@ -584,9 +525,6 @@ public event Action<T1, T2, T3, T4> OnEvent;
 ##### `CanInvoke(T1, T2, T3, T4)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```
 
@@ -602,9 +540,6 @@ public bool CanInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ##### `TryInvoke(T1, T2, T3, T4)`
 
 ```csharp
-#if ODIN_INSPECTOR
-[Button]
-#endif
 public bool TryInvoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```
 
@@ -630,15 +565,6 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
   - `arg3` — The third argument.
   - `arg4` — The fourth argument.
 - **Thread Safety:** Reads the action and conditions under a lock; the action runs on the calling thread.
-
-##### `Flush()`
-
-```csharp
-void MainThreadDispatcher.IFlushable.Flush();
-```
-
-- **Description:** Explicit interface implementation that raises `OnEvent` on the main thread with the captured arguments.
-- **Notes:** Called automatically by `MainThreadDispatcher`; do not invoke directly.
 
 ##### `AddCondition(Func<T1, T2, T3, T4, bool>)`
 
