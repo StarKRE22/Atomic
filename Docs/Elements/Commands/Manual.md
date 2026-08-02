@@ -18,7 +18,7 @@ before executing and notifies all about invokation. They support dynamic conditi
 
 ## 🗂 Examples of Usage
 
-### 1️⃣ Parameterless Command
+### 1️⃣  Parameterless Command
 
 ```csharp
 ICommand attackCommand = new Command();
@@ -34,7 +34,7 @@ attackCommand
 bool success = attackCommand.TryInvoke();
 ```
 
-### 2️⃣ Parameterized Command
+### 2️⃣  Parameterized Command
 
 ```csharp
 ICommand<int> healCommand = new Command<int>();
@@ -46,7 +46,7 @@ healCommand
 bool healed = healCommand.TryInvoke(25);
 ```
 
-### 3️⃣ Listening Events
+### 3️⃣  Listening Events
 
 Commands raise an `OnEvent` signal after the action is executed. This is useful for driving UI, effects, or other
 reactive logic without coupling the command to its observers.
