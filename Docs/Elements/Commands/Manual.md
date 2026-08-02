@@ -46,18 +46,21 @@ healCommand
 bool healed = healCommand.TryInvoke(25);
 ```
 
-### Listening to OnEvent
+### Listening Events
 
 Commands raise an `OnEvent` signal after the action is executed. This is useful for driving UI, effects, or other
 reactive logic without coupling the command to its observers.
 
 ```csharp
-attackCommand.OnEvent += () => Debug.Log("Attack executed!");
+IDisposable subscription = attackCommand.Subscribe(() => Debug.Log("Attack executed!"));
 
 if (attackCommand.TryInvoke())
 {
     // Attack executed, observers notified.
 }
+
+// Dispose Subscription
+subscription.Dispose(); 
 ```
 
 ---
