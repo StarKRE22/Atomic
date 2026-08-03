@@ -42,23 +42,20 @@ public static partial class GameEntityAPI
 using Atomic.Entities;
 using UnityEngine;
 
-public class DamageBehaviour : MonoBehaviour
+public class CharacterInstaller : MonoEntityInstaller
 {
     [EntityInspectorTag]
     [SerializeField]
     private string targetTag;
 
-    [EntityInspectorValue(typeof(int))]
+    [EntityInspectorValue(typeof(IVariable<int>))]
     [SerializeField]
-    private string healthValueName;
+    private string healthKey;
 
-    public void ApplyDamage(IEntity entity)
+    public override void Install(IEntity entity)
     {
-        if (!entity.HasTag(targetTag))
-            return;
-
-        int health = entity.GetValue<int>(healthValueName);
-        entity.SetValue(healthValueName, health - 10);
+        entity.AddTag(targetTag);
+        entity.AddValue(healthKey, new Variable<int>(100));
     }
 }
 ```
