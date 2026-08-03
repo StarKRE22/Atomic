@@ -12,8 +12,7 @@ namespace Atomic.Entities
             entity.WhenDispose(system.Dispose);
         }
 
-        //TODO
-        public static void AddFixedSystem<TContext, TEntity>(this TContext entity, EntitySystemBase<TEntity> system)
+        public static void AddFixedTickSystem<TContext, TEntity>(this TContext entity, EntitySystemBase<TEntity> system)
             where TContext : IEntity
             where TEntity : IEntity
         {
