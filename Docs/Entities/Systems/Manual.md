@@ -82,11 +82,12 @@ var settings = new MovementSystem.Settings
 };
 
 MovementSystem movement = new MovementSystem(world, settings);
-contextEntity.AddTickSystem(movement);
-```
 
-> [!NOTE]
-> `AddFixedSystem` and `AddLateTickSystem` are also available for fixed-update and late-update systems.
+IEntity gameContext = ...;
+gameContext.AddTickSystem(movement); // Update in gameContext.Tick()
+gameContext.AddFixedTickSystem(movement); // Update in gameContext.FixedTick()
+gameContext.AddLateTickSystem(movement); // Update in gameContext.LateTick()
+```
 
 ---
 
