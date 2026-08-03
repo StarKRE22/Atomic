@@ -42,7 +42,9 @@ var settings = new EntitySystem<IGameEntity>.Settings
 };
 
 MovementSystem movement = new MovementSystem(world, settings);
-contextEntity.AddTickSystem(movement);
+
+IEntity gameContext = ...;
+gameContext.AddTickSystem(movement);
 ```
 
 ---
