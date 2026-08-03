@@ -56,7 +56,7 @@ public sealed class AIPrioritySystem : PriorityEntitySystem<IGameEntity>
 
     protected override EntityUpdatePriority EvaluatePriority(IGameEntity entity)
     {
-        return CameraUseCase.GetDistance(entity) < 20f
+        return CameraUseCase.GetDistanceToMainCamera(entity) < 20f
             ? EntityUpdatePriority.High
             : EntityUpdatePriority.Low;
     }
