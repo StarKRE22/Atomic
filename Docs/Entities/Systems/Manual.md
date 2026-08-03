@@ -63,7 +63,7 @@ public sealed class AIPrioritySystem : PriorityEntitySystem<IGameEntity>
 
     protected override void Update(IGameEntity entity, float deltaTime)
     {
-        AIUseCase.Update(entity, deltaTime);
+        AIUseCase.UpdateAIBehaviour(entity, deltaTime);
     }
 }
 ```
