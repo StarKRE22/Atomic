@@ -1,6 +1,6 @@
-# 📣 Atomic.Events.Bus
+# 📣 Atomic.Events
 
-The **Atomic.Events.Bus** namespace contains event bus implementations used to publish and subscribe to events.
+The **Atomic.Events** namespace contains event bus implementations used to publish and subscribe to events.
 Buses decouple senders from receivers by routing events through integer keys, while strongly-typed `EventKey<TBus>`
 structs and source-generated extension methods keep the API safe and discoverable.
 
