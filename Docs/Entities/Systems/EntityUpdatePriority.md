@@ -24,7 +24,7 @@ public sealed class DistancePrioritySystem : PriorityEntitySystem<IGameEntity>
 {
     protected override EntityUpdatePriority EvaluatePriority(IGameEntity entity)
     {
-        float distance = entity.GetDistanceToPlayer();
+        float distance = PlayerUseCase.GetDistanceToPlayer(entity);
 
         if (distance < 10f)
             return EntityUpdatePriority.High;
