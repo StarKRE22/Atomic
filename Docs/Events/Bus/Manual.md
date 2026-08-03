@@ -44,7 +44,7 @@ bus.InvokeDamageDealt(10);
 `GameObject > Atomic > Events > Event Bus`.
 
 ```csharp
-public class GameContext : MonoBehaviour
+public class SampleUsage : MonoBehaviour
 {
     [SerializeField] private MonoEventBus eventBus;
 
