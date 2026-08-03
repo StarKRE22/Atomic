@@ -1,6 +1,6 @@
-# 🔑 Events Keys
+# 🔑 Event Keys
 
-The **Atomic.Events.Keys** namespace provides strongly-typed event keys and name-to-id mapping utilities.
+The **Event Keys** provides strongly-typed event keys and name-to-id mapping utilities.
 `EventKey<TBus>` wraps an integer event identifier and binds it to a specific bus type, preventing accidental misuse
 between different event systems.
 
