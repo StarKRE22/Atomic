@@ -13,6 +13,7 @@ UI representations of entities. Components can be **generic** or **non-generic**
   - [EntityViewCatalog](#ex2)
   - [EntityViewPool](#ex3)
   - [EntityCollectionView](#ex4)
+  - [EntityWorldView](#ex5)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
 - [Best Practices](#-best-practices)
@@ -25,7 +26,7 @@ UI representations of entities. Components can be **generic** or **non-generic**
 
 ### 1️⃣ EntityView
 
-Below is an example of setting up `EntityView<` that represents a tank entity.
+Below is an example of setting up `EntityView` that represents a tank entity.
 
 #### 1. Attach `Atomic/Entities/Entity View` to a GameObject
 
@@ -120,7 +121,7 @@ EntityView playerPrefab = catalog.GetPrefab("Player");
 
 ### 3️⃣ EntityViewPool
 
-#### 1. Attach `Atomic/Entities/Entity View Pool` to an GameObject
+#### 1. Attach `Atomic/Entities/Entity View Pool` to a GameObject
 
 <img width="450" height="" alt="Entity component" src="../../Images/EntityViewPool.png" />
 
@@ -159,13 +160,13 @@ pool.UnregisterPrefab("Mage");
 
 ### 4️⃣ EntityCollectionView
 
-#### 1. Attach `Atomic/Entities/Entity Collection View` to an GameObject
+#### 1. Attach `Atomic/Entities/Entity Collection View` to a GameObject
 
 
 <img width="450" height="" alt="Entity component" src="../../Images/EntityCollectionView.png" />
 
-- Assign a `Transform` to `Viewport` field.
-- Assign the [EntityViewPool](EntityViewPool.md) to `ViewPool` field.
+- Assign a `Transform` to `viewport` field.
+- Assign the [EntityViewPool](EntityViewPool.md) to `viewPool` field.
 
 
 #### 2. Usage in a project
@@ -174,24 +175,11 @@ pool.UnregisterPrefab("Mage");
 // Assume we have an instance of EntityCollectionView
 EntityCollectionView collectionView = ...;
 
-// Assume we have an instance of IReadOnlyEntityCollection
-IReadOnlyEntityCollection collection = ...;
-
 // Assume we have a single entity
 IEntity someEntity = ...;
 
-// ===== Basic Usage =====
-
-// Bind this entity collection to the view collection 
-collectionView.Show(collection);
-
-// Unbind the current entity collection
-collectionView.Hide();
-
-// ===== Manual View Management =====
-
 // Add a single entity view manually
-collectionView.Add(someEntity);
+EntityView createdView = collectionView.Add(someEntity);
 
 // Remove a specific entity view manually
 collectionView.Remove(someEntity);
@@ -226,6 +214,32 @@ foreach (KeyValuePair<IEntity, EntityView> pair in collectionView)
 
 ---
 
+<div id="ex5"></div>
+
+### 5️⃣ EntityWorldView
+
+Use [EntityWorldView](EntityWorldView.md) when a view should automatically mirror an entity collection.
+
+#### 1. Attach `Atomic/Entities/Entity Collection View` to a GameObject
+
+- Assign a `Transform` to `viewport`.
+- Assign the [EntityViewPool](EntityViewPool.md) to `viewPool`.
+
+#### 2. Usage in a project
+
+```csharp
+EntityWorldView worldView = ...;
+IReadOnlyEntityCollection<IEntity> entityCollection = ...;
+
+// Create views for existing entities and subscribe to additions/removals:
+worldView.Activate(entityCollection);
+
+// Stop synchronization and return all views to the pool:
+worldView.Deactivate();
+```
+
+---
+
 ## 🔍 API Reference
 
 Below is a list of available Entity UI modules:
@@ -242,6 +256,11 @@ Below is a list of available Entity UI modules:
 - **Collections**
     - [EntityCollectionView](EntityCollectionView.md) <!-- + -->
     - [EntityCollectionView&lt;E&gt;](EntityCollectionView%601.md) <!-- + -->
+- **World Views**
+    - [EntityWorldView](EntityWorldView.md) <!-- + -->
+    - [EntityWorldView&lt;K, E, V&gt;](EntityWorldView%601.md) <!-- + -->
+    - [EntityWorldViewSingleton](EntityWorldViewSingleton.md) <!-- + -->
+    - [EntityWorldViewSingleton&lt;K, E, V&gt;](EntityWorldViewSingleton%601.md) <!-- + -->
 
 ---
 
@@ -251,7 +270,8 @@ Below is a list of available Entity UI modules:
   or non-generic ([EntityView](EntityView.md)).
 - **Catalogs** provide a registry for prefabs to select the correct view for an entity.
 - **Pools** manage instantiation and recycling of views for performance.
-- **Collections** bind a group of entities to their corresponding views, handling add/remove events automatically.
+- **Collections** manually manage active entity views with `Add`, `Remove`, and `Clear`.
+- **World Views** bind to entity collections and keep views synchronized with collection additions/removals.
 - **Generic versions** provide type-safety and avoid casting when working with specific entity types.
 
 ---
@@ -259,119 +279,3 @@ Below is a list of available Entity UI modules:
 ## 📌 Best Practices
 
 - [Building Entity System with Model & View Separation](../../BestPractices/EntitySystem.md)  <!-- + -->
-
-
-<!--
-
-## 🗂 Example of Usage
-
-```csharp
-// Create a default entity view without knowing the specific entity type
-var args = new EntityView.CreateArgs
-{
-    name = "GenericEntityView",
-    controlGameObject = true,
-    installers = new List<MonoEntityInstaller>()
-};
-
-EntityView view = EntityView.Create(args);
-
-// Show any IEntity instance
-IEntity entity = new SomeEntity();
-view.Show(entity);
-
-// Later, hide or destroy
-view.Hide();
-EntityView.Destroy(view);
-```
-
-
-## 🗂 Examples of Usage
-
-Below are examples demonstrating practical usage of the main **Entity UI** components.
-
-### 1️⃣ Creating and Showing an Entity View
-
-```csharp  
-// Rent a view from the pool and bind it to an entity
-EntityView<IEntity> view = entityViewPool.Rent("Enemy");
-view.Show(enemyEntity);
-```
-
-- **Description:** Retrieves a view instance from the pool and associates it with an entity.
-- **Use Case:** Display dynamic entities in the scene or UI efficiently without creating new GameObjects each time.
-
-### 2️⃣ Using a View Catalog
-
-```csharp  
-// Get a prefab from a catalog and register it in a pool
-EntityViewCatalog<IEntity, EntityView<IEntity>> catalog = myCatalog;
-EntityView<IEntity> prefab = catalog.GetPrefab("Enemy");
-entityViewPool.RegisterPrefab("Enemy", prefab);
-```
-
-- **Description:** A catalog stores reusable prefabs for different entity types, allowing centralized management.
-- **Use Case:** Dynamically select which prefab to instantiate based on the entity type.
-
-### 3️⃣ Managing an Entity View Pool
-
-```csharp  
-// Create a pool for a specific prefab
-EntityViewPool<IEntity, EntityView<IEntity>> pool = new EntityViewPool<IEntity, EntityView<IEntity>>();
-pool.RegisterPrefab("Enemy", enemyPrefab);
-
-// Rent a view
-EntityView<IEntity> view = pool.Rent("Enemy");
-
-// Return the view for reuse
-pool.Return("Enemy", view);
-```
-
-- **Description:** The pool manages instantiation and reuse of entity views to improve performance.
-- **Use Case:** Optimize scenes where entities frequently appear and disappear (e.g., enemies, UI lists).
-
-### 4️⃣ Using a Collection View
-
-```csharp  
-// Bind a collection of entities to a collection view
-EntityCollectionView collectionView = gameObject.AddComponent<EntityCollectionView>();
-collectionView.Show(entityCollection); // entityCollection is IReadOnlyEntityCollection<IEntity>
-
-// The collection view automatically handles adding/removing views for entities
-```
-
-- **Description:** A collection view automatically creates views for entities in a collection and handles lifecycle
-  events.
-- **Use Case:** Display lists, grids, or groups of entities, with automatic view management for add/remove/clear
-  operations.
-
-### 5️⃣ Responding to View Events
-
-```csharp  
-collectionView.OnAdded += (entity, view) =>
-{
-    Debug.Log($"Entity {entity.Name} added with view {view.name}");
-};
-
-collectionView.OnRemoved += (entity, view) =>
-{
-    Debug.Log($"Entity {entity.Name} removed along with view {view.name}");
-};
-```
-
-- **Description:** Use events to react to entities being added or removed from a collection.
-- **Use Case:** Play animations, update UI, or trigger logic when views appear or disappear.
-
-### 6️⃣ Clearing All Views
-
-```csharp  
-// Remove all active views and return them to the pool
-collectionView.Clear();
-```
-
-- **Description:** Efficiently hides all entity views and returns them to the pool for future reuse.
-- **Use Case:** Reset a UI panel, clear a list, or clean up a scene section.
-
----
-
--->
