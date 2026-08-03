@@ -1,6 +1,6 @@
-# 🧩 Atomic.Events.Subscriptions
+# 🧩 Event Subscriptions
 
-The **Atomic.Events.Subscriptions** namespace provides disposable subscription handles returned by event buses.
+The **Event Subscriptions** provides disposable subscription handles returned by event buses.
 A subscription captures the bus, event key, and delegate so that unsubscribing is as simple as calling `Dispose()`.
 
 ---
