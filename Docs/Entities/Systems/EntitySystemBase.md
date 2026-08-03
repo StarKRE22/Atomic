@@ -47,7 +47,8 @@ var system = new MySystem(world, new EntitySystemBase<IGameEntity>.Settings
     frameBudget = 0.02f
 });
 
-contextEntity.AddTickSystem(system);
+IEntity gameContext = ...;
+gameContext.AddTickSystem(movement);
 ```
 
 ---
