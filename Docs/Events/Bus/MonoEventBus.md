@@ -29,7 +29,7 @@ Unity `MonoBehaviour` implementation of [IEventBus](IEventBus.md). Can be attach
 ### Use in Code
 
 ```csharp
-public class GameContext : MonoEventBus
+public class GameEventBus : MonoEventBus
 {
 }
 
