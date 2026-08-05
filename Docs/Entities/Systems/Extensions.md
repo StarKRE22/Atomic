@@ -19,7 +19,6 @@ Use these methods when a context entity should own a system and drive it from `E
   - [Methods](#-methods)
     - [AddTickSystem<TContext, TEntity>](#addticksystemtcontext-tentity)
     - [AddFixedTickSystem<TContext, TEntity>](#addfixedticksystemtcontext-tentity)
-    - [AddLateTickSystem<TContext, TEntity>](#addlateticksystemtcontext-tentity)
 - [Notes](#-notes)
 
 ---
@@ -55,33 +54,15 @@ gameContext.AddTickSystem(new MovementSystem(world, new MovementSystem.Settings
 IEntity gameContext = ...;
 IReadOnlyEntityCollection<IGameEntity> world = ...;
 
-var settings = new MovementSystem.Settings
+// Enables the system with gameContext.Enable(),
+// updates it with gameContext.FixedTick(deltaTime),
+// disables it with gameContext.Disable(),
+// and disposes it with gameContext.Dispose().
+gameContext.AddTickSystem(new MovementSystem(world, new MovementSystem.Settings
 {
     frameBudget = 0.016f,
     batching = { minSize = 64, maxSize = 512 }
-};
-
-MovementSystem movement = new MovementSystem(world, settings);
-
-// Enables the system with gameContext.Enable(),
-// updates it with gameContext.Tick(deltaTime),
-// disables it with gameContext.Disable(),
-// and disposes it with gameContext.Dispose().
-gameContext.AddFixedTickSystem<IEntity, IGameEntity>(movement);
-```
-
----
-
-<div id="ex3"></div>
-
-### 3️⃣ Late Tick System
-
-```csharp
-IEntity presentationContext = ...;
-PresentationSystem presentation = ...;
-
-// Updates the system after regular Tick systems.
-presentationContext.AddLateTickSystem<IEntity, IGameEntity>(presentation);
+}));
 ```
 
 ---
