@@ -70,7 +70,7 @@ public sealed class AIPrioritySystem : PriorityEntitySystem<IGameEntity>
 
 ### Wiring to a Context
 
-Use the `AddTickSystem` extension method to attach a system to a context entity's lifecycle:
+Use the system extension methods to attach systems to a context entity's lifecycle:
 
 ```csharp
 IEntityWorld<IGameEntity> world = ...;
@@ -97,6 +97,7 @@ gameContext.AddLateTickSystem(movement); // Update in gameContext.LateTick()
 - [EntitySystem<E>](EntitySystem.md) — round-robin system; updates all entities evenly
 - [PriorityEntitySystem<E>](PriorityEntitySystem.md) — priority-based system; updates high-priority entities more often
 - [EntityUpdatePriority](EntityUpdatePriority.md) — enum defining `Low`, `Medium`, `High` priorities
+- [Systems Extensions](Extensions.md) — extension methods for wiring systems to entity lifecycle callbacks
 
 ---
 

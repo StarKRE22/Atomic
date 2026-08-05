@@ -48,7 +48,7 @@ var system = new MySystem(world, new EntitySystemBase<IGameEntity>.Settings
 });
 
 IEntity gameContext = ...;
-gameContext.AddTickSystem(movement);
+gameContext.AddTickSystem(system);
 ```
 
 ---
@@ -81,7 +81,8 @@ public abstract class EntitySystemBase<E> : IDisposable where E : IEntity
   | `scaleDown` | `2` | Factor by which the batch size is reduced when over budget. |
   | `stepUp` | `256` | Amount by which the batch size is increased when under budget. |
 
-- **See also:** [EntitySystem<E>](EntitySystem.md), [PriorityEntitySystem<E>](PriorityEntitySystem.md), [IReadOnlyEntityCollection<E>](../Collections/IReadOnlyEntityCollection%601.md)
+- **See also:** [EntitySystem<E>](EntitySystem.md), [PriorityEntitySystem<E>](PriorityEntitySystem.md),
+  [Systems Extensions](Extensions.md), [IReadOnlyEntityCollection<E>](../Collections/IReadOnlyEntityCollection%601.md)
 
 ### 🏗️ Constructors
 

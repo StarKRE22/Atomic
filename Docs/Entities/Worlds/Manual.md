@@ -16,6 +16,7 @@ collection operations and high-level control over entity behavior.
     - [Non-Generic EntityWorld](#ex2)
     - [Unity-Specific EntityWorld](#ex3)
     - [Auto-Scanning Entities](#ex4)
+    - [Singleton EntityWorld](#ex5)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
 - [Best Practices](#-best-practices)
@@ -77,6 +78,22 @@ GameEntityWorld world = GameEntityWorld.Create("BattleWorld", scanEntities: true
 - **Description:** Uses built-in scanning to find all entities in the scene.
 - **Use Case:** Ideal for dynamic Unity scenes with pre-placed entities.
 
+<div id="ex5"></div>
+
+### 5️⃣ Singleton EntityWorld
+
+```csharp
+public sealed class GameWorld : MonoEntityWorldSingleton
+{
+}
+
+MonoEntityWorldSingleton world = MonoEntityWorldSingleton.Instance;
+world.Enable();
+```
+
+- **Description:** Provides one scene/global Unity world with static access through `Instance`.
+- **Use Case:** Useful for game contexts, level worlds, or globally shared scene entity managers.
+
 ---
 
 ## 🔍 API Reference
@@ -92,6 +109,8 @@ There are available interfaces and implementations of the entity world:
 - **Unity Implementations**
     - [MonoEntityWorld](MonoEntityWorld.md) <!-- + -->
     - [MonoEntityWorld&lt;E&gt;](MonoEntityWorld%601.md) <!-- + -->
+    - [MonoEntityWorldSingleton](MonoEntityWorldSingleton.md) <!-- + -->
+    - [MonoEntityWorldSingleton&lt;E&gt;](MonoEntityWorldSingleton%601.md) <!-- + -->
 
 ---
 
@@ -99,6 +118,8 @@ There are available interfaces and implementations of the entity world:
 
 - Use [EntityWorld&lt;E&gt;](EntityWorld%601.md) for type safety and strict entity management.
 - Use [MonoEntityWorld](MonoEntityWorld.md) for Unity integration and automatic scene entity registration.
+- Use [MonoEntityWorldSingleton](MonoEntityWorldSingleton.md) when one scene/global world should be reachable through
+  static singleton access.
 - Event system (`OnAdded`, `OnRemoved`, `OnEnabled`, `OnTicked`) supports **reactive architectures**.
 - Worlds support **enable/disable** and a full update cycle (`Tick`, `FixedTick`, `LateTick`).
 - All worlds are compatible with **IEntityCollection** and inherit its base functionality.
