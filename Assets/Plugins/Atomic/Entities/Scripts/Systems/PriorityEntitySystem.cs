@@ -10,38 +10,38 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// Entity system that updates entities according to dynamically assigned priorities.
+    /// </summary>
+    /// <typeparam name="E">Type of entity processed by the system.</typeparam>
     [Serializable]
     public abstract class PriorityEntitySystem<E> : EntitySystemBase<E>, IDisposable where E : IEntity
     {
+        /// <summary>
+        /// Configuration for <see cref="PriorityEntitySystem{E}"/>.
+        /// </summary>
         [Serializable]
         public new class Settings : EntitySystemBase<E>.Settings
         {
+            /// <summary>
+            /// Time interval between automatic priority recalculations.
+            /// </summary>
             public float cooldown = 0.25f;
-
-#if ODIN_INSPECTOR
-            [LabelText("High")]
-            [PropertyRange(0, 100)]
-            [OnValueChanged(nameof(Validate))]
-#endif
+    
+            /// <summary>
+            /// Percentage of the update budget allocated to high-priority entities.
+            /// </summary>
             public int highPercent = 70;
-
-#if ODIN_INSPECTOR
-            [LabelText("Mid")]
-            [PropertyRange(0, 100)]
-            [OnValueChanged(nameof(Validate))]
-#endif
+    
+            /// <summary>
+            /// Percentage of the update budget allocated to medium-priority entities.
+            /// </summary>
             public int midPercent = 20;
-
-#if ODIN_INSPECTOR
-            [ShowInInspector, ReadOnly]
-#endif
+    
+            /// <summary>
+            /// Percentage of the update budget allocated to low-priority entities.
+            /// </summary>
             public int lowPercent => 100 - this.highPercent - this.midPercent;
-
-            private void Validate()
-            {
-                this.highPercent = Mathf.Clamp(this.highPercent, 0, 100);
-                this.midPercent = Mathf.Clamp(this.midPercent, 0, 100 - this.highPercent);
-            }
         }
         
         private struct Entry
@@ -93,6 +93,12 @@ namespace Atomic.Entities
 
         private readonly IEntityTrigger<E>[] _triggers;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PriorityEntitySystem{E}"/> class.
+        /// </summary>
+        /// <param name="source">Source collection of entities.</param>
+        /// <param name="settings">System configuration.</param>
+        /// <param name="triggers">Priority change triggers.</param>
         protected PriorityEntitySystem(
             IReadOnlyEntityCollection<E> source,
             Settings settings,
@@ -108,6 +114,9 @@ namespace Atomic.Entities
             _triggers = triggers;
         }
 
+         /// <summary>
+        /// Called when the system is enabled.
+        /// </summary>
         protected override void OnEnable()
         {
             _priorityTime = _settings.cooldown;
@@ -118,6 +127,10 @@ namespace Atomic.Entities
 
         #region Add
 
+        /// <summary>
+        /// Adds an entity to the system.
+        /// </summary>
+        /// <param name="entity">Entity to add.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected sealed override void OnAddEntity(E entity)
         {
@@ -188,6 +201,10 @@ namespace Atomic.Entities
         
         #region Remove
 
+        /// <summary>
+        /// Removes an entity from the system.
+        /// </summary>
+        /// <param name="entity">Entity to remove.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected sealed override void OnRemoveEntity(E entity)
         {
@@ -289,6 +306,11 @@ namespace Atomic.Entities
 
         #region Update
 
+        /// <summary>
+        /// Updates the system.
+        /// </summary>
+        /// <param name="batchSize">Maximum number of entities to process.</param>
+        /// <param name="deltaTime">Time elapsed since the previous update.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected sealed override void OnUpdate(int batchSize, float deltaTime)
         {
@@ -420,6 +442,11 @@ namespace Atomic.Entities
             _commands.Clear();
         }
 
+        /// <summary>
+        /// Updates a single entity.
+        /// </summary>
+        /// <param name="entity">Entity to update.</param>
+        /// <param name="deltaTime">Time elapsed since the previous update.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void Update(E entity, float deltaTime);
         
@@ -427,8 +454,16 @@ namespace Atomic.Entities
         
         #region ChangePriority
 
+        /// <summary>
+        /// Evaluates the update priority for the specified entity.
+        /// </summary>
+        /// <param name="entity">Entity whose priority should be evaluated.</param>
+        /// <returns>The priority assigned to the entity.</returns>
         protected abstract EntityUpdatePriority EvaluatePriority(E entity);
 
+         /// <summary>
+        /// Recalculates priorities for all tracked entities.
+        /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void RecalculatePriorities()
         {
@@ -438,6 +473,10 @@ namespace Atomic.Entities
             }
         }
 
+        /// <summary>
+        /// Re-evaluates and updates the priority of the specified entity.
+        /// </summary>
+        /// <param name="entity">Entity whose priority should be updated.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void ChangePriority(E entity)
         {
@@ -574,6 +613,9 @@ namespace Atomic.Entities
 
         #endregion
 
+        /// <summary>
+        /// Releases all resources used by the system.
+        /// </summary>
         public override void Dispose()
         {
             Array.Clear(_lowEntities, 0, _lowEntityCount);
