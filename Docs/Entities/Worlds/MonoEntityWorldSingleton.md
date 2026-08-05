@@ -33,13 +33,7 @@ through `MonoEntityWorldSingleton.Instance`.
 
 Create a concrete world type:
 
-```csharp
-public sealed class GameWorld : MonoEntityWorldSingleton
-{
-}
-```
-
-Attach `GameWorld` to one GameObject in the scene and configure the inherited world settings:
+Attach `MonoEntityWorldSingleton` to one GameObject in the scene and configure the inherited world settings:
 
 - `useUnityLifecycle` — automatically enable, disable, and dispose with Unity lifecycle.
 - `collectOnAwake` — scan scene entities during `Awake`.
