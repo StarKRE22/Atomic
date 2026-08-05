@@ -58,7 +58,7 @@ IReadOnlyEntityCollection<IGameEntity> world = ...;
 // updates it with gameContext.FixedTick(deltaTime),
 // disables it with gameContext.Disable(),
 // and disposes it with gameContext.Dispose().
-gameContext.AddTickSystem(new MovementSystem(world, new MovementSystem.Settings
+gameContext.AddFixedTickSystem(new MovementSystem(world, new MovementSystem.Settings
 {
     frameBudget = 0.016f,
     batching = { minSize = 64, maxSize = 512 }
