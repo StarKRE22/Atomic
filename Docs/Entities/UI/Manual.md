@@ -1,6 +1,6 @@
-# 🧩 Entity View System
+# 🧩 Entity UI
 
-**Entity View System** provides tools for visualizing and managing [entity](../Entities/Manual.md) instances in Unity
+**Entity UI** provides tools for visualizing and managing [entity](../Entities/Manual.md) instances in Unity
 scenes. It includes **views**, **catalogs**, **pools**, and **collections** to create flexible, reusable, and efficient
 UI representations of entities. Components can be **generic** or **non-generic**, depending on the use case.
 
