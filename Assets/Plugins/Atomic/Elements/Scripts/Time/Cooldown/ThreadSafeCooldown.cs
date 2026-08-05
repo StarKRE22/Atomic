@@ -2,11 +2,30 @@ using System;
 
 namespace Atomic.Elements
 {
+    /// <summary>
+    /// Represents a thread-safe cooldown timer whose change notifications
+    /// are dispatched on the main thread.
+    /// </summary>
     public sealed class ThreadSafeCooldown : ICooldown, MainThreadDispatcher.IFlushable
     {
+         /// <summary>
+        /// Occurs when the cooldown duration changes.
+        /// </summary>
         public event Action<float> OnDurationChanged;
+
+        /// <summary>
+        /// Occurs when the remaining time changes.
+        /// </summary>
         public event Action<float> OnTimeChanged;
+
+        /// <summary>
+        /// Occurs when the cooldown progress changes.
+        /// </summary>
         public event Action<float> OnProgressChanged;
+
+         /// <summary>
+        /// Occurs when the cooldown reaches zero.
+        /// </summary>
         public event Action OnCompleted;
 
         private readonly object _lock = new();
@@ -19,16 +38,29 @@ namespace Atomic.Elements
         private bool _progressDirty;
         private bool _completed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ThreadSafeCooldown"/> class
+        /// with the specified duration. The current time is initialized to the duration.
+        /// </summary>
+        /// <param name="duration">The cooldown duration.</param>
         public ThreadSafeCooldown(float duration) : this(duration, duration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ThreadSafeCooldown"/> class.
+        /// </summary>
+        /// <param name="duration">The cooldown duration.</param>
+        /// <param name="current">The initial remaining time.</param>
         public ThreadSafeCooldown(float duration, float current)
         {
             _duration = Math.Max(0, duration);
             _time = Math.Clamp(current, 0, _duration);
         }
 
+        /// <summary>
+        /// Gets or sets the cooldown duration.
+        /// </summary>
         public float Duration
         {
             get
@@ -38,6 +70,9 @@ namespace Atomic.Elements
             set => SetDuration(value);
         }
 
+        /// <summary>
+        /// Gets or sets the remaining cooldown time.
+        /// </summary>
         public float CurrentTime
         {
             get
@@ -47,6 +82,13 @@ namespace Atomic.Elements
             set => SetTime(value);
         }
 
+        /// <summary>
+        /// Gets or sets the normalized cooldown progress.
+        /// </summary>
+        /// <value>
+        /// A value in the range [0, 1], where 0 represents a completed cooldown
+        /// and 1 represents a full cooldown.
+        /// </value>
         public float Progress
         {
             get
@@ -56,18 +98,36 @@ namespace Atomic.Elements
             set => SetProgress(value);
         }
 
+        /// <summary>
+        /// Determines whether the cooldown has completed.
+        /// </summary>
+        /// <returns>
+        /// <see langword="true"/> if the remaining time is zero; otherwise,
+        /// <see langword="false"/>.
+        /// </returns>
         public bool IsCompleted()
         {
             lock (_lock)
                 return _time <= 0;
         }
 
+        /// <summary>
+        /// Determines whether the cooldown is currently active.
+        /// </summary>
+        /// <returns>
+        /// <see langword="true"/> if the remaining time is greater than zero;
+        /// otherwise, <see langword="false"/>.
+        /// </returns>
         public bool IsPlaying()
         {
             lock (_lock)
                 return _time > 0;
         }
 
+        /// <summary>
+        /// Advances the cooldown by the specified amount of time.
+        /// </summary>
+        /// <param name="deltaTime">The elapsed time.</param>
         public void Tick(float deltaTime)
         {
             lock (_lock)
@@ -91,16 +151,27 @@ namespace Atomic.Elements
             MainThreadDispatcher.MarkDirty(this);
         }
 
+        /// <summary>
+        /// Resets the remaining time to the current duration.
+        /// </summary>
         public void ResetTime()
         {
             SetTime(_duration);
         }
 
+        /// <summary>
+        /// Returns the cooldown duration.
+        /// </summary>
+        /// <returns>The cooldown duration.</returns>
         public float GetDuration()
         {
             return this.Duration;
         }
 
+        /// <summary>
+        /// Sets the cooldown duration.
+        /// </summary>
+        /// <param name="duration">The new cooldown duration.</param>
         public void SetDuration(float duration)
         {
             duration = Math.Max(0, duration);
@@ -122,11 +193,22 @@ namespace Atomic.Elements
             MainThreadDispatcher.MarkDirty(this);
         }
 
+        /// <summary>
+        /// Returns the remaining cooldown time.
+        /// </summary>
+        /// <returns>The remaining cooldown time.</returns>
         public float GetTime()
         {
             return this.CurrentTime;
         }
 
+        /// <summary>
+        /// Sets the remaining cooldown time.
+        /// </summary>
+        /// <param name="time">The new remaining time.</param>
+        /// <exception cref="ArgumentException">
+        /// Thrown if <paramref name="time"/> is negative.
+        /// </exception>
         public void SetTime(float time)
         {
             if (time < 0)
@@ -151,11 +233,23 @@ namespace Atomic.Elements
             MainThreadDispatcher.MarkDirty(this);
         }
 
+        /// <summary>
+        /// Returns the normalized cooldown progress.
+        /// </summary>
+        /// <returns>
+        /// A value in the range [0, 1].
+        /// </returns>
         public float GetProgress()
         {
             return this.Progress;
         }
 
+        /// <summary>
+        /// Sets the cooldown progress.
+        /// </summary>
+        /// <param name="progress">
+        /// The normalized progress. Values outside the range [0, 1] are clamped.
+        /// </param>
         public void SetProgress(float progress)
         {
             progress = Math.Clamp(progress, 0, 1);
@@ -229,6 +323,12 @@ namespace Atomic.Elements
                 completedHandler?.Invoke();
         }
 
+        /// <summary>
+        /// Returns a string representation of the cooldown.
+        /// </summary>
+        /// <returns>
+        /// A string containing the duration and remaining time.
+        /// </returns>
         public override string ToString()
         {
             lock (_lock)
