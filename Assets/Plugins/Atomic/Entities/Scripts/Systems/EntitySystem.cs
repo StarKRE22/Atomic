@@ -7,6 +7,11 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// Base implementation of <see cref="EntitySystemBase{E}"/> that maintains
+    /// an internal array of active entities and updates them in adaptive batches.
+    /// </summary>
+    /// <typeparam name="E">Type of entity processed by the system.</typeparam>
     [Serializable]
     public abstract class EntitySystem<E> : EntitySystemBase<E>, IDisposable where E : IEntity
     {
@@ -30,6 +35,11 @@ namespace Atomic.Entities
 #endif
         private int _cursor;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EntitySystem{E}"/> class.
+        /// </summary>
+        /// <param name="source">Source collection of entities.</param>
+        /// <param name="settings">System configuration.</param>
         protected EntitySystem(IReadOnlyEntityCollection<E> source, Settings settings) :
             base(source, settings)
         {
@@ -38,6 +48,9 @@ namespace Atomic.Entities
             _entities = new E[Math.Max(4, initialCapacity)];
         }
 
+        /// <summary>
+        /// Releases all internal resources and removes references to tracked entities.
+        /// </summary>
         public override void Dispose()
         {
             Array.Clear(_entities, 0, _entityCount);
@@ -45,6 +58,13 @@ namespace Atomic.Entities
             _entityCount = 0;
         }
 
+        /// <summary>
+        /// Updates a batch of entities starting from the current cursor position.
+        /// The cursor wraps around the entity array to ensure all entities are
+        /// processed fairly over multiple frames.
+        /// </summary>
+        /// <param name="batchSize">Maximum number of entities to update.</param>
+        /// <param name="deltaTime">Time elapsed since the previous update.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected sealed override void OnUpdate(int batchSize, float deltaTime)
         {
@@ -69,8 +89,17 @@ namespace Atomic.Entities
             _cursor = cursor;
         }
 
+        /// <summary>
+        /// Updates a single entity.
+        /// </summary>
+        /// <param name="entity">Entity to update.</param>
+        /// <param name="deltaTime">Time elapsed since the previous update.</param>
         protected abstract void Update(E entity, float deltaTime);
 
+        /// <summary>
+        /// Adds an entity to the internal update list if it is not already tracked.
+        /// </summary>
+        /// <param name="entity">Entity to add.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected sealed override void OnAddEntity(E entity)
         {
@@ -85,6 +114,12 @@ namespace Atomic.Entities
             _entityCount++;
         }
 
+        /// <summary>
+        /// Removes an entity from the internal update list.
+        /// Removal is performed in constant time by swapping the entity
+        /// with the last element in the array.
+        /// </summary>
+        /// <param name="entity">Entity to remove.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected sealed override void OnRemoveEntity(E entity)
         {
@@ -99,7 +134,11 @@ namespace Atomic.Entities
             _entityCount--;
         }
 
-
+        /// <summary>
+        /// Moves the last entity into the specified index and updates its lookup entry.
+        /// </summary>
+        /// <param name="index">Destination index.</param>
+        /// <param name="last">Index of the last entity.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Swap(int index, int last)
         {
