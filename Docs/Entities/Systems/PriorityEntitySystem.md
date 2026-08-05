@@ -10,7 +10,7 @@ Abstract system that divides its per-frame update budget among entities based on
 - [API Reference](#-api-reference)
   - [Type](#-type)
   - [Constructors](#-constructors)
-    - [PriorityEntitySystem(IReadOnlyEntityCollection&lt;E&gt;, Settings, params IEntityTrigger&lt;E&gt;[])](#priorityentitysystemireadonlyentitycollectione-settings-params-ientitytriggere)
+    - [PriorityEntitySystem()](#priorityentitysystemireadonlyentitycollectione-settings-params-ientitytriggere)
   - [Methods](#-methods)
     - [Update(E, float)](#updatee-float)
     - [EvaluatePriority(E)](#evaluateprioritye)
