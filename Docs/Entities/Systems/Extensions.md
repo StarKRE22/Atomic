@@ -34,6 +34,27 @@ Use these methods when a context entity should own a system and drive it from `E
 IEntity gameContext = ...;
 IReadOnlyEntityCollection<IGameEntity> world = ...;
 
+// Enables the system with gameContext.Enable(),
+// updates it with gameContext.Tick(deltaTime),
+// disables it with gameContext.Disable(),
+// and disposes it with gameContext.Dispose().
+gameContext.AddTickSystem(new MovementSystem(world, new MovementSystem.Settings
+{
+    frameBudget = 0.016f,
+    batching = { minSize = 64, maxSize = 512 }
+}));
+```
+
+---
+
+<div id="ex2"></div>
+
+### 2️⃣ Fixed Tick System
+
+```csharp
+IEntity gameContext = ...;
+IReadOnlyEntityCollection<IGameEntity> world = ...;
+
 var settings = new MovementSystem.Settings
 {
     frameBudget = 0.016f,
@@ -46,21 +67,7 @@ MovementSystem movement = new MovementSystem(world, settings);
 // updates it with gameContext.Tick(deltaTime),
 // disables it with gameContext.Disable(),
 // and disposes it with gameContext.Dispose().
-gameContext.AddTickSystem<IEntity, IGameEntity>(movement);
-```
-
----
-
-<div id="ex2"></div>
-
-### 2️⃣ Fixed System
-
-```csharp
-IEntity physicsContext = ...;
-PhysicsSystem physics = ...;
-
-// Updates the system from FixedTick instead of Tick.
-physicsContext.AddFixedTickSystem<IEntity, IGameEntity>(physics);
+gameContext.AddFixedTickSystem<IEntity, IGameEntity>(movement);
 ```
 
 ---
