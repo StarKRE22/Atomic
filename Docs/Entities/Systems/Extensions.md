@@ -13,12 +13,12 @@ Use these methods when a context entity should own a system and drive it from `E
 - [Examples of Usage](#-examples-of-usage)
   - [Tick System](#1️⃣-tick-system)
   - [Fixed System](#2️⃣-fixed-system)
-  - [Late Tick System](#3️⃣-late-tick-system)
 - [API Reference](#-api-reference)
   - [Type](#-type)
   - [Methods](#-methods)
     - [AddTickSystem<TContext, TEntity>](#addticksystemtcontext-tentity)
     - [AddFixedTickSystem<TContext, TEntity>](#addfixedticksystemtcontext-tentity)
+    - [AddLateTickSystem<TContext, TEntity>](#addlateticksystemtcontext-tentity)
 - [Notes](#-notes)
 
 ---
