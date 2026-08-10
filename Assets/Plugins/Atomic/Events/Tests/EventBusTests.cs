@@ -581,22 +581,16 @@ namespace Atomic.Events
 
         private static int GetEventTableCount(EventBus bus)
         {
-            FieldInfo eventsField = typeof(EventBus).GetField("_events",
+            FieldInfo countField = typeof(EventBus).GetField("_count",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            object eventTable = eventsField.GetValue(bus);
-            PropertyInfo countProperty = eventTable.GetType().GetProperty("Count",
-                BindingFlags.Public | BindingFlags.Instance);
-            return (int)countProperty.GetValue(eventTable);
+            return (int)countField.GetValue(bus);
         }
 
         private static int GetEventTableCapacity(EventBus bus)
         {
-            FieldInfo eventsField = typeof(EventBus).GetField("_events",
+            FieldInfo capacityField = typeof(EventBus).GetField("_capacity",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            object eventTable = eventsField.GetValue(bus);
-            FieldInfo capacityField = eventTable.GetType().GetField("_capacity",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            return (int)capacityField.GetValue(eventTable);
+            return (int)capacityField.GetValue(bus);
         }
     }
 }

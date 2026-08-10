@@ -6,7 +6,7 @@ namespace Atomic.Events
     /// <summary>
     /// Contains low-level utility methods for internal use within the Atomic.Events framework.
     /// </summary>
-    internal static class EventBusInternalUtils
+    internal static class InternalUtils
     {
         /// <summary>
         /// Predefined table of prime numbers used for sizing collections or other internal computations.

@@ -64,11 +64,10 @@ namespace Atomic.Events
             {
                 _debugEventsCache.Clear();
 
-                EventTable events = _eventBus?.Events;
-                if (events == null)
+                if (_eventBus == null)
                     return _debugEventsCache;
 
-                foreach (KeyValuePair<int, Delegate> pair in events)
+                foreach (KeyValuePair<int, Delegate> pair in _eventBus.GetEvents())
                 {
                     int key = pair.Key;
                     Delegate del = pair.Value;
