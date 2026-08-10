@@ -13,7 +13,7 @@ namespace Atomic.Entities
     /// </remarks>
     [AddComponentMenu("Atomic/Entities/Entity Collection View")]
     [DisallowMultipleComponent]
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityCollectionView.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityWorldView.md")]
     public class EntityWorldView : EntityWorldView<string, IEntity, EntityView>
     {
         protected override string GetKey(IEntity entity) => entity.Name;

@@ -12,7 +12,7 @@ namespace Atomic.Entities
     /// <typeparam name="K">The key type used to identify entities in the collection.</typeparam>
     /// <typeparam name="E">The type of entity (<see cref="IEntity"/>) managed by this collection.</typeparam>
     /// <typeparam name="V">The type of entity view (<see cref="EntityView{E}"/>) associated with entities.</typeparam>
-    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityCollectionView%601.md")]
+    [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/UI/EntityWorldView%603.md")]
     public abstract class EntityWorldView<K, E, V> : EntityCollectionView<K, E, V>
         where E : class, IEntity
         where V : EntityView<E>

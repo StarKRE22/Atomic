@@ -119,3 +119,41 @@ public void Flush()
 
 - **Description:** Dequeues and executes all pending invokes on the main thread.
 - **Notes:** Should be called on the main thread. Exceptions thrown by subscribers are caught and logged, and processing continues.
+
+---
+
+#### `SubscribeUnsafe`
+
+```csharp
+public Subscription SubscribeUnsafe(int key, Action action);
+public Subscription<T> SubscribeUnsafe<T>(int key, Action<T> action);
+public Subscription<T1, T2> SubscribeUnsafe<T1, T2>(int key, Action<T1, T2> action);
+public Subscription<T1, T2, T3> SubscribeUnsafe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Registers a callback on the inner bus without runtime validation.
+- **Notes:** Unsafe counterpart to `Subscribe`.
+
+#### `UnsubscribeUnsafe`
+
+```csharp
+public void UnsubscribeUnsafe(int key, Action action);
+public void UnsubscribeUnsafe<T>(int key, Action<T> action);
+public void UnsubscribeUnsafe<T1, T2>(int key, Action<T1, T2> action);
+public void UnsubscribeUnsafe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Removes a callback from the inner bus without runtime validation.
+- **Notes:** Unsafe counterpart to `Unsubscribe`.
+
+#### `InvokeUnsafe`
+
+```csharp
+public void InvokeUnsafe(int key);
+public void InvokeUnsafe<T>(int key, T arg);
+public void InvokeUnsafe<T1, T2>(int key, T1 arg1, T2 arg2);
+public void InvokeUnsafe<T1, T2, T3>(int key, T1 arg1, T2 arg2, T3 arg3);
+```
+
+- **Description:** Enqueues an unsafe invoke action for the inner bus.
+- **Notes:** Unsafe counterpart to `Invoke`. The queued action calls `InvokeUnsafe` on the inner bus when `Flush()` runs.

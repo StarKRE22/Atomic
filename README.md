@@ -52,8 +52,8 @@ Atomic works perfectly **without Odin**, but using it makes data inspection and 
 > [!TIP]
 > The source generators (`EntityAPIGenerator`, `EventAPIGenerator`, and the corresponding analyzers) are included as
 > precompiled DLLs in `Assets/Plugins/Atomic/SourceGenerators/`. They are ready to use after importing the package.
-> For advanced scenarios or to build them yourself, see the source repository at
-> https://github.com/dre0dru/Atomic.SourceGenerators.
+> For advanced scenarios or to build them yourself, see the generator source in
+> `Assets/Plugins/Atomic/SourceGenerators/Project~`.
 
 
 ---
@@ -130,7 +130,7 @@ Make sure the following checkboxes are enabled:
 
 #### Step 3. Declare an Entity API
 
-Create a `public static partial` class and decorate it with [`[GenerateEntityExtensionsAPI]`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/EntityAPI/Manual.md). Declare the character data as [`ValueKey<E, T>`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/KeyStore/ValueKey.md)
+Create a `public static partial` class and decorate it with [`[EntityExtensionsAPI]`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Manual.md#-entity-api-source-generation). Declare the character data as [`ValueKey<E, T>`](https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/KeyStore/ValueKey.md)
 fields:
 
 ```csharp
@@ -139,7 +139,7 @@ using UnityEngine;
 
 namespace SampleGame
 {
-    [GenerateEntityExtensionsAPI]
+    [EntityExtensionsAPI]
     public static partial class CharacterAPI
     {
         public static readonly ValueKey<Transform> Transform = new(nameof(Transform));
@@ -163,7 +163,7 @@ IValue<float> speed = entity.GetMoveSpeed();
 IVariable<Vector3> direction = entity.GetMoveDirection();
 ```
 
-For more details, see the [Entity API Generator](Docs/CodeGeneration/EntityAPI/EntityAPIGenerator.md) documentation.
+For more details, see the [Entity API Generator](Docs/Entities/CodeGen/EntityExtensionsAPIAttribute.md) documentation.
 
 #### Step 4. Creating the Movement Mechanic
 
@@ -388,7 +388,7 @@ systems, UI elements, and application contexts can be represented as entities, e
 - [Systems](Docs/Entities/Systems/Manual.md) — entity update and processing systems
 - [Inspector](Docs/Entities/Inspector/Manual.md) — editor-only attributes for visualizing entity data
 - [Bootstrap](Docs/Entities/Bootstrap/Manual.md) — scene and scriptable bootstrap setup
-- [API Generation](Docs/Entities/EntityAPI/Manual.md) — type-safe extension methods via source generators
+- [Source Generation](Docs/Entities/Manual.md#-entity-api-source-generation) — type-safe extension methods via source generators
 
 ### [📣 Atomic.Events](Docs/Events/Manual.md)
 
@@ -399,15 +399,18 @@ Lightweight, strongly-typed event bus system for decoupled communication between
 - [Subscriptions](Docs/Events/Subscriptions/Manual.md) — disposable event subscriptions
 - [Extensions](Docs/Events/Extensions.md) — bus extension methods
 
-### [🧬 Code Generation](Docs/CodeGeneration/Manual.md)
+### [🧬 Code Generation](Docs/Entities/Manual.md#-entity-api-source-generation)
 
 Roslyn source generators and analyzers that turn declarative API classes into strongly-typed extension methods.
 
-- [Setup](Docs/CodeGeneration/Setup.md) — adding generators/analyzers to a Unity project
-- [Entity API Generator](Docs/CodeGeneration/EntityAPI/EntityAPIGenerator.md) — `[GenerateEntityExtensionsAPI]` usage
-- [Entity API Analyzer](Docs/CodeGeneration/EntityAPI/EntityAPIAnalyzer.md) — key initializer validation
-- [Event API Generator](Docs/CodeGeneration/EventAPI/EventAPIGenerator.md) — `[GenerateEventExtensionsAPI]` usage
-- [Event API Analyzer](Docs/CodeGeneration/EventAPI/EventAPIAnalyzer.md) — event key initializer validation
+- [Entity API Source Generation](Docs/Entities/Manual.md#-entity-api-source-generation) — entity tag/value source generation
+- [Entity API Generator](Docs/Entities/CodeGen/EntityExtensionsAPIAttribute.md) — `[EntityExtensionsAPI]` reference
+- [Entity API Analyzer](Docs/Entities/CodeGen/EntityAPIAnalyzer.md) — key initializer validation
+- [Entity UnsafeAttribute](Docs/Entities/CodeGen/UnsafeAttribute.md) — per-field unsafe opt-in
+- [Event API Source Generation](Docs/Events/Manual.md#-event-api-source-generation) — event-bus source generation
+- [Event API Generator](Docs/Events/CodeGen/EventExtensionsAPIAttribute.md) — `[EventExtensionsAPI]` reference
+- [Event API Analyzer](Docs/Events/CodeGen/EventAPIAnalyzer.md) — event key initializer validation
+- [Event UnsafeAttribute](Docs/Events/CodeGen/UnsafeAttribute.md) — per-field unsafe opt-in
 
 ---
 
@@ -533,3 +536,4 @@ SOFTWARE.
 <a href="https://github.com/StarKRE22/Atomic/issues">Report Issue</a> •
 <a href="https://github.com/StarKRE22/Atomic/discussions">Join Discussion</a>
 </p>
+

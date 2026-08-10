@@ -1,92 +1,67 @@
 # 🧩 EntityWorldViewSingleton
 
-`EntityWorldViewSingleton` is a concrete, non-generic singleton world view for scene-level access to one
-[EntityWorldView](EntityWorldView.md).
-
-Use it when a scene has one shared world view that should be reachable through `EntityWorldViewSingleton.Instance` and
-should mirror an `IReadOnlyEntityCollection<IEntity>` with pooled [EntityView](EntityView.md) instances.
+A singleton version of [EntityWorldView](EntityWorldView.md). Ensures that only one instance exists in the scene
+and optionally survives scene loads. Use it when the world view should be globally accessible.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
-  - [Singleton Setup](#1️⃣-singleton-setup)
-  - [Singleton Usage](#2️⃣-singleton-usage)
-- [Inspector Settings](#-inspector-settings)
+- [Examples of Usage](#-examples-of-usage)
+    - [Scene Setup](#ex1)
+    - [Accessing the Singleton](#ex2)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Properties](#-properties)
-    - [Instance](#instance)
-    - [IsActive](#isactive)
-  - [Methods](#-methods)
-    - [TryGetInstance(out EntityWorldViewSingleton)](#trygetinstanceout-entityworldviewsingleton)
-    - [Activate(IReadOnlyEntityCollection\<IEntity>)](#activateireadonlyentitycollectionientity)
-    - [Deactivate()](#deactivate)
-- [Notes](#-notes)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Instance](#instance)
+    - [Methods](#-methods)
+        - [TryGetInstance](#trygetinstance)
+- [See Also](#-see-also)
 
 ---
 
-## 🗂 Example of Usage
+## 🗂 Examples of Usage
 
 <div id="ex1"></div>
 
-### 1️⃣ Singleton Setup
+### 1️⃣ Scene Setup
 
-Add one `EntityWorldViewSingleton` component to the scene and configure the inherited world-view fields:
+Attach the component to a GameObject in the scene:
 
-- `viewport` — parent for active entity views.
-- `viewPool` — pool that rents and returns [EntityView](EntityView.md) instances.
-- `dontDestroyOnLoad` — if enabled, the singleton GameObject is preserved between scene loads.
-
-Only one active singleton of this type should exist. If a duplicate is initialized, the duplicate logs an error and
-destroys its GameObject.
+- Assign a `Transform` to `viewport`.
+- Assign the [EntityViewPool](EntityViewPool.md) to `pool`.
+- Enable `dontDestroyOnLoad` if the singleton should persist across scenes.
 
 ---
 
 <div id="ex2"></div>
 
-### 2️⃣ Singleton Usage
+### 2️⃣ Accessing the Singleton
 
 ```csharp
-IReadOnlyEntityCollection<IEntity> enemies = ...;
+// Throws if no instance is found in the scene
+EntityWorldViewSingleton worldView = EntityWorldViewSingleton.Instance;
+worldView.Activate(entityCollection);
 
-// Throws if no singleton exists in the active scene:
-EntityWorldViewSingleton.Instance.Activate(enemies);
-
-// Use TryGetInstance when the scene may not contain the singleton:
-if (EntityWorldViewSingleton.TryGetInstance(out EntityWorldViewSingleton worldView))
+// Safe access
+if (EntityWorldViewSingleton.TryGetInstance(out EntityWorldViewSingleton instance))
 {
-    worldView.Deactivate();
+    instance.Activate(entityCollection);
 }
 ```
-
-The singleton still behaves like a regular [EntityWorldView](EntityWorldView.md): it creates views for existing entities
-on `Activate` and keeps them synchronized with future collection additions and removals.
-
----
-
-## 🛠 Inspector Settings
-
-| Parameter           | Description                                                                          |
-|---------------------|--------------------------------------------------------------------------------------|
-| `dontDestroyOnLoad` | If enabled, the singleton GameObject is preserved when Unity loads a new scene.      |
-| `viewport`          | Inherited field. The `Transform` under which active entity views will be parented.   |
-| `viewPool`          | Inherited field. The [EntityViewPool](EntityViewPool.md) used to rent/return views. |
 
 ---
 
 ## 🔍 API Reference
 
-### 🏛️ Type <div id="-type"></div>
+### 🏛️ Type
 
 ```csharp
 public class EntityWorldViewSingleton : EntityWorldView<string, IEntity, EntityView>
 ```
 
-- **Inheritance:** [EntityWorldView<K, E, V>](EntityWorldView%601.md)
-- **Key Strategy:** uses `entity.Name` as the view-pool key.
-- **See also:** [EntityWorldView](EntityWorldView.md), [EntityWorldViewSingleton<K, E, V>](EntityWorldViewSingleton%601.md)
+- **Description:** Singleton world view for `IEntity` / `EntityView` pairs.
+- **Inheritance:** [EntityWorldView\<K, E, V>](EntityWorldView%603.md), [EntityCollectionView\<K, E, V>](EntityCollectionView%603.md), `MonoBehaviour`
 
 ---
 
@@ -98,56 +73,26 @@ public class EntityWorldViewSingleton : EntityWorldView<string, IEntity, EntityV
 public static EntityWorldViewSingleton Instance { get; }
 ```
 
-- **Description:** Returns the cached singleton instance. If no instance is cached, searches the active scene for one.
-- **Throws:** `Exception` if no `EntityWorldViewSingleton` exists in the scene.
-
-#### `IsActive`
-
-```csharp
-public bool IsActive { get; }
-```
-
-- **Description:** Inherited from [EntityWorldView](EntityWorldView.md). Returns `true` while the singleton is bound to an
-  entity collection.
+- **Description:** Returns the singleton instance.
+- **Throws:** `Exception` if no instance is found in the scene.
 
 ---
 
 ### 🏹 Methods
 
-#### `TryGetInstance(out EntityWorldViewSingleton)`
+#### `TryGetInstance`
 
 ```csharp
 public static bool TryGetInstance(out EntityWorldViewSingleton instance);
 ```
 
 - **Description:** Attempts to get the singleton instance without throwing.
-- **Parameter:** `instance` — The found singleton instance, or `null` if none exists.
-- **Returns:** `true` if an instance was found; otherwise, `false`.
-
-#### `Activate(IReadOnlyEntityCollection<IEntity>)`
-
-```csharp
-public void Activate(IReadOnlyEntityCollection<IEntity> source);
-```
-
-- **Description:** Inherited from [EntityWorldView](EntityWorldView.md). Binds the singleton to a source collection and
-  creates views for current and future entities.
-
-#### `Deactivate()`
-
-```csharp
-public void Deactivate();
-```
-
-- **Description:** Inherited from [EntityWorldView](EntityWorldView.md). Unsubscribes from the source collection and
-  returns all active views to the pool.
+- **Returns:** `true` if an instance exists, `false` otherwise.
 
 ---
 
-## 📝 Notes
+## 🔗 See Also
 
-- Use `Instance` only when the singleton is guaranteed to exist in the scene.
-- Use `TryGetInstance` for optional UI flows, additive scenes, or test scenes where the singleton may be absent.
-- Enable `dontDestroyOnLoad` only for world views that should survive scene changes.
-- Duplicate singleton instances destroy themselves during `Awake`, so keep only one configured singleton per scene/load
-  scope.
+- [EntityWorldViewSingleton\<K, E, V>](EntityWorldViewSingleton%603.md) — generic singleton base class.
+- [EntityWorldView](EntityWorldView.md) — non-singleton world view.
+- [Entity UI Manual](Manual.md)

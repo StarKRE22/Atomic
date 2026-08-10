@@ -18,6 +18,20 @@ namespace Atomic.Events
             Action<T1, T2, T3> action) =>
             it.Subscribe(NameToId(key), action);
 
+        public static Subscription SubscribeUnsafe(this IEventBus it, string key, Action action) =>
+            it.SubscribeUnsafe(NameToId(key), action);
+
+        public static Subscription<T> SubscribeUnsafe<T>(this IEventBus it, string key, Action<T> action) =>
+            it.SubscribeUnsafe(NameToId(key), action);
+
+        public static Subscription<T1, T2> SubscribeUnsafe<T1, T2>(this IEventBus it, string key,
+            Action<T1, T2> action) =>
+            it.SubscribeUnsafe(NameToId(key), action);
+
+        public static Subscription<T1, T2, T3> SubscribeUnsafe<T1, T2, T3>(this IEventBus it, string key,
+            Action<T1, T2, T3> action) =>
+            it.SubscribeUnsafe(NameToId(key), action);
+
         public static void Invoke(this IEventBus it, string key) =>
             it.Invoke(NameToId(key));
 
@@ -29,7 +43,19 @@ namespace Atomic.Events
 
         public static void Invoke<T1, T2, T3>(this IEventBus it, string key, T1 arg1, T2 arg2, T3 arg3) =>
             it.Invoke(NameToId(key), arg1, arg2, arg3);
-        
+
+        public static void InvokeUnsafe(this IEventBus it, string key) =>
+            it.InvokeUnsafe(NameToId(key));
+
+        public static void InvokeUnsafe<T>(this IEventBus it, string key, T arg) =>
+            it.InvokeUnsafe(NameToId(key), arg);
+
+        public static void InvokeUnsafe<T1, T2>(this IEventBus it, string key, T1 arg1, T2 arg2) =>
+            it.InvokeUnsafe(NameToId(key), arg1, arg2);
+
+        public static void InvokeUnsafe<T1, T2, T3>(this IEventBus it, string key, T1 arg1, T2 arg2, T3 arg3) =>
+            it.InvokeUnsafe(NameToId(key), arg1, arg2, arg3);
+
         public static void Unsubscribe(this IEventBus it, string key, Action action) =>
             it.Unsubscribe(NameToId(key), action);
 
@@ -41,6 +67,18 @@ namespace Atomic.Events
 
         public static void Unsubscribe<T1, T2, T3>(this IEventBus it, string key, Action<T1, T2, T3> action) =>
             it.Unsubscribe(NameToId(key), action);
+
+        public static void UnsubscribeUnsafe(this IEventBus it, string key, Action action) =>
+            it.UnsubscribeUnsafe(NameToId(key), action);
+
+        public static void UnsubscribeUnsafe<T>(this IEventBus it, string key, Action<T> action) =>
+            it.UnsubscribeUnsafe(NameToId(key), action);
+
+        public static void UnsubscribeUnsafe<T1, T2>(this IEventBus it, string key, Action<T1, T2> action) =>
+            it.UnsubscribeUnsafe(NameToId(key), action);
+
+        public static void UnsubscribeUnsafe<T1, T2, T3>(this IEventBus it, string key, Action<T1, T2, T3> action) =>
+            it.UnsubscribeUnsafe(NameToId(key), action);
 
         public static bool IsSubscribed(this IEventBus it, string key) =>
             it.IsSubscribed(NameToId(key));
@@ -66,6 +104,24 @@ namespace Atomic.Events
             where TBus : IEventBus =>
             it.Subscribe(key.Id, action);
 
+        public static Subscription SubscribeUnsafe<TBus>(this TBus it, EventKey<TBus> key, Action action)
+            where TBus : IEventBus =>
+            it.SubscribeUnsafe(key.Id, action);
+
+        public static Subscription<T> SubscribeUnsafe<TBus, T>(this TBus it, EventKey<TBus, T> key, Action<T> action)
+            where TBus : IEventBus =>
+            it.SubscribeUnsafe(key.Id, action);
+
+        public static Subscription<T1, T2> SubscribeUnsafe<TBus, T1, T2>(this TBus it,
+            EventKey<TBus, T1, T2> key, Action<T1, T2> action)
+            where TBus : IEventBus =>
+            it.SubscribeUnsafe(key.Id, action);
+
+        public static Subscription<T1, T2, T3> SubscribeUnsafe<TBus, T1, T2, T3>(this TBus it,
+            EventKey<TBus, T1, T2, T3> key, Action<T1, T2, T3> action)
+            where TBus : IEventBus =>
+            it.SubscribeUnsafe(key.Id, action);
+
         public static void Invoke<TBus>(this TBus it, EventKey<TBus> key)
             where TBus : IEventBus =>
             it.Invoke(key.Id);
@@ -82,6 +138,23 @@ namespace Atomic.Events
             T3 arg3)
             where TBus : IEventBus =>
             it.Invoke(key.Id, arg1, arg2, arg3);
+
+        public static void InvokeUnsafe<TBus>(this TBus it, EventKey<TBus> key)
+            where TBus : IEventBus =>
+            it.InvokeUnsafe(key.Id);
+
+        public static void InvokeUnsafe<TBus, T>(this TBus it, EventKey<TBus, T> key, T arg)
+            where TBus : IEventBus =>
+            it.InvokeUnsafe(key.Id, arg);
+
+        public static void InvokeUnsafe<TBus, T1, T2>(this TBus it, EventKey<TBus, T1, T2> key, T1 arg1, T2 arg2)
+            where TBus : IEventBus =>
+            it.InvokeUnsafe(key.Id, arg1, arg2);
+
+        public static void InvokeUnsafe<TBus, T1, T2, T3>(this TBus it, EventKey<TBus, T1, T2, T3> key,
+            T1 arg1, T2 arg2, T3 arg3)
+            where TBus : IEventBus =>
+            it.InvokeUnsafe(key.Id, arg1, arg2, arg3);
 
         public static void Unsubscribe<TBus>(this TBus it, EventKey<TBus> key, Action action)
             where TBus : IEventBus =>
@@ -100,6 +173,24 @@ namespace Atomic.Events
             Action<T1, T2, T3> action)
             where TBus : IEventBus =>
             it.Unsubscribe(key.Id, action);
+
+        public static void UnsubscribeUnsafe<TBus>(this TBus it, EventKey<TBus> key, Action action)
+            where TBus : IEventBus =>
+            it.UnsubscribeUnsafe(key.Id, action);
+
+        public static void UnsubscribeUnsafe<TBus, T>(this TBus it, EventKey<TBus, T> key, Action<T> action)
+            where TBus : IEventBus =>
+            it.UnsubscribeUnsafe(key.Id, action);
+
+        public static void UnsubscribeUnsafe<TBus, T1, T2>(this TBus it, EventKey<TBus, T1, T2> key,
+            Action<T1, T2> action)
+            where TBus : IEventBus =>
+            it.UnsubscribeUnsafe(key.Id, action);
+
+        public static void UnsubscribeUnsafe<TBus, T1, T2, T3>(this TBus it, EventKey<TBus, T1, T2, T3> key,
+            Action<T1, T2, T3> action)
+            where TBus : IEventBus =>
+            it.UnsubscribeUnsafe(key.Id, action);
         
         public static bool IsSubscribed<TBus>(this TBus it, EventKey<TBus> key)
             where TBus : IEventBus =>

@@ -92,4 +92,5 @@ bus.Flush();
 - Use `MonoEventBus` for scene-local event wiring that designers can configure in the Inspector.
 - Use `MonoEventBusSingleton<T>` for global buses or buses resolved by scene.
 - Use `ThreadSafeEventBus` when invoking from background threads.
+- Use `*Unsafe` methods only in performance-critical paths where event validity is guaranteed.
 - Dispose subscriptions and the bus itself when the owner is destroyed to avoid leaks.

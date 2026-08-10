@@ -131,9 +131,9 @@ foreach (int id in entity.GetTags())
 
 Sometimes managing tags by raw `int` keys or `string` names can get messy and error-prone, especially in big projects.
 To make this process easier and **type-safe**, the Atomic Framework provides the
-[Entity API Generator](../../CodeGeneration/EntityAPI/EntityAPIGenerator.md). You declare tags and values as static
-fields in a `[GenerateEntityExtensionsAPI]` class, and the generator creates extension methods automatically. Learn more in the
-[Entity API](../EntityAPI/Manual.md) manual.
+[Entity API Generator](../CodeGen/EntityExtensionsAPIAttribute.md). You declare tags and values as static
+fields in a `[EntityExtensionsAPI]` class, and the generator creates extension methods automatically. Learn more in the
+[Entity API Source Generation](../Manual.md#-entity-api-source-generation).
 
 ```csharp
 // Create a new instance of entity
@@ -276,3 +276,5 @@ public TagEnumerator GetTagEnumerator()
 
 - **Description:** Enumerates all tags of the entity.
 - **Returns:** `TagEnumerator` – Struct enumerator over tag keys.
+
+

@@ -126,6 +126,13 @@ Below are interfaces and implementations corresponding with events and depending
   </details>
 
   <details>
+    <summary>ThreadSafe</summary>
+    <ul>
+      <li><a href="ThreadSafeEvent.md">ThreadSafeEvent</a></li>
+    </ul>
+  </details>
+
+  <details>
     <summary><a href="Subscriptions.md">Subscriptions</a></summary>
     <ul>
       <li><a href="Subscription.md">Subscription</a></li>

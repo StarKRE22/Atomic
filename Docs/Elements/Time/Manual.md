@@ -229,6 +229,7 @@ variable intervals, as well as reactive notifications for state changes.
     <li><a href="ICooldown.md">ICooldown</a></li>
     <li><a href="Cooldown.md">Cooldown</a></li>
     <li><a href="RandomCooldown.md">RandomCooldown</a></li>
+    <li><a href="ThreadSafeCooldown.md">ThreadSafeCooldown</a></li>
   </ul>
 </details>
 

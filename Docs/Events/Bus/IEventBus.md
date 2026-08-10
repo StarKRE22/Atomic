@@ -118,3 +118,41 @@ bool Dispose(int key);
 - **Description:** Removes all callbacks for the specified key.
 - **Returns:** `true` if the key existed and was removed.
 - **Notes:** `IDisposable.Dispose()` clears all events from the bus.
+
+---
+
+#### `SubscribeUnsafe`
+
+```csharp
+Subscription SubscribeUnsafe(int key, Action action);
+Subscription<T> SubscribeUnsafe<T>(int key, Action<T> action);
+Subscription<T1, T2> SubscribeUnsafe<T1, T2>(int key, Action<T1, T2> action);
+Subscription<T1, T2, T3> SubscribeUnsafe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Registers a callback without runtime validation.
+- **Notes:** This is the unsafe counterpart to `Subscribe`. It skips checks and is intended for performance-critical code paths where the key validity is guaranteed.
+
+#### `UnsubscribeUnsafe`
+
+```csharp
+void UnsubscribeUnsafe(int key, Action action);
+void UnsubscribeUnsafe<T>(int key, Action<T> action);
+void UnsubscribeUnsafe<T1, T2>(int key, Action<T1, T2> action);
+void UnsubscribeUnsafe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Removes a previously registered callback without runtime validation.
+- **Notes:** Unsafe counterpart to `Unsubscribe`.
+
+#### `InvokeUnsafe`
+
+```csharp
+void InvokeUnsafe(int key);
+void InvokeUnsafe<T>(int key, T arg);
+void InvokeUnsafe<T1, T2>(int key, T1 arg1, T2 arg2);
+void InvokeUnsafe<T1, T2, T3>(int key, T1 arg1, T2 arg2, T3 arg3);
+```
+
+- **Description:** Invokes all callbacks for the key without runtime validation.
+- **Notes:** Unsafe counterpart to `Invoke`. Use only when the event is known to have subscribers.

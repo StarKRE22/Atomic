@@ -1,94 +1,77 @@
 # 🧩 EntityCollectionView
 
-`EntityCollectionView` is a concrete, non-generic Unity component that manually manages pooled
-[EntityView](EntityView.md) instances for `IEntity` objects.
-
-Use it when you want direct control over which entity views are active: add a view when you need it, remove it when you
-are done, or clear the whole set at once.
+A component that manually manages active [EntityView](EntityView.md) instances for [IEntity](../Entities/IEntity.md)
+objects. It rents views from an [EntityViewPool](EntityViewPool.md), tracks entity-view mappings, and returns views
+to the pool when they are removed. A **non-generic wrapper** around
+[EntityCollectionView\<K, E, V>](EntityCollectionView%603.md) keyed by `entity.Name`.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
-  - [Collection Setup](#1️⃣-collection-setup)
-  - [Manual View Management](#2️⃣-manual-view-management)
-- [Inspector Settings](#-inspector-settings)
+- [Examples of Usage](#-examples-of-usage)
+    - [Scene Setup](#ex1)
+    - [Managing Views](#ex2)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Events](#-events)
-    - [OnAdded](#onadded)
-    - [OnRemoved](#onremoved)
-  - [Properties](#-properties)
-    - [Count](#count)
-  - [Methods](#-methods)
-    - [Get(IEntity)](#getientity)
-    - [TryGet(IEntity, out EntityView)](#trygetientity-out-entityview)
-    - [Contains(IEntity)](#containsientity)
-    - [Add(IEntity)](#addientity)
-    - [Remove(IEntity)](#removeientity)
-    - [Remove(EntityView)](#removeentityview)
-    - [Clear()](#clear)
-    - [GetEnumerator()](#getenumerator)
-    - [GetKey(IEntity)](#getkeyientity)
-- [Notes](#-notes)
+- [See Also](#-see-also)
 
 ---
 
-## 🗂 Example of Usage
+## 🗂 Examples of Usage
 
 <div id="ex1"></div>
 
-### 1️⃣ Collection Setup
+### 1️⃣ Scene Setup
 
-Attach `Atomic/Entities/Entity Collection View` to a GameObject.
+Attach `Atomic/Entities/Entity Collection View` to a GameObject:
 
-- Assign a `Transform` to `viewport` — active views will be parented here.
-- Assign an [EntityViewPool](EntityViewPool.md) to `viewPool` — views will be rented from this pool.
+<img width="450" height="" alt="Entity component" src="../../Images/EntityCollectionView.png" />
+
+- Assign a `Transform` to `viewport` — spawned views will be parented here.
+- Assign the [EntityViewPool](EntityViewPool.md) to `pool`.
 
 ---
 
 <div id="ex2"></div>
 
-### 2️⃣ Manual View Management
+### 2️⃣ Managing Views
 
 ```csharp
 EntityCollectionView collectionView = ...;
-IEntity enemy = ...;
+IEntity someEntity = ...;
 
-// Rent and activate a view for one entity:
-EntityView view = collectionView.Add(enemy);
+// Add a view for an entity
+EntityView createdView = collectionView.Add(someEntity);
 
-// Query active views:
-if (collectionView.TryGet(enemy, out EntityView activeView))
-{
-    Debug.Log($"Active view: {activeView.name}");
-}
+// Remove a specific entity view
+collectionView.Remove(someEntity);
 
-// Remove one entity view and return it to the pool:
-collectionView.Remove(enemy);
+// Remove by view instance
+collectionView.Remove(createdView);
 
-// Remove every active view:
+// Clear all active views
 collectionView.Clear();
+
+// Querying
+bool exists = collectionView.Contains(someEntity);
+if (collectionView.TryGet(someEntity, out EntityView view))
+{
+    Debug.Log($"Found view for {someEntity}: {view.name}");
+}
+EntityView directView = collectionView.Get(someEntity);
+
+// Iteration
+foreach (KeyValuePair<IEntity, EntityView> pair in collectionView)
+{
+    Debug.Log($"Entity: {pair.Key}, View: {pair.Value.name}");
+}
 ```
-
-For automatic synchronization with an `IReadOnlyEntityCollection<IEntity>`, use
-[EntityWorldView](EntityWorldView.md).
-
----
-
-## 🛠 Inspector Settings
-
-| Parameter  | Description                                                                              |
-|------------|------------------------------------------------------------------------------------------|
-| `viewport` | The `Transform` under which active entity views will be parented.                        |
-| `viewPool` | The [EntityViewPool](EntityViewPool.md) responsible for renting and returning views.     |
 
 ---
 
 ## 🔍 API Reference
 
-### 🏛️ Type <div id="-type"></div>
+### 🏛️ Type
 
 ```csharp
 [AddComponentMenu("Atomic/Entities/Entity Collection View")]
@@ -96,135 +79,13 @@ For automatic synchronization with an `IReadOnlyEntityCollection<IEntity>`, use
 public class EntityCollectionView : EntityCollectionView<string, IEntity, EntityView>
 ```
 
-- **Inheritance:** [EntityCollectionView<K, E, V>](EntityCollectionView%601.md)
-- **Key Strategy:** uses `entity.Name` as the view-pool key.
-- **See also:** [EntityWorldView](EntityWorldView.md), [EntityViewPool](EntityViewPool.md), [EntityView](EntityView.md)
+- **Description:** Ready-to-use collection view for `IEntity` / `EntityView` pairs.
+- **Inheritance:** [EntityCollectionView\<K, E, V>](EntityCollectionView%603.md), `MonoBehaviour`
 
 ---
 
-### ⚡ Events
+## 🔗 See Also
 
-#### `OnAdded`
-
-```csharp
-public event Action<IEntity, EntityView> OnAdded;
-```
-
-- **Description:** Raised after a view is rented, activated, and added to the collection.
-- **Parameters:**
-  - `IEntity entity` — The entity represented by the view.
-  - `EntityView view` — The active view instance.
-
-#### `OnRemoved`
-
-```csharp
-public event Action<IEntity, EntityView> OnRemoved;
-```
-
-- **Description:** Raised after the view is removed from the collection and before it is deactivated and returned to the
-  pool.
-- **Parameters:**
-  - `IEntity entity` — The entity whose view was removed.
-  - `EntityView view` — The view that is about to be returned to the pool.
-
----
-
-### 🔑 Properties
-
-#### `Count`
-
-```csharp
-public int Count { get; }
-```
-
-- **Description:** The number of active entity views currently tracked by this collection.
-
----
-
-### 🏹 Methods
-
-#### `Get(IEntity)`
-
-```csharp
-public EntityView Get(IEntity entity);
-```
-
-- **Description:** Returns the active view associated with `entity`.
-- **Throws:** `KeyNotFoundException` if the entity has no active view.
-
-#### `TryGet(IEntity, out EntityView)`
-
-```csharp
-public bool TryGet(IEntity entity, out EntityView view);
-```
-
-- **Description:** Attempts to get the active view for `entity`.
-- **Returns:** `true` when a view exists; otherwise, `false`.
-
-#### `Contains(IEntity)`
-
-```csharp
-public bool Contains(IEntity entity);
-```
-
-- **Description:** Returns `true` if the entity currently has an active view.
-
-#### `Add(IEntity)`
-
-```csharp
-public EntityView Add(IEntity entity);
-```
-
-- **Description:** Rents and activates a view for `entity` if one does not already exist.
-- **Returns:** The active view for the entity. If the entity already has a view, returns the existing view.
-
-#### `Remove(IEntity)`
-
-```csharp
-public void Remove(IEntity entity);
-```
-
-- **Description:** Removes the active view for `entity`, deactivates it, and returns it to the pool.
-- **Notes:** Does nothing if the entity has no active view.
-
-#### `Remove(EntityView)`
-
-```csharp
-public void Remove(EntityView view);
-```
-
-- **Description:** Removes a view by using its active `Entity` reference.
-
-#### `Clear()`
-
-```csharp
-public void Clear();
-```
-
-- **Description:** Removes all active views and returns them to the pool.
-
-#### `GetEnumerator()`
-
-```csharp
-public Dictionary<IEntity, EntityView>.Enumerator GetEnumerator();
-```
-
-- **Description:** Iterates through active entity-view pairs.
-
-#### `GetKey(IEntity)`
-
-```csharp
-protected override string GetKey(IEntity entity);
-```
-
-- **Description:** Returns the key used to rent a view from the pool.
-- **Default Behavior:** Returns `entity.Name`.
-
----
-
-## 📝 Notes
-
-- `EntityCollectionView` is manual: it does not subscribe to an entity collection by itself.
-- Use [EntityWorldView](EntityWorldView.md) when the view should automatically mirror an entity collection.
-- Pool prefab keys should match `entity.Name` unless you create a custom generic collection view with a different key
-  strategy.
+- [EntityCollectionView\<K, E, V>](EntityCollectionView%603.md) — generic base class with full API.
+- [EntityWorldView](EntityWorldView.md) — auto-synchronizing version bound to an entity collection.
+- [Entity UI Manual](Manual.md)

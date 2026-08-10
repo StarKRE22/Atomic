@@ -93,7 +93,7 @@ There are separate interfaces that handle the corresponding lifecycle events of 
 
 - **Common**
     - [IEntityBehaviour](IEntityBehaviour.md)
-    - [EditModeEntityBehaviourAttribute](../Attributes/EditModeEntityBehaviourAttribute.md)
+    - [EditModeEntityBehaviourAttribute](../EditMode/EditModeEntityBehaviourAttribute.md)
 - **Init**
     - [IEntityInit](IEntityInit.md)
     - [IEntityInit\<E>](IEntityInit%601.md)
@@ -125,7 +125,7 @@ There are separate interfaces that handle the corresponding lifecycle events of 
   <summary><b>Common</b></summary>
   <ul>
     <li><a href="IEntityBehaviour.md">IEntityBehaviour</a></li>
-    <li><a href="../Attributes/EditModeEntityBehaviourAttribute.md">EditModeEntityBehaviourAttribute</a></li>
+    <li><a href="../EditMode/EditModeEntityBehaviourAttribute.md">EditModeEntityBehaviourAttribute</a></li>
   </ul>
 </details>
 
@@ -205,3 +205,4 @@ There are separate interfaces that handle the corresponding lifecycle events of 
 - **Lightweight** – Interface only, implementation is left to the developer
 - Behaviours are typically stateless or encapsulate entity-specific state.
 - They can be used to implement features such as movement, attack, game systems, AI, input, or UI controllers.
+

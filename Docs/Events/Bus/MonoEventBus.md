@@ -121,6 +121,42 @@ public void Dispose();
 - **Description:** Removes callbacks from the underlying event bus.
 - **Returns:** `true` from `Dispose(int)` if the key existed and was removed.
 
+#### `SubscribeUnsafe`
+
+```csharp
+public Subscription SubscribeUnsafe(int key, Action action);
+public Subscription<T> SubscribeUnsafe<T>(int key, Action<T> action);
+public Subscription<T1, T2> SubscribeUnsafe<T1, T2>(int key, Action<T1, T2> action);
+public Subscription<T1, T2, T3> SubscribeUnsafe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Registers a callback on the underlying bus without runtime validation.
+- **Notes:** Unsafe counterpart to `Subscribe`.
+
+#### `UnsubscribeUnsafe`
+
+```csharp
+public void UnsubscribeUnsafe(int key, Action action);
+public void UnsubscribeUnsafe<T>(int key, Action<T> action);
+public void UnsubscribeUnsafe<T1, T2>(int key, Action<T1, T2> action);
+public void UnsubscribeUnsafe<T1, T2, T3>(int key, Action<T1, T2, T3> action);
+```
+
+- **Description:** Removes a callback from the underlying bus without runtime validation.
+- **Notes:** Unsafe counterpart to `Unsubscribe`.
+
+#### `InvokeUnsafe`
+
+```csharp
+public void InvokeUnsafe(int key);
+public void InvokeUnsafe<T>(int key, T arg);
+public void InvokeUnsafe<T1, T2>(int key, T1 arg1, T2 arg2);
+public void InvokeUnsafe<T1, T2, T3>(int key, T1 arg1, T2 arg2, T3 arg3);
+```
+
+- **Description:** Raises the event on the underlying bus without runtime validation.
+- **Notes:** Unsafe counterpart to `Invoke`.
+
 #### `OnDestroy`
 
 ```csharp

@@ -1,3 +1,4 @@
 {
-    "name": "Atomic.Events"
+    "name": "Atomic.Events",
+    "allowUnsafeCode": true
 }

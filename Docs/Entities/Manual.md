@@ -10,7 +10,12 @@ framework, all game objects, systems, UI elements, and application contexts can 
 
 - [Requirements](#-requirements)
 - [Using Odin Inspector](#-using-odin-inspector)
-- [Code Generation](#-code-generation)
+- [Entity API Source Generation](#-entity-api-source-generation)
+  - [Declaring Keys](#declaring-keys)
+  - [Configuration](#configuration)
+  - [Analyzer](#analyzer)
+  - [Setup](#setup)
+- [Entity Domain Behaviours](#-entity-domain-behaviours)
 - [API Reference](#-api-reference)
 - [Performance](#-performance)
 - [Best Practices](#-best-practices)
@@ -32,17 +37,133 @@ framework **works without Odin**, but Odin makes inspection and tweaking much ea
 
 ---
 
-## 🧬 Code Generation
+## 🧬 Entity API Source Generation
 
-The framework provides Roslyn source generators and analyzers for type-safe entity and event APIs. Declare keys in a
-static partial class and the compiler generates extension methods automatically.
+The [Entity API Generator](CodeGen/EntityExtensionsAPIAttribute.md) turns declarative `[EntityExtensionsAPI]` classes into
+strongly-typed extension methods for entity tags and values. Declare `TagKey<>` and `ValueKey<>` fields once and use
+generated `Add{Name}`, `Get{Name}`, `Set{Name}`, `Has{Name}Tag`, and other helper methods.
 
-- [Code Generation Manual](../CodeGeneration/Manual.md) — overview of all generators and analyzers
-- [Code Generation Setup](../CodeGeneration/Setup.md) — how to add the DLLs to a Unity project
-- [Entity API Generator](../CodeGeneration/EntityAPI/EntityAPIGenerator.md) — `[GenerateEntityExtensionsAPI]` usage
-- [Event API Generator](../CodeGeneration/EventAPI/EventAPIGenerator.md) — `[GenerateEventExtensionsAPI]` usage
+### Declaring Keys
 
-The generator source code is available at https://github.com/dre0dru/Atomic.SourceGenerators.
+Supported field types:
+
+| Type | Generated As |
+|------|--------------|
+| `TagKey<E>` | Tag methods extending `E` |
+| `TagKey` | Tag methods extending `IEntity` |
+| `ValueKey<E, T>` | Value methods of type `T` extending `E` |
+| `ValueKey<T>` | Value methods of type `T` extending `IEntity` |
+
+Every field must be initialized with a non-default constructor, for example `new(nameof(FieldName))`.
+
+```csharp
+using Atomic.Entities;
+
+[EntityExtensionsAPI]
+public static partial class PlayerAPI
+{
+    public static readonly TagKey<IEntity> Alive = new(nameof(Alive));
+    public static readonly ValueKey<IEntity, int> Health = new(nameof(Health));
+    public static readonly ValueKey<IEntity, float> Speed = new(nameof(Speed));
+}
+```
+
+After compilation, the generator adds extension methods such as:
+
+```csharp
+entity.AddAliveTag();
+entity.AddHealth(100);
+int health = entity.GetHealth();
+entity.SetSpeed(5.5f);
+```
+
+### Configuration
+
+The `[EntityExtensionsAPI]` attribute supports two properties:
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `Unsafe` | `false` | Generate unsafe value accessors and `Ref{Name}` methods. |
+| `AggressiveInlining` | `true` | Add `[MethodImpl(MethodImplOptions.AggressiveInlining)]` to every method. |
+
+Apply `[Unsafe]` to individual value fields to force unsafe accessors for those fields when the class-level `Unsafe`
+flag is `false`.
+
+### Analyzer
+
+The [Entity API Analyzer](CodeGen/EntityAPIAnalyzer.md) validates key initializers:
+
+| Rule | Description |
+|------|-------------|
+| `EAPI0001` | Key field has no initializer. |
+| `EAPI0002` | Key field is initialized with `new()` or `default`. |
+
+Both diagnostics include a code fix that inserts `= new(nameof(FieldName))`.
+
+### Setup
+
+The generator and analyzer DLLs are compile-time only. Add them to your Unity project as Roslyn analyzers:
+
+1. Place the four DLLs in `Assets/Plugins/Atomic/SourceGenerators/`:
+   - `EntityAPIGenerator.dll`
+   - `EntityAPIAnalyzer.dll`
+   - `EventAPIGenerator.dll`
+   - `EventAPIAnalyzer.dll`
+2. Select each DLL in the Unity Project window.
+3. Add the asset label `RoslynAnalyzer`.
+4. Under **Select platforms for plugin**, uncheck **Any Platform** and every individual platform.
+5. Click **Apply** and restart Unity or run `Assets → Reimport All`.
+
+For full build/deploy instructions, see the generator source in
+`Assets/Plugins/Atomic/SourceGenerators/Project~`.
+
+#### Inspecting generated source
+
+The generators produce code **in-memory**. To write the generated files to disk, define the symbol:
+
+```
+ATOMIC_OUTPUT_SOURCEGEN_FILES
+```
+
+in `Edit → Project Settings → Player → Scripting Define Symbols`. Files are then written to:
+
+```
+Temp/GeneratedCode/
+```
+
+For event-bus source generation, see the [Events manual](../Events/Manual.md#-event-api-source-generation).
+
+---
+
+## 🎭 Entity Domain Behaviours
+
+The [Entity Domain Generator](CodeGen/EntityDomainBehavioursAttribute.md) emits strongly-typed domain behaviour
+interfaces for a specific entity type. Mark any class with `[EntityDomainBehaviours(typeof(IYourEntity))]` and the
+generator creates interfaces such as `IYourEntityBehaviour`, `IYourEntityTick`, `IYourEntityInit`, and others.
+
+```csharp
+using Atomic.Entities;
+
+namespace Game.Domain
+{
+    public interface IPlayer : IEntity { }
+
+    [EntityDomainBehaviours(typeof(IPlayer))]
+    public static class PlayerDomain { }
+}
+```
+
+After compilation, implement the generated interfaces:
+
+```csharp
+public sealed class PlayerMoveBehaviour : IPlayerTick
+{
+    public void Tick(IPlayer player, float deltaTime) { }
+}
+```
+
+This removes the boilerplate of manually creating `IEntityTick<IPlayer>`, `IEntityInit<IPlayer>`, and other lifecycle
+interfaces for every domain entity.
 
 ---
 
@@ -69,7 +190,9 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 - [Inspector](Inspector/Manual.md) <!-- + -->
 - [Views](UI/Manual.md) <!-- + -->
 - [KeyStore](KeyStore/Manual.md) <!-- + -->
-- [API Generation](EntityAPI/Manual.md) <!-- + -->
+- [Source Generation](CodeGen/EntityExtensionsAPIAttribute.md) <!-- + -->
+- [EntityDomainBehaviours](CodeGen/EntityDomainBehavioursAttribute.md) <!-- + -->
+- [UnsafeAttribute](CodeGen/UnsafeAttribute.md) <!-- + -->
 
 ---
 

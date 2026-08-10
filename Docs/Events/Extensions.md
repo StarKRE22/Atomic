@@ -198,3 +198,76 @@ public static bool Dispose<TBus, T1, T2, T3>(this TBus it, EventKey<TBus, T1, T2
 
 - **Description:** Removes all callbacks for the strongly-typed event.
 - **Returns:** `true` if the event existed and was removed.
+
+---
+
+## 🚀 Unsafe Methods
+
+The extension class also provides unsafe variants that skip runtime validation. These forward to `IEventBus.SubscribeUnsafe`,
+`IEventBus.UnsubscribeUnsafe`, and `IEventBus.InvokeUnsafe` after resolving the key.
+
+### `SubscribeUnsafe` (string)
+
+```csharp
+public static Subscription SubscribeUnsafe(this IEventBus it, string key, Action action);
+public static Subscription<T> SubscribeUnsafe<T>(this IEventBus it, string key, Action<T> action);
+public static Subscription<T1, T2> SubscribeUnsafe<T1, T2>(this IEventBus it, string key, Action<T1, T2> action);
+public static Subscription<T1, T2, T3> SubscribeUnsafe<T1, T2, T3>(this IEventBus it, string key, Action<T1, T2, T3> action);
+```
+
+### `InvokeUnsafe` (string)
+
+```csharp
+public static void InvokeUnsafe(this IEventBus it, string key);
+public static void InvokeUnsafe<T>(this IEventBus it, string key, T arg);
+public static void InvokeUnsafe<T1, T2>(this IEventBus it, string key, T1 arg1, T2 arg2);
+public static void InvokeUnsafe<T1, T2, T3>(this IEventBus it, string key, T1 arg1, T2 arg2, T3 arg3);
+```
+
+### `UnsubscribeUnsafe` (string)
+
+```csharp
+public static void UnsubscribeUnsafe(this IEventBus it, string key, Action action);
+public static void UnsubscribeUnsafe<T>(this IEventBus it, string key, Action<T> action);
+public static void UnsubscribeUnsafe<T1, T2>(this IEventBus it, string key, Action<T1, T2> action);
+public static void UnsubscribeUnsafe<T1, T2, T3>(this IEventBus it, string key, Action<T1, T2, T3> action);
+```
+
+### `SubscribeUnsafe` (EventKey)
+
+```csharp
+public static Subscription SubscribeUnsafe<TBus>(this TBus it, EventKey<TBus> key, Action action)
+    where TBus : IEventBus;
+public static Subscription<T> SubscribeUnsafe<TBus, T>(this TBus it, EventKey<TBus, T> key, Action<T> action)
+    where TBus : IEventBus;
+public static Subscription<T1, T2> SubscribeUnsafe<TBus, T1, T2>(this TBus it, EventKey<TBus, T1, T2> key, Action<T1, T2> action)
+    where TBus : IEventBus;
+public static Subscription<T1, T2, T3> SubscribeUnsafe<TBus, T1, T2, T3>(this TBus it, EventKey<TBus, T1, T2, T3> key, Action<T1, T2, T3> action)
+    where TBus : IEventBus;
+```
+
+### `InvokeUnsafe` (EventKey)
+
+```csharp
+public static void InvokeUnsafe<TBus>(this TBus it, EventKey<TBus> key)
+    where TBus : IEventBus;
+public static void InvokeUnsafe<TBus, T>(this TBus it, EventKey<TBus, T> key, T arg)
+    where TBus : IEventBus;
+public static void InvokeUnsafe<TBus, T1, T2>(this TBus it, EventKey<TBus, T1, T2> key, T1 arg1, T2 arg2)
+    where TBus : IEventBus;
+public static void InvokeUnsafe<TBus, T1, T2, T3>(this TBus it, EventKey<TBus, T1, T2, T3> key, T1 arg1, T2 arg2, T3 arg3)
+    where TBus : IEventBus;
+```
+
+### `UnsubscribeUnsafe` (EventKey)
+
+```csharp
+public static void UnsubscribeUnsafe<TBus>(this TBus it, EventKey<TBus> key, Action action)
+    where TBus : IEventBus;
+public static void UnsubscribeUnsafe<TBus, T>(this TBus it, EventKey<TBus, T> key, Action<T> action)
+    where TBus : IEventBus;
+public static void UnsubscribeUnsafe<TBus, T1, T2>(this TBus it, EventKey<TBus, T1, T2> key, Action<T1, T2> action)
+    where TBus : IEventBus;
+public static void UnsubscribeUnsafe<TBus, T1, T2, T3>(this TBus it, EventKey<TBus, T1, T2, T3> key, Action<T1, T2, T3> action)
+    where TBus : IEventBus;
+```

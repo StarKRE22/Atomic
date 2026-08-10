@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.TestTools;
 
 namespace Atomic.Events
 {
@@ -455,6 +457,99 @@ namespace Atomic.Events
 
             //Act & Assert:
             Assert.DoesNotThrow(() => bus.Dispose());
+        }
+
+        // ──────────────────────────────────────────────────────
+        //  InvokeUnsafe (enqueues, flushed on main thread)
+        // ──────────────────────────────────────────────────────
+
+        [Test]
+        public void InvokeUnsafe_0Arg_EnqueuesAndFlushes()
+        {
+            //Arrange:
+            bool fired = false;
+            var bus = new ThreadSafeEventBus();
+            bus.Subscribe(1, () => fired = true);
+
+            //Act:
+            bus.InvokeUnsafe(1);
+            bus.Flush();
+
+            //Assert:
+            Assert.IsTrue(fired);
+        }
+
+        [Test]
+        public void InvokeUnsafe_1Arg_EnqueuesAndFlushes()
+        {
+            //Arrange:
+            int received = 0;
+            var bus = new ThreadSafeEventBus();
+            bus.Subscribe<int>(1, v => received = v);
+
+            //Act:
+            bus.InvokeUnsafe(1, 42);
+            bus.Flush();
+
+            //Assert:
+            Assert.AreEqual(42, received);
+        }
+
+        [Test]
+        public void InvokeUnsafe_2Args_EnqueuesAndFlushes()
+        {
+            //Arrange:
+            int receivedA = 0;
+            string receivedB = null;
+            var bus = new ThreadSafeEventBus();
+            bus.Subscribe<int, string>(1, (a, b) =>
+            {
+                receivedA = a;
+                receivedB = b;
+            });
+
+            //Act:
+            bus.InvokeUnsafe(1, 7, "hello");
+            bus.Flush();
+
+            //Assert:
+            Assert.AreEqual(7, receivedA);
+            Assert.AreEqual("hello", receivedB);
+        }
+
+        [Test]
+        public void InvokeUnsafe_3Args_EnqueuesAndFlushes()
+        {
+            //Arrange:
+            int receivedA = 0;
+            string receivedB = null;
+            bool receivedC = false;
+            var bus = new ThreadSafeEventBus();
+            bus.Subscribe<int, string, bool>(1, (a, b, c) =>
+            {
+                receivedA = a;
+                receivedB = b;
+                receivedC = c;
+            });
+
+            //Act:
+            bus.InvokeUnsafe(1, 5, "world", true);
+            bus.Flush();
+
+            //Assert:
+            Assert.AreEqual(5, receivedA);
+            Assert.AreEqual("world", receivedB);
+            Assert.IsTrue(receivedC);
+        }
+
+        [Test]
+        public void InvokeUnsafe_MissingKey_DoesNotThrowBeforeFlush()
+        {
+            //Arrange:
+            var bus = new ThreadSafeEventBus();
+
+            //Act & Assert:
+            Assert.DoesNotThrow(() => bus.InvokeUnsafe(42));
         }
 
         // ──────────────────────────────────────────────────────

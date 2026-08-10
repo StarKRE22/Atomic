@@ -37,8 +37,8 @@ With [Atomic.Entities](../Entities/Manual.md), this can be implemented efficient
   from a
   pool using [EntityPool\<E>](../Entities/Pooling/EntityPool%601.md)
 - Visualization is handled
-  via [EntityView\<E>](../Entities/UI/EntityView%601.md), [EntityViewCollection\<E, V>](../Entities/UI/EntityCollectionView%601.md)
-  and [EntityViewPool\<E, V>](../Entities/UI/EntityViewPool%601.md)
+  via [EntityView\<E>](../Entities/UI/EntityView%601.md), [EntityCollectionView\<K, E, V>](../Entities/UI/EntityCollectionView%603.md)
+  and [EntityViewPool\<K, E, V>](../Entities/UI/EntityViewPool%603.md)
 
 ---
 
@@ -365,9 +365,9 @@ UnitsUseCase.Despawn(context, unitEntity);
 ## 🎨 Entity Visualization
 
 This section focuses on the **visual representation of units and other entities** in the system. We
-use [EntityView\<E>](../Entities/UI/EntityView%601.md), [EntityViewCatalog\<E, V>](../Entities/UI/EntityViewCatalog%601.md),
-[EntityViewPool\<E, V>](../Entities/UI/EntityViewPool%601.md),
-and [EntityCollectionView\<E, V>](../Entities/UI/EntityCollectionView%601.md) to efficiently manage the visual
+use [EntityView\<E>](../Entities/UI/EntityView%601.md), [EntityViewCatalog\<E, V>](../Entities/UI/EntityViewCatalog%602.md),
+[EntityViewPool\<K, E, V>](../Entities/UI/EntityViewPool%603.md),
+and [EntityCollectionView\<K, E, V>](../Entities/UI/EntityCollectionView%603.md) to efficiently manage the visual
 representation of objects.
 
 ---
@@ -443,8 +443,8 @@ Drag and drop `TankViewInstaller` to the `installers` field of `UnitView`
 
 ### 🗂 Entity View Catalog
 
-Для хранения всех визуальных представлений создаём каталог,
-наследуя [EntityViewCatalog\<E>](../Entities/UI/EntityViewCatalog%601.md):
+To store all visual representations, create a catalog by inheriting from
+[EntityViewCatalog\<E, V>](../Entities/UI/EntityViewCatalog%602.md):
 
 ```csharp
 [CreateAssetMenu(
@@ -456,9 +456,9 @@ public sealed class UnitViewCatalog : EntityViewCatalog<IUnitEntity, UnitView>
 }
 ```
 
-> 💡 Каталог позволяет **по ключу находить соответствующий визуальный объект** для сущности.
+> 💡 The catalog allows you to **find the corresponding visual object by key** for an entity.
 
-Теперь создаем ассет каталога в проекте и добавляем туда префабы с `UnitView`
+Now create the catalog asset in the project and add prefabs with `UnitView` to it
 
 <img width="400" height="" alt="Entity component" src="../Images/UnitViewCatalog.png" />
 
@@ -467,11 +467,12 @@ public sealed class UnitViewCatalog : EntityViewCatalog<IUnitEntity, UnitView>
 ### 🗂 Entity View Pool
 
 To efficiently manage visual GameObjects, create a view pool by inheriting from
-[EntityViewPool<E, V>](../Entities/UI/EntityViewPool%601.md):
+[EntityViewPool<K, E, V>](../Entities/UI/EntityViewPool%603.md):
 
 ```csharp
-public sealed class UnitViewPool : EntityViewPool<IUnitEntity, UnitView>
+public sealed class UnitViewPool : EntityViewPool<string, IUnitEntity, UnitView>
 {
+    protected override string GetKey(UnitView view) => view.Name;
 }
 ```
 
@@ -496,21 +497,13 @@ Attach the Pool in the Scene
 ### 🗂 View Collection
 
 To manage and synchronize multiple unit views in the scene, use  
-[EntityCollectionView<E, V>](../Entities/UI/EntityCollectionView%601.md) — a component that automatically tracks which
-entities are currently
-active and ensures each one has a corresponding visual representation.
+[EntityCollectionView<K, E, V>](../Entities/UI/EntityCollectionView%603.md) — a component that automatically tracks which
+entities are currently active and ensures each one has a corresponding visual representation.
 
 ```csharp
-public sealed class UnitCollectionView : EntityCollectionView<IUnitEntity, UnitView>
+public sealed class UnitCollectionView : EntityCollectionView<string, IUnitEntity, UnitView>
 {
-}
-```
-
-#### 🧩 Create a Specific Collection for Units
-
-```csharp
-public sealed class UnitCollectionView : EntityCollectionView<IUnitEntity, UnitView>
-{
+    protected override string GetKey(IUnitEntity entity) => entity.Name;
 }
 ```
 
@@ -523,11 +516,8 @@ This collection links your **`UnitViewPool`** (which manages reusable prefabs) w
 
 **Setup:**
 
-- Assign a **`Transform`** to the `Viewport` field — all visualized units will be parented under this transform.
-- Assign the **`UnitViewPool`** to the `ViewPool` field — this defines where to take and return visual objects.
-
-> ⚡ The `EntityCollectionView` automatically keeps the scene in sync with your entity world —  
-> when a unit is spawned, its view is created; when the unit is despawned, its view is returned to the pool.
+- Assign a **`Transform`** to the `viewport` field — all visualized units will be parented under this transform.
+- Assign the **`UnitViewPool`** to the `pool` field — this defines where to take and return visual objects.
 
 > 💡 This separation ensures clean architecture: entities handle logic, while views reflect their current state visually.
 
@@ -535,31 +525,38 @@ This collection links your **`UnitViewPool`** (which manages reusable prefabs) w
 
 ## 🗂 Binding the View Collection to the Entity World
 
-Once both your **EntityWorld** (the logical layer) and **UnitCollectionView** (the visual layer) are initialized,
-you need to **bind them together**. This ensures that every time an entity is spawned or removed in the world,
-its corresponding visual representation appears or disappears in the scene automatically.
+To keep scene visuals synchronized with the entity world automatically, use
+[EntityWorldView<K, E, V>](../Entities/UI/EntityWorldView%603.md). It extends the manual collection view with
+subscription to a source collection.
+
+```csharp
+public sealed class UnitWorldView : EntityWorldView<string, IUnitEntity, UnitView>
+{
+    protected override string GetKey(IUnitEntity entity) => entity.Name;
+}
+```
 
 ```csharp
 public class EntryPoint : MonoBehaviour
 {
     [SerializeField]
-    private UnitViewCollection _viewCollection; 
+    private UnitWorldView _worldView; 
         
     void Start()
     {
         IEntityWorld<IUnitEntity> world = GameContext.Instance.GetEntityWorld();
-        _viewCollection.Show(world);
+        _worldView.Activate(world);
     }
 }
 ```
 
 **Explanation:**
 
-- `Show(EntityWorld<T>)` — connects the collection view to a specific world of entities.  
+- `Activate(IReadOnlyEntityCollection<E>)` — connects the world view to a source of entities.  
   After this call:
     - When an entity is **added** to the world → a corresponding view is **spawned** from the pool.
     - When an entity is **removed** → its view is **returned** to the pool.
-- The collection internally subscribes to the entity world’s lifecycle events,  
+- The world view internally subscribes to the entity collection’s lifecycle events,  
   keeping your **scene visuals synchronized** with the logical model in real-time.
 
 > 💡 With this binding, your **gameplay logic (entities)** and **visual representation (views)** are fully decoupled,
@@ -573,8 +570,9 @@ By combining the following key components:
 
 - `EntityView<IUnitEntity>` — the link between entity logic and Unity GameObject.
 - `EntityViewCatalog<IUnitEntity, UnitView>` — a centralized registry of available views.
-- `EntityViewPool<IUnitEntity, UnitView>` — a reusable object pool for efficient memory use.
-- `EntityCollectionView<IUnitEntity, UnitView>` — a dynamic collection syncing the world and visuals.
+- `EntityViewPool<string, IUnitEntity, UnitView>` — a reusable object pool for efficient memory use.
+- `EntityCollectionView<string, IUnitEntity, UnitView>` — a dynamic collection of active views.
+- `EntityWorldView<string, IUnitEntity, UnitView>` — automatic synchronization between the entity world and its visuals.
 
 you create a **powerful and modular visualization system** that:
 
@@ -597,3 +595,4 @@ Using **Atomic.Entities**, you gain a **clean separation** between data and visu
 
 > ✅ In short: Atomic.Entities provides a robust foundation for building **modern, decoupled, and highly performant
 gameplay systems** in Unity.
+

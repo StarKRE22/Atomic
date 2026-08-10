@@ -1,0 +1,25 @@
+<Project>
+  <!-- Common MSBuild properties for all Atomic source generators -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>12</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <IsRoslynComponent>true</IsRoslynComponent>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- Roslyn packages compatible with Unity 6000.3.x (bundled Roslyn 4.3.0) -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Optional: suppress analyzer rule about file IO in source generators.
+       Generators are allowed to write debug output to Temp/GeneratedCode when
+       ATOMIC_OUTPUT_SOURCEGEN_FILES is defined. -->
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);RS1035</NoWarn>
+  </PropertyGroup>
+</Project>

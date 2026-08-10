@@ -23,6 +23,18 @@ namespace Atomic.Events
         public Subscription<T1, T2, T3> Subscribe<T1, T2, T3>(int key, Action<T1, T2, T3> action) =>
             _eventBus.Subscribe(key, action);
 
+        public Subscription SubscribeUnsafe(int key, Action action) =>
+            _eventBus.SubscribeUnsafe(key, action);
+
+        public Subscription<T> SubscribeUnsafe<T>(int key, Action<T> action) =>
+            _eventBus.SubscribeUnsafe(key, action);
+
+        public Subscription<T1, T2> SubscribeUnsafe<T1, T2>(int key, Action<T1, T2> action) =>
+            _eventBus.SubscribeUnsafe(key, action);
+
+        public Subscription<T1, T2, T3> SubscribeUnsafe<T1, T2, T3>(int key, Action<T1, T2, T3> action) =>
+            _eventBus.SubscribeUnsafe(key, action);
+
         public void Invoke(int key) =>
             _eventBus.Invoke(key);
 
@@ -34,6 +46,18 @@ namespace Atomic.Events
 
         public void Invoke<T1, T2, T3>(int key, T1 arg1, T2 arg2, T3 arg3) =>
             _eventBus.Invoke(key, arg1, arg2, arg3);
+
+        public void InvokeUnsafe(int key) =>
+            _eventBus.InvokeUnsafe(key);
+
+        public void InvokeUnsafe<T>(int key, T arg) =>
+            _eventBus.InvokeUnsafe(key, arg);
+
+        public void InvokeUnsafe<T1, T2>(int key, T1 arg1, T2 arg2) =>
+            _eventBus.InvokeUnsafe(key, arg1, arg2);
+
+        public void InvokeUnsafe<T1, T2, T3>(int key, T1 arg1, T2 arg2, T3 arg3) =>
+            _eventBus.InvokeUnsafe(key, arg1, arg2, arg3);
 
         public bool IsSubscribed(int key) =>
             _eventBus.IsSubscribed(key);
@@ -52,6 +76,18 @@ namespace Atomic.Events
 
         public void Unsubscribe<T1, T2, T3>(int key, Action<T1, T2, T3> action) =>
             _eventBus.Unsubscribe(key, action);
+
+        public void UnsubscribeUnsafe(int key, Action action) =>
+            _eventBus.UnsubscribeUnsafe(key, action);
+
+        public void UnsubscribeUnsafe<T>(int key, Action<T> action) =>
+            _eventBus.UnsubscribeUnsafe(key, action);
+
+        public void UnsubscribeUnsafe<T1, T2>(int key, Action<T1, T2> action) =>
+            _eventBus.UnsubscribeUnsafe(key, action);
+
+        public void UnsubscribeUnsafe<T1, T2, T3>(int key, Action<T1, T2, T3> action) =>
+            _eventBus.UnsubscribeUnsafe(key, action);
 
         public void Dispose() =>
             _eventBus.Dispose();

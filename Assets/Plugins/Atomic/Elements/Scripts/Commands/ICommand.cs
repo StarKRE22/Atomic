@@ -193,6 +193,76 @@ namespace Atomic.Elements
     }
     
     /// <summary>
+    /// Represents an executable command that takes three arguments, can be conditionally
+    /// invoked, and notifies subscribers when it is executed.
+    /// </summary>
+    /// <typeparam name="T1">The type of the first input parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second input parameter.</typeparam>
+    /// <typeparam name="T3">The type of the third input parameter.</typeparam>
+    /// <remarks>
+    /// Combines the behavior of <see cref="IAction{T1, T2, T3}"/> and
+    /// <see cref="ISignal{T1, T2, T3}"/>. A command can have execution conditions that
+    /// determine whether it can be invoked, and supports dynamically adding or
+    /// removing actions and conditions.
+    /// </remarks>
+    public interface ICommand<T1, T2, T3> : IAction<T1, T2, T3>, ISignal<T1, T2, T3>
+    {
+        /// <summary>
+        /// Determines whether the command can be invoked with the specified arguments.
+        /// </summary>
+        /// <param name="arg1">The first input parameter.</param>
+        /// <param name="arg2">The second input parameter.</param>
+        /// <param name="arg3">The third input parameter.</param>
+        /// <returns>
+        /// <see langword="true"/> if the command can be invoked; otherwise,
+        /// <see langword="false"/>.
+        /// </returns>
+        bool CanInvoke(T1 arg1, T2 arg2, T3 arg3);
+    
+        /// <summary>
+        /// Attempts to invoke the command with the specified arguments.
+        /// </summary>
+        /// <param name="arg1">The first input parameter.</param>
+        /// <param name="arg2">The second input parameter.</param>
+        /// <param name="arg3">The third input parameter.</param>
+        /// <returns>
+        /// <see langword="true"/> if the command was successfully invoked;
+        /// otherwise, <see langword="false"/> if execution conditions were not met.
+        /// </returns>
+        bool TryInvoke(T1 arg1, T2 arg2, T3 arg3);
+    
+        /// <summary>
+        /// Adds an execution condition to the command.
+        /// The command can be invoked only if all registered conditions evaluate to
+        /// <see langword="true"/> for the specified arguments.
+        /// </summary>
+        /// <param name="condition">The condition to add.</param>
+        /// <returns>The current command instance.</returns>
+        ICommand<T1, T2, T3> AddCondition(Func<T1, T2, T3, bool> condition);
+    
+        /// <summary>
+        /// Removes a previously registered execution condition.
+        /// </summary>
+        /// <param name="condition">The condition to remove.</param>
+        /// <returns>The current command instance.</returns>
+        ICommand<T1, T2, T3> RemoveCondition(Func<T1, T2, T3, bool> condition);
+    
+        /// <summary>
+        /// Adds an action to be executed when the command is invoked.
+        /// </summary>
+        /// <param name="action">The action to add.</param>
+        /// <returns>The current command instance.</returns>
+        ICommand<T1, T2, T3> AddAction(Action<T1, T2, T3> action);
+    
+        /// <summary>
+        /// Removes a previously registered action.
+        /// </summary>
+        /// <param name="action">The action to remove.</param>
+        /// <returns>The current command instance.</returns>
+        ICommand<T1, T2, T3> RemoveAction(Action<T1, T2, T3> action);
+    }
+    
+    /// <summary>
     /// Represents an executable command that takes four arguments, can be conditionally
     /// invoked, and notifies subscribers when it is executed.
     /// </summary>

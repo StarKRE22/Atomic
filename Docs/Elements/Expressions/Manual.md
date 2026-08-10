@@ -200,6 +200,13 @@ arguments the expression take:
 </details>
 
 <details>
+  <summary>Members</summary>
+  <ul>
+    <li><a href="ExpressionMember.md">ExpressionMember</a></li>
+  </ul>
+</details>
+
+<details>
   <summary><a href="AndExpressions.md">AndExpressions</a></summary>
   <ul>
     <li><a href="AndExpression.md">AndExpression</a></li>

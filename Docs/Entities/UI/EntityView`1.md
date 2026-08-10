@@ -1,7 +1,7 @@
 # 🧩 EntityView\<E>
 
 A visual representation of an entity in the Unity scene. It provides a complete system for showing / hiding entities,
-installing, editor gizmos, custom naming, and safe creation / destruction. Use as a foundation for UI or game objects
+installing behaviours, editor gizmos, custom naming, and safe activation / deactivation. Use as a foundation for UI or game objects
 that visually represent entity data.
 
 ---
@@ -11,27 +11,24 @@ that visually represent entity data.
 - [Examples of Usage](#-examples-of-usage)
     - [View Setup](#ex1)
     - [Entity Rendering](#ex2)
-    - [Creation & Destruction](#ex3)
-    - [Gizmos Support](#ex4)
+    - [Gizmos Support](#ex3)
 - [Inspector Settings](#-inspector-settings)
     - [Parameters](#-parameters)
-    - [Context Menu](#-context-menu)
     - [Gizmos](#-gizmos)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Properties](#-properties)
-        - [Name](#name)
         - [Entity](#entity)
-        - [IsVisible](#isvisible)
+        - [IsActive](#isactive)
     - [Methods](#-methods)
-        - [Show(E)](#showe-entity)
-        - [Hide()](#hide)
-        - [OnShow(E)](#onshowe-entity)
-        - [OnHide(E)](#onhidee-entity)
-        - [Create<T>(CreateArgs)](#createtcreateargs)
-        - [Destroy(EntityView<E>, float)](#destroyentityviewe-float)
-    - [Nested Types](#-nested-types)
-        - [CreateArgs](#createargs)
+        - [Activate(E)](#activatee)
+        - [Deactivate()](#deactivate)
+        - [OnActivate(E)](#onactivatee)
+        - [OnDeactivate(E)](#ondeactivatee)
+        - [FormateName(E)](#formatenamee)
+    - [Extension Methods](#extension-methods)
+        - [GetValue&lt;E, T&gt;](#getvaluee-t)
+- [See Also](#-see-also)
 
 ---
 
@@ -110,8 +107,6 @@ public sealed class TankViewInstaller : MonoEntityInstaller<IGameEntity>
 
 ### 2️⃣ Entity Rendering
 
-Below is an example of entity visualization through the entity view:
-
 ```csharp
 // Get an instance of GameEntityView
 GameEntityView view = ...;
@@ -120,52 +115,25 @@ GameEntityView view = ...;
 IGameEntity entity = ...;
 
 // Start rendering the entity:
-// The GameObject dynamically attaches all tags, values, and behaviours to the entity
-view.Show(entity);
+// The GameObject dynamically attaches all behaviours to the entity
+view.Activate(entity);
 
 // Stop rendering the entity:
-// The GameObject hides, and all view tags, values, and behaviours are detached from the entity
-view.Hide(entity);
+// The GameObject is disabled, and all view behaviours are detached from the entity
+view.Deactivate();
 ```
 
 - **Notes:**
-    - `Show(entity)` — activates rendering and links the view with the entity.
-    - `Hide(entity)` — disables rendering and detaches the view from the entity.
+    - `Activate(entity)` — activates rendering and links the view with the entity.
+    - `Deactivate()` — disables rendering and detaches the view from the entity.
 
 ---
 
 <div id="ex3"></div>
 
-### 3️⃣ Creation & Destruction
+### 3️⃣ Gizmos Support
 
-Below is an example of creating and destructing entity view using static methods
-
-```csharp
-// Create a new instance of GameEntityView dynamically
-CreateArgs args = new GameEntityView.CreateArgs
-{
-    name = "PlayerView",
-    controlGameObject = true,
-    installers = new List<MonoEntityInstaller> { jumpInstaller, speedInstaller },
-};
-
-GameEntityView playerView = GameEntityView.Create(args);
-
-// Destroy GameEntityView dynamically
-GameEntityView.Destroy(playerView, 2f); // destroys after 2 seconds
-```
-
-- **Notes:**
-    - `Create(args)` — dynamically instantiates a new view with the specified name, controlled GameObject, and aspects.
-    - `Destroy(view, delay)` — schedules the view for destruction after the given delay in seconds.
-
----
-
-<div id="ex4"></div>
-
-### 4️⃣ Gizmos Support
-
-Also, you can create gizmos behaviours and attach to the installer of the entity view 
+You can create gizmo behaviours that implement [IEntityGizmos\<E>](../Behaviours/IEntityGizmos%601.md) and attach them via an installer.
 
 #### 1. Create a custom gizmo for position and scale
 
@@ -181,10 +149,9 @@ public sealed class TransformGizmos : IEntityGizmos<IGameEntity>
 }
 ```
 
-#### 2. Attach the gizmo to a `MonoEntityInstaller`
+#### 2. Attach the gizmo to a `MonoEntityInstaller<E>`
 
 ```csharp
-
 public sealed class CharacterViewInstaller : MonoEntityInstaller<IGameEntity>
 {
     private readonly TransformGizmos _transformGizmos = new();
@@ -192,18 +159,21 @@ public sealed class CharacterViewInstaller : MonoEntityInstaller<IGameEntity>
     public override void Install(IGameEntity entity)
     {
         // Other bindings...
-        
         entity.AddBehaviour(_transformGizmos);
     }
 
     public override void Uninstall(IGameEntity entity)
     {
         // Other bindings...
-        
         entity.DelBehaviour(_transformGizmos);
     }
 }
 ```
+
+Use the inspector toggles to control when gizmos are drawn:
+
+- `_onlySelectedGizmos` — draw gizmos only when the GameObject is selected.
+- `_onlyEditModeGizmos` — disable gizmo drawing during Play mode.
 
 ---
 
@@ -213,18 +183,7 @@ public sealed class CharacterViewInstaller : MonoEntityInstaller<IGameEntity>
 
 | Parameter           | Description                                                                                                                                                       |
 |---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `controlGameObject` | If `true`, `GameObject.SetActive(true/false)` will be automatically called when invoking `Show()` or `Hide()`.                                                    |
-| `overrideName`      | If `true`, the view will use `customName` instead of the `GameObject.name`.                                                                                       |
-| `customName`        | Custom name used for the view when `overrideName == true`.                                                                                                        |
-| `installers`        | A list of **installers** that inject values and behaviors into the attached entity.<br>Each installer calls `Install()` when shown and `Uninstall()` when hidden. |
-
----
-
-### ⚙️ Context Menu
-
-| Option                           | Description                                                                                               |
-|----------------------------------|-----------------------------------------------------------------------------------------------------------|
-| `AssignCustomNameFromGameObject` | Assigns the GameObject's current name to `customName`. Accessible via context menu in the Unity Inspector |
+| `installers`        | A list of **installers** that inject values and behaviors into the attached entity.<br>Each installer calls `Install()` when activated and `Uninstall()` when deactivated. |
 
 ---
 
@@ -232,8 +191,8 @@ public sealed class CharacterViewInstaller : MonoEntityInstaller<IGameEntity>
 
 | Setting              | Description                                       |
 |----------------------|---------------------------------------------------|
-| `onlySelectedGizmos` | Draw gizmos only when the GameObject is selected. |
-| `onlyEditModeGizmos` | Disable gizmo drawing during Play mode.           |
+| `_onlySelectedGizmos` | Draw gizmos only when the GameObject is selected. |
+| `_onlyEditModeGizmos` | Disable gizmo drawing during Play mode.           |
 
 ---
 
@@ -253,16 +212,6 @@ public abstract class EntityView<E> : MonoBehaviour where E : class, IEntity
 
 ### 🔑 Properties
 
-#### `Name`
-
-```csharp
-public virtual string Name { get; }
-```
-
-- **Description:** Returns the display name of the view:
-    - `customName`, if `overrideName == true`,
-    - otherwise, `GameObject.name`.
-
 #### `Entity`
 
 ```csharp
@@ -270,107 +219,102 @@ public E Entity { get; }
 ```
 
 - **Description:** The entity currently bound to this view.
-- **Note:** Only available after calling `Show()`.
+- **Note:** Only available after calling `Activate()`.
 
-#### `IsVisible`
+#### `IsActive`
 
 ```csharp
-public bool IsVisible { get; }
+public bool IsActive { get; }
 ```
 
-- **Description:** Indicates whether the view is currently visible (`Entity != null`).
+- **Description:** Indicates whether the view is currently active (`Entity != null`).
 
 ---
 
 ### 🏹 Methods
 
-#### `Show(E entity)`
+#### `Activate(E)`
 
 ```csharp
-public void Show(E entity);
+public void Activate(E entity);
 ```
 
 - **Description:** Displays the view and binds it to the specified entity.
 - **Parameter:** `entity` — The entity to associate with this view.
 - **Throws:** `ArgumentNullException`, if `entity` is `null`.
 - **Details:**
-    - Activates the `GameObject` if `controlGameObject == true`.
-    - Calls `OnShow(entity)` for custom logic.
+    - Calls `Deactivate()` to clean up any previous entity.
+    - Formats the GameObject name as `{entity.Name}:{entity.InstanceID}`.
+    - Calls `OnActivate(entity)` for custom logic.
     - Executes `Install()` on each `MonoEntityInstaller` in the list.
 
-#### `Hide()`
+#### `Deactivate()`
 
 ```csharp
-public void Hide();
+public void Deactivate();
 ```
 
-- **Description:** Hides the view and removes the entity binding.
+- **Description:** Deactivates the view and removes the entity binding.
 - **Details:**
     - Executes `Uninstall()` for all installers.
-    - Calls `OnHide(entity)`.
-    - Deactivates the `GameObject` if `controlGameObject == true`.
+    - Calls `OnDeactivate(entity)`.
     - Clears the `Entity` reference.
 
-#### `OnShow(E entity)`
+#### `OnActivate(E)`
 
 ```csharp
-protected virtual void OnShow(E entity);
+protected virtual void OnActivate(E entity);
 ```
 
-- **Description:** Invoked when the view is shown. Override to add custom behavior  
+- **Description:** Invoked when the view is activated. Override to add custom behavior
   (e.g., updating UI or initializing components).
 
-#### `OnHide(E entity)`
+#### `OnDeactivate(E)`
 
 ```csharp
-protected virtual void OnHide(E entity);
+protected virtual void OnDeactivate(E entity);
 ```
 
-- **Description:** Invoked when the view is hidden. Override to add custom cleanup logic  
+- **Description:** Invoked when the view is deactivated. Override to add custom cleanup logic
   (e.g., stopping animations or unsubscribing from events).
 
-#### `Create<T>(CreateArgs)`
+#### `FormateName(E)`
 
 ```csharp
-public static T Create<T>(in CreateArgs args = default) where T : EntityView<E>
+protected virtual string FormateName(E entity);
 ```
 
-- **Description:** Creates a new `EntityView` GameObject, applies configuration, and returns the instance.
-- **Parameter:** `args` — Arguments for creating and configuring the new view.
-- **Returns:** A new `EntityView` instance of type `T`.
-- **Details:**
-    - Creates a new inactive `GameObject` with the given `name`.
-    - Attaches a component of type `T` (derived from `EntityView<E>`).
-    - Applies provided `installers`, `controlGameObject`, and gizmo settings.
-    - Activates the object before returning.
-
-#### `Destroy(EntityView<E>, float)`
-
-```csharp
-public static void Destroy(EntityView<E> view, float time = 0);
-```
-
-- **Description:** Destroys the specified view and its `GameObject` after an optional delay.
-- **Parameters:**
-    - `view` — The `EntityView` instance to destroy.
-    - `time` — Optional delay (in seconds) before destruction. Defaults to `0`.
-- **Details:**
-    - Calls `Hide()` before destroying.
-    - Uses Unity's `Object.Destroy`.
+- **Description:** Formats the GameObject name for the view.
+- **Default:** `{entity.Name}:{entity.InstanceID}`.
+- **Note:** Override to customize naming behaviour.
 
 ---
 
-### 🧩 Nested Types
+### Extension Methods
 
-#### `CreateArgs`
+#### `GetValue<E, T>`
 
 ```csharp
-[Serializable]
-public struct CreateArgs
+public static T GetValue<E, T>(this EntityView<E> view, ValueKey<E, T> key) where E : class, IEntity;
 ```
 
-- **Description:** Arguments used to configure and create a new `EntityView<E>` GameObject instance.
-- **Fields:**
-    - `name` — The name of the newly created `GameObject` for the `EntityView`.
-    - `controlGameObject` — If `true`, the created view will automatically call `GameObject.SetActive()` in `Show/Hide`.
-    - `installers` — A list of **installers** that configure the view upon creation.
+- **Description:** Shorthand for reading a typed value from the entity attached to the view.
+- **Parameters:**
+    - `view` — The view whose entity will be queried.
+    - `key` — A typed `ValueKey<E, T>` for the requested value.
+- **Returns:** The value stored in the entity.
+
+Example:
+
+```csharp
+ValueKey<IGameEntity, int> healthKey = ...;
+int health = view.GetValue(healthKey);
+```
+
+---
+
+## 🔗 See Also
+
+- [EntityView](EntityView.md) — non-generic wrapper.
+- [IEntityGizmos\<E>](../Behaviours/IEntityGizmos%601.md) — gizmo behaviour interface.
+- [Entity UI Manual](Manual.md)

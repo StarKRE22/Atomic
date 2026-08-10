@@ -74,19 +74,19 @@ public sealed class TankViewInstaller : MonoEntityInstaller
 #### 5. Use this `EntityView` in the project
 
 ```csharp
-// Get an instance of GameEntityView
+// Get an instance of EntityView
 EntityView view = ...;
 
 // Get an instance of the entity
 IEntity entity = ...;
 
 // Start rendering the entity:
-// The GameObject dynamically attaches all tags, values, and behaviours to the entity
-view.Show(entity);
+// The GameObject dynamically attaches all behaviours to the entity
+view.Activate(entity);
 
 // Stop rendering the entity:
-// The GameObject hides, and all view tags, values, and behaviours are detached from the entity
-view.Hide(entity);
+// The GameObject is disabled, and all view behaviours are detached from the entity
+view.Deactivate();
 ```
 
 ---
@@ -97,7 +97,7 @@ view.Hide(entity);
 
 #### 1. Create Catalog Asset
 
-Select in Unity menu: `Assets → Create → Atomic → Entities → New EntityViewCatalog`. Then add prefabs that contain
+Select in Unity menu: `Assets → Create → Atomic → Entities → EntityViewCatalog`. Then add prefabs that contain
 `EntityView` component.
 
 <img width="400" height="" alt="Entity component" src="../../Images/EntityViewCatalog.png" />
@@ -109,10 +109,10 @@ Select in Unity menu: `Assets → Create → Atomic → Entities → New EntityV
 EntityViewCatalog catalog = Resources.Load<EntityViewCatalog>("EntityViewCatalog");
 
 // Get prefab by index
-KeyValuePair<string, EntityView> kv = catalog.GetPrefab(0);
+EntityView prefab = catalog.GetPrefab(0);
 
-// Get prefab by name
-EntityView playerPrefab = catalog.GetPrefab("Player");
+// Get prefab count
+int count = catalog.Count;
 ```
 
 ---
@@ -135,24 +135,32 @@ EntityView playerPrefab = catalog.GetPrefab("Player");
 EntityViewPool pool = ...;
 
 // Rent a view by name
-EntityView view = pool.Rent("Player");
+EntityView view = pool.Rent("Player", parentTransform);
 
 // Return the view to the pool
-pool.Return("Player", view);
+pool.Return(view);
 
 // Destroy all pooled views
 pool.Clear();
 
 // Register prefabs manually
 EntityView orcPrefab, magePrefab = ...;
-pool.RegisterPrefab("Orc", orcPrefab);
-pool.RegisterPrefab("Mage", magePrefab);
+pool.Register("Orc", orcPrefab);
+pool.Register("Mage", magePrefab);
 
 // Unregister prefabs manually
-pool.UnregisterPrefab("Orc");
-pool.UnregisterPrefab("Mage");
+pool.Unregister("Orc");
+pool.Unregister("Mage");
+
+// Preload instances synchronously
+pool.Init("Player", 10);
+
+// Or preload asynchronously
+await pool.InitAsync("Player", 10);
 ```
 
+> `Rent` and `Return` are internal methods used by collection / world view components. They are not part of the
+> public API for direct consumption, but can be exposed by a custom pool if needed.
 
 ---
 
@@ -162,12 +170,10 @@ pool.UnregisterPrefab("Mage");
 
 #### 1. Attach `Atomic/Entities/Entity Collection View` to a GameObject
 
-
 <img width="450" height="" alt="Entity component" src="../../Images/EntityCollectionView.png" />
 
 - Assign a `Transform` to `viewport` field.
-- Assign the [EntityViewPool](EntityViewPool.md) to `viewPool` field.
-
+- Assign the [EntityViewPool](EntityViewPool.md) to `pool` field.
 
 #### 2. Usage in a project
 
@@ -223,7 +229,7 @@ Use [EntityWorldView](EntityWorldView.md) when a view should automatically mirro
 #### 1. Attach `Atomic/Entities/Entity Collection View` to a GameObject
 
 - Assign a `Transform` to `viewport`.
-- Assign the [EntityViewPool](EntityViewPool.md) to `viewPool`.
+- Assign the [EntityViewPool](EntityViewPool.md) to `pool`.
 
 #### 2. Usage in a project
 
@@ -249,18 +255,18 @@ Below is a list of available Entity UI modules:
     - [EntityView&lt;E&gt;](EntityView%601.md) <!-- + -->
 - **Catalogs**
     - [EntityViewCatalog](EntityViewCatalog.md) <!-- + -->
-    - [EntityViewCatalog&lt;E&gt;](EntityViewCatalog%601.md) <!-- + -->
+    - [EntityViewCatalog&lt;E, V&gt;](EntityViewCatalog%602.md) <!-- + -->
 - **Pools**
     - [EntityViewPool](EntityViewPool.md) <!-- + -->
-    - [EntityViewPool&lt;E&gt;](EntityViewPool%601.md) <!-- + -->
+    - [EntityViewPool&lt;K, E, V&gt;](EntityViewPool%603.md) <!-- + -->
 - **Collections**
     - [EntityCollectionView](EntityCollectionView.md) <!-- + -->
-    - [EntityCollectionView&lt;E&gt;](EntityCollectionView%601.md) <!-- + -->
+    - [EntityCollectionView&lt;K, E, V&gt;](EntityCollectionView%603.md) <!-- + -->
 - **World Views**
     - [EntityWorldView](EntityWorldView.md) <!-- + -->
-    - [EntityWorldView&lt;K, E, V&gt;](EntityWorldView%601.md) <!-- + -->
+    - [EntityWorldView&lt;K, E, V&gt;](EntityWorldView%603.md) <!-- + -->
     - [EntityWorldViewSingleton](EntityWorldViewSingleton.md) <!-- + -->
-    - [EntityWorldViewSingleton&lt;K, E, V&gt;](EntityWorldViewSingleton%601.md) <!-- + -->
+    - [EntityWorldViewSingleton&lt;K, E, V&gt;](EntityWorldViewSingleton%603.md) <!-- + -->
 
 ---
 
