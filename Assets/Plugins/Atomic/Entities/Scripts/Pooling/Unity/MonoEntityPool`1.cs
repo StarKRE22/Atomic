@@ -255,6 +255,8 @@ namespace Atomic.Entities
             return entity;
         }
 
+        protected void SetParent(E entity) => entity.transform.SetParent(_container);
+
         #region Static
 
         /// <summary>
