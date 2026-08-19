@@ -63,12 +63,20 @@ namespace Atomic.Entities
             return _idToName.TryGetValue(id, out string name) ? name : $"#Unknown:{id}";
         }
 
+#if UNITY_EDITOR
+        [InitializeOnEnterPlayMode]
+        private static void ResetOnEnterPlayMode(EnterPlayModeOptions options)
+        {
+            if ((options & EnterPlayModeOptions.DisableDomainReload) != 0)
+                return;
+
+            Reset();
+        }
+#endif
+
         /// <summary>
         /// Clears all cached mappings and resets the current algorithm.
         /// </summary>
-#if UNITY_EDITOR
-        [InitializeOnEnterPlayMode]
-#endif
         public static void Reset()
         {
             _nameToId.Clear();
