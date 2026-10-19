@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -21,7 +20,6 @@ namespace Atomic.Entities
     /// This pool uses a prefab to instantiate entities and manages their reuse via a stack.
     /// Entities are activated/deactivated on rent/return, and can be preloaded using <see cref="Init(int)"/>.
     /// </remarks>
-    //TODO: Add Strategies FixedPool
     [HelpURL("https://github.com/StarKRE22/Atomic/blob/main/Docs/Entities/Pooling/MonoEntityPool%601.md")]
     public abstract class MonoEntityPool<E, P> : MonoBehaviour, IEntityPool<E>
         where E : IEntity
@@ -186,7 +184,7 @@ namespace Atomic.Entities
             if (_rentEntities.Remove(sceneEntity) || _acceptExternalReturns)
             {
                 this.OnReturn(sceneEntity);
-                 entity.transform.SetParent(_container);
+                sceneEntity.transform.SetParent(_container);
                 _pooledEntities.Push(sceneEntity);
             }
             else
